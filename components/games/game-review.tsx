@@ -1,12 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import type { ChessColor, ParsedGame } from "@/types/game";
+import type { ChessColor } from "@/types/game";
+import type { ReviewGame } from "@/types/saved-game";
 import { ReplayBoard } from "@/components/chess/replay-board";
 import { MoveList } from "./move-list";
 
 /** Mount a fresh review for each imported game. Selected ply owns all replay state. */
-export function GameReview({ game, userColor }: { game: ParsedGame; userColor: ChessColor }) {
+export function GameReview({ game, userColor }: { game: ReviewGame; userColor: ChessColor }) {
   const [selectedPly, setSelectedPly] = useState(0);
   const selectedMove = selectedPly === 0 ? null : game.moves[selectedPly - 1];
   const fen = selectedMove?.fenAfter ?? game.initialFen;

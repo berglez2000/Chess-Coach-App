@@ -1,9 +1,12 @@
 import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { ImportForm } from "@/components/games/import-form";
 import { parsePgn } from "@/lib/pgn/parse";
 import type { ImportState } from "@/types/import";
 
+const { push } = vi.hoisted(() => ({ push: vi.fn() }));
+vi.mock("next/navigation", () => ({ useRouter: () => ({ push }) }));
+beforeEach(() => push.mockClear());
 afterEach(() => vi.unstubAllGlobals());
 
 function fill(color = "WHITE", pgn = "1. e4 e5 *") {
@@ -27,8 +30,7 @@ describe("Import form", () => {
     expect(screen.getByLabelText("Your color")).toHaveValue("BLACK");
     expect(screen.getByLabelText("Game PGN")).toHaveValue("1. e4 e5 *");
     submit();
-    expect(await screen.findByRole("status", { name: "Game imported" })).toHaveTextContent("Your game is saved.");
-    expect(await screen.findByRole("heading", { name: "Game review" })).toBeVisible();
+    await waitFor(() => expect(push).toHaveBeenCalledWith("/games/saved-game"));
     expect(fetchMock).toHaveBeenCalledTimes(2);
     expect(fetchMock).toHaveBeenLastCalledWith("/api/games", {
       method: "POST", headers: { "Content-Type": "application/json" },
@@ -52,17 +54,14 @@ describe("Import form", () => {
     render(<ImportForm importAction={action} />);
     fill(color);
     submit();
-    expect(await screen.findByText("Game imported")).toBeVisible();
+    await waitFor(() => expect(push).toHaveBeenCalledWith("/games/saved-game"));
     const data = action.mock.calls[0][0] as FormData;
     expect(data.get("userColor")).toBe(color);
     expect(data.get("pgn")).toBe("1. e4 e5 *");
-    expect(screen.getByRole("status", { name: "Game imported" })).toHaveTextContent("2 half-moves");
-    // Changing input must not leave the old result presented as current.
-    fireEvent.change(screen.getByLabelText("Game PGN"), { target: { value: "1. d4 *" } });
-    expect(screen.queryByText("Game imported")).not.toBeInTheDocument();
+
   });
 
-  it("shows replay when browser submission normalizes multiline PGN to CRLF", async () => {
+  it("navigates after importing multiline PGN", async () => {
     const pgn = '[White "Aljaz"]\n\n1. e4 e5 *\n';
     const submitted = pgn.replaceAll("\n", "\r\n");
     render(<ImportForm importAction={vi.fn().mockResolvedValue({
@@ -70,7 +69,7 @@ describe("Import form", () => {
     })} />);
     fill("WHITE", pgn);
     submit();
-    expect(await screen.findByRole("heading", { name: "Game review" })).toBeVisible();
+    await waitFor(() => expect(push).toHaveBeenCalledWith("/games/saved-game"));
     expect(screen.getByLabelText("Game PGN")).toHaveValue(pgn);
   });
 

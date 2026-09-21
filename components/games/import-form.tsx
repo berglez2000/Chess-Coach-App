@@ -1,12 +1,13 @@
 "use client";
 
-import { useActionState, useState } from "react";
-import { GameReview } from "./game-review";
+import { useActionState, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { requestGameImport } from "@/lib/games/import-request";
 import { MAX_PGN_LENGTH } from "@/lib/validation/import-game";
 import type { ImportAction, ImportState } from "@/types/import";
 
 export function ImportForm({ importAction = requestGameImport }: { importAction?: ImportAction }) {
+  const router = useRouter();
   const [userColor, setUserColor] = useState("");
   const [pgn, setPgn] = useState("");
   const [state, action, pending] = useActionState<ImportState, FormData>(
@@ -23,7 +24,9 @@ export function ImportForm({ importAction = requestGameImport }: { importAction?
     { status: "idle" },
   );
   const errors = state.status === "error" ? state.fields : undefined;
-  const result = state.status === "success" && state.game.pgn.replace(/\r\n?/g, "\n") === pgn.replace(/\r\n?/g, "\n") && state.userColor === userColor ? state : null;
+  useEffect(() => {
+    if (state.status === "success") router.push(`/games/${state.gameId}`);
+  }, [state, router]);
   const inputClass = "mt-2 w-full rounded-lg border border-[#20382e]/30 bg-white p-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#20382e] disabled:opacity-60";
 
   return (
@@ -59,14 +62,7 @@ export function ImportForm({ importAction = requestGameImport }: { importAction?
         {pending && <p role="status" className="text-sm">Checking your game…</p>}
         {!pending && state.status === "error" && <p role="alert" className="text-red-800">{state.message}</p>}
       </form>
-      {!pending && result && (
-        <section role="status" aria-labelledby="import-result-heading" className="mt-8 rounded-lg border border-[#20382e]/20 bg-white p-5">
-          <h2 id="import-result-heading" className="font-semibold">Game imported</h2>
-          <p className="mt-2">{result.game.metadata.whiteName ?? "White"} vs. {result.game.metadata.blackName ?? "Black"} · {result.game.moves.length} half-moves · You played {result.userColor === "WHITE" ? "White" : "Black"}.</p>
-          <p className="mt-2 text-sm text-[#465c50]">Your game is saved. Use the board and move list below to replay it. Reopening saved games will be available in the next update.</p>
-        </section>
-      )}
-      {!pending && result && <GameReview key={result.gameId} game={result.game} userColor={result.userColor} />}
+      {!pending && state.status === "success" && <p role="status" className="mt-6">Game saved. Opening review…</p>}
     </>
   );
 }

@@ -16,6 +16,7 @@ export default function HomePage() {
       <Link href="/games/new" className="mt-10 inline-block rounded-lg bg-[#20382e] px-6 py-3 font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-4">
         Import a game
       </Link>
+      <Link href="/games" className="ml-6 inline-block underline">Your games</Link>
     </main>
   );
 }

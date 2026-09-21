@@ -408,7 +408,7 @@ Verification: 91 unit/component tests and 11 isolated PostgreSQL integration tes
 
 ### TASK-009 — Add the saved game library and review URLs
 
-Status: TODO  
+Status: DONE
 Milestone: M2  
 Dependencies: TASK-006, TASK-008
 
@@ -442,6 +442,10 @@ Engine execution, coaching, advanced filtering, and statistics.
 #### Notes
 
 M2 exit: a persistent game library with complete move replay, even before analysis exists.
+
+Implemented `/games`, `/games/[id]`, summarized GET `/api/games`, and detailed GET `/api/games/[id]`. Database queries map to application DTOs with ISO dates; summaries exclude raw PGN and moves, while detail returns moves ordered by ply. Imports navigate to permanent reviews, and stored userColor restores orientation. Added loading, empty, missing-game, and safe retryable database-error states, plus home/library navigation.
+
+Verification: 99 unit/component tests, 15 isolated PostgreSQL integration tests, lint, typecheck, and production build passed. Chromium verified import-to-review navigation, replay, reopening from the library, refresh, and missing-game UI. Restarted the verification app and local PostgreSQL service (preserving its named volume), then successfully reopened the same saved Black-side game. Removed only the marked browser fixture after verification. Existing dependency audit limitations are unchanged.
 
 ### TASK-010 — Implement the server-side Stockfish UCI adapter
 

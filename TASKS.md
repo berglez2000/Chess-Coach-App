@@ -92,7 +92,7 @@ Environment notes: the shell defaults to Node 20, so verification used a tempora
 
 ### TASK-002 — Set up deterministic test tooling
 
-Status: TODO  
+Status: DONE
 Milestone: M0  
 Dependencies: TASK-001
 
@@ -122,7 +122,16 @@ Playwright, real engine tests, paid API requests, and product logic.
 
 #### Notes
 
-Avoid placeholder tests that only assert constants or mirror configuration.
+Completed Vitest setup with separate Node.js and jsdom projects, React Testing Library, jest-dom matchers, explicit DOM cleanup, and the application's `@/` alias. Added three behavioral tests covering the home heading/availability message and server-rendered home/skip links. README documents test layout, filtering, environment limits, and commands.
+
+Verification passed using Node 24.21.0:
+
+- `npm run lint`, `npm run typecheck`, and `npm test` passed (2 files, 3 tests).
+- Temporarily replacing the home heading with a paragraph caused the component test to fail for the missing accessible heading; the source was restored and the full suite passed afterward.
+- `npm run test:watch` ran the suite, remained waiting for changes, and exited cleanly with `q`. Explicit `--watch` prevents CI environment detection from turning this command into a one-shot run.
+- Tests run without starting the application or any database/engine/API service. No Playwright or integration setup was added.
+
+The installed jsdom release requires Node 24.15.0 or later within the project's Node 24 range; package.json, lockfile, and README now reflect that minimum. No application behavior changed. TASK-003 remains TODO.
 
 ### TASK-003 — Configure PostgreSQL and Prisma
 

@@ -6,7 +6,7 @@ The application currently contains the initial home page and development tooling
 
 ## Prerequisites
 
-- Node.js **24 LTS** (verified with 24.21.0), with npm 10 or later.
+- Node.js **24 LTS, version 24.15.0 or later** (verified with 24.21.0), with npm 10 or later.
 - If you use nvm, run `nvm install` and `nvm use` in this directory; `.nvmrc` selects Node 24.
 - Confirm `node --version` prints `v24.x` before installing dependencies. The project declares Node 24 in `package.json` to keep development consistent.
 
@@ -28,6 +28,7 @@ No environment values are required yet. `.env.example` lists the planned variabl
 ```bash
 npm run lint
 npm run typecheck
+npm test
 npm run build
 ```
 
@@ -37,7 +38,29 @@ Typecheck generates Next.js route types before running TypeScript, so it also wo
 npm run start
 ```
 
-Unit and component test tooling is scheduled for TASK-002; `npm test` is not configured yet. For repeatable installation from the lockfile, use `npm ci`.
+For repeatable installation from the lockfile, use `npm ci`.
+
+## Tests
+
+```bash
+npm test                            # Run all fast tests once and exit
+npm run test:watch                   # Watch for changes; press q to quit
+npm test -- --project=unit           # Node.js tests only
+npm test -- --project=components     # DOM component tests only
+npm test -- tests/components/home-page.test.tsx
+```
+
+Vitest uses two projects in `vitest.config.mts`:
+
+- `tests/unit/**/*.test.{ts,tsx}` runs in Node.js for server-safe logic and rendering.
+- `tests/components/**/*.test.{ts,tsx}` runs in jsdom with React Testing Library.
+- `tests/setup-dom.ts` loads the jest-dom matchers and cleans up rendered components after every DOM test. Import `describe`, `it`, and `expect` from `vitest` explicitly.
+
+Tests share the application's `@/` import alias. Use role-based DOM assertions for user-visible behavior and explicit fixtures or mocked adapters for future engine/AI tests. The fast suite requires no running app, database, Stockfish, API key, or paid requests. Integration and browser suites will have separate commands in later tasks.
+
+The initial tests cover the home-page heading and availability message, plus server-rendered home navigation and the skip link's target. They use the actual application components. jsdom does not verify responsive layout or browser navigation. Async Server Components will need integration/browser coverage when introduced.
+
+The setup follows the [Next.js Vitest guide](https://nextjs.org/docs/app/guides/testing/vitest), [Vitest environment documentation](https://vitest.dev/guide/environment.html), and [React Testing Library setup guide](https://testing-library.com/docs/react-testing-library/setup/).
 
 ## Toolchain decisions
 

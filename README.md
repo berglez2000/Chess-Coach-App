@@ -2,7 +2,7 @@
 
 A local chess-improvement application for importing PGNs, analyzing games with Stockfish, and reviewing them with AI coaching.
 
-The application currently contains the initial home page, development tooling, and local PostgreSQL/Prisma setup. Import, review, engine, and coaching functionality will be added through the task backlog. V0.1 focuses on game review; puzzles, authentication, and deployment are deferred.
+The application currently contains the initial home page, development tooling, and local PostgreSQL/Prisma setup. The PGN parsing service is also implemented; import UI, review, engine, and coaching functionality will be added through the task backlog. V0.1 focuses on game review; puzzles, authentication, and deployment are deferred.
 
 ## Prerequisites
 
@@ -115,6 +115,27 @@ Tests share the application's `@/` import alias. Use role-based DOM assertions f
 The initial tests cover the home-page heading and availability message, plus server-rendered home navigation and the skip link's target. They use the actual application components. jsdom does not verify responsive layout or browser navigation. Async Server Components will need integration/browser coverage when introduced.
 
 The setup follows the [Next.js Vitest guide](https://nextjs.org/docs/app/guides/testing/vitest), [Vitest environment documentation](https://vitest.dev/guide/environment.html), and [React Testing Library setup guide](https://testing-library.com/docs/react-testing-library/setup/).
+
+## PGN parsing
+
+`parsePgn` in `lib/pgn/parse.ts` parses a single standard-chess PGN with chess.js 1.4.0. It is a pure, synchronous service: no database, engine, browser, or API calls. Its DTOs in `types/game.ts` expose only application-owned types, not chess.js objects.
+
+The return value preserves the original `pgn`, the actual `initialFen`, nullable metadata, and every main-line half-move with a 1-based `ply`, actual full move number, color, canonical SAN, UCI (including promotion suffix), `fenBefore`, and `fenAfter`. Color describes the moving side, not the user's selected side; the import form will supply userColor later.
+
+Supported input and limits:
+
+- Standard SAN movetext, optional headers, `1-0`, `0-1`, `1/2-1/2`, and unfinished `*`. Missing results default to `*`; contradictory header/movetext results are rejected.
+- Custom starts require both `[SetUp "1"]` and a valid `[FEN "..."]`. Black-to-move starts retain their FEN move number. The normal starting position is not assumed for replay.
+- Brace comments, semicolon line comments, NAGs, and nested recursive variations follow chess.js's PGN grammar. Only main-line moves are replayed and checked for legality; variation move legality is not checked. Comments/variations are preserved in the original PGN but not returned as annotations.
+- Strict SAN uses `O-O`/`O-O-O` for castling. Coordinate notation, unsupported variants, null moves, malformed headers/comments/variations, and move-less input are rejected. Escaped quote characters inside header values are not supported by the selected chess.js grammar.
+- One game per import. Further headers or movetext after a result marker are rejected with a multiple-game error; markers inside comments/variations/header values do not count as boundaries.
+- Complete valid `YYYY.MM.DD` dates become UTC ISO strings; partial dates, impossible dates, and missing dates become null. Missing/unknown optional text headers are null.
+- `metadata.result` is the recorded result. `finalPosition` separately describes board checkmate/stalemate/draw status. A supplied `Termination` header is retained; resignation, flagging, or an agreed draw is never guessed from the board.
+- chess.js FEN output includes an en passant target only when a legal en passant capture exists. Raw PGN is kept unchanged, including its original FEN header.
+
+Failures throw `PgnParseError` with a stable `code` (`EMPTY_PGN`, `INVALID_PGN`, `ILLEGAL_MOVE`, `UNSUPPORTED_PGN`, or `MULTIPLE_GAMES`) and an actionable message. Parser internals and raw input are not echoed in error messages.
+
+Fixtures live in `tests/fixtures/pgn/`; run `npm test -- tests/unit/pgn.test.ts` for the parser suite. Move legality, SAN normalization, and FEN behavior follow the [chess.js documentation](https://jhlywa.github.io/chess.js/).
 
 ## Toolchain decisions
 

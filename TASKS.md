@@ -185,7 +185,7 @@ No dummy models or migrations were added; TASK-007 owns the first product migrat
 
 ### TASK-004 — Parse PGN into normalized game data
 
-Status: TODO  
+Status: DONE
 Milestone: M1  
 Dependencies: TASK-002
 
@@ -216,7 +216,15 @@ Persistence, UI, engine analysis, and username inference.
 
 #### Notes
 
-Keep initial position explicit so review navigation can represent ply 0 even for nonstandard starting positions. Do not infer resignation from the final board alone.
+Implemented the pure `parsePgn` service with chess.js 1.4.0, independent DTOs in `types/game.ts`, typed safe errors, original-PGN preservation, nullable metadata/UTC dates, explicit initial FEN, and normalized main-line moves. Boundary checks reject multiple games without confusing result text in comments, headers, or variations. Standard SAN is validated by chess.js; recursive variations are retained in raw PGN but only main-line legality is checked.
+
+Verification passed with Node 24.21.0:
+
+- `npm test -- tests/unit/pgn.test.ts`: 36 parser tests passed using PGN fixtures for complete/missing-header games, castling, promotion/check, en passant, checkmate, draw, unfinished games, comments/NAGs/nested variations, custom Black-to-move starts, illegal moves, and multiple games.
+- Assertions verify known FENs, UCI promotion suffix, position continuity, full-move numbering independent of ply, leap/invalid/partial dates, raw input preservation, and stable error codes.
+- `npm run lint`, `npm run typecheck`, and `npm test`: all passed (4 files, 49 tests).
+
+README documents supported syntax and limits, including strict SAN and unsupported escaped quotes in header values. Recorded results and supplied termination reasons remain separate from board-derived checkmate/draw flags; resignation is not inferred. No UI, persistence, engine, or AI work was added. Existing Prisma audit advisories are unchanged.
 
 ### TASK-005 — Build the three-control import form
 

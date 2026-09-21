@@ -1,0 +1,6 @@
+[Event "Comments (and variations)"]
+
+1. e4 {Ignore fake markers 0-1 and [Event "Not a second game"]}
+(1. d4 d5 (1... Nf6)) e5 $1
+2. Nf3!? ; A line comment containing 1-0
+Nc6 *

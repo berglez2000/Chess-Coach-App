@@ -368,7 +368,7 @@ README includes setup, environment isolation, migrations, and cleanup commands t
 
 ### TASK-008 — Persist validated imports transactionally
 
-Status: TODO  
+Status: DONE
 Milestone: M2  
 Dependencies: TASK-005, TASK-007
 
@@ -401,6 +401,10 @@ Automatic analysis, duplicate-PGN detection, game editing, and deletion.
 #### Notes
 
 Identical PGNs may be imported as separate games in V0.1. Do not introduce deduplication requirements.
+
+Completed POST `/api/games`, a testable import service, and an atomic Prisma nested-write repository. The form now saves imports with selected color, normalized moves, and PENDING status before showing replay. Removed the temporary server action. Validation precedes database access; errors use stable codes and safe messages. Failed requests retain input and allow retry. The response includes gameId/status and parsed replay data; saved review navigation remains TASK-009.
+
+Verification: 91 unit/component tests and 11 isolated PostgreSQL integration tests passed, including actual constraint-triggered rollback and retry. Lint, typecheck, and production build passed. README documents the API contract and current saved-game navigation limitation. Existing dependency audit limitations are unchanged.
 
 ### TASK-009 — Add the saved game library and review URLs
 

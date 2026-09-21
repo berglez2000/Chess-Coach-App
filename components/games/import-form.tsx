@@ -2,10 +2,11 @@
 
 import { useActionState, useState } from "react";
 import { GameReview } from "./game-review";
+import { requestGameImport } from "@/lib/games/import-request";
 import { MAX_PGN_LENGTH } from "@/lib/validation/import-game";
 import type { ImportAction, ImportState } from "@/types/import";
 
-export function ImportForm({ importAction }: { importAction: ImportAction }) {
+export function ImportForm({ importAction = requestGameImport }: { importAction?: ImportAction }) {
   const [userColor, setUserColor] = useState("");
   const [pgn, setPgn] = useState("");
   const [state, action, pending] = useActionState<ImportState, FormData>(
@@ -62,10 +63,10 @@ export function ImportForm({ importAction }: { importAction: ImportAction }) {
         <section role="status" aria-labelledby="import-result-heading" className="mt-8 rounded-lg border border-[#20382e]/20 bg-white p-5">
           <h2 id="import-result-heading" className="font-semibold">Game imported</h2>
           <p className="mt-2">{result.game.metadata.whiteName ?? "White"} vs. {result.game.metadata.blackName ?? "Black"} · {result.game.moves.length} half-moves · You played {result.userColor === "WHITE" ? "White" : "Black"}.</p>
-          <p className="mt-2 text-sm text-[#465c50]">Use the board and move list below to replay your game. This review is not saved; refreshing will clear it.</p>
+          <p className="mt-2 text-sm text-[#465c50]">Your game is saved. Use the board and move list below to replay it. Reopening saved games will be available in the next update.</p>
         </section>
       )}
-      {!pending && result && <GameReview key={`${result.userColor}:${result.game.pgn}`} game={result.game} userColor={result.userColor} />}
+      {!pending && result && <GameReview key={result.gameId} game={result.game} userColor={result.userColor} />}
     </>
   );
 }

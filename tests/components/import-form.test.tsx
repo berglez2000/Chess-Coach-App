@@ -1,8 +1,10 @@
 import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
-import { describe, expect, it, vi } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { ImportForm } from "@/components/games/import-form";
 import { parsePgn } from "@/lib/pgn/parse";
 import type { ImportState } from "@/types/import";
+
+afterEach(() => vi.unstubAllGlobals());
 
 function fill(color = "WHITE", pgn = "1. e4 e5 *") {
   fireEvent.change(screen.getByLabelText("Your color"), { target: { value: color } });
@@ -13,6 +15,26 @@ function submit() {
 }
 
 describe("Import form", () => {
+  it("posts to the persistence API and retries a failed save with retained input", async () => {
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce(Response.json({ error: { code: "IMPORT_FAILED", message: "Could not save your game. Please try again." } }, { status: 500 }))
+      .mockResolvedValueOnce(Response.json({ gameId: "saved-game", status: "PENDING", userColor: "BLACK", game: parsePgn("1. e4 e5 *") }, { status: 201 }));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<ImportForm />);
+    fill("BLACK");
+    submit();
+    expect(await screen.findByRole("alert")).toHaveTextContent("Please try again");
+    expect(screen.getByLabelText("Your color")).toHaveValue("BLACK");
+    expect(screen.getByLabelText("Game PGN")).toHaveValue("1. e4 e5 *");
+    submit();
+    expect(await screen.findByRole("status", { name: "Game imported" })).toHaveTextContent("Your game is saved.");
+    expect(await screen.findByRole("heading", { name: "Game review" })).toBeVisible();
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(fetchMock).toHaveBeenLastCalledWith("/api/games", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userColor: "BLACK", pgn: "1. e4 e5 *" }),
+    });
+  });
   it("has three required controls and checks whitespace before a server call", async () => {
     const action = vi.fn();
     render(<ImportForm importAction={action} />);
@@ -26,7 +48,7 @@ describe("Import form", () => {
   });
 
   it.each(["WHITE", "BLACK"])("submits selected %s color and shows the parsed result", async (color) => {
-    const action = vi.fn().mockResolvedValue({ status: "success", userColor: color, game: parsePgn("1. e4 e5 *") });
+    const action = vi.fn().mockResolvedValue({ status: "success", gameId: "saved-game", userColor: color, game: parsePgn("1. e4 e5 *") });
     render(<ImportForm importAction={action} />);
     fill(color);
     submit();
@@ -44,7 +66,7 @@ describe("Import form", () => {
     const pgn = '[White "Aljaz"]\n\n1. e4 e5 *\n';
     const submitted = pgn.replaceAll("\n", "\r\n");
     render(<ImportForm importAction={vi.fn().mockResolvedValue({
-      status: "success", userColor: "WHITE", game: parsePgn(submitted),
+      status: "success", gameId: "saved-game", userColor: "WHITE", game: parsePgn(submitted),
     })} />);
     fill("WHITE", pgn);
     submit();

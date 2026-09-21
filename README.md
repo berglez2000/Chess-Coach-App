@@ -2,7 +2,7 @@
 
 A local chess-improvement application for importing PGNs, analyzing games with Stockfish, and reviewing them with AI coaching.
 
-The application currently contains the initial home page, development tooling, and local PostgreSQL/Prisma setup. The PGN parsing service is also implemented; the three-control PGN import form is available at `/games/new`. Interactive board replay is also available. The game persistence schema and isolated database tests are ready; connecting imports to storage, engine analysis, and coaching remain in the task backlog. V0.1 focuses on game review; puzzles, authentication, and deployment are deferred.
+The application currently contains the initial home page, development tooling, and local PostgreSQL/Prisma setup. The PGN parsing service is also implemented; the three-control PGN import form is available at `/games/new`. Interactive board replay is also available. Imports now save games and moves transactionally in PostgreSQL; saved-game navigation, engine analysis, and coaching remain in the task backlog. V0.1 focuses on game review; puzzles, authentication, and deployment are deferred.
 
 ## Prerequisites
 
@@ -121,7 +121,7 @@ The setup follows the [Next.js Vitest guide](https://nextjs.org/docs/app/guides/
 
 `Game` stores the original PGN, explicit initial FEN, optional metadata, required user color, analysis status/error, and timestamps. `GameMove` stores canonical 1-based plies, actual move numbers, SAN/UCI, side, and before/after FENs. Player names remain nullable when PGN headers are absent. Played dates use PostgreSQL DATE; raw dates remain preserved in the PGN. No engine results, annotations, user, or puzzle models are included yet.
 
-PostgreSQL enums enforce valid game/move colors and analysis statuses. A unique `(gameId, ply)` constraint prevents duplicate plies within one game and supports ordered lookup. A foreign key rejects orphan moves and cascades game deletion to its moves; the game `(createdAt, id)` index supports stable library ordering. Queries must explicitly order moves by ply. The import UI still uses the temporary in-memory flow; TASK-008 connects it to this schema.
+PostgreSQL enums enforce valid game/move colors and analysis statuses. A unique `(gameId, ply)` constraint prevents duplicate plies within one game and supports ordered lookup. A foreign key rejects orphan moves and cascades game deletion to its moves; the game `(createdAt, id)` index supports stable library ordering. Queries must explicitly order moves by ply. The import UI saves validated games and their moves through POST /api/games using an atomic Prisma nested write.
 
 Integration tests use a **separate PostgreSQL process**, database, and user on localhost port 5434. They use tmpfs instead of the development volume and do not start during normal `docker compose up`.
 
@@ -154,13 +154,15 @@ Its tmpfs data is disposable. Restarting it and rerunning `npm run test:integrat
 
 ## Import a game
 
-Open the home page and choose **Import a game**, or visit `/games/new`. Select White or Black, paste one PGN, and click **Import**. The server validates both fields with Zod, parses the PGN, and returns normalized positions plus the selected user color. Client-supplied positions are ignored.
+Open the home page and choose **Import a game**, or visit `/games/new`. Select White or Black, paste one PGN, and click **Import**. The server validates both fields with Zod, parses the PGN, saves the game and all moves atomically with PENDING status, and returns the saved ID with normalized positions and the selected user color. Client-supplied positions are ignored.
 
-The form has only three controls. Browser validation checks required fields, whitespace gets immediate feedback, and the server repeats validation independently. Inputs are retained after validation/connection errors and disabled during a pending submission. Single-game PGNs are limited to 100,000 characters, below the default server-action body limit for ordinary text submissions.
+The form has only three controls. Browser validation checks required fields, whitespace gets immediate feedback, and the server repeats validation independently. Inputs are retained after validation/connection errors and disabled during a pending submission. Single-game PGNs are limited to 100,000 characters.
 
-A successful import opens an in-memory game review below the form, with metadata, a chessboard, a clickable move list, and Start/Previous/Next/End controls. The board defaults to your selected color and pieces cannot be dragged. The layout places the move list beside the board on wider screens and below it on narrow screens.
+A successful import opens a game review below the form, with metadata, a chessboard, a clickable move list, and Start/Previous/Next/End controls. The board defaults to your selected color and pieces cannot be dragged. The layout places the move list beside the board on wider screens and below it on narrow screens.
 
-The review is **not saved** and disappears on refresh. Editing the import fields hides the previous review; a new import starts at the initial position. TASK-008 will replace the temporary parse-only server action with persistence. No Stockfish or OpenAI requests are made at this stage.
+The game and its moves are **saved in PostgreSQL**. Refreshing clears the current replay view; the library and URLs for reopening saved games arrive in TASK-009. Editing the import fields hides the previous review; a new import starts at the initial position. Identical PGNs may be saved as separate games. No Stockfish or OpenAI requests are made at this stage.
+
+`POST /api/games` accepts JSON `{ "userColor": "WHITE", "pgn": "1. e4 e5 *" }` (or BLACK). Success returns HTTP 201 with `{ gameId, status: "PENDING", userColor, game }`; `game` contains the server-parsed replay DTO to preserve the immediate review until saved-game navigation is implemented. Errors use `{ error: { code, message, fields? } }`: malformed JSON, invalid fields, and PGN errors return 400; unexpected parsing/storage failures return 500 with a sanitized message. Validation runs before database access. The import service accepts a repository interface, and the Prisma implementation saves the parent and all moves in one nested-write transaction. Integration tests exercise real storage, invalid input, duplicate-PGN imports, constraint-triggered rollback, and retry.
 
 ### Replay position convention
 
@@ -174,7 +176,7 @@ Replay component tests use the real react-chessboard renderer and verify all squ
 
 `parsePgn` in `lib/pgn/parse.ts` parses a single standard-chess PGN with chess.js 1.4.0. It is a pure, synchronous service: no database, engine, browser, or API calls. Its DTOs in `types/game.ts` expose only application-owned types, not chess.js objects.
 
-The return value preserves the original `pgn`, the actual `initialFen`, nullable metadata, and every main-line half-move with a 1-based `ply`, actual full move number, color, canonical SAN, UCI (including promotion suffix), `fenBefore`, and `fenAfter`. Color describes the moving side, not the user's selected side; the import form will supply userColor later.
+The return value preserves the original `pgn`, the actual `initialFen`, nullable metadata, and every main-line half-move with a 1-based `ply`, actual full move number, color, canonical SAN, UCI (including promotion suffix), `fenBefore`, and `fenAfter`. Color describes the moving side, not the user's selected side; the import form supplies userColor separately.
 
 Supported input and limits:
 

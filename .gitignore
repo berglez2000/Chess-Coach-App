@@ -19,3 +19,6 @@ test-results/
 
 # Next.js generated type declarations
 next-env.d.ts
+
+# Generated Prisma client
+generated/prisma/

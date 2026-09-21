@@ -6,6 +6,7 @@ V0.1 delivers **select color → import PGN → save → analyze with Stockfish 
 
 ## Working rules
 
+- After completing and verifying a requested task, commit and push its changes before starting another task.
 - All tasks start as TODO. Implement only the requested task; do not automatically start the next one.
 - Read the specification, this backlog, applicable repository instructions, and relevant existing files before editing. Preserve user changes.
 - Dependencies list prerequisite tasks, not permission to implement them. Work in numerical order by default; independent tasks may be scheduled after their dependencies are done.
@@ -135,7 +136,7 @@ The installed jsdom release requires Node 24.15.0 or later within the project's 
 
 ### TASK-003 — Configure PostgreSQL and Prisma
 
-Status: TODO  
+Status: DONE
 Milestone: M0  
 Dependencies: TASK-001
 
@@ -169,7 +170,18 @@ Game schema, authentication, deployment, and cloud databases.
 
 #### Notes
 
-Do not add a dummy table merely to create an initial migration. TASK-007 adds the first product migration.
+Completed PostgreSQL 18 Compose setup, named volume, health check, loopback port 5433, stable Prisma 7.10.0 configuration/generation, a lazy server-only Prisma client, sanitized URL validation, and `npm run db:check`. README documents development credentials, environment loading, startup, generation, persistence, and troubleshooting. The ignored `.env.local` was created with the documented local database URL; the names-only `.env.example` remains unchanged.
+
+Verification passed with Node 24.21.0:
+
+- `docker-compose up -d --wait` and `docker-compose ps`: healthy PostgreSQL. This machine uses standalone Compose; the equivalent `docker compose` commands are documented.
+- `npx prisma validate`, `npm run db:generate`, and `npm run db:check`: valid empty schema, generated client, successful `SELECT 1` through Prisma.
+- Removed/recreated only the project's container using `down` without `-v` and `up -d --wait`; PostgreSQL's cluster identifier remained unchanged and the connection check passed again. The public schema still contains zero tables.
+- `npm run lint`, `npm run typecheck`, `npm test` (3 files, 13 tests), and `npm run build` passed.
+- Prisma validation/generation also passed with blank DATABASE_URL. Missing/invalid URLs in the check script failed with safe messages, without exposing credentials.
+- Local environment files and generated Prisma output are ignored; the browser JavaScript bundles contain neither the database URL nor DATABASE_URL configuration. The database client imports `server-only` to enforce its boundary in future routes.
+
+No dummy models or migrations were added; TASK-007 owns the first product migration. Known limitation: npm audit reports four high-severity entries in Prisma's dependency tree, including with dev dependencies omitted; its proposed automatic fix is a Prisma 6 downgrade. The README records this unresolved dependency risk. PostgreSQL remains running locally for development.
 
 ### TASK-004 — Parse PGN into normalized game data
 

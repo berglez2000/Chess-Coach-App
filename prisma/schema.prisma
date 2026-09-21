@@ -7,4 +7,58 @@ datasource db {
   provider = "postgresql"
 }
 
-// Product models and the initial migration are added in TASK-007.
+// Engine results and coaching annotations are added in later tasks.
+
+enum ChessColor {
+  WHITE
+  BLACK
+}
+
+enum AnalysisStatus {
+  PENDING
+  ENGINE_RUNNING
+  ENGINE_COMPLETED
+  AI_RUNNING
+  COMPLETED
+  FAILED
+}
+
+model Game {
+  id             String         @id @default(cuid())
+  pgn            String         @db.Text
+  initialFen     String
+  whiteName      String?
+  blackName      String?
+  result         String
+  playedAt       DateTime?      @db.Date
+  event          String?
+  site           String?
+  round          String?
+  openingName    String?
+  eco            String?
+  timeControl    String?
+  termination    String?
+  userColor      ChessColor
+  analysisStatus AnalysisStatus @default(PENDING)
+  analysisError  String?        @db.Text
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  moves          GameMove[]
+
+  @@index([createdAt, id])
+}
+
+model GameMove {
+  id         String     @id @default(cuid())
+  gameId     String
+  game       Game       @relation(fields: [gameId], references: [id], onDelete: Cascade)
+  ply        Int
+  moveNumber Int
+  color      ChessColor
+  san        String
+  uci        String
+  fenBefore  String
+  fenAfter   String
+
+  @@unique([gameId, ply])
+}

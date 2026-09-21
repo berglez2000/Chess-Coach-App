@@ -2,7 +2,7 @@
 
 A local chess-improvement application for importing PGNs, analyzing games with Stockfish, and reviewing them with AI coaching.
 
-The application currently contains the initial home page, development tooling, and local PostgreSQL/Prisma setup. The PGN parsing service is also implemented; the three-control PGN import form is available at `/games/new`. Interactive board replay is also available. Persistence, engine, and coaching functionality will be added through the task backlog. V0.1 focuses on game review; puzzles, authentication, and deployment are deferred.
+The application currently contains the initial home page, development tooling, and local PostgreSQL/Prisma setup. The PGN parsing service is also implemented; the three-control PGN import form is available at `/games/new`. Interactive board replay is also available. The game persistence schema and isolated database tests are ready; connecting imports to storage, engine analysis, and coaching remain in the task backlog. V0.1 focuses on game review; puzzles, authentication, and deployment are deferred.
 
 ## Prerequisites
 
@@ -40,13 +40,14 @@ docker compose up -d --wait
 docker compose ps
 npm install
 npx prisma validate
+npx prisma migrate dev
 npm run db:check
 npm run dev
 ```
 
 On this macOS setup, Compose is installed as **`docker-compose`**. If `docker compose` is unavailable, substitute `docker-compose` in these commands, for example `docker-compose up -d --wait`. Both read `compose.yaml`; no global Docker configuration change is required.
 
-`npm install` / `npm ci` generates the Prisma client through `postinstall`. After changing the Prisma schema, run `npm run db:generate`. Generated files are ignored by Git. The schema deliberately has no models or migrations yet; TASK-007 introduces the first product migration. Do not run migrations or create a dummy table for this bootstrap.
+`npm install` / `npm ci` generates the Prisma client through `postinstall`. After changing the Prisma schema, run `npm run db:generate`. Generated files are ignored by Git. The schema now contains `Game` and `GameMove`. Run `npx prisma migrate dev` to apply checked-in migrations locally; use `npx prisma migrate dev --name <description>` when intentionally changing the schema. Regenerate the client afterward with `npm run db:generate`.
 
 `npm run db:check` runs `SELECT 1` through the same server-only Prisma client used by future application services, prints a safe success/failure message, and disconnects. It never prints the connection URL. Its Node `react-server` condition allows the `server-only` marker in a server-side CLI; do not add that condition to browser or component-test commands.
 
@@ -55,7 +56,7 @@ On this macOS setup, Compose is installed as **`docker-compose`**. If `docker co
 - Next.js loads environment files automatically; `DATABASE_URL` is accessed only by the server database module, which is protected by `import "server-only"`.
 - Prisma CLI and `db:check` use `@next/env` to follow Next.js environment precedence: existing process variables, mode-specific local file, `.env.local` (except test mode), mode-specific file, then `.env`. The development mode is used unless `NODE_ENV=production` or `NODE_ENV=test` selects another mode.
 - Prisma generation and schema validation require neither a connection URL nor a running database. If a nonempty URL is provided, it is validated. Actual database access always requires a valid PostgreSQL URL.
-- Fast Vitest tests do not load local environment files and pass explicit configuration fixtures. They do not connect to the database. Future integration tests must use a separate test database; that setup belongs to TASK-007.
+- Fast Vitest tests do not load local environment files and pass explicit configuration fixtures. They do not connect to the database. Integration tests use the dedicated service described below; they never load `.env.local`.
 - Docker Compose uses the fixed development settings in `compose.yaml`; it does not receive `.env.local` or future OpenAI credentials. If you change database settings, keep Compose and `DATABASE_URL` consistent.
 
 ### Stop, restart, and troubleshoot
@@ -110,11 +111,46 @@ Vitest uses two projects in `vitest.config.mts`:
 - `tests/components/**/*.test.{ts,tsx}` runs in jsdom with React Testing Library.
 - `tests/setup-dom.ts` loads the jest-dom matchers and cleans up rendered components after every DOM test. Import `describe`, `it`, and `expect` from `vitest` explicitly.
 
-Tests share the application's `@/` import alias. Use role-based DOM assertions for user-visible behavior and explicit fixtures or mocked adapters for future engine/AI tests. The fast suite requires no running app, database, Stockfish, API key, or paid requests. Integration and browser suites will have separate commands in later tasks.
+Tests share the application's `@/` import alias. Use role-based DOM assertions for user-visible behavior and explicit fixtures or mocked adapters for future engine/AI tests. The fast suite requires no running app, database, Stockfish, API key, or paid requests. Integration tests have the separate command below; browser-suite tooling is deferred.
 
 The initial tests cover the home-page heading and availability message, plus server-rendered home navigation and the skip link's target. They use the actual application components. jsdom does not verify responsive layout or browser navigation. Async Server Components will need integration/browser coverage when introduced.
 
 The setup follows the [Next.js Vitest guide](https://nextjs.org/docs/app/guides/testing/vitest), [Vitest environment documentation](https://vitest.dev/guide/environment.html), and [React Testing Library setup guide](https://testing-library.com/docs/react-testing-library/setup/).
+
+## Database models and integration tests
+
+`Game` stores the original PGN, explicit initial FEN, optional metadata, required user color, analysis status/error, and timestamps. `GameMove` stores canonical 1-based plies, actual move numbers, SAN/UCI, side, and before/after FENs. Player names remain nullable when PGN headers are absent. Played dates use PostgreSQL DATE; raw dates remain preserved in the PGN. No engine results, annotations, user, or puzzle models are included yet.
+
+PostgreSQL enums enforce valid game/move colors and analysis statuses. A unique `(gameId, ply)` constraint prevents duplicate plies within one game and supports ordered lookup. A foreign key rejects orphan moves and cascades game deletion to its moves; the game `(createdAt, id)` index supports stable library ordering. Queries must explicitly order moves by ply. The import UI still uses the temporary in-memory flow; TASK-008 connects it to this schema.
+
+Integration tests use a **separate PostgreSQL process**, database, and user on localhost port 5434. They use tmpfs instead of the development volume and do not start during normal `docker compose up`.
+
+```bash
+docker compose --profile test up -d --wait postgres-test
+npm run db:generate
+npm run test:integration
+```
+
+Use `docker-compose` instead of `docker compose` if that is your installed command. The runner verifies the connected database identity, applies checked-in migrations with `prisma migrate deploy`, then runs `tests/integration/**/*.test.ts` through `vitest.integration.config.mts`. The fast `npm test` command excludes these tests.
+
+The test target defaults to the following development-only URL; no environment file is needed:
+
+```text
+postgresql://chess_coach_test:chess_coach_test_local@127.0.0.1:5434/chess_coach_test
+```
+
+If `TEST_DATABASE_URL` is supplied, it must exactly match that URL. An exported nonempty `DATABASE_URL` is refused even when the test URL is correct; unset it for this command. The runner deliberately does not load Next.js environment files. A separate Prisma configuration in `tests/prisma.config.ts` prevents development configuration from leaking into test migrations. Tests additionally verify `current_database()` and `current_user` before deleting only the game IDs created by that test process. There is no reset, truncate, or blanket delete operation.
+
+The fixture suite verifies round-trip PGN/metadata/FEN/move ordering for both colors, duplicate ply and orphan rejection, database-level color constraints, analysis status/error storage, and cascading cleanup. Unit tests cover refusing substituted URLs and unexpected database identities without needing PostgreSQL.
+
+To discard the ephemeral test database without touching the development service:
+
+```bash
+docker compose stop postgres-test
+docker compose rm -f postgres-test
+```
+
+Its tmpfs data is disposable. Restarting it and rerunning `npm run test:integration` creates a fresh migrated test schema. Failed tests clean up their owned records when teardown runs; if a process is interrupted, recreating only this test container removes leftovers. Do not use project-wide `down -v` for test cleanup.
 
 ## Import a game
 

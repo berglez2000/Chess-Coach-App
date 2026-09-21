@@ -18,5 +18,23 @@ services:
       retries: 10
       start_period: 10s
 
+  postgres-test:
+    image: postgres:18
+    profiles: [test]
+    environment:
+      POSTGRES_USER: chess_coach_test
+      POSTGRES_PASSWORD: chess_coach_test_local
+      POSTGRES_DB: chess_coach_test
+    ports:
+      - "127.0.0.1:5434:5432"
+    tmpfs:
+      - /var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U chess_coach_test -d chess_coach_test"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
 volumes:
   postgres_data:

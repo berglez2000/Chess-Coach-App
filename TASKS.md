@@ -319,7 +319,7 @@ README documents the replay convention: later panels must label before/after eva
 
 ### TASK-007 — Add Game and GameMove persistence models
 
-Status: TODO  
+Status: DONE
 Milestone: M2  
 Dependencies: TASK-003, TASK-004
 
@@ -352,7 +352,19 @@ Engine/AI result fields, Puzzle models, User models, and authentication.
 
 #### Notes
 
-Test setup must refuse destructive cleanup against the development database. Analysis and annotation fields are added in later tasks.
+Added Game/GameMove models and the initial migration, required ChessColor enums, analysis status/error fields, timestamps, nullable PGN metadata, explicit initial FEN, and the supplied termination header. The unique (gameId, ply) constraint enforces per-game move identity; the foreign key rejects orphans and cascades deletion, and the game ordering index supports the future library. Engine/AI fields remain deferred.
+
+Integration tooling uses a separate PostgreSQL service, user, and database on localhost:5434 with disposable tmpfs storage. `npm run test:integration` guards the URL, verifies the connected database identity, applies migrations with a separate Prisma config, and runs only integration tests. Cleanup rechecks identity and deletes only test-owned IDs. Local development environment files are never loaded by the test runner.
+
+Verification passed with Node 24.21.0:
+
+- `npx prisma format`, `npx prisma validate`, and `npm run db:generate` passed.
+- `npx prisma migrate dev --name initial_games` applied the migration to the development database; the integration runner applied it independently to the fresh test database.
+- `npm run test:integration`: 7 tests passed, covering both user colors, fixture metadata/PGN/FEN/move-order round trips, duplicate ply rejection, orphan rejection, invalid/missing user colors, invalid move colors, status/error updates, and cascading deletion.
+- `npm run lint`, `npm run typecheck`, and `npm test`: passed (8 files, 82 tests). Safety unit tests reject changed hosts/ports/schema parameters and incorrect database identities.
+- The actual integration runner refused an inherited development DATABASE_URL before migration/tests. Post-suite SQL checks found zero Game and GameMove fixture rows in the test database.
+
+README includes setup, environment isolation, migrations, and cleanup commands that target only the test service. Both database services remain running. Import UI persistence belongs to TASK-008; no product behavior was expanded. Existing dependency audit limitations remain unchanged.
 
 ### TASK-008 — Persist validated imports transactionally
 

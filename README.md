@@ -2,7 +2,7 @@
 
 A local chess-improvement application for importing PGNs, analyzing games with Stockfish, and reviewing them with AI coaching.
 
-The application currently contains the initial home page, development tooling, and local PostgreSQL/Prisma setup. The PGN parsing service is also implemented; the three-control PGN import form is available at `/games/new`. Review, engine, and coaching functionality will be added through the task backlog. V0.1 focuses on game review; puzzles, authentication, and deployment are deferred.
+The application currently contains the initial home page, development tooling, and local PostgreSQL/Prisma setup. The PGN parsing service is also implemented; the three-control PGN import form is available at `/games/new`. Interactive board replay is also available. Persistence, engine, and coaching functionality will be added through the task backlog. V0.1 focuses on game review; puzzles, authentication, and deployment are deferred.
 
 ## Prerequisites
 
@@ -122,7 +122,17 @@ Open the home page and choose **Import a game**, or visit `/games/new`. Select W
 
 The form has only three controls. Browser validation checks required fields, whitespace gets immediate feedback, and the server repeats validation independently. Inputs are retained after validation/connection errors and disabled during a pending submission. Single-game PGNs are limited to 100,000 characters, below the default server-action body limit for ordinary text submissions.
 
-A successful import currently shows a parsed-game preview in memory. It is **not saved** and disappears on refresh. Board replay is TASK-006, and TASK-008 will replace the temporary parse-only server action with persistence. No Stockfish or OpenAI requests are made at this stage.
+A successful import opens an in-memory game review below the form, with metadata, a chessboard, a clickable move list, and Start/Previous/Next/End controls. The board defaults to your selected color and pieces cannot be dragged. The layout places the move list beside the board on wider screens and below it on narrow screens.
+
+The review is **not saved** and disappears on refresh. Editing the import fields hides the previous review; a new import starts at the initial position. TASK-008 will replace the temporary parse-only server action with persistence. No Stockfish or OpenAI requests are made at this stage.
+
+### Replay position convention
+
+`GameReview` owns one `selectedPly` state. Ply 0 shows `initialFen`, including SetUp/FEN positions. Selecting ply N shows that move's `fenAfter`, highlights the same move in the list, and updates the progress label. Previous/Next traverse half-moves; Start/End jump to the boundaries. Labels use the parsed full-move number and side, so a Black-to-move game starting at move 23 displays `23...`, not `1.`. A missing White move is shown as a dash in its column.
+
+Future evaluation and coaching panels must use this same selected ply. Comparisons must label before/after evaluations explicitly, and a better alternative begins from the selected move's `fenBefore`, not the displayed resulting position. Board flip and keyboard navigation remain later review-polish tasks.
+
+Replay component tests use the real react-chessboard renderer and verify all square/piece placements through the fixture game in both directions and orientations. Browser checks verify the responsive board and actual import-to-replay flow.
 
 ## PGN parsing
 

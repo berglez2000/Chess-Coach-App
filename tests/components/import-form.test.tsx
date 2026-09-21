@@ -34,10 +34,22 @@ describe("Import form", () => {
     const data = action.mock.calls[0][0] as FormData;
     expect(data.get("userColor")).toBe(color);
     expect(data.get("pgn")).toBe("1. e4 e5 *");
-    expect(screen.getByRole("status")).toHaveTextContent("2 half-moves");
+    expect(screen.getByRole("status", { name: "Game imported" })).toHaveTextContent("2 half-moves");
     // Changing input must not leave the old result presented as current.
     fireEvent.change(screen.getByLabelText("Game PGN"), { target: { value: "1. d4 *" } });
     expect(screen.queryByText("Game imported")).not.toBeInTheDocument();
+  });
+
+  it("shows replay when browser submission normalizes multiline PGN to CRLF", async () => {
+    const pgn = '[White "Aljaz"]\n\n1. e4 e5 *\n';
+    const submitted = pgn.replaceAll("\n", "\r\n");
+    render(<ImportForm importAction={vi.fn().mockResolvedValue({
+      status: "success", userColor: "WHITE", game: parsePgn(submitted),
+    })} />);
+    fill("WHITE", pgn);
+    submit();
+    expect(await screen.findByRole("heading", { name: "Game review" })).toBeVisible();
+    expect(screen.getByLabelText("Game PGN")).toHaveValue(pgn);
   });
 
   it("disables repeat submission while pending and retains inputs on validation failure", async () => {

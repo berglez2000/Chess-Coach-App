@@ -272,7 +272,7 @@ No persistence, analysis, or board UI was added. TASK-008 must replace the tempo
 
 ### TASK-006 — Replay an imported game on an interactive board
 
-Status: TODO  
+Status: DONE
 Milestone: M1  
 Dependencies: TASK-005
 
@@ -304,7 +304,18 @@ Persistence, engine evaluation, AI panels, and free analysis by moving pieces.
 
 #### Notes
 
-Planning default: selected moves show fenAfter. Later panels must label before/after evaluations and explain that the better move starts from fenBefore. Record any change to this convention before implementation.
+Implemented the in-memory replay slice with react-chessboard 5.12.1, a read-only board oriented to userColor, metadata, a move table, and Start/Previous/Next/End controls. `GameReview` owns selectedPly; ply 0 uses initialFen and every selected move displays fenAfter. Black-to-move starts retain actual full-move numbering and use the Black column. Selection is highlighted and navigation is bounded.
+
+Browser testing uncovered multipart submission normalizing multiline PGN to CRLF while the textarea retains LF. The import form now normalizes line endings only when comparing current input to the server response, preserving the submitted raw PGN. A regression test covers this case.
+
+Verification passed with Node 24.21.0:
+
+- `npm run lint`, `npm run typecheck`, and `npm test` passed (7 files, 73 tests); `npm run build` passed.
+- Real-board component tests verify every square/piece position through a complete fixture forwards and backwards for both orientations, direct selection, Start/End, castling, metadata, and custom Black-to-move numbering.
+- Production-browser checks import a multiline fixture for White and Black, replay all moves, verify actual piece placements/orientation, and jump directly to castling. A SetUp/FEN fixture verifies a Black start at move 23.
+- Browser layout checks at 1280px, 768px, and 390px confirm a square board within its container and no horizontal overflow; mobile rendering was visually inspected. No page errors occurred.
+
+README documents the replay convention: later panels must label before/after evaluations and explain that alternatives start from fenBefore. Persistence, engine analysis, AI panels, free piece movement, manual flip, and keyboard navigation remain outside this task. The preview is still lost on refresh. Existing Prisma audit advisories are unchanged.
 
 ### TASK-007 — Add Game and GameMove persistence models
 

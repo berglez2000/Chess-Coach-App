@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState, useState } from "react";
+import { GameReview } from "./game-review";
 import { MAX_PGN_LENGTH } from "@/lib/validation/import-game";
 import type { ImportAction, ImportState } from "@/types/import";
 
@@ -21,7 +22,7 @@ export function ImportForm({ importAction }: { importAction: ImportAction }) {
     { status: "idle" },
   );
   const errors = state.status === "error" ? state.fields : undefined;
-  const result = state.status === "success" && state.game.pgn === pgn && state.userColor === userColor ? state : null;
+  const result = state.status === "success" && state.game.pgn.replace(/\r\n?/g, "\n") === pgn.replace(/\r\n?/g, "\n") && state.userColor === userColor ? state : null;
   const inputClass = "mt-2 w-full rounded-lg border border-[#20382e]/30 bg-white p-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#20382e] disabled:opacity-60";
 
   return (
@@ -58,12 +59,13 @@ export function ImportForm({ importAction }: { importAction: ImportAction }) {
         {!pending && state.status === "error" && <p role="alert" className="text-red-800">{state.message}</p>}
       </form>
       {!pending && result && (
-        <section role="status" className="mt-8 rounded-lg border border-[#20382e]/20 bg-white p-5">
-          <h2 className="font-semibold">Game imported</h2>
+        <section role="status" aria-labelledby="import-result-heading" className="mt-8 rounded-lg border border-[#20382e]/20 bg-white p-5">
+          <h2 id="import-result-heading" className="font-semibold">Game imported</h2>
           <p className="mt-2">{result.game.metadata.whiteName ?? "White"} vs. {result.game.metadata.blackName ?? "Black"} · {result.game.moves.length} half-moves · You played {result.userColor === "WHITE" ? "White" : "Black"}.</p>
-          <p className="mt-2 text-sm text-[#465c50]">Your PGN is valid. Board review is coming next. This preview is not saved; refreshing will clear it.</p>
+          <p className="mt-2 text-sm text-[#465c50]">Use the board and move list below to replay your game. This review is not saved; refreshing will clear it.</p>
         </section>
       )}
+      {!pending && result && <GameReview key={`${result.userColor}:${result.game.pgn}`} game={result.game} userColor={result.userColor} />}
     </>
   );
 }

@@ -44,7 +44,7 @@ Additional planned scripts are introduced by their owning tasks: `test:integrati
 
 ### TASK-001 — Bootstrap the local application
 
-Status: TODO  
+Status: DONE
 Milestone: M0  
 Dependencies: None
 
@@ -78,7 +78,17 @@ Product screens, database access, engine execution, and AI calls.
 
 #### Notes
 
-The repository currently has no application or Git metadata. Do not overwrite the directory with a scaffold or create a remote repository. Record package/version decisions in the README.
+Completed the manual Next.js bootstrap while preserving the existing Git repository and specification. Package versions, Node 24 setup, and compatibility decisions are documented in README.md. Next.js generated AGENTS.md and CLAUDE.md on first development startup; these point to its bundled version-matched documentation.
+
+Verification passed using Node 24.21.0 and npm 10.8.2:
+
+- Dependency installation completed and package-lock.json was generated; npm reported zero vulnerabilities.
+- `npm run lint`, `npm run typecheck`, and `npm run build` passed.
+- `npm run dev` served `/` with HTTP 200 and the expected title, heading, content, and stylesheet.
+- An ad hoc browser smoke check passed at 1280×800 and 390×844: CSS applied, no horizontal overflow, home link worked, and no page errors occurred. Existing local browser tooling was used without adding project test dependencies.
+- Git ignore checks confirmed local environment files, dependencies, and generated files are excluded while `.env.example` is trackable. The specification and all other task entries are unchanged.
+
+Environment notes: the shell defaults to Node 20, so verification used a temporary Node 24 runtime without changing the global installation. Use the README's Node 24 setup before local development. Sandbox port restrictions required running Next.js build/dev checks outside the sandbox. ESLint 9 is deprecated upstream but currently required by the selected lint plugins' peer ranges; revisit when their ESLint 10 support is available. Test-suite setup remains TASK-002.
 
 ### TASK-002 — Set up deterministic test tooling
 

@@ -16,3 +16,6 @@ test-results/
 # Local logs and operating system files
 *.log
 .DS_Store
+
+# Next.js generated type declarations
+next-env.d.ts

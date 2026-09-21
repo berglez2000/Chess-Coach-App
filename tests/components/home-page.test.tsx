@@ -16,11 +16,11 @@ describe("Home page", () => {
     ).toBeVisible();
   });
 
-  it("explains that import and review are not yet available", () => {
+  it("links to the game import form", () => {
     render(<HomePage />);
 
     expect(
-      screen.getByText("Game import and review are coming soon."),
-    ).toBeVisible();
+      screen.getByRole("link", { name: "Import a game" }),
+    ).toHaveAttribute("href", "/games/new");
   });
 });

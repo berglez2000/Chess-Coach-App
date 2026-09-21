@@ -2,7 +2,7 @@
 
 A local chess-improvement application for importing PGNs, analyzing games with Stockfish, and reviewing them with AI coaching.
 
-The application currently contains the initial home page, development tooling, and local PostgreSQL/Prisma setup. The PGN parsing service is also implemented; import UI, review, engine, and coaching functionality will be added through the task backlog. V0.1 focuses on game review; puzzles, authentication, and deployment are deferred.
+The application currently contains the initial home page, development tooling, and local PostgreSQL/Prisma setup. The PGN parsing service is also implemented; the three-control PGN import form is available at `/games/new`. Review, engine, and coaching functionality will be added through the task backlog. V0.1 focuses on game review; puzzles, authentication, and deployment are deferred.
 
 ## Prerequisites
 
@@ -115,6 +115,14 @@ Tests share the application's `@/` import alias. Use role-based DOM assertions f
 The initial tests cover the home-page heading and availability message, plus server-rendered home navigation and the skip link's target. They use the actual application components. jsdom does not verify responsive layout or browser navigation. Async Server Components will need integration/browser coverage when introduced.
 
 The setup follows the [Next.js Vitest guide](https://nextjs.org/docs/app/guides/testing/vitest), [Vitest environment documentation](https://vitest.dev/guide/environment.html), and [React Testing Library setup guide](https://testing-library.com/docs/react-testing-library/setup/).
+
+## Import a game
+
+Open the home page and choose **Import a game**, or visit `/games/new`. Select White or Black, paste one PGN, and click **Import**. The server validates both fields with Zod, parses the PGN, and returns normalized positions plus the selected user color. Client-supplied positions are ignored.
+
+The form has only three controls. Browser validation checks required fields, whitespace gets immediate feedback, and the server repeats validation independently. Inputs are retained after validation/connection errors and disabled during a pending submission. Single-game PGNs are limited to 100,000 characters, below the default server-action body limit for ordinary text submissions.
+
+A successful import currently shows a parsed-game preview in memory. It is **not saved** and disappears on refresh. Board replay is TASK-006, and TASK-008 will replace the temporary parse-only server action with persistence. No Stockfish or OpenAI requests are made at this stage.
 
 ## PGN parsing
 

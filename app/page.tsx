@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function HomePage() {
   return (
     <main id="main-content" className="mx-auto max-w-5xl px-6 py-20 sm:px-10 sm:py-28">
@@ -11,9 +13,9 @@ export default function HomePage() {
         A place to revisit your games, understand important decisions, and bring
         those lessons to your next game.
       </p>
-      <p className="mt-10 inline-block rounded-full border border-[#20382e]/20 px-4 py-2 text-sm">
-        Game import and review are coming soon.
-      </p>
+      <Link href="/games/new" className="mt-10 inline-block rounded-lg bg-[#20382e] px-6 py-3 font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-4">
+        Import a game
+      </Link>
     </main>
   );
 }

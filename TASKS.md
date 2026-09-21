@@ -228,7 +228,7 @@ README documents supported syntax and limits, including strict SAN and unsupport
 
 ### TASK-005 — Build the three-control import form
 
-Status: TODO  
+Status: DONE
 Milestone: M1  
 Dependencies: TASK-004
 
@@ -259,7 +259,16 @@ Database persistence, analysis execution, and additional import settings.
 
 #### Notes
 
-Use an honest Import label until analysis is connected in TASK-019. Replace the temporary action in TASK-008 rather than retaining two import paths.
+Implemented `/games/new` with the required color selector, PGN textarea, and Import button, plus a home-page entry link. The temporary server action validates both fields with Zod, parses positions server-side, and returns the parsed game with userColor. It ignores client-derived positions and returns safe field/general errors. The form keeps inputs after errors, disables controls while pending, catches transport failures, and shows a clearly unsaved parsed preview. A 100,000-character PGN limit provides a bounded single-game request.
+
+Verification passed with Node 24.21.0:
+
+- Server-action tests cover both colors, missing/invalid values, whitespace, oversize PGN, illegal moves, uploaded files in text fields, forged positions, and sanitized unexpected failures.
+- Component tests cover the three controls, whitespace feedback, both colors, pending state, retained input, stale preview removal, and transport failures. They caught React action resets changing the selected color; the form now prevents automatic resets.
+- `npm run lint`, `npm run typecheck`, and `npm test` passed (6 files, 67 tests). `npm run build` passed.
+- Browser checks against the production build submitted invalid then valid PGNs for White and Black, confirmed input retention and correct parsed results, followed the home link, checked 390px layout, and verified preview removal on refresh with no page errors.
+
+No persistence, analysis, or board UI was added. TASK-008 must replace the temporary action with persisted import. The button remains Import until TASK-019 connects analysis. README documents the current temporary behavior.
 
 ### TASK-006 — Replay an imported game on an interactive board
 

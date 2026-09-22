@@ -159,3 +159,11 @@ it("recovers legacy interrupted running rows without a lease", async () => {
   await db.game.update({ where: { id }, data: { analysisStatus: "ENGINE_RUNNING" } });
   expect(await analyzeGame(id, createAnalysisRepository(db), () => ({ engine: mockEngine(), configuration: settings }))).toHaveProperty("status", "ENGINE_COMPLETED");
 });
+it("exposes persisted engine facts through the detail DTO without bloating summaries", async () => {
+  const { findGame, listGames } = await import("@/lib/games/queries");
+  const { id } = await imported();
+  await analyzeGame(id, createAnalysisRepository(db), () => ({ engine: mockEngine(), configuration: settings }));
+  const saved = await findGame(db, id);
+  expect(saved!.game.moves[0].analysis).toMatchObject({ before: { score: { value: 25 } }, after: { score: { value: -25 } }, quality: "mistake", cpLoss: 50, bestMoveSan: expect.any(String), pvSan: [expect.any(String)] });
+  expect((await listGames(db)).find(game => game.id === id)).not.toHaveProperty("moves");
+});

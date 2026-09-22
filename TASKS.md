@@ -608,7 +608,7 @@ Verification: 154 unit/component tests and 26 PostgreSQL integration tests passe
 
 ### TASK-014 — Display engine analysis in game review
 
-Status: TODO  
+Status: DONE
 Milestone: M3  
 Dependencies: TASK-013
 
@@ -641,6 +641,10 @@ AI summaries, training, and full alternate-line board exploration.
 #### Notes
 
 M3 exit: persistent review with objective engine data and actionable retries.
+
+Implemented the persisted analysis DTO mapper and selected-ply engine panel with explicitly labeled initial/after/before evaluations, mate/checkmate and bounds, classification/loss, engine choice, and short SAN PV from the before position. Critical-move buttons share the existing board/move-list selection. Added saved/partial coverage and mixed-run notices while retaining pending/failed/retry controls. Unsupported stored assessment versions are shown as unavailable. No AI dependency or alternate-line board exploration was added.
+
+Verification: 159 unit/component tests and 27 PostgreSQL integration tests passed, plus lint, typecheck, production build, and diff checks. Chromium analyzed real Stockfish checkmate fixtures for both selected colors and verified markers, engine-panel selection, checkmate display, reload, and narrow mobile layout. Removed both marked browser fixtures and stopped the temporary server. Existing dependency audit limitations are unchanged.
 
 ### TASK-015 — Select instructional moments
 

@@ -1,7 +1,8 @@
-import type { ChessColor, ParsedGame } from "./game";
+import type { ReviewAnalysis } from "@/lib/analysis/review";
+import type { ChessColor, ParsedGame, ParsedGameMove } from "./game";
 
 export type AnalysisStatus = "PENDING" | "ENGINE_RUNNING" | "ENGINE_COMPLETED" | "AI_RUNNING" | "COMPLETED" | "FAILED";
-export type ReviewGame = Pick<ParsedGame, "initialFen" | "metadata" | "moves">;
+export type ReviewGame = Pick<ParsedGame, "initialFen" | "metadata"> & { moves: (ParsedGameMove & { analysis?: ReviewAnalysis | null })[] };
 export interface GameSummary {
   id: string;
   whiteName: string | null;

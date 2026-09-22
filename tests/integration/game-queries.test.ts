@@ -30,7 +30,7 @@ it("lists newest first with serializable summaries only", async () => {
 it.each([0, 1])("restores saved orientation and ordered replay (%#)", async (index) => {
   const saved = await findGame(db, ids[index]);
   expect(saved?.userColor).toBe(index ? "BLACK" : "WHITE");
-  expect(saved?.game).toEqual({ initialFen: game.initialFen, metadata: game.metadata, moves: game.moves });
+  expect(saved?.game).toEqual({ initialFen: game.initialFen, metadata: game.metadata, moves: game.moves.map(move => ({ ...move, analysis: null })) });
   expect(JSON.parse(JSON.stringify(saved))).toEqual(saved);
 });
 it("returns null for missing IDs", async () => {

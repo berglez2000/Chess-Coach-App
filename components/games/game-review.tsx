@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { ChessColor } from "@/types/game";
 import type { ReviewGame } from "@/types/saved-game";
 import { ReplayBoard } from "@/components/chess/replay-board";
+import { EnginePanel } from "./engine-panel";
 import { MoveList } from "./move-list";
 
 /** Mount a fresh review for each imported game. Selected ply owns all replay state. */
@@ -12,6 +13,9 @@ export function GameReview({ game, userColor }: { game: ReviewGame; userColor: C
   const selectedMove = selectedPly === 0 ? null : game.moves[selectedPly - 1];
   const fen = selectedMove?.fenAfter ?? game.initialFen;
   const total = game.moves.length;
+  const analyzed = game.moves.filter(move => move.analysis);
+  const critical = analyzed.filter(move => move.analysis?.quality === "mistake" || move.analysis?.quality === "blunder" || move.analysis?.quality === "inaccuracy");
+  const mixedRuns = new Set(analyzed.map(move => move.analysis!.runId)).size > 1;
   const select = (ply: number) => setSelectedPly(Math.max(0, Math.min(total, ply)));
   const buttonClass = "rounded-lg border border-[#20382e]/30 px-3 py-2 text-sm font-medium hover:bg-white disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2";
   const { metadata } = game;
@@ -26,6 +30,14 @@ export function GameReview({ game, userColor }: { game: ReviewGame; userColor: C
         {metadata.openingName && <div><dt className="inline font-semibold">Opening: </dt><dd className="inline">{metadata.openingName}{metadata.eco ? ` (${metadata.eco})` : ""}</dd></div>}
         {metadata.timeControl && <div><dt className="inline font-semibold">Time control: </dt><dd className="inline">{metadata.timeControl}</dd></div>}
       </dl>
+      <p className="mt-4 text-sm">Saved analysis: {analyzed.length} of {total} moves{analyzed.length > 0 && analyzed.length < total ? " (partial)" : ""}.</p>
+      {mixedRuns && <p className="mt-2 text-sm">These results include multiple analysis runs. A retry may still be incomplete.</p>}
+      {critical.length > 0 && <nav aria-label="Critical moves" className="mt-4 flex flex-wrap gap-2">
+        {critical.map(move => <button key={move.ply} type="button" className={buttonClass}
+          aria-current={selectedPly === move.ply ? "step" : undefined} onClick={() => select(move.ply)}>
+          {move.moveNumber}{move.color === "WHITE" ? "." : "..."} {move.san} · {move.analysis!.quality}
+        </button>)}
+      </nav>}
       <div className="mt-6 grid min-w-0 gap-6 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
         <div className="min-w-0">
           <ReplayBoard fen={fen} userColor={userColor} />
@@ -40,7 +52,10 @@ export function GameReview({ game, userColor }: { game: ReviewGame; userColor: C
             <button type="button" className={buttonClass} onClick={() => select(total)} disabled={selectedPly === total}>End</button>
           </nav>
         </div>
-        <MoveList moves={game.moves} selectedPly={selectedPly} onSelect={select} />
+        <div className="min-w-0">
+          <MoveList moves={game.moves} selectedPly={selectedPly} onSelect={select} />
+          <EnginePanel initial={selectedPly === 0} analysis={selectedPly === 0 ? game.moves[0]?.analysis : selectedMove?.analysis} />
+        </div>
       </div>
     </section>
   );

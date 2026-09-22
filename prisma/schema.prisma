@@ -7,8 +7,6 @@ datasource db {
   provider = "postgresql"
 }
 
-// Coaching annotations are added in later tasks.
-
 enum ChessColor {
   WHITE
   BLACK
@@ -43,6 +41,10 @@ model Game {
   analysisError  String?        @db.Text
   analysisToken String?
   analysisLeaseUntil DateTime?
+  coachingSummary      String?   @db.Text
+  coachingStrengths    String[]
+  coachingImprovements String[]
+  coachingModel        String?
   createdAt      DateTime       @default(now())
   updatedAt      DateTime       @updatedAt
   moves          GameMove[]
@@ -63,6 +65,7 @@ model GameMove {
   fenAfter   String
 
   engineAnalysis MoveEngineAnalysis?
+  coachingAnnotation MoveCoachingAnnotation?
 
   @@unique([gameId, ply])
 }
@@ -86,4 +89,19 @@ model MoveEngineAnalysis {
   assessment     Json
   configuration  Json
   analyzedAt     DateTime @default(now())
+}
+
+// One AI coaching annotation per move, produced in a single coaching run.
+model MoveCoachingAnnotation {
+  id               String   @id @default(cuid())
+  moveId           String   @unique
+  move             GameMove @relation(fields: [moveId], references: [id], onDelete: Cascade)
+  runId            String
+  classification   String
+  headline         String?  @db.Text
+  explanation      String   @db.Text
+  lesson           String   @db.Text
+  category         String
+  model            String
+  annotatedAt      DateTime @default(now())
 }

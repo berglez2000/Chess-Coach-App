@@ -802,7 +802,7 @@ Implemented `lib/coaching/ai-client.ts` as a server-only Anthropic SDK adapter u
 
 ### TASK-019 — Persist coaching and complete the analysis flow
 
-Status: TODO  
+Status: DONE  
 Milestone: M4  
 Dependencies: TASK-013, TASK-015, TASK-018
 
@@ -837,6 +837,10 @@ Puzzles, forced engine reruns on AI failure, and multiple annotation histories.
 #### Notes
 
 Keep persisted stage completion distinguishable from generic FAILED status so retries can select the correct stage.
+
+#### Implementation notes
+
+Migration adds `coachingSummary`, `coachingStrengths`, `coachingImprovements`, `coachingModel` to `Game` and new `MoveCoachingAnnotation` model. `lib/coaching/repository.ts` handles AI_RUNNING lease + transactional save. `lib/coaching/orchestrate.ts` runs selectMoments → buildCoachingPrompt → requestCoaching → persist; AI failures roll back to ENGINE_COMPLETED so engine review stays accessible. `lib/coaching/client.ts` is the server-only entry point. Analyze route now runs engine then coaching in sequence. `types/saved-game.ts` and `lib/games/queries.ts` expose `coaching` on `ReviewGame` and per-move annotations. 228 unit + 33 integration tests pass, build clean.
 
 ### TASK-020 — Display coaching summaries and move explanations
 

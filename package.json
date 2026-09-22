@@ -21,6 +21,7 @@
     "test:engine": "node --conditions=react-server --import tsx scripts/check-engine.ts"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.127.0",
     "@next/env": "16.3.5",
     "@prisma/adapter-pg": "7.10.0",
     "@prisma/client": "7.10.0",

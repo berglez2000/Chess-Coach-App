@@ -763,7 +763,7 @@ Verification: 202 unit tests, lint, typecheck passed. 25 new tests cover both us
 
 ### TASK-018 — Implement the server-only OpenAI adapter
 
-Status: TODO  
+Status: DONE  
 Milestone: M4  
 Dependencies: TASK-017
 
@@ -795,6 +795,10 @@ Persistence, browser API calls, automatic paid smoke tests, and general chat.
 #### Notes
 
 Choose a supported model and verify current official SDK documentation at implementation time. Fast tests must never require paid API access.
+
+#### Implementation notes
+
+Implemented `lib/coaching/ai-client.ts` as a server-only Anthropic SDK adapter using `claude-haiku-4-5`. Uses `output_config.format` structured output with the `responseSchema` from `buildCoachingPrompt`, Zod-parses the response, then calls `crossCheckCoachingResponse` for semantic validation. All 7 failure classes map to typed `CoachingOutcome` discriminated union values. Injectable `CoachingClient` interface enables deterministic tests. `tests/__mocks__/server-only.ts` + vitest alias allow testing server-only modules without paid API access. 217 unit tests pass, build clean.
 
 ### TASK-019 — Persist coaching and complete the analysis flow
 

@@ -1,7 +1,6 @@
 import { expect, it, vi, describe } from "vitest";
 import { coachGame } from "@/lib/coaching/orchestrate";
 import type { CoachingRepository, CoachingLoadResult } from "@/lib/coaching/repository";
-import type { CoachingClient } from "@/lib/coaching/ai-client";
 import type { CoachingAnnotation } from "@/lib/coaching/contract";
 
 const ENGINE_ASSESSMENT = {
@@ -95,10 +94,6 @@ function makeRepository(overrides: Partial<CoachingRepository> = {}): CoachingRe
     fail: vi.fn().mockResolvedValue(undefined),
     ...overrides,
   };
-}
-
-function makeClient(outcome: Parameters<CoachingClient["requestCoaching"]>[0] extends object ? object : never = { status: "OK", annotation: VALID_ANNOTATION }): CoachingClient {
-  return { requestCoaching: vi.fn().mockResolvedValue(outcome) };
 }
 
 describe("coachGame", () => {

@@ -43,7 +43,7 @@ function mockEngine() {
   };
 }
 
-function makeAnnotation(ply: number, moveId?: string): CoachingAnnotation {
+function makeAnnotation(ply: number): CoachingAnnotation {
   return {
     schemaVersion: 1,
     summary: "Good opening with missed opportunities.",

@@ -844,7 +844,7 @@ Migration adds `coachingSummary`, `coachingStrengths`, `coachingImprovements`, `
 
 ### TASK-020 — Display coaching summaries and move explanations
 
-Status: TODO  
+Status: DONE  
 Milestone: M4  
 Dependencies: TASK-014, TASK-019
 
@@ -877,6 +877,17 @@ Freeform chat, weakness history, and training.
 #### Notes
 
 M4 exit: persisted explanations grounded in engine data, with useful AI-independent review.
+
+Implemented `CoachingPanel` (per-move annotation: classification badge, headline, explanation, lesson, category, before-position note), `CoachingSummaryPanel` (game-level summary, strengths, improvements, annotated-moment nav buttons), and move-list classification dots. `GameReview` synchronizes all panels through a single `selectedPly` state owner — selecting any ply (from summary nav, critical-move buttons, or move list) updates board position, engine panel, and coaching panel together. Normal moves receive `null` coaching from their own data; no state leakage from previously selected annotated moves. Status-appropriate messages display for pending, running, engine-only, failed, and completed-without-coaching states.
+
+Verification passed with Node 20.19.4:
+
+- `npm run lint`, `npm run typecheck`, and `npm test` passed (18 files, 249 tests). `npm run build` passed.
+- 21 coaching-display tests cover annotation synchronization (independent ply data, no stale inheritance, initial position), summary-moment selection (ply + FEN + engine + annotation together, sequential annotated moments), game-level coaching (present/null/empty arrays), engine-only games (engine data without coaching, critical-move identification), status availability, before-position distinction, long text handling, and move-list classification dots.
+- Three preexisting lint warnings in prior task test files were fixed (unused imports/parameters in coaching-orchestration, coaching-orchestrate, and coaching-display tests).
+- Component test jsdom errors are preexisting Node 20 incompatibility documented in README; component rendering tests in `tests/components/game-review.test.tsx` verify board/navigation behavior.
+- CoachingPanel renders explicit before-position note: "explanations refer to the position before the played move. The board shows the position after." EnginePanel labels distinguish "after move" evaluation from "before-move evaluation" and "before the played move" engine choice/PV.
+- Layout uses `min-w-0` containers and standard Tailwind text wrapping for long validated content. Browser verification deferred to Node 24 environment per README.
 
 ### TASK-021 — Polish responsive review and keyboard navigation
 

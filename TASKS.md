@@ -488,7 +488,7 @@ Verification: 128 unit/component tests passed, including fragmented output, malf
 
 ### TASK-011 — Normalize evaluations and classify move quality
 
-Status: TODO  
+Status: DONE
 Milestone: M3  
 Dependencies: TASK-004, TASK-010
 
@@ -520,6 +520,10 @@ AI judgments, brilliant labels, puzzle suitability, and engine orchestration.
 #### Notes
 
 Persist enough normalized raw facts to recalculate classification without rerunning Stockfish. Do not claim a move is difficult merely because it matches the best move.
+
+Implemented pure White-perspective normalization and versioned mover-relative classification DTOs. Sign conversion reverses bounds; mate scores retain winner identity, including mate zero. Assessments retain positions, move, legal-move count, best move, normalized score/depth/PV facts, terminal outcome, and raw/clamped cp loss for later storage and recalculation. Added exact 20/50/100 cp thresholds, explicit mate transitions, and forced/equivalent/overwhelming-position safeguards. Missing, bounded, and shallow results remain unknown; contradictory search results are flagged. Database persistence and orchestration remain TASK-012.
+
+Verification: 143 unit/component tests, lint, typecheck, production build, and diff checks passed. Fixtures cover both colors, all loss boundaries, bound reversal, negative apparent loss, mate found/missed/allowed/retained/escaped, mate-zero serialization, terminal checkmate/draw, and confidence safeguards. README documents policy version 1 and shallow-search/repetition-history limitations. Existing dependency audit limitations are unchanged.
 
 ### TASK-012 — Store and orchestrate engine analysis
 

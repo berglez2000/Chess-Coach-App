@@ -241,3 +241,21 @@ It loads local environment settings, analyzes the starting position, verifies a 
 The [Stockfish UCI documentation](https://official-stockfish.github.io/docs/stockfish-wiki/UCI-Protocol-and-Stockfish-Commands.html) describes the handshake, search commands, and scores. The application DTO keeps `perspective` as the FEN's side to move, `bestMove` as UCI (or null for no legal moves), and the latest scored primary `evaluation` with depth, PV, and exact/lower/upper bound. Mate values remain signed mate distances, separate from centipawns. Missing evaluations remain null; a terminal PV can be empty. Malformed scores, illegal PVs, and best moves inconsistent with legal moves are rejected. White-perspective conversion and classification belong to TASK-011.
 
 This adapter analyzes standalone FENs, so earlier repetition history is unavailable. It does not pool processes, limit aggregate concurrent callers, or persist results; later game orchestration must control concurrency. Search results can vary by Stockfish version and search budget.
+
+## Evaluation and move classification
+
+`normalizeEvaluation(result, fen)` converts engine scores to White's perspective, including reversing lower/upper bounds when the sign changes. Mate scores retain their own kind and an explicit winner; mate zero is accepted only for a checkmated board, avoiding ambiguity when signed zero is serialized. Depth and PV remain available. A perspective/FEN mismatch is rejected.
+
+`assessMove({ fenBefore, move, before, after })` validates the played UCI move, derives the resulting position, and returns a versioned assessment with normalized before/after facts, positions, mover, best move, legal-move count, and terminal state. These DTOs are ready for TASK-012 persistence; no database changes or engine execution are introduced here.
+
+Policy version 1 uses mover-relative loss: White's before-minus-after evaluation for White, and its negation for Black. Loss below 20 cp is normal, 20–49 is an inaccuracy, 50–99 a mistake, and 100+ a blunder. Negative apparent loss is retained as `rawCpLoss`, clamped to zero for `cpLoss`, and flagged as search disagreement. A best-move match with a reported loss of 20+ cp is left unknown because the independent searches conflict. Near-equivalent moves below 20 cp are normal without needing to match the engine's first choice.
+
+Safeguards and limitations:
+
+- A board-proven only legal move or a delivered checkmate is normal, independently of engine estimates. No centipawn loss is fabricated for these cases.
+- Missing or bound-only scores and searches below depth 8 produce unknown quality and null loss. Depth 8 is an initial heuristic confidence floor, not a guarantee of accuracy.
+- When both cp evaluations remain at least 800 cp on the same side of equality, a mistake/blunder is capped at inaccuracy; the full raw loss is preserved. Crossing equality or dropping below that threshold is not capped.
+- Finding or retaining a winning mate is normal; losing that mate is a blunder. Allowing a new opponent mate is a blunder. Retaining an already lost mate or escaping it is normal. Changes in mate distance alone are not penalties, and mate values are never converted to centipawns. These judgments are provisional engine findings, not proof that the move was difficult or brilliant.
+- A board-proven terminal draw uses an exact outcome of zero for comparison, while retaining the supplied engine facts separately. Losing a previously reported winning mate to a draw counts as a missed mate.
+
+Standalone positions do not carry repetition history; historical draw detection and deeper-search confirmation remain limitations. The policy only labels move quality and preserves the evidence needed to recalculate it. It does not infer puzzle suitability or produce AI coaching.

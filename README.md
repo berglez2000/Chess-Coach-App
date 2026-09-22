@@ -217,7 +217,7 @@ Setup follows the official [Next.js installation guide](https://nextjs.org/docs/
 
 ## Local Stockfish adapter
 
-The server-only entry point `getEngine()` in `lib/engine/client.ts` exposes `analyze(fen)`. Each call starts an isolated local process, performs the UCI/readiness handshake, searches one FEN, and closes the process before returning. It uses one thread, 16 MB hash, and one principal variation. Routes and the review UI do not run analysis yet; orchestration and persistence are later tasks.
+The server-only entry point `getEngine()` in `lib/engine/client.ts` exposes `analyze(fen)`. Each call starts an isolated local process, performs the UCI/readiness handshake, searches one FEN, and closes the process before returning. It uses one thread, 16 MB hash, and one principal variation. The saved review can now start this engine through the analysis endpoint.
 
 On macOS, download the matching binary from the [official Stockfish releases](https://github.com/official-stockfish/Stockfish/releases) and extract it outside the repository. Set `STOCKFISH_PATH` in `.env.local` to its absolute executable path (no shell command or arguments). If needed, grant that downloaded file executable permission with `chmod +x /absolute/path/to/stockfish`. A missing or non-executable binary produces a sanitized `UNAVAILABLE` error. The binary and its license are not bundled with this application.
 
@@ -262,7 +262,7 @@ Standalone positions do not carry repetition history; historical draw detection 
 
 ## Saved-game engine orchestration
 
-`analyzeSavedGame(id)` in `lib/analysis/client.ts` connects the database and configured local engine to the testable `analyzeGame` application service. This task adds no HTTP execution endpoint or review-page run button; those belong to TASK-013. Apply the additive migration before using it:
+`analyzeSavedGame(id)` in `lib/analysis/client.ts` connects the database and configured local engine to the testable `analyzeGame` application service. The review-page action calls the synchronous HTTP execution endpoint described below. Apply the additive migration before using it:
 
 ```bash
 npx prisma migrate deploy
@@ -273,6 +273,18 @@ The service claims a PENDING or FAILED game as ENGINE_RUNNING, analyzes its init
 
 `MoveEngineAnalysis` has a unique relation to each `GameMove`, with White-perspective before/after cp or mate columns, best move in UCI/SAN, primary PV in UCI/SAN, loss, and classification. Versioned assessment JSON retains both normalized scores, bounds, depth, PVs, explicit mate winner, raw loss, and classification evidence. Configuration JSON records search depth/move time, timeout, threads, hash, MultiPV, engine family, and adapter version; it excludes executable paths. The executable's exact Stockfish release is not currently reported by the adapter. Each row also records a run ID and analysis timestamp.
 
-Each move result is committed independently with an upsert, outside engine searches. ENGINE_COMPLETED is set only after all writes succeed. On failure the imported game/moves and earlier committed assessments remain; the game becomes FAILED with a sanitized message. A retry replaces each move's existing assessment without duplicate rows. Partial retries can contain rows from different runs, distinguishable by run ID/configuration/timestamp. If the database cannot record failure status, the service returns STORAGE_FAILED; interrupted-run recovery and user-facing retry controls remain TASK-013. Completed games are not automatically reanalyzed.
+Each move result is committed independently with an upsert, outside engine searches. ENGINE_COMPLETED is set only after all writes succeed. On failure the imported game/moves and earlier committed assessments remain; the game becomes FAILED with a sanitized message. A retry replaces each move's existing assessment without duplicate rows. Partial retries can contain rows from different runs, distinguishable by run ID/configuration/timestamp. If the database cannot record failure status, the service returns STORAGE_FAILED; interrupted-run recovery uses the lease mechanism below. Completed games are not automatically reanalyzed.
 
 The deterministic integration suite covers position reuse, correct game/ply mapping, White-perspective storage, SAN, terminal checkmate/stalemate, malformed PV rejection, partial engine/storage failures, configuration errors, and retry upserts. No live Stockfish executable is needed for these tests.
+
+## Run, retry, and recover analysis
+
+Open a saved review and choose **Analyze game**. After a failed run, choose **Retry analysis**. **Refresh status** retrieves the persisted stage; an interrupted connection does not prove that the server stopped working. Configure a durable `STOCKFISH_PATH` first, as described above. Engine result panels are TASK-014; this task exposes execution and status only.
+
+`POST /api/games/[id]/analyze` uses a synchronous Node.js route that awaits the full service call. Success returns HTTP 200 with `{ status: "ENGINE_COMPLETED", analyzedMoves }`. Errors use `{ error: { code, message } }`: missing game is 404/GAME_NOT_FOUND; active or already completed work is 409/ANALYSIS_NOT_READY; analysis/storage failure is 500 with its service code; unexpected startup failure is 503/ANALYSIS_UNAVAILABLE. No untracked background promise or external worker is started. `GET /api/games/[id]` also exposes sanitized analysisError and analysisLeaseUntil, never the ownership token.
+
+A conditional database update acquires a five-minute lease with a unique ownership token. Each committed move renews it. The lease exceeds two consecutive maximum-duration adapter searches (each at most 120 seconds plus initialization/cleanup), which covers the initial before/after pair. Short transactions fence every move write and completion by token and live lease; a recovered run cannot be overwritten by its old owner. Separate requests use separate repository instances. Failed runs can retry immediately; running runs can only be reclaimed after lease expiry. Legacy ENGINE_RUNNING rows without a lease are recoverable immediately. Imported data and prior move assessments remain intact, and upserts keep one assessment per move.
+
+After a process crash or restart, open the same review, wait until the displayed recovery deadline, and choose **Retry analysis**. The server checks expiry rather than trusting browser time. Refresh while an existing run is active to see its persisted stage. A hard restart can leave the old run marked ENGINE_RUNNING until recovery; the app does not erase valid ownership just because a new process started. Different games may run concurrently; aggregate engine concurrency remains a local resource consideration.
+
+Verification used an actual server interruption during a real Stockfish search, restart, a 409 before expiry, and browser retry after moving only the marked test fixture's lease past its deadline. Recovery completed a four-ply game at depth 12 in about 1.4 seconds and persisted completion across refresh. The five-minute production interval was not shortened. This validates the local synchronous setup for that measured workload; long games and larger budgets can take minutes. Hosted request-timeout constraints have not been validated. Future deployment must measure representative game durations before retaining synchronous execution.

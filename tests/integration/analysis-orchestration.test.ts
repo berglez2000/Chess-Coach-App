@@ -96,7 +96,7 @@ it("does not start missing or already-running games", async () => {
   const factory = vi.fn(() => ({ engine: mockEngine(), configuration: settings }));
   expect(await analyzeGame(randomUUID(), repository, factory)).toEqual({ status: "NOT_FOUND" });
   const { id } = await imported();
-  await db.game.update({ where: { id }, data: { analysisStatus: "ENGINE_RUNNING" } });
+  await db.game.update({ where: { id }, data: { analysisStatus: "ENGINE_RUNNING", analysisToken: "active-owner", analysisLeaseUntil: new Date(Date.now() + 300000) } });
   expect(await analyzeGame(id, repository, factory)).toEqual({ status: "NOT_READY" });
   expect(factory).not.toHaveBeenCalled();
 });
@@ -126,4 +126,36 @@ it("handles a setup-position stalemate as a board-proven draw", async () => {
   const saved = await db.moveEngineAnalysis.findFirstOrThrow({ where: { move: { gameId: id } } });
   expect(saved).toMatchObject({ afterCp: 0, afterMate: null });
   expect(saved.assessment).toMatchObject({ facts: { terminal: "draw" } });
+});
+it("allows only one simultaneous analysis request to start an engine", async () => {
+  const { id } = await imported();
+  let release!: () => void;
+  const gate = new Promise<void>(resolve => { release = resolve; });
+  const engine = mockEngine();
+  const original = engine.analyze.getMockImplementation()!;
+  engine.analyze.mockImplementation(async fen => { await gate; return original(fen); });
+  const factory = vi.fn(() => ({ engine, configuration: settings }));
+  const first = analyzeGame(id, createAnalysisRepository(db), factory);
+  await vi.waitFor(() => expect(factory).toHaveBeenCalledOnce());
+  expect(await analyzeGame(id, createAnalysisRepository(db), factory)).toEqual({ status: "NOT_READY" });
+  release();
+  expect(await first).toHaveProperty("status", "ENGINE_COMPLETED");
+  expect(factory).toHaveBeenCalledOnce();
+});
+it("recovers expired ownership and fences stale writes/status updates", async () => {
+  const { id } = await imported();
+  const old = createAnalysisRepository(db);
+  expect(await old.claim(id)).toBe(true);
+  await db.game.update({ where: { id }, data: { analysisLeaseUntil: new Date(0) } });
+  expect(await analyzeGame(id, createAnalysisRepository(db), () => ({ engine: mockEngine(), configuration: settings }))).toHaveProperty("status", "ENGINE_COMPLETED");
+  const row = await db.moveEngineAnalysis.findFirstOrThrow({ where: { move: { gameId: id } } });
+  await expect(old.save(row.moveId, { runId: "stale", assessment: row.assessment as unknown as import("@/types/analysis").MoveAssessment, configuration: settings, bestMoveSan: row.bestMoveSan, pvSan: row.pvSan })).rejects.toThrow(/ownership/);
+  await old.fail(id, "Old failure");
+  await expect(old.complete(id)).rejects.toThrow(/ownership/);
+  expect(await db.game.findUniqueOrThrow({ where: { id } })).toMatchObject({ analysisStatus: "ENGINE_COMPLETED", analysisError: null, analysisToken: null, analysisLeaseUntil: null });
+});
+it("recovers legacy interrupted running rows without a lease", async () => {
+  const { id } = await imported();
+  await db.game.update({ where: { id }, data: { analysisStatus: "ENGINE_RUNNING" } });
+  expect(await analyzeGame(id, createAnalysisRepository(db), () => ({ engine: mockEngine(), configuration: settings }))).toHaveProperty("status", "ENGINE_COMPLETED");
 });

@@ -14,5 +14,7 @@ export interface GameSummary {
   createdAt: string;
 }
 export interface SavedGame extends GameSummary {
+  analysisError: string | null;
+  analysisLeaseUntil: string | null;
   game: ReviewGame;
 }

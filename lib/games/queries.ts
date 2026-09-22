@@ -16,7 +16,7 @@ export async function listGames(db: PrismaClient): Promise<GameSummary[]> {
 
 export async function findGame(db: PrismaClient, id: string): Promise<SavedGame | null> {
   const stored = await db.game.findUnique({ where: { id }, select: {
-    ...summarySelect, initialFen: true, event: true, site: true, round: true,
+    ...summarySelect, analysisError: true, analysisLeaseUntil: true, initialFen: true, event: true, site: true, round: true,
     eco: true, timeControl: true, termination: true,
     moves: { orderBy: { ply: "asc" }, select: {
       ply: true, moveNumber: true, color: true, san: true, uci: true, fenBefore: true, fenAfter: true,
@@ -28,6 +28,7 @@ export async function findGame(db: PrismaClient, id: string): Promise<SavedGame 
   return {
     id: stored.id, whiteName, blackName, result, playedAt, openingName, userColor: stored.userColor,
     status: stored.analysisStatus, createdAt: stored.createdAt.toISOString(),
+    analysisError: stored.analysisError, analysisLeaseUntil: stored.analysisLeaseUntil?.toISOString() ?? null,
     game: { initialFen: stored.initialFen, moves: stored.moves, metadata: {
       whiteName, blackName, result: result as GameResult, playedAt, openingName, event, site, round, eco, timeControl, termination,
     } },

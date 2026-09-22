@@ -1,3 +1,4 @@
+import { AnalysisControls } from "@/components/games/analysis-controls";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getDb } from "@/lib/db/client";
@@ -14,7 +15,7 @@ export default async function SavedGamePage({ params }: { params: Promise<{ id: 
   return <main id="main-content" className="mx-auto max-w-5xl px-6 py-12 sm:px-10">
     <Link href="/games" className="underline">Your games</Link>
     <h1 className="mt-6 text-3xl font-semibold">Saved game</h1>
-    <p className="mt-3">Analysis: {saved.status.toLowerCase().replaceAll("_", " ")}</p>
+    <AnalysisControls gameId={saved.id} status={saved.status} error={saved.analysisError} leaseUntil={saved.analysisLeaseUntil} />
     <GameReview key={saved.id} game={saved.game} userColor={saved.userColor} />
   </main>;
 }

@@ -33,7 +33,8 @@ export interface AnalysisRepository {
 export type AnalysisOutcome =
   | { status: "ENGINE_COMPLETED"; analyzedMoves: number }
   | { status: "FAILED"; code: "ANALYSIS_FAILED" | "STORAGE_FAILED"; message: string }
-  | { status: "NOT_FOUND" | "NOT_READY" };
+  | { status: "NOT_FOUND" }
+  | { status: "NOT_READY" };
 export type EngineFactory = () => { engine: ChessEngine; configuration: AnalysisConfiguration };
 
 /** Validates UCI moves while deriving SAN from the original position, never the played result. */

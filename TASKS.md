@@ -567,7 +567,7 @@ Verification: 145 unit/component tests and 23 isolated PostgreSQL integration te
 
 ### TASK-013 — Expose retryable analysis execution
 
-Status: TODO  
+Status: DONE
 Milestone: M3  
 Dependencies: TASK-009, TASK-012
 
@@ -601,6 +601,10 @@ AI stage, Redis, external queues, and production workers.
 #### Notes
 
 Start with a synchronous Node.js route if reliable for measured game duration. If it is not, use a documented local mechanism with explicit lifecycle management; no untracked fire-and-forget request work.
+
+Implemented the synchronous Node.js analyze endpoint, review-page analyze/retry/status-refresh controls, and safe HTTP outcomes. Added a five-minute database lease and unique ownership token with conditional acquisition, per-move renewal, and fenced writes/completion. Expired or legacy unleased running rows can recover; old owners cannot overwrite a replacement. Detail DTOs expose persisted error and lease deadline. Retry upserts retain imported games and prevent duplicate assessments.
+
+Verification: 154 unit/component tests and 26 PostgreSQL integration tests passed, plus lint, typecheck, production build, and diff checks. Integration tests cover concurrency, retries, stale-owner fencing, and legacy recovery. Applied the additive migration locally and to the test database. A real Stockfish run was interrupted by killing only the temporary verification server; after restart it correctly returned 409 before expiry. Expired only the marked fixture lease to simulate the recovery deadline, then browser retry completed four plies at depth 12 in about 1.4 seconds; status survived refresh. Removed the marked fixture afterward. README documents the five-minute recovery window, synchronous local lifecycle, and limits of the measured workload. Existing dependency audit limitations are unchanged.
 
 ### TASK-014 — Display engine analysis in game review
 

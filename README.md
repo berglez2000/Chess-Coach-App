@@ -314,3 +314,11 @@ Positive evidence is limited to supplied mate-found, mate-escaped, or delivered-
 `crossCheckCoachingResponse` runs semantic checks against the game's plies and selected moments: unknown plies, plies not in the selected set, and duplicate plies are all rejected with typed errors. All errors are collected before returning so every problem is visible in one pass.
 
 **Classification normalization rule:** when the engine has a non-null, non-`"unknown"` quality for a ply, `effectiveClassification` uses the engine value regardless of the model's claim. If the engine quality is absent or `"unknown"`, the model's classification is used. Both `modelClassification` and `engineQuality` are preserved in the DTO for traceability.
+
+## Coaching prompt
+
+`buildCoachingPrompt({ userColor, game, moments, momentFacts })` in `lib/coaching/prompt.ts` is a pure function that assembles the structured coaching request. It returns a `systemPrompt`, a `userMessage`, and a `responseSchema` (JSON Schema for the model's structured-output API). No network calls are made here.
+
+The system prompt tells the model that Stockfish data is authoritative, forbids inventing moves or evaluations, and constrains output to the allowed categories and schema. The user message includes optional game metadata, and one block per selected moment containing: ply, played move (SAN and UCI), `fenBefore`, `fenAfter`, White-perspective evaluations with depth, the engine's best move and principal variation (SAN and UCI), and centipawn loss from the mover's perspective. Missing optional metadata fields are omitted. Zero selected moments requests a summary-only response with empty `criticalMoments`.
+
+The V0.1 player rating is the documented default of 1400 Lichess rapid. There is no UI control for it.

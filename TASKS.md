@@ -724,7 +724,7 @@ Verification: 177 unit tests, lint, typecheck passed. 31 new tests cover valid/a
 
 ### TASK-017 — Build grounded coaching prompts
 
-Status: TODO  
+Status: DONE
 Milestone: M4  
 Dependencies: TASK-016
 
@@ -756,6 +756,10 @@ Network calls, model-generated engine evaluations, and additional import fields.
 #### Notes
 
 Keep rating as the documented V0.1 default; do not add a rating control to the three-control form.
+
+Implemented `lib/coaching/prompt.ts` as a pure `buildCoachingPrompt` function with no network calls. Returns `systemPrompt`, `userMessage`, and `responseSchema` (JSON Schema for structured-output APIs). Rating is the documented 1400 Lichess rapid default. System prompt instructs model that engine data is authoritative, forbids invented moves, and constrains output to supplied schema. Moment blocks embed ply, played move UCI/SAN, fenBefore, fenAfter, White-perspective evaluations with depth, bestMoveSan/UCI, PV, and mover-perspective cp loss. Optional metadata fields are omitted when absent. Zero moments triggers a summary-only instruction. Missing facts for a selected ply throws immediately.
+
+Verification: 202 unit tests, lint, typecheck passed. 25 new tests cover both user colors, correct plies/FENs in payload, score perspective (cp/mate positive/negative/bound), mate-in-N vs mated-in-N representation, no raw mate integers as cp, engine best move and PV inclusion, null best move, missing optional metadata, zero moments, missing facts error, and system-prompt safety constraints.
 
 ### TASK-018 — Implement the server-only OpenAI adapter
 

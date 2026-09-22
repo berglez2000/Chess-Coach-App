@@ -20,7 +20,7 @@ function expectBoard(fen: string) {
 describe("Game replay", () => {
   it.each(["WHITE", "BLACK"] as const)("replays the whole game forwards/backwards with %s orientation", (color) => {
     const game = parsePgn(pgn);
-    render(<GameReview game={game} userColor={color} />);
+    render(<GameReview game={game} userColor={color} status="ENGINE_COMPLETED" />);
     expectBoard(game.initialFen);
     const board = screen.getByRole("img", { name: /Game position/ });
     expect(board.querySelector("[data-square]")).toHaveAttribute("data-square", color === "WHITE" ? "a8" : "h1");
@@ -42,7 +42,7 @@ describe("Game replay", () => {
 
   it("selects resulting positions directly and supports Start/End", () => {
     const game = parsePgn(pgn);
-    render(<GameReview game={game} userColor="WHITE" />);
+    render(<GameReview game={game} userColor="WHITE" status="ENGINE_COMPLETED" />);
     fireEvent.click(screen.getByRole("button", { name: "5. White O-O" }));
     expectBoard(game.moves[8].fenAfter);
     expect(screen.getByText("Move 5. O-O · Half-move 9 of 10")).toBeVisible();
@@ -55,7 +55,7 @@ describe("Game replay", () => {
 
   it("replays a Black-to-move FEN without shifting move numbers or columns", () => {
     const game = parsePgn('[SetUp "1"]\n[FEN "7k/8/8/8/8/8/8/KR6 b - - 0 23"]\n23... Kh7 24. Rb2 Kh6 *');
-    render(<GameReview game={game} userColor="BLACK" />);
+    render(<GameReview game={game} userColor="BLACK" status="ENGINE_COMPLETED" />);
     expectBoard(game.initialFen);
     const firstRow = screen.getByRole("row", { name: /23\./ });
     expect(within(firstRow).getAllByRole("cell")[0]).toHaveTextContent("—");
@@ -65,7 +65,7 @@ describe("Game replay", () => {
   });
 
   it("shows available metadata and fallback player names", () => {
-    render(<GameReview game={parsePgn('[Date "2026.09.21"]\n[Opening "Test opening"]\n[ECO "A00"]\n[TimeControl "600+5"]\n1. e4 *')} userColor="WHITE" />);
+    render(<GameReview game={parsePgn('[Date "2026.09.21"]\n[Opening "Test opening"]\n[ECO "A00"]\n[TimeControl "600+5"]\n1. e4 *')} userColor="WHITE" status="PENDING" />);
     expect(screen.getByText("White (White) vs. Black (Black)")).toBeVisible();
     expect(screen.getByText("2026-09-21")).toBeVisible();
     expect(screen.getByText("Test opening (A00)")).toBeVisible();

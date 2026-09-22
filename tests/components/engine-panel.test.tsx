@@ -13,7 +13,7 @@ const analysis: ReviewAnalysis = {
 it.each(["WHITE", "BLACK"] as const)("synchronizes marker, board and after-move panel for %s", color => {
   const parsed = parsePgn("1. e4 e5 *");
   const game: ReviewGame = { ...parsed, moves: parsed.moves.map((move, index) => ({ ...move, analysis: index === 0 ? analysis : null })) };
-  const { container } = render(<GameReview game={game} userColor={color} />);
+  const { container } = render(<GameReview game={game} userColor={color} status="ENGINE_COMPLETED" />);
   expect(screen.getByText("Initial-position evaluation")).toBeVisible();
   expect(screen.getByText(/1 of 2 moves \(partial\)/)).toBeVisible();
   fireEvent.click(within(screen.getByRole("navigation", { name: "Critical moves" })).getByRole("button", { name: "1. e4 · blunder" }));
@@ -39,6 +39,6 @@ it("renders mate, checkmate, bounds and missing scores distinctly", () => {
 });
 it("warns about results from mixed partial retry runs", () => {
   const parsed = parsePgn("1. e4 e5 *");
-  render(<GameReview userColor="WHITE" game={{ ...parsed, moves: parsed.moves.map((move, i) => ({ ...move, analysis: { ...analysis, runId: `run${i}` } })) }} />);
+  render(<GameReview userColor="WHITE" status="ENGINE_COMPLETED" game={{ ...parsed, moves: parsed.moves.map((move, i) => ({ ...move, analysis: { ...analysis, runId: `run${i}` } })) }} />);
   expect(screen.getByText(/multiple analysis runs/)).toBeVisible();
 });

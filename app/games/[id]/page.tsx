@@ -16,6 +16,6 @@ export default async function SavedGamePage({ params }: { params: Promise<{ id: 
     <Link href="/games" className="underline">Your games</Link>
     <h1 className="mt-6 text-3xl font-semibold">Saved game</h1>
     <AnalysisControls gameId={saved.id} status={saved.status} error={saved.analysisError} leaseUntil={saved.analysisLeaseUntil} />
-    <GameReview key={saved.id} game={saved.game} userColor={saved.userColor} />
+    <GameReview key={saved.id} game={saved.game} userColor={saved.userColor} status={saved.status} />
   </main>;
 }

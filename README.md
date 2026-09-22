@@ -214,3 +214,30 @@ Setup follows the official [Next.js installation guide](https://nextjs.org/docs/
 
 - [Product and technical specification](CHESS_COACH_V0.1_SPEC.md)
 - [Development tasks](TASKS.md)
+
+## Local Stockfish adapter
+
+The server-only entry point `getEngine()` in `lib/engine/client.ts` exposes `analyze(fen)`. Each call starts an isolated local process, performs the UCI/readiness handshake, searches one FEN, and closes the process before returning. It uses one thread, 16 MB hash, and one principal variation. Routes and the review UI do not run analysis yet; orchestration and persistence are later tasks.
+
+On macOS, download the matching binary from the [official Stockfish releases](https://github.com/official-stockfish/Stockfish/releases) and extract it outside the repository. Set `STOCKFISH_PATH` in `.env.local` to its absolute executable path (no shell command or arguments). If needed, grant that downloaded file executable permission with `chmod +x /absolute/path/to/stockfish`. A missing or non-executable binary produces a sanitized `UNAVAILABLE` error. The binary and its license are not bundled with this application.
+
+| Environment variable | Default | Accepted values |
+| --- | --- | --- |
+| `STOCKFISH_PATH` | Required | Absolute executable path |
+| `STOCKFISH_DEPTH` | 12 | Integer 1–30 |
+| `STOCKFISH_MOVETIME_MS` | Unset | Integer 10–30,000; when set, replaces the depth search limit |
+| `STOCKFISH_TIMEOUT_MS` | 30,000 | Integer 100–120,000; must exceed move time |
+
+Initialization has a separate five-second deadline. After completion or failure, the adapter sends stop/quit and allows 250 ms to exit before SIGKILL. Cleanup is bounded at 1.5 seconds; failure to observe closure is reported as an error rather than a successful shutdown. Protocol buffers are bounded, stderr is drained, and timers/listeners/streams are released. No shell is used to launch the engine.
+
+Run the separate, opt-in real-engine smoke test after configuring the executable:
+
+```bash
+npm run test:engine
+```
+
+It loads local environment settings, analyzes the starting position, verifies a legal best move and evaluation, and exits after shutdown. Ordinary `npm test` uses mocked processes and needs no installed engine. Stockfish 19's official macOS universal binary was verified during development using a temporary installation.
+
+The [Stockfish UCI documentation](https://official-stockfish.github.io/docs/stockfish-wiki/UCI-Protocol-and-Stockfish-Commands.html) describes the handshake, search commands, and scores. The application DTO keeps `perspective` as the FEN's side to move, `bestMove` as UCI (or null for no legal moves), and the latest scored primary `evaluation` with depth, PV, and exact/lower/upper bound. Mate values remain signed mate distances, separate from centipawns. Missing evaluations remain null; a terminal PV can be empty. Malformed scores, illegal PVs, and best moves inconsistent with legal moves are rejected. White-perspective conversion and classification belong to TASK-011.
+
+This adapter analyzes standalone FENs, so earlier repetition history is unavailable. It does not pool processes, limit aggregate concurrent callers, or persist results; later game orchestration must control concurrency. Search results can vary by Stockfish version and search budget.

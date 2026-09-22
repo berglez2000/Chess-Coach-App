@@ -17,7 +17,8 @@
     "postinstall": "prisma generate",
     "db:generate": "prisma generate",
     "db:check": "node --conditions=react-server --import tsx scripts/check-db.ts",
-    "test:integration": "tsx scripts/test-integration.ts"
+    "test:integration": "tsx scripts/test-integration.ts",
+    "test:engine": "node --conditions=react-server --import tsx scripts/check-engine.ts"
   },
   "dependencies": {
     "@next/env": "16.3.5",

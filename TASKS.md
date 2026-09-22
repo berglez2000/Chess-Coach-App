@@ -449,7 +449,7 @@ Verification: 99 unit/component tests, 15 isolated PostgreSQL integration tests,
 
 ### TASK-010 — Implement the server-side Stockfish UCI adapter
 
-Status: TODO  
+Status: DONE
 Milestone: M3  
 Dependencies: TASK-002
 
@@ -481,6 +481,10 @@ Database persistence, classification, coaching, and browser-based engines.
 #### Notes
 
 Document engine installation for the current macOS development environment. Preserve score perspective, depth, and bound information needed by downstream logic.
+
+Implemented the typed server-side engine interface, validated configuration, UCI parser, isolated process lifecycle, bounded depth/time search, legal bestmove/PV checks, terminal handling, and sanitized errors. Scores retain side-to-move perspective, cp/mate kind, depth, and bounds. Cleanup includes graceful quit, forced termination, and bounded stream/listener/timer teardown. Added the opt-in `npm run test:engine` script and macOS setup documentation. No routes, persistence, or classification were added.
+
+Verification: 128 unit/component tests passed, including fragmented output, malformed/illegal protocol data, cp/mate bounds, terminal positions, process/stream failures, timeouts, and shutdown escalation. Lint, typecheck, production build, and the real-engine smoke test passed. The official Stockfish 19 macOS universal binary was downloaded into `/tmp/chess-stockfish-19` for verification; global installations and local environment configuration were unchanged. Configure a durable STOCKFISH_PATH before using the engine in regular development. Existing dependency audit limitations are unchanged.
 
 ### TASK-011 — Normalize evaluations and classify move quality
 

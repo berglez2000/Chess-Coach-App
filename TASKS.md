@@ -527,7 +527,7 @@ Verification: 143 unit/component tests, lint, typecheck, production build, and d
 
 ### TASK-012 — Store and orchestrate engine analysis
 
-Status: TODO  
+Status: DONE
 Milestone: M3  
 Dependencies: TASK-007, TASK-010, TASK-011
 
@@ -560,6 +560,10 @@ HTTP run control, AI calls, and distributed job systems.
 #### Notes
 
 Avoid holding a database transaction open while Stockfish searches. Reuse adjacent position results where valid rather than analyzing the same FEN needlessly.
+
+Implemented the injectable analysis service, server-only Stockfish/database wiring, and additive MoveEngineAnalysis model/migration. Each move stores White-perspective cp/mate fields, best move and PV in UCI/SAN, loss/classification, versioned raw assessment facts, configuration, run ID, and timestamp. Searches run sequentially without open database transactions and reuse adjacent results. Terminal boards bypass engine search. Per-move upserts preserve partial progress; safe failures retain imported data, and completion is recorded only after every move is saved. HTTP controls and interrupted-run recovery remain TASK-013.
+
+Verification: 145 unit/component tests and 23 isolated PostgreSQL integration tests passed, along with lint, typecheck, production build, and diff checks. Integration cases include deterministic success, correct ply/perspective mapping, N+1 search reuse, legal SAN/PV conversion, terminal checkmate/stalemate, engine and storage failure preservation, invalid configuration, and retry upserts. The additive migration was applied to test and local development databases. Existing dependency audit limitations are unchanged.
 
 ### TASK-013 — Expose retryable analysis execution
 

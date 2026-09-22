@@ -259,3 +259,20 @@ Safeguards and limitations:
 - A board-proven terminal draw uses an exact outcome of zero for comparison, while retaining the supplied engine facts separately. Losing a previously reported winning mate to a draw counts as a missed mate.
 
 Standalone positions do not carry repetition history; historical draw detection and deeper-search confirmation remain limitations. The policy only labels move quality and preserves the evidence needed to recalculate it. It does not infer puzzle suitability or produce AI coaching.
+
+## Saved-game engine orchestration
+
+`analyzeSavedGame(id)` in `lib/analysis/client.ts` connects the database and configured local engine to the testable `analyzeGame` application service. This task adds no HTTP execution endpoint or review-page run button; those belong to TASK-013. Apply the additive migration before using it:
+
+```bash
+npx prisma migrate deploy
+npm run db:generate
+```
+
+The service claims a PENDING or FAILED game as ENGINE_RUNNING, analyzes its initial position and each subsequent position sequentially, and reuses the preceding result for the next move. A normal N-ply game requires N+1 engine searches; board-proven terminal checkmates/draws require no search. It validates the saved move chain and checks engine best moves/PVs for legality, deriving SAN from each variation's own starting FEN. Standalone FEN evaluation retains the repetition-history limitation described above.
+
+`MoveEngineAnalysis` has a unique relation to each `GameMove`, with White-perspective before/after cp or mate columns, best move in UCI/SAN, primary PV in UCI/SAN, loss, and classification. Versioned assessment JSON retains both normalized scores, bounds, depth, PVs, explicit mate winner, raw loss, and classification evidence. Configuration JSON records search depth/move time, timeout, threads, hash, MultiPV, engine family, and adapter version; it excludes executable paths. The executable's exact Stockfish release is not currently reported by the adapter. Each row also records a run ID and analysis timestamp.
+
+Each move result is committed independently with an upsert, outside engine searches. ENGINE_COMPLETED is set only after all writes succeed. On failure the imported game/moves and earlier committed assessments remain; the game becomes FAILED with a sanitized message. A retry replaces each move's existing assessment without duplicate rows. Partial retries can contain rows from different runs, distinguishable by run ID/configuration/timestamp. If the database cannot record failure status, the service returns STORAGE_FAILED; interrupted-run recovery and user-facing retry controls remain TASK-013. Completed games are not automatically reanalyzed.
+
+The deterministic integration suite covers position reuse, correct game/ply mapping, White-perspective storage, SAN, terminal checkmate/stalemate, malformed PV rejection, partial engine/storage failures, configuration errors, and retry upserts. No live Stockfish executable is needed for these tests.

@@ -7,7 +7,7 @@ datasource db {
   provider = "postgresql"
 }
 
-// Engine results and coaching annotations are added in later tasks.
+// Coaching annotations are added in later tasks.
 
 enum ChessColor {
   WHITE
@@ -60,5 +60,28 @@ model GameMove {
   fenBefore  String
   fenAfter   String
 
+  engineAnalysis MoveEngineAnalysis?
+
   @@unique([gameId, ply])
+}
+
+// One reusable engine assessment per imported half-move. Raw facts remain versioned JSON.
+model MoveEngineAnalysis {
+  id             String   @id @default(cuid())
+  moveId         String   @unique
+  move           GameMove @relation(fields: [moveId], references: [id], onDelete: Cascade)
+  runId          String
+  beforeCp       Int?
+  beforeMate     Int?
+  afterCp        Int?
+  afterMate      Int?
+  bestMoveUci    String?
+  bestMoveSan    String?
+  pvUci          String[]
+  pvSan          String[]
+  cpLoss         Int?
+  classification String
+  assessment     Json
+  configuration  Json
+  analyzedAt     DateTime @default(now())
 }

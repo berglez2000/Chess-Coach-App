@@ -686,7 +686,7 @@ Verification: 173 unit/component tests, lint, typecheck, production build, and d
 
 ### TASK-016 — Define the versioned coaching contract
 
-Status: TODO  
+Status: DONE
 Milestone: M4  
 Dependencies: TASK-015
 
@@ -717,6 +717,10 @@ Network requests, prompt construction, and database writes.
 #### Notes
 
 The spec’s conceptual example uses development; the controlled category is opening.development. Use the canonical category in actual schemas and fixtures.
+
+Implemented `lib/coaching/contract.ts` with `coachingResponseSchema` (Zod), centralized `COACHING_CATEGORIES` (25 values) and `COACHING_CLASSIFICATIONS` (4 values, never "unknown"), `CoachingAnnotation`/`CoachingMoment` DTOs, and `crossCheckCoachingResponse`. Classification normalization rule: engine quality wins over model claim when non-null and non-"unknown"; otherwise model value is used. Both are preserved for traceability. Cross-check collects all ply errors before returning so every problem is visible.
+
+Verification: 177 unit tests, lint, typecheck passed. 31 new tests cover valid/adversarial schema cases (bad version, empty fields, oversize content, unknown category, "unknown" classification, non-integer ply), cross-check with unknown/unselected/duplicate plies, classification normalization for all engine-quality variants, and multi-error accumulation. No network calls, persistence, or prompt construction added.
 
 ### TASK-017 — Build grounded coaching prompts
 

@@ -304,3 +304,13 @@ The review reports how many moves have saved assessments, labels partial coverag
 Selection prioritizes the user's mate missed/allowed, major advantage reversals (at least +100 to −100 cp from the mover's perspective), then meaningful losses of at least 20 cp. Within a severity class, larger losses rank first and earlier plies break ties. When available, it reserves room for supported user positives and opponent mistakes that explain opportunities, capped at two of each. Remaining room can be filled with user losses. A two-ply exclusion window suppresses nearby candidates on either side of the same short sequence; this is a proximity heuristic, not tactical-sequence recognition.
 
 Positive evidence is limited to supplied mate-found, mate-escaped, or delivered-checkmate facts. Best-move agreement or small loss alone does not earn a highlight. Unknown, shallow, bounded, forced, overwhelming-position, and search-disagreement assessments are excluded. Checkmate evidence does not require a deep terminal search. Assessments must match the known move/color/before-and-after FENs; unknown or ambiguous duplicate plies are discarded. Sparse games can return fewer than five moments or none. Educational categories and explanations remain the coaching stage's responsibility.
+
+## Coaching contract
+
+`lib/coaching/contract.ts` defines the versioned schema and cross-check used before any coaching response is persisted.
+
+`coachingResponseSchema` (Zod) validates the raw model output: `schemaVersion: 1`, a `summary` up to 500 chars, `strengths` and `improvements` arrays up to five items each (200 chars per item), and `criticalMoments` up to ten items. Each moment requires a `ply`, a `classification` from the allowed set (`normal`, `inaccuracy`, `mistake`, `blunder`), a nullable `headline` (100 chars), an `explanation` (600 chars), a `lesson` (400 chars), and a `category` from the centralized 25-value list in `COACHING_CATEGORIES`. The model may never supply `"unknown"` as a classification.
+
+`crossCheckCoachingResponse` runs semantic checks against the game's plies and selected moments: unknown plies, plies not in the selected set, and duplicate plies are all rejected with typed errors. All errors are collected before returning so every problem is visible in one pass.
+
+**Classification normalization rule:** when the engine has a non-null, non-`"unknown"` quality for a ply, `effectiveClassification` uses the engine value regardless of the model's claim. If the engine quality is absent or `"unknown"`, the model's classification is used. Both `modelClassification` and `engineQuality` are preserved in the DTO for traceability.

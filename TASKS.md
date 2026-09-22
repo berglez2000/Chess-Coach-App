@@ -648,7 +648,7 @@ Verification: 159 unit/component tests and 27 PostgreSQL integration tests passe
 
 ### TASK-015 — Select instructional moments
 
-Status: TODO  
+Status: DONE
 Milestone: M3  
 Dependencies: TASK-011, TASK-012
 
@@ -679,6 +679,10 @@ Calling the model, annotating every move, and unsupported tactical/difficulty cl
 #### Notes
 
 Allow fewer than five moments when evidence is limited. Categories and educational wording remain the coaching stage’s responsibility.
+
+Implemented the pure deterministic selector with a default cap of eight (maximum ten), user-color loss priority, explicit mate/advantage-change evidence, reserved positive/opponent context, and a two-ply proximity exclusion. Returned moments contain known plies and structured evidence; duplicate/mismatched, unknown, shallow, bounded, forced, overwhelming, or contradictory assessments are excluded. Mate-found/escaped/checkmate positives require supplied facts; low loss or best-move agreement alone is not highlighted. Quiet/sparse games are not padded. No model calls or UI changes were added.
+
+Verification: 173 unit/component tests, lint, typecheck, production build, and diff checks passed. Selection fixtures cover both colors, ranking and deterministic ties, shuffled input, adjacent sequences, caps/diversity, invalid or duplicated plies, quiet/short games, positive evidence, and confidence exclusions. README documents policy and proximity-heuristic limits. Existing dependency audit limitations are unchanged.
 
 ### TASK-016 — Define the versioned coaching contract
 

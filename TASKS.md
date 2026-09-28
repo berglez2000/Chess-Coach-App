@@ -1165,3 +1165,50 @@ Verification on macOS arm64 / Node 24.21.0:
 - Full evidence for every specification definition-of-done item, measured-workload limits, cleanup, and the existing coaching timeout/lease risk is recorded in [docs/release-acceptance.md](docs/release-acceptance.md).
 
 BLOCKED: neither provider key is configured, so live coaching acceptance cannot pass. The implemented Anthropic provider also differs from the specification's OpenAI requirement; that decision/migration remains outside this documentation task. The default build failure remains explicit despite the passing webpack fallback. TASK-026 must not be marked DONE until the required release evidence is supplied.
+
+### TASK-027 — Support selectable Claude and GPT coaching
+
+Status: TODO
+Milestone: M6
+Dependencies: TASK-025
+
+#### Description
+
+Support Anthropic (Claude) and OpenAI (GPT) as coaching providers, with an in-app setting that selects which provider generates coaching. Keep the shared Stockfish analysis, coaching contract, and review experience.
+
+#### Scope
+
+- Update the specification to reflect the approved dual-provider direction, then implement both server-only adapters behind the shared coaching interface.
+- Add a Coaching provider selector in app settings, separate from the unchanged three-control import form. Persist the default across refreshes and application restarts; show provider availability without exposing credentials.
+- Configure each provider through its own server-side environment key. Select supported models and structured-output mechanisms using current vendor documentation; document defaults and setup in README and `.env.example`.
+- Capture the selected provider for each coaching run, validate it server-side, and persist provider and actual model alongside saved summaries and annotations. Preserve existing Anthropic reviews through an additive migration.
+- Let the user explicitly regenerate coaching with the selected provider on an existing engine-analyzed game, including a completed review, without rerunning Stockfish. Changing the default alone must not modify saved reviews or trigger paid requests.
+- Reuse the same prompt facts, schema validation, semantic cross-checks, sanitized failure handling, and ownership protection for both adapters. Bound provider timeouts/retries consistently with the coaching lease.
+- Save successful replacement coaching atomically, removing obsolete annotations from the previous result. Retain previous valid coaching and engine results if regeneration fails.
+
+#### Out of scope
+
+Simultaneous calls to both providers, side-by-side model comparison, coaching version history, automatic provider fallback, arbitrary model selection UI, browser-based key entry/storage, authentication, and deployment. The existing Turbopack build issue remains tracked under TASK-026.
+
+#### Acceptance criteria
+
+- Settings offers Anthropic (Claude) and OpenAI (GPT), clearly identifies the saved default and unavailable providers, and persists the preference. A fresh installation uses Anthropic as the backward-compatible default; no silent fallback occurs when its key is missing.
+- The import form still has exactly three controls. New coaching runs use the saved selection; changing settings during an active run cannot change that run's provider or model.
+- Both adapters produce the same validated application DTOs and cannot overwrite engine facts. Invalid provider values, invalid structured output, unsupported plies, and missing keys receive safe errors without losing completed work.
+- Each saved coaching result identifies its provider and model. Existing reviews remain readable and are attributed to Anthropic without inventing a new model value.
+- Explicit regeneration can switch providers using unchanged engine rows. Success replaces summary and annotations together, with no duplicates or stale annotations; failure preserves the previous valid review and permits retry.
+- Duplicate or stale requests cannot overwrite newer coaching. Timeout/retry limits and lease ownership are covered by deterministic tests, including interrupted regeneration.
+- API keys remain server-side and untracked; settings/API responses reveal only provider availability, never key values.
+- Unit, integration, and browser tests exercise both provider choices with deterministic adapters and make no paid calls. Missing live credentials are recorded as blocked release evidence, not a successful live check.
+
+#### Verification
+
+- Standard checks, including adapter contract, provider validation, preference persistence, and timeout/lease tests.
+- `npm run test:integration` — additive migration compatibility, provider/model persistence, unchanged engine rows, atomic replacement, failed regeneration preservation, and concurrent-run protection.
+- `npm run test:e2e` — choose each provider in settings, import/reopen a review, switch provider and explicitly regenerate, and exercise missing-key/failure/retry states with deterministic adapters.
+- `npm run build` — record any remaining default-build failure separately from the documented webpack fallback.
+- Execute and record a manual live check for each provider when its credentials are available, including duration and saved validated output; otherwise leave that provider's live release verification blocked under TASK-026.
+
+#### Notes
+
+User-approved scope addition following TASK-026 release review. This task intentionally depends on completed TASK-025 rather than blocked TASK-026, avoiding a dependency cycle. Complete this implementation before rerunning TASK-026 release acceptance. Creating this task does not implement the feature or mark any existing release blocker resolved.

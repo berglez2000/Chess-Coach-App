@@ -1113,7 +1113,7 @@ Live coaching/OpenAI verification was skipped because neither provider key is co
 
 ### TASK-026 — Finish setup documentation and release acceptance
 
-Status: TODO  
+Status: BLOCKED
 Milestone: M6  
 Dependencies: TASK-025
 
@@ -1153,3 +1153,15 @@ Deployment, authentication, puzzle features, weakness statistics, and new scope 
 
 M6 exit: the full local import → analyze → coach → review loop is documented and verified. Do not mark this task DONE while required acceptance evidence is missing.
 
+
+Implemented the setup/documentation work: corrected obsolete README behavior, documented lockfile installation and non-resetting migrations, actual Anthropic configuration, Stockfish installation, sample walkthrough, isolated fresh-database verification, troubleshooting, and limitations. Added `samples/demo.pgn` with fictional labels and a legal 33-ply checkmate. `.env.example` now names the provider variable actually read by the app. No obsolete temporary import source path remained to remove.
+
+Verification on macOS arm64 / Node 24.21.0:
+
+- Lockfile reinstall and Prisma generation passed; a new isolated `task026_release` database received all four migrations and passed `db:check`. Documented webpack startup, real browser imports for both colors, refresh, and application restart/library reopening passed without touching development data.
+- Lint, typecheck, all 302 fast tests, 36 integration tests, both E2E journeys, real Stockfish 19 smoke, and `npm run build -- --webpack` passed.
+- Real demo import-to-engine response took 6.53 seconds (White) and 6.22 seconds (Black), with 33 saved assessments each. These exclude live coaching; no paid requests were made.
+- Default `npm run build` reproduced the existing Turbopack worker-port permission failure. Online dependency audit still reports four high-severity entries. Tracked-file secret-pattern and obsolete-import-path scans found no matches.
+- Full evidence for every specification definition-of-done item, measured-workload limits, cleanup, and the existing coaching timeout/lease risk is recorded in [docs/release-acceptance.md](docs/release-acceptance.md).
+
+BLOCKED: neither provider key is configured, so live coaching acceptance cannot pass. The implemented Anthropic provider also differs from the specification's OpenAI requirement; that decision/migration remains outside this documentation task. The default build failure remains explicit despite the passing webpack fallback. TASK-026 must not be marked DONE until the required release evidence is supplied.

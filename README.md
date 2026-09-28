@@ -2,7 +2,9 @@
 
 A local chess-improvement application for importing PGNs, analyzing games with Stockfish, and reviewing them with AI coaching.
 
-The application currently contains the initial home page, development tooling, and local PostgreSQL/Prisma setup. The PGN parsing service is also implemented; the three-control PGN import form is available at `/games/new`. Interactive board replay is also available. Imports now save games and moves transactionally in PostgreSQL; the saved-game library and permanent review URLs are available. Engine analysis and coaching remain in the task backlog. V0.1 focuses on game review; puzzles, authentication, and deployment are deferred.
+V0.1 supports a saved-game dashboard, PGN import, Stockfish analysis, validated AI coaching, and synchronized board review. It runs locally without authentication. Puzzles, training, weakness statistics, and deployment are deferred.
+
+**Release acceptance is blocked:** live coaching credentials are unavailable, and the implemented provider is Anthropic although the specification requires OpenAI. Engine-only review works without a provider key. See [release evidence](docs/release-acceptance.md) for checks and limitations.
 
 ## Prerequisites
 
@@ -10,18 +12,27 @@ The application currently contains the initial home page, development tooling, a
 - If you use nvm, run `nvm install` and `nvm use` in this directory; `.nvmrc` selects Node 24.
 - Confirm `node --version` prints `v24.x` before installing dependencies. The project declares Node 24 in `package.json` to keep development consistent.
 
-Docker with Compose is required for database development (Docker Desktop or a running Colima engine on macOS). Stockfish and an OpenAI key are not needed yet. The initial home page and fast tests still work without a running database.
+Docker with Compose is required (Docker Desktop or a running Colima engine on macOS). Install a local Stockfish executable for analysis. Coaching uses an optional paid Anthropic API key; without it, engine results remain available. The verified environment is macOS arm64, Node 24.21.0, PostgreSQL 18, and Stockfish 19. Other operating systems have not received release verification. Fast tests require none of these external services.
 
 ## Local development
 
+1. Activate Node 24 and start Docker.
+2. If `.env.local` does not exist, copy `.env.example` to `.env.local`; preserve existing values.
+3. Set `DATABASE_URL` as shown below and `STOCKFISH_PATH` to an absolute executable path from the [Stockfish setup](#local-stockfish-adapter).
+4. Optionally set `ANTHROPIC_API_KEY` for live coaching. The current model is `claude-haiku-4-5` in `lib/coaching/ai-client.ts`; there is no model environment override. `OPENAI_API_KEY` and `OPENAI_MODEL` are not read by this implementation. Keep keys server-side, never use `NEXT_PUBLIC_`, and restart after changing settings.
+5. Run:
+
 ```bash
-npm install
+npm ci
+docker compose up -d --wait postgres
+npx prisma validate
+npx prisma migrate deploy
+npm run db:check
+npm run test:engine
 npm run dev
 ```
 
-Open [http://127.0.0.1:3000](http://127.0.0.1:3000). The server binds to the loopback interface for local use. Stop it with Ctrl+C. For a different port, run `npm run dev -- --port 3001`.
-
-The home page needs no environment values. To enable database access, follow the setup below. Never commit local secrets or use a `NEXT_PUBLIC_` prefix for API keys.
+Open [http://127.0.0.1:3000](http://127.0.0.1:3000). The server binds to loopback. Stop with Ctrl+C; use `npm run dev -- --port 3001` for another port. If Turbopack fails with a worker-port permission error, use `npm run dev -- --webpack`. The database is required for the dashboard and saved reviews.
 
 ## Local PostgreSQL and Prisma
 
@@ -36,20 +47,20 @@ DATABASE_URL=postgresql://chess_coach:chess_coach_local@127.0.0.1:5433/chess_coa
 These are disposable local-development credentials matching `compose.yaml`, not production credentials. PostgreSQL is published only on `127.0.0.1:5433`; the container uses port 5432. The named `postgres_data` volume stores the database under `/var/lib/postgresql`, as required by the PostgreSQL 18 image.
 
 ```bash
-docker compose up -d --wait
+docker compose up -d --wait postgres
 docker compose ps
-npm install
+npm ci
 npx prisma validate
-npx prisma migrate dev
+npx prisma migrate deploy
 npm run db:check
 npm run dev
 ```
 
 On this macOS setup, Compose is installed as **`docker-compose`**. If `docker compose` is unavailable, substitute `docker-compose` in these commands, for example `docker-compose up -d --wait`. Both read `compose.yaml`; no global Docker configuration change is required.
 
-`npm install` / `npm ci` generates the Prisma client through `postinstall`. After changing the Prisma schema, run `npm run db:generate`. Generated files are ignored by Git. The schema now contains `Game` and `GameMove`. Run `npx prisma migrate dev` to apply checked-in migrations locally; use `npx prisma migrate dev --name <description>` when intentionally changing the schema. Regenerate the client afterward with `npm run db:generate`.
+`npm install` / `npm ci` generates the Prisma client through `postinstall`. After changing the Prisma schema, run `npm run db:generate`. Generated files are ignored by Git. The schema contains games, moves, engine assessments, and coaching annotations. Use `npx prisma migrate deploy` to apply checked-in migrations without a reset or shadow database; use `npx prisma migrate dev --name <description>` when intentionally changing the schema. Regenerate the client afterward with `npm run db:generate`.
 
-`npm run db:check` runs `SELECT 1` through the same server-only Prisma client used by future application services, prints a safe success/failure message, and disconnects. It never prints the connection URL. Its Node `react-server` condition allows the `server-only` marker in a server-side CLI; do not add that condition to browser or component-test commands.
+`npm run db:check` runs `SELECT 1` through the same server-only Prisma client used by application services, prints a safe success/failure message, and disconnects. It never prints the connection URL. Its Node `react-server` condition allows the `server-only` marker in a server-side CLI; do not add that condition to browser or component-test commands.
 
 ### Environment loading
 
@@ -57,7 +68,7 @@ On this macOS setup, Compose is installed as **`docker-compose`**. If `docker co
 - Prisma CLI and `db:check` use `@next/env` to follow Next.js environment precedence: existing process variables, mode-specific local file, `.env.local` (except test mode), mode-specific file, then `.env`. The development mode is used unless `NODE_ENV=production` or `NODE_ENV=test` selects another mode.
 - Prisma generation and schema validation require neither a connection URL nor a running database. If a nonempty URL is provided, it is validated. Actual database access always requires a valid PostgreSQL URL.
 - Fast Vitest tests do not load local environment files and pass explicit configuration fixtures. They do not connect to the database. Integration tests use the dedicated service described below; they never load `.env.local`.
-- Docker Compose uses the fixed development settings in `compose.yaml`; it does not receive `.env.local` or future OpenAI credentials. If you change database settings, keep Compose and `DATABASE_URL` consistent.
+- Docker Compose uses the fixed development settings in `compose.yaml`; it does not receive `.env.local` or coaching credentials. If you change database settings, keep Compose and `DATABASE_URL` consistent.
 
 ### Stop, restart, and troubleshoot
 
@@ -93,7 +104,7 @@ Typecheck generates Next.js route types before running TypeScript, so it also wo
 npm run start
 ```
 
-For repeatable installation from the lockfile, use `npm ci`.
+If the default Turbopack build fails with the known worker-port permission error, run `npm run build -- --webpack` before `npm run start`. This fallback is release-tested; the default failure remains recorded, not counted as a pass. For repeatable installation from the lockfile, use `npm ci`.
 
 ## Tests
 
@@ -111,15 +122,15 @@ Vitest uses two projects in `vitest.config.mts`:
 - `tests/components/**/*.test.{ts,tsx}` runs in jsdom with React Testing Library.
 - `tests/setup-dom.ts` loads the jest-dom matchers and cleans up rendered components after every DOM test. Import `describe`, `it`, and `expect` from `vitest` explicitly.
 
-Tests share the application's `@/` import alias. Use role-based DOM assertions for user-visible behavior and explicit fixtures or mocked adapters for future engine/AI tests. The fast suite requires no running app, database, Stockfish, API key, or paid requests. Integration tests have the separate command below; browser-suite tooling is deferred.
+Tests share the application's `@/` import alias. Use role-based DOM assertions for user-visible behavior and explicit fixtures or mocked adapters for engine/AI tests. The fast suite requires no running app, database, Stockfish, API key, or paid requests. Integration and Playwright browser tests have separate commands below.
 
-The initial tests cover the home-page heading and availability message, plus server-rendered home navigation and the skip link's target. They use the actual application components. jsdom does not verify responsive layout or browser navigation. Async Server Components will need integration/browser coverage when introduced.
+Tests cover parsing, validation, engine protocols and classifications, orchestration, coaching contracts, dashboard states, and board/coaching navigation. jsdom does not replace browser verification; Playwright covers saved import-to-review journeys.
 
 The setup follows the [Next.js Vitest guide](https://nextjs.org/docs/app/guides/testing/vitest), [Vitest environment documentation](https://vitest.dev/guide/environment.html), and [React Testing Library setup guide](https://testing-library.com/docs/react-testing-library/setup/).
 
 ## Database models and integration tests
 
-`Game` stores the original PGN, explicit initial FEN, optional metadata, required user color, analysis status/error, and timestamps. `GameMove` stores canonical 1-based plies, actual move numbers, SAN/UCI, side, and before/after FENs. Player names remain nullable when PGN headers are absent. Played dates use PostgreSQL DATE; raw dates remain preserved in the PGN. No engine results, annotations, user, or puzzle models are included yet.
+`Game` stores the original PGN, explicit initial FEN, optional metadata, required user color, analysis status/error, and timestamps. `GameMove` stores canonical 1-based plies, actual move numbers, SAN/UCI, side, and before/after FENs. Player names remain nullable when PGN headers are absent. Played dates use PostgreSQL DATE; raw dates remain preserved in the PGN. `MoveEngineAnalysis` and `MoveCoachingAnnotation` store one assessment/annotation per move. There are no user or puzzle models.
 
 PostgreSQL enums enforce valid game/move colors and analysis statuses. A unique `(gameId, ply)` constraint prevents duplicate plies within one game and supports ordered lookup. A foreign key rejects orphan moves and cascades game deletion to its moves; the game `(createdAt, id)` index supports stable library ordering. Queries must explicitly order moves by ply. The import UI saves validated games and their moves through POST /api/games using an atomic Prisma nested write.
 
@@ -154,13 +165,13 @@ Its tmpfs data is disposable. Restarting it and rerunning `npm run test:integrat
 
 ## Import a game
 
-Open the home page and choose **Import a game**, or visit `/games/new`. Select White or Black, paste one PGN, and click **Import**. The server validates both fields with Zod, parses the PGN, saves the game and all moves atomically with PENDING status, and returns the saved ID with normalized positions and the selected user color. Client-supplied positions are ignored.
+Open the home page and choose **Import a game**, or visit `/games/new`. Select White or Black, paste one PGN, and click **Import and Analyze**. The server validates both fields with Zod, parses the PGN, saves the game and all moves atomically with PENDING status, and returns the saved ID with normalized positions and the selected user color. Client-supplied positions are ignored.
 
 The form has only three controls. Browser validation checks required fields, whitespace gets immediate feedback, and the server repeats validation independently. Inputs are retained after validation/connection errors and disabled during a pending submission. Single-game PGNs are limited to 100,000 characters.
 
 A successful import navigates to `/games/[id]`, a permanent saved-game review, with metadata, a chessboard, a clickable move list, and Start/Previous/Next/End controls. The board defaults to your selected color and pieces cannot be dragged. The layout places the move list beside the board on wider screens and below it on narrow screens.
 
-The game and its moves are **saved in PostgreSQL**. The `/games` library lists games newest first with players, result, played date, opening when available, and analysis status. Refreshing or reopening a review restores the saved moves and selected color, starting at the initial position. Data survives app and database restarts through the PostgreSQL named volume. Identical PGNs may be saved as separate games. No Stockfish or OpenAI requests are made at this stage.
+The game and its moves are **saved in PostgreSQL**. The `/games` library lists games newest first with players, result, played date, opening when available, and analysis status. Refreshing or reopening a review restores the saved moves and selected color, starting at the initial position. Data survives app and database restarts through the PostgreSQL named volume. Identical PGNs may be saved as separate games. After saving, the review starts Stockfish and then coaching. A missing provider key leaves a retryable engine-only review.
 
 `POST /api/games` accepts JSON `{ "userColor": "WHITE", "pgn": "1. e4 e5 *" }` (or BLACK). Success returns HTTP 201 with `{ gameId, status: "PENDING", userColor, game }`; `game` contains the server-parsed replay DTO; the form navigates using `gameId`, and the review retrieves persisted data. Errors use `{ error: { code, message, fields? } }`: malformed JSON, invalid fields, and PGN errors return 400; unexpected parsing/storage failures return 500 with a sanitized message. Validation runs before database access. The import service accepts a repository interface, and the Prisma implementation saves the parent and all moves in one nested-write transaction. Integration tests exercise real storage, invalid input, duplicate-PGN imports, constraint-triggered rollback, and retry.
 
@@ -172,7 +183,7 @@ The library and review are rendered dynamically from the database. Loading, empt
 
 `GameReview` owns one `selectedPly` state. Ply 0 shows `initialFen`, including SetUp/FEN positions. Selecting ply N shows that move's `fenAfter`, highlights the same move in the list, and updates the progress label. Previous/Next traverse half-moves; Start/End jump to the boundaries. Labels use the parsed full-move number and side, so a Black-to-move game starting at move 23 displays `23...`, not `1.`. A missing White move is shown as a dash in its column.
 
-Future evaluation and coaching panels must use this same selected ply. Comparisons must label before/after evaluations explicitly, and a better alternative begins from the selected move's `fenBefore`, not the displayed resulting position. Board flip and keyboard navigation remain later review-polish tasks.
+Evaluation and coaching panels use this same selected ply. Comparisons must label before/after evaluations explicitly, and a better alternative begins from the selected move's `fenBefore`, not the displayed resulting position. Flip board changes orientation without changing your saved color. Left/right arrows navigate moves except when typing in editable fields.
 
 Replay component tests use the real react-chessboard renderer and verify all square/piece placements through the fixture game in both directions and orientations. Browser checks verify the responsive board and actual import-to-replay flow.
 
@@ -238,9 +249,9 @@ npm run test:engine
 
 It loads local environment settings, analyzes the starting position, verifies a legal best move and evaluation, and exits after shutdown. Ordinary `npm test` uses mocked processes and needs no installed engine. Stockfish 19's official macOS universal binary was verified during development using a temporary installation.
 
-The [Stockfish UCI documentation](https://official-stockfish.github.io/docs/stockfish-wiki/UCI-Protocol-and-Stockfish-Commands.html) describes the handshake, search commands, and scores. The application DTO keeps `perspective` as the FEN's side to move, `bestMove` as UCI (or null for no legal moves), and the latest scored primary `evaluation` with depth, PV, and exact/lower/upper bound. Mate values remain signed mate distances, separate from centipawns. Missing evaluations remain null; a terminal PV can be empty. Malformed scores, illegal PVs, and best moves inconsistent with legal moves are rejected. White-perspective conversion and classification belong to TASK-011.
+The [Stockfish UCI documentation](https://official-stockfish.github.io/docs/stockfish-wiki/UCI-Protocol-and-Stockfish-Commands.html) describes the handshake, search commands, and scores. The application DTO keeps `perspective` as the FEN's side to move, `bestMove` as UCI (or null for no legal moves), and the latest scored primary `evaluation` with depth, PV, and exact/lower/upper bound. Mate values remain signed mate distances, separate from centipawns. Missing evaluations remain null; a terminal PV can be empty. Malformed scores, illegal PVs, and best moves inconsistent with legal moves are rejected. The analysis layer converts these results to White perspective and classifies moves.
 
-This adapter analyzes standalone FENs, so earlier repetition history is unavailable. It does not pool processes, limit aggregate concurrent callers, or persist results; later game orchestration must control concurrency. Search results can vary by Stockfish version and search budget.
+This adapter analyzes standalone FENs, so earlier repetition history is unavailable. It does not pool processes, limit aggregate concurrent callers, or persist results; game orchestration handles persistence and per-game run ownership. Search results can vary by Stockfish version and search budget.
 
 ## Evaluation and move classification
 
@@ -299,7 +310,7 @@ The review reports how many moves have saved assessments, labels partial coverag
 
 ## Instructional-moment selection
 
-`selectMoments({ userColor, moves, assessments, limit })` is a pure, deterministic selector for the later coaching stage. The default cap is eight moments; callers may request 1–10. It returns chronological plies with mover/SAN, user-loss/positive/opponent-context kind, and structured evidence containing the relevant normalized scores and loss. It does not call an engine or model, modify the game, or add review UI.
+`selectMoments({ userColor, moves, assessments, limit })` is a pure, deterministic selector used by the coaching stage. The default cap is eight moments; callers may request 1–10. It returns chronological plies with mover/SAN, user-loss/positive/opponent-context kind, and structured evidence containing the relevant normalized scores and loss. It does not call an engine or model, modify the game, or add review UI.
 
 Selection prioritizes the user's mate missed/allowed, major advantage reversals (at least +100 to −100 cp from the mover's perspective), then meaningful losses of at least 20 cp. Within a severity class, larger losses rank first and earlier plies break ties. When available, it reserves room for supported user positives and opponent mistakes that explain opportunities, capped at two of each. Remaining room can be filled with user losses. A two-ply exclusion window suppresses nearby candidates on either side of the same short sequence; this is a proximity heuristic, not tactical-sequence recognition.
 
@@ -360,6 +371,49 @@ Failed runs retain traces under `test-results`; inspect one with `npx playwright
 
 Keep `npm run test:engine` separate from deterministic tests. Configure a real `STOCKFISH_PATH` as described above; this smoke test performs a real search and verifies shutdown.
 
-For a manual complete workflow, launch normally with all `CHESS_E2E_*` variables unset, a real Stockfish executable, and `ANTHROPIC_API_KEY` configured locally for the existing provider. Import `tests/fixtures/pgn/complete.pgn`, select your color, and check that analysis completes, summary moments select the corresponding board position/explanation, and coaching survives reload and reopening from Your games. Repeat for the other color. To check recovery, start without the API key, import a new game, verify saved engine results, then configure the key, restart, and choose **Retry coaching**. This manual check makes a paid provider request; automated suites never do.
+For a manual complete workflow, launch normally with all `CHESS_E2E_*` variables unset, a real Stockfish executable, and `ANTHROPIC_API_KEY` configured locally for the existing provider. Import `samples/demo.pgn`, select your color, and check that analysis completes, summary moments select the corresponding board position/explanation, and coaching survives reload and reopening from Your games. Repeat for the other color. To check recovery, start without the API key, import a new game, verify saved engine results, then configure the key, restart, and choose **Retry coaching**. This manual check makes a paid provider request; automated suites never do.
 
-TASK-025 verification used real Stockfish 19 from its [official release](https://github.com/official-stockfish/Stockfish/releases/tag/sf_19), temporarily outside the repository. Live coaching was skipped because neither Anthropic nor OpenAI credentials were configured. No live OpenAI verification was performed; the implemented provider remains Anthropic. Release-wide live-service acceptance is tracked separately by TASK-026.
+TASK-025 verification used real Stockfish 19 from its [official release](https://github.com/official-stockfish/Stockfish/releases/tag/sf_19), temporarily outside the repository. Live coaching was skipped because neither Anthropic nor OpenAI credentials were configured. No live OpenAI verification was performed; the implemented provider remains Anthropic. See the TASK-026 release evidence for current verification.
+
+## Sample import-to-review walkthrough
+
+Use [samples/demo.pgn](samples/demo.pgn), a 33-ply legal checkmate example with fictional player labels and no account identifiers. Its moves reproduce the public-domain Opera Game; the labels do not identify a user's game. It is a short demonstration, not a representative rapid-game benchmark.
+
+1. Start the stack above. Open **Import Game**, select White, paste the entire sample, and choose **Import and Analyze**.
+2. The saved review opens immediately. Keep it open while Stockfish runs; persisted stages update automatically. Without a key, expect an engine-only review and **Retry coaching**.
+3. With a working Anthropic key, expect a saved summary and selected explanations after validation. Ordinary moves may have no annotation; positive highlights appear only when supported by the selection policy.
+4. Click a critical move or summary moment. Board, evaluation, and explanation must select the same ply. The board shows the position after that move; the suggested alternative starts before it.
+5. Try Start/End, Previous/Next, left/right arrows, and Flip board. The sample ends with `17. Rd8#`. Refresh, then reopen the game from **My Games**; data and selected color remain saved, while selection resets to the initial position.
+6. Import again as Black to check the other orientation/coaching perspective. Duplicate imports are intentionally separate saved games.
+
+Coaching sends game metadata and selected positions/engine facts to the configured provider. Only the sample's fictional metadata is needed for this walkthrough. For a live failure/retry check, follow the separate manual real-service check above.
+
+## Fresh-database setup verification
+
+To verify setup without touching your development database, create a uniquely named database in the disposable test service. Do not run integration/browser suites concurrently with this check. These commands use a separate database from those suites and do not edit `.env.local`:
+
+```bash
+docker compose --profile test up -d --wait postgres-test
+docker compose exec -T postgres-test createdb -U chess_coach_test task026_release
+export DATABASE_URL=postgresql://chess_coach_test:chess_coach_test_local@127.0.0.1:5434/task026_release
+npm ci
+npx prisma validate
+npx prisma migrate deploy
+npm run db:check
+npm run dev -- --webpack --port 3002
+```
+
+Choose an unused database name and update the URL if that name already exists; never reset an existing database to make this check pass. Open port 3002 and follow the sample walkthrough. Stop the app, restart it with the same exported URL, and reopen the saved review. When finished, stop the app and `unset DATABASE_URL` before running integration/browser tests. The temporary database can be kept for inspection or removed explicitly by name; do not remove the development volume.
+
+## Troubleshooting coaching and analysis
+
+- Missing key or authentication error: set a valid `ANTHROPIC_API_KEY` in `.env.local`, restart the server, and choose **Retry coaching**. An OpenAI key does not configure the current adapter.
+- Rate limit, timeout, invalid response, or provider failure: engine results remain saved. Retry coaching after the service recovers; retries validate the response again and reuse engine rows.
+- Stockfish unavailable: check the absolute path, CPU/OS compatibility, and executable permission, then run `npm run test:engine`. Download from the [official Stockfish page](https://stockfishchess.org/download/); macOS universal binaries select CPU features automatically. Linux/Windows binaries are available there but are not release-tested here.
+- Engine timeout: reduce depth or set a bounded move time; keep timeout above move time. Larger search budgets increase total duration.
+- Interrupted run or duplicate request: refresh the saved review. Wait for the displayed five-minute lease deadline before retrying; do not modify database lease values manually.
+- Database unavailable or missing tables: start PostgreSQL, verify `DATABASE_URL`, apply `npx prisma migrate deploy`, and run `npm run db:check`.
+- Node/jsdom failures: confirm Node 24.15+ is active in the terminal running the command.
+- Build worker-port error: use `npm run build -- --webpack`. See the release evidence for the unresolved default-build limitation.
+
+Known limits and measured durations are recorded in [release acceptance](docs/release-acceptance.md). The setup uses checked-in migrations via [Prisma migrate deploy](https://www.prisma.io/docs/orm/prisma-migrate/workflows/development-and-production); use `migrate dev` only when authoring schema changes.

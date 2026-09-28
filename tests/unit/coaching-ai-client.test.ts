@@ -71,12 +71,12 @@ describe("AnthropicCoachingClient", () => {
     expect(result.annotation.moments[0].ply).toBe(15);
   });
 
-  it("passes model to annotation metadata", async () => {
-    createMock.mockResolvedValue({ ...mockSuccessResponse(), model: "claude-haiku-4-5" });
-    const result = await makeClient(createMock).requestCoaching(makeRequest({ model: "claude-haiku-4-5" }));
+  it("records the actual response model in annotation metadata", async () => {
+    createMock.mockResolvedValue({ ...mockSuccessResponse(), model: "claude-actual-snapshot" });
+    const result = await makeClient(createMock).requestCoaching(makeRequest());
     expect(result.status).toBe("OK");
     if (result.status !== "OK") return;
-    expect(result.annotation.model).toBe("claude-haiku-4-5");
+    expect(result.annotation.model).toBe("claude-actual-snapshot");
   });
 
   it("sends structured output config with responseSchema", async () => {

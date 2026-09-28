@@ -27,10 +27,10 @@ export async function findGame(db: PrismaClient, id: string): Promise<SavedGame 
   const stored = await db.game.findUnique({ where: { id }, select: {
     ...summarySelect, analysisError: true, analysisLeaseUntil: true, initialFen: true, event: true, site: true, round: true,
     eco: true, timeControl: true, termination: true,
-    coachingSummary: true, coachingStrengths: true, coachingImprovements: true, coachingModel: true,
+    coachingProvider: true, coachingRevision: true, coachingSummary: true, coachingStrengths: true, coachingImprovements: true, coachingModel: true,
     moves: { orderBy: { ply: "asc" }, select: {
       engineAnalysis: { select: { assessment: true, bestMoveSan: true, pvSan: true, runId: true, analyzedAt: true } },
-      coachingAnnotation: { select: { classification: true, headline: true, explanation: true, lesson: true, category: true, model: true } },
+      coachingAnnotation: { select: { classification: true, headline: true, explanation: true, lesson: true, category: true, model: true, provider: true } },
       ply: true, moveNumber: true, color: true, san: true, uci: true, fenBefore: true, fenAfter: true,
     } },
   } });
@@ -40,12 +40,13 @@ export async function findGame(db: PrismaClient, id: string): Promise<SavedGame 
 
   const coaching: GameCoachingSummary | null =
     stored.coachingSummary && stored.coachingModel
-      ? { summary: stored.coachingSummary, strengths: stored.coachingStrengths, improvements: stored.coachingImprovements, model: stored.coachingModel }
+      ? { summary: stored.coachingSummary, strengths: stored.coachingStrengths, improvements: stored.coachingImprovements, model: stored.coachingModel, provider: stored.coachingProvider ?? "ANTHROPIC" }
       : null;
 
   const positivePlies = positiveHighlightPlies(stored.userColor, stored.moves);
 
   return {
+    coachingRevision: stored.coachingRevision,
     id: stored.id, whiteName, blackName, result, playedAt, openingName, userColor: stored.userColor,
     status: stored.analysisStatus, createdAt: stored.createdAt.toISOString(),
     analysisError: stored.analysisError, analysisLeaseUntil: stored.analysisLeaseUntil?.toISOString() ?? null,
@@ -64,7 +65,7 @@ export async function findGame(db: PrismaClient, id: string): Promise<SavedGame 
 }
 
 function toReviewCoachingAnnotation(
-  row: { classification: string; headline: string | null; explanation: string; lesson: string; category: string; model: string } | null,
+  row: { classification: string; headline: string | null; explanation: string; lesson: string; category: string; model: string; provider: import("@/lib/coaching/providers").CoachingProvider } | null,
 ): ReviewCoachingAnnotation | null {
   if (!row) return null;
   if (!(COACHING_CLASSIFICATIONS as readonly string[]).includes(row.classification)) return null;
@@ -76,5 +77,6 @@ function toReviewCoachingAnnotation(
     lesson: row.lesson,
     category: row.category as ReviewCoachingAnnotation["category"],
     model: row.model,
+    provider: row.provider,
   };
 }

@@ -1,0 +1,29 @@
+import { act, fireEvent, render, screen } from "@testing-library/react";
+import { afterEach, expect, it, vi } from "vitest";
+import { CoachingSettingsForm } from "@/components/settings/coaching-settings-form";
+const settings = { provider: "ANTHROPIC" as const, available: { ANTHROPIC: false, OPENAI: true } };
+afterEach(() => vi.unstubAllGlobals());
+it("shows saved default and key availability; changing selection alone sends nothing", async () => {
+  const fetch = vi.fn(); vi.stubGlobal("fetch", fetch);
+  render(<CoachingSettingsForm settings={settings} />);
+  expect(screen.getByText(/Saved default/)).toHaveTextContent("Anthropic (Claude)");
+  expect(screen.getByText(/Unavailable/)).toHaveTextContent("ANTHROPIC_API_KEY");
+  fireEvent.change(screen.getByLabelText("Coaching provider"), { target: { value: "OPENAI" } });
+  expect(fetch).not.toHaveBeenCalled();
+  let finish!: (r: Response) => void;
+  fetch.mockImplementation(() => new Promise<Response>(resolve => { finish = resolve; }));
+  fireEvent.click(screen.getByRole("button", { name: "Save provider" }));
+  expect(screen.getByRole("button", { name: "Saving…" })).toBeDisabled();
+  await act(async () => finish(Response.json({ ...settings, provider: "OPENAI" })));
+  expect(screen.getByRole("status")).toHaveTextContent("saved");
+  expect(screen.getByText(/Saved default/)).toHaveTextContent("OpenAI (GPT)");
+  expect(fetch).toHaveBeenCalledExactlyOnceWith("/api/settings", expect.objectContaining({ method: "PUT", body: '{"provider":"OPENAI"}' }));
+});
+it("retains the saved default after a failed update", async () => {
+  vi.stubGlobal("fetch", vi.fn().mockResolvedValue(Response.json({ error: { message: "Could not save settings." } }, { status: 503 })));
+  render(<CoachingSettingsForm settings={settings} />);
+  fireEvent.change(screen.getByLabelText("Coaching provider"), { target: { value: "OPENAI" } });
+  fireEvent.click(screen.getByRole("button", { name: "Save provider" }));
+  expect(await screen.findByRole("status")).toHaveTextContent("Could not save");
+  expect(screen.getByText(/Saved default/)).toHaveTextContent("Anthropic (Claude)");
+});

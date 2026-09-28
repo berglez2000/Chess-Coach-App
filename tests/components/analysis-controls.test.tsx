@@ -72,3 +72,13 @@ it("starts an imported game once and consumes the auto-start URL", async () => {
   expect(replace).toHaveBeenCalledWith(window.history.state, "", "/games/game");
   replace.mockRestore();
 });
+it("only regenerates on explicit action using the displayed revision", async () => {
+  const fetch = vi.fn().mockResolvedValue(Response.json({ coaching: { status: "COMPLETED" } }));
+  vi.stubGlobal("fetch", fetch);
+  render(<AnalysisControls gameId="game" status="COMPLETED" error={null} leaseUntil={null} coachingRevision={7} />);
+  expect(fetch).not.toHaveBeenCalled();
+  expect(screen.getByRole("link", { name: "Settings" })).toHaveAttribute("href", "/settings");
+  fireEvent.click(screen.getByRole("button", { name: "Regenerate coaching" }));
+  await waitFor(() => expect(refresh).toHaveBeenCalled());
+  expect(fetch).toHaveBeenCalledExactlyOnceWith("/api/games/game/coaching", { method: "POST", headers: { "Content-Type": "application/json" }, body: '{"expectedRevision":7}' });
+});

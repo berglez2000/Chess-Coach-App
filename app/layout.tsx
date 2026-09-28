@@ -27,6 +27,7 @@ export default function RootLayout({
             >
               Chess Coach
             </Link>
+            <Link href="/settings" className="ml-auto underline focus-visible:outline-2 focus-visible:outline-offset-4">Settings</Link>
           </div>
         </header>
         {children}

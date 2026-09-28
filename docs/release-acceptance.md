@@ -2,7 +2,13 @@
 
 Status: **BLOCKED**, verified 2026-09-28. Setup documentation and available checks are complete; this is not a claim that V0.1 meets every requirement.
 
-## Outstanding acceptance
+## TASK-027 follow-up
+
+Dual-provider implementation resolves the provider/specification mismatch: the approved specification now allows Anthropic (Claude) and OpenAI (GPT), selected in persistent app settings. Both use shared validation, atomic replacement, provider/model attribution, and bounded requests. The previously documented timeout/lease mismatch is resolved with 120-second SDK timeouts, zero automatic retries, and a 150-second application deadline within the five-minute lease. Legacy content/model migration and failed-regeneration preservation have automated coverage.
+
+Both keys are still absent (presence checked without printing values). Live Anthropic and OpenAI checks, their durations, and complete real-service quality remain **blocked** under TASK-026. The default Turbopack build limitation is unchanged. TASK-027 verification details are recorded in TASKS.md; the original TASK-026 evidence below remains a historical record.
+
+## Original TASK-026 outstanding acceptance
 
 - Neither `ANTHROPIC_API_KEY` nor `OPENAI_API_KEY` is configured in the process/local environment. Only presence was inspected, never values. Live coaching, live coaching duration, and the complete real-service loop remain **blocked**; automated coaching uses explicit fixtures and made no paid requests.
 - The specification requires OpenAI, but `lib/coaching/ai-client.ts` implements Anthropic with `claude-haiku-4-5`. The environment template now describes the actual adapter. A provider migration or an explicit specification decision is required before claiming the OpenAI definition-of-done item. This release-documentation task does not silently change that requirement or migrate providers.

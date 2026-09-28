@@ -1,111 +1,107 @@
 import "server-only";
 import Anthropic from "@anthropic-ai/sdk";
-import { coachingResponseSchema, crossCheckCoachingResponse, type CoachingAnnotation } from "@/lib/coaching/contract";
-import type { CoachingPromptPayload } from "@/lib/coaching/prompt";
+import OpenAI from "openai";
+import { coachingResponseSchema, crossCheckCoachingResponse, type CoachingAnnotation } from "./contract";
+import { DEFAULT_PROVIDER, PROVIDERS, PROVIDER_MAX_RETRIES, PROVIDER_TIMEOUT_MS, providerSchema, type CoachingProvider } from "./providers";
+import type { CoachingPromptPayload } from "./prompt";
 import type { MoveQuality } from "@/types/analysis";
 
-export const COACHING_MODEL = "claude-haiku-4-5";
-
+export const COACHING_MODEL = PROVIDERS.ANTHROPIC.model;
 export type CoachingOutcome =
   | { status: "OK"; annotation: CoachingAnnotation }
-  | { status: "MISSING_KEY" }
-  | { status: "REFUSAL" }
-  | { status: "INCOMPLETE_OUTPUT" }
-  | { status: "TIMEOUT" }
-  | { status: "RATE_LIMIT" }
-  | { status: "API_ERROR"; message: string }
-  | { status: "INVALID_RESPONSE"; message: string };
-
+  | { status: "MISSING_KEY" | "REFUSAL" | "INCOMPLETE_OUTPUT" | "TIMEOUT" | "RATE_LIMIT" }
+  | { status: "API_ERROR" | "INVALID_RESPONSE"; message: string };
 export interface CoachingRequest {
   payload: CoachingPromptPayload;
   gamePlies: Set<number>;
   selectedPlies: Set<number>;
   engineQuality: Map<number, MoveQuality>;
-  model?: string;
+  signal?: AbortSignal;
 }
-
 export interface CoachingClient {
   requestCoaching(request: CoachingRequest): Promise<CoachingOutcome>;
 }
 
+// Claude's wire schema supports shape/enums but not these bounds. The shared
+// prompt describes them and the original Zod schema still enforces every bound.
+export function providerSchemaShape(schema: object): Record<string, unknown> {
+  const unsupported = new Set(["minimum", "maximum", "minLength", "maxLength", "maxItems", "minItems"]);
+  function visit(value: unknown): unknown {
+    if (Array.isArray(value)) return value.map(visit);
+    if (value && typeof value === "object") return Object.fromEntries(Object.entries(value).filter(([key]) => !unsupported.has(key)).map(([key, child]) => [key, visit(child)]));
+    return value;
+  }
+  return visit(schema) as Record<string, unknown>;
+}
+
+function validateResponse(text: string, request: CoachingRequest, model: string): CoachingOutcome {
+  let parsed: unknown;
+  try { parsed = JSON.parse(text); } catch { return { status: "INVALID_RESPONSE", message: "Response was not valid JSON." }; }
+  const validated = coachingResponseSchema.safeParse(parsed);
+  if (!validated.success) return { status: "INVALID_RESPONSE", message: "Coaching did not match the required format." };
+  const { annotation } = crossCheckCoachingResponse({ ...request, response: validated.data, model });
+  return annotation ? { status: "OK", annotation } : { status: "INVALID_RESPONSE", message: "Coaching referenced unsupported moments." };
+}
+const sdkOptions = { timeout: PROVIDER_TIMEOUT_MS, maxRetries: PROVIDER_MAX_RETRIES };
 export function createAnthropicClient(apiKey?: string): Anthropic {
-  return new Anthropic({ apiKey: apiKey ?? process.env.ANTHROPIC_API_KEY });
+  return new Anthropic({ apiKey: apiKey ?? process.env.ANTHROPIC_API_KEY, ...sdkOptions });
+}
+export function createOpenAIClient(apiKey?: string): OpenAI {
+  return new OpenAI({ apiKey: apiKey ?? process.env.OPENAI_API_KEY, ...sdkOptions });
 }
 
 export class AnthropicCoachingClient implements CoachingClient {
-  constructor(private readonly client: Anthropic) {}
-
+  constructor(private readonly client: Anthropic, private readonly model: string = COACHING_MODEL) {}
   async requestCoaching(request: CoachingRequest): Promise<CoachingOutcome> {
-    const { payload, gamePlies, selectedPlies, engineQuality } = request;
-    const model = request.model ?? COACHING_MODEL;
-
-    let rawText: string;
-    let stopReason: string | null | undefined;
-
     try {
       const response = await this.client.messages.create({
-        model,
-        max_tokens: 4096,
-        system: payload.systemPrompt,
-        messages: [{ role: "user", content: payload.userMessage }],
-        output_config: {
-          format: {
-            type: "json_schema",
-            schema: payload.responseSchema as Record<string, unknown>,
-          },
-        },
-      });
-
-      stopReason = response.stop_reason;
-
-      if (stopReason === "refusal") return { status: "REFUSAL" };
-      if (stopReason === "max_tokens") return { status: "INCOMPLETE_OUTPUT" };
-
+        model: this.model, max_tokens: 4096,
+        system: request.payload.systemPrompt,
+        messages: [{ role: "user", content: request.payload.userMessage }],
+        output_config: { format: { type: "json_schema", schema: providerSchemaShape(request.payload.responseSchema) } },
+      }, { signal: request.signal });
+      if (response.stop_reason === "refusal") return { status: "REFUSAL" };
+      if (response.stop_reason === "max_tokens") return { status: "INCOMPLETE_OUTPUT" };
       const block = response.content.find(b => b.type === "text");
-      if (!block || block.type !== "text") {
-        return { status: "INVALID_RESPONSE", message: "No text block in response." };
-      }
-      rawText = block.text;
-    } catch (err) {
-      if (err instanceof Anthropic.AuthenticationError) return { status: "MISSING_KEY" };
-      if (err instanceof Anthropic.RateLimitError) return { status: "RATE_LIMIT" };
-      if (err instanceof Anthropic.APIConnectionError) return { status: "TIMEOUT" };
-      if (err instanceof Anthropic.InternalServerError) return { status: "API_ERROR", message: err.message };
-      if (err instanceof Anthropic.APIError) return { status: "API_ERROR", message: err.message };
-      throw err;
+      if (!block || block.type !== "text") return { status: "INVALID_RESPONSE", message: "No text block in response." };
+      return validateResponse(block.text, request, response.model);
+    } catch (error) {
+      if (error instanceof Anthropic.AuthenticationError) return { status: "MISSING_KEY" };
+      if (error instanceof Anthropic.RateLimitError) return { status: "RATE_LIMIT" };
+      if (request.signal?.aborted || error instanceof Anthropic.APIConnectionError) return { status: "TIMEOUT" };
+      if (error instanceof Anthropic.APIError) return { status: "API_ERROR", message: "Coaching provider request failed." };
+      throw error;
     }
-
-    let parsed: unknown;
-    try {
-      parsed = JSON.parse(rawText);
-    } catch {
-      return { status: "INVALID_RESPONSE", message: "Response was not valid JSON." };
-    }
-
-    const schemaResult = coachingResponseSchema.safeParse(parsed);
-    if (!schemaResult.success) {
-      return { status: "INVALID_RESPONSE", message: schemaResult.error.message };
-    }
-
-    const { result, annotation } = crossCheckCoachingResponse({
-      response: schemaResult.data,
-      gamePlies,
-      selectedPlies,
-      engineQuality,
-      model,
-    });
-
-    if (!result.ok || !annotation) {
-      return { status: "INVALID_RESPONSE", message: result.errors.map(e => e.message).join("; ") };
-    }
-
-    return { status: "OK", annotation };
   }
 }
-
-export function createCoachingClient(): CoachingClient {
-  if (!process.env.ANTHROPIC_API_KEY?.trim()) {
-    return { requestCoaching: async () => ({ status: "MISSING_KEY" }) };
+export class OpenAICoachingClient implements CoachingClient {
+  constructor(private readonly client: OpenAI, private readonly model: string = PROVIDERS.OPENAI.model) {}
+  async requestCoaching(request: CoachingRequest): Promise<CoachingOutcome> {
+    try {
+      const response = await this.client.responses.create({
+        model: this.model, store: false, max_output_tokens: 8192,
+        reasoning: { effort: "low" },
+        instructions: request.payload.systemPrompt, input: request.payload.userMessage,
+        text: { format: { type: "json_schema", name: "chess_coaching", strict: true, schema: providerSchemaShape(request.payload.responseSchema) } },
+      }, { signal: request.signal });
+      if (response.output.some(item => item.type === "message" && item.content.some(block => block.type === "refusal"))) return { status: "REFUSAL" };
+      if (response.status === "incomplete") return { status: "INCOMPLETE_OUTPUT" };
+      if (response.status !== "completed") return { status: "API_ERROR", message: "Coaching provider request failed." };
+      return validateResponse(response.output_text, request, response.model);
+    } catch (error) {
+      if (error instanceof OpenAI.AuthenticationError) return { status: "MISSING_KEY" };
+      if (error instanceof OpenAI.RateLimitError) return { status: "RATE_LIMIT" };
+      if (request.signal?.aborted || error instanceof OpenAI.APIConnectionError) return { status: "TIMEOUT" };
+      if (error instanceof OpenAI.APIError) return { status: "API_ERROR", message: "Coaching provider request failed." };
+      throw error;
+    }
   }
-  return new AnthropicCoachingClient(createAnthropicClient());
+}
+export function createCoachingClient(provider: CoachingProvider = DEFAULT_PROVIDER): CoachingClient {
+  providerSchema.parse(provider);
+  const config = PROVIDERS[provider];
+  if (!process.env[config.key]?.trim()) return { requestCoaching: async () => ({ status: "MISSING_KEY" }) };
+  return provider === "ANTHROPIC"
+    ? new AnthropicCoachingClient(createAnthropicClient(), config.model)
+    : new OpenAICoachingClient(createOpenAIClient(), config.model);
 }

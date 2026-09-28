@@ -4,7 +4,13 @@ import type { CoachingAnnotation } from "@/lib/coaching/contract";
 import type { MomentFacts } from "@/lib/coaching/prompt";
 import type { MoveAssessment } from "@/types/analysis";
 
-export const COACHING_LEASE_MS = 300_000;
+import { COACHING_LEASE_MS, DEFAULT_PROVIDER, PROVIDERS, type CoachingProvider } from "./providers";
+export { COACHING_LEASE_MS } from "./providers";
+export interface CoachingRunOptions {
+  provider: CoachingProvider;
+  model: string;
+  expectedRevision?: number;
+}
 
 export interface CoachingLoadResult {
   game: {
@@ -36,11 +42,10 @@ export interface CoachingRepository {
   load(id: string): Promise<CoachingLoadResult | null>;
   claim(id: string): Promise<boolean>;
   save(gameId: string, runId: string, annotation: CoachingAnnotation, moveIds: Map<number, string>): Promise<void>;
-  complete(id: string): Promise<void>;
   fail(id: string, message: string): Promise<void>;
 }
 
-export function createCoachingRepository(db: PrismaClient): CoachingRepository {
+export function createCoachingRepository(db: PrismaClient, options: CoachingRunOptions = { provider: DEFAULT_PROVIDER, model: PROVIDERS[DEFAULT_PROVIDER].model }): CoachingRepository {
   const token = randomUUID();
   const lease = () => new Date(Date.now() + COACHING_LEASE_MS);
 
@@ -110,13 +115,15 @@ export function createCoachingRepository(db: PrismaClient): CoachingRepository {
       const result = await db.game.updateMany({
         where: {
           id,
+          ...(options.expectedRevision === undefined ? {} : { coachingRevision: options.expectedRevision }),
           OR: [
             { analysisStatus: "ENGINE_COMPLETED" },
+            ...(options.expectedRevision === undefined ? [] : [{ analysisStatus: "COMPLETED" as const }]),
             { analysisStatus: "AI_RUNNING", analysisLeaseUntil: { lt: new Date() } },
             { analysisStatus: "AI_RUNNING", analysisLeaseUntil: null },
           ],
         },
-        data: { analysisStatus: "AI_RUNNING", analysisError: null, analysisToken: token, analysisLeaseUntil: lease() },
+        data: { analysisStatus: "AI_RUNNING", analysisError: null, analysisToken: token, analysisLeaseUntil: lease(), coachingRevision: { increment: 1 }, coachingRunProvider: options.provider, coachingRunModel: options.model },
       });
       return result.count === 1;
     },
@@ -136,9 +143,14 @@ export function createCoachingRepository(db: PrismaClient): CoachingRepository {
             coachingStrengths: annotation.strengths,
             coachingImprovements: annotation.improvements,
             coachingModel: annotation.model,
+            coachingProvider: options.provider,
+            analysisStatus: "COMPLETED", analysisError: null, analysisToken: null, analysisLeaseUntil: null,
           },
         });
 
+        // Delete and recreate within the same transaction; rollback preserves the
+        // previous complete review if any annotation or final write fails.
+        await tx.moveCoachingAnnotation.deleteMany({ where: { move: { gameId } } });
         for (const moment of annotation.moments) {
           const moveId = moveIds.get(moment.ply);
           if (!moveId) throw new Error(`No move ID for ply ${moment.ply}.`);
@@ -151,32 +163,24 @@ export function createCoachingRepository(db: PrismaClient): CoachingRepository {
             lesson: moment.lesson,
             category: moment.category,
             model: annotation.model,
+            provider: options.provider,
           };
-          await tx.moveCoachingAnnotation.upsert({
-            where: { moveId },
-            create: data,
-            update: {
-              runId, classification: moment.effectiveClassification,
-              headline: moment.headline ?? null, explanation: moment.explanation,
-              lesson: moment.lesson, category: moment.category, model: annotation.model,
-            },
-          });
+          await tx.moveCoachingAnnotation.create({ data });
         }
       });
     },
 
-    async complete(id) {
-      const result = await db.game.updateMany({
-        where: { id, analysisToken: token, analysisStatus: "AI_RUNNING", analysisLeaseUntil: { gt: new Date() } },
-        data: { analysisStatus: "COMPLETED", analysisError: null, analysisToken: null, analysisLeaseUntil: null },
-      });
-      if (result.count !== 1) throw new Error("Coaching ownership expired.");
-    },
-
     async fail(id, message) {
-      await db.game.updateMany({
-        where: { id, analysisToken: token, analysisStatus: "AI_RUNNING" },
-        data: { analysisStatus: "ENGINE_COMPLETED", analysisError: message, analysisToken: null, analysisLeaseUntil: null },
+      // A failed replacement preserves the prior complete review. Live ownership
+      // is required even on failure, so expired runs cannot change recovery state.
+      await db.$transaction(async tx => {
+        for (const hasSummary of [true, false]) {
+          await tx.game.updateMany({
+            where: { id, analysisToken: token, analysisStatus: "AI_RUNNING", analysisLeaseUntil: { gt: new Date() },
+              coachingSummary: hasSummary ? { not: null } : null },
+            data: { analysisStatus: hasSummary ? "COMPLETED" : "ENGINE_COMPLETED", analysisError: message, analysisToken: null, analysisLeaseUntil: null },
+          });
+        }
       });
     },
   };

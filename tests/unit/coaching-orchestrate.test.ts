@@ -1,3 +1,4 @@
+import { COACHING_DEADLINE_MS, COACHING_LEASE_MS } from "@/lib/coaching/providers";
 import { expect, it, vi, describe } from "vitest";
 import { coachGame } from "@/lib/coaching/orchestrate";
 import type { CoachingRepository, CoachingLoadResult } from "@/lib/coaching/repository";
@@ -90,7 +91,6 @@ function makeRepository(overrides: Partial<CoachingRepository> = {}): CoachingRe
     load: vi.fn().mockResolvedValue(makeLoadResult()),
     claim: vi.fn().mockResolvedValue(true),
     save: vi.fn().mockResolvedValue(undefined),
-    complete: vi.fn().mockResolvedValue(undefined),
     fail: vi.fn().mockResolvedValue(undefined),
     ...overrides,
   };
@@ -103,7 +103,6 @@ describe("coachGame", () => {
     const result = await coachGame("game-1", repo, client);
     expect(result).toEqual({ status: "COMPLETED", annotatedMoments: 1 });
     expect(repo.save).toHaveBeenCalledOnce();
-    expect(repo.complete).toHaveBeenCalledOnce();
   });
 
   it("returns NOT_FOUND when repository.load returns null", async () => {
@@ -136,7 +135,6 @@ describe("coachGame", () => {
     if (result.status !== "AI_FAILED") return;
     expect(result.code).toBe("MISSING_KEY");
     expect(repo.fail).toHaveBeenCalledOnce();
-    expect(repo.complete).not.toHaveBeenCalled();
     expect(repo.save).not.toHaveBeenCalled();
   });
 
@@ -180,4 +178,30 @@ describe("coachGame", () => {
     expect(result).toMatchObject({ status: "FAILED", code: "COACHING_FAILED" });
     expect(repo.fail).not.toHaveBeenCalled();
   });
+});
+
+it("aborts a hung provider below the ownership lease and never saves its late result", async () => {
+  vi.useFakeTimers();
+  try {
+    const repo = makeRepository();
+    let finish!: (result: { status: "OK"; annotation: CoachingAnnotation }) => void;
+    let signal: AbortSignal | undefined;
+    const client = { requestCoaching: vi.fn((request: import("@/lib/coaching/ai-client").CoachingRequest) => {
+      signal = request.signal;
+      return new Promise<{ status: "OK"; annotation: CoachingAnnotation }>(resolve => { finish = resolve; });
+    }) };
+    const pending = coachGame("game-1", repo, client, "OPENAI");
+    await vi.advanceTimersByTimeAsync(COACHING_DEADLINE_MS);
+    expect(await pending).toMatchObject({ status: "AI_FAILED", code: "TIMEOUT" });
+    expect(COACHING_DEADLINE_MS).toBeLessThan(COACHING_LEASE_MS);
+    expect(signal?.aborted).toBe(true);
+    finish({ status: "OK", annotation: VALID_ANNOTATION });
+    await Promise.resolve();
+    expect(repo.save).not.toHaveBeenCalled();
+    expect(repo.fail).toHaveBeenCalledOnce();
+  } finally { vi.useRealTimers(); }
+});
+it("identifies the selected provider key on failure", async () => {
+  const result = await coachGame("game-1", makeRepository(), { requestCoaching: async () => ({ status: "MISSING_KEY" }) }, "OPENAI");
+  expect(result).toMatchObject({ status: "AI_FAILED", message: expect.stringContaining("OPENAI_API_KEY") });
 });

@@ -9,7 +9,7 @@ const blunderAnnotation: ReviewCoachingAnnotation = {
   explanation: "After Qd5 the queen is undefended and Black wins material immediately.",
   lesson: "Always check if your piece is en prise before moving.",
   category: "tactics.hanging_piece",
-  model: "claude-test",
+  model: "claude-test", provider: "ANTHROPIC",
 };
 
 const normalAnnotation: ReviewCoachingAnnotation = {
@@ -18,7 +18,7 @@ const normalAnnotation: ReviewCoachingAnnotation = {
   explanation: "Solid developing move.",
   lesson: "Development is key in the opening.",
   category: "opening.development",
-  model: "claude-test",
+  model: "claude-test", provider: "ANTHROPIC",
 };
 
 const mistakeAnnotation: ReviewCoachingAnnotation = {
@@ -27,7 +27,7 @@ const mistakeAnnotation: ReviewCoachingAnnotation = {
   explanation: "Moving the pawn exposes the king to a diagonal attack.",
   lesson: "Keep the pawn shield intact when the opponent has an active bishop.",
   category: "opening.king_safety",
-  model: "claude-test",
+  model: "claude-test", provider: "ANTHROPIC",
 };
 
 const longAnnotation: ReviewCoachingAnnotation = {
@@ -36,7 +36,7 @@ const longAnnotation: ReviewCoachingAnnotation = {
   explanation: "B".repeat(1000),
   lesson: "C".repeat(500),
   category: "calculation.missed_threat",
-  model: "claude-test",
+  model: "claude-test", provider: "ANTHROPIC",
 };
 
 function makeAnalysis(quality: ReviewAnalysis["quality"] = "normal"): ReviewAnalysis {
@@ -75,7 +75,7 @@ function makeCoachingSummary(overrides?: Partial<GameCoachingSummary>): GameCoac
     summary: "Solid game with one critical error.",
     strengths: ["Good opening", "Active pieces"],
     improvements: ["Avoid hanging pieces"],
-    model: "claude-test",
+    model: "claude-test", provider: "ANTHROPIC",
     ...overrides,
   };
 }

@@ -1,3 +1,4 @@
+import { COACHING_DEADLINE_MS, DEFAULT_PROVIDER, PROVIDERS, type CoachingProvider } from "./providers";
 import { randomUUID } from "node:crypto";
 import type { CoachingClient } from "@/lib/coaching/ai-client";
 import type { CoachingRepository } from "@/lib/coaching/repository";
@@ -18,13 +19,14 @@ export async function coachGame(
   id: string,
   repository: CoachingRepository,
   client: CoachingClient,
+  provider: CoachingProvider = DEFAULT_PROVIDER,
 ): Promise<CoachingOutcome> {
   let claimed = false;
   try {
     const loaded = await repository.load(id);
     if (!loaded) return { status: "NOT_FOUND" };
 
-    const hasEngine = loaded.moves.some(m => m.assessment !== null);
+    const hasEngine = loaded.moves.length > 0 && loaded.moves.every(m => m.assessment !== null);
     if (!hasEngine) return { status: "NO_ENGINE_DATA" };
 
     claimed = await repository.claim(id);
@@ -87,7 +89,7 @@ export async function coachGame(
         .map(a => [a.ply, a.assessment.quality] as [number, import("@/types/analysis").MoveQuality])
     );
 
-    const outcome = await client.requestCoaching({
+    const outcome = await requestWithinDeadline(client, {
       payload,
       gamePlies,
       selectedPlies,
@@ -95,7 +97,7 @@ export async function coachGame(
     });
 
     if (outcome.status !== "OK") {
-      const message = coachingFailureMessage(outcome.status);
+      const message = coachingFailureMessage(outcome.status, provider);
       try {
         await repository.fail(id, message);
       } catch {
@@ -107,7 +109,6 @@ export async function coachGame(
     const moveIds = new Map(loaded.moves.map(m => [m.ply, m.id]));
 
     await repository.save(id, runId, outcome.annotation, moveIds);
-    await repository.complete(id);
 
     return { status: "COMPLETED", annotatedMoments: outcome.annotation.moments.length };
   } catch {
@@ -123,9 +124,9 @@ export async function coachGame(
   }
 }
 
-function coachingFailureMessage(code: string): string {
+function coachingFailureMessage(code: string, provider: CoachingProvider): string {
   switch (code) {
-    case "MISSING_KEY": return "No AI API key configured. Engine review is available. Configure ANTHROPIC_API_KEY to enable coaching.";
+    case "MISSING_KEY": return `No AI API key configured for ${PROVIDERS[provider].label}. Engine review is available. Configure ${PROVIDERS[provider].key} to enable coaching.`;
     case "RATE_LIMIT": return "AI rate limit reached. Engine review is available. Retry in a moment.";
     case "TIMEOUT": return "AI request timed out. Engine review is available. Please retry.";
     case "REFUSAL": return "AI declined to coach this game. Engine review is available.";
@@ -134,4 +135,17 @@ function coachingFailureMessage(code: string): string {
     case "INVALID_RESPONSE": return "AI returned an invalid response. Engine review is available. Please retry.";
     default: return "Coaching failed. Engine review is available. Please retry.";
   }
+}
+
+async function requestWithinDeadline(client: CoachingClient, request: Parameters<CoachingClient["requestCoaching"]>[0]) {
+  const controller = new AbortController();
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  try {
+    return await Promise.race([
+      client.requestCoaching({ ...request, signal: controller.signal }),
+      new Promise<Awaited<ReturnType<CoachingClient["requestCoaching"]>>>(resolve => {
+        timer = setTimeout(() => { resolve({ status: "TIMEOUT" }); controller.abort(); }, COACHING_DEADLINE_MS);
+      }),
+    ]);
+  } finally { clearTimeout(timer); }
 }

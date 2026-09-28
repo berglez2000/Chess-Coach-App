@@ -21,6 +21,16 @@ enum AnalysisStatus {
   FAILED
 }
 
+enum CoachingProvider {
+  ANTHROPIC
+  OPENAI
+}
+
+model AppSettings {
+  id String @id @default("local")
+  coachingProvider CoachingProvider @default(ANTHROPIC)
+}
+
 model Game {
   id             String         @id @default(cuid())
   pgn            String         @db.Text
@@ -44,6 +54,10 @@ model Game {
   coachingSummary      String?   @db.Text
   coachingStrengths    String[]
   coachingImprovements String[]
+  coachingProvider     CoachingProvider?
+  coachingRevision     Int @default(0)
+  coachingRunProvider  CoachingProvider?
+  coachingRunModel     String?
   coachingModel        String?
   createdAt      DateTime       @default(now())
   updatedAt      DateTime       @updatedAt
@@ -103,5 +117,6 @@ model MoveCoachingAnnotation {
   lesson           String   @db.Text
   category         String
   model            String
+  provider         CoachingProvider @default(ANTHROPIC)
   annotatedAt      DateTime @default(now())
 }

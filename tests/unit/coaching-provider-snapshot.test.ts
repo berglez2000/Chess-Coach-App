@@ -1,0 +1,23 @@
+import { expect, it, vi } from "vitest";
+const mocks = vi.hoisted(() => ({ getProvider: vi.fn(), createRepository: vi.fn(() => ({})), createClient: vi.fn(() => ({})), coach: vi.fn() }));
+vi.mock("@/lib/db/client", () => ({ getDb: () => ({}) }));
+vi.mock("@/lib/coaching/settings", () => ({ getCoachingProvider: mocks.getProvider }));
+vi.mock("@/lib/coaching/repository", () => ({ createCoachingRepository: mocks.createRepository }));
+vi.mock("@/lib/coaching/ai-client", () => ({ createCoachingClient: mocks.createClient }));
+vi.mock("@/lib/coaching/orchestrate", () => ({ coachGame: mocks.coach }));
+import { coachSavedGame } from "@/lib/coaching/client";
+import { PROVIDERS } from "@/lib/coaching/providers";
+it("captures one provider/model before the run and ignores settings changes during it", async () => {
+  let selected = "ANTHROPIC";
+  mocks.getProvider.mockImplementation(async () => selected);
+  let finish!: (result: { status: "COMPLETED" }) => void;
+  mocks.coach.mockImplementation(() => new Promise(resolve => { finish = resolve; }));
+  const pending = coachSavedGame("game", 3);
+  await vi.waitFor(() => expect(mocks.coach).toHaveBeenCalledOnce());
+  selected = "OPENAI";
+  finish({ status: "COMPLETED" });
+  await pending;
+  expect(mocks.getProvider).toHaveBeenCalledOnce();
+  expect(mocks.createClient).toHaveBeenCalledWith("ANTHROPIC");
+  expect(mocks.createRepository).toHaveBeenCalledWith({}, { provider: "ANTHROPIC", model: PROVIDERS.ANTHROPIC.model, expectedRevision: 3 });
+});

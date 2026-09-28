@@ -1,3 +1,4 @@
+import type { CoachingProvider } from "@/lib/coaching/providers";
 import type { ReviewAnalysis } from "@/lib/analysis/review";
 import type { CoachingCategory, CoachingClassification } from "@/lib/coaching/contract";
 import type { ChessColor, ParsedGame, ParsedGameMove } from "./game";
@@ -11,6 +12,7 @@ export interface ReviewCoachingAnnotation {
   lesson: string;
   category: CoachingCategory;
   model: string;
+  provider: CoachingProvider;
 }
 
 export interface GameCoachingSummary {
@@ -18,6 +20,7 @@ export interface GameCoachingSummary {
   strengths: string[];
   improvements: string[];
   model: string;
+  provider: CoachingProvider;
 }
 
 export type ReviewGame = Pick<ParsedGame, "initialFen" | "metadata"> & {
@@ -37,6 +40,7 @@ export interface GameSummary {
   createdAt: string;
 }
 export interface SavedGame extends GameSummary {
+  coachingRevision: number;
   analysisError: string | null;
   analysisLeaseUntil: string | null;
   game: ReviewGame;

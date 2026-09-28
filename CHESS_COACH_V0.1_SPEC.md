@@ -35,12 +35,12 @@ Its essential loop is:
 3. Store the game locally.
 4. Analyze it with Stockfish.
 5. Select important moments.
-6. Ask the OpenAI API for structured coaching explanations.
+6. Ask the selected coaching provider API (Anthropic or OpenAI) for structured coaching explanations.
 7. Validate the AI response.
 8. Save the complete analysis.
 9. Review the game on an interactive chessboard.
 
-Everything except the OpenAI API runs locally. The OpenAI API key is stored in a local environment file and is never sent to the browser.
+Everything except the selected coaching provider runs locally. Anthropic and OpenAI keys are stored in a local environment file and are never sent to the browser.
 
 ### V0.2 — deployed application
 
@@ -80,7 +80,7 @@ These are ideas, not V0.1 requirements:
 - Move navigation with Previous, Next, and direct move selection.
 - Stockfish analysis with evaluations, best moves, and principal variations.
 - Identification and classification of critical moves.
-- OpenAI structured output for summaries, explanations, lessons, and categories.
+- Anthropic and OpenAI structured output for summaries, explanations, lessons, and categories.
 - Runtime validation of AI output before persistence.
 - Display of critical moments beside the correct board position.
 - Useful loading, success, empty, and error states.
@@ -108,7 +108,7 @@ These are ideas, not V0.1 requirements:
 1. **Educational value over engine noise.** Most ordinary moves need no commentary. Highlight roughly 5–10 meaningful moments in a normal game.
 2. **Stockfish establishes chess facts.** The language model explains those facts; it must not invent objective evaluations.
 3. **The application owns the contract.** AI output must conform to a versioned, validated schema.
-4. **The app works without AI.** If the OpenAI request fails, engine analysis should remain viewable and retryable.
+4. **The app works without AI.** If the coaching request fails, engine analysis should remain viewable and retryable.
 5. **Personal mistakes become lessons.** Reviews should preserve game context and teach transferable ideas. Turning those mistakes into puzzles is a future extension.
 6. **Build vertical slices.** Every milestone should leave a demonstrably working application.
 7. **Local-first simplicity.** Avoid queues, microservices, Redis, Kubernetes, and production infrastructure in V0.1.
@@ -124,7 +124,7 @@ These are ideas, not V0.1 requirements:
 | Database | PostgreSQL in Docker | Local persistent storage |
 | ORM | Prisma | Schema, migrations, typed queries |
 | Engine | Stockfish | Objective position analysis |
-| AI | OpenAI API | Coaching summaries and explanations |
+| AI | Anthropic (Claude) or OpenAI (GPT) | Coaching summaries and explanations |
 | Validation | Zod | Requests, application DTOs, AI output |
 | Testing | Vitest and React Testing Library | Unit/component tests |
 | E2E testing | Playwright, when useful | Critical user flows |
@@ -143,10 +143,10 @@ Next.js on localhost
   |-- application services
   |-- Prisma --> PostgreSQL in Docker
   |-- Stockfish adapter --> local engine process
-  `-- OpenAI adapter --> OpenAI API
+  `-- coaching provider adapters --> selected coaching provider API (Anthropic or OpenAI)
 ```
 
-The browser talks only to the local Next.js application. It must never call OpenAI directly.
+The browser talks only to the local Next.js application. It must never call either provider directly.
 
 Recommended dependency direction:
 
@@ -157,10 +157,10 @@ application services
     v
 domain types and rules
     v
-adapters: Prisma, Stockfish, OpenAI
+adapters: Prisma, Stockfish, Anthropic, OpenAI
 ```
 
-Keep domain data independent from library-specific response objects. Convert Stockfish, Prisma, and OpenAI results at adapter boundaries.
+Keep domain data independent from library-specific response objects. Convert Stockfish, Prisma, and provider results at adapter boundaries.
 
 ## 8. Main user journeys
 
@@ -177,7 +177,7 @@ Keep domain data independent from library-specific response objects. Convert Sto
 9. Engine results are saved incrementally or transactionally.
 10. Critical positions are selected.
 11. Status changes to `AI_RUNNING`.
-12. One structured OpenAI request is sent for the game, rather than one request per move.
+12. One structured coaching request is sent for the game, rather than one request per move.
 13. The response is validated with Zod and cross-checked against known plies.
 14. Valid annotations and the game summary are saved.
 15. Status becomes `COMPLETED`.
@@ -237,6 +237,12 @@ Supporting feedback:
 - AI explanation panel.
 - Game summary.
 - Retry analysis action when failed or incomplete.
+
+### `/settings`
+
+Persist a local default coaching provider: Anthropic (Claude) or OpenAI (GPT). Default to Anthropic for compatibility. Display whether each server-side key is configured; never expose or accept keys in the browser. The import form stays at three controls. Changing this setting alone makes no provider calls and leaves existing reviews unchanged.
+
+New coaching runs capture their provider and configured model at startup. Reviews show the provider and actual response model saved with their coaching. Explicit regeneration uses the selected provider and existing engine results, with no automatic fallback. Replace the summary, annotations, and completion status in one transaction, removing obsolete annotations. Failed or interrupted regeneration preserves previous valid coaching. Fence claims and writes by lease/token and require the displayed coaching revision for regeneration, so stale submissions cannot replace newer results. Bound API timeouts and retries below the five-minute ownership lease.
 
 ## 10. Suggested project organization
 
@@ -437,11 +443,11 @@ Do not send all moves for detailed annotation. Select approximately 5–10 momen
 
 Avoid several near-duplicate moments from the same tactical sequence.
 
-## 14. OpenAI coaching pipeline
+## 14. Selectable coaching pipeline
 
 ### Security
 
-- Store `OPENAI_API_KEY` in `.env.local`.
+- Store `ANTHROPIC_API_KEY` and/or `OPENAI_API_KEY` in `.env.local`.
 - Never prefix it with `NEXT_PUBLIC_`.
 - Never return it in API responses or logs.
 - Commit an `.env.example` containing names only, never real values.
@@ -494,7 +500,7 @@ A conceptual response shape:
 }
 ```
 
-Use the OpenAI SDK's supported structured-output mechanism where practical, plus Zod validation in application code.
+Use each provider SDK’s supported structured-output mechanism, plus Zod validation in application code.
 
 ### Validation and cross-checking
 
@@ -615,8 +621,8 @@ Expected errors include:
 - database unavailable;
 - Stockfish executable unavailable;
 - engine timeout or malformed output;
-- missing OpenAI key;
-- OpenAI network/rate-limit/API error;
+- missing selected-provider key;
+- provider network/rate-limit/API error;
 - invalid structured response;
 - a response referencing nonexistent moves;
 - interrupted analysis.
@@ -649,7 +655,7 @@ Prioritize:
 - Import a fixture PGN into a test database.
 - Confirm game and moves are persisted correctly.
 - Use a deterministic mocked engine adapter to test analysis orchestration.
-- Use a mocked OpenAI adapter with valid and invalid structured responses.
+- Use mocked coaching provider adapters with valid and invalid structured responses.
 - Confirm failed AI analysis preserves engine results.
 
 ### Component/E2E tests
@@ -659,7 +665,7 @@ Prioritize:
 - Import shows validation errors.
 - Import requires a valid White/Black selection and preserves it for board orientation and coaching.
 
-Do not make unit tests depend on paid OpenAI requests. Keep real-engine smoke tests separate from fast deterministic tests.
+Do not make unit tests depend on paid coaching requests. Keep real-engine smoke tests separate from fast deterministic tests.
 
 ## 20. Environment and local setup
 
@@ -668,7 +674,7 @@ Expected variables may include:
 ```dotenv
 DATABASE_URL=
 OPENAI_API_KEY=
-OPENAI_MODEL=
+ANTHROPIC_API_KEY=
 STOCKFISH_PATH=
 STOCKFISH_DEPTH=
 ```
@@ -734,7 +740,7 @@ Exit criteria: review works with objective engine data and no AI dependency.
 
 - Define structured schema.
 - Build prompt from engine-selected moments.
-- Implement server-only OpenAI adapter.
+- Implement server-only coaching provider adapters.
 - Validate and persist summaries/annotations.
 - Add retryable failure handling.
 
@@ -833,7 +839,7 @@ When using this specification in Codex, use the following operating rules:
 4. Do not redesign settled architecture without explaining a concrete blocker.
 5. Prefer small, typed, testable modules.
 6. Validate data at trust boundaries.
-7. Keep secrets and OpenAI calls server-side.
+7. Keep secrets and provider calls server-side.
 8. Never use AI output as an unvalidated database payload.
 9. Do not invent engine facts in tests or UI; use explicit mocks/fixtures.
 10. Add or update tests for changed behavior.
@@ -858,7 +864,7 @@ V0.1 is complete when all of the following are true:
 - All moves replay correctly on the board.
 - Stockfish results are generated and stored consistently.
 - Important moves are highlighted without annotating every routine move.
-- OpenAI produces validated explanations grounded in supplied engine data.
+- Both selectable providers produce validated explanations grounded in supplied engine data.
 - Engine analysis remains useful if AI analysis fails.
 - A summary and critical moments are easy to navigate.
 - Refreshes/restarts do not lose saved games.

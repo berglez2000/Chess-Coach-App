@@ -30,7 +30,7 @@ Additional planned scripts are introduced by their owning tasks: `test:integrati
 | M3 — Stockfish | 010–015 | Engine-backed review works without AI. |
 | M4 — AI coach | 016–020 | Validated coaching is saved, synchronized, and retryable. |
 | M5 — Review polish | 021–023 | Responsive review, positive highlights, and recovery are coherent. |
-| M6 — Release hardening | 024–026 | Minimal dashboard and verified, documented local workflow. |
+| M6 — Release hardening | 024–027 | Minimal dashboard and verified, documented local workflow. |
 
 ## Planning defaults
 
@@ -1164,11 +1164,11 @@ Verification on macOS arm64 / Node 24.21.0:
 - Default `npm run build` reproduced the existing Turbopack worker-port permission failure. Online dependency audit still reports four high-severity entries. Tracked-file secret-pattern and obsolete-import-path scans found no matches.
 - Full evidence for every specification definition-of-done item, measured-workload limits, cleanup, and the existing coaching timeout/lease risk is recorded in [docs/release-acceptance.md](docs/release-acceptance.md).
 
-BLOCKED: neither provider key is configured, so live coaching acceptance cannot pass. The implemented Anthropic provider also differs from the specification's OpenAI requirement; that decision/migration remains outside this documentation task. The default build failure remains explicit despite the passing webpack fallback. TASK-026 must not be marked DONE until the required release evidence is supplied.
+BLOCKED: neither provider key is configured, so live coaching acceptance cannot pass. TASK-027 addresses the provider/specification mismatch through the approved dual-provider implementation. The default build failure remains explicit despite the passing webpack fallback. TASK-026 must not be marked DONE until the required live release evidence and build decision are supplied.
 
 ### TASK-027 — Support selectable Claude and GPT coaching
 
-Status: TODO
+Status: DONE
 Milestone: M6
 Dependencies: TASK-025
 
@@ -1212,3 +1212,19 @@ Simultaneous calls to both providers, side-by-side model comparison, coaching ve
 #### Notes
 
 User-approved scope addition following TASK-026 release review. This task intentionally depends on completed TASK-025 rather than blocked TASK-026, avoiding a dependency cycle. Complete this implementation before rerunning TASK-026 release acceptance. Creating this task does not implement the feature or mark any existing release blocker resolved.
+
+
+Implemented dual-provider coaching with a persistent `/settings` selector, server-side key availability, OpenAI SDK 7.23.0 Responses structured output (`gpt-5.4-mini`), and the existing Anthropic Messages adapter (`claude-haiku-4-5`). Updated the specification and setup docs to the approved provider choice. The import form remains three controls. Missing keys never cause fallback, and changing settings makes no AI request or saved-review mutation.
+
+The additive migration stores settings, provider/model attribution, active-run configuration, and a coaching revision. Legacy reviews retain their text and original models and are attributed to Anthropic. Runs snapshot the selected provider/model; explicit regeneration uses existing Stockfish rows and a revision-checked claim. Summary, annotations, and completion are replaced atomically, removing obsolete annotations; failures retain the previous complete review. Expired/stale owners cannot save or record failures over a recovered run. Both SDKs use a 120-second timeout and zero automatic retries, with an aborting 150-second application deadline below the five-minute lease. Provider wire schemas omit unsupported length/range constraints while the original shared validator still enforces them before persistence.
+
+Verification passed on Node 24.21.0:
+
+- `npm run lint`, `npm run typecheck`, and `npm test`: 31 files, 341 tests passed. New coverage includes OpenAI structured output/refusal/incomplete/error paths, engine-authoritative validation, actual response-model attribution, safe settings input/availability, provider snapshots, explicit regeneration, and timeout/late-result handling.
+- `npm run test:integration`: 8 files, 41 tests passed. Tests apply the migration to legacy records in an isolated schema, verify settings through new database clients, and cover cross-provider replacement, obsolete-annotation removal, unchanged engine rows, rollback/failure preservation, stale revisions, active ownership, and interrupted regeneration.
+- `npm run test:e2e -- --repeat-each=2`: all six Chromium runs passed (Anthropic/White desktop, OpenAI/Black mobile, missing-key recovery, each twice). Both provider-switch directions preserve old coaching on failure, replace it on retry, keep engine rows unchanged, reject stale requests, and persist across reload. Initial fixture failure exposed separate Next.js route module state; explicit fixture metadata fixed the test adapter without changing product behavior.
+- `npm run build -- --webpack` passed. Plain `npm run build` reproduced the existing Turbopack CSS worker-port permission failure; the default script is unchanged and that limitation remains under TASK-026.
+- A separate fresh `task027_release` database accepted all five migrations. Against the normal production build, Chromium verified the fresh Anthropic default, saved OpenAI selection, missing-key availability, and 390px layout. Stopping/restarting the production server retained the selected provider. The server and temporary database were removed; development data was untouched. Browser tests restored their prior isolated settings and cleaned their own games.
+- Both `ANTHROPIC_API_KEY` and `OPENAI_API_KEY` are absent (presence only checked). No paid calls were made. Both live-provider acceptance checks and durations remain explicitly blocked under TASK-026, as permitted by this task. The provider/specification mismatch and timeout/lease mismatch are resolved; release-wide build/live acceptance is not claimed.
+
+To use the feature locally, apply `npx prisma migrate deploy`, regenerate the client with `npm run db:generate`, configure either or both server-side keys, restart, and choose the default in Settings. Use Regenerate coaching on a completed review to switch its coaching provider without rerunning Stockfish.

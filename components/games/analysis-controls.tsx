@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import type { AnalysisStatus } from "@/types/saved-game";
 
 const stages: Record<AnalysisStatus, string> = {
@@ -13,8 +14,8 @@ const stages: Record<AnalysisStatus, string> = {
   FAILED: "Analysis stopped. Your game and saved move results are available below.",
 };
 
-export function AnalysisControls({ gameId, status, error, leaseUntil, autoStart = false }: {
-  gameId: string; status: AnalysisStatus; error: string | null; leaseUntil: string | null; autoStart?: boolean;
+export function AnalysisControls({ gameId, status, error, leaseUntil, coachingRevision = 0, autoStart = false }: {
+  gameId: string; status: AnalysisStatus; error: string | null; leaseUntil: string | null; autoStart?: boolean; coachingRevision?: number;
 }) {
   const router = useRouter();
   const [pending, setPending] = useState(false);
@@ -27,12 +28,12 @@ export function AnalysisControls({ gameId, status, error, leaseUntil, autoStart 
   const canRun = status !== "COMPLETED";
   const coaching = status === "ENGINE_COMPLETED" || status === "AI_RUNNING";
 
-  const analyze = useCallback(async () => {
+  const analyze = useCallback(async (regenerate = false) => {
     if (submitted.current) return;
     submitted.current = true;
     setPending(true); setMessage(null);
     try {
-      const response = await fetch(`/api/games/${gameId}/analyze`, { method: "POST" });
+      const response = await fetch(`/api/games/${gameId}/${regenerate ? "coaching" : "analyze"}`, regenerate ? { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ expectedRevision: coachingRevision }) } : { method: "POST" });
       const body = await response.json();
       if (!response.ok) setMessage(body.error?.message ?? "Analysis failed. Please retry.");
       else if (body.coaching?.message) setMessage(body.coaching.message);
@@ -42,7 +43,7 @@ export function AnalysisControls({ gameId, status, error, leaseUntil, autoStart 
       submitted.current = false;
       setPending(false); router.refresh();
     }
-  }, [gameId, router]);
+  }, [gameId, router, coachingRevision]);
 
   useEffect(() => {
     if (!running && !pending) return;
@@ -68,9 +69,13 @@ export function AnalysisControls({ gameId, status, error, leaseUntil, autoStart 
     <p role="status">{stages[status]}</p>
     {error && <p className="text-red-800">{error}</p>}
     {running && <p className="text-sm">Status updates automatically. An interrupted run can be retried after its recovery window{leaseUntil ? ` (until ${leaseUntil.replace("T", " ").slice(0, 19)} UTC)` : ""}. The server checks whether recovery is safe.</p>}
-    {canRun && <button onClick={analyze} disabled={pending || locked} className="rounded-lg bg-[#20382e] px-5 py-3 font-semibold text-white disabled:opacity-50">
+    {canRun && <button onClick={() => void analyze()} disabled={pending || locked} className="rounded-lg bg-[#20382e] px-5 py-3 font-semibold text-white disabled:opacity-50">
       {pending ? "Analyzing…" : locked ? "Analysis in progress…" : status === "PENDING" ? "Analyze game" : coaching ? "Retry coaching" : "Retry analysis"}
     </button>}
+    {status === "COMPLETED" && <div className="space-y-2">
+      <p className="text-sm">Regenerate using the provider saved in <Link href="/settings" className="underline">Settings</Link>. This makes a new AI request. Current coaching stays available until a replacement succeeds; Stockfish results are reused.</p>
+      <button onClick={() => void analyze(true)} disabled={pending} className="rounded-lg border border-[#20382e] px-5 py-3 font-semibold disabled:opacity-50">{pending ? "Generating coaching…" : "Regenerate coaching"}</button>
+    </div>}
     <button onClick={() => router.refresh()} className="ml-4 underline">Refresh status</button>
     {pending && <p className="text-sm">Request in progress. Saved stages update automatically; you can review saved moves below.</p>}
     {message && <p role="alert" className="text-red-800">{message}</p>}

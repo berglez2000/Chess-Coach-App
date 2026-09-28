@@ -1,3 +1,4 @@
+import { PROVIDERS } from "@/lib/coaching/providers";
 import type { GameCoachingSummary, ReviewGame, AnalysisStatus } from "@/types/saved-game";
 
 function ClassificationDot({ classification }: { classification: string }) {
@@ -42,6 +43,7 @@ export function CoachingSummaryPanel({ coaching, moves, status, onSelectPly }: {
   return (
     <section aria-labelledby="coaching-summary-heading" className="mt-8 rounded-lg border border-[#20382e]/20 bg-white p-5">
       <h3 id="coaching-summary-heading" className="text-lg font-semibold">Coaching summary</h3>
+      <p className="mt-2 text-sm">Coached by {PROVIDERS[coaching.provider].label} · {coaching.model}</p>
       <p className="mt-3 text-sm">{coaching.summary}</p>
 
       {coaching.strengths.length > 0 && (

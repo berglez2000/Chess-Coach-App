@@ -34,6 +34,13 @@ for (const color of ["WHITE", "BLACK"] as const) {
   test(`${color}: validation, saved review, synchronized coaching and AI-only retry`, async ({ page }) => {
     if (color === "BLACK") await page.setViewportSize({ width: 390, height: 844 });
     const player = `E2E-${process.env.CHESS_E2E_RUN_ID}-${color}-${randomUUID()}`;
+    const provider = color === "WHITE" ? "ANTHROPIC" : "OPENAI";
+    await page.goto("/settings");
+    await page.getByLabel("Coaching provider").selectOption(provider);
+    await page.getByRole("button", { name: "Save provider" }).click();
+    await expect(page.getByRole("status")).toHaveText("Coaching provider saved.");
+    await page.reload();
+    await expect(page.getByLabel("Coaching provider")).toHaveValue(provider);
     await page.goto("/games/new");
     await page.getByLabel("Your color").selectOption(color);
     await page.getByLabel("Game PGN").fill("1. e5 *");
@@ -43,7 +50,7 @@ for (const color of ["WHITE", "BLACK"] as const) {
     await expect(page.getByLabel("Game PGN")).toHaveValue("1. e5 *");
     await expect(page).toHaveURL(/\/games\/new$/);
 
-    await page.getByLabel("Game PGN").fill(fixture.replace('[White "Aljaz"]', `[White "${player}"]`));
+    await page.getByLabel("Game PGN").fill(fixture.replace('[White "Aljaz"]', `[White "${player}"]`).replace('[Event "Local rapid"]', `[Event "Initial provider: ${provider}"]`));
     await page.getByRole("button", { name: "Import and Analyze" }).click();
     await expect(page).toHaveURL(/\/games\/[a-z0-9-]{20,}(?:\?.*)?$/);
     const id = new URL(page.url()).pathname.split("/").at(-1)!;
@@ -62,6 +69,8 @@ for (const color of ["WHITE", "BLACK"] as const) {
     const stored = database("read", id);
     expect(stored.userColor).toBe(color);
     expect(stored.analysisStatus).toBe("COMPLETED");
+    expect(stored.coachingProvider).toBe(provider);
+    expect(stored.coachingModel).toBe(`e2e-${provider}-fixture`);
     expect(engineRows(id)).toEqual(engineBefore);
     const annotated = stored.moves.filter(move => move.coachingAnnotation);
     expect(annotated.length).toBeGreaterThan(0);
@@ -107,5 +116,51 @@ for (const color of ["WHITE", "BLACK"] as const) {
     const conflict = await page.request.post(`/api/games/${id}/analyze`);
     expect(conflict.status()).toBe(409);
     expect(annotationCount(id)).toBe(annotated.length);
+
+    // Saving a different default does not mutate this completed review.
+    const replacementProvider = provider === "ANTHROPIC" ? "OPENAI" : "ANTHROPIC";
+    await page.goto("/settings");
+    await page.getByLabel("Coaching provider").selectOption(replacementProvider);
+    await page.getByRole("button", { name: "Save provider" }).click();
+    await expect(page.getByRole("status")).toHaveText("Coaching provider saved.");
+    expect(database("read", id).coachingProvider).toBe(provider);
+    const originalAnnotations = database("read", id).moves.map(m => m.coachingAnnotation);
+    await page.goto(`/games/${id}`);
+    await page.getByRole("button", { name: "Regenerate coaching" }).click();
+    await expect(page.getByRole("region", { name: "Game analysis" })).toContainText("AI service error");
+    expect(database("read", id).moves.map(m => m.coachingAnnotation)).toEqual(originalAnnotations);
+    expect(database("read", id).coachingProvider).toBe(provider);
+    await expect(page.getByRole("button", { name: "Regenerate coaching" })).toBeEnabled();
+    const staleRevision = database("read", id).coachingRevision;
+    await page.getByRole("button", { name: "Regenerate coaching" }).click();
+    await expect(page.getByText(`Coached by ${replacementProvider === "OPENAI" ? "OpenAI (GPT)" : "Anthropic (Claude)"} · e2e-${replacementProvider}-fixture`)).toBeVisible();
+    const replaced = database("read", id);
+    expect(replaced.coachingProvider).toBe(replacementProvider);
+    expect(annotationCount(id)).toBe(1);
+    expect(replaced.moves.filter(m => m.coachingAnnotation).every(m => m.coachingAnnotation?.provider === replacementProvider)).toBe(true);
+    expect(engineRows(id)).toEqual(engineBefore);
+    expect((await page.request.post(`/api/games/${id}/coaching`, { data: { expectedRevision: staleRevision } })).status()).toBe(409);
+    await page.reload();
+    await expect(page.getByText(`Coached by ${replacementProvider === "OPENAI" ? "OpenAI (GPT)" : "Anthropic (Claude)"} · e2e-${replacementProvider}-fixture`)).toBeVisible();
   });
 }
+
+test("unavailable provider shows configuration guidance and preserves engine review", async ({ page }) => {
+  await page.goto("/settings");
+  await expect(page.getByText(/OpenAI \(GPT\): Unavailable/)).toBeVisible();
+  await page.getByLabel("Coaching provider").selectOption("OPENAI");
+  await page.getByRole("button", { name: "Save provider" }).click();
+  await expect(page.getByRole("status")).toHaveText("Coaching provider saved.");
+  await page.goto("/games/new");
+  await page.getByLabel("Your color").selectOption("WHITE");
+  await page.getByLabel("Game PGN").fill(fixture.replace('[White "Aljaz"]', `[White "E2E-${process.env.CHESS_E2E_RUN_ID}-MISSING"]`).replace('[Event "Local rapid"]', '[Event "Missing-key fixture"]'));
+  await page.getByRole("button", { name: "Import and Analyze" }).click();
+  await expect(page).toHaveURL(/\/games\/[a-z0-9-]{20,}(?:\?.*)?$/);
+  const id = new URL(page.url()).pathname.split("/").at(-1)!;
+  ids.push(id);
+  await expect(page.getByRole("region", { name: "Game analysis" })).toContainText("OPENAI_API_KEY");
+  await expect(page.getByText("Saved analysis: 10 of 10 moves.", { exact: true })).toBeVisible();
+  expect(database("read", id).analysisStatus).toBe("ENGINE_COMPLETED");
+  await page.reload();
+  await expect(page.getByRole("button", { name: "Retry coaching", exact: true })).toBeEnabled();
+});

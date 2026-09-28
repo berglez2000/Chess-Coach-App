@@ -16,7 +16,7 @@ export default async function SavedGamePage({ params, searchParams }: { params: 
   return <main id="main-content" className="mx-auto max-w-5xl px-6 py-12 sm:px-10">
     <Link href="/games" className="underline">Your games</Link>
     <h1 className="mt-6 text-3xl font-semibold">Saved game</h1>
-    <AnalysisControls autoStart={autoStart} gameId={saved.id} status={saved.status} error={saved.analysisError} leaseUntil={saved.analysisLeaseUntil} />
+    <AnalysisControls coachingRevision={saved.coachingRevision} autoStart={autoStart} gameId={saved.id} status={saved.status} error={saved.analysisError} leaseUntil={saved.analysisLeaseUntil} />
     <GameReview key={saved.id} game={saved.game} userColor={saved.userColor} status={saved.status} />
   </main>;
 }

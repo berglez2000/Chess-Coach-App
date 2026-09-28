@@ -174,7 +174,7 @@ it("recovers interrupted coaching, fences the old owner, and preserves engine re
   expect(await createCoachingRepository(db).claim(id)).toBe(false);
   await db.game.update({ where: { id }, data: { analysisLeaseUntil: new Date(Date.now() - 1000) } });
   expect((await coachGame(id, createCoachingRepository(db), makeClient(makeAnnotation(0)))).status).toBe("COMPLETED");
-  await expect(old.complete(id)).rejects.toThrow("ownership expired");
+  await expect(old.save(id, "late", makeAnnotation(0), new Map())).rejects.toThrow("ownership expired");
   await old.fail(id, "Late failure");
   expect((await db.game.findUniqueOrThrow({ where: { id } })).analysisStatus).toBe("COMPLETED");
   expect(await db.moveEngineAnalysis.findMany({ where: { move: { gameId: id } } })).toEqual(before);
@@ -184,4 +184,59 @@ it("does not claim partial failed engine work for coaching", async () => {
   const id = await importAndAnalyze();
   await db.game.update({ where: { id }, data: { analysisStatus: "FAILED" } });
   expect(await createCoachingRepository(db).claim(id)).toBe(false);
+});
+
+it("replaces coaching across providers atomically, removes obsolete annotations, and rejects stale revisions", async () => {
+  const id = await importAndAnalyze();
+  const engineBefore = await db.moveEngineAnalysis.findMany({ where: { move: { gameId: id } }, orderBy: { id: "asc" } });
+  await coachGame(id, createCoachingRepository(db), makeClient(makeAnnotation(1)));
+  const first = await db.game.findUniqueOrThrow({ where: { id } });
+  expect(first.coachingProvider).toBe("ANTHROPIC");
+  const options = { provider: "OPENAI" as const, model: "gpt-fixture", expectedRevision: first.coachingRevision };
+  const replacement = { ...makeAnnotation(3), model: "gpt-response-model", summary: "Replacement coaching" };
+  expect((await coachGame(id, createCoachingRepository(db, options), makeClient(replacement), "OPENAI")).status).toBe("COMPLETED");
+  const after = await db.game.findUniqueOrThrow({ where: { id } });
+  expect(after).toMatchObject({ coachingSummary: replacement.summary, coachingProvider: "OPENAI", coachingModel: "gpt-response-model", coachingRunProvider: "OPENAI", coachingRunModel: "gpt-fixture", analysisStatus: "COMPLETED", coachingRevision: first.coachingRevision + 1 });
+  const annotations = await db.moveCoachingAnnotation.findMany({ where: { move: { gameId: id } }, include: { move: true } });
+  expect(annotations).toHaveLength(1);
+  expect(annotations[0]).toMatchObject({ provider: "OPENAI", model: "gpt-response-model", move: { ply: 3 } });
+  expect(await createCoachingRepository(db, options).claim(id)).toBe(false);
+  expect(await createCoachingRepository(db).claim(id)).toBe(false);
+  expect(await db.moveEngineAnalysis.findMany({ where: { move: { gameId: id } }, orderBy: { id: "asc" } })).toEqual(engineBefore);
+});
+
+it("preserves previous coaching after provider and transactional replacement failures", async () => {
+  const id = await importAndAnalyze();
+  await coachGame(id, createCoachingRepository(db), makeClient(makeAnnotation(1)));
+  const original = await db.moveCoachingAnnotation.findMany({ where: { move: { gameId: id } } });
+  const initial = await db.game.findUniqueOrThrow({ where: { id } });
+  const options = { provider: "OPENAI" as const, model: "gpt-fixture", expectedRevision: initial.coachingRevision };
+  await coachGame(id, createCoachingRepository(db, options), { requestCoaching: async () => ({ status: "MISSING_KEY" }) }, "OPENAI");
+  const failed = await db.game.findUniqueOrThrow({ where: { id } });
+  expect(failed).toMatchObject({ analysisStatus: "COMPLETED", coachingSummary: initial.coachingSummary, coachingProvider: "ANTHROPIC", coachingModel: initial.coachingModel, analysisError: expect.stringContaining("OPENAI_API_KEY") });
+  const repo = createCoachingRepository(db, { ...options, expectedRevision: failed.coachingRevision });
+  expect(await repo.claim(id)).toBe(true);
+  // Fail after summary update/deletion inside the transaction, testing rollback.
+  await expect(repo.save(id, "broken", makeAnnotation(999), new Map())).rejects.toThrow("No move ID");
+  await repo.fail(id, "Safe replacement failure");
+  expect(await db.moveCoachingAnnotation.findMany({ where: { move: { gameId: id } } })).toEqual(original);
+  expect(await db.game.findUniqueOrThrow({ where: { id } })).toMatchObject({ analysisStatus: "COMPLETED", coachingSummary: initial.coachingSummary, coachingProvider: "ANTHROPIC" });
+});
+
+it("recovers interrupted regeneration and fences late success/failure without losing the old review", async () => {
+  const id = await importAndAnalyze();
+  await coachGame(id, createCoachingRepository(db), makeClient(makeAnnotation(1)));
+  const first = await db.game.findUniqueOrThrow({ where: { id } });
+  const old = createCoachingRepository(db, { provider: "OPENAI", model: "gpt-fixture", expectedRevision: first.coachingRevision });
+  expect(await old.claim(id)).toBe(true);
+  expect(await createCoachingRepository(db).claim(id)).toBe(false);
+  expect(await db.moveCoachingAnnotation.count({ where: { move: { gameId: id } } })).toBe(1);
+  await db.game.update({ where: { id }, data: { analysisLeaseUntil: new Date(Date.now() - 1000) } });
+  await old.fail(id, "Expired failure");
+  expect((await db.game.findUniqueOrThrow({ where: { id } })).analysisStatus).toBe("AI_RUNNING");
+  await coachGame(id, createCoachingRepository(db), makeClient(makeAnnotation(0)));
+  await expect(old.save(id, "late", makeAnnotation(0), new Map())).rejects.toThrow("ownership expired");
+  await old.fail(id, "Late failure");
+  expect((await db.game.findUniqueOrThrow({ where: { id } })).analysisStatus).toBe("COMPLETED");
+  expect(await db.moveCoachingAnnotation.count({ where: { move: { gameId: id } } })).toBe(0);
 });

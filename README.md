@@ -4,7 +4,7 @@ A local chess-improvement application for importing PGNs, analyzing games with S
 
 V0.1 supports a saved-game dashboard, PGN import, Stockfish analysis, validated AI coaching, and synchronized board review. It runs locally without authentication. Puzzles, training, weakness statistics, and deployment are deferred.
 
-**Release acceptance is blocked:** live coaching credentials are unavailable, and the implemented provider is Anthropic although the specification requires OpenAI. Engine-only review works without a provider key. See [release evidence](docs/release-acceptance.md) for checks and limitations.
+**Release acceptance is blocked:** live coaching credentials are unavailable and the default Turbopack build has an environment limitation. Both Anthropic and OpenAI are implemented; live provider checks remain unverified. Engine-only review works without a provider key. See [release evidence](docs/release-acceptance.md) for checks and limitations.
 
 ## Prerequisites
 
@@ -12,14 +12,14 @@ V0.1 supports a saved-game dashboard, PGN import, Stockfish analysis, validated 
 - If you use nvm, run `nvm install` and `nvm use` in this directory; `.nvmrc` selects Node 24.
 - Confirm `node --version` prints `v24.x` before installing dependencies. The project declares Node 24 in `package.json` to keep development consistent.
 
-Docker with Compose is required (Docker Desktop or a running Colima engine on macOS). Install a local Stockfish executable for analysis. Coaching uses an optional paid Anthropic API key; without it, engine results remain available. The verified environment is macOS arm64, Node 24.21.0, PostgreSQL 18, and Stockfish 19. Other operating systems have not received release verification. Fast tests require none of these external services.
+Docker with Compose is required (Docker Desktop or a running Colima engine on macOS). Install a local Stockfish executable for analysis. Coaching uses an optional paid Anthropic or OpenAI API key; without it, engine results remain available. The verified environment is macOS arm64, Node 24.21.0, PostgreSQL 18, and Stockfish 19. Other operating systems have not received release verification. Fast tests require none of these external services.
 
 ## Local development
 
 1. Activate Node 24 and start Docker.
 2. If `.env.local` does not exist, copy `.env.example` to `.env.local`; preserve existing values.
 3. Set `DATABASE_URL` as shown below and `STOCKFISH_PATH` to an absolute executable path from the [Stockfish setup](#local-stockfish-adapter).
-4. Optionally set `ANTHROPIC_API_KEY` for live coaching. The current model is `claude-haiku-4-5` in `lib/coaching/ai-client.ts`; there is no model environment override. `OPENAI_API_KEY` and `OPENAI_MODEL` are not read by this implementation. Keep keys server-side, never use `NEXT_PUBLIC_`, and restart after changing settings.
+4. Set `ANTHROPIC_API_KEY` and/or `OPENAI_API_KEY` for live coaching, then select the provider in **Settings**. The default is Anthropic; missing keys do not trigger fallback. Models are configured in `lib/coaching/providers.ts`; there is no model environment override. Keep keys server-side, never use `NEXT_PUBLIC_`, and restart after changing keys.
 5. Run:
 
 ```bash
@@ -342,7 +342,7 @@ The review refreshes persisted stages every two seconds while a request or saved
 
 **Retry coaching** reuses saved engine results. The endpoint now selects the stage from the database before attempting a claim and returns `{ engine, coaching }`; a coaching failure can return HTTP 200 with `coaching.status: "AI_FAILED"`, while preserving engine review. Conflicting claims return HTTP 409. No background worker is required; the POST request awaits both stages.
 
-For missing-engine failures, check `STOCKFISH_PATH` and executable permissions. The existing coaching adapter uses Anthropic: configure `ANTHROPIC_API_KEY` in `.env.local` and restart the app, then choose **Retry coaching**. Missing keys do not issue a network request. For database failures, start local PostgreSQL and retry loading the review; import failures retain the form input. Saved analysis errors contain safe application messages, not raw service exceptions.
+For missing-engine failures, check `STOCKFISH_PATH` and executable permissions. Choose Anthropic (Claude) or OpenAI (GPT) in **Settings**, configure its `ANTHROPIC_API_KEY` or `OPENAI_API_KEY` in `.env.local`, restart, then choose **Retry coaching**. Missing keys do not issue a network request. For database failures, start local PostgreSQL and retry loading the review; import failures retain the form input. Saved analysis errors contain safe application messages, not raw service exceptions.
 
 
 ## Home dashboard
@@ -361,9 +361,9 @@ npm run test:e2e
 
 Unset `DATABASE_URL` in the shell first; the runner deliberately refuses an exported development URL. It verifies the database name/user and deploys migrations using the same fixed `chess_coach_test` target on port 5434 as integration tests. Run these suites sequentially. The browser runner deletes only games marked with its unique run ID, including on ordinary test failure. A forcibly killed runner may leave marked fixtures in the disposable test database.
 
-Playwright starts its own webpack development server on `127.0.0.1:3100`, refuses to reuse an existing server, and writes generated output to `.next-e2e`. Two Chromium journeys cover White at desktop width and Black at 390px: illegal PGN/input retention, import and automatic analysis, engine-only review after coaching failure, refresh, successful coaching retry, saved-library reopening, direct/critical/summary move selection, actual rendered board pieces, stale-annotation removal, button/keyboard navigation, and duplicate-analysis rejection. Database assertions verify that coaching retry leaves every engine row unchanged and saves exactly one annotation per selected move. The Prisma assertion helper runs through `tsx` because Playwright's CommonJS transformer cannot load the generated Prisma ES module directly.
+Playwright starts its own webpack development server on `127.0.0.1:3100`, refuses to reuse an existing server, and writes generated output to `.next-e2e`. Three Chromium journeys cover Anthropic/White at desktop width, OpenAI/Black at 390px, and an unavailable-provider case. Coverage includes settings persistence, explicit cross-provider regeneration with failure preservation and stale-request rejection, plus: illegal PGN/input retention, import and automatic analysis, engine-only review after coaching failure, refresh, successful coaching retry, saved-library reopening, direct/critical/summary move selection, actual rendered board pieces, stale-annotation removal, button/keyboard navigation, and duplicate-analysis rejection. Database assertions verify that coaching retry leaves every engine row unchanged and saves exactly one annotation per selected move. The Prisma assertion helper runs through `tsx` because Playwright's CommonJS transformer cannot load the generated Prisma ES module directly.
 
-Test mode is enabled only by `CHESS_E2E_MODE=deterministic` together with a run ID, the exact isolated database URL, and Next's development-server phase. A visible server warning identifies it. Production builds/start reject test mode; normal development selects real services. Next's test-only module replacement substitutes the engine and coaching adapters without replacing routes, parsing, orchestration, validation, persistence, or the board. The mock engine supplies explicit synthetic 50cp-loss facts with legal one-move PVs; these are not real evaluations. Mock coaching fails its first request per unique game, then passes a fixture through the actual response schema and semantic validator. API keys are blank in the test server, and its engine path is deliberately non-executable. Do not put these test switches in `.env.local`.
+Test mode is enabled only by `CHESS_E2E_MODE=deterministic` together with a run ID, the exact isolated database URL, and Next's development-server phase. A visible server warning identifies it. Production builds/start reject test mode; normal development selects real services. Next's test-only module replacement substitutes the engine and coaching adapters without replacing routes, parsing, orchestration, validation, persistence, or the board. The mock engine supplies explicit synthetic 50cp-loss facts with legal one-move PVs; these are not real evaluations. Mock coaching fails its first request per unique game/provider in each route bundle, then passes a fixture through the actual response schema and semantic validator. Explicit fixture metadata identifies cross-provider replacements, which return fewer annotations to verify obsolete-row removal. The missing-key fixture returns a deterministic missing-key outcome. The runner restores the isolated database’s previous settings after tests. API keys are blank in the test server, and its engine path is deliberately non-executable. Do not put these test switches in `.env.local`.
 
 Failed runs retain traces under `test-results`; inspect one with `npx playwright show-trace <trace.zip>`. Narrow/repeat runs work through `npm run test:e2e -- --grep WHITE` or `npm run test:e2e -- --repeat-each=2`. Configuration follows the bundled Next.js testing guide and [Playwright web-server guidance](https://playwright.dev/docs/test-webserver). This small suite uses development compilation; separately verify the normal production build. On this machine the documented Turbopack worker-port limitation still requires `npm run build -- --webpack`.
 
@@ -371,9 +371,9 @@ Failed runs retain traces under `test-results`; inspect one with `npx playwright
 
 Keep `npm run test:engine` separate from deterministic tests. Configure a real `STOCKFISH_PATH` as described above; this smoke test performs a real search and verifies shutdown.
 
-For a manual complete workflow, launch normally with all `CHESS_E2E_*` variables unset, a real Stockfish executable, and `ANTHROPIC_API_KEY` configured locally for the existing provider. Import `samples/demo.pgn`, select your color, and check that analysis completes, summary moments select the corresponding board position/explanation, and coaching survives reload and reopening from Your games. Repeat for the other color. To check recovery, start without the API key, import a new game, verify saved engine results, then configure the key, restart, and choose **Retry coaching**. This manual check makes a paid provider request; automated suites never do.
+For a manual complete workflow, launch normally with all `CHESS_E2E_*` variables unset, a real Stockfish executable, and the chosen provider’s key configured locally. Select the provider in **Settings** before importing. Import `samples/demo.pgn`, select your color, and check that analysis completes, summary moments select the corresponding board position/explanation, and coaching survives reload and reopening from Your games. Repeat for the other color. To check recovery, start without the API key, import a new game, verify saved engine results, then configure the key, restart, and choose **Retry coaching**. This manual check makes a paid provider request; automated suites never do.
 
-TASK-025 verification used real Stockfish 19 from its [official release](https://github.com/official-stockfish/Stockfish/releases/tag/sf_19), temporarily outside the repository. Live coaching was skipped because neither Anthropic nor OpenAI credentials were configured. No live OpenAI verification was performed; the implemented provider remains Anthropic. See the TASK-026 release evidence for current verification.
+TASK-025 verification used real Stockfish 19 from its [official release](https://github.com/official-stockfish/Stockfish/releases/tag/sf_19), temporarily outside the repository. Live coaching was skipped because neither Anthropic nor OpenAI credentials were configured. No live OpenAI verification was performed in TASK-025. TASK-027 adds OpenAI alongside Anthropic; see the release evidence for remaining live verification.
 
 ## Sample import-to-review walkthrough
 
@@ -381,7 +381,7 @@ Use [samples/demo.pgn](samples/demo.pgn), a 33-ply legal checkmate example with 
 
 1. Start the stack above. Open **Import Game**, select White, paste the entire sample, and choose **Import and Analyze**.
 2. The saved review opens immediately. Keep it open while Stockfish runs; persisted stages update automatically. Without a key, expect an engine-only review and **Retry coaching**.
-3. With a working Anthropic key, expect a saved summary and selected explanations after validation. Ordinary moves may have no annotation; positive highlights appear only when supported by the selection policy.
+3. With a working key for the selected provider, expect a saved summary and selected explanations after validation. Ordinary moves may have no annotation; positive highlights appear only when supported by the selection policy.
 4. Click a critical move or summary moment. Board, evaluation, and explanation must select the same ply. The board shows the position after that move; the suggested alternative starts before it.
 5. Try Start/End, Previous/Next, left/right arrows, and Flip board. The sample ends with `17. Rd8#`. Refresh, then reopen the game from **My Games**; data and selected color remain saved, while selection resets to the initial position.
 6. Import again as Black to check the other orientation/coaching perspective. Duplicate imports are intentionally separate saved games.
@@ -407,7 +407,7 @@ Choose an unused database name and update the URL if that name already exists; n
 
 ## Troubleshooting coaching and analysis
 
-- Missing key or authentication error: set a valid `ANTHROPIC_API_KEY` in `.env.local`, restart the server, and choose **Retry coaching**. An OpenAI key does not configure the current adapter.
+- Missing key or authentication error: check the selected provider in **Settings**, set its `ANTHROPIC_API_KEY` or `OPENAI_API_KEY` in `.env.local`, restart, and choose **Retry coaching** (or **Regenerate coaching** for a completed review). Keys are not interchangeable.
 - Rate limit, timeout, invalid response, or provider failure: engine results remain saved. Retry coaching after the service recovers; retries validate the response again and reuse engine rows.
 - Stockfish unavailable: check the absolute path, CPU/OS compatibility, and executable permission, then run `npm run test:engine`. Download from the [official Stockfish page](https://stockfishchess.org/download/); macOS universal binaries select CPU features automatically. Linux/Windows binaries are available there but are not release-tested here.
 - Engine timeout: reduce depth or set a bounded move time; keep timeout above move time. Larger search budgets increase total duration.
@@ -417,3 +417,34 @@ Choose an unused database name and update the URL if that name already exists; n
 - Build worker-port error: use `npm run build -- --webpack`. See the release evidence for the unresolved default-build limitation.
 
 Known limits and measured durations are recorded in [release acceptance](docs/release-acceptance.md). The setup uses checked-in migrations via [Prisma migrate deploy](https://www.prisma.io/docs/orm/prisma-migrate/workflows/development-and-production); use `migrate dev` only when authoring schema changes.
+
+
+## Choose Claude or GPT (TASK-027)
+
+Apply the new additive migration before starting the app:
+
+```bash
+npx prisma migrate deploy
+npm run db:generate
+```
+
+Open **Settings** in the header, choose **Anthropic (Claude)** or **OpenAI (GPT)**, and click **Save provider**. The saved default lives in PostgreSQL and survives browser/server restarts. A fresh installation defaults to Anthropic for compatibility. Settings shows only whether each key is configured, not its value or whether the provider will accept it. Either choice can be saved while its key is unavailable; requests fail with configuration guidance instead of silently switching providers. The import form remains unchanged.
+
+| Provider | Server-only key | Configured model | Structured-output API |
+| --- | --- | --- | --- |
+| Anthropic (Claude) | `ANTHROPIC_API_KEY` | `claude-haiku-4-5` | Messages `output_config.format` |
+| OpenAI (GPT) | `OPENAI_API_KEY` | `gpt-5.4-mini` | Responses `text.format`, strict JSON schema |
+
+The model choices are fixed in `lib/coaching/providers.ts`, not user-entered request data. GPT uses low reasoning effort and an 8,192-token output budget; Claude uses 4,096 output tokens. These defaults are supported by the [GPT-5.4 mini model documentation](https://developers.openai.com/api/docs/models/gpt-5.4-mini), [OpenAI structured-output guide](https://developers.openai.com/api/docs/guides/structured-outputs), and [Claude structured-output guide](https://platform.claude.com/docs/en/build-with-claude/structured-outputs). OpenAI SDK 7.23.0 was added; the existing Anthropic SDK was retained. Live account access and output quality have not been verified without credentials.
+
+Changing the default does not alter existing reviews or make an API request. Each coaching run captures the saved provider and configured model when coaching starts, including after engine analysis completes. A setting changed during that request applies to subsequent runs. Saved summaries and annotations record the provider and actual response model, displayed on the review. Legacy coaching is attributed to Anthropic while preserving its original model and text.
+
+On a completed review, **Regenerate coaching** explicitly requests coaching with the current saved default. It reuses every Stockfish row. The previous coaching remains visible during generation; a successful replacement commits the summary, provider/model, complete annotation set, and COMPLETED status together. Obsolete annotations are removed. Provider or storage failure preserves the previous valid review and reports an error; retry using the same button. Failed first-time coaching retains ENGINE_COMPLETED and **Retry coaching**. There is no version history or side-by-side comparison.
+
+`GET /api/settings` returns `{ provider, available: { ANTHROPIC, OPENAI } }`; `PUT /api/settings` accepts only `{ provider: "ANTHROPIC" | "OPENAI" }`. Unknown fields/providers and malformed input return 400. `POST /api/games/[id]/coaching` accepts only `{ expectedRevision: number }`, taken from the saved review’s `coachingRevision`. Each successful claim increments that revision and records the run’s provider/model. Stale revisions or active leases return 409, even if an earlier request finished before a delayed duplicate arrived. The ordinary analyze endpoint still refuses completed games. The ownership token remains server-only.
+
+Both SDKs have a 120-second timeout with automatic retries disabled. An application deadline aborts generation at 150 seconds and ignores late results, leaving room to record failure within the five-minute lease. Token and live-lease checks fence both success and failure writes. Recovery after a server interruption retains previous coaching and can reclaim work after expiry. A recovered attempt starts a new run using the current saved default.
+
+Both providers receive the same prompt and a compatible shape/enum schema. Unsupported wire length/range constraints are removed without weakening the original Zod validator: all lengths, ranges, categories, duplicate/unknown/unselected plies, and authoritative engine classifications are still checked before persistence. Provider errors are sanitized. OpenAI response storage is disabled with `store: false`; both requests send game metadata and selected engine facts to the chosen provider.
+
+For live acceptance, run the sample for White and Black with each provider, verify the provider/model label and correct moment/board synchronization, reload/reopen the reviews, switch providers and regenerate, and record response duration. Exercise a missing-key attempt followed by configuration/restart and retry, checking that old coaching and engine results survive failure. These are paid requests; automated suites use explicit fixtures. Neither key was available during TASK-027, so both live checks remain blocked under TASK-026.

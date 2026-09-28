@@ -10,11 +10,17 @@ const summarySelect = {
   openingName: true, userColor: true, analysisStatus: true, createdAt: true,
 } as const;
 
-export async function listGames(db: PrismaClient): Promise<GameSummary[]> {
-  const games = await db.game.findMany({ select: summarySelect, orderBy: [{ createdAt: "desc" }, { id: "desc" }] });
+export async function listGames(db: PrismaClient, limit?: number): Promise<GameSummary[]> {
+  const games = await db.game.findMany({ ...(limit === undefined ? {} : { take: limit }), select: summarySelect, orderBy: [{ createdAt: "desc" }, { id: "desc" }] });
   return games.map(({ analysisStatus, playedAt, createdAt, ...game }) => ({
     ...game, status: analysisStatus, playedAt: playedAt?.toISOString() ?? null, createdAt: createdAt.toISOString(),
   }));
+}
+
+/** Count all saved games while fetching only the five newest summaries. */
+export async function getDashboard(db: PrismaClient): Promise<{ count: number; recentGames: GameSummary[] }> {
+  const [count, recentGames] = await Promise.all([db.game.count(), listGames(db, 5)]);
+  return { count, recentGames };
 }
 
 export async function findGame(db: PrismaClient, id: string): Promise<SavedGame | null> {

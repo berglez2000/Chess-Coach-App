@@ -1016,7 +1016,7 @@ Manual engine checks used an explicit temporary deterministic UCI fixture, not a
 
 ### TASK-024 — Build the minimal home dashboard
 
-Status: TODO  
+Status: DONE
 Milestone: M6  
 Dependencies: TASK-009
 
@@ -1048,6 +1048,16 @@ Weakness counts, puzzle/training metrics, authentication, and analytics dashboar
 #### Notes
 
 This is intentionally small; the primary V0.1 experience remains game review.
+
+Implemented a request-time home dashboard with the saved-game count, five newest games, Import Game and My Games links, an import-directed empty state, accessible loading feedback, and sanitized database-failure guidance with a full reload retry. Dashboard queries reuse the summarized library query with a five-row limit; count queries cover the entire library without loading PGNs, moves, or annotations. Home and library share the same game-summary list and review links.
+
+Verification passed with Node 24.21.0:
+
+- Focused dashboard, saved-page, and server-document tests passed. `npm run lint`, `npm run typecheck`, and `npm test` passed (25 files, 300 tests). Deterministic fixtures cover empty, populated, singular count, loading, safe database failure, navigation, and metadata fallbacks.
+- `npm run test:integration` passed (6 files, 36 tests). The new dashboard query test saves seven records and verifies the full count, five newest summaries in order, serializability, and absence of PGN/move payloads.
+- `npm run build -- --webpack` passed using the working build path documented in TASK-023.
+- Ad hoc Chrome checks against the production build and isolated test database passed: empty dashboard shows zero and import guidance; six imported fixtures show a count of six and exactly five recent review links in newest-first order; clicking the newest link opens its saved review. The populated dashboard has no horizontal overflow at 390px width.
+- Removed only the marked browser fixtures and stopped the smoke server. No development data or engine/AI requests were used. TASK-025 remains TODO.
 
 ### TASK-025 — Verify the complete local review journey
 

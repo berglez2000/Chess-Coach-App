@@ -332,3 +332,8 @@ The review refreshes persisted stages every two seconds while a request or saved
 **Retry coaching** reuses saved engine results. The endpoint now selects the stage from the database before attempting a claim and returns `{ engine, coaching }`; a coaching failure can return HTTP 200 with `coaching.status: "AI_FAILED"`, while preserving engine review. Conflicting claims return HTTP 409. No background worker is required; the POST request awaits both stages.
 
 For missing-engine failures, check `STOCKFISH_PATH` and executable permissions. The existing coaching adapter uses Anthropic: configure `ANTHROPIC_API_KEY` in `.env.local` and restart the app, then choose **Retry coaching**. Missing keys do not issue a network request. For database failures, start local PostgreSQL and retry loading the review; import failures retain the form input. Saved analysis errors contain safe application messages, not raw service exceptions.
+
+
+## Home dashboard
+
+The home page shows the total saved-game count and the five most recently imported games, with links to their reviews, **Import Game**, and **My Games**. Counts and summaries load from PostgreSQL on each page request; detailed moves and analysis are loaded only when opening a review. An empty library points to import, while a database outage preserves navigation and offers **Try again** to reload after restoring PostgreSQL.

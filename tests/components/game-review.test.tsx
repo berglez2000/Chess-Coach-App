@@ -72,3 +72,80 @@ describe("Game replay", () => {
     expect(screen.getByText("600+5")).toBeVisible();
   });
 });
+
+describe("Flip board", () => {
+  it("toggles orientation without changing selected ply", () => {
+    const game = parsePgn(pgn);
+    render(<GameReview game={game} userColor="WHITE" status="ENGINE_COMPLETED" />);
+    const board = screen.getByRole("img", { name: /Game position/ });
+    expect(board).toHaveAccessibleName(/White at the bottom/);
+    // advance one ply
+    fireEvent.click(screen.getByRole("button", { name: "Next" }));
+    expect(screen.getByText(/Half-move 1 of/)).toBeVisible();
+    // flip
+    fireEvent.click(screen.getByRole("button", { name: "Flip board" }));
+    expect(board).toHaveAccessibleName(/Black at the bottom/);
+    // ply unchanged
+    expect(screen.getByText(/Half-move 1 of/)).toBeVisible();
+    // flip back
+    fireEvent.click(screen.getByRole("button", { name: "Flip board" }));
+    expect(board).toHaveAccessibleName(/White at the bottom/);
+  });
+
+  it("flip button aria-pressed reflects state", () => {
+    const game = parsePgn(pgn);
+    render(<GameReview game={game} userColor="WHITE" status="ENGINE_COMPLETED" />);
+    const btn = screen.getByRole("button", { name: "Flip board" });
+    expect(btn).toHaveAttribute("aria-pressed", "false");
+    fireEvent.click(btn);
+    expect(btn).toHaveAttribute("aria-pressed", "true");
+  });
+
+  it("Black userColor flips to White at bottom", () => {
+    const game = parsePgn(pgn);
+    render(<GameReview game={game} userColor="BLACK" status="ENGINE_COMPLETED" />);
+    const board = screen.getByRole("img", { name: /Game position/ });
+    expect(board).toHaveAccessibleName(/Black at the bottom/);
+    fireEvent.click(screen.getByRole("button", { name: "Flip board" }));
+    expect(board).toHaveAccessibleName(/White at the bottom/);
+  });
+});
+
+describe("Keyboard navigation", () => {
+  it("ArrowRight advances ply and ArrowLeft retreats", () => {
+    const game = parsePgn(pgn);
+    render(<GameReview game={game} userColor="WHITE" status="ENGINE_COMPLETED" />);
+    expect(screen.getByText(/Half-move 0 of/)).toBeVisible();
+    fireEvent.keyDown(document, { key: "ArrowRight" });
+    expect(screen.getByText(/Half-move 1 of/)).toBeVisible();
+    fireEvent.keyDown(document, { key: "ArrowRight" });
+    expect(screen.getByText(/Half-move 2 of/)).toBeVisible();
+    fireEvent.keyDown(document, { key: "ArrowLeft" });
+    expect(screen.getByText(/Half-move 1 of/)).toBeVisible();
+  });
+
+  it("does not go below 0 or above total", () => {
+    const game = parsePgn(pgn);
+    render(<GameReview game={game} userColor="WHITE" status="ENGINE_COMPLETED" />);
+    fireEvent.keyDown(document, { key: "ArrowLeft" });
+    expect(screen.getByText(/Half-move 0 of/)).toBeVisible();
+    for (let i = 0; i < game.moves.length + 2; i++) {
+      fireEvent.keyDown(document, { key: "ArrowRight" });
+    }
+    expect(screen.getByText(new RegExp(`Half-move ${game.moves.length} of`))).toBeVisible();
+  });
+
+  it("ignores arrow keys when an input is focused", () => {
+    const game = parsePgn(pgn);
+    const { container } = render(
+      <>
+        <input data-testid="text-field" />
+        <GameReview game={game} userColor="WHITE" status="ENGINE_COMPLETED" />
+      </>
+    );
+    const input = container.querySelector("input[data-testid='text-field']") as HTMLInputElement;
+    input.focus();
+    fireEvent.keyDown(input, { key: "ArrowRight" });
+    expect(screen.getByText(/Half-move 0 of/)).toBeVisible();
+  });
+});

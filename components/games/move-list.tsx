@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import type { ParsedGameMove } from "@/types/game";
 import type { ReviewCoachingAnnotation } from "@/types/saved-game";
 
@@ -14,6 +17,11 @@ export function MoveList({ moves, selectedPly, onSelect }: {
   selectedPly: number;
   onSelect: (ply: number) => void;
 }) {
+  const selectedRef = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    selectedRef.current?.scrollIntoView({ block: "nearest" });
+  }, [selectedPly]);
+
   const rows = new Map<number, { white?: ReviewMove; black?: ReviewMove }>();
   for (const move of moves) {
     const row = rows.get(move.moveNumber) ?? {};
@@ -34,7 +42,7 @@ export function MoveList({ moves, selectedPly, onSelect }: {
               {(["white", "black"] as const).map((side) => {
                 const move = row[side];
                 return <td key={side} className="p-1">
-                  {move ? <button type="button" onClick={() => onSelect(move.ply)}
+                  {move ? <button type="button" ref={selectedPly === move.ply ? selectedRef : undefined} onClick={() => onSelect(move.ply)}
                     aria-label={`${number}. ${side === "white" ? "White" : "Black"} ${move.san}${move.coaching ? ` — ${move.coaching.classification}` : ""}`}
                     aria-current={selectedPly === move.ply ? "step" : undefined}
                     className={`flex w-full items-center gap-1.5 rounded px-3 py-2 text-left font-medium focus-visible:outline-2 focus-visible:outline-offset-1 ${selectedPly === move.ply ? "bg-[#20382e] text-white" : "hover:bg-[#20382e]/10"}`}>

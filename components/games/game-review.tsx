@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import type { ChessColor } from "@/types/game";
 import type { AnalysisStatus, ReviewGame } from "@/types/saved-game";
 import { ReplayBoard } from "@/components/chess/replay-board";
@@ -12,14 +12,27 @@ import { CoachingSummaryPanel } from "./coaching-summary-panel";
 /** Mount a fresh review for each imported game. Selected ply owns all replay state. */
 export function GameReview({ game, userColor, status }: { game: ReviewGame; userColor: ChessColor; status: AnalysisStatus }) {
   const [selectedPly, setSelectedPly] = useState(0);
+  const [flipped, setFlipped] = useState(false);
   const selectedMove = selectedPly === 0 ? null : game.moves[selectedPly - 1];
   const fen = selectedMove?.fenAfter ?? game.initialFen;
   const total = game.moves.length;
   const analyzed = game.moves.filter(move => move.analysis);
   const critical = analyzed.filter(move => move.analysis?.quality === "mistake" || move.analysis?.quality === "blunder" || move.analysis?.quality === "inaccuracy");
   const mixedRuns = new Set(analyzed.map(move => move.analysis!.runId)).size > 1;
-  const select = (ply: number) => setSelectedPly(Math.max(0, Math.min(total, ply)));
+  const select = useCallback((ply: number) => setSelectedPly(Math.max(0, Math.min(total, ply))), [total]);
   const buttonClass = "rounded-lg border border-[#20382e]/30 px-3 py-2 text-sm font-medium hover:bg-white disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2";
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+      const target = e.target as HTMLElement;
+      if (target.tagName === "INPUT" || target.tagName === "TEXTAREA" || target.isContentEditable) return;
+      e.preventDefault();
+      setSelectedPly(prev => Math.max(0, Math.min(total, prev + (e.key === "ArrowRight" ? 1 : -1))));
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [total]);
   const { metadata } = game;
 
   return (
@@ -42,7 +55,7 @@ export function GameReview({ game, userColor, status }: { game: ReviewGame; user
       </nav>}
       <div className="mt-6 grid min-w-0 gap-6 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
         <div className="min-w-0">
-          <ReplayBoard fen={fen} userColor={userColor} />
+          <ReplayBoard fen={fen} userColor={userColor} flipped={flipped} />
           <p className="mt-3 text-sm" aria-live="polite" aria-atomic="true">
             {selectedMove ? `Move ${selectedMove.moveNumber}${selectedMove.color === "WHITE" ? "." : "..."} ${selectedMove.san}` : "Initial position"}
             {` · Half-move ${selectedPly} of ${total}`}
@@ -52,6 +65,7 @@ export function GameReview({ game, userColor, status }: { game: ReviewGame; user
             <button type="button" className={buttonClass} onClick={() => select(selectedPly - 1)} disabled={selectedPly === 0}>Previous</button>
             <button type="button" className={buttonClass} onClick={() => select(selectedPly + 1)} disabled={selectedPly === total}>Next</button>
             <button type="button" className={buttonClass} onClick={() => select(total)} disabled={selectedPly === total}>End</button>
+            <button type="button" className={buttonClass} onClick={() => setFlipped(f => !f)} aria-pressed={flipped}>Flip board</button>
           </nav>
         </div>
         <div className="min-w-0">

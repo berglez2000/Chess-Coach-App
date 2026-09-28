@@ -891,7 +891,7 @@ Verification passed with Node 20.19.4:
 
 ### TASK-021 — Polish responsive review and keyboard navigation
 
-Status: TODO  
+Status: DONE  
 Milestone: M5  
 Dependencies: TASK-020
 
@@ -924,6 +924,8 @@ Pixel-perfect analytics, alternative-line explorers, and new product screens.
 #### Notes
 
 Keep explanations visually primary; avoid flooding the panel with engine lines.
+
+Implemented flip board toggle (`flipped` state in `GameReview`, propagated to `ReplayBoard` as a prop; orientation inverts relative to `userColor` without changing `userColor` or coaching perspective). Arrow key navigation (`keydown` on `document` with early return for `INPUT`/`TEXTAREA`/`contentEditable`). Selected-move scroll-into-view via `useRef` + `useEffect` in `MoveList` (jsdom polyfill added to `tests/setup-dom.ts`). Layout uses `min-w-0` on grid columns to prevent overflow at all widths. 33 component tests pass (6 new for flip and keyboard); 249 unit tests pass; lint and typecheck clean. Node 23 used for verification (sandbox defaults to Node 20; production requires Node 24.15+).
 
 ### TASK-022 — Present positive instructional highlights
 

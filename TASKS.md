@@ -1061,7 +1061,7 @@ Verification passed with Node 24.21.0:
 
 ### TASK-025 — Verify the complete local review journey
 
-Status: TODO  
+Status: DONE
 Milestone: M6  
 Dependencies: TASK-023, TASK-024
 
@@ -1097,6 +1097,19 @@ Paid API calls in automated tests, broad browser matrices, and exhaustive visual
 #### Notes
 
 Use real chess fixtures and explicit mocked facts. Record any live OpenAI verification separately, including whether it was skipped for lack of credentials.
+
+Implemented Playwright 1.63.0 with a single Chromium project, an isolated webpack development server, fixed test-database identity checks/migrations, per-run fixture cleanup, and retained failure traces. Test-only module replacement supplies deterministic engine/coaching adapters while exercising real parsing, orchestration, validation, persistence, routes, and chessboard rendering. Normal development keeps real adapters; production phases reject test mode. README documents setup, isolation, fixture limitations, debugging, and the separate manual real-service workflow.
+
+Verification passed with Node 24.21.0:
+
+- `npm run lint`, `npm run typecheck`, and `npm test`: 26 files, 302 tests passed, including guards against accidental fixture selection and production test mode.
+- `npm run test:integration`: 6 files, 36 tests passed against the dedicated postgres-test service.
+- `npm run test:e2e -- --repeat-each=2`: all four runs passed (White desktop and Black 390px, each twice). Tests cover illegal PGN/input retention, import and analysis, selected color/orientation, coaching failure with persisted engine results, refresh, AI-only retry, direct/critical/summary selection with matching rendered pieces and annotations, ordinary-move annotation clearing, keyboard/button navigation, saved-library reopening, and completed-run duplicate rejection. Database snapshots confirm unchanged engine rows and exactly one annotation per selected move after retry.
+- `npm run test:engine` passed using the official Stockfish 19 macOS universal binary in a temporary directory: legal e2e4 choice, depth-12 evaluation/PV, and clean engine shutdown. No global installation or environment-file change was made.
+- `npm run build -- --webpack` passed. Plain `npm run build` reproduced the preexisting Turbopack worker-port permission failure, including outside the sandbox; the default build command remains unchanged.
+- Test servers stopped and this task's marked browser fixtures were removed, including fixtures from initial harness failures. No development data was deleted. Existing dependency-audit advisories remain unchanged.
+
+Live coaching/OpenAI verification was skipped because neither provider key is configured. Automated tests made no paid API calls. The existing Anthropic provider is preserved; TASK-026 retains responsibility for release-wide real-service acceptance and remains TODO.
 
 ### TASK-026 — Finish setup documentation and release acceptance
 

@@ -18,7 +18,8 @@
     "db:generate": "prisma generate",
     "db:check": "node --conditions=react-server --import tsx scripts/check-db.ts",
     "test:integration": "tsx scripts/test-integration.ts",
-    "test:engine": "node --conditions=react-server --import tsx scripts/check-engine.ts"
+    "test:engine": "node --conditions=react-server --import tsx scripts/check-engine.ts",
+    "test:e2e": "tsx scripts/test-e2e.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.127.0",
@@ -34,6 +35,7 @@
     "zod": "4.6.5"
   },
   "devDependencies": {
+    "@playwright/test": "1.63.0",
     "@tailwindcss/postcss": "4.3.3",
     "@testing-library/dom": "10.4.2",
     "@testing-library/jest-dom": "7.0.1",

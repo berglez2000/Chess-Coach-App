@@ -337,3 +337,29 @@ For missing-engine failures, check `STOCKFISH_PATH` and executable permissions. 
 ## Home dashboard
 
 The home page shows the total saved-game count and the five most recently imported games, with links to their reviews, **Import Game**, and **My Games**. Counts and summaries load from PostgreSQL on each page request; detailed moves and analysis are loaded only when opening a review. An empty library points to import, while a database outage preserves navigation and offers **Try again** to reload after restoring PostgreSQL.
+
+## Browser regression suite (TASK-025)
+
+Use Node 24.15+ and the dedicated PostgreSQL test service. Install the Chromium version pinned by the Playwright lockfile once:
+
+```bash
+npx playwright install chromium
+docker compose --profile test up -d --wait postgres-test
+npm run test:e2e
+```
+
+Unset `DATABASE_URL` in the shell first; the runner deliberately refuses an exported development URL. It verifies the database name/user and deploys migrations using the same fixed `chess_coach_test` target on port 5434 as integration tests. Run these suites sequentially. The browser runner deletes only games marked with its unique run ID, including on ordinary test failure. A forcibly killed runner may leave marked fixtures in the disposable test database.
+
+Playwright starts its own webpack development server on `127.0.0.1:3100`, refuses to reuse an existing server, and writes generated output to `.next-e2e`. Two Chromium journeys cover White at desktop width and Black at 390px: illegal PGN/input retention, import and automatic analysis, engine-only review after coaching failure, refresh, successful coaching retry, saved-library reopening, direct/critical/summary move selection, actual rendered board pieces, stale-annotation removal, button/keyboard navigation, and duplicate-analysis rejection. Database assertions verify that coaching retry leaves every engine row unchanged and saves exactly one annotation per selected move. The Prisma assertion helper runs through `tsx` because Playwright's CommonJS transformer cannot load the generated Prisma ES module directly.
+
+Test mode is enabled only by `CHESS_E2E_MODE=deterministic` together with a run ID, the exact isolated database URL, and Next's development-server phase. A visible server warning identifies it. Production builds/start reject test mode; normal development selects real services. Next's test-only module replacement substitutes the engine and coaching adapters without replacing routes, parsing, orchestration, validation, persistence, or the board. The mock engine supplies explicit synthetic 50cp-loss facts with legal one-move PVs; these are not real evaluations. Mock coaching fails its first request per unique game, then passes a fixture through the actual response schema and semantic validator. API keys are blank in the test server, and its engine path is deliberately non-executable. Do not put these test switches in `.env.local`.
+
+Failed runs retain traces under `test-results`; inspect one with `npx playwright show-trace <trace.zip>`. Narrow/repeat runs work through `npm run test:e2e -- --grep WHITE` or `npm run test:e2e -- --repeat-each=2`. Configuration follows the bundled Next.js testing guide and [Playwright web-server guidance](https://playwright.dev/docs/test-webserver). This small suite uses development compilation; separately verify the normal production build. On this machine the documented Turbopack worker-port limitation still requires `npm run build -- --webpack`.
+
+### Separate manual real-service check
+
+Keep `npm run test:engine` separate from deterministic tests. Configure a real `STOCKFISH_PATH` as described above; this smoke test performs a real search and verifies shutdown.
+
+For a manual complete workflow, launch normally with all `CHESS_E2E_*` variables unset, a real Stockfish executable, and `ANTHROPIC_API_KEY` configured locally for the existing provider. Import `tests/fixtures/pgn/complete.pgn`, select your color, and check that analysis completes, summary moments select the corresponding board position/explanation, and coaching survives reload and reopening from Your games. Repeat for the other color. To check recovery, start without the API key, import a new game, verify saved engine results, then configure the key, restart, and choose **Retry coaching**. This manual check makes a paid provider request; automated suites never do.
+
+TASK-025 verification used real Stockfish 19 from its [official release](https://github.com/official-stockfish/Stockfish/releases/tag/sf_19), temporarily outside the repository. Live coaching was skipped because neither Anthropic nor OpenAI credentials were configured. No live OpenAI verification was performed; the implemented provider remains Anthropic. Release-wide live-service acceptance is tracked separately by TASK-026.

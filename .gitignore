@@ -6,6 +6,7 @@
 # Dependencies and generated output
 node_modules/
 .next/
+.next-e2e/
 out/
 dist/
 coverage/

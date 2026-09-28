@@ -114,7 +114,6 @@ export function createCoachingRepository(db: PrismaClient): CoachingRepository {
             { analysisStatus: "ENGINE_COMPLETED" },
             { analysisStatus: "AI_RUNNING", analysisLeaseUntil: { lt: new Date() } },
             { analysisStatus: "AI_RUNNING", analysisLeaseUntil: null },
-            { analysisStatus: "FAILED" },
           ],
         },
         data: { analysisStatus: "AI_RUNNING", analysisError: null, analysisToken: token, analysisLeaseUntil: lease() },

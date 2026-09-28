@@ -165,3 +165,23 @@ it("returns NOT_FOUND for unknown game id", async () => {
   const result = await coachGame("nonexistent-id", repo, { requestCoaching: vi.fn() });
   expect(result).toEqual({ status: "NOT_FOUND" });
 });
+
+it("recovers interrupted coaching, fences the old owner, and preserves engine results", async () => {
+  const id = await importAndAnalyze();
+  const before = await db.moveEngineAnalysis.findMany({ where: { move: { gameId: id } } });
+  const old = createCoachingRepository(db);
+  expect(await old.claim(id)).toBe(true);
+  expect(await createCoachingRepository(db).claim(id)).toBe(false);
+  await db.game.update({ where: { id }, data: { analysisLeaseUntil: new Date(Date.now() - 1000) } });
+  expect((await coachGame(id, createCoachingRepository(db), makeClient(makeAnnotation(0)))).status).toBe("COMPLETED");
+  await expect(old.complete(id)).rejects.toThrow("ownership expired");
+  await old.fail(id, "Late failure");
+  expect((await db.game.findUniqueOrThrow({ where: { id } })).analysisStatus).toBe("COMPLETED");
+  expect(await db.moveEngineAnalysis.findMany({ where: { move: { gameId: id } } })).toEqual(before);
+});
+
+it("does not claim partial failed engine work for coaching", async () => {
+  const id = await importAndAnalyze();
+  await db.game.update({ where: { id }, data: { analysisStatus: "FAILED" } });
+  expect(await createCoachingRepository(db).claim(id)).toBe(false);
+});

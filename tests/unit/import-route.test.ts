@@ -21,5 +21,5 @@ it("sanitizes database configuration failure as 500", async () => {
   getDb.mockImplementation(() => { throw new Error("secret URL"); });
   const response = await POST(request(JSON.stringify({ userColor: "WHITE", pgn: "1. e4 *" })));
   expect(response.status).toBe(500);
-  expect(await response.json()).toEqual({ error: { code: "IMPORT_FAILED", message: "Could not save your game. Your input is still here; please try again." } });
+  expect(await response.json()).toEqual({ error: { code: "IMPORT_FAILED", message: "Could not save your game. Your input is still here; check that local PostgreSQL is running, then please try again." } });
 });

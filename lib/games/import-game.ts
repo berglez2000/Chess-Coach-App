@@ -26,6 +26,6 @@ export async function importGame(input: unknown, repository: ImportRepository): 
     if (error instanceof PgnParseError) {
       return { error: { code: error.code, message: "The PGN could not be imported.", fields: { pgn: error.message } } };
     }
-    return { error: { code: "IMPORT_FAILED", message: "Could not save your game. Your input is still here; please try again." } };
+    return { error: { code: "IMPORT_FAILED", message: "Could not save your game. Your input is still here; check that local PostgreSQL is running, then please try again." } };
   }
 }

@@ -8,14 +8,15 @@ import { GameReview } from "@/components/games/game-review";
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Saved game | Chess Coach" };
 
-export default async function SavedGamePage({ params }: { params: Promise<{ id: string }> }) {
+export default async function SavedGamePage({ params, searchParams }: { params: Promise<{ id: string }>; searchParams?: Promise<{ analyze?: string }> }) {
   const { id } = await params;
+  const autoStart = (await searchParams)?.analyze === "1";
   const saved = await findGame(getDb(), id);
   if (!saved) notFound();
   return <main id="main-content" className="mx-auto max-w-5xl px-6 py-12 sm:px-10">
     <Link href="/games" className="underline">Your games</Link>
     <h1 className="mt-6 text-3xl font-semibold">Saved game</h1>
-    <AnalysisControls gameId={saved.id} status={saved.status} error={saved.analysisError} leaseUntil={saved.analysisLeaseUntil} />
+    <AnalysisControls autoStart={autoStart} gameId={saved.id} status={saved.status} error={saved.analysisError} leaseUntil={saved.analysisLeaseUntil} />
     <GameReview key={saved.id} game={saved.game} userColor={saved.userColor} status={saved.status} />
   </main>;
 }

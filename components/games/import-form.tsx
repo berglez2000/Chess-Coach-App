@@ -25,7 +25,7 @@ export function ImportForm({ importAction = requestGameImport }: { importAction?
   );
   const errors = state.status === "error" ? state.fields : undefined;
   useEffect(() => {
-    if (state.status === "success") router.push(`/games/${state.gameId}`);
+    if (state.status === "success") router.push(`/games/${state.gameId}?analyze=1`);
   }, [state, router]);
   const inputClass = "mt-2 w-full rounded-lg border border-[#20382e]/30 bg-white p-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#20382e] disabled:opacity-60";
 
@@ -57,12 +57,12 @@ export function ImportForm({ importAction = requestGameImport }: { importAction?
         </div>
         <button type="submit" disabled={pending}
           className="rounded-lg bg-[#20382e] px-6 py-3 font-semibold text-white hover:bg-[#304e40] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#20382e] disabled:cursor-wait disabled:opacity-60">
-          {pending ? "Importing…" : "Import"}
+          {pending ? "Importing…" : "Import and Analyze"}
         </button>
-        {pending && <p role="status" className="text-sm">Checking your game…</p>}
+        {pending && <p role="status" className="text-sm">Checking and saving your game…</p>}
         {!pending && state.status === "error" && <p role="alert" className="text-red-800">{state.message}</p>}
       </form>
-      {!pending && state.status === "success" && <p role="status" className="mt-6">Game saved. Opening review…</p>}
+      {!pending && state.status === "success" && <p role="status" className="mt-6">Game saved. Opening review to start analysis…</p>}
     </>
   );
 }

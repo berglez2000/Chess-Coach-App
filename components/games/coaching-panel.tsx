@@ -18,8 +18,9 @@ function capitalize(s: string): string {
 
 function unavailableMessage(status: AnalysisStatus): string {
   if (status === "PENDING") return "Run analysis to generate coaching annotations.";
-  if (status === "ENGINE_RUNNING" || status === "AI_RUNNING") return "Coaching is being generated…";
-  if (status === "ENGINE_COMPLETED") return "Engine analysis complete. Run analysis again to generate coaching.";
+  if (status === "ENGINE_RUNNING") return "Engine analysis is running. Coaching follows after engine results are saved.";
+  if (status === "AI_RUNNING") return "Coaching is being generated…";
+  if (status === "ENGINE_COMPLETED") return "Engine analysis complete. Use Retry coaching above to generate coaching.";
   if (status === "FAILED") return "Coaching could not be generated. Retry analysis above.";
   return "This move has no coaching annotation. Only selected critical moments receive explanations.";
 }

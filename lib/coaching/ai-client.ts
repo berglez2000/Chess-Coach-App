@@ -104,5 +104,8 @@ export class AnthropicCoachingClient implements CoachingClient {
 }
 
 export function createCoachingClient(): CoachingClient {
+  if (!process.env.ANTHROPIC_API_KEY?.trim()) {
+    return { requestCoaching: async () => ({ status: "MISSING_KEY" }) };
+  }
   return new AnthropicCoachingClient(createAnthropicClient());
 }

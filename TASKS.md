@@ -965,7 +965,7 @@ Implemented positive highlight metadata in saved-game loading by validating stor
 
 ### TASK-023 — Complete progress and recovery UX
 
-Status: TODO  
+Status: DONE
 Milestone: M5  
 Dependencies: TASK-021, TASK-022
 
@@ -999,6 +999,20 @@ Production observability systems and distributed background infrastructure.
 #### Notes
 
 M5 exit: coherent full-game review with positive lessons, navigation, and recovery.
+
+Implemented import-to-saved-review automatic analysis, persisted-stage refresh every two seconds, active-lease retry protection, and recovery for both engine and coaching stages. The analyze endpoint selects retries from persisted status, so coaching retries reuse engine work. Partial failed engine runs cannot be claimed by coaching. Missing engine, missing Anthropic key, and database failures have actionable safe messages; no-key attempts avoid network calls. Stage descriptions include saving without inventing percentages or unsupported intermediate statuses. Corrected misleading coaching panel messages and documented the workflow in README.
+
+Verification passed with Node 24.21.0:
+
+- `npm run lint`, `npm run typecheck`, and `npm test`: 25 files, 297 tests passed. Added deterministic progress, active/expired lease, auto-start, coaching-only routing, missing-key, and sanitized outage coverage; existing loading/empty/error fixtures remain green.
+- `npm run test:integration`: 5 files, 35 tests passed against the isolated postgres-test database, including interrupted coaching recovery, fencing expired owners, preserving engine rows, and rejecting partial failed-engine coaching claims.
+- `npm run build -- --webpack` passed. Default Turbopack build failed on a local worker-port permission error, including the escalated attempt; no build configuration was changed.
+- Ad hoc Chrome checks against the production build and isolated test database passed: import starts analysis at the saved URL; missing executable shows STOCKFISH_PATH guidance; missing key shows ANTHROPIC_API_KEY guidance; engine review and retry survive reload; refresh during active analysis preserves the persisted stage.
+- Interrupted the smoke server during a deliberately slow temporary UCI fixture search, restarted it, confirmed the saved running stage/disabled action and HTTP 409 duplicate rejection, expired only that marked test fixture's lease, and recovered through the browser. The production five-minute lease was unchanged. Integration tests separately cover interrupted AI recovery.
+- Paused only postgres-test to exercise a real unavailable-database screen, confirmed safe PostgreSQL/retry guidance, then restored it. Temporary smoke games were removed and the smoke server stopped. No development data or paid API requests were used.
+
+Manual engine checks used an explicit temporary deterministic UCI fixture, not a live Stockfish strength check. The existing Anthropic provider was preserved; provider migration and release-wide browser automation remain outside this task.
+
 
 ### TASK-024 — Build the minimal home dashboard
 

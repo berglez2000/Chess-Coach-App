@@ -1,3 +1,4 @@
+import { EngineError } from "@/lib/engine/error";
 import { randomUUID } from "node:crypto";
 import { Chess } from "chess.js";
 import type { ChessEngine, EngineResult } from "@/types/engine";
@@ -90,8 +91,10 @@ export async function analyzeGame(id: string, repository: AnalysisRepository, fa
     }
     await repository.complete(id);
     return { status: "ENGINE_COMPLETED", analyzedMoves: game.moves.length };
-  } catch {
-    const message = "Engine analysis failed. Saved game data and completed move results are retained. Please retry.";
+  } catch (error) {
+    const message = error instanceof EngineError && (error.code === "CONFIG" || error.code === "UNAVAILABLE")
+      ? "Stockfish is unavailable. Check STOCKFISH_PATH and engine settings, then retry. Your saved game and completed move results are retained."
+      : "Engine analysis failed. Saved game data and completed move results are retained. Please retry.";
     if (claimed) {
       try { await repository.fail(id, message); }
       catch { return { status: "FAILED", code: "STORAGE_FAILED", message: "Could not record analysis status. Check the database connection before retrying." }; }

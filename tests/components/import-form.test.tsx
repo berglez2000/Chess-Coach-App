@@ -30,7 +30,7 @@ describe("Import form", () => {
     expect(screen.getByLabelText("Your color")).toHaveValue("BLACK");
     expect(screen.getByLabelText("Game PGN")).toHaveValue("1. e4 e5 *");
     submit();
-    await waitFor(() => expect(push).toHaveBeenCalledWith("/games/saved-game"));
+    await waitFor(() => expect(push).toHaveBeenCalledWith("/games/saved-game?analyze=1"));
     expect(fetchMock).toHaveBeenCalledTimes(2);
     expect(fetchMock).toHaveBeenLastCalledWith("/api/games", {
       method: "POST", headers: { "Content-Type": "application/json" },
@@ -54,7 +54,7 @@ describe("Import form", () => {
     render(<ImportForm importAction={action} />);
     fill(color);
     submit();
-    await waitFor(() => expect(push).toHaveBeenCalledWith("/games/saved-game"));
+    await waitFor(() => expect(push).toHaveBeenCalledWith("/games/saved-game?analyze=1"));
     const data = action.mock.calls[0][0] as FormData;
     expect(data.get("userColor")).toBe(color);
     expect(data.get("pgn")).toBe("1. e4 e5 *");
@@ -69,7 +69,7 @@ describe("Import form", () => {
     })} />);
     fill("WHITE", pgn);
     submit();
-    await waitFor(() => expect(push).toHaveBeenCalledWith("/games/saved-game"));
+    await waitFor(() => expect(push).toHaveBeenCalledWith("/games/saved-game?analyze=1"));
     expect(screen.getByLabelText("Game PGN")).toHaveValue(pgn);
   });
 
@@ -88,7 +88,7 @@ describe("Import form", () => {
     expect(screen.getByLabelText("Your color")).toHaveValue("BLACK");
     expect(screen.getByLabelText("Game PGN")).toHaveValue("1. e4 e5 2. Bh6 *");
     expect(screen.getByLabelText("Game PGN")).toHaveAttribute("aria-invalid", "true");
-    expect(screen.getByRole("button", { name: "Import" })).toBeEnabled();
+    expect(screen.getByRole("button", { name: "Import and Analyze" })).toBeEnabled();
   });
 
   it("retains input and offers retry after a transport failure", async () => {

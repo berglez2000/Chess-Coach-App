@@ -158,3 +158,17 @@ describe("AnthropicCoachingClient", () => {
     await expect(makeClient(createMock).requestCoaching(makeRequest())).rejects.toThrow("unexpected");
   });
 });
+
+
+it("returns actionable missing-key failure without constructing an SDK request", async () => {
+  const { createCoachingClient } = await import("@/lib/coaching/ai-client");
+  const previous = process.env.ANTHROPIC_API_KEY;
+  try {
+    process.env.ANTHROPIC_API_KEY = "";
+    const client = createCoachingClient();
+    expect(await client.requestCoaching({} as Parameters<typeof client.requestCoaching>[0])).toEqual({ status: "MISSING_KEY" });
+  } finally {
+    if (previous === undefined) delete process.env.ANTHROPIC_API_KEY;
+    else process.env.ANTHROPIC_API_KEY = previous;
+  }
+});

@@ -929,7 +929,7 @@ Implemented flip board toggle (`flipped` state in `GameReview`, propagated to `R
 
 ### TASK-022 — Present positive instructional highlights
 
-Status: TODO  
+Status: DONE
 Milestone: M5  
 Dependencies: TASK-015, TASK-020
 
@@ -960,6 +960,8 @@ Brilliant-move scoring, new engine-strength claims, and exhaustive annotation.
 #### Notes
 
 Reuse the selection and coaching contracts; do not introduce a second analysis pipeline.
+
+Implemented positive highlight metadata in saved-game loading by validating stored assessments and reusing `selectMoments`. The summary exposes clickable highlights with their coaching and lessons; the move list labels the same plies separately from objective classifications. Games without supported selections show an explicit empty state, and missing annotations do not generate praise. Added five rendered fixture tests covering saved-game mapping, correct-ply navigation, unchanged engine classification, ordinary/invalid/opponent evidence, and missing coaching. Verification: focused tests, all 287 tests, lint, and typecheck passed.
 
 ### TASK-023 — Complete progress and recovery UX
 

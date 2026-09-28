@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import type { ParsedGameMove } from "@/types/game";
 import type { ReviewCoachingAnnotation } from "@/types/saved-game";
 
-type ReviewMove = ParsedGameMove & { coaching?: ReviewCoachingAnnotation | null };
+type ReviewMove = ParsedGameMove & { coaching?: ReviewCoachingAnnotation | null; positiveHighlight?: boolean };
 
 const CLASSIFICATION_DOT: Record<string, string> = {
   blunder: "bg-red-500",
@@ -43,13 +43,14 @@ export function MoveList({ moves, selectedPly, onSelect }: {
                 const move = row[side];
                 return <td key={side} className="p-1">
                   {move ? <button type="button" ref={selectedPly === move.ply ? selectedRef : undefined} onClick={() => onSelect(move.ply)}
-                    aria-label={`${number}. ${side === "white" ? "White" : "Black"} ${move.san}${move.coaching ? ` — ${move.coaching.classification}` : ""}`}
+                    aria-label={`${number}. ${side === "white" ? "White" : "Black"} ${move.san}${move.coaching ? ` — ${move.coaching.classification}` : ""}${move.positiveHighlight ? " — Positive highlight" : ""}`}
                     aria-current={selectedPly === move.ply ? "step" : undefined}
                     className={`flex w-full items-center gap-1.5 rounded px-3 py-2 text-left font-medium focus-visible:outline-2 focus-visible:outline-offset-1 ${selectedPly === move.ply ? "bg-[#20382e] text-white" : "hover:bg-[#20382e]/10"}`}>
                     {move.coaching && CLASSIFICATION_DOT[move.coaching.classification] && (
                       <span className={`inline-block h-2 w-2 shrink-0 rounded-full ${CLASSIFICATION_DOT[move.coaching.classification]}`} aria-hidden="true" />
                     )}
                     {move.san}
+                    {move.positiveHighlight && <span className="rounded border border-current px-1 text-xs">Positive highlight</span>}
                   </button> : <span className="px-3" aria-label="No move">—</span>}
                 </td>;
               })}

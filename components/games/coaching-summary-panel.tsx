@@ -16,6 +16,7 @@ export function CoachingSummaryPanel({ coaching, moves, status, onSelectPly }: {
   status: AnalysisStatus;
   onSelectPly: (ply: number) => void;
 }) {
+  const positiveMoves = moves.filter(m => m.positiveHighlight);
   const annotatedMoves = moves.filter(m => m.coaching);
 
   if (!coaching) {
@@ -60,6 +61,27 @@ export function CoachingSummaryPanel({ coaching, moves, status, onSelectPly }: {
           </ul>
         </div>
       )}
+
+      <div className="mt-5">
+        <h4 className="text-sm font-semibold">Positive highlights</h4>
+        {positiveMoves.length > 0 ? (
+          <nav aria-label="Positive highlights" className="mt-2 space-y-3">
+            {positiveMoves.map(move => (
+              <div key={move.ply}>
+                <button type="button" onClick={() => onSelectPly(move.ply)}
+                  className="rounded-lg border border-[#20382e]/30 px-3 py-1.5 text-sm font-medium hover:bg-[#20382e]/5 focus-visible:outline-2 focus-visible:outline-offset-2">
+                  {move.moveNumber}{move.color === "WHITE" ? "." : "…"} {move.san} · Positive highlight
+                </button>
+                {move.coaching ? <>
+                  {move.coaching.headline && <p className="mt-2 text-sm font-semibold">{move.coaching.headline}</p>}
+                  <p className="mt-1 text-sm">{move.coaching.explanation}</p>
+                  <p className="mt-1 text-sm"><span className="font-semibold">Lesson: </span>{move.coaching.lesson}</p>
+                </> : <p className="mt-2 text-sm">Coaching for this highlight is unavailable.</p>}
+              </div>
+            ))}
+          </nav>
+        ) : <p className="mt-2 text-sm">No supported positive highlights were selected for this game.</p>}
+      </div>
 
       {annotatedMoves.length > 0 && (
         <div className="mt-5">

@@ -21,7 +21,7 @@ export interface GameCoachingSummary {
 }
 
 export type ReviewGame = Pick<ParsedGame, "initialFen" | "metadata"> & {
-  moves: (ParsedGameMove & { analysis?: ReviewAnalysis | null; coaching?: ReviewCoachingAnnotation | null })[];
+  moves: (ParsedGameMove & { positiveHighlight?: boolean; analysis?: ReviewAnalysis | null; coaching?: ReviewCoachingAnnotation | null })[];
   coaching?: GameCoachingSummary | null;
 };
 

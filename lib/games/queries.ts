@@ -1,3 +1,4 @@
+import { positiveHighlightPlies } from "@/lib/coaching/review-highlights";
 import { toReviewAnalysis } from "@/lib/analysis/review";
 import type { PrismaClient } from "@/generated/prisma/client";
 import type { GameSummary, SavedGame, ReviewCoachingAnnotation, GameCoachingSummary } from "@/types/saved-game";
@@ -36,6 +37,8 @@ export async function findGame(db: PrismaClient, id: string): Promise<SavedGame 
       ? { summary: stored.coachingSummary, strengths: stored.coachingStrengths, improvements: stored.coachingImprovements, model: stored.coachingModel }
       : null;
 
+  const positivePlies = positiveHighlightPlies(stored.userColor, stored.moves);
+
   return {
     id: stored.id, whiteName, blackName, result, playedAt, openingName, userColor: stored.userColor,
     status: stored.analysisStatus, createdAt: stored.createdAt.toISOString(),
@@ -45,6 +48,7 @@ export async function findGame(db: PrismaClient, id: string): Promise<SavedGame 
       coaching,
       moves: stored.moves.map(({ engineAnalysis, coachingAnnotation, ...move }) => ({
         ...move,
+        ...(positivePlies.has(move.ply) ? { positiveHighlight: true } : {}),
         analysis: toReviewAnalysis(engineAnalysis),
         coaching: toReviewCoachingAnnotation(coachingAnnotation),
       })),

@@ -85,7 +85,7 @@ export function GameReview({ game, userColor, status }: { game: ReviewGame; user
         </button>
         <span className="text-sm text-[#657467]">{critical.length} moments to learn from · Both players</span>
       </div>}
-      <div className="mt-6 grid min-w-0 gap-6 lg:grid-cols-[minmax(0,1.45fr)_minmax(0,1fr)] lg:gap-8">
+      <div className="mt-6 grid min-w-0 gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] lg:gap-8">
         <div className="min-w-0">
           <div className="flex items-stretch gap-2 sm:gap-3">
             <EvaluationBar evaluation={preview ? null : selectedPly === 0 ? game.moves[0]?.analysis?.before : selectedMove?.analysis?.after}

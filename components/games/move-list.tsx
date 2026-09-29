@@ -4,14 +4,9 @@ import { useEffect, useRef } from "react";
 import type { ParsedGameMove } from "@/types/game";
 import type { ReviewAnalysis } from "@/lib/analysis/review";
 import type { ReviewCoachingAnnotation } from "@/types/saved-game";
+import { MoveQualityBadge } from "./move-quality-badge";
 
 type ReviewMove = ParsedGameMove & { coaching?: ReviewCoachingAnnotation | null; positiveHighlight?: boolean; analysis?: ReviewAnalysis | null };
-
-const CLASSIFICATION_DOT: Record<string, string> = {
-  blunder: "bg-red-500",
-  mistake: "bg-orange-400",
-  inaccuracy: "bg-yellow-400",
-};
 
 export function MoveList({ moves, selectedPly, onSelect }: {
   moves: ReviewMove[];
@@ -47,10 +42,8 @@ export function MoveList({ moves, selectedPly, onSelect }: {
                     aria-label={`${number}. ${side === "white" ? "White" : "Black"} ${move.san}${(move.analysis?.quality ?? move.coaching?.classification) ? ` — ${move.analysis?.quality ?? move.coaching?.classification}` : ""}${move.positiveHighlight ? " — Positive highlight" : ""}`}
                     aria-current={selectedPly === move.ply ? "step" : undefined}
                     className={`flex w-full items-center gap-1.5 rounded px-3 py-2 text-left font-medium focus-visible:outline-2 focus-visible:outline-offset-1 ${selectedPly === move.ply ? "bg-[#20382e] text-white" : "hover:bg-[#20382e]/10"}`}>
-                    {CLASSIFICATION_DOT[move.analysis?.quality ?? move.coaching?.classification ?? ""] && (
-                      <span className={`inline-block h-2 w-2 shrink-0 rounded-full ${CLASSIFICATION_DOT[move.analysis?.quality ?? move.coaching?.classification ?? ""]}`} aria-hidden="true" />
-                    )}
                     {move.san}
+                    <MoveQualityBadge quality={move.analysis?.quality ?? move.coaching?.classification} />
                     {move.positiveHighlight && <span className="rounded border border-current px-1 text-xs">Positive highlight</span>}
                   </button> : <span className="px-3" aria-label="No move">—</span>}
                 </td>;

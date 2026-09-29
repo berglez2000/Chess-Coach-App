@@ -8,6 +8,7 @@ import { ReplayBoard } from "@/components/chess/replay-board";
 import { EvaluationBar } from "@/components/chess/evaluation-bar";
 import { EnginePanel } from "./engine-panel";
 import { MoveList } from "./move-list";
+import { MoveQualityBadge } from "./move-quality-badge";
 import { CoachingPanel } from "./coaching-panel";
 import { CoachingSummaryPanel } from "./coaching-summary-panel";
 
@@ -78,13 +79,15 @@ export function GameReview({ game, userColor, status }: { game: ReviewGame; user
           <div className="flex items-stretch gap-2 sm:gap-3">
             <EvaluationBar evaluation={preview ? null : selectedPly === 0 ? game.moves[0]?.analysis?.before : selectedMove?.analysis?.after}
               whiteBottom={(userColor === "WHITE") !== flipped} />
-            <ReplayBoard fen={fen} userColor={userColor} flipped={flipped} lastMove={preview ? previewUci : selectedMove?.uci} />
+            <ReplayBoard fen={fen} userColor={userColor} flipped={flipped} lastMove={preview ? previewUci : selectedMove?.uci}
+              moveQuality={preview ? undefined : selectedMove?.analysis?.quality ?? selectedMove?.coaching?.classification} />
           </div>
           {preview && <p role="status" className="mt-3 rounded-lg bg-[#e4eddf] p-3 text-sm">Suggested move: {analysis?.bestMoveSan} · Preview from before the played move</p>}
           <p className="mt-3 text-sm" aria-live="polite" aria-atomic="true">
             {selectedMove ? `Move ${selectedMove.moveNumber}${selectedMove.color === "WHITE" ? "." : "..."} ${selectedMove.san}` : "Initial position"}
             {` · Half-move ${selectedPly} of ${total}`}
           </p>
+          {selectedMove && !preview && <div className="mt-2" aria-live="polite" aria-atomic="true"><MoveQualityBadge quality={selectedMove.analysis?.quality ?? selectedMove.coaching?.classification} showLabel /></div>}
           <p className="mt-1 text-sm text-[#657467]">{fen.split(" ")[1] === "w" ? "White" : "Black"} to play · Use ← → to navigate</p>
           <nav aria-label="Move navigation" className="mt-3 flex flex-wrap gap-2">
             <button type="button" className={buttonClass} onClick={() => select(0)} disabled={selectedPly === 0}>Start</button>

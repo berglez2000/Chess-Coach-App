@@ -18,7 +18,7 @@ export function ReplayBoard({ fen, userColor, flipped = false, lastMove }: { fen
         showAnimations: true,
         animationDurationInMs: 200,
         pieces: customPieces,
-        boardStyle: { backgroundImage: `url(${boardTheme.boardImage})`, backgroundSize: "100% 100%" },
+        boardStyle: { backgroundImage: `url(${boardTheme.boardImage})`, backgroundSize: "100% 100%", borderRadius: "8px", overflow: "hidden" },
         darkSquareStyle: { backgroundColor: "transparent" },
         lightSquareStyle: { backgroundColor: "transparent" },
         darkSquareNotationStyle: { color: boardTheme.darkNotation },

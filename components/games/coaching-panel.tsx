@@ -30,7 +30,7 @@ export function CoachingPanel({ coaching, status }: {
   status: AnalysisStatus;
 }) {
   return (
-    <section aria-labelledby="coaching-panel-heading" className="mt-6 rounded-lg border border-[#20382e]/20 bg-white p-5">
+    <section aria-labelledby="coaching-panel-heading" className="mt-3">
       <h3 id="coaching-panel-heading" className="text-lg font-semibold">Coaching</h3>
       {coaching ? (
         <div className="mt-4 space-y-4">
@@ -52,7 +52,7 @@ export function CoachingPanel({ coaching, status }: {
           <p className="mt-2 text-xs text-[#465c50]">
             Note: explanations refer to the position before the played move. The board shows the position after.
           </p>
-          <p className="text-xs text-[#465c50]">Coach model: {coaching.model}</p>
+
         </div>
       ) : (
         <p className="mt-4 text-sm">{unavailableMessage(status)}</p>

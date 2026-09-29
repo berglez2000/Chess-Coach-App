@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, within, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { expect, it } from "vitest";
 import { GameReview } from "@/components/games/game-review";
 import { EnginePanel, formatEvaluation } from "@/components/games/engine-panel";
@@ -14,10 +14,11 @@ it.each(["WHITE", "BLACK"] as const)("synchronizes marker, board and after-move 
   const parsed = parsePgn("1. e4 e5 *");
   const game: ReviewGame = { ...parsed, moves: parsed.moves.map((move, index) => ({ ...move, analysis: index === 0 ? analysis : null })) };
   const { container } = render(<GameReview game={game} userColor={color} status="ENGINE_COMPLETED" />);
+  fireEvent.click(screen.getByText("Engine details"));
   expect(screen.getByText("Initial-position evaluation")).toBeVisible();
   expect(screen.getByRole("img", { name: "Stockfish evaluation: +0.50 pawns" })).toBeVisible();
   expect(screen.getByText(/1 of 2 moves \(partial\)/)).toBeVisible();
-  fireEvent.click(within(screen.getByRole("navigation", { name: "Critical moves" })).getByRole("button", { name: "1. e4 · blunder" }));
+  fireEvent.click(screen.getByRole("button", { name: /Review key moments/ }));
   expect(screen.getByText("Current-position evaluation (after move)")).toBeVisible();
   expect(screen.getByText("-0.75 pawns · Depth 12")).toBeVisible();
   expect(screen.getByRole("img", { name: "Stockfish evaluation: -0.75 pawns" })).toBeVisible();
@@ -45,4 +46,23 @@ it("warns about results from mixed partial retry runs", () => {
   const parsed = parsePgn("1. e4 e5 *");
   render(<GameReview userColor="WHITE" status="ENGINE_COMPLETED" game={{ ...parsed, moves: parsed.moves.map((move, i) => ({ ...move, analysis: { ...analysis, runId: `run${i}` } })) }} />);
   expect(screen.getByText(/multiple analysis runs/)).toBeVisible();
+});
+
+it("filters engine classifications and previews a suggestion without changing the game", async () => {
+  const parsed = parsePgn("1. e4 e5 *");
+  const game: ReviewGame = { ...parsed, moves: parsed.moves.map((move, i) => ({ ...move, analysis: i === 0 ? analysis : null })) };
+  const { container } = render(<GameReview game={game} userColor="WHITE" status="COMPLETED" />);
+  fireEvent.change(screen.getByLabelText("Filter moves"), { target: { value: "mistake" } });
+  expect(screen.getByText("No moves match this filter.")).toBeVisible();
+  fireEvent.change(screen.getByLabelText("Filter moves"), { target: { value: "blunder" } });
+  fireEvent.click(screen.getByRole("button", { name: "1. White e4 — blunder" }));
+  fireEvent.click(screen.getByRole("button", { name: "Show on board" }));
+  await waitFor(() => expect(container.querySelector('[data-square="d4"] [data-piece="wP"]')).not.toBeNull());
+  expect(screen.getByText(/Suggested move: d4/)).toBeVisible();
+  fireEvent.click(screen.getByRole("button", { name: "Return to game" }));
+  await waitFor(() => expect(container.querySelector('[data-square="e4"] [data-piece="wP"]')).not.toBeNull());
+  fireEvent.click(screen.getByRole("button", { name: "Show on board" }));
+  fireEvent.keyDown(document, { key: "ArrowRight" });
+  expect(screen.queryByText(/Suggested move: d4/)).not.toBeInTheDocument();
+  expect(screen.getByText(/Half-move 2 of 2/)).toBeVisible();
 });

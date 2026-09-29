@@ -13,9 +13,9 @@ export default async function SavedGamePage({ params, searchParams }: { params: 
   const autoStart = (await searchParams)?.analyze === "1";
   const saved = await findGame(getDb(), id);
   if (!saved) notFound();
-  return <main id="main-content" className="mx-auto max-w-5xl px-6 py-12 sm:px-10">
+  return <main id="main-content" className="mx-auto max-w-[1200px] px-4 py-8 sm:px-8">
     <Link href="/games" className="underline">Your games</Link>
-    <h1 className="mt-6 text-3xl font-semibold">Saved game</h1>
+    <h1 className="sr-only">Saved game</h1>
     <AnalysisControls coachingRevision={saved.coachingRevision} autoStart={autoStart} gameId={saved.id} status={saved.status} error={saved.analysisError} leaseUntil={saved.analysisLeaseUntil} />
     <GameReview key={saved.id} game={saved.game} userColor={saved.userColor} status={saved.status} />
   </main>;

@@ -36,6 +36,8 @@ async function fixture(options: { userColor?: "WHITE" | "BLACK"; evidence?: "mat
   const db = { game: { findUnique: vi.fn().mockResolvedValue(stored) } } as unknown as PrismaClient;
   const saved = await findGame(db, "fixture");
   render(<GameReview game={saved!.game} userColor={saved!.userColor} status={saved!.status} />);
+  fireEvent.click(screen.getByText("Read full review"));
+  fireEvent.click(screen.getByText("Engine details"));
   return saved!;
 }
 
@@ -64,7 +66,7 @@ it.each([
 ])("does not invent highlights from ordinary annotations, invalid evidence, or opponent successes (%j)", async options => {
   await fixture(options);
   expect(screen.queryByRole("navigation", { name: "Positive highlights" })).not.toBeInTheDocument();
-  expect(screen.getByText("No supported positive highlights were selected for this game.")).toBeVisible();
+  expect(screen.queryByText("No supported positive highlights were selected for this game.")).not.toBeInTheDocument();
   expect(screen.queryByRole("button", { name: /Positive highlight/ })).not.toBeInTheDocument();
 });
 

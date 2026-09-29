@@ -20,7 +20,7 @@ export default function RootLayout({
           Skip to content
         </a>
         <header className="border-b border-[#20382e]/15">
-          <div className="mx-auto flex max-w-5xl items-center px-6 py-6 sm:px-10">
+          <div className="mx-auto flex max-w-[1200px] items-center px-6 py-6 sm:px-10">
             <Link
               href="/"
               className="text-lg font-semibold tracking-tight focus-visible:outline-2 focus-visible:outline-offset-4"

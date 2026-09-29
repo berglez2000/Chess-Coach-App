@@ -66,10 +66,10 @@ describe("Game replay", () => {
 
   it("shows available metadata and fallback player names", () => {
     render(<GameReview game={parsePgn('[Date "2026.09.21"]\n[Opening "Test opening"]\n[ECO "A00"]\n[TimeControl "600+5"]\n1. e4 *')} userColor="WHITE" status="PENDING" />);
-    expect(screen.getByText("White (White) vs. Black (Black)")).toBeVisible();
+    expect(screen.getByRole("heading", { name: "White vs. Black" })).toBeVisible();
     expect(screen.getByText("2026-09-21")).toBeVisible();
     expect(screen.getByText("Test opening (A00)")).toBeVisible();
-    expect(screen.getByText("600+5")).toBeVisible();
+    expect(screen.getByText("10 min + 5 sec")).toBeVisible();
   });
 });
 

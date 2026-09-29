@@ -65,18 +65,18 @@ export function AnalysisControls({ gameId, status, error, leaseUntil, coachingRe
     return () => clearTimeout(timer);
   }, [autoStart, gameId, status, analyze]);
 
-  return <section className="mt-5 space-y-3" aria-label="Game analysis" aria-busy={pending || locked}>
-    <p role="status">{stages[status]}</p>
+  return <section className="mt-5 flex flex-wrap items-center gap-4" aria-label="Game analysis" aria-busy={pending || locked}>
+    <p role="status" className={status === "COMPLETED" ? "inline-flex rounded-full bg-[#e4eddf] px-3 py-1 text-sm font-medium" : ""}>{status === "COMPLETED" ? "✓ Review ready" : stages[status]}</p>
     {error && <p className="text-red-800">{error}</p>}
     {running && <p className="text-sm">Status updates automatically. An interrupted run can be retried after its recovery window{leaseUntil ? ` (until ${leaseUntil.replace("T", " ").slice(0, 19)} UTC)` : ""}. The server checks whether recovery is safe.</p>}
     {canRun && <button onClick={() => void analyze()} disabled={pending || locked} className="rounded-lg bg-[#20382e] px-5 py-3 font-semibold text-white disabled:opacity-50">
       {pending ? "Analyzing…" : locked ? "Analysis in progress…" : status === "PENDING" ? "Analyze game" : coaching ? "Retry coaching" : "Retry analysis"}
     </button>}
-    {status === "COMPLETED" && <div className="space-y-2">
+    {status === "COMPLETED" && <details className="relative text-sm"><summary className="cursor-pointer font-medium">Review options</summary><div className="mt-3 max-w-lg space-y-3 rounded-xl border border-[#20382e]/15 bg-white p-4">
       <p className="text-sm">Regenerate using the provider saved in <Link href="/settings" className="underline">Settings</Link>. This makes a new AI request. Current coaching stays available until a replacement succeeds; Stockfish results are reused.</p>
       <button onClick={() => void analyze(true)} disabled={pending} className="rounded-lg border border-[#20382e] px-5 py-3 font-semibold disabled:opacity-50">{pending ? "Generating coaching…" : "Regenerate coaching"}</button>
-    </div>}
-    <button onClick={() => router.refresh()} className="ml-4 underline">Refresh status</button>
+    </div></details>}
+    {status !== "COMPLETED" && <button onClick={() => router.refresh()} className="ml-4 underline">Refresh status</button>}
     {pending && <p className="text-sm">Request in progress. Saved stages update automatically; you can review saved moves below.</p>}
     {message && <p role="alert" className="text-red-800">{message}</p>}
   </section>;

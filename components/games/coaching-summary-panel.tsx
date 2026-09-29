@@ -23,7 +23,7 @@ export function CoachingSummaryPanel({ coaching, moves, status, onSelectPly }: {
   if (!coaching) {
     if (status === "COMPLETED") {
       return (
-        <section aria-labelledby="coaching-summary-heading" className="mt-8 rounded-lg border border-[#20382e]/20 bg-white p-5">
+        <section aria-labelledby="coaching-summary-heading" className="mt-8 rounded-2xl border border-[#20382e]/20 bg-white p-5">
           <h3 id="coaching-summary-heading" className="text-lg font-semibold">Coaching summary</h3>
           <p className="mt-4 text-sm">Coaching summary unavailable. Saved moves and engine results remain available below.</p>
         </section>
@@ -31,7 +31,7 @@ export function CoachingSummaryPanel({ coaching, moves, status, onSelectPly }: {
     }
     if (status === "FAILED") {
       return (
-        <section aria-labelledby="coaching-summary-heading" className="mt-8 rounded-lg border border-[#20382e]/20 bg-white p-5">
+        <section aria-labelledby="coaching-summary-heading" className="mt-8 rounded-2xl border border-[#20382e]/20 bg-white p-5">
           <h3 id="coaching-summary-heading" className="text-lg font-semibold">Coaching summary</h3>
           <p className="mt-4 text-sm">Coaching could not be generated. Use the retry button above.</p>
         </section>
@@ -41,10 +41,15 @@ export function CoachingSummaryPanel({ coaching, moves, status, onSelectPly }: {
   }
 
   return (
-    <section aria-labelledby="coaching-summary-heading" className="mt-8 rounded-lg border border-[#20382e]/20 bg-white p-5">
+    <section aria-labelledby="coaching-summary-heading" className="mt-8 rounded-2xl border border-[#20382e]/20 bg-white p-5">
       <h3 id="coaching-summary-heading" className="text-lg font-semibold">Coaching summary</h3>
+      <div className="mt-4 grid gap-5 text-sm leading-relaxed md:grid-cols-3">
+        <div><h4 className="mb-2 font-semibold">Your main takeaway</h4><p>{coaching.summary}</p></div>
+        {coaching.strengths[0] && <div><h4 className="mb-2 font-semibold">A strength to keep</h4><p>{coaching.strengths[0]}</p></div>}
+        {coaching.improvements[0] && <div><h4 className="mb-2 font-semibold">Next time you play</h4><p>{coaching.improvements[0]}</p></div>}
+      </div>
+      <details className="mt-6 border-t border-[#20382e]/15 pt-4"><summary className="cursor-pointer text-sm font-semibold">Read full review</summary>
       <p className="mt-2 text-sm">Coached by {PROVIDERS[coaching.provider].label} · {coaching.model}</p>
-      <p className="mt-3 text-sm">{coaching.summary}</p>
 
       {coaching.strengths.length > 0 && (
         <div className="mt-4">
@@ -64,7 +69,7 @@ export function CoachingSummaryPanel({ coaching, moves, status, onSelectPly }: {
         </div>
       )}
 
-      <div className="mt-5">
+      {positiveMoves.length > 0 && <div className="mt-5">
         <h4 className="text-sm font-semibold">Positive highlights</h4>
         {positiveMoves.length > 0 ? (
           <nav aria-label="Positive highlights" className="mt-2 space-y-3">
@@ -83,7 +88,7 @@ export function CoachingSummaryPanel({ coaching, moves, status, onSelectPly }: {
             ))}
           </nav>
         ) : <p className="mt-2 text-sm">No supported positive highlights were selected for this game.</p>}
-      </div>
+      </div>}
 
       {annotatedMoves.length > 0 && (
         <div className="mt-5">
@@ -105,7 +110,7 @@ export function CoachingSummaryPanel({ coaching, moves, status, onSelectPly }: {
         </div>
       )}
 
-      <p className="mt-4 text-xs text-[#465c50]">Coach model: {coaching.model}</p>
+      </details>
     </section>
   );
 }

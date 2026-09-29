@@ -84,6 +84,7 @@ for (const color of ["WHITE", "BLACK"] as const) {
     await expect(direct).toHaveAttribute("aria-current", "step");
     const coaching = page.getByRole("region", { name: "Coaching", exact: true });
     await expect(coaching).toContainText(`Fixture lesson at ply ${move.ply}`);
+    await page.getByText("Engine details", { exact: true }).click();
     await expect(page.getByRole("region", { name: "Engine analysis" })).toContainText("50 cp");
     await expect(coaching).toContainText("position before the played move");
 
@@ -93,11 +94,14 @@ for (const color of ["WHITE", "BLACK"] as const) {
     await expect(coaching).toContainText("This move has no coaching annotation");
     await expect(coaching).not.toContainText("Fixture lesson");
 
-    await page.getByRole("navigation", { name: "Critical moves", exact: true }).getByRole("button", { name: `${move.moveNumber}${color === "WHITE" ? "." : "..."} ${move.san} · mistake`, exact: true }).click();
+    await page.getByLabel("Filter moves").selectOption("mistake");
+    await direct.click();
+    await page.getByLabel("Filter moves").selectOption("all");
     await expectBoard(page, move.fenAfter);
     await expect(coaching).toContainText(`Fixture lesson at ply ${move.ply}`);
     await page.getByRole("button", { name: "Start", exact: true }).click();
     await expectBoard(page, stored.initialFen);
+    await page.getByText("Read full review", { exact: true }).click();
     await page.getByRole("navigation", { name: "Annotated moments" }).getByRole("button", { name: `Go to move ${move.moveNumber}${color === "WHITE" ? "." : "…"} ${move.san} — mistake`, exact: true }).click();
     await expectBoard(page, move.fenAfter);
     await expect(coaching).toContainText(`Fixture lesson at ply ${move.ply}`);
@@ -126,13 +130,21 @@ for (const color of ["WHITE", "BLACK"] as const) {
     expect(database("read", id).coachingProvider).toBe(provider);
     const originalAnnotations = database("read", id).moves.map(m => m.coachingAnnotation);
     await page.goto(`/games/${id}`);
-    await page.getByRole("button", { name: "Regenerate coaching" }).click();
+    await page.getByText("Review options", { exact: true }).click();
+    await page.getByText("Read full review", { exact: true }).click();
+    await Promise.all([
+      page.waitForResponse(response => response.url().endsWith(`/api/games/${id}/coaching`) && response.request().method() === "POST"),
+      page.getByRole("button", { name: "Regenerate coaching" }).click(),
+    ]);
     await expect(page.getByRole("region", { name: "Game analysis" })).toContainText("AI service error");
     expect(database("read", id).moves.map(m => m.coachingAnnotation)).toEqual(originalAnnotations);
     expect(database("read", id).coachingProvider).toBe(provider);
     await expect(page.getByRole("button", { name: "Regenerate coaching" })).toBeEnabled();
     const staleRevision = database("read", id).coachingRevision;
-    await page.getByRole("button", { name: "Regenerate coaching" }).click();
+    await Promise.all([
+      page.waitForResponse(response => response.url().endsWith(`/api/games/${id}/coaching`) && response.request().method() === "POST"),
+      page.getByRole("button", { name: "Regenerate coaching" }).click(),
+    ]);
     await expect(page.getByText(`Coached by ${replacementProvider === "OPENAI" ? "OpenAI (GPT)" : "Anthropic (Claude)"} · e2e-${replacementProvider}-fixture`)).toBeVisible();
     const replaced = database("read", id);
     expect(replaced.coachingProvider).toBe(replacementProvider);
@@ -141,6 +153,7 @@ for (const color of ["WHITE", "BLACK"] as const) {
     expect(engineRows(id)).toEqual(engineBefore);
     expect((await page.request.post(`/api/games/${id}/coaching`, { data: { expectedRevision: staleRevision } })).status()).toBe(409);
     await page.reload();
+    await page.getByText("Read full review", { exact: true }).click();
     await expect(page.getByText(`Coached by ${replacementProvider === "OPENAI" ? "OpenAI (GPT)" : "Anthropic (Claude)"} · e2e-${replacementProvider}-fixture`)).toBeVisible();
   });
 }

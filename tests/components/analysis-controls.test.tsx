@@ -42,7 +42,7 @@ it.each(["ENGINE_RUNNING", "AI_RUNNING"] as const)("locks active %s runs and ref
   await act(async () => vi.advanceTimersByTime(2000));
   expect(refresh).toHaveBeenCalled();
   rerender(<AnalysisControls gameId="game" status="COMPLETED" error={null} leaseUntil={null} />);
-  expect(screen.getByRole("status")).toHaveTextContent("review is ready");
+  expect(screen.getByRole("status")).toHaveTextContent("Review ready");
   refresh.mockClear();
   await act(async () => vi.advanceTimersByTime(4000));
   expect(refresh).not.toHaveBeenCalled();
@@ -78,6 +78,7 @@ it("only regenerates on explicit action using the displayed revision", async () 
   render(<AnalysisControls gameId="game" status="COMPLETED" error={null} leaseUntil={null} coachingRevision={7} />);
   expect(fetch).not.toHaveBeenCalled();
   expect(screen.getByRole("link", { name: "Settings" })).toHaveAttribute("href", "/settings");
+  fireEvent.click(screen.getByText("Review options"));
   fireEvent.click(screen.getByRole("button", { name: "Regenerate coaching" }));
   await waitFor(() => expect(refresh).toHaveBeenCalled());
   expect(fetch).toHaveBeenCalledExactlyOnceWith("/api/games/game/coaching", { method: "POST", headers: { "Content-Type": "application/json" }, body: '{"expectedRevision":7}' });

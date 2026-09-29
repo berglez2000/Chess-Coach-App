@@ -2,9 +2,10 @@
 
 import { useEffect, useRef } from "react";
 import type { ParsedGameMove } from "@/types/game";
+import type { ReviewAnalysis } from "@/lib/analysis/review";
 import type { ReviewCoachingAnnotation } from "@/types/saved-game";
 
-type ReviewMove = ParsedGameMove & { coaching?: ReviewCoachingAnnotation | null; positiveHighlight?: boolean };
+type ReviewMove = ParsedGameMove & { coaching?: ReviewCoachingAnnotation | null; positiveHighlight?: boolean; analysis?: ReviewAnalysis | null };
 
 const CLASSIFICATION_DOT: Record<string, string> = {
   blunder: "bg-red-500",
@@ -29,7 +30,7 @@ export function MoveList({ moves, selectedPly, onSelect }: {
     rows.set(move.moveNumber, row);
   }
   return (
-    <div className="max-h-96 overflow-y-auto rounded-lg border border-[#20382e]/20">
+    <div className="max-h-64 overflow-y-auto rounded-lg border border-[#20382e]/20">
       <table className="w-full text-left text-sm">
         <caption className="sr-only">Game moves</caption>
         <thead className="sticky top-0 bg-[#eeeee5]">
@@ -43,11 +44,11 @@ export function MoveList({ moves, selectedPly, onSelect }: {
                 const move = row[side];
                 return <td key={side} className="p-1">
                   {move ? <button type="button" ref={selectedPly === move.ply ? selectedRef : undefined} onClick={() => onSelect(move.ply)}
-                    aria-label={`${number}. ${side === "white" ? "White" : "Black"} ${move.san}${move.coaching ? ` — ${move.coaching.classification}` : ""}${move.positiveHighlight ? " — Positive highlight" : ""}`}
+                    aria-label={`${number}. ${side === "white" ? "White" : "Black"} ${move.san}${(move.analysis?.quality ?? move.coaching?.classification) ? ` — ${move.analysis?.quality ?? move.coaching?.classification}` : ""}${move.positiveHighlight ? " — Positive highlight" : ""}`}
                     aria-current={selectedPly === move.ply ? "step" : undefined}
                     className={`flex w-full items-center gap-1.5 rounded px-3 py-2 text-left font-medium focus-visible:outline-2 focus-visible:outline-offset-1 ${selectedPly === move.ply ? "bg-[#20382e] text-white" : "hover:bg-[#20382e]/10"}`}>
-                    {move.coaching && CLASSIFICATION_DOT[move.coaching.classification] && (
-                      <span className={`inline-block h-2 w-2 shrink-0 rounded-full ${CLASSIFICATION_DOT[move.coaching.classification]}`} aria-hidden="true" />
+                    {CLASSIFICATION_DOT[move.analysis?.quality ?? move.coaching?.classification ?? ""] && (
+                      <span className={`inline-block h-2 w-2 shrink-0 rounded-full ${CLASSIFICATION_DOT[move.analysis?.quality ?? move.coaching?.classification ?? ""]}`} aria-hidden="true" />
                     )}
                     {move.san}
                     {move.positiveHighlight && <span className="rounded border border-current px-1 text-xs">Positive highlight</span>}

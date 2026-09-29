@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import type { ChessColor } from "@/types/game";
 import type { AnalysisStatus, ReviewGame } from "@/types/saved-game";
 import { ReplayBoard } from "@/components/chess/replay-board";
+import { EvaluationBar } from "@/components/chess/evaluation-bar";
 import { EnginePanel } from "./engine-panel";
 import { MoveList } from "./move-list";
 import { CoachingPanel } from "./coaching-panel";
@@ -55,7 +56,11 @@ export function GameReview({ game, userColor, status }: { game: ReviewGame; user
       </nav>}
       <div className="mt-6 grid min-w-0 gap-6 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
         <div className="min-w-0">
-          <ReplayBoard fen={fen} userColor={userColor} flipped={flipped} />
+          <div className="flex items-stretch gap-2 sm:gap-3">
+            <EvaluationBar evaluation={selectedPly === 0 ? game.moves[0]?.analysis?.before : selectedMove?.analysis?.after}
+              whiteBottom={(userColor === "WHITE") !== flipped} />
+            <ReplayBoard fen={fen} userColor={userColor} flipped={flipped} lastMove={selectedMove?.uci} />
+          </div>
           <p className="mt-3 text-sm" aria-live="polite" aria-atomic="true">
             {selectedMove ? `Move ${selectedMove.moveNumber}${selectedMove.color === "WHITE" ? "." : "..."} ${selectedMove.san}` : "Initial position"}
             {` · Half-move ${selectedPly} of ${total}`}

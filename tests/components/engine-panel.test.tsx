@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen, within, waitFor } from "@testing-library/react";
 import { expect, it } from "vitest";
 import { GameReview } from "@/components/games/game-review";
 import { EnginePanel, formatEvaluation } from "@/components/games/engine-panel";
@@ -10,23 +10,27 @@ const analysis: ReviewAnalysis = {
   after: { perspective: "WHITE", score: { kind: "cp", value: -75, bound: "exact" }, depth: 12, pv: [] },
   quality: "blunder", reason: "cp_loss", cpLoss: 125, bestMoveSan: "d4", pvSan: ["d4", "d5"], runId: "run1", analyzedAt: "2026-09-22T00:00:00.000Z",
 };
-it.each(["WHITE", "BLACK"] as const)("synchronizes marker, board and after-move panel for %s", color => {
+it.each(["WHITE", "BLACK"] as const)("synchronizes marker, board and after-move panel for %s", async color => {
   const parsed = parsePgn("1. e4 e5 *");
   const game: ReviewGame = { ...parsed, moves: parsed.moves.map((move, index) => ({ ...move, analysis: index === 0 ? analysis : null })) };
   const { container } = render(<GameReview game={game} userColor={color} status="ENGINE_COMPLETED" />);
   expect(screen.getByText("Initial-position evaluation")).toBeVisible();
+  expect(screen.getByRole("img", { name: "Stockfish evaluation: +0.50 pawns" })).toBeVisible();
   expect(screen.getByText(/1 of 2 moves \(partial\)/)).toBeVisible();
   fireEvent.click(within(screen.getByRole("navigation", { name: "Critical moves" })).getByRole("button", { name: "1. e4 · blunder" }));
   expect(screen.getByText("Current-position evaluation (after move)")).toBeVisible();
   expect(screen.getByText("-0.75 pawns · Depth 12")).toBeVisible();
+  expect(screen.getByRole("img", { name: "Stockfish evaluation: -0.75 pawns" })).toBeVisible();
   expect(screen.getByText("+0.50 pawns")).toBeVisible();
   expect(screen.getByText(/Engine choice before the played move/).parentElement).toHaveTextContent("d4");
-  expect(container.querySelector('[data-square="e4"] [data-piece="wP"]')).not.toBeNull();
+  await waitFor(() => expect(container.querySelector('[data-square="e4"] [data-piece="wP"]')).not.toBeNull());
   fireEvent.click(screen.getByRole("button", { name: "End" }));
   expect(screen.getByText(/No saved engine analysis/)).toBeVisible();
   expect(screen.queryByText("125 cp")).toBeNull();
+  expect(screen.getByRole("img", { name: "Stockfish evaluation: Not available" })).toBeVisible();
   fireEvent.click(screen.getByRole("button", { name: "Start" }));
   expect(screen.getByText("Initial-position evaluation")).toBeVisible();
+  expect(screen.getByRole("img", { name: "Stockfish evaluation: +0.50 pawns" })).toBeVisible();
 });
 it("renders mate, checkmate, bounds and missing scores distinctly", () => {
   expect(formatEvaluation(null)).toBe("Not available");

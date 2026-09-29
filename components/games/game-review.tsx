@@ -5,6 +5,7 @@ import { useCallback, useEffect, useState } from "react";
 import type { ChessColor } from "@/types/game";
 import type { AnalysisStatus, ReviewGame } from "@/types/saved-game";
 import { ReplayBoard } from "@/components/chess/replay-board";
+import { useMoveSound } from "@/components/chess/use-move-sound";
 import { EvaluationBar } from "@/components/chess/evaluation-bar";
 import { EnginePanel } from "./engine-panel";
 import { MoveList } from "./move-list";
@@ -14,6 +15,7 @@ import { CoachingSummaryPanel } from "./coaching-summary-panel";
 
 /** Mount a fresh review for each imported game. Selected ply owns all replay state. */
 export function GameReview({ game, userColor, status }: { game: ReviewGame; userColor: ChessColor; status: AnalysisStatus }) {
+  const { play, muted, toggleMuted } = useMoveSound();
   const [selectedPly, setSelectedPly] = useState(0);
   const [preview, setPreview] = useState(false);
   const [filter, setFilter] = useState("all");
@@ -35,7 +37,17 @@ export function GameReview({ game, userColor, status }: { game: ReviewGame; user
   const analyzed = game.moves.filter(move => move.analysis);
   const critical = analyzed.filter(move => move.analysis?.quality === "mistake" || move.analysis?.quality === "blunder" || move.analysis?.quality === "inaccuracy");
   const mixedRuns = new Set(analyzed.map(move => move.analysis!.runId)).size > 1;
-  const select = useCallback((ply: number) => { setPreview(false); setSelectedPly(Math.max(0, Math.min(total, ply))); }, [total]);
+  const select = useCallback((ply: number) => {
+    const next = Math.max(0, Math.min(total, ply));
+    if (next !== selectedPly || preview) {
+      // Backward navigation uses the ordinary move sound, rather than announcing
+      // a capture or game ending that is being undone.
+      play(next > selectedPly ? game.moves[next - 1]?.san ?? "" : "",
+        next > selectedPly && next === total && game.metadata.result !== "*");
+    }
+    setPreview(false);
+    setSelectedPly(next);
+  }, [total, selectedPly, preview, play, game.moves, game.metadata.result]);
   const buttonClass = "rounded-lg border border-[#20382e]/30 px-3 py-2 text-sm font-medium hover:bg-white disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2";
 
   useEffect(() => {
@@ -44,12 +56,11 @@ export function GameReview({ game, userColor, status }: { game: ReviewGame; user
       const target = e.target as HTMLElement;
       if (target.tagName === "INPUT" || target.tagName === "TEXTAREA" || target.tagName === "SELECT" || target.isContentEditable) return;
       e.preventDefault();
-      setPreview(false);
-      setSelectedPly(prev => Math.max(0, Math.min(total, prev + (e.key === "ArrowRight" ? 1 : -1))));
+      select(selectedPly + (e.key === "ArrowRight" ? 1 : -1));
     };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
-  }, [total]);
+  }, [select, selectedPly]);
   const { metadata } = game;
   const time = metadata.timeControl?.match(/^(\d+)(?:\+(\d+))?$/);
   const timeLabel = time ? `${Number(time[1]) / 60} min${time[2] ? ` + ${time[2]} sec` : ""}` : metadata.timeControl;
@@ -95,6 +106,7 @@ export function GameReview({ game, userColor, status }: { game: ReviewGame; user
             <button type="button" className={buttonClass} onClick={() => select(selectedPly + 1)} disabled={selectedPly === total}>Next</button>
             <button type="button" className={buttonClass} onClick={() => select(total)} disabled={selectedPly === total}>End</button>
             <button type="button" className={buttonClass} onClick={() => setFlipped(f => !f)} aria-pressed={flipped}>Flip board</button>
+            <button type="button" className={buttonClass} onClick={toggleMuted} aria-pressed={muted} aria-label="Mute sounds">Sound: {muted ? "off" : "on"}</button>
           </nav>
         </div>
         <div className="min-w-0 space-y-4">
@@ -103,7 +115,7 @@ export function GameReview({ game, userColor, status }: { game: ReviewGame; user
             {selectedMove ? <CoachingPanel coaching={selectedMove.coaching} status={status} /> : <p className="mt-3 text-sm leading-relaxed">Select a move or review the key moments to see what happened, why it matters, and what to try next.</p>}
             {analysis?.bestMoveSan && <div className="mt-4 border-t border-[#20382e]/10 pt-4">
               <p className="text-sm font-semibold">{selectedMove && selectedMove.san !== analysis.bestMoveSan ? "Try instead" : "Engine suggestion"}: {analysis.bestMoveSan}</p>
-              {previewFen && <button type="button" className={`${buttonClass} mt-2`} aria-pressed={preview} onClick={() => setPreview(value => !value)}>{preview ? "Return to game" : "Show on board"}</button>}
+              {previewFen && <button type="button" className={`${buttonClass} mt-2`} aria-pressed={preview} onClick={() => { if ((preview ? selectedMove?.fenAfter ?? game.initialFen : previewFen) !== fen) play(preview ? "" : analysis.bestMoveSan ?? ""); setPreview(value => !value); }}>{preview ? "Return to game" : "Show on board"}</button>}
             </div>}
             <details className="mt-4 border-t border-[#20382e]/10 pt-4"><summary className="cursor-pointer text-sm font-medium">Engine details</summary><EnginePanel initial={selectedPly === 0} analysis={analysis} /></details>
           </div>

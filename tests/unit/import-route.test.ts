@@ -1,3 +1,4 @@
+vi.mock("@/lib/auth/session", () => ({ requireUser: async () => ({ id: "test-user" }), requireApiUser: async () => ({ id: "test-user" }) }));
 import { afterEach, expect, it, vi } from "vitest";
 const { create, getDb } = vi.hoisted(() => ({ create: vi.fn(), getDb: vi.fn() }));
 vi.mock("@/lib/db/client", () => ({ getDb }));

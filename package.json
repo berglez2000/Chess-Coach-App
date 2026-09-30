@@ -17,6 +17,7 @@
     "postinstall": "prisma generate",
     "db:generate": "prisma generate",
     "db:check": "node --conditions=react-server --import tsx scripts/check-db.ts",
+    "auth:admin": "node --conditions=react-server --import tsx scripts/auth-admin.ts",
     "test:integration": "tsx scripts/test-integration.ts",
     "test:engine": "node --conditions=react-server --import tsx scripts/check-engine.ts",
     "test:e2e": "tsx scripts/test-e2e.ts"
@@ -26,6 +27,7 @@
     "@next/env": "16.3.5",
     "@prisma/adapter-pg": "7.10.0",
     "@prisma/client": "7.10.0",
+    "better-auth": "1.7.6",
     "chess.js": "1.4.0",
     "next": "16.3.5",
     "openai": "7.23.0",

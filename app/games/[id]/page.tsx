@@ -1,3 +1,4 @@
+import { requireUser } from "@/lib/auth/session";
 import { AnalysisControls } from "@/components/games/analysis-controls";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -9,9 +10,10 @@ export const dynamic = "force-dynamic";
 export const metadata = { title: "Saved game | Chess Coach" };
 
 export default async function SavedGamePage({ params, searchParams }: { params: Promise<{ id: string }>; searchParams?: Promise<{ analyze?: string }> }) {
+  const user = await requireUser();
   const { id } = await params;
   const autoStart = (await searchParams)?.analyze === "1";
-  const saved = await findGame(getDb(), id);
+  const saved = await findGame(getDb(), id, user.id);
   if (!saved) notFound();
   return <main id="main-content" className="mx-auto max-w-[1200px] px-4 py-8 sm:px-8">
     <Link href="/games" className="underline">Your games</Link>

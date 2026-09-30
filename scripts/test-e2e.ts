@@ -25,6 +25,8 @@ async function main() {
       if (originalSettings) await db.appSettings.upsert({ where: { id: "local" }, create: originalSettings, update: originalSettings });
       else if (originalSettings === null) await db.appSettings.deleteMany({ where: { id: "local" } });
       await db.game.deleteMany({ where: { whiteName: { startsWith: `E2E-${runId}-` } } });
+      await db.game.deleteMany({ where: { owner: { email: { startsWith: `e2e-${runId}-` } } } });
+      await db.user.deleteMany({ where: { email: { startsWith: `e2e-${runId}-` } } });
     } finally { await db.$disconnect(); }
   }
 }

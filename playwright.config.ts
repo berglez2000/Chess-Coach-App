@@ -23,6 +23,8 @@ export default defineConfig({
       DATABASE_URL: databaseUrl,
       CHESS_E2E_MODE: "deterministic",
       CHESS_E2E_RUN_ID: process.env.CHESS_E2E_RUN_ID,
+      BETTER_AUTH_URL: "http://127.0.0.1:3100",
+      BETTER_AUTH_SECRET: "isolated-browser-test-secret-not-for-normal-use",
       ANTHROPIC_API_KEY: "", OPENAI_API_KEY: "",
       STOCKFISH_PATH: "/e2e-fixture-not-an-executable",
       STOCKFISH_DEPTH: "12", STOCKFISH_MOVETIME_MS: "", STOCKFISH_TIMEOUT_MS: "30000",

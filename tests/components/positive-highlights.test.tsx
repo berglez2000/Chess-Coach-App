@@ -34,7 +34,7 @@ async function fixture(options: { userColor?: "WHITE" | "BLACK"; evidence?: "mat
     })),
   };
   const db = { game: { findUnique: vi.fn().mockResolvedValue(stored) } } as unknown as PrismaClient;
-  const saved = await findGame(db, "fixture");
+  const saved = await findGame(db, "fixture", "test-user");
   render(<GameReview game={saved!.game} userColor={saved!.userColor} status={saved!.status} />);
   fireEvent.click(screen.getByText("Read full review"));
   fireEvent.click(screen.getByText("Engine details"));

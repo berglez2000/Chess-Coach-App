@@ -1,3 +1,4 @@
+import { requireApiUser } from "@/lib/auth/session";
 import { listGames } from "@/lib/games/queries";
 import { getDb } from "@/lib/db/client";
 import { importGame } from "@/lib/games/import-game";
@@ -5,6 +6,8 @@ import { createImportRepository } from "@/lib/games/import-repository";
 import type { ImportResponse } from "@/types/import";
 
 export async function POST(request: Request) {
+  const user = await requireApiUser(request);
+  if (user instanceof Response) return user;
   let input: unknown;
   try {
     input = await request.json();
@@ -13,14 +16,16 @@ export async function POST(request: Request) {
   }
   // Connect only after validation; configuration failures are sanitized by the service.
   const result = await importGame(input, {
-    create: (game, color) => createImportRepository(getDb()).create(game, color),
+    create: (game, color) => createImportRepository(getDb(), user.id).create(game, color),
   });
   return Response.json(result, { status: "error" in result ? result.error.code === "IMPORT_FAILED" ? 500 : 400 : 201 });
 }
 
 export async function GET() {
+  const user = await requireApiUser();
+  if (user instanceof Response) return user;
   try {
-    return Response.json({ games: await listGames(getDb()) });
+    return Response.json({ games: await listGames(getDb(), user.id) });
   } catch {
     return Response.json({ error: { code: "READ_FAILED", message: "Could not load your games. Please try again." } }, { status: 500 });
   }

@@ -45,14 +45,14 @@ export interface CoachingRepository {
   fail(id: string, message: string): Promise<void>;
 }
 
-export function createCoachingRepository(db: PrismaClient, options: CoachingRunOptions = { provider: DEFAULT_PROVIDER, model: PROVIDERS[DEFAULT_PROVIDER].model }): CoachingRepository {
+export function createCoachingRepository(db: PrismaClient, options: CoachingRunOptions = { provider: DEFAULT_PROVIDER, model: PROVIDERS[DEFAULT_PROVIDER].model }, ownerId: string | null = null): CoachingRepository {
   const token = randomUUID();
   const lease = () => new Date(Date.now() + COACHING_LEASE_MS);
 
   return {
     async load(id) {
       const stored = await db.game.findUnique({
-        where: { id },
+        where: { id, ownerId },
         select: {
           userColor: true, initialFen: true, whiteName: true, blackName: true,
           result: true, playedAt: true, openingName: true, event: true, eco: true, timeControl: true,
@@ -114,7 +114,7 @@ export function createCoachingRepository(db: PrismaClient, options: CoachingRunO
     async claim(id) {
       const result = await db.game.updateMany({
         where: {
-          id,
+          id, ownerId,
           ...(options.expectedRevision === undefined ? {} : { coachingRevision: options.expectedRevision }),
           OR: [
             { analysisStatus: "ENGINE_COMPLETED" },
@@ -131,13 +131,13 @@ export function createCoachingRepository(db: PrismaClient, options: CoachingRunO
     async save(gameId, runId, annotation, moveIds) {
       await db.$transaction(async tx => {
         const owned = await tx.game.updateMany({
-          where: { id: gameId, analysisToken: token, analysisStatus: "AI_RUNNING", analysisLeaseUntil: { gt: new Date() } },
+          where: { id: gameId, ownerId, analysisToken: token, analysisStatus: "AI_RUNNING", analysisLeaseUntil: { gt: new Date() } },
           data: { analysisLeaseUntil: lease() },
         });
         if (owned.count !== 1) throw new Error("Coaching ownership expired.");
 
         await tx.game.update({
-          where: { id: gameId },
+          where: { id: gameId, ownerId },
           data: {
             coachingSummary: annotation.summary,
             coachingStrengths: annotation.strengths,
@@ -176,7 +176,7 @@ export function createCoachingRepository(db: PrismaClient, options: CoachingRunO
       await db.$transaction(async tx => {
         for (const hasSummary of [true, false]) {
           await tx.game.updateMany({
-            where: { id, analysisToken: token, analysisStatus: "AI_RUNNING", analysisLeaseUntil: { gt: new Date() },
+            where: { id, ownerId, analysisToken: token, analysisStatus: "AI_RUNNING", analysisLeaseUntil: { gt: new Date() },
               coachingSummary: hasSummary ? { not: null } : null },
             data: { analysisStatus: hasSummary ? "COMPLETED" : "ENGINE_COMPLETED", analysisError: message, analysisToken: null, analysisLeaseUntil: null },
           });

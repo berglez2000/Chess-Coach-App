@@ -31,8 +31,84 @@ model AppSettings {
   coachingProvider CoachingProvider @default(ANTHROPIC)
 }
 
+model User {
+  id            String   @id
+  name          String
+  email         String   @unique
+  emailVerified Boolean  @default(false)
+  image         String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  sessions      Session[]
+  accounts      Account[]
+  games         Game[]
+  settings      UserSettings?
+}
+
+model Session {
+  id        String   @id
+  token     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  ipAddress String?
+  userAgent String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+// A user can gain another login method later without changing their identity.
+model Account {
+  id                    String   @id
+  accountId             String
+  providerId            String
+  userId                String
+  user                  User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  password              String?
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  @@unique([providerId, accountId])
+  @@index([userId])
+}
+
+model Verification {
+  id         String   @id
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([identifier])
+}
+
+model RateLimit {
+  id          String @id
+  key         String @unique
+  count       Int
+  lastRequest BigInt
+}
+
+model UserSettings {
+  userId           String @id
+  user             User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  coachingProvider CoachingProvider @default(ANTHROPIC)
+}
+
 model Game {
   id             String         @id @default(cuid())
+  // Null only for pre-auth imports, hidden until explicitly assigned by the owner CLI.
+  ownerId        String?
+  owner          User?          @relation(fields: [ownerId], references: [id], onDelete: Restrict)
   pgn            String         @db.Text
   initialFen     String
   whiteName      String?
@@ -64,6 +140,7 @@ model Game {
   moves          GameMove[]
 
   @@index([createdAt, id])
+  @@index([ownerId, createdAt, id])
 }
 
 model GameMove {

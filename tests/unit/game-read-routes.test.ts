@@ -1,3 +1,4 @@
+vi.mock("@/lib/auth/session", () => ({ requireUser: async () => ({ id: "test-user" }), requireApiUser: async () => ({ id: "test-user" }) }));
 import { afterEach, expect, it, vi } from "vitest";
 const { listGames, findGame } = vi.hoisted(() => ({ listGames: vi.fn(), findGame: vi.fn() }));
 vi.mock("@/lib/db/client", () => ({ getDb: () => ({}) }));
@@ -11,7 +12,7 @@ it("returns summarized list and detailed game envelopes", async () => {
   expect(await (await list()).json()).toEqual({ games: [] });
   findGame.mockResolvedValue({ id: "id" });
   expect(await (await request()).json()).toEqual({ game: { id: "id" } });
-  expect(findGame).toHaveBeenCalledWith({}, "id");
+  expect(findGame).toHaveBeenCalledWith({}, "id", "test-user");
 });
 it("returns 404 for a missing game", async () => {
   findGame.mockResolvedValue(null);

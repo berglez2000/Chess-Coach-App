@@ -1,3 +1,4 @@
+vi.mock("@/lib/auth/session", () => ({ requireUser: async () => ({ id: "test-user" }), requireApiUser: async () => ({ id: "test-user" }) }));
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, expect, it, vi } from "vitest";
 import { CoachingSettingsForm } from "@/components/settings/coaching-settings-form";

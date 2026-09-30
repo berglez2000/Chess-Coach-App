@@ -2,9 +2,39 @@
 
 A local chess-improvement application for importing PGNs, analyzing games with Stockfish, and reviewing them with AI coaching.
 
-V0.1 supports a saved-game dashboard, PGN import, Stockfish analysis, validated AI coaching, and synchronized board review. It runs locally without authentication. Puzzles, training, weakness statistics, and deployment are deferred.
+The app supports email/password accounts, a private saved-game dashboard, PGN import, Stockfish analysis, validated AI coaching, and synchronized board review. Puzzles, training, weakness statistics, and deployment are deferred; see [future tasks](FUTURE_TASKS.md).
 
 **Release acceptance is blocked:** live coaching credentials are unavailable and the default Turbopack build has an environment limitation. Both Anthropic and OpenAI are implemented; live provider checks remain unverified. Engine-only review works without a provider key. See [release evidence](docs/release-acceptance.md) for checks and limitations.
+
+## Accounts and existing games
+
+Open `/register` to create your email/password account. Passwords must contain 12–128 characters. Registration signs you in; `/sign-in` restores access later. **Account** opens your profile and password-change form; **Sign out** revokes the current session. Password changes sign out other devices. Sessions expire after seven days, with renewal after a day of activity.
+
+Games, dashboard counts, analysis, coaching regeneration, and provider preferences are private to the signed-in user. Import ownership comes from the session, never from request data. Unknown and other users' game IDs both return 404. API clients must send the app's exact `Origin` on write requests and include a valid session cookie. Server API keys remain shared installation configuration; each user chooses their own provider.
+
+The additive auth migration preserves all existing games, moves, engine results, and coaching. Pre-auth games initially have no owner and are hidden from accounts, including the first registrant. After registering your account, stop the app and explicitly assign the legacy library to your email:
+
+```bash
+npm run auth:admin -- claim-legacy you@example.com
+```
+
+This assigns only unowned games. It copies the old local provider preference only if the target account has no preference yet; existing personal settings win. Repeating the command is safe. It refuses unfinished legacy analysis. Complete or recover any such analysis with the previous version before upgrading, then retry. Restart the app and reopen your library; review URLs remain unchanged. No ownership transfer is exposed to browser users.
+
+### Local password recovery
+
+If you forget your password, stop the app and run this on the machine hosting the database:
+
+```bash
+npm run auth:admin -- reset-password you@example.com
+```
+
+Enter and confirm the new password at the hidden prompts. Never put a password in command arguments. The command replaces the credential hash and revokes every session for that account, preserving its identity and games. Restart the app and sign in. `/account-recovery` explains this local recovery path; this release does not send reset or verification emails.
+
+Authentication uses [Better Auth's email/password support](https://better-auth.com/docs/authentication/email-password), [Prisma adapter](https://better-auth.com/docs/adapters/prisma), and [Next.js integration](https://better-auth.com/docs/integrations/next). Credentials are stored separately from user identity; Google can be added later without changing game ownership. Automatic account linking is disabled because local email addresses are not verified. A future public launch should add email verification/delivery and explicit linking before enabling social login.
+
+Auth cookies are HttpOnly/SameSite and secure on HTTPS. Session validation uses the database without a cookie cache; application reads and writes enforce ownership on the server. [Database-backed rate limits](https://better-auth.com/docs/concepts/rate-limit) apply even in development: 10 sign-in attempts, 5 registrations, and 5 password changes per IP per minute. Hosting must use a trusted proxy that overwrites forwarded client-IP headers; rate limiting is not a substitute for configuring that boundary. The current server binds to loopback.
+
+Fast tests mock sessions explicitly for existing features and test missing/expired-session and cross-origin guards separately. Integration tests exercise real credential hashing, cookie sessions, expiry, logout, local recovery, rate limits, two-user isolation, and migration in a temporary schema. Browser tests use real auth against the dedicated test database; only engine/coaching calls are mocked. Test credentials and auth secrets are isolated fixtures, not an auth bypass.
 
 ## Prerequisites
 
@@ -20,7 +50,8 @@ Docker with Compose is required (Docker Desktop or a running Colima engine on ma
 2. If `.env.local` does not exist, copy `.env.example` to `.env.local`; preserve existing values.
 3. Set `DATABASE_URL` as shown below and `STOCKFISH_PATH` to an absolute executable path from the [Stockfish setup](#local-stockfish-adapter).
 4. Set `ANTHROPIC_API_KEY` and/or `OPENAI_API_KEY` for live coaching, then select the provider in **Settings**. The default is Anthropic; missing keys do not trigger fallback. Models are configured in `lib/coaching/providers.ts`; there is no model environment override. Keep keys server-side, never use `NEXT_PUBLIC_`, and restart after changing keys.
-5. Run:
+5. Set `BETTER_AUTH_URL=http://127.0.0.1:3000` and a random `BETTER_AUTH_SECRET` of at least 32 characters in `.env.local`. Generate a secret with `openssl rand -hex 32`; keep it stable across restarts and out of Git. Use the exact URL in your browser (including port); update this setting if you run on another port. Remote hosting requires HTTPS.
+6. Run:
 
 ```bash
 npm ci

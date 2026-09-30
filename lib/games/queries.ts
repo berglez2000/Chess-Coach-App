@@ -1,3 +1,4 @@
+import { requireOwnerId } from "@/lib/auth/owner";
 import { positiveHighlightPlies } from "@/lib/coaching/review-highlights";
 import { toReviewAnalysis } from "@/lib/analysis/review";
 import type { PrismaClient } from "@/generated/prisma/client";
@@ -10,21 +11,21 @@ const summarySelect = {
   openingName: true, userColor: true, analysisStatus: true, createdAt: true,
 } as const;
 
-export async function listGames(db: PrismaClient, limit?: number): Promise<GameSummary[]> {
-  const games = await db.game.findMany({ ...(limit === undefined ? {} : { take: limit }), select: summarySelect, orderBy: [{ createdAt: "desc" }, { id: "desc" }] });
+export async function listGames(db: PrismaClient, ownerId: string, limit?: number): Promise<GameSummary[]> {
+  const games = await db.game.findMany({ where: { ownerId: requireOwnerId(ownerId) }, ...(limit === undefined ? {} : { take: limit }), select: summarySelect, orderBy: [{ createdAt: "desc" }, { id: "desc" }] });
   return games.map(({ analysisStatus, playedAt, createdAt, ...game }) => ({
     ...game, status: analysisStatus, playedAt: playedAt?.toISOString() ?? null, createdAt: createdAt.toISOString(),
   }));
 }
 
 /** Count all saved games while fetching only the five newest summaries. */
-export async function getDashboard(db: PrismaClient): Promise<{ count: number; recentGames: GameSummary[] }> {
-  const [count, recentGames] = await Promise.all([db.game.count(), listGames(db, 5)]);
+export async function getDashboard(db: PrismaClient, ownerId: string): Promise<{ count: number; recentGames: GameSummary[] }> {
+  const [count, recentGames] = await Promise.all([db.game.count({ where: { ownerId: requireOwnerId(ownerId) } }), listGames(db, ownerId, 5)]);
   return { count, recentGames };
 }
 
-export async function findGame(db: PrismaClient, id: string): Promise<SavedGame | null> {
-  const stored = await db.game.findUnique({ where: { id }, select: {
+export async function findGame(db: PrismaClient, id: string, ownerId: string): Promise<SavedGame | null> {
+  const stored = await db.game.findUnique({ where: { id, ownerId: requireOwnerId(ownerId) }, select: {
     ...summarySelect, analysisError: true, analysisLeaseUntil: true, initialFen: true, event: true, site: true, round: true,
     eco: true, timeControl: true, termination: true,
     coachingProvider: true, coachingRevision: true, coachingSummary: true, coachingStrengths: true, coachingImprovements: true, coachingModel: true,

@@ -5,16 +5,16 @@ import type { AnalysisRepository } from "./orchestrate";
 export const ANALYSIS_LEASE_MS = 300_000;
 
 /** Create one repository per run. The token fences writes from expired owners. */
-export function createAnalysisRepository(db: PrismaClient): AnalysisRepository {
+export function createAnalysisRepository(db: PrismaClient, ownerId: string | null = null): AnalysisRepository {
   const token = randomUUID();
   let gameId: string | undefined;
   const lease = () => new Date(Date.now() + ANALYSIS_LEASE_MS);
   return {
-    load: id => db.game.findUnique({ where: { id }, select: { initialFen: true, moves: { orderBy: { ply: "asc" }, select: {
+    load: id => db.game.findUnique({ where: { id, ownerId }, select: { initialFen: true, moves: { orderBy: { ply: "asc" }, select: {
       id: true, ply: true, moveNumber: true, color: true, san: true, uci: true, fenBefore: true, fenAfter: true,
     } } } }),
     async claim(id) {
-      const result = await db.game.updateMany({ where: { id, OR: [
+      const result = await db.game.updateMany({ where: { id, ownerId, OR: [
         { analysisStatus: { in: ["PENDING", "FAILED"] } },
         { analysisStatus: "ENGINE_RUNNING", analysisLeaseUntil: { lt: new Date() } },
         { analysisStatus: "ENGINE_RUNNING", analysisLeaseUntil: null },
@@ -40,15 +40,15 @@ export function createAnalysisRepository(db: PrismaClient): AnalysisRepository {
       };
       if (!gameId) throw new Error("Analysis run has no ownership.");
       await db.$transaction(async tx => {
-        const owned = await tx.game.updateMany({ where: { id: gameId, analysisToken: token, analysisStatus: "ENGINE_RUNNING", analysisLeaseUntil: { gt: new Date() } }, data: { analysisLeaseUntil: lease() } });
+        const owned = await tx.game.updateMany({ where: { id: gameId, ownerId, analysisToken: token, analysisStatus: "ENGINE_RUNNING", analysisLeaseUntil: { gt: new Date() } }, data: { analysisLeaseUntil: lease() } });
         if (owned.count !== 1) throw new Error("Analysis ownership expired.");
         const move = await tx.gameMove.findFirst({ where: { id: moveId, gameId }, select: { id: true } });
         if (!move) throw new Error("Move does not belong to this run.");
         await tx.moveEngineAnalysis.upsert({ where: { moveId }, create: { moveId, ...data }, update: data });
       });
     },
-    async complete(id) { const result = await db.game.updateMany({ where: { id, analysisToken: token, analysisStatus: "ENGINE_RUNNING", analysisLeaseUntil: { gt: new Date() } }, data: { analysisStatus: "ENGINE_COMPLETED", analysisError: null, analysisToken: null, analysisLeaseUntil: null } });
+    async complete(id) { const result = await db.game.updateMany({ where: { id, ownerId, analysisToken: token, analysisStatus: "ENGINE_RUNNING", analysisLeaseUntil: { gt: new Date() } }, data: { analysisStatus: "ENGINE_COMPLETED", analysisError: null, analysisToken: null, analysisLeaseUntil: null } });
       if (result.count !== 1) throw new Error("Analysis ownership expired."); },
-    async fail(id, message) { await db.game.updateMany({ where: { id, analysisToken: token, analysisStatus: "ENGINE_RUNNING" }, data: { analysisStatus: "FAILED", analysisError: message, analysisToken: null, analysisLeaseUntil: null } }); },
+    async fail(id, message) { await db.game.updateMany({ where: { id, ownerId, analysisToken: token, analysisStatus: "ENGINE_RUNNING" }, data: { analysisStatus: "FAILED", analysisError: message, analysisToken: null, analysisLeaseUntil: null } }); },
   };
 }

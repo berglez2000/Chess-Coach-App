@@ -12,12 +12,12 @@ it("captures one provider/model before the run and ignores settings changes duri
   mocks.getProvider.mockImplementation(async () => selected);
   let finish!: (result: { status: "COMPLETED" }) => void;
   mocks.coach.mockImplementation(() => new Promise(resolve => { finish = resolve; }));
-  const pending = coachSavedGame("game", 3);
+  const pending = coachSavedGame("game", "test-user", 3);
   await vi.waitFor(() => expect(mocks.coach).toHaveBeenCalledOnce());
   selected = "OPENAI";
   finish({ status: "COMPLETED" });
   await pending;
   expect(mocks.getProvider).toHaveBeenCalledOnce();
   expect(mocks.createClient).toHaveBeenCalledWith("ANTHROPIC");
-  expect(mocks.createRepository).toHaveBeenCalledWith({}, { provider: "ANTHROPIC", model: PROVIDERS.ANTHROPIC.model, expectedRevision: 3 });
+  expect(mocks.createRepository).toHaveBeenCalledWith({}, { provider: "ANTHROPIC", model: PROVIDERS.ANTHROPIC.model, expectedRevision: 3 }, "test-user");
 });

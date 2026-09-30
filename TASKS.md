@@ -2,6 +2,8 @@
 
 Source of truth: [CHESS_COACH_V0.1_SPEC.md](CHESS_COACH_V0.1_SPEC.md).
 
+Future feature planning: [FUTURE_TASKS.md](FUTURE_TASKS.md) organizes the ideas from [CHESS_COACH_FUTURE_SPECS.md](CHESS_COACH_FUTURE_SPECS.md) into proposed TASK-028–041. Those tasks are separate from the V0.1 scope below.
+
 V0.1 delivers **select color → import PGN → save → analyze with Stockfish → generate validated coaching → review the game**. Puzzles, training, recurring-weakness statistics, authentication, and deployment are deferred. The import form has exactly three controls: White/Black selector, PGN textarea, and submit button.
 
 ## Working rules

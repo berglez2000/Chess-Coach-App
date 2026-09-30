@@ -1,3 +1,4 @@
+import { requireUser } from "@/lib/auth/session";
 import Link from "next/link";
 import { getDb } from "@/lib/db/client";
 import { getDashboard } from "@/lib/games/queries";
@@ -6,9 +7,10 @@ import { GameSummaryList } from "@/components/games/game-summary-list";
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
+  const user = await requireUser();
   let dashboard: Awaited<ReturnType<typeof getDashboard>> | null = null;
   try {
-    dashboard = await getDashboard(getDb());
+    dashboard = await getDashboard(getDb(), user.id);
   } catch {
     // Expected local database outages must not hide navigation or expose details.
   }

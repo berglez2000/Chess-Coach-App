@@ -17,6 +17,14 @@ function annotationCount(id: string) { return database("read", id).moves.filter(
 const ids: string[] = [];
 const fixture = readFileSync("tests/fixtures/pgn/complete.pgn", "utf8");
 
+test.beforeEach(async ({ page }) => {
+  const response = await page.request.post("/api/auth/sign-up/email", {
+    headers: { origin: "http://127.0.0.1:3100" },
+    data: { name: "Review tester", email: `e2e-${process.env.CHESS_E2E_RUN_ID}-${randomUUID()}@example.test`, password: "browser test passphrase" },
+  });
+  expect(response.status()).toBe(200);
+});
+
 test.afterEach(async () => {
   for (const id of ids.splice(0)) database("delete", id);
 });
@@ -117,7 +125,7 @@ for (const color of ["WHITE", "BLACK"] as const) {
     await expect(page.getByText("Deterministic coaching fixture: review candidate moves before committing.")).toBeVisible();
     await page.reload();
     await expect(page.getByText("Saved analysis: 10 of 10 moves.", { exact: true })).toBeVisible();
-    const conflict = await page.request.post(`/api/games/${id}/analyze`);
+    const conflict = await page.request.post(`/api/games/${id}/analyze`, { headers: { origin: "http://127.0.0.1:3100" } });
     expect(conflict.status()).toBe(409);
     expect(annotationCount(id)).toBe(annotated.length);
 
@@ -151,7 +159,7 @@ for (const color of ["WHITE", "BLACK"] as const) {
     expect(annotationCount(id)).toBe(1);
     expect(replaced.moves.filter(m => m.coachingAnnotation).every(m => m.coachingAnnotation?.provider === replacementProvider)).toBe(true);
     expect(engineRows(id)).toEqual(engineBefore);
-    expect((await page.request.post(`/api/games/${id}/coaching`, { data: { expectedRevision: staleRevision } })).status()).toBe(409);
+    expect((await page.request.post(`/api/games/${id}/coaching`, { headers: { origin: "http://127.0.0.1:3100" }, data: { expectedRevision: staleRevision } })).status()).toBe(409);
     await page.reload();
     await page.getByText("Read full review", { exact: true }).click();
     await expect(page.getByText(`Coached by ${replacementProvider === "OPENAI" ? "OpenAI (GPT)" : "Anthropic (Claude)"} · e2e-${replacementProvider}-fixture`)).toBeVisible();

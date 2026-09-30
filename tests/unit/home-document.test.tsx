@@ -1,3 +1,5 @@
+vi.mock("@/components/auth/account-menu", () => ({ AccountMenu: () => null }));
+vi.mock("@/lib/auth/session", () => ({ requireUser: async () => ({ id: "test-user" }), requireApiUser: async () => ({ id: "test-user" }) }));
 import { renderToStaticMarkup } from "react-dom/server";
 import { expect, it, vi } from "vitest";
 import RootLayout from "@/app/layout";

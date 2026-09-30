@@ -1,3 +1,4 @@
+import { createTestOwner } from "../support/test-owner";
 import { randomUUID } from "node:crypto";
 import { Chess } from "chess.js";
 import { afterAll, afterEach, beforeAll, expect, it, vi } from "vitest";
@@ -8,6 +9,7 @@ import { parsePgn } from "@/lib/pgn/parse";
 import type { EngineResult } from "@/types/engine";
 import { assertTestDatabase, createTestDb } from "../support/database";
 const db = createTestDb();
+let ownerId: string;
 const ids: string[] = [];
 const settings: AnalysisConfiguration = { engine: "Stockfish", adapterVersion: 1, depth: 12, moveTimeMs: null, timeoutMs: 30000, threads: 1, hashMb: 16, multiPv: 1 };
 const repository = createAnalysisRepository(db);
@@ -26,13 +28,15 @@ function mockEngine() {
     return { perspective: board.turn() === "w" ? "WHITE" : "BLACK", bestMove: uci, evaluation: { depth: 12, score: { kind: "cp", value: 25, bound: "exact" }, pv: [uci] } };
   }) };
 }
-beforeAll(async () => { await assertTestDatabase(db); });
+beforeAll(async () => { await assertTestDatabase(db);
+  ownerId = await createTestOwner(db); });
 afterEach(async () => {
   await assertTestDatabase(db);
   await db.game.deleteMany({ where: { id: { in: ids } } });
   ids.length = 0;
 });
-afterAll(async () => { await db.$disconnect(); });
+afterAll(async () => { await db.user.deleteMany({ where: { id: ownerId } });
+  await db.$disconnect(); });
 it("stores assessments for the correct plies, White scores, SAN and configuration using N+1 searches", async () => {
   const { id, game } = await imported();
   const engine = mockEngine();
@@ -163,7 +167,8 @@ it("exposes persisted engine facts through the detail DTO without bloating summa
   const { findGame, listGames } = await import("@/lib/games/queries");
   const { id } = await imported();
   await analyzeGame(id, createAnalysisRepository(db), () => ({ engine: mockEngine(), configuration: settings }));
-  const saved = await findGame(db, id);
+  await db.game.update({ where: { id }, data: { ownerId } });
+  const saved = await findGame(db, id, ownerId);
   expect(saved!.game.moves[0].analysis).toMatchObject({ before: { score: { value: 25 } }, after: { score: { value: -25 } }, quality: "mistake", cpLoss: 50, bestMoveSan: expect.any(String), pvSan: [expect.any(String)] });
-  expect((await listGames(db)).find(game => game.id === id)).not.toHaveProperty("moves");
+  expect((await listGames(db, ownerId)).find(game => game.id === id)).not.toHaveProperty("moves");
 });

@@ -1,3 +1,4 @@
+vi.mock("@/lib/auth/session", () => ({ requireUser: async () => ({ id: "test-user" }), requireApiUser: async () => ({ id: "test-user" }) }));
 import { expect, it, vi } from "vitest";
 const { analyze, coach, findUnique } = vi.hoisted(() => ({ analyze: vi.fn(), coach: vi.fn(), findUnique: vi.fn().mockResolvedValue({ analysisStatus: "PENDING" }) }));
 vi.mock("@/lib/analysis/client", () => ({ analyzeSavedGame: analyze }));

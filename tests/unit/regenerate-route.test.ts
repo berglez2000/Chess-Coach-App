@@ -1,3 +1,4 @@
+vi.mock("@/lib/auth/session", () => ({ requireUser: async () => ({ id: "test-user" }), requireApiUser: async () => ({ id: "test-user" }) }));
 import { afterEach, expect, it, vi } from "vitest";
 const { coach } = vi.hoisted(() => ({ coach: vi.fn() }));
 vi.mock("@/lib/coaching/client", () => ({ coachSavedGame: coach }));
@@ -7,7 +8,7 @@ afterEach(() => vi.resetAllMocks());
 it("passes the displayed revision to the coaching-only entry point", async () => {
   coach.mockResolvedValue({ status: "COMPLETED" });
   expect((await post()).status).toBe(200);
-  expect(coach).toHaveBeenCalledWith("game", 2);
+  expect(coach).toHaveBeenCalledWith("game", "test-user", 2);
 });
 it.each(["{}", '{"expectedRevision":-1}', '{"expectedRevision":1.5}', '{"expectedRevision":2,"provider":"invalid"}', "bad"])("rejects missing/invalid regeneration intent (%#)", async body => {
   expect((await post(body)).status).toBe(400);

@@ -1,3 +1,4 @@
+vi.mock("@/lib/auth/session", () => ({ requireUser: async () => ({ id: "test-user" }), requireApiUser: async () => ({ id: "test-user" }) }));
 import { render, screen, within } from "@testing-library/react";
 import { beforeEach, expect, it, vi } from "vitest";
 const { getDashboard } = vi.hoisted(() => ({ getDashboard: vi.fn() }));

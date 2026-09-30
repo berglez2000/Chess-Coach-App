@@ -2,7 +2,7 @@
 
 Source: [original ideas](CHESS_COACH_FUTURE_SPECS.md). Existing V0.1 work and evidence remain in [TASKS.md](TASKS.md).
 
-This backlog is not authorization to implement every task. The user authorized email/password auth and ownership (TASK-029–030); the remaining tasks are TODO. IDs continue after TASK-027; dependencies and the recommended sequence determine implementation order. Resolve a task's open decisions before implementing that task. Record implementation evidence before marking it DONE.
+This backlog is not authorization to implement every task. The user authorized email/password auth and ownership (TASK-029–030) and review exploration (TASK-028); the remaining tasks are TODO. IDs continue after TASK-027; dependencies and the recommended sequence determine implementation order. Resolve a task's open decisions before implementing that task. Record implementation evidence before marking it DONE.
 
 ## Priority and sequence
 
@@ -22,18 +22,19 @@ TASK-026 is still BLOCKED by existing release acceptance requirements. Track it 
 2. Review-board Reset returns to the exploration starting position.
 3. Learning exercises are added manually. PDFs have a separate `/books` page; learning does not depend on PDF import or extraction.
 4. Email/password login only initially. Keep user identity independent of credentials so Google can be added later through explicit account linking.
+5. Review exploration uses manual play for both sides without live engine evaluation (confirmed for TASK-028).
 
 ## Remaining implementation decisions
 
-Before the affected implementation, also settle: whether exploration needs live engine evaluation; how many player moves a puzzle should require; browser-local versus synchronized PDFs; who authors lessons; and whether weekly plans are reusable templates or dated schedules.
+Before the affected implementation, also settle: how many player moves a puzzle should require; browser-local versus synchronized PDFs; who authors lessons; and whether weekly plans are reusable templates or dated schedules.
 
-Defaults below are proposals, not confirmed preferences: manual play for both sides during exploration; one-move puzzles before multi-move puzzles; browser-local PDFs; editable weekly plan templates without calendar integration. Automatic PDF diagram/solution extraction is outside the agreed learning scope.
+Defaults below are proposals, not confirmed preferences: one-move puzzles before multi-move puzzles; browser-local PDFs; editable weekly plan templates without calendar integration. Automatic PDF diagram/solution extraction is outside the agreed learning scope.
 
 ## Tasks
 
 ### TASK-028 — Explore legal variations on the review board
 
-Status: TODO  
+Status: DONE
 Priority: P1  
 Dependencies: existing TASK-006 and TASK-014
 
@@ -47,6 +48,10 @@ Acceptance:
 - Returning to review restores its selected position and annotations; selecting another game move exits exploration predictably.
 
 Verification: chess-state unit tests and board interaction tests, including custom starting FEN and Black orientation. Live engine evaluation and saved variation trees are follow-up scope unless requested.
+
+Notes (2026-09-30): implemented temporary legal variations with drag/drop, source/destination clicks, keyboard coordinate entry, selectable promotion pieces, undo, exact starting-FEN reset, and return to the selected review position. “Try the better move” starts at `fenBefore`. Recorded evaluations/coaching are hidden; selecting a recorded move or game navigation exits exploration. Review arrow shortcuts pause during exploration. Move history retains repetition detection. No saved game or analysis writes, automatic opponent replies, live evaluation, or saved variation trees.
+
+Verification: Node 24.21.0 lint, typecheck, all 380 unit/component tests, and webpack production build passed. Added 15 tests covering illegal moves, both turns/orientations, castling, en passant, all promotions, check, terminal positions, repetition, exact FEN restoration, custom Black-to-move positions, better-move entry, annotation restoration, and saved-game immutability. Board interactions use the real board component in jsdom; no new browser E2E run is claimed. TASK-026 release blockers remain separate.
 
 ### TASK-029 — Add accounts and session lifecycle
 

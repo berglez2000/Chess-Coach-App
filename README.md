@@ -479,3 +479,11 @@ Both SDKs have a 120-second timeout with automatic retries disabled. An applicat
 Both providers receive the same prompt and a compatible shape/enum schema. Unsupported wire length/range constraints are removed without weakening the original Zod validator: all lengths, ranges, categories, duplicate/unknown/unselected plies, and authoritative engine classifications are still checked before persistence. Provider errors are sanitized. OpenAI response storage is disabled with `store: false`; both requests send game metadata and selected engine facts to the chosen provider.
 
 For live acceptance, run the sample for White and Black with each provider, verify the provider/model label and correct moment/board synchronization, reload/reopen the reviews, switch providers and regenerate, and record response duration. Exercise a missing-key attempt followed by configuration/restart and retry, checking that old coaching and engine results survive failure. These are paid requests; automated suites use explicit fixtures. Neither key was available during TASK-027, so both live checks remain blocked under TASK-026.
+
+## Explore review positions (TASK-028)
+
+Choose **Explore position** on a review to play legal moves for both sides from the selected recorded position. **Try the better move** starts before the selected move so you can try the engine suggestion yourself. Drag pieces, click a source and destination, or enter coordinates such as `e2e4`. Choose the promotion piece before moving, or enter a suffix such as `a7a8n` for a knight.
+
+**Undo** removes one explored move; **Reset variation** restores the exact exploration starting position. **Return to review** restores the previously selected recorded position and annotations. Selecting a recorded move or using Start/Previous/Next/End exits exploration; Start still means the beginning of the imported game. Left/right review shortcuts are suspended during exploration.
+
+Variations are temporary and disappear when you leave exploration or reload. They never change the saved PGN or analysis. Recorded evaluations and coaching are hidden during exploration; this version has no live engine evaluation or automatic opponent replies. Checkmate and draws stop further play until you undo or reset.

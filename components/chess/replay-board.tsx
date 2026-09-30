@@ -1,6 +1,6 @@
 "use client";
 
-import { Chessboard } from "react-chessboard";
+import { Chessboard, defaultArrowOptions } from "react-chessboard";
 import type { ChessColor } from "@/types/game";
 import type { MoveQuality } from "@/types/analysis";
 import { MoveQualityBadge } from "@/components/games/move-quality-badge";
@@ -21,7 +21,14 @@ export function ReplayBoard({ fen, userColor, flipped = false, lastMove, moveQua
         allowDragging: !!onMove,
         onPieceDrop: ({ sourceSquare, targetSquare }) => targetSquare ? onMove?.(sourceSquare, targetSquare) ?? false : false,
         onSquareClick: ({ square }) => onSquareClick?.(square),
-        allowDrawingArrows: false,
+        allowDrawingArrows: true,
+        clearArrowsOnClick: true,
+        clearArrowsOnPositionChange: true,
+        arrowOptions: {
+          ...defaultArrowOptions,
+          colors: { ...defaultArrowOptions.colors, default: "#ffaa00", shift: "#38bdf8" },
+          arrowStartOffset: 0.3,
+        },
         showAnimations: true,
         animationDurationInMs: 200,
         pieces: customPieces,

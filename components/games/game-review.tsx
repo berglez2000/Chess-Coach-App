@@ -107,6 +107,7 @@ export function GameReview({ game, userColor, status }: { game: ReviewGame; user
           <p className="mt-1 text-sm text-[#657467]">{fen.split(" ")[1] === "w" ? "White" : "Black"} to play · Use ← → to navigate</p>
           <button type="button" className={`${buttonClass} mt-3`} onClick={() => { setPreview(false); setExploration(selectedMove?.fenAfter ?? game.initialFen); }}>Explore position</button>
           </>}
+          <p className="mt-2 text-xs text-[#657467]">Right-drag to draw an arrow · Shift + right-drag for blue · Repeat to remove · Left-click the board to clear</p>
           <nav aria-label="Move navigation" className="mt-3 flex flex-wrap gap-2">
             <button type="button" className={buttonClass} onClick={() => select(0)} disabled={!exploration && selectedPly === 0}>Start</button>
             <button type="button" className={buttonClass} onClick={() => select(selectedPly - 1)} disabled={!exploration && selectedPly === 0}>Previous</button>

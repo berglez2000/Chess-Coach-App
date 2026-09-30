@@ -487,3 +487,5 @@ Choose **Explore position** on a review to play legal moves for both sides from 
 **Undo** removes one explored move; **Reset variation** restores the exact exploration starting position. **Return to review** restores the previously selected recorded position and annotations. Selecting a recorded move or using Start/Previous/Next/End exits exploration; Start still means the beginning of the imported game. Left/right review shortcuts are suspended during exploration.
 
 Variations are temporary and disappear when you leave exploration or reload. They never change the saved PGN or analysis. Recorded evaluations and coaching are hidden during exploration; this version has no live engine evaluation or automatic opponent replies. Checkmate and draws stop further play until you undo or reset.
+
+On both review and exploration boards, hold the right mouse button and drag between squares to draw an orange arrow. Hold Shift for blue arrows. Repeat the same arrow to remove it, or left-click the board to clear all arrows. Arrows clear when the displayed position changes and are never saved with the game. Knight moves use bent arrows.

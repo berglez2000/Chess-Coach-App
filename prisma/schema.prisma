@@ -138,9 +138,44 @@ model Game {
   createdAt      DateTime       @default(now())
   updatedAt      DateTime       @updatedAt
   moves          GameMove[]
+  puzzleGenerations PuzzleGeneration[]
 
   @@index([createdAt, id])
   @@index([ownerId, createdAt, id])
+}
+
+// Ownership is inherited from the source game and checked on every access.
+model PuzzleGeneration {
+  id String @id @default(cuid())
+  gameId String
+  game Game @relation(fields: [gameId], references: [id], onDelete: Cascade)
+  version Int
+  status String @default("PENDING")
+  token String?
+  leaseUntil DateTime?
+  configuration Json
+  checkedCandidates Int @default(0)
+  error String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  puzzles PersonalPuzzle[]
+
+  @@unique([gameId, version])
+}
+
+model PersonalPuzzle {
+  id String @id @default(cuid())
+  generationId String
+  generation PuzzleGeneration @relation(fields: [generationId], references: [id], onDelete: Cascade)
+  sourcePly Int
+  sourceRunId String
+  startingFen String
+  playerColor ChessColor
+  acceptedMoves String[]
+  validation Json
+  createdAt DateTime @default(now())
+
+  @@unique([generationId, sourcePly])
 }
 
 model GameMove {

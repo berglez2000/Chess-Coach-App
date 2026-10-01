@@ -3,11 +3,11 @@ import { EngineError } from "./error";
 
 export const UCI_MOVE = /^[a-h][1-8][a-h][1-8][qrbn]?$/;
 /** Ignore progress/string lines; reject malformed scored lines rather than inventing an evaluation. */
-export function parseInfo(line: string): EngineInfo | null {
+export function parseInfo(line: string, variation = 1): EngineInfo | null {
   const tokens = line.trim().split(/\s+/);
   if (tokens[0] !== "info" || tokens[1] === "string" || !tokens.includes("score")) return null;
   const value = (key: string) => tokens[tokens.indexOf(key) + 1];
-  if (tokens.includes("multipv") && value("multipv") !== "1") return null;
+  if (Number(tokens.includes("multipv") ? value("multipv") : 1) !== variation) return null;
   const scoreIndex = tokens.indexOf("score");
   const kind = tokens[scoreIndex + 1];
   const raw = tokens[scoreIndex + 2];

@@ -6,8 +6,10 @@ export interface EngineConfig {
   depth: number;
   moveTimeMs?: number;
   timeoutMs: number;
+  multiPv?: 1 | 2;
 }
 export function validateEngineConfig(config: EngineConfig): EngineConfig {
+  if (config.multiPv !== undefined && config.multiPv !== 1 && config.multiPv !== 2) throw new EngineError("CONFIG", "MultiPV must be 1 or 2.");
   if (!config.path || !isAbsolute(config.path) || /[\r\n\0]/.test(config.path)) {
     throw new EngineError("CONFIG", "Set STOCKFISH_PATH to the absolute path of the Stockfish executable.");
   }

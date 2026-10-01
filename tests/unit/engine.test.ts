@@ -144,3 +144,14 @@ it("cleans up on a stream failure", async () => {
   await expect(pending).rejects.toHaveProperty("code", "UNAVAILABLE");
   expect(fixture.child.stdout.destroyed).toBe(true);
 });
+it("collects ranked MultiPV lines without replacing the best evaluation with the runner-up", async () => {
+  const fixture = processFixture("info depth 14 multipv 1 score cp 250 pv e2e4\ninfo depth 14 multipv 2 score cp 20 pv d2d4\nbestmove e2e4\n");
+  const result = await createStockfish({ ...config, multiPv: 2 }, fixture.start).analyze(fen);
+  expect(fixture.commands).toContain("setoption name MultiPV value 2");
+  expect(result.evaluation?.score.value).toBe(250);
+  expect(result.variations?.map(line => line.pv[0])).toEqual(["e2e4", "d2d4"]);
+});
+it("validates secondary MultiPV continuations too", async () => {
+  const fixture = processFixture("info depth 14 multipv 1 score cp 250 pv e2e4\ninfo depth 14 multipv 2 score cp 20 pv d2d5\nbestmove e2e4\n");
+  await expect(createStockfish({ ...config, multiPv: 2 }, fixture.start).analyze(fen)).rejects.toHaveProperty("code", "PROTOCOL");
+});

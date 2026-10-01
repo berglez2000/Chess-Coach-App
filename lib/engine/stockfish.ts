@@ -25,6 +25,7 @@ export function createStockfish(config: EngineConfig, start: StartProcess = star
         let phase: "uci" | "ready" | "search" | "closing" = "uci";
         let buffer = "";
         let evaluation: EngineInfo | null = null;
+        const variations = new Map<number, EngineInfo>();
         let result: EngineResult | undefined;
         let failure: EngineError | undefined;
         let closed = false;
@@ -71,7 +72,7 @@ export function createStockfish(config: EngineConfig, start: StartProcess = star
           if (phase === "uci" && text === "uciok") {
             phase = "ready";
             send("setoption name Threads value 1"); send("setoption name Hash value 16");
-            send("setoption name MultiPV value 1"); send("ucinewgame"); send("isready");
+            send(`setoption name MultiPV value ${settings.multiPv ?? 1}`); send("ucinewgame"); send("isready");
           } else if (phase === "ready" && text === "readyok") {
             phase = "search";
             clearTimeout(deadline);
@@ -84,14 +85,18 @@ export function createStockfish(config: EngineConfig, start: StartProcess = star
               const legal = board.moves({ verbose: true }).map(move => move.from + move.to + (move.promotion ?? ""));
               if ((bestMove === null && legal.length > 0) || (bestMove !== null && !legal.includes(bestMove))) throw new EngineError("PROTOCOL", "Stockfish returned a best move inconsistent with the position.");
               result = { perspective: board.turn() === "w" ? "WHITE" : "BLACK", bestMove, evaluation };
+              if (settings.multiPv === 2) result.variations = [variations.get(1), variations.get(2)].filter((info): info is EngineInfo => Boolean(info));
               finish();
             } else {
-              const info = parseInfo(text);
+              const rank = settings.multiPv === 2 ? Number(/\bmultipv (\d+)\b/.exec(text)?.[1] ?? 1) : 1;
+              if (rank < 1 || rank > (settings.multiPv ?? 1)) return;
+              const info = parseInfo(text, rank);
               if (info) {
                 const variation = new Chess(fen);
                 try { for (const move of info.pv) variation.move({ from: move.slice(0, 2), to: move.slice(2, 4), promotion: move[4] }); }
                 catch { throw new EngineError("PROTOCOL", "Stockfish returned an illegal principal variation."); }
-                evaluation = info;
+                variations.set(rank, info);
+                if (rank === 1) evaluation = info;
               }
             }
           }

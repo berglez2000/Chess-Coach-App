@@ -2,7 +2,7 @@
 
 Source: [original ideas](CHESS_COACH_FUTURE_SPECS.md). Existing V0.1 work and evidence remain in [TASKS.md](TASKS.md).
 
-This backlog is not authorization to implement every task. The user authorized email/password auth and ownership (TASK-029–030) and review exploration (TASK-028); the remaining tasks are TODO. IDs continue after TASK-027; dependencies and the recommended sequence determine implementation order. Resolve a task's open decisions before implementing that task. Record implementation evidence before marking it DONE.
+This backlog is not authorization to implement every task. The user authorized email/password auth and ownership (TASK-029–030) and review exploration (TASK-028), then requested starting the next tasks on 2026-10-01. TASK-031 is now implemented; TASK-032 onward remain TODO. IDs continue after TASK-027; dependencies and the recommended sequence determine implementation order. Resolve a task's open decisions before implementing that task. Record implementation evidence before marking it DONE.
 
 ## Priority and sequence
 
@@ -26,9 +26,9 @@ TASK-026 is still BLOCKED by existing release acceptance requirements. Track it 
 
 ## Remaining implementation decisions
 
-Before the affected implementation, also settle: how many player moves a puzzle should require; browser-local versus synchronized PDFs; who authors lessons; and whether weekly plans are reusable templates or dated schedules.
+Before the affected implementation, also settle: the sequence-length limit for multi-move puzzles; browser-local versus synchronized PDFs; who authors lessons; and whether weekly plans are reusable templates or dated schedules.
 
-Defaults below are proposals, not confirmed preferences: one-move puzzles before multi-move puzzles; browser-local PDFs; editable weekly plan templates without calendar integration. Automatic PDF diagram/solution extraction is outside the agreed learning scope.
+TASK-031 uses the proposed one-move starting scope. Remaining defaults are proposals, not confirmed preferences: browser-local PDFs; editable weekly plan templates without calendar integration. Automatic PDF diagram/solution extraction is outside the agreed learning scope.
 
 ## Tasks
 
@@ -94,7 +94,7 @@ Verification: the checks recorded under TASK-029 passed, including two-user brow
 
 ### TASK-031 — Generate validated one-move puzzles from my games
 
-Status: TODO  
+Status: DONE
 Priority: P1  
 Dependencies: TASK-028, TASK-030
 
@@ -107,6 +107,12 @@ Acceptance:
 - Games with no suitable candidates show an honest empty state; engine-only reviews can qualify without coaching.
 
 Verification: fixtures for both colors, clear tactical wins, ambiguous alternatives, no candidates, and repeated/failed generation.
+
+Notes (2026-10-01): added explicit “Puzzles from this game” generation below the saved review. Requires complete saved engine analysis; AI coaching is optional. Policy v1 checks up to five of the user's largest mistakes/blunders with saved loss ≥100 cp. Fresh Stockfish depth-14 MultiPV=2 searches require legal lines, exact scores at matching depths, agreement with the saved best move, and a unique best root. Accepts a winning evaluation ≥200 cp with ≥150 cp separation (or a losing-mate alternative), or mate within five moves with no second winning-mate line and a runner-up ≤500 cp. Only the best move is accepted; ambiguous or weak candidates are skipped.
+
+Versioned generation stores the policy, source game/ply/run, starting FEN, player color, solution, and validation evidence. Atomic publication, unique constraints, a five-minute lease, and token fencing prevent duplicate/partial/stale writes. Ownership follows the source game. Completed results, including empty results, are reused for the same policy version. Saved games and analysis remain unchanged. Puzzle solving/attempts remain TASK-032; continuation play remains TASK-033. Position-only engine searches do not reconstruct historical repetition.
+
+Verification: Node 24.21.0 lint, typecheck, all 414 unit/component tests, all 53 integration tests, and webpack production build passed. Tests cover both colors, alternatives, invalid lines, empty results, retries, rollback, duplicate prevention, lease recovery, ownership isolation, API authentication, and UI interactions. Live Stockfish depth-14 MultiPV smoke check accepted a unique mate-in-one position. Applied the additive migration to both test and local development databases. No new browser E2E run is claimed; TASK-026 release blockers remain separate.
 
 ### TASK-032 — Solve personal puzzles and save attempts
 

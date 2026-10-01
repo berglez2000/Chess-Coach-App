@@ -2,7 +2,7 @@
 
 A local chess-improvement application for importing PGNs, analyzing games with Stockfish, and reviewing them with AI coaching.
 
-The app supports email/password accounts, a private saved-game dashboard, PGN import, Stockfish analysis, validated AI coaching, and synchronized board review. Puzzles, training, weakness statistics, and deployment are deferred; see [future tasks](FUTURE_TASKS.md).
+The app supports email/password accounts, a private saved-game dashboard, PGN import, Stockfish analysis, validated AI coaching, synchronized board review, and validated one-move puzzle generation. Puzzle solving, training, weakness statistics, and deployment are deferred; see [future tasks](FUTURE_TASKS.md).
 
 **Release acceptance is blocked:** live coaching credentials are unavailable and the default Turbopack build has an environment limitation. Both Anthropic and OpenAI are implemented; live provider checks remain unverified. Engine-only review works without a provider key. See [release evidence](docs/release-acceptance.md) for checks and limitations.
 
@@ -161,7 +161,7 @@ The setup follows the [Next.js Vitest guide](https://nextjs.org/docs/app/guides/
 
 ## Database models and integration tests
 
-`Game` stores the original PGN, explicit initial FEN, optional metadata, required user color, analysis status/error, and timestamps. `GameMove` stores canonical 1-based plies, actual move numbers, SAN/UCI, side, and before/after FENs. Player names remain nullable when PGN headers are absent. Played dates use PostgreSQL DATE; raw dates remain preserved in the PGN. `MoveEngineAnalysis` and `MoveCoachingAnnotation` store one assessment/annotation per move. There are no user or puzzle models.
+`Game` stores the original PGN, explicit initial FEN, optional metadata, required user color, analysis status/error, and timestamps. `GameMove` stores canonical 1-based plies, actual move numbers, SAN/UCI, side, and before/after FENs. Player names remain nullable when PGN headers are absent. Played dates use PostgreSQL DATE; raw dates remain preserved in the PGN. `MoveEngineAnalysis` and `MoveCoachingAnnotation` store one assessment/annotation per move. Accounts and sessions use separate auth models. `PuzzleGeneration` stores versioned generation status/configuration and `PersonalPuzzle` stores validated positions and solutions; their ownership follows the source game.
 
 PostgreSQL enums enforce valid game/move colors and analysis statuses. A unique `(gameId, ply)` constraint prevents duplicate plies within one game and supports ordered lookup. A foreign key rejects orphan moves and cascades game deletion to its moves; the game `(createdAt, id)` index supports stable library ordering. Queries must explicitly order moves by ply. The import UI saves validated games and their moves through POST /api/games using an atomic Prisma nested write.
 
@@ -489,3 +489,14 @@ Choose **Explore position** on a review to play legal moves for both sides from 
 Variations are temporary and disappear when you leave exploration or reload. They never change the saved PGN or analysis. Recorded evaluations and coaching are hidden during exploration; this version has no live engine evaluation or automatic opponent replies. Checkmate and draws stop further play until you undo or reset.
 
 On both review and exploration boards, hold the right mouse button and drag between squares to draw an orange arrow. Hold Shift for blue arrows. Repeat the same arrow to remove it, or left-click the board to clear all arrows. Arrows clear when the displayed position changes and are never saved with the game. Knight moves use bent arrows.
+
+
+### Puzzles from your games
+
+After engine analysis finishes, use **Generate puzzles** in the **Puzzles from this game** section below a saved review. Coaching is optional. Generation runs only when requested, uses local Stockfish, and leaves the review unchanged. The page reports the saved puzzle count or an honest empty result. Solving puzzles and recording attempts are the next backlog task (TASK-032).
+
+Policy v1 checks at most five of your largest mistakes/blunders with saved loss of at least 100 centipawns. Each starting position is searched at depth 14 with two principal variations, one thread, 16 MB hash, and a 30-second search timeout. Both lines must be legal, exact, and reach the same depth; the best move must agree with saved analysis and differ from the played move. Accept either a winning score of at least 200 cp with at least 150 cp separation from the runner-up (or a runner-up losing by mate), or a mate within five moves where the runner-up is not a winning mate and scores at most 500 cp. Only the unique best move is accepted. These conservative thresholds can skip useful positions. Searches use the starting FEN, without reconstructing earlier repetition history.
+
+The policy and engine evidence are saved with each generation. Completed generations, including empty results, are reused for that game/policy version. Failed runs can be retried; interrupted runs become retryable after five minutes. Results publish atomically, and old workers cannot overwrite a recovered run. Account ownership is checked through the source game; solutions are not included in the browser's generation summary. Future policy changes must increment the version to create new definitions.
+
+Existing installations should run `npx prisma migrate deploy` and `npm run db:generate` after updating. The additive puzzle migration creates two tables without rewriting games or analysis.

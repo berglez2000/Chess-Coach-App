@@ -11,6 +11,8 @@ export interface EngineResult {
   perspective: ChessColor;
   bestMove: string | null;
   evaluation: EngineInfo | null;
+  /** Ranked root lines, present only when MultiPV was requested. */
+  variations?: EngineInfo[];
 }
 export interface ChessEngine {
   analyze(fen: string): Promise<EngineResult>;

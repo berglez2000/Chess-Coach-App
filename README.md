@@ -2,7 +2,7 @@
 
 A local chess-improvement application for importing PGNs, analyzing games with Stockfish, and reviewing them with AI coaching.
 
-The app supports email/password accounts, a private saved-game dashboard, PGN import, Stockfish analysis, validated AI coaching, synchronized board review, and validated one-move puzzle generation. Puzzle solving, training, weakness statistics, and deployment are deferred; see [future tasks](FUTURE_TASKS.md).
+The app supports email/password accounts, a private saved-game dashboard, PGN import, Stockfish analysis, validated AI coaching, synchronized board review, and validated one-move puzzle generation and practice. Multi-move puzzles, learning plans, weakness statistics, and deployment are deferred; see [future tasks](FUTURE_TASKS.md).
 
 **Release acceptance is blocked:** live coaching credentials are unavailable and the default Turbopack build has an environment limitation. Both Anthropic and OpenAI are implemented; live provider checks remain unverified. Engine-only review works without a provider key. See [release evidence](docs/release-acceptance.md) for checks and limitations.
 
@@ -161,7 +161,7 @@ The setup follows the [Next.js Vitest guide](https://nextjs.org/docs/app/guides/
 
 ## Database models and integration tests
 
-`Game` stores the original PGN, explicit initial FEN, optional metadata, required user color, analysis status/error, and timestamps. `GameMove` stores canonical 1-based plies, actual move numbers, SAN/UCI, side, and before/after FENs. Player names remain nullable when PGN headers are absent. Played dates use PostgreSQL DATE; raw dates remain preserved in the PGN. `MoveEngineAnalysis` and `MoveCoachingAnnotation` store one assessment/annotation per move. Accounts and sessions use separate auth models. `PuzzleGeneration` stores versioned generation status/configuration and `PersonalPuzzle` stores validated positions and solutions; their ownership follows the source game.
+`Game` stores the original PGN, explicit initial FEN, optional metadata, required user color, analysis status/error, and timestamps. `GameMove` stores canonical 1-based plies, actual move numbers, SAN/UCI, side, and before/after FENs. Player names remain nullable when PGN headers are absent. Played dates use PostgreSQL DATE; raw dates remain preserved in the PGN. `MoveEngineAnalysis` and `MoveCoachingAnnotation` store one assessment/annotation per move. Accounts and sessions use separate auth models. `PuzzleGeneration` stores versioned generation status/configuration and `PersonalPuzzle` stores validated positions and solutions; their ownership follows the source game. `PuzzleProgress` records one completion per user/puzzle and current practice state; `PuzzleAttempt` separately records moves, hints, reveals, and retries.
 
 PostgreSQL enums enforce valid game/move colors and analysis statuses. A unique `(gameId, ply)` constraint prevents duplicate plies within one game and supports ordered lookup. A foreign key rejects orphan moves and cascades game deletion to its moves; the game `(createdAt, id)` index supports stable library ordering. Queries must explicitly order moves by ply. The import UI saves validated games and their moves through POST /api/games using an atomic Prisma nested write.
 
@@ -493,10 +493,21 @@ On both review and exploration boards, hold the right mouse button and drag betw
 
 ### Puzzles from your games
 
-After engine analysis finishes, use **Generate puzzles** in the **Puzzles from this game** section below a saved review. Coaching is optional. Generation runs only when requested, uses local Stockfish, and leaves the review unchanged. The page reports the saved puzzle count or an honest empty result. Solving puzzles and recording attempts are the next backlog task (TASK-032).
+After engine analysis finishes, use **Generate puzzles** in the **Puzzles from this game** section below a saved review. Coaching is optional. Generation runs only when requested, uses local Stockfish, and leaves the review unchanged. The page reports the saved puzzle count or an honest empty result. Choose **Practice these puzzles**, or open **Puzzles** in the header, to solve them.
 
 Policy v1 checks at most five of your largest mistakes/blunders with saved loss of at least 100 centipawns. Each starting position is searched at depth 14 with two principal variations, one thread, 16 MB hash, and a 30-second search timeout. Both lines must be legal, exact, and reach the same depth; the best move must agree with saved analysis and differ from the played move. Accept either a winning score of at least 200 cp with at least 150 cp separation from the runner-up (or a runner-up losing by mate), or a mate within five moves where the runner-up is not a winning mate and scores at most 500 cp. Only the unique best move is accepted. These conservative thresholds can skip useful positions. Searches use the starting FEN, without reconstructing earlier repetition history.
 
 The policy and engine evidence are saved with each generation. Completed generations, including empty results, are reused for that game/policy version. Failed runs can be retried; interrupted runs become retryable after five minutes. Results publish atomically, and old workers cannot overwrite a recovered run. Account ownership is checked through the source game; solutions are not included in the browser's generation summary. Future policy changes must increment the version to create new definitions.
 
 Existing installations should run `npx prisma migrate deploy` and `npm run db:generate` after updating. The additive puzzle migration creates two tables without rewriting games or analysis.
+
+
+### Solving puzzles and saved attempts
+
+The puzzle library at `/puzzles` shows your saved definitions and whether each is unfinished, revealed, or completed with/without assistance. A game-specific practice link filters the library; pages show at most 24 puzzles. Open a puzzle to play one move using drag/drop, source/destination clicks, or keyboard coordinates such as `e2e4`. Select a promotion piece before moving, or include its letter in coordinates (`a7a8n`). The board faces your color.
+
+Answers are checked by the server against chess legality and the puzzle's stored accepted moves. Illegal and legal-but-incorrect moves leave the starting board available for another try; accepted alternatives count as correct. The browser receives no solution list or engine evidence before solving. **Hint** saves assistance and reveals the source square of a solution piece. **Reveal solution** shows the move but does not mark the puzzle completed. **Retry puzzle** restores the starting position; assistance stays recorded across retries and reloads. Practicing after seeing a completed solution is also assisted.
+
+The first successful completion, its date, and whether it was assisted are retained permanently for that puzzle version. Later practice does not inflate completion counts or replace that first result. Move attempts and help/retry actions are separate records. Concurrent tabs use revision checks, and retrying a request after a lost response reuses its request ID to avoid duplicate attempts. Progress is private to the signed-in owner. Use **Next puzzle** to continue through the same game's generation, or **Return to source review** to open the recorded move that produced the puzzle.
+
+The `20261001120000_puzzle_attempts` migration adds progress and attempt tables. Apply migrations and regenerate the Prisma client after updating an existing installation. Multi-move sequences and automatic opponent replies remain TASK-033.

@@ -2,7 +2,7 @@
 
 Source: [original ideas](CHESS_COACH_FUTURE_SPECS.md). Existing V0.1 work and evidence remain in [TASKS.md](TASKS.md).
 
-This backlog is not authorization to implement every task. The user authorized email/password auth and ownership (TASK-029–030) and review exploration (TASK-028), then requested starting the next tasks on 2026-10-01. TASK-031 is now implemented; TASK-032 onward remain TODO. IDs continue after TASK-027; dependencies and the recommended sequence determine implementation order. Resolve a task's open decisions before implementing that task. Record implementation evidence before marking it DONE.
+This backlog is not authorization to implement every task. The user authorized email/password auth and ownership (TASK-029–030) and review exploration (TASK-028), then requested starting the next tasks on 2026-10-01. TASK-031 is implemented. The user explicitly requested TASK-032 next; it is now implemented too. TASK-033 onward remain TODO. IDs continue after TASK-027; dependencies and the recommended sequence determine implementation order. Resolve a task's open decisions before implementing that task. Record implementation evidence before marking it DONE.
 
 ## Priority and sequence
 
@@ -116,7 +116,7 @@ Verification: Node 24.21.0 lint, typecheck, all 414 unit/component tests, all 53
 
 ### TASK-032 — Solve personal puzzles and save attempts
 
-Status: TODO  
+Status: DONE
 Priority: P1  
 Dependencies: TASK-031
 
@@ -129,6 +129,12 @@ Acceptance:
 - Answers are checked authoritatively by the server; one user's attempts cannot affect another's progress.
 
 Verification: solver interaction tests and persisted attempt/reload tests, including assisted completion.
+
+Notes (2026-10-01): added the private `/puzzles` library with per-game filtering, pagination, saved completion labels, and review entry links. `/puzzles/[id]` orients the real board for the solver and supports drag/drop, square clicks, keyboard coordinates, and selectable promotion. Server-side chess legality and the persisted accepted-move list distinguish illegal, incorrect, correct, and accepted-alternative answers. Browser DTOs omit answer lists and validation evidence; only a saved hint, revealed answer, or completed solution is returned when appropriate. Next-puzzle navigation and return to the exact source-review ply are included.
+
+Attempts/actions and one per-user completion are stored separately from immutable definitions. Hints/reveals mark subsequent practice assisted, including after reload/retry. Reveal alone does not complete a puzzle. The first completion and its assisted/unassisted label survive repeat practice; seeing a solved answer makes subsequent practice assisted. Request IDs deduplicate retries, revision checks reject stale-tab writes, and transactional row locking prevents lost assistance or duplicate completions. Network errors allow status refresh or replay of the same request. All reads and mutations check source-game ownership.
+
+Verification: Node 24.21.0 lint, typecheck, all 434 unit/component tests, all 59 integration tests, and webpack production build passed. Two Chromium puzzle journeys passed (White desktop and Black at 390px), covering actual board clicks, illegal/incorrect answers, accepted alternatives, reload, hint/reveal/retry, assisted and unassisted completion, next puzzle, exact source navigation, and unauthenticated/cross-account API denial. Additional tests cover underpromotion, castling, server payload validation, lost-response retry, competing tabs, idempotency, immutable definitions, and private lists/progress. Applied the additive migration to test and local development databases. Multi-move sequences remain TASK-033; TASK-026 release blockers are unchanged.
 
 ### TASK-033 — Support multi-move tactical sequences
 

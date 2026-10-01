@@ -43,6 +43,7 @@ model User {
   accounts      Account[]
   games         Game[]
   settings      UserSettings?
+  puzzleProgress PuzzleProgress[]
 }
 
 model Session {
@@ -174,8 +175,48 @@ model PersonalPuzzle {
   acceptedMoves String[]
   validation Json
   createdAt DateTime @default(now())
+  progress PuzzleProgress[]
 
   @@unique([generationId, sourcePly])
+}
+
+// One completion per owner and puzzle version; practice attempts remain separate.
+model PuzzleProgress {
+  id String @id @default(cuid())
+  puzzleId String
+  puzzle PersonalPuzzle @relation(fields: [puzzleId], references: [id], onDelete: Cascade)
+  userId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  revision Int @default(0)
+  state String @default("SOLVING")
+  assisted Boolean @default(false)
+  hintUsed Boolean @default(false)
+  solvedMove String?
+  lastOutcome String?
+  moveAttempts Int @default(0)
+  completedAt DateTime?
+  completionAssisted Boolean?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  attempts PuzzleAttempt[]
+
+  @@unique([puzzleId, userId])
+  @@index([userId, completedAt])
+}
+
+model PuzzleAttempt {
+  id String @id @default(cuid())
+  progressId String
+  progress PuzzleProgress @relation(fields: [progressId], references: [id], onDelete: Cascade)
+  requestId String
+  expectedRevision Int
+  action String
+  move String?
+  outcome String
+  assisted Boolean
+  createdAt DateTime @default(now())
+
+  @@unique([progressId, requestId])
 }
 
 model GameMove {

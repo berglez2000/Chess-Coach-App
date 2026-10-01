@@ -6,14 +6,14 @@ import type { MoveQuality } from "@/types/analysis";
 import { MoveQualityBadge } from "@/components/games/move-quality-badge";
 import { boardTheme, customPieces } from "./board-theme";
 
-export function ReplayBoard({ fen, userColor, flipped = false, lastMove, moveQuality, onMove, onSquareClick, selectedSquare }: { fen: string; userColor: ChessColor; flipped?: boolean; lastMove?: string; moveQuality?: MoveQuality | null; onMove?: (from: string, to: string) => boolean; onSquareClick?: (square: string) => void; selectedSquare?: string | null }) {
+export function ReplayBoard({ fen, userColor, flipped = false, lastMove, moveQuality, onMove, onSquareClick, selectedSquare, positionLabel }: { fen: string; userColor: ChessColor; flipped?: boolean; lastMove?: string; moveQuality?: MoveQuality | null; onMove?: (from: string, to: string) => boolean; onSquareClick?: (square: string) => void; selectedSquare?: string | null; positionLabel?: string }) {
   const defaultWhiteBottom = userColor === "WHITE";
   const whiteBottom = flipped ? !defaultWhiteBottom : defaultWhiteBottom;
   const destination = lastMove?.slice(2, 4);
   const file = destination ? destination.charCodeAt(0) - 97 : 0;
   const rank = destination ? Number(destination[1]) - 1 : 0;
   return (
-    <div className="relative w-full min-w-0" role={onMove ? "group" : "img"} aria-label={`${onMove ? "Exploration" : "Game"} position, ${whiteBottom ? "White" : "Black"} at the bottom${destination && moveQuality ? `, move quality ${moveQuality} on ${destination}` : ""}`}>
+    <div className="relative w-full min-w-0" role={onMove ? "group" : "img"} aria-label={`${positionLabel ?? (onMove ? "Exploration" : "Game")} position, ${whiteBottom ? "White" : "Black"} at the bottom${destination && moveQuality ? `, move quality ${moveQuality} on ${destination}` : ""}`}>
       <Chessboard options={{
         id: "game-replay",
         position: fen,

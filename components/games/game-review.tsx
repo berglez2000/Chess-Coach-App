@@ -15,9 +15,9 @@ import { CoachingPanel } from "./coaching-panel";
 import { CoachingSummaryPanel } from "./coaching-summary-panel";
 
 /** Mount a fresh review for each imported game. Selected ply owns all replay state. */
-export function GameReview({ game, userColor, status }: { game: ReviewGame; userColor: ChessColor; status: AnalysisStatus }) {
+export function GameReview({ game, userColor, status, initialPly = 0 }: { game: ReviewGame; userColor: ChessColor; status: AnalysisStatus; initialPly?: number }) {
   const { play, muted, toggleMuted } = useMoveSound();
-  const [selectedPly, setSelectedPly] = useState(0);
+  const [selectedPly, setSelectedPly] = useState(() => Math.max(0, Math.min(game.moves.length, Number.isInteger(initialPly) ? initialPly : 0)));
   const [exploration, setExploration] = useState<string | null>(null);
   const [preview, setPreview] = useState(false);
   const [filter, setFilter] = useState("all");

@@ -8,12 +8,12 @@ import type { PuzzleAction } from "@/types/puzzle";
 const definition: PuzzleDefinition = { id: "puzzle", startingFen: new Chess().fen(), playerColor: "WHITE", sourcePly: 5, acceptedMoves: ["e2e4"], generation: { gameId: "game" } };
 const initial = solverDto(definition, INITIAL_PROGRESS);
 afterEach(() => vi.unstubAllGlobals());
-function mockedServer() {
+function mockedServer(puzzleDefinition = definition) {
   let state = { ...INITIAL_PROGRESS };
   const fetcher = vi.fn(async (_url: string, options: RequestInit) => {
     const action = JSON.parse(options.body as string) as PuzzleAction;
-    state = applyPuzzleAction(definition, state, action);
-    return Response.json({ puzzle: solverDto(definition, state) });
+    state = applyPuzzleAction(puzzleDefinition, state, action);
+    return Response.json({ puzzle: solverDto(puzzleDefinition, state) });
   });
   vi.stubGlobal("fetch", fetcher);
   return fetcher;
@@ -85,4 +85,48 @@ it("orients Black puzzles and submits underpromotion selected before moving", as
   enter("a7a8");
   await waitFor(() => expect(request).toHaveBeenCalledOnce());
   expect(JSON.parse((request.mock.calls[0] as unknown as [string, RequestInit])[1].body as string)).toHaveProperty("move", "a7a8n");
+});
+const sequence = { ...definition, solution: { version: 1, maxPlayerMoves: 3, lines: [
+  { moves: ["e2e4", "e7e5", "g1f3", "b8c6", "f1b5"], goal: "validated-boundary" },
+] } };
+it("plays a sequence on the real board, shows replies, reloads midway, and reveals the complete line", async () => {
+  mockedServer(sequence);
+  const { unmount } = render(<PuzzleSolver initialPuzzle={solverDto(sequence, INITIAL_PROGRESS)} nextId={null} />);
+  const board = screen.getByRole("group", { name: "Puzzle position, White at the bottom" });
+  fireEvent.click(board.querySelector('[data-square="e2"]')!);
+  fireEvent.click(board.querySelector('[data-square="e4"]')!);
+  await waitFor(() => expect(screen.getByRole("status", { name: "Puzzle feedback" })).toHaveTextContent("opponent replied automatically"));
+  expect(screen.getByLabelText("Played sequence")).toHaveTextContent("e4 → e5");
+  expect(screen.queryByText(/First completion saved/)).not.toBeInTheDocument();
+  expect(screen.queryByText(/Solution:/)).not.toBeInTheDocument();
+  fireEvent.click(board.querySelector('[data-square="g1"]')!);
+  fireEvent.click(board.querySelector('[data-square="f3"]')!);
+  await waitFor(() => expect(screen.getByLabelText("Played sequence")).toHaveTextContent("Nf3 → Nc6"));
+  const midway = applyPuzzleAction(sequence, applyPuzzleAction(sequence, INITIAL_PROGRESS,
+    { action: "MOVE", move: "e2e4", requestId: "first", expectedRevision: 0 }),
+    { action: "MOVE", move: "g1f3", requestId: "second", expectedRevision: 1 });
+  unmount();
+  render(<PuzzleSolver initialPuzzle={solverDto(sequence, midway)} nextId={null} />);
+  expect(screen.getByLabelText("Played sequence")).toHaveTextContent("e4 → e5 → Nf3 → Nc6");
+  enter("f1b5");
+  await waitFor(() => expect(screen.getByText(/First completion saved/)).toHaveTextContent("Unassisted"));
+  expect(screen.getByText(/^Solution:/)).toHaveTextContent("e4 → e5 → Nf3 → Nc6 → Bb5");
+  expect(screen.getByText(/Validated sequence complete/)).toBeInTheDocument();
+});
+it("locks input while a move/reply is delayed and restarts the saved sequence cleanly", async () => {
+  let resolve!: (response: Response) => void;
+  const saved = applyPuzzleAction(sequence, INITIAL_PROGRESS, { action: "MOVE", move: "e2e4", requestId: "first", expectedRevision: 0 });
+  const request = vi.fn().mockImplementationOnce(() => new Promise<Response>(done => { resolve = done; }))
+    .mockResolvedValueOnce(Response.json({ puzzle: solverDto(sequence, applyPuzzleAction(sequence, saved, { action: "RETRY", requestId: "retry", expectedRevision: 1 })) }));
+  vi.stubGlobal("fetch", request);
+  render(<PuzzleSolver initialPuzzle={solverDto(sequence, INITIAL_PROGRESS)} nextId={null} />);
+  enter("e2e4");
+  expect(screen.getByRole("button", { name: "Retry puzzle" })).toBeDisabled();
+  expect(screen.getByRole("button", { name: "Check move" })).toBeDisabled();
+  resolve(Response.json({ puzzle: solverDto(sequence, saved) }));
+  await waitFor(() => expect(screen.getByLabelText("Played sequence")).toHaveTextContent("e4 → e5"));
+  fireEvent.click(screen.getByRole("button", { name: "Retry puzzle" }));
+  await waitFor(() => expect(screen.queryByLabelText("Played sequence")).not.toBeInTheDocument());
+  expect(screen.getByRole("button", { name: "Check move" })).toBeEnabled();
+  expect(request).toHaveBeenCalledTimes(2);
 });

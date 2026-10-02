@@ -18,6 +18,8 @@ function repository(overrides: Partial<PuzzleRepository> = {}): PuzzleRepository
   return { load: vi.fn(async () => ({ userColor: "WHITE" as const, analysisStatus: "ENGINE_COMPLETED", moves: [candidate] })),
     claim: vi.fn(async () => "CLAIMED" as const), complete: vi.fn(async () => {}), fail: vi.fn(async () => {}), ...overrides };
 }
+const fixtureEngine = () => ({ analyze: async (position: string): Promise<EngineResult> => position === fen ? result() :
+  { perspective: "BLACK", bestMove: null, evaluation: null } });
 it("selects only the player's substantial mistakes in stable loss order, with a bounded budget", () => {
   const moves = Array.from({ length: 9 }, (_, index) => ({ ...candidate, ply: index + 1 }));
   expect(selectCandidates(moves, "WHITE").map(move => move.ply)).toEqual([1, 2, 3, 4, 5]);
@@ -66,7 +68,7 @@ it("rejects illegal continuations instead of storing an unvalidated answer", () 
 describe("generation", () => {
   it("saves validated puzzles atomically and needs no coaching", async () => {
     const repo = repository();
-    expect(await generatePuzzles("game", repo, () => ({ analyze: async () => result() }))).toEqual({ status: "COMPLETED" });
+    expect(await generatePuzzles("game", repo, fixtureEngine)).toEqual({ status: "COMPLETED" });
     expect(repo.complete).toHaveBeenCalledWith("game", [expect.objectContaining({ acceptedMoves: ["d1d2"] })], 1);
   });
   it("saves an honest empty result without starting an engine when no mistakes qualify", async () => {
@@ -85,13 +87,13 @@ describe("generation", () => {
     const repo = repository();
     expect(await generatePuzzles("game", repo, () => ({ analyze: async () => { throw new Error("private"); } }))).toEqual({ status: "FAILED" });
     expect(repo.fail).toHaveBeenCalledWith("game"); expect(repo.complete).not.toHaveBeenCalled();
-    expect(await generatePuzzles("game", repo, () => ({ analyze: async () => result() }))).toHaveProperty("status", "COMPLETED");
+    expect(await generatePuzzles("game", repo, fixtureEngine)).toHaveProperty("status", "COMPLETED");
   });
   it("refuses missing games and games without saved analysis", async () => {
     const factory = vi.fn();
     expect(await generatePuzzles("game", repository({ load: async () => null }), factory)).toHaveProperty("status", "NOT_FOUND");
     expect(await generatePuzzles("game", repository({ load: async () => ({ userColor: "WHITE", analysisStatus: "PENDING", moves: [] }) }), factory)).toHaveProperty("status", "NOT_READY");
     expect(factory).not.toHaveBeenCalled();
-    expect(PUZZLE_POLICY.version).toBe(1);
+    expect(PUZZLE_POLICY.version).toBe(2);
   });
 });

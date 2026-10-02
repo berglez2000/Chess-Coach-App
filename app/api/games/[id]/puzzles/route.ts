@@ -19,7 +19,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
     }));
     if (outcome.status === "NOT_FOUND") return Response.json({ error: { message: "Game not found." } }, { status: 404 });
     if (outcome.status === "NOT_READY") return Response.json({ error: { message: "Save engine analysis before generating puzzles. Wait for any running engine analysis to finish." } }, { status: 409 });
-    if (outcome.status === "BUSY") return Response.json({ error: { message: "Puzzle generation is already running. Refresh status; interrupted runs can be retried after five minutes." } }, { status: 409 });
+    if (outcome.status === "BUSY") return Response.json({ error: { message: "Puzzle generation is already running. Refresh status; interrupted runs can be retried five minutes after their last saved activity." } }, { status: 409 });
     if (outcome.status === "FAILED") return Response.json({ error: { message: PUZZLE_FAILURE } }, { status: 503 });
     return Response.json({ generation: await puzzleSummary(db, id, user.id) });
   } catch {

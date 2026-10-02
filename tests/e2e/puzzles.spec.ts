@@ -1,10 +1,10 @@
 import { execFileSync } from "node:child_process";
 import { randomUUID } from "node:crypto";
-import { test, expect } from "@playwright/test";
+import { test, expect, type Page } from "@playwright/test";
 
 const origin = "http://127.0.0.1:3100";
 for (const color of ["WHITE", "BLACK"] as const) {
-  test(`${color}: solve, reload, retry, assistance, source navigation and private progress`, async ({ page, browser }) => {
+  test(`${color}: one-move and sequence solving, reload, retry, assistance and private progress`, async ({ page, browser }) => {
     if (color === "BLACK") await page.setViewportSize({ width: 390, height: 844 });
     const email = `e2e-${process.env.CHESS_E2E_RUN_ID}-${randomUUID()}@example.test`;
     const signup = await page.request.post("/api/auth/sign-up/email", { headers: { origin }, data: { name: "Puzzle tester", email, password: "browser puzzle passphrase" } });
@@ -64,5 +64,43 @@ for (const color of ["WHITE", "BLACK"] as const) {
       expect((await other.request.get(`/api/puzzles/${fixture.ids[0]}`)).status()).toBe(404);
       expect((await other.request.post(`/api/puzzles/${fixture.ids[0]}`, { headers: { origin }, data: { action: "REVEAL", expectedRevision: 0, requestId: randomUUID() } })).status()).toBe(404);
     } finally { await other.close(); }
+    await sequenceJourney(page, email, color);
   });
+}
+async function sequenceJourney(page: Page, email: string, color: "WHITE" | "BLACK") {
+  const fixture = JSON.parse(execFileSync(process.execPath, ["--import", "tsx", "tests/support/e2e-puzzles.mts", email, color, "sequence"], { encoding: "utf8" })) as { gameId: string; ids: string[] };
+  const id = fixture.ids[0];
+  const moves = color === "WHITE" ? ["d2d4", "c2c4", "b1c3"] : ["c7c5", "d7d6", "c5d4"];
+  await page.goto(`/puzzles/${id}`);
+  const board = page.getByRole("group", { name: /Puzzle position/ });
+  await board.locator(`[data-square="${moves[0].slice(0, 2)}"]`).click();
+  await board.locator(`[data-square="${moves[0].slice(2, 4)}"]`).click();
+  await expect(page.getByRole("status", { name: "Puzzle feedback" })).toContainText("opponent replied automatically");
+  await expect(page.getByText(/First completion saved/)).toHaveCount(0);
+  await expect(page.getByText(/^Solution:/)).toHaveCount(0);
+  const midway = (await (await page.request.get(`/api/puzzles/${id}`)).json()).puzzle;
+  expect(midway.history).toHaveLength(2); expect(midway.solutionLine).toBeNull();
+  await page.reload();
+  await expect(page.getByLabel("Played sequence")).toContainText(color === "WHITE" ? "d4 → d5" : "c5 → Nf3");
+  await page.getByRole("button", { name: "Hint", exact: true }).click();
+  await expect(page.getByText(/^Hint:/)).toContainText(moves[1].slice(0, 2));
+  await page.getByLabel("Move coordinates").fill(color === "WHITE" ? "g1f3" : "g8f6");
+  await page.getByRole("button", { name: "Check move" }).click();
+  await expect(page.getByRole("status", { name: "Puzzle feedback" })).toContainText("legal, but it is not a solution");
+  await page.getByRole("button", { name: "Reveal solution" }).click();
+  await expect(page.getByText(/^Solution:/)).toContainText(color === "WHITE" ? "d4 → d5 → c4 → e6 → Nc3" : "c5 → Nf3 → d6 → d4 → cxd4");
+  await expect(page.getByText(/First completion saved/)).toHaveCount(0);
+  await page.getByRole("button", { name: "Retry puzzle" }).click();
+  await expect(page.getByLabel("Played sequence")).toHaveCount(0);
+  for (const [index, move] of moves.entries()) {
+    await page.getByLabel("Move coordinates").fill(move);
+    await page.getByRole("button", { name: "Check move" }).click();
+    if (index < 2) await expect(page.getByRole("status", { name: "Puzzle feedback" })).toContainText("opponent replied automatically");
+    else await expect(page.getByText("First completion saved · Assisted")).toBeVisible();
+  }
+  await page.reload();
+  await expect(page.getByText("First completion saved · Assisted")).toBeVisible();
+  const completed = (await (await page.request.get(`/api/puzzles/${id}`)).json()).puzzle;
+  expect(completed.history).toHaveLength(5);
+  expect(completed.goal).toBe("validated-boundary");
 }

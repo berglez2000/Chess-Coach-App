@@ -12,6 +12,8 @@ const feedback: Record<string, string> = {
   INCORRECT: "That move is legal, but it is not a solution. Try again.",
   CORRECT: "Correct! Puzzle solved.",
   ACCEPTED_ALTERNATIVE: "Correct! Your move is an accepted alternative.",
+  CONTINUE: "Correct. The opponent replied automatically; find your next move.",
+  ALTERNATIVE_CONTINUE: "Accepted alternative. The opponent replied automatically; find your next move.",
   HINT: "Hint saved. This solve will be marked assisted.",
   REVEALED: "Solution revealed. Retry to play it yourself; this will be an assisted solve.",
   RETRY: "Starting position restored. Try again.",
@@ -29,7 +31,8 @@ export function PuzzleSolver({ initialPuzzle, nextId }: { initialPuzzle: SolverP
   const [retryRequest, setRetryRequest] = useState<PuzzleAction | null>(null);
   const solving = puzzle.progress.state === "SOLVING";
   const locked = pending || uncertain;
-  const board = new Chess(puzzle.startingFen);
+  const displayedFen = puzzle.progress.state === "REVEALED" ? puzzle.solutionLine?.at(-1)?.fen ?? puzzle.currentFen : puzzle.currentFen;
+  const board = new Chess(displayedFen);
 
   async function transmit(action?: PuzzleAction) {
     if (submitted.current) return;
@@ -68,15 +71,16 @@ export function PuzzleSolver({ initialPuzzle, nextId }: { initialPuzzle: SolverP
   }
   return <section aria-label="Puzzle practice" aria-busy={pending} className="mt-6 grid min-w-0 gap-6 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
     <div className="min-w-0">
-      <ReplayBoard positionLabel="Puzzle" fen={puzzle.solution?.fen ?? puzzle.startingFen} userColor={puzzle.playerColor}
-        lastMove={puzzle.solution?.uci} selectedSquare={selected}
+      <ReplayBoard positionLabel="Puzzle" fen={displayedFen} userColor={puzzle.playerColor}
+        lastMove={puzzle.progress.state === "REVEALED" ? puzzle.solutionLine?.at(-1)?.uci : puzzle.history.at(-1)?.uci} selectedSquare={selected}
         onMove={solving && !locked ? move : undefined}
         onSquareClick={solving && !locked ? square => {
           const piece = board.get(square as Parameters<typeof board.get>[0]);
           if (piece?.color === board.turn()) { setSelected(square); setError(""); }
           else if (selected) move(selected, square);
         } : undefined} />
-      <p className="mt-3 text-sm">{puzzle.playerColor === "WHITE" ? "White" : "Black"} to play · Find one strong move.</p>
+      <p className="mt-3 text-sm">{puzzle.playerColor === "WHITE" ? "White" : "Black"} to play · {puzzle.maxPlayerMoves === 1 ? "Find one strong move." : `Find the tactical sequence · up to ${puzzle.maxPlayerMoves} of your moves.`}</p>
+      {puzzle.history.length > 0 && <p aria-label="Played sequence" className="mt-2 text-sm">Played: {puzzle.history.map(move => move.san).join(" → ")}</p>}
       {solving && <>
         <p className="mt-2 text-sm text-[#465c50]">Drag a piece, select its square and destination, or enter move coordinates. Choose a promotion piece before moving a pawn to the last rank.</p>
         <label className="mt-3 block text-sm">Promotion piece <select disabled={locked} className="rounded border p-2" value={promotion} onChange={event => setPromotion(event.target.value)}>
@@ -98,7 +102,8 @@ export function PuzzleSolver({ initialPuzzle, nextId }: { initialPuzzle: SolverP
       <h2 className="text-lg font-semibold">Find the better move</h2>
       <p role="status" aria-label="Puzzle feedback" className="text-sm" aria-live="polite">{pending ? "Saving progress…" : feedback[puzzle.progress.lastOutcome ?? ""] ?? "Your answer is checked after you play a move."}</p>
       {puzzle.hintSquare && <p className="text-sm">Hint: move the piece on <strong>{puzzle.hintSquare}</strong>.</p>}
-      {puzzle.solution && <p className="text-sm">Solution: <strong>{puzzle.solution.san}</strong></p>}
+      {puzzle.solutionLine && <p className="text-sm">Solution: <strong>{puzzle.solutionLine.map(move => move.san).join(" → ")}</strong></p>}
+      {puzzle.goal && <p className="text-sm">{puzzle.goal === "mate" ? "Checkmate reached." : puzzle.goal === "terminal" ? "The game has ended." : "Validated sequence complete. This puzzle ends here; the game may continue."}</p>}
       <p className="text-sm">Moves tried: {puzzle.progress.moveAttempts}</p>
       <p className="text-sm">{puzzle.progress.assisted ? "Assisted practice: you have used help or already seen the solution." : "No hints or reveals used."}</p>
       {puzzle.progress.completedAt && <p className="text-sm font-semibold">First completion saved · {puzzle.progress.completionAssisted ? "Assisted" : "Unassisted"}</p>}

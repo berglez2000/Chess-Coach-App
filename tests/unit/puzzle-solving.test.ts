@@ -47,6 +47,12 @@ it("preserves the first completion when practicing again", () => {
   expect(again.completionAssisted).toBe(false);
   expect(applyPuzzleAction(puzzle, solved, move("e2e4")).moveAttempts).toBe(1);
 });
+it("reopens a legacy completion without sequence history and keeps its accepted alternative", () => {
+  const legacy = { ...INITIAL_PROGRESS, state: "SOLVED" as const, solvedMove: "d2d4", completedAt: "2026-10-01T00:00:00Z", completionAssisted: false };
+  expect(solverDto(puzzle, legacy)).toMatchObject({ history: [{ uci: "d2d4", san: "d4" }], solution: { uci: "d2d4" },
+    progress: { completedAt: legacy.completedAt, completionAssisted: false } });
+  expect(applyPuzzleAction(puzzle, legacy, action("RETRY"))).toMatchObject({ playedMoves: [], assisted: true, completedAt: legacy.completedAt });
+});
 it("handles Black's turn, underpromotion and castling legally", () => {
   const blackBoard = new Chess(); blackBoard.move("e4");
   const black = { ...puzzle, startingFen: blackBoard.fen(), playerColor: "BLACK" as const, acceptedMoves: ["e7e5"] };

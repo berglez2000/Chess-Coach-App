@@ -1,12 +1,13 @@
 import type { ChessEngine } from "@/types/engine";
 import type { ChessColor } from "@/types/game";
-import { selectCandidates, validatePuzzle, type Candidate, type ValidatedPuzzle } from "./policy";
+import { extendPuzzle, selectCandidates, validatePuzzle, type Candidate, type ValidatedPuzzle } from "./policy";
 
 export interface PuzzleRepository {
   load(id: string): Promise<{ userColor: ChessColor; analysisStatus: string; moves: Candidate[] } | null>;
   claim(id: string): Promise<"CLAIMED" | "COMPLETED" | "BUSY">;
   complete(id: string, puzzles: ValidatedPuzzle[], checked: number): Promise<void>;
   fail(id: string): Promise<void>;
+  renew?(id: string): Promise<void>;
 }
 export async function generatePuzzles(id: string, repository: PuzzleRepository, engineFactory: () => ChessEngine) {
   let claimed = false;
@@ -25,8 +26,9 @@ export async function generatePuzzles(id: string, repository: PuzzleRepository, 
     if (candidates.length) {
       const engine = engineFactory();
       for (const candidate of candidates) {
+        await repository.renew?.(id);
         const puzzle = validatePuzzle(candidate, await engine.analyze(candidate.fenBefore));
-        if (puzzle) puzzles.push(puzzle);
+        if (puzzle) puzzles.push(await extendPuzzle(puzzle, engine, async () => { await repository.renew?.(id); }));
       }
     }
     await repository.complete(id, puzzles, candidates.length);

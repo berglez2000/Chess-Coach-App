@@ -7,7 +7,7 @@ const owned = (ownerId: string) => ({ generation: { status: "COMPLETED", game: {
 function state(row?: PuzzleProgress | null): PuzzleState {
   if (!row) return { ...INITIAL_PROGRESS };
   return { revision: row.revision, state: row.state as PuzzleState["state"], assisted: row.assisted,
-    hintUsed: row.hintUsed, solvedMove: row.solvedMove, lastOutcome: row.lastOutcome, moveAttempts: row.moveAttempts,
+    hintUsed: row.hintUsed, solvedMove: row.solvedMove, playedMoves: row.playedMoves, lastOutcome: row.lastOutcome, moveAttempts: row.moveAttempts,
     completedAt: row.completedAt?.toISOString() ?? null, completionAssisted: row.completionAssisted };
 }
 export async function findPracticePuzzle(db: PrismaClient, id: string, userId: string) {

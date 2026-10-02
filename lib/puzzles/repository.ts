@@ -3,6 +3,7 @@ import type { PrismaClient, Prisma } from "@/generated/prisma/client";
 import { requireOwnerId } from "@/lib/auth/owner";
 import { PUZZLE_POLICY } from "./policy";
 import type { PuzzleRepository } from "./generate";
+import { readSolution } from "./sequence";
 
 export const PUZZLE_LEASE_MS = 300_000;
 export const PUZZLE_FAILURE = "Puzzle generation failed. Check Stockfish and the database, then retry. Your review is still available.";
@@ -41,6 +42,7 @@ export function createPuzzleRepository(db: PrismaClient, owner: string): PuzzleR
       return saved?.status === "COMPLETED" ? "COMPLETED" : "BUSY";
     },
     async complete(id, puzzles, checkedCandidates) {
+      for (const puzzle of puzzles) readSolution(puzzle.solution, puzzle.startingFen, puzzle.acceptedMoves, puzzle.playerColor);
       await db.$transaction(async tx => {
         // Lock and fence the run before inserting. A superseded worker cannot publish.
         const updated = await tx.puzzleGeneration.updateMany({
@@ -51,8 +53,16 @@ export function createPuzzleRepository(db: PrismaClient, owner: string): PuzzleR
         const generation = await tx.puzzleGeneration.findFirstOrThrow({ where: owned(id), select: { id: true } });
         if (puzzles.length) await tx.personalPuzzle.createMany({ data: puzzles.map(puzzle => ({
           ...puzzle, generationId: generation.id, validation: puzzle.validation as unknown as Prisma.InputJsonValue,
+          solution: puzzle.solution as unknown as Prisma.InputJsonValue | undefined,
         })) });
       });
+    },
+    async renew(id) {
+      const renewed = await db.puzzleGeneration.updateMany({
+        where: { ...owned(id), token, status: "RUNNING", leaseUntil: { gt: new Date() } },
+        data: { leaseUntil: new Date(Date.now() + PUZZLE_LEASE_MS) },
+      });
+      if (renewed.count !== 1) throw new Error("Puzzle generation ownership lost.");
     },
     async fail(id) {
       await db.puzzleGeneration.updateMany({ where: { ...owned(id), token, status: "RUNNING" },

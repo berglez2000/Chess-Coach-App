@@ -15,7 +15,8 @@ const fen = "4k3/8/8/8/8/8/3q4/3QK3 w - - 0 1";
 const first = { depth: 14, score: { kind: "cp" as const, value: 500, bound: "exact" as const }, pv: ["d1d2"] };
 const result: EngineResult = { perspective: "WHITE", bestMove: "d1d2", evaluation: first,
   variations: [first, { ...first, score: { ...first.score, value: 0 }, pv: ["e1d2"] }] };
-const engine = () => ({ analyze: vi.fn(async () => result) });
+const engine = () => ({ analyze: vi.fn(async (position: string): Promise<EngineResult> => position === fen ? result :
+  { perspective: "BLACK", bestMove: null, evaluation: null }) });
 async function saved() {
   const parsed = parsePgn(`[SetUp "1"]\n[FEN "${fen}"]\n\n1. Kf1 *`);
   const { id } = await createImportRepository(db, owners[0]).create(parsed, "WHITE");
@@ -36,7 +37,7 @@ it("persists a versioned puzzle, preserves the review, and deduplicates repeated
   expect(await generatePuzzles(id, createPuzzleRepository(db, owners[0]), factory)).toHaveProperty("status", "COMPLETED");
   expect(await generatePuzzles(id, createPuzzleRepository(db, owners[0]), factory)).toHaveProperty("status", "COMPLETED");
   expect(factory).toHaveBeenCalledOnce();
-  const generation = await db.puzzleGeneration.findUniqueOrThrow({ where: { gameId_version: { gameId: id, version: 1 } }, include: { puzzles: true } });
+  const generation = await db.puzzleGeneration.findUniqueOrThrow({ where: { gameId_version: { gameId: id, version: PUZZLE_POLICY.version } }, include: { puzzles: true } });
   expect(generation.configuration).toEqual(PUZZLE_POLICY);
   expect(generation.puzzles).toHaveLength(1);
   expect(generation.puzzles[0]).toMatchObject({ sourcePly: 1, startingFen: fen, sourceRunId: "source-run", playerColor: "WHITE", acceptedMoves: ["d1d2"], validation: result });
@@ -89,4 +90,18 @@ it("persists an empty result and does not regenerate it on repeat requests", asy
   await generatePuzzles(id, createPuzzleRepository(db, owners[0]), factory);
   expect(factory).toHaveBeenCalledOnce();
   expect(await puzzleSummary(db, id, owners[0])).toMatchObject({ status: "COMPLETED", count: 0, checkedCandidates: 1 });
+});
+it("renews only the current live lease and keeps old policy definitions alongside the new generation", async () => {
+  const id = await saved();
+  const legacy = await db.puzzleGeneration.create({ data: { gameId: id, version: 1, status: "COMPLETED", configuration: {},
+    puzzles: { create: { sourcePly: 1, sourceRunId: "legacy", startingFen: fen, playerColor: "WHITE", acceptedMoves: ["d1d2"], validation: {} } } }, include: { puzzles: true } });
+  const repo = createPuzzleRepository(db, owners[0]);
+  await repo.claim(id);
+  await repo.renew!(id);
+  await expect(createPuzzleRepository(db, owners[1]).renew!(id)).rejects.toThrow(/ownership/);
+  await db.puzzleGeneration.updateMany({ where: { gameId: id, version: PUZZLE_POLICY.version }, data: { leaseUntil: new Date(0) } });
+  await expect(repo.renew!(id)).rejects.toThrow(/ownership/);
+  await generatePuzzles(id, createPuzzleRepository(db, owners[0]), engine);
+  expect(await db.puzzleGeneration.count({ where: { gameId: id } })).toBe(2);
+  expect(await db.personalPuzzle.findUnique({ where: { id: legacy.puzzles[0].id } })).toEqual(legacy.puzzles[0]);
 });

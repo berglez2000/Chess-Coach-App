@@ -2,7 +2,7 @@
 
 Source: [original ideas](CHESS_COACH_FUTURE_SPECS.md). Existing V0.1 work and evidence remain in [TASKS.md](TASKS.md).
 
-This backlog is not authorization to implement every task. The user authorized email/password auth and ownership (TASK-029–030) and review exploration (TASK-028), then requested starting the next tasks on 2026-10-01. TASK-031 is implemented. The user explicitly requested TASK-032 next; it is now implemented too. TASK-033 onward remain TODO. IDs continue after TASK-027; dependencies and the recommended sequence determine implementation order. Resolve a task's open decisions before implementing that task. Record implementation evidence before marking it DONE.
+This backlog is not authorization to implement every task. The user authorized email/password auth and ownership (TASK-029–030) and review exploration (TASK-028), then requested starting the next tasks on 2026-10-01. TASK-031–032 are implemented. The user requested TASK-033 on 2026-10-02; it is now implemented too. TASK-034 onward remain TODO. IDs continue after TASK-027; dependencies and the recommended sequence determine implementation order. Resolve a task's open decisions before implementing that task. Record implementation evidence before marking it DONE.
 
 ## Priority and sequence
 
@@ -26,9 +26,9 @@ TASK-026 is still BLOCKED by existing release acceptance requirements. Track it 
 
 ## Remaining implementation decisions
 
-Before the affected implementation, also settle: the sequence-length limit for multi-move puzzles; browser-local versus synchronized PDFs; who authors lessons; and whether weekly plans are reusable templates or dated schedules.
+Before the affected implementation, also settle: browser-local versus synchronized PDFs; who authors lessons; and whether weekly plans are reusable templates or dated schedules.
 
-TASK-031 uses the proposed one-move starting scope. Remaining defaults are proposals, not confirmed preferences: browser-local PDFs; editable weekly plan templates without calendar integration. Automatic PDF diagram/solution extraction is outside the agreed learning scope.
+TASK-031 started with one-move puzzles; TASK-033 extends new generation to at most three solver moves (five total plies). Remaining defaults are proposals, not confirmed preferences: browser-local PDFs; editable weekly plan templates without calendar integration. Automatic PDF diagram/solution extraction is outside the agreed learning scope.
 
 ## Tasks
 
@@ -138,11 +138,11 @@ Verification: Node 24.21.0 lint, typecheck, all 434 unit/component tests, all 59
 
 ### TASK-033 — Support multi-move tactical sequences
 
-Status: TODO  
+Status: DONE
 Priority: P1  
 Dependencies: TASK-032
 
-Scope: extend puzzles into validated solution branches; automatically play engine-selected opponent replies and let the user make subsequent moves. Decide the initial sequence-length limit before implementation.
+Scope: extend puzzles into validated solution branches; automatically play engine-selected opponent replies and let the user make subsequent moves. Initial limit: three solver moves, with at most two opponent replies.
 
 Acceptance:
 - Every transition is legal; accepted alternatives have validated continuations, not a mismatched original principal variation.
@@ -151,6 +151,12 @@ Acceptance:
 - Save the versioned solution/reply policy so retries behave consistently; prefer precomputed lines for the initial version.
 
 Verification: alternating-turn sequences, alternative branches, mate, restart during a reply, and completion persistence.
+
+Notes (2026-10-02): policy v2 generates precomputed lines with up to three solver moves. The existing conservative root-selection thresholds remain; each opponent reply and subsequent solver move receives a fresh depth-14 MultiPV search from its actual position. Replies require complete, exact, legal root evidence; solver moves require a unique winning/mating root, or a sole legal winning move. Generation accepts only one validated move per solver position initially. The branch format independently validates alternative continuations and deterministic replies; tests exercise alternatives without transplanting a principal variation. Ambiguous or incomplete continuation evidence ends the puzzle at its last validated solver move. Checkmate, terminal positions, and validated boundaries are distinguished. All search evidence and the versioned reply/solution policy are persisted.
+
+The additive migration adds nullable solution definitions and saved move histories. Null definitions retain policy-v1 behavior; old puzzles, attempts, and completion history remain unchanged. Policy-v2 generations coexist with v1 and are deduplicated independently. Correct moves and automatic replies commit in one transaction using the existing request-ID and revision safeguards. Reload resumes the exact sequence; stale tabs and delayed retries cannot append replies after restart. Inputs, including restart, are locked during an unresolved request. Hints target the current branch and are cleared after advancing; reveals expose the whole matching line without completing it. Assistance and first completion survive restart and repeat practice. Browser DTOs include only past moves until completion/reveal. Generation renews its fenced five-minute lease before each search; recovery starts five minutes after its last renewal.
+
+Verification: Node 24.21.0 lint, typecheck, all 449 unit/component tests, all 62 integration tests, and webpack production build passed. White desktop and Black 390px Chromium journeys passed for both one-move puzzles and new sequences, including actual board clicks, alternative replies, incorrect moves, midway reload, hint/reveal/restart, and saved completion. Tests additionally cover mate, underpromotion, castling, malformed branches, depth/bound completeness, delayed requests, lease renewal, ownership, immutable definitions, and preserved legacy versions. Live Stockfish depth-14 MultiPV validation generated `Qg8+ Rxg8 Nf7#` from `3r1r1k/ppp3pp/7N/8/8/1Q6/8/6K1 w - - 4 3`, freshly validating both continuation positions. Applied the migration to test and local development databases. The first expanded browser run hit the existing signup rate limit; reusing each journey's account resolved the test issue without changing authentication. TASK-026 release blockers remain separate.
 
 ### TASK-034 — Integrate the existing PDF reader
 

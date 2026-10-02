@@ -11,11 +11,16 @@ const db = createTestDb(); const owners: string[] = []; const games: string[] = 
 beforeAll(async () => { await assertTestDatabase(db); owners.push(await createTestOwner(db), await createTestOwner(db)); });
 afterEach(async () => { await assertTestDatabase(db); await db.game.deleteMany({ where: { id: { in: games } } }); games.length = 0; });
 afterAll(async () => { await db.user.deleteMany({ where: { id: { in: owners } } }); await db.$disconnect(); });
-async function seeded(owner = owners[0]) {
+async function seeded(owner = owners[0], sequence = false) {
   const parsed = parsePgn("1. Nf3 e5 2. d4 *");
   const game = await createImportRepository(db, owner).create(parsed, "WHITE"); games.push(game.id);
   const generation = await db.puzzleGeneration.create({ data: { gameId: game.id, version: 1, status: "COMPLETED", configuration: {}, puzzles: {
-    create: [1, 3].map(ply => ({ sourcePly: ply, sourceRunId: "fixture", startingFen: parsed.moves[ply - 1].fenBefore, playerColor: "WHITE", acceptedMoves: ply === 1 ? ["e2e4", "d2d4"] : ["f3e5"], validation: {} })),
+    create: [1, 3].map(ply => ({ sourcePly: ply, sourceRunId: "fixture", startingFen: parsed.moves[ply - 1].fenBefore, playerColor: "WHITE", acceptedMoves: ply === 1 ? ["e2e4", "d2d4"] : ["f3e5"], validation: {},
+      ...(sequence && ply === 1 ? { solution: { version: 1, maxPlayerMoves: 3, lines: [
+        { moves: ["e2e4", "e7e5", "g1f3", "b8c6", "f1b5"], goal: "validated-boundary" },
+        { moves: ["d2d4", "d7d5", "c2c4", "e7e6", "b1c3"], goal: "validated-boundary" },
+      ] } } : {}),
+    })),
   } }, include: { puzzles: { orderBy: { sourcePly: "asc" } } } });
   return { id: generation.puzzles[0].id, nextId: generation.puzzles[1].id, gameId: game.id };
 }
@@ -86,4 +91,37 @@ it("isolates definitions, progress, lists and navigation from another user", asy
   expect(await nextPracticePuzzle(db, id, owners[0])).toBe(nextId);
   expect(await nextPracticePuzzle(db, nextId, owners[0])).toBeNull();
   expect(await db.puzzleProgress.count({ where: { puzzleId: id } })).toBe(0);
+});
+it("persists intermediate positions and branch replies, deduplicates delivery, and completes only after the final move", async () => {
+  const { id } = await seeded(owners[0], true);
+  const before = await db.personalPuzzle.findUniqueOrThrow({ where: { id } });
+  const move = input("MOVE", 0, "d2d4");
+  const results = await Promise.all([actOnPuzzle(db, id, owners[0], move), actOnPuzzle(db, id, owners[0], move)]);
+  expect(results.map(result => result.status)).toEqual(["OK", "OK"]);
+  expect(await findPracticePuzzle(db, id, owners[0])).toMatchObject({ solutionLine: null, history: [{ uci: "d2d4" }, { uci: "d7d5" }],
+    progress: { state: "SOLVING", completedAt: null, revision: 1, moveAttempts: 1 } });
+  expect(await actOnPuzzle(db, id, owners[1], input("MOVE", 1, "c2c4"))).toHaveProperty("status", "NOT_FOUND");
+  await actOnPuzzle(db, id, owners[0], input("HINT", 1));
+  expect(await findPracticePuzzle(db, id, owners[0])).toMatchObject({ hintSquare: "c2", progress: { assisted: true } });
+  await actOnPuzzle(db, id, owners[0], input("MOVE", 2, "c2c4"));
+  expect(await findPracticePuzzle(db, id, owners[0])).toMatchObject({ hintSquare: null, progress: { playedMoves: ["d2d4", "d7d5", "c2c4", "e7e6"], completedAt: null } });
+  await actOnPuzzle(db, id, owners[0], input("MOVE", 3, "b1c3"));
+  const completed = (await findPracticePuzzle(db, id, owners[0]))!;
+  expect(completed.progress).toMatchObject({ state: "SOLVED", completionAssisted: true, moveAttempts: 3 });
+  expect(completed.solutionLine).toHaveLength(5);
+  await actOnPuzzle(db, id, owners[0], input("RETRY", 4));
+  for (const [index, uci] of ["e2e4", "g1f3", "f1b5"].entries()) await actOnPuzzle(db, id, owners[0], input("MOVE", 5 + index, uci));
+  expect((await findPracticePuzzle(db, id, owners[0]))!.progress.completedAt).toBe(completed.progress.completedAt);
+  expect(await db.personalPuzzle.findUniqueOrThrow({ where: { id } })).toEqual(before);
+});
+it("fences delayed sequence actions after restart and returns current state for a lost-response replay", async () => {
+  const { id } = await seeded(owners[0], true);
+  const original = input("MOVE", 0, "e2e4");
+  await actOnPuzzle(db, id, owners[0], original);
+  const late = input("MOVE", 1, "g1f3");
+  await actOnPuzzle(db, id, owners[0], input("RETRY", 1));
+  expect(await actOnPuzzle(db, id, owners[0], late)).toMatchObject({ status: "CONFLICT", puzzle: { history: [], progress: { revision: 2 } } });
+  expect(await actOnPuzzle(db, id, owners[0], original)).toMatchObject({ status: "OK", puzzle: { history: [], progress: { revision: 2 } } });
+  expect(await db.puzzleAttempt.count({ where: { progress: { puzzleId: id } } })).toBe(2);
+  expect((await db.puzzleProgress.findFirstOrThrow({ where: { puzzleId: id } })).playedMoves).toEqual([]);
 });

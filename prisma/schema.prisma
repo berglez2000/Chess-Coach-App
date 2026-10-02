@@ -44,6 +44,7 @@ model User {
   games         Game[]
   settings      UserSettings?
   puzzleProgress PuzzleProgress[]
+  books Book[]
 }
 
 model Session {
@@ -274,4 +275,35 @@ model MoveCoachingAnnotation {
   model            String
   provider         CoachingProvider @default(ANTHROPIC)
   annotatedAt      DateTime @default(now())
+}
+
+// PDFs and reader state are private account data, stored together in PostgreSQL.
+model Book {
+  id String @id @default(cuid())
+  ownerId String
+  owner User @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  name String
+  digest String
+  pdf Bytes
+  thumbnail Bytes?
+  totalPages Int
+  currentPage Int @default(1)
+  revision Int @default(0)
+  lastRead DateTime?
+  createdAt DateTime @default(now())
+  marks BookMark[]
+
+  @@unique([ownerId, digest])
+  @@index([ownerId, createdAt, id])
+}
+
+model BookMark {
+  id String @id @default(cuid())
+  bookId String
+  book Book @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  page Int
+  x Float
+  y Float
+
+  @@index([bookId, page])
 }

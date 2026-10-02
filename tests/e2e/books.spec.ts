@@ -1,0 +1,105 @@
+import { randomUUID } from "node:crypto";
+import { readFile } from "node:fs/promises";
+import { test, expect } from "@playwright/test";
+
+const origin = "http://127.0.0.1:3100";
+for (const width of [1200, 390]) test(`database books reader at ${width}px`, async ({ page, browser }) => {
+  test.setTimeout(120_000);
+  await page.setViewportSize({ width, height: 844 });
+  const pdf = await readFile("tests/fixtures/pdf/sample.pdf");
+  const password = "books browser test passphrase";
+  const email = () => `e2e-${process.env.CHESS_E2E_RUN_ID}-${randomUUID()}@example.test`;
+  const ownerEmail = email();
+  await page.goto("/books");
+  await expect(page).toHaveURL(/\/sign-in$/);
+  expect((await page.request.get("/api/books")).status()).toBe(401);
+  const signup = await page.request.post("/api/auth/sign-up/email", { headers: { origin }, data: { name: "Book reader", email: ownerEmail, password } });
+  expect(signup.status()).toBe(200);
+  await page.goto("/books");
+  await expect(page.getByText("No books yet.", { exact: false })).toBeVisible();
+  const input = page.locator('input[type="file"]');
+  await input.setInputFiles({ name: "Broken.pdf", mimeType: "application/pdf", buffer: Buffer.from("%PDF-1.4\ninvalid") });
+  await expect(page.getByRole("main").getByRole("alert")).toContainText("Could not read this PDF");
+  await input.setInputFiles({ name: "Sample.pdf", mimeType: "application/pdf", buffer: pdf });
+  await expect(page.getByRole("button", { name: "Read Sample", exact: true })).toBeVisible();
+  const { books } = await (await page.request.get("/api/books")).json();
+  const id = books[0].id;
+  expect(books[0].hasThumbnail).toBe(true);
+  expect((await page.request.get(`/api/books/${id}/thumbnail`)).status()).toBe(200);
+  const file = await page.request.get(`/api/books/${id}/file`);
+  expect(file.headers()["cache-control"]).toBe("private, no-store");
+  expect(await file.body()).toEqual(pdf);
+
+  await page.getByRole("button", { name: "Read Sample", exact: true }).click();
+  await expect(page.getByRole("status").filter({ hasText: "Page 1 of 3 · Saved" })).toBeVisible();
+  await page.getByRole("button", { name: "Next page", exact: true }).click();
+  await expect(page.getByRole("status").filter({ hasText: "Page 2 of 3 · Saved" })).toBeVisible();
+  await page.getByRole("button", { name: "Place checkmarks", exact: true }).click();
+  const canvas = page.getByRole("img", { name: "PDF page 2 of Sample", exact: true });
+  const box = await canvas.boundingBox();
+  if (!box) throw new Error("PDF canvas missing");
+  await page.mouse.click(box.x + box.width * 0.25, box.y + box.height * 0.25);
+  await expect(page.getByRole("button", { name: "Remove checkmark 1", exact: true })).toBeEnabled();
+  await page.getByRole("button", { name: "Zoom in", exact: true }).click();
+  await expect(page.getByRole("status").filter({ hasText: "Page 2 of 3 · Saved" })).toBeVisible();
+  await page.getByRole("button", { name: "Fit page width", exact: true }).click();
+  await page.reload();
+  await page.getByRole("button", { name: "Read Sample", exact: true }).click();
+  await expect(page.getByRole("status").filter({ hasText: "Page 2 of 3 · Saved" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Remove checkmark 1", exact: true })).toBeVisible();
+  await page.getByRole("button", { name: "Remove checkmark 1", exact: true }).click();
+  await expect(page.getByText("0 checkmarks on this page · 0 in this book", { exact: true })).toBeVisible();
+  await page.getByRole("button", { name: "Add checkmark at page center", exact: true }).click();
+  await expect(page.getByRole("button", { name: "Remove checkmark 1", exact: true })).toBeEnabled();
+  await page.getByRole("heading", { name: "Sample", exact: true }).click();
+  await page.keyboard.press("ArrowRight");
+  await expect(page.getByRole("status").filter({ hasText: "Page 3 of 3 · Saved" })).toBeVisible();
+  await page.getByLabel("Page number", { exact: true }).fill("1");
+  await page.getByRole("button", { name: "Go", exact: true }).click();
+  await expect(page.getByRole("status").filter({ hasText: "Page 1 of 3 · Saved" })).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+
+  const other = await browser.newContext();
+  const otherEmail = email();
+  try {
+    expect((await other.request.post(`${origin}/api/auth/sign-up/email`, { headers: { origin }, data: { name: "Other reader", email: otherEmail, password } })).status()).toBe(200);
+    for (const path of [`/api/books/${id}`, `/api/books/${id}/file`, `/api/books/${id}/thumbnail`]) expect((await other.request.get(origin + path)).status()).toBe(404);
+    expect((await other.request.patch(`${origin}/api/books/${id}`, { headers: { origin }, data: { action: "page", page: 2, revision: 0 } })).status()).toBe(404);
+    expect((await other.request.delete(`${origin}/api/books/${id}`, { headers: { origin } })).status()).toBe(404);
+    expect(await (await other.request.get(origin + "/api/books")).json()).toEqual({ books: [] });
+  } finally { await other.close(); }
+
+  // A stale tab must discard its open document when this browser changes account.
+  const accountTab = await page.context().newPage();
+  await accountTab.goto("/profile");
+  await accountTab.getByRole("button", { name: "Sign out", exact: true }).click();
+  await expect(accountTab).toHaveURL(/\/sign-in$/);
+  await page.bringToFront();
+  await expect(page.getByRole("heading", { name: "Sample", exact: true })).toHaveCount(0);
+  expect((await page.request.get(`/api/books/${id}/file`)).status()).toBe(401);
+  await accountTab.getByLabel("Email", { exact: true }).fill(otherEmail);
+  await accountTab.getByLabel("Password", { exact: true }).fill(password);
+  await accountTab.getByRole("button", { name: "Sign in", exact: true }).click();
+  await expect(accountTab).toHaveURL(origin + "/");
+  await page.goto("/books");
+  await expect(page.getByText("No books yet.", { exact: false })).toBeVisible();
+  expect((await page.request.get(`/api/books/${id}/file`)).status()).toBe(404);
+  await accountTab.close();
+
+  await page.getByRole("button", { name: "Sign out", exact: true }).click();
+  await page.getByLabel("Email", { exact: true }).fill(ownerEmail);
+  await page.getByLabel("Password", { exact: true }).fill(password);
+  await page.getByRole("button", { name: "Sign in", exact: true }).click();
+  await expect(page).toHaveURL(origin + "/");
+  await page.goto("/books");
+  await page.locator('input[type="file"]').setInputFiles({ name: "Sample.pdf", mimeType: "application/pdf", buffer: pdf });
+  await expect(page.getByRole("status")).toContainText("1 PDF imported");
+  expect((await (await page.request.get("/api/books")).json()).books).toHaveLength(1);
+  await page.locator('input[type="file"]').setInputFiles({ name: "Second.pdf", mimeType: "application/pdf", buffer: Buffer.concat([pdf, Buffer.from("\n")]) });
+  await expect(page.getByRole("button", { name: "Read Second", exact: true })).toBeVisible();
+  await page.getByRole("button", { name: "Remove Sample", exact: true }).click();
+  await page.getByRole("button", { name: "Confirm removal", exact: true }).click();
+  await expect(page.getByRole("button", { name: "Read Sample", exact: true })).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "Read Second", exact: true })).toBeVisible();
+  expect((await page.request.get(`/api/books/${id}/file`)).status()).toBe(404);
+});

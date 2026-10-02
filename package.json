@@ -14,13 +14,16 @@
     "typecheck": "next typegen && tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest --watch",
-    "postinstall": "prisma generate",
+    "postinstall": "prisma generate && node scripts/prepare-pdf-worker.mjs",
     "db:generate": "prisma generate",
     "db:check": "node --conditions=react-server --import tsx scripts/check-db.ts",
     "auth:admin": "node --conditions=react-server --import tsx scripts/auth-admin.ts",
     "test:integration": "tsx scripts/test-integration.ts",
     "test:engine": "node --conditions=react-server --import tsx scripts/check-engine.ts",
-    "test:e2e": "tsx scripts/test-e2e.ts"
+    "test:e2e": "tsx scripts/test-e2e.ts",
+    "predev": "node scripts/prepare-pdf-worker.mjs",
+    "prebuild": "node scripts/prepare-pdf-worker.mjs",
+    "prestart": "node scripts/prepare-pdf-worker.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.127.0",
@@ -31,6 +34,7 @@
     "chess.js": "1.4.0",
     "next": "16.3.5",
     "openai": "7.23.0",
+    "pdfjs-dist": "6.3.289",
     "react": "19.3.0",
     "react-chessboard": "5.12.1",
     "react-dom": "19.3.0",

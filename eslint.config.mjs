@@ -6,6 +6,7 @@ export default defineConfig([
   ...nextVitals,
   ...nextTypescript,
   globalIgnores([
+    "public/pdfjs/**",
     ".next/**",
     ".next-e2e/**",
     "out/**",

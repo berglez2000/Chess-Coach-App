@@ -2,7 +2,7 @@
 
 Source: [original ideas](CHESS_COACH_FUTURE_SPECS.md). Existing V0.1 work and evidence remain in [TASKS.md](TASKS.md).
 
-This backlog is not authorization to implement every task. The user authorized email/password auth and ownership (TASK-029–030) and review exploration (TASK-028), then requested starting the next tasks on 2026-10-01. TASK-031–032 are implemented. The user requested TASK-033 on 2026-10-02; it is now implemented too. TASK-034 onward remain TODO. IDs continue after TASK-027; dependencies and the recommended sequence determine implementation order. Resolve a task's open decisions before implementing that task. Record implementation evidence before marking it DONE.
+This backlog is not authorization to implement every task. The user authorized email/password auth and ownership (TASK-029–030) and review exploration (TASK-028), then requested starting the next tasks on 2026-10-01. TASK-031–032 are implemented. The user requested TASK-033 and TASK-034 on 2026-10-02; both are now implemented. TASK-035 onward remain TODO. IDs continue after TASK-027; dependencies and the recommended sequence determine implementation order. Resolve a task's open decisions before implementing that task. Record implementation evidence before marking it DONE.
 
 ## Priority and sequence
 
@@ -23,12 +23,13 @@ TASK-026 is still BLOCKED by existing release acceptance requirements. Track it 
 3. Learning exercises are added manually. PDFs have a separate `/books` page; learning does not depend on PDF import or extraction.
 4. Email/password login only initially. Keep user identity independent of credentials so Google can be added later through explicit account linking.
 5. Review exploration uses manual play for both sides without live engine evaluation (confirmed for TASK-028).
+6. PDFs, reading progress, and positioned checkmarks are stored in PostgreSQL and synchronized through the owning account (confirmed for TASK-034 on 2026-10-02).
 
 ## Remaining implementation decisions
 
-Before the affected implementation, also settle: browser-local versus synchronized PDFs; who authors lessons; and whether weekly plans are reusable templates or dated schedules.
+Before the affected implementation, also settle: who authors lessons; and whether weekly plans are reusable templates or dated schedules.
 
-TASK-031 started with one-move puzzles; TASK-033 extends new generation to at most three solver moves (five total plies). Remaining defaults are proposals, not confirmed preferences: browser-local PDFs; editable weekly plan templates without calendar integration. Automatic PDF diagram/solution extraction is outside the agreed learning scope.
+TASK-031 started with one-move puzzles; TASK-033 extends new generation to at most three solver moves (five total plies). Remaining defaults are proposals, not confirmed preferences: editable weekly plan templates without calendar integration. Automatic PDF diagram/solution extraction is outside the agreed learning scope.
 
 ## Tasks
 
@@ -160,21 +161,27 @@ Verification: Node 24.21.0 lint, typecheck, all 449 unit/component tests, all 62
 
 ### TASK-034 — Integrate the existing PDF reader
 
-Status: TODO  
+Status: DONE
 Priority: P2  
 Dependencies: TASK-030
 
 Reference: `/Users/aljaz/Desktop/Chess Books/index.html`. Read-only inspection found PDF.js rendering, IndexedDB PDF storage, localStorage metadata, last-page progress, thumbnails, and per-page checkmarks.
 
-Scope: adapt the reader into a separate `/books` page, preserving import/library, navigation, reading position, and checkmarks. Confirm local-only versus account-synchronized storage before implementation. PDFs are separate from manually authored learning exercises.
+Scope: adapt the reader into a separate `/books` page, preserving import/library, navigation, reading position, and checkmarks. Store PDFs and progress in PostgreSQL, synchronized through the authenticated owning account. PDFs are separate from manually authored learning exercises.
 
 Acceptance:
 - Import and reopen a PDF, resume reading, add/remove marks, and remove a book without affecting others.
 - Report invalid files/storage failures; support responsive and keyboard navigation.
-- Explain the storage boundary. Existing standalone browser data does not automatically transfer between origins; provide a documented re-import path and decide whether progress export/import is needed.
-- Account switching does not expose another user's PDFs on a shared browser if accounts are enabled.
+- Explain the storage boundary. Existing standalone browser data does not automatically transfer between origins; provide a documented re-import path. By the confirmed database-storage decision, no browser-storage or progress export/import workflow is required.
+- Logout/account switching does not expose another user's PDFs, thumbnails, or progress on a shared browser, including an already-open reader tab.
 
-Verification: reader interaction and browser persistence checks with small sample PDFs. Automatic puzzle extraction is separate scope.
+Verification: reader interactions and database persistence checks through the browser with small sample PDFs. Automatic puzzle extraction is separate scope.
+
+Notes (2026-10-02): the user confirmed PostgreSQL storage rather than browser-local storage. Added authenticated `/books` navigation and a separate PDF library/reader with multiple-file selection/drop import, generated first-page thumbnails, page input/previous/next, keyboard navigation, fit-width/zoom, exact reading-position resume, positioned per-page checkmarks, a keyboard-accessible center-mark action, and confirmed deletion. PDFs, thumbnails, reading positions, and marks are stored in owner-scoped database rows; raw PDFs and thumbnails use private no-store endpoints. Session changes unmount the open reader and destroy its PDF worker. No IndexedDB/localStorage book data or PDF extraction is introduced.
+
+Server-side PDF.js 6.3.289 validation rejects malformed/encrypted PDFs and limits files to 100 MB and 10,000 pages; streamed uploads are bounded before buffering. This accommodates the approximately 40 MB existing source books. Imports publish PDF and metadata atomically; per-owner SHA-256 deduplication preserves existing progress on re-import. Revision-checked transactions prevent stale tabs/devices from overwriting progress or duplicating marks. Failed or lost-response updates reconcile from saved state; deletion cascades only that book's marks. The version-matched PDF.js worker is served locally and prepared during install/dev/build/start. Standalone reader data remains at its original origin; re-import the original PDFs, with previous standalone progress not transferred. Database backups now include the PDF bytes and progress.
+
+Verification: Node 24.21.0 lint, typecheck, the full 452-test unit/component suite plus three additional endpoint tests, all 67 integration tests, and webpack production build passed. Two Chromium journeys (1200px desktop and 390px mobile) used an original three-page PDF fixture and actual canvas interactions to verify invalid import feedback, thumbnails, exact PDF retrieval, positioned marks, zoom, keyboard/page-input navigation, reload/resume, removal, deduplicated re-import, private response headers, direct cross-account API denial, and logout/account switching with an open reader in another tab. Integration checks cover actual PDF parsing/thumbnail generation, saved bytes/progress/marks, concurrent revisions, rollback, ownership, and deletion isolation. Applied the additive `20261002140000_books` migration to test and local development databases; existing game and puzzle data are unchanged. TASK-026 release blockers remain separate.
 
 ### TASK-035 — Build the learning library and chapter structure
 

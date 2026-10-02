@@ -1,5 +1,8 @@
 import "server-only";
+import { createRequire } from "node:module";
+import { dirname, join } from "node:path";
 import { MAX_PDF_BYTES } from "./contract";
+import { checkNodeVersion } from "../../scripts/check-node.mjs";
 
 export class BookError extends Error {
   constructor(message: string, public status = 400) { super(message); }
@@ -29,9 +32,16 @@ export async function readPdfUpload(request: Request): Promise<Uint8Array<ArrayB
 }
 
 export async function inspectPdf(data: Uint8Array<ArrayBuffer>) {
+  // Initialization occurs before the PDF loading promise and needs native Node APIs.
+  try { checkNodeVersion(); }
+  catch (error) { throw new BookError(error instanceof Error ? error.message : "Restart the app with Node 24.", 503); }
   // The legacy build provides Node canvas support. Externalized in next.config.ts.
   const pdfjs = await import("pdfjs-dist/legacy/build/pdf.mjs");
-  const task = pdfjs.getDocument({ data: data.slice(), useSystemFonts: true });
+  const packageRoot = dirname(createRequire(import.meta.url).resolve("pdfjs-dist/package.json"));
+  const task = pdfjs.getDocument({ data: data.slice(), useSystemFonts: true,
+    wasmUrl: join(packageRoot, "wasm") + "/", cMapUrl: join(packageRoot, "cmaps") + "/",
+    cMapPacked: true, standardFontDataUrl: join(packageRoot, "standard_fonts") + "/",
+  });
   try {
     const pdf = await task.promise;
     if (!Number.isSafeInteger(pdf.numPages) || pdf.numPages < 1 || pdf.numPages > 10000) throw new BookError("PDFs must contain between 1 and 10,000 pages.");

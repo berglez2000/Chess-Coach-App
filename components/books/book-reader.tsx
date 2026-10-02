@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { PDFDocumentProxy, RenderTask } from "pdfjs-dist";
-import { PDF_WORKER_URL, type BookAction, type ReaderBook } from "@/lib/books/contract";
+import { PDF_WORKER_URL, PDF_BROWSER_RESOURCES, type BookAction, type ReaderBook } from "@/lib/books/contract";
 
 export type ReaderAction = BookAction extends infer A ? A extends BookAction ? Omit<A, "revision"> : never : never;
 export function BookReader({ book, busy, onChange, onBack }: { book: ReaderBook; busy: boolean; onChange: (action: ReaderAction) => Promise<void>; onBack: () => void }) {
@@ -37,7 +37,7 @@ export function BookReader({ book, busy, onChange, onBack }: { book: ReaderBook;
         const pdfjs = await import("pdfjs-dist");
         if (!active) return;
         pdfjs.GlobalWorkerOptions.workerSrc = PDF_WORKER_URL;
-        task = pdfjs.getDocument({ data, useSystemFonts: true });
+        task = pdfjs.getDocument({ data, useSystemFonts: true, ...PDF_BROWSER_RESOURCES });
         const document = await task.promise;
         if (active) setPdf(document);
       } catch (error) { if (active) setError(error instanceof Error ? error.message : "Could not open this PDF."); }

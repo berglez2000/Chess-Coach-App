@@ -45,6 +45,8 @@ model User {
   settings      UserSettings?
   puzzleProgress PuzzleProgress[]
   books Book[]
+  learningMaterials LearningMaterial[]
+  learningProgress LearningProgress[]
 }
 
 model Session {
@@ -306,4 +308,89 @@ model BookMark {
   y Float
 
   @@index([bookId, page])
+}
+
+model LearningMaterial {
+  id String @id @default(cuid())
+  ownerId String
+  owner User @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  shared Boolean @default(false)
+  title String
+  edition String @default("")
+  revision Int @default(0)
+  archived Boolean @default(false)
+  createdAt DateTime @default(now())
+  chapters LearningChapter[]
+  @@index([ownerId, archived])
+}
+model LearningChapter {
+  id String @id @default(cuid())
+  materialId String
+  material LearningMaterial @relation(fields: [materialId], references: [id], onDelete: Cascade)
+  title String
+  order Int @default(0)
+  revision Int @default(0)
+  archived Boolean @default(false)
+  exercises LearningExercise[]
+}
+model LearningExercise {
+  id String @id @default(cuid())
+  chapterId String
+  chapter LearningChapter @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+  number String
+  title String
+  order Int @default(0)
+  archived Boolean @default(false)
+  revision Int @default(0)
+  draft Json
+  status String @default("DRAFT")
+  validation Json?
+  publishedId String? @unique
+  published LearningRevision? @relation("CurrentLearningRevision", fields: [publishedId], references: [id], onDelete: SetNull)
+  versions LearningRevision[] @relation("LearningVersions")
+  @@unique([chapterId, number])
+}
+model LearningRevision {
+  id String @id @default(cuid())
+  exerciseId String
+  exercise LearningExercise @relation("LearningVersions", fields: [exerciseId], references: [id], onDelete: Cascade)
+  currentFor LearningExercise? @relation("CurrentLearningRevision")
+  version Int
+  content Json
+  validation Json
+  createdAt DateTime @default(now())
+  progress LearningProgress[]
+  @@unique([exerciseId, version])
+}
+model LearningProgress {
+  id String @id @default(cuid())
+  revisionId String
+  definition LearningRevision @relation(fields: [revisionId], references: [id], onDelete: Cascade)
+  userId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  revision Int @default(0)
+  state String @default("SOLVING")
+  assisted Boolean @default(false)
+  hintUsed Boolean @default(false)
+  solvedMove String?
+  playedMoves String[] @default([])
+  lastOutcome String?
+  moveAttempts Int @default(0)
+  completedAt DateTime?
+  completionAssisted Boolean?
+  attempts LearningAttempt[]
+  @@unique([revisionId, userId])
+}
+model LearningAttempt {
+  id String @id @default(cuid())
+  progressId String
+  progress LearningProgress @relation(fields: [progressId], references: [id], onDelete: Cascade)
+  requestId String
+  expectedRevision Int
+  action String
+  move String?
+  outcome String
+  assisted Boolean
+  createdAt DateTime @default(now())
+  @@unique([progressId, requestId])
 }

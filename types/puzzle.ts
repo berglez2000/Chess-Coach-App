@@ -13,6 +13,7 @@ export interface PuzzleState {
   completionAssisted: boolean | null;
 }
 export interface SolverPuzzle {
+  learning?: { revisionId: string; objective: string; prompt: string; hint: string | null; publishedSolution: string | null; explanation: string | null };
   id: string;
   startingFen: string;
   playerColor: ChessColor;
@@ -28,8 +29,8 @@ export interface SolverPuzzle {
   goal: "mate" | "terminal" | "validated-boundary" | null;
 }
 export interface PuzzleSolution {
-  version: 1;
-  maxPlayerMoves: 3;
+  version: 1 | 2;
+  maxPlayerMoves: 3 | 4;
   lines: { moves: string[]; goal: "mate" | "terminal" | "validated-boundary" }[];
 }
 export type PuzzleAction = {

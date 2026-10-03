@@ -2,7 +2,7 @@
 
 Source: [original ideas](CHESS_COACH_FUTURE_SPECS.md). Existing V0.1 work and evidence remain in [TASKS.md](TASKS.md).
 
-This backlog is not authorization to implement every task. The user authorized email/password auth and ownership (TASK-029–030) and review exploration (TASK-028), then requested starting the next tasks on 2026-10-01. TASK-031–032 are implemented. The user requested TASK-033 and TASK-034 on 2026-10-02; both are now implemented. TASK-035 onward remain TODO. IDs continue after TASK-027; dependencies and the recommended sequence determine implementation order. Resolve a task's open decisions before implementing that task. Record implementation evidence before marking it DONE.
+This backlog is not authorization to implement every task. The user authorized email/password auth and ownership (TASK-029–030) and review exploration (TASK-028), then requested starting the next tasks on 2026-10-01. TASK-031–032 are implemented. The user requested TASK-033 and TASK-034 on 2026-10-02; both are now implemented. On 2026-10-03 the user requested refinement of TASK-035–037 around their supplied book exercise and future PDF extraction, then authorized starting implementation. TASK-035–036 are now implemented; TASK-037 onward remain TODO. IDs continue after TASK-027; dependencies and the recommended sequence determine implementation order. Resolve a task's open decisions before implementing that task. Record implementation evidence before marking it DONE.
 
 ## Priority and sequence
 
@@ -10,7 +10,7 @@ This backlog is not authorization to implement every task. The user authorized e
 - **P2:** learning-library expansion after the core practice workflow.
 - **P3:** features that depend on learning content or a public launch.
 
-Recommended sequence: **029 → 030 → 028 → 031 → 032 → 033 → 034 → 035 → 036 → 037 → 038 → 039 → 040 → 041**.
+Recommended sequence: **029 → 030 → 028 → 031 → 032 → 033 → 034 → 035 → 036 → 037 → 038 → 039 → 040 → 041**. **TASK-042 can start after TASK-035–036**, independently of TASK-037 for supported move-based chapters and independently of the weekly-plan/public-launch tasks.
 
 The app is for personal use initially, but accounts and data ownership come first by user decision so future multi-user use is handled now. Complete TASK-029–030 before the other new features. The landing page remains later; it can move earlier if public launch becomes a priority.
 
@@ -20,16 +20,16 @@ TASK-026 is still BLOCKED by existing release acceptance requirements. Track it 
 
 1. Personal use first, with authentication and user ownership implemented now for future growth.
 2. Review-board Reset returns to the exploration starting position.
-3. Learning exercises are added manually. PDFs have a separate `/books` page; learning does not depend on PDF import or extraction.
+3. The initial learning workflow uses manually added exercises and remains usable without PDF extraction. PDFs retain their separate `/books` page. The user wants future automated diagram/solution extraction into the learning database; TASK-042 records that follow-up.
 4. Email/password login only initially. Keep user identity independent of credentials so Google can be added later through explicit account linking.
 5. Review exploration uses manual play for both sides without live engine evaluation (confirmed for TASK-028).
 6. PDFs, reading progress, and positioned checkmarks are stored in PostgreSQL and synchronized through the owning account (confirmed for TASK-034 on 2026-10-02).
 
 ## Remaining implementation decisions
 
-Before the affected implementation, also settle: who authors lessons; and whether weekly plans are reusable templates or dated schedules.
+Before TASK-037 implementation, inspect a user-supplied Missing Piece example and its solution to establish the required placement and objective. Before TASK-039, settle whether weekly plans are reusable templates or dated schedules.
 
-TASK-031 started with one-move puzzles; TASK-033 extends new generation to at most three solver moves (five total plies). Remaining defaults are proposals, not confirmed preferences: editable weekly plan templates without calendar integration. Automatic PDF diagram/solution extraction is outside the agreed learning scope.
+TASK-031 started with one-move puzzles; TASK-033 extends new generation to at most three solver moves (five total plies). The refined learning tasks below specify implementation defaults: account owners author private material; shared curated content has operator-controlled publication; answer-changing revisions require fresh completion while retaining history. These defaults are planning choices, not claims of separately confirmed user preferences. Editable weekly plan templates without calendar integration remain a proposal. Automatic PDF diagram/solution extraction is planned separately under TASK-042 and is not required to complete TASK-035–037.
 
 ## Tasks
 
@@ -187,51 +187,98 @@ Follow-up (2026-10-02): investigated a reported HTTP 500 when importing the 126-
 
 Diagram-rendering follow-up (2026-10-02): the reference book's chessboards use JBIG2 compression. PDF.js reported missing `wasmUrl` and failed to initialize the decoder, leaving diagrams blank while text and the page-render promise succeeded. Asset preparation now copies the version-matched WASM decoders/fallbacks, CMaps, standard fonts, and accompanying licenses locally; browser rendering and server thumbnail generation receive their respective resource paths. The optional `book-diagrams.spec.ts` regression accepts a local reference PDF via `CHESS_BOOKS_DIAGRAM_PDF`, checks successful JBIG2 decoder loading, rejects decoding warnings, and requires actual dark pixels inside the previously blank first-board region. The exact book's page 7 passed this isolated browser check; visual inspection confirmed all twelve diagrams. No copyrighted book bytes are included in the repository. The active app serves the decoder assets successfully; refreshing the reader uses the existing saved PDF and progress.
 
-### TASK-035 — Build the learning library and chapter structure
+### TASK-035 — Build the book/chapter/exercise library and authoring workflow
 
-Status: TODO  
+Status: DONE
 Priority: P2  
 Dependencies: TASK-030
 
-Scope: `/learning`, material detail, ordered chapters, and manually added chapter exercises. Support examples such as Mate in 1 and Mate in 2. This workflow is independent of the PDF reader at `/books` and requires no PDF import or extraction.
+Scope: authenticated `/learning`, material detail, ordered chapters, and an owner-accessible exercise editor. Represent a book or other study material as material → chapter → numbered exercise. Preserve the source structure, including chapters such as Mate in One, Mate in Two, Forks, Pins, Mate in Three, Mate in Four, and Missing Piece. Chapter labels organize content; exercise types define behavior. Keep the workflow usable without a PDF or extraction service.
+
+Authoring and content defaults:
+- Account owners create/edit their own private materials, chapters, and exercises. Shared curated content is explicitly published through an operator-controlled workflow and is read-only to learners; private book collections never become shared implicitly.
+- Store stable material/chapter/exercise IDs, explicit ordering, and source exercise numbers separately from internal IDs. Optional provenance includes book title/edition, diagram and solution page references, and an owner-accessible PDF link. Distinguish PDF page indices from printed page labels. Removing the PDF must not delete exercises or their progress.
+- Move exercises store title, prompt, full starting FEN, solver color, objective (`mate-in-n` with a move bound, or an authored tactical sequence), published solution text, structured accepted solution branches, optional hints/explanation, and validation evidence/version. Published answers and accepted alternatives are distinct fields. Forks/Pins can use move exercises; Missing Piece has a separate type and remains unavailable for practice until TASK-037.
+- Provide FEN entry and an editable board with piece placement/removal, side to move, castling rights, and en-passant state. Support entering SAN solution lines and converting them to unambiguous move coordinates for server validation. Authors can preview the resulting board and replay every branch.
+- Use draft → validated → published states. Incomplete drafts may be saved; server validation is required before publication. Editing answer-affecting content invalidates validation and creates a new published revision rather than mutating a revision used by attempts. Title, ordering, and other presentation-only changes preserve answer revision identity.
 
 Acceptance:
-- Users can navigate material → chapter → exercise and return with context preserved.
-- Store stable material/chapter/exercise IDs and distinguish shared curated content from private material.
-- Define a manual authoring workflow for exercise positions, prompts, solutions, and chapter assignment, with validation before saving; include a small original or authorized sample set rather than assuming a named book's contents are available.
-- “Find Missing Piece” is identified as a separate exercise type with its own rules, not forced into ordinary legal-move puzzles.
+- Navigate material → chapter → exercise and return with chapter/order context preserved; provide useful empty states and explicit previous/next navigation.
+- Validate position consistency, solver turn, all solution moves/promotions, and each branch's declared endpoint. A mating line proves that line ends in mate; it does not by itself prove forced mate against every defense. TASK-036 defines objective validation and alternative handling before move exercises become playable.
+- Distinguish placement-mode diagrams from playable chess positions: incomplete Missing Piece diagrams must not be rejected solely for failing ordinary legal-position requirements.
+- Reject cross-account reads/writes, private-content publication by another user, duplicate source exercise numbers within the same chapter, and stale authoring updates. Reordering keeps stable exercise references and saved attempts intact.
+- Include a reproducible, explicitly owner-selected sample creation flow for the user-supplied exercise below. Do not automatically assign book content to all users or assume access to the rest of the book.
+- Store optional source references and validation metadata so future PDF imports can create the same drafts without introducing a second exercise format.
 
-Verification: ordering/navigation, empty materials, content visibility, and stable references.
+Reference sample supplied by the user (2026-10-02):
+- Material: `1001 chess exercises for beginners`; chapter: `Mate in One`; source exercise number: `1`.
+- Title: `The pin is mightier than the sword`; White to move; objective: mate in one.
+- FEN: `kr6/1p6/p7/4b3/8/8/1P4BP/R6K w - - 0 1`.
+- Published solution: `Rxa6#`; move coordinates: `a1a6`.
+- The supplied FEN/solution were checked with chess.js: the move is legal and results in checkmate. Source PDF page and edition have not been supplied in this example; leave them unset.
 
-### TASK-036 — Practice chapter exercises and track progress
+Verification: authoring/preview/publication, ordering and stable references, incomplete drafts, invalid FEN/solutions, revisions, empty chapters, private/shared visibility, two-user isolation, and sample creation in an explicitly selected account. No bulk book import is claimed.
 
-Status: TODO  
+Notes (2026-10-03): implemented authenticated `/learning`, private materials, ordered chapters/numbered exercises, owner-only authoring, and explicit operator publication of shared read-only curated material. The editor accepts FEN and piece placement/removal with keyboard square input, explicit side/castling/en-passant state, SAN branches, per-branch replay, prompts, hints/explanations, and optional printed page/PDF provenance. Invalid or incomplete diagrams remain editable drafts; Missing Piece cannot be published for practice. Save/validate/publish uses optimistic content revisions and immutable published definitions. Publishing a replacement leaves prior attempts intact; title/order/provenance-only edits preserve answer identity. Archives preserve history, and shared lists omit unpublished exercises. The supplied book sample is available through an idempotent, account-selected button, not automatic installation or bulk import. Added `learning:admin -- share owner@example.com material-id` and authoring documentation.
+
+Verification: Node 24.21.0 lint, typecheck, all 465 unit/component tests, all 75 integration tests, and webpack production build passed. Desktop (1200px) and mobile (390px) Chromium journeys created the sample, navigated book/chapter/exercise, authored and previewed another exercise, validated/published it, and checked direct unauthenticated/cross-user denials. Integration checks cover private/shared visibility, duplicate numbers, stale authoring, immutable revisions, owner-selected sample deduplication, and unowned PDF references. Browser checks caught and resolved a source-PDF field lookup error and navigation race after draft creation. Applied the additive `20261003120000_learning` migration to test and local development databases and restarted the local Node 24 development server. No user account or book content was created outside the explicit sample action. TASK-026 remains separate.
+
+### TASK-036 — Practice book exercises and track versioned progress
+
+Status: DONE
 Priority: P2  
-Dependencies: TASK-032, TASK-035; TASK-033 for multi-move exercises
+Dependencies: TASK-032, TASK-033, TASK-035
 
-Scope: reuse the puzzle solver for move-based chapter exercises, add resume/retry, and show per-chapter/material progress.
+Scope: reuse the puzzle board and interaction patterns for published move-based chapter exercises; support automatic validated opponent replies, hints/reveal, retry, previous/next, resume, and chapter/material progress. Learning definitions and attempts must not require a source game or fake game records. Keep `/puzzles` personal-game practice working with its existing versions.
+
+Solution and correctness policy:
+- Extend the learning solution format to at least four solver moves (seven total plies) for Mate in Four. Keep the existing personal-puzzle generation policy and three-move versions compatible; do not silently change their generation/completion rules.
+- For `mate-in-n`, define the objective as forcing mate within at most N solver moves. Verification must account for opponent defenses, not merely replay one cooperative mating line. Store the validation method, limits, and evidence. Inconclusive validation leaves an exercise unpublished for practice, with actionable feedback; AI prose or an engine principal variation alone cannot establish correctness.
+- For Mate in One, enumerate legal moves and accept every move that immediately checkmates. For longer exercises, persist prevalidated accepted branches and deterministic practice replies; engine-assisted validation must establish the declared mate bound and each accepted continuation under a documented policy. Keep the book's published answer separately visible after reveal/completion. Flag unsupported alternatives for author review rather than reporting an unvalidated move as objectively wrong.
+- Tactical sequence exercises use explicit authored/validated branches and a stated instructional endpoint. Feedback distinguishes an illegal move, an accepted move, a move that fails a validated mate objective, and a legal move outside the exercise's validated solution set. Avoid promising exhaustive alternative coverage for sequence exercises.
+- Publish a finite solution set before practice; solving causes no automatic AI calls. Each accepted alternative has its own legal continuation. Branches cannot borrow a mismatched original variation.
+
+Progress and revision defaults:
+- Persist attempt state and one completion per user, exercise, and answer revision. Reload restores the exact current branch/position. Preserve first completion and assisted/unassisted outcome; retry or repeated solves do not inflate totals. Hint/reveal use persists across reload/retry, and reveal alone does not complete an exercise.
+- Chapter/material totals count currently published, playable exercise revisions. Drafts and unsupported types do not inflate the denominator. Show unavailable types clearly; no playable exercises has an explicit empty state.
+- Answer-affecting edits create a fresh revision requiring fresh completion; retain prior attempts/completions as history and explain the changed exercise. Presentation-only edits and reordering preserve completion. A practice attempt is pinned to its revision; publication of a replacement cannot change its answer midway. Archived content retains history but leaves current totals and next-exercise navigation.
+- Resume an in-progress current revision first, otherwise the next unfinished exercise in chapter order. A completed chapter offers repeat practice. PDF reading position/checkmarks remain separate from exercise completion.
 
 Acceptance:
-- Persist progress per user and exercise; repeated solves do not inflate completion totals.
-- Keep reading progress separate from solved-exercise progress and preserve assisted outcomes.
-- Resume the next unfinished exercise after refresh/sign-in; define how content revisions affect completion.
+- Support both colors, promotions, wrong moves, hints, full solution replay/explanation, restart, completion, and context-preserving chapter navigation without exposing unrevealed solutions in initial browser payloads.
+- Server-authoritative actions retain request deduplication and revision/concurrency safeguards. Delayed replies, refresh, competing tabs, and retry cannot duplicate moves or lose assistance/history.
+- Saved progress is private even for shared curated exercises; direct endpoints enforce content visibility and user ownership.
+- The supplied exercise completes on `Rxa6#`; include original fixtures for Mate in Two through Mate in Four and alternative solutions without assuming additional book content is available.
 
-Verification: partial/completed chapters, repeat attempts, content revision, reload, and user isolation.
+Verification: actual board interactions, all supported move lengths, forced-mate validation versus a cooperative line, valid alternatives, legal unsupported moves, promotions, partial/completed chapters, repeat attempts, reload/resume, edits/reordering/archive, lost responses, competing tabs, and two-user isolation. Record a browser journey from library → chapter → supplied exercise → saved completion.
 
-### TASK-037 — Add “Find the missing piece” exercises
+Notes (2026-10-03): chapter practice reuses the real puzzle board, promotions/coordinates, automatic precomputed replies, hints/reveal/retry, and previous/next navigation with learning-specific objectives and book solutions. Learning definitions/progress have their own tables without source-game records. Solution format v2 supports four solver moves/seven half-moves while preserving personal-puzzle v1 schemas and generation policy. Mate validation uses an exhaustive AND/OR proof against all legal defenses, discovers all accepted solver continuations for deterministic practice replies, and retains published SAN separately. It is bounded to 100,000 nodes, five seconds, and 1,024 practice branches; inconclusive positions stay drafts. Legal authored tactical sequences use explicit boundaries and label unsupported legal moves accurately. Validation stores its method and evidence without engine/provider calls.
+
+Attempts/completion are per user and immutable answer revision. Request IDs, revision checks, and transactional row claims handle stale tabs and lost responses; assistance and first completion survive reload/retry. Practice URLs pin the answer revision so reload cannot silently adopt a newly published answer. Chapter resume prefers an unfinished current attempt; current totals exclude drafts/archives and count the current published revision once. Earlier/archived completions remain in `/learning/history`. Initial practice DTOs conceal solutions and explanations. PDF reading progress stays independent.
+
+Verification: the checks under TASK-035 passed. Unit fixtures cover the supplied mate, multiple immediate solutions, forced Mate in Two/Three, the at-most-four mate bound with promotion, a seven-ply authored sequence, rejection of cooperative mating lines, bounded-search failure, branch legality/conflicting replies, and preserved legacy limits. Integration checks cover completion/reload, assistance/reveal/retry, simultaneous duplicate delivery, stale revisions, pinned earlier attempts, new-answer completion reset, presentation-only identity, archives, and private progress for shared content. Both learning Chromium journeys passed actual board clicks, wrong answers, reload, assisted/unassisted completion, chapter resume/totals, and history. Existing White desktop and Black 390px personal-puzzle Chromium journeys also passed. A combined run encountered the existing signup rate limit; running learning and puzzle suites separately resolved the test issue without changing authentication. No live engine/provider acceptance or PDF extraction is claimed; TASK-026/037/042 remain separate.
+
+### TASK-037 — Add “Find the missing piece” authoring and practice
 
 Status: TODO  
 Priority: P2  
 Dependencies: TASK-035, TASK-036
 
-Scope: define whether the learner chooses a piece, a square, or both; implement an exercise-specific prompt, authoring schema, answer validation, and progress reporting.
+Scope: add a placement exercise type to the same learning library and progress system. Before implementation, inspect an actual user-supplied Missing Piece diagram, prompt, and answer; do not infer this book's rules from the chapter name.
+
+Planned format:
+- Store an incomplete diagram as a piece map, its prompt/objective, and a declared answer mode: choose a square for a specified piece, choose a piece for a specified square, or choose both. Specify piece color as well as kind, allowed squares/pieces, and every accepted placement.
+- Store a separate completed position and supporting solution/explanation for each accepted placement when the objective requires subsequent legal chess play. The incomplete diagram is not itself required to be a legal playable FEN.
+- First version places one missing piece. Multiple missing pieces and compound placement-then-play exercises require separate refinement rather than an implicit expansion of scope.
 
 Acceptance:
-- The prompt makes the required answer explicit and supports every authored valid answer.
-- Piece placement uses its own interaction mode, preserving legal-move behavior in review and tactical puzzles.
-- Hints, reveal, retry, and completion integrate with chapter progress.
+- Prompts and controls make the required answer explicit; support piece selection and square selection with mouse/touch and keyboard. Reject occupied/disallowed squares and malformed submissions without changing the diagram.
+- Check placement answers on the server against the published exercise revision; validate each authored completed position and any supporting move sequence before publication. Do not use ordinary legal-move input rules to judge piece placement.
+- Preserve multiple valid answers and provide correct/incorrect feedback, authored hints, reveal, retry, explanation, saved assistance, and completion using TASK-036 progress semantics. Reveal alone does not complete the exercise.
+- Placement interactions are scoped to this exercise type; review and tactical boards retain their normal move interactions. Initial practice payloads conceal accepted placements/supporting answers.
+- Missing Piece exercises join chapter totals/resume only after their type is supported and their revisions are published/validated.
 
-Verification: correct/incorrect placements, multiple valid answers, and progress persistence.
+Verification: all three answer modes with original fixtures, occupied/disallowed squares, piece kind/color, multiple accepted placements, incomplete diagram handling, supporting solution validation, keyboard/mobile interactions, reload/retry, reveal versus completion, revision changes, and user isolation. Add the user's representative example once supplied.
 
 ### TASK-038 — Capture learning goals and availability
 
@@ -293,3 +340,41 @@ Acceptance:
 - Upcoming capabilities are labeled accurately; layout works on mobile and with keyboard navigation.
 
 Verification: anonymous/signed-in navigation, route redirects, responsive layout, and accessibility checks. Hosting, pricing, subscriptions, and payments are not included in this task.
+
+### TASK-042 — Build an automatic PDF-to-exercise import pipeline
+
+Status: TODO
+Priority: P2
+Dependencies: TASK-035, TASK-036
+
+Requested (2026-10-03): create a pipeline that automatically adds positions and matching solutions from the user's PDF book to the learning database. This expands the existing PDF-extraction placeholder into an implementation task; implementation has not started.
+
+Scope: select an owned PDF from `/books`, a target private learning material, and diagram/answer page ranges; automatically identify chapters and numbered exercises, reconstruct board positions as FEN, match published solutions, validate them, and persist exercises using the authoring/revision system from TASK-035 and the correctness policy from TASK-036. Preserve the book's exercise numbers, chapter structure, titles/prompts, and published answers. Use the existing TASK-034 PDF storage/rendering, including compressed diagram decoding. PDF reading progress remains separate.
+
+Initial delivery: import a small representative batch of Mate in One exercises from `1001 chess exercises for beginners`, including their answer pages, then extend to the supported move-based chapters and whole-book batches. The user-supplied exercise 1 is the first known reference position/solution. Missing Piece exercises are identified and reported as unsupported until TASK-037 is implemented; they do not block importing supported chapters.
+
+Pipeline:
+1. **Start a durable import job:** record the owning user, source PDF identity/digest, target material, selected page ranges, extraction configuration/version, and explicit processing limits. Return a job ID and progress rather than holding one browser request open for the entire book.
+2. **Find chapters and exercises:** extract available PDF text; render pages/crop diagrams for visual recognition when needed. Detect exercise numbers, titles/prompts, chapter membership, board coordinates/orientation, and diagram bounds. Keep PDF page indices distinct from printed page labels.
+3. **Reconstruct positions:** recognize every occupied square and piece color/kind, build a piece map and FEN, and obtain side to move/objective from the diagram or chapter instructions. Castling/en-passant state requires source evidence or an explicit confirmed chapter/import setting; unresolved state is flagged rather than silently invented.
+4. **Match book answers:** locate the corresponding answer pages, associate solutions by book/chapter/exercise identity, parse SAN and published variations, and retain the source answer text separately from accepted practice branches. Detect missing, duplicate, or ambiguous matches.
+5. **Validate and persist:** reuse server-side position/solution/objective validation. Automatically create owner-scoped exercise drafts with provenance, diagram evidence, extraction confidence/issues, and validation results; mark successful drafts validated. Failed or inconclusive extraction/validation must remain reviewable and cannot be presented as a correct playable exercise.
+6. **Review and publish:** show source diagrams beside reconstructed boards and matched answers, allow corrections/revalidation, and provide batch publication of validated exercises. Initially, the owner explicitly approves publication; automatic insertion into the database does not require manual entry of every exercise. Fully unattended publication is a later decision informed by measured extraction accuracy.
+
+Acceptance:
+- One explicit import action processes the chosen batch through extraction, solution matching, validation, and database insertion. The UI reports discovered, extracted, validated, review-needed, published, skipped/unsupported, and failed counts with reasons and source-page links.
+- Newly created chapters/exercises preserve book ordering and stable internal IDs. Chapter-title proposals and inferred boundaries are reviewable; no silent reassignment of existing authored exercises.
+- Source records include PDF identity, diagram/answer page indices and printed labels when available, diagram bounds/evidence, exercise reference, extraction method/model/version, applicable chapter assumptions, and validation method/evidence. Do not fabricate absent titles, prompts, page labels, or answers.
+- Every imported solution is checked for legal transitions and the stated objective using TASK-036. AI/recognition confidence alone cannot establish correctness. Mate-proof search limits remain explicit; an import cannot bypass publication validation because the answer came from a book.
+- Retries, duplicate submissions, resumed jobs, and re-imports do not create duplicate exercises. Use owner, material/source identity, chapter/exercise reference, and versioned extraction identity to distinguish reprocessing from a genuinely different source. Never overwrite manually corrected content or published answers silently; proposed replacements require explicit review and create revisions while preserving progress/history.
+- Jobs persist stage/checkpoint and per-exercise outcomes. Support bounded batches, progress polling, cancellation, retry of failed items, and restart recovery. Lease/token fencing or equivalent safeguards prevent stale workers from publishing results after cancellation or supersession. Partial success remains available without misreporting the batch as fully imported.
+- PDF access, job status/results, draft editing, and publication enforce account ownership on the server. Importing a private book does not share its exercises, source images, or PDF with other users.
+- Extraction runs only after an explicit action. Define and display any external PDF/image processing and applicable provider/model, maximum pages/items, concurrency, timeout, and cost budget before starting. No paid calls occur on page load; provider failures preserve saved drafts and existing learning content.
+- Keep extraction compatible with the existing authoring schema and draft/validated/published lifecycle. Deleting a source PDF does not delete imported exercise definitions or completion history; source links report unavailable evidence honestly.
+
+Decisions before implementation:
+- Inspect representative diagram and answer pages from the actual PDF to choose text extraction, local recognition, vision-provider processing, or a combination. Do not assume that every diagram directly contains an extractable FEN.
+- Select the first batch/page ranges and target material, and confirm any book-wide side-to-move/castling/en-passant assumptions that the source leaves unstated.
+- Set the extraction provider/local tooling and processing/cost limits. Initial batch approval remains the publication default; changing to unattended publication requires a defined quality policy.
+
+Verification: a small end-to-end batch containing the supplied `Rxa6#` example plus manually checked additional diagrams and matched answer pages; compare extracted FEN, solver, chapter/number, and solution with that checked reference set. Include both colors where available, multiple diagrams per page, compressed diagrams, wrong orientation/piece recognition, repeated numbers across chapters, ambiguous/missing answers, unsupported types, validation/search-limit failures, provider timeout, cancellation/restart, stale workers, retries/re-import deduplication, manual corrections, answer revisions, and two-user isolation. Run a browser journey PDF selection → import progress → draft comparison/correction → batch publication → chapter practice with saved completion. Report observed accuracy, counts, costs when applicable, and unresolved cases before scaling to the full book.

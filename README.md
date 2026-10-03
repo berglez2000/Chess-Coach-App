@@ -527,3 +527,26 @@ Use **Previous page**, **Next page**, or the page-number form to navigate. Left/
 To move books from `/Users/aljaz/Desktop/Chess Books/index.html`, import the original PDF files here. That standalone reader remains unchanged. Its old browser-local reading position and checkmarks do not transfer automatically; navigate to the desired page and recreate marks in this reader. PDFs remain separate from manually authored learning exercises.
 
 Existing installations must run `npx prisma migrate deploy` and `npm run db:generate`; the additive `20261002140000_books` migration creates only the book and mark tables. It has been applied to this workspace's local development database. PDF.js, its matching worker, compressed-image decoders (including JBIG2 and JPEG 2000), CMaps, and standard fonts are installed locally, so rendering requires no external CDN. These resources are required for image-based chess diagrams as well as text. Install/build/dev/start scripts prepare `public/pdfjs/` from the pinned dependency; deploy that generated public directory with the app. Proxy upload limits must permit the desired file size if you later host the app remotely.
+
+
+## Learning library and chapter practice (TASK-035–036)
+
+Open **Learning** in the header or `/learning`. Create a private material, add ordered chapters, and add numbered exercises. **Add Mate in One sample** creates the single exercise supplied in this conversation in the signed-in account: “The pin is mightier than the sword,” solved by `Rxa6#`. It is deduplicated and does not import the rest of the book or assign content to other accounts.
+
+The exercise editor accepts a full FEN and offers piece placement/removal by board clicks or a keyboard square field. Set side to move, castling rights, and en-passant state explicitly. Enter SAN solution branches one per line, without PGN comments/results, and preview each branch before publication. Titles, source exercise numbers, ordering, printed diagram/answer pages, and an optional owned source PDF are stored separately. Downloading a linked source PDF uses the existing private endpoint; deleting that PDF does not delete the exercise. Missing Piece diagrams may be saved as incomplete drafts, but placement practice awaits TASK-037.
+
+Choose **Save draft → Validate → Publish**. Mate objectives mean forced mate within at most 1–4 solver moves. The server checks all legal defenses with an exhaustive bounded search, discovers all accepted solver moves along the selected practice replies, and records the proof method. This is independent of Stockfish and AI providers. Validation has a **100,000-node / five-second / 1,024-practice-branch** limit; positions exceeding it remain drafts with feedback. A legal mating line alone does not prove forced mate. Authored tactical sequences are checked for legal transitions and their endpoint; legal moves outside their authored branches are labeled as outside the validated solution set rather than objectively losing. The book's published solution is retained separately from accepted practice alternatives.
+
+Practice uses the existing board controls, precomputed automatic replies, hints/reveal, retry, previous/next, and chapter resume. At most four solver moves (seven half-moves) are supported by the learning solution format; existing personal-game puzzle versions and their three-move generation policy are preserved. The practice browser payload conceals solutions and explanations until reveal/completion. Revealing does not complete an exercise. Assistance, exact positions, first completions, and request/revision safeguards are persisted independently of PDF reading and personal-game puzzles.
+
+Published answer revisions are immutable. Answer/prompt/help changes require new validation and publication, with fresh completion for the new revision. Earlier attempts/completions remain in **Exercise history**; an existing attempt can finish its pinned revision. Title/order/source-reference changes preserve answer identity and completion. Archives remove content from current navigation/totals and retain history. Current totals count published playable revisions; incomplete drafts are excluded.
+
+Account owners author private material. Sharing curated material is an explicit local operator action:
+
+```bash
+npm run learning:admin -- share owner@example.com material-id
+```
+
+The command checks the selected owner and requires at least one published exercise. Shared material is read-only in the browser; each learner's progress remains private and source PDFs remain owner-only. There is no automatic sharing or browser endpoint for granting publication rights.
+
+Apply `npx prisma migrate deploy` and `npm run db:generate` on other installations. The additive `20261003120000_learning` migration creates only learning tables; it does not rewrite games, puzzles, or books. PDF diagram/solution extraction remains TASK-042 and is not performed by this workflow.

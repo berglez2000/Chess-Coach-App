@@ -23,7 +23,8 @@
     "test:e2e": "tsx scripts/test-e2e.ts",
     "predev": "node scripts/check-node.mjs && node scripts/prepare-pdf-worker.mjs",
     "prebuild": "node scripts/check-node.mjs && node scripts/prepare-pdf-worker.mjs",
-    "prestart": "node scripts/check-node.mjs && node scripts/prepare-pdf-worker.mjs"
+    "prestart": "node scripts/check-node.mjs && node scripts/prepare-pdf-worker.mjs",
+    "learning:admin": "node --conditions=react-server --import tsx scripts/learning-admin.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.127.0",

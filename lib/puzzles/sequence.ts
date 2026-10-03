@@ -3,9 +3,11 @@ import { z } from "zod";
 import type { PuzzleSolution } from "@/types/puzzle";
 
 const uci = z.string().regex(/^[a-h][1-8][a-h][1-8][qrbn]?$/);
-const schema = z.object({ version: z.literal(1), maxPlayerMoves: z.literal(3), lines: z.array(z.object({
-  moves: z.array(uci).min(1).max(5), goal: z.enum(["mate", "terminal", "validated-boundary"]),
-}).strict()).min(1).max(16) }).strict();
+const line = z.object({ moves: z.array(uci).min(1), goal: z.enum(["mate", "terminal", "validated-boundary"]) }).strict();
+const schema = z.discriminatedUnion("version", [
+  z.object({ version: z.literal(1), maxPlayerMoves: z.literal(3), lines: z.array(line.extend({ moves: z.array(uci).min(1).max(5) })).min(1).max(16) }).strict(),
+  z.object({ version: z.literal(2), maxPlayerMoves: z.literal(4), lines: z.array(line.extend({ moves: z.array(uci).min(1).max(7) })).min(1).max(1024) }).strict(),
+]);
 
 export function playUci(board: Chess, move: string) {
   if (board.isGameOver()) throw new Error("Terminal puzzle position.");

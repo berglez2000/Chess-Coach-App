@@ -8,6 +8,7 @@ import type { PuzzleAction, SolverPuzzle } from "@/types/puzzle";
 
 const buttonClass = "rounded-lg border border-[#20382e]/30 px-4 py-2 text-sm font-medium hover:bg-white disabled:opacity-40";
 const feedback: Record<string, string> = {
+  UNSUPPORTED: "That move is legal, but is outside this exercise’s validated solution set. Try the authored sequence.",
   ILLEGAL: "Illegal move. The position has not changed; try again.",
   INCORRECT: "That move is legal, but it is not a solution. Try again.",
   CORRECT: "Correct! Puzzle solved.",
@@ -19,7 +20,7 @@ const feedback: Record<string, string> = {
   RETRY: "Starting position restored. Try again.",
   FINISHED: "This attempt has ended. Retry to practice again.",
 };
-export function PuzzleSolver({ initialPuzzle, nextId }: { initialPuzzle: SolverPuzzle; nextId: string | null }) {
+export function PuzzleSolver({ initialPuzzle, nextId, learningNavigation }: { initialPuzzle: SolverPuzzle; nextId: string | null; learningNavigation?: { chapterUrl: string; previousUrl: string | null; nextUrl: string | null } }) {
   const [puzzle, setPuzzle] = useState(initialPuzzle);
   const [pending, setPending] = useState(false);
   const [error, setError] = useState("");
@@ -40,7 +41,7 @@ export function PuzzleSolver({ initialPuzzle, nextId }: { initialPuzzle: SolverP
     setPending(true); setError(""); setSelected(null);
     if (action) setRetryRequest(action);
     try {
-      const response = await fetch(`/api/puzzles/${puzzle.id}`, action ? {
+      const response = await fetch(puzzle.learning ? `/api/learning/exercises/${puzzle.id}?revision=${puzzle.learning.revisionId}` : `/api/puzzles/${puzzle.id}`, action ? {
         method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(action),
       } : { cache: "no-store" });
       const body = await response.json();
@@ -79,7 +80,7 @@ export function PuzzleSolver({ initialPuzzle, nextId }: { initialPuzzle: SolverP
           if (piece?.color === board.turn()) { setSelected(square); setError(""); }
           else if (selected) move(selected, square);
         } : undefined} />
-      <p className="mt-3 text-sm">{puzzle.playerColor === "WHITE" ? "White" : "Black"} to play · {puzzle.maxPlayerMoves === 1 ? "Find one strong move." : `Find the tactical sequence · up to ${puzzle.maxPlayerMoves} of your moves.`}</p>
+      <p className="mt-3 text-sm">{puzzle.playerColor === "WHITE" ? "White" : "Black"} to play · {puzzle.learning ? puzzle.learning.objective : puzzle.maxPlayerMoves === 1 ? "Find one strong move." : `Find the tactical sequence · up to ${puzzle.maxPlayerMoves} of your moves.`}</p>
       {puzzle.history.length > 0 && <p aria-label="Played sequence" className="mt-2 text-sm">Played: {puzzle.history.map(move => move.san).join(" → ")}</p>}
       {solving && <>
         <p className="mt-2 text-sm text-[#465c50]">Drag a piece, select its square and destination, or enter move coordinates. Choose a promotion piece before moving a pawn to the last rank.</p>
@@ -99,7 +100,11 @@ export function PuzzleSolver({ initialPuzzle, nextId }: { initialPuzzle: SolverP
       </>}
     </div>
     <div className="space-y-4 rounded-2xl border border-[#20382e]/15 bg-white p-5">
-      <h2 className="text-lg font-semibold">Find the better move</h2>
+      <h2 className="text-lg font-semibold">{puzzle.learning?.objective ?? "Find the better move"}</h2>
+      {puzzle.learning?.prompt && <p className="text-sm">{puzzle.learning.prompt}</p>}
+      {puzzle.learning?.hint && <p className="text-sm">{puzzle.learning.hint}</p>}
+      {puzzle.learning?.publishedSolution && <p className="text-sm">Book solution: {puzzle.learning.publishedSolution}</p>}
+      {puzzle.learning?.explanation && <p className="text-sm">{puzzle.learning.explanation}</p>}
       <p role="status" aria-label="Puzzle feedback" className="text-sm" aria-live="polite">{pending ? "Saving progress…" : feedback[puzzle.progress.lastOutcome ?? ""] ?? "Your answer is checked after you play a move."}</p>
       {puzzle.hintSquare && <p className="text-sm">Hint: move the piece on <strong>{puzzle.hintSquare}</strong>.</p>}
       {puzzle.solutionLine && <p className="text-sm">Solution: <strong>{puzzle.solutionLine.map(move => move.san).join(" → ")}</strong></p>}
@@ -119,9 +124,16 @@ export function PuzzleSolver({ initialPuzzle, nextId }: { initialPuzzle: SolverP
         {retryRequest && <button type="button" disabled={pending} className={buttonClass} onClick={() => void transmit(retryRequest!)}>Retry saving action</button>}
       </div>}
       <nav aria-label="Puzzle navigation" className="flex flex-col gap-3 text-sm">
+        {learningNavigation ? <>
+          {learningNavigation.previousUrl && <Link className="underline" href={learningNavigation.previousUrl}>← Previous exercise</Link>}
+          {learningNavigation.nextUrl && <Link className="underline font-semibold" href={learningNavigation.nextUrl}>Next exercise →</Link>}
+          <Link className="underline" href={learningNavigation.chapterUrl}>Return to chapter</Link>
+          <Link className="underline" href="/learning">Learning library</Link>
+        </> : <>
         {nextId ? <Link className="font-semibold underline" href={`/puzzles/${nextId}`}>Next puzzle →</Link> : <Link className="font-semibold underline" href={`/puzzles?game=${puzzle.gameId}`}>Back to this game’s puzzles</Link>}
         <Link className="underline" href={`/games/${puzzle.gameId}?ply=${puzzle.sourcePly}`}>Return to source review</Link>
         <Link className="underline" href="/puzzles">All puzzles</Link>
+        </>}
       </nav>
     </div>
   </section>;

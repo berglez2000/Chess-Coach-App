@@ -22,6 +22,62 @@ function enter(move: string) {
   fireEvent.change(screen.getByLabelText("Move coordinates"), { target: { value: move } });
   fireEvent.click(screen.getByRole("button", { name: "Check move" }));
 }
+it.each([
+  [new Chess().fen(), "e2e4", "move-self.mp3"],
+  ["7k/8/8/8/8/8/p7/R6K w - - 0 1", "a1a2", "capture.mp3"],
+  ["7k/8/5KQ1/8/8/8/8/8 w - - 0 1", "g6g7", "game-end.webm"],
+])("plays the Learning move sound during the input gesture for %s %s", async (startingFen, move, sound) => {
+  const puzzleDefinition = { ...definition, startingFen, acceptedMoves: [move] };
+  mockedServer(puzzleDefinition);
+  const play = vi.mocked(HTMLMediaElement.prototype.play);
+  play.mockClear();
+  render(<PuzzleSolver initialPuzzle={{ ...solverDto(puzzleDefinition, INITIAL_PROGRESS), learning: {
+    revisionId: "revision", objective: "Practice", prompt: "Find the move", hint: null, publishedSolution: null, explanation: null,
+  } }} nextId={null} />);
+  expect(play).not.toHaveBeenCalled();
+  enter(move);
+  expect(play).toHaveBeenCalledOnce();
+  await waitFor(() => expect(play).toHaveBeenCalledOnce());
+  expect((play.mock.instances[0] as HTMLMediaElement).src).toContain(`/sounds/${sound}`);
+});
+it("sounds legal attempts, keeps illegal moves and hints silent, and respects mute", async () => {
+  mockedServer();
+  const play = vi.mocked(HTMLMediaElement.prototype.play);
+  play.mockClear();
+  render(<PuzzleSolver initialPuzzle={initial} nextId={null} />);
+  enter("e2e5");
+  await waitFor(() => expect(screen.getByRole("status", { name: "Puzzle feedback" })).toHaveTextContent("Illegal move"));
+  expect(play).not.toHaveBeenCalled();
+  enter("g1f3");
+  await waitFor(() => expect(screen.getByRole("status", { name: "Puzzle feedback" })).toHaveTextContent("not a solution"));
+  fireEvent.click(screen.getByRole("button", { name: "Hint" }));
+  await screen.findByText(/Hint: move/);
+  expect(play).toHaveBeenCalledOnce();
+  fireEvent.click(screen.getByRole("button", { name: "Mute sounds" }));
+  expect(screen.getByRole("button", { name: "Mute sounds" })).toHaveAttribute("aria-pressed", "true");
+  enter("e2e4");
+  await waitFor(() => expect(screen.getByRole("status", { name: "Puzzle feedback" })).toHaveTextContent("Correct!"));
+  expect(play).toHaveBeenCalledOnce();
+});
+it("starts audio before a delayed save and sounds the confirmed automatic reply", async () => {
+  const play = vi.mocked(HTMLMediaElement.prototype.play);
+  play.mockClear();
+  const exercise = { ...definition, solution: { version: 1, maxPlayerMoves: 3, lines: [
+    { moves: ["e2e4", "d7d5", "e4d5"], goal: "validated-boundary" },
+  ] } };
+  const saved = solverDto(exercise, applyPuzzleAction(exercise, INITIAL_PROGRESS,
+    { action: "MOVE", move: "e2e4", requestId: "first", expectedRevision: 0 }));
+  let resolve!: (response: Response) => void;
+  vi.stubGlobal("fetch", vi.fn(() => {
+    expect(play).toHaveBeenCalledOnce();
+    return new Promise<Response>(done => { resolve = done; });
+  }));
+  render(<PuzzleSolver initialPuzzle={solverDto(exercise, INITIAL_PROGRESS)} nextId={null} />);
+  enter("e2e4");
+  expect(play).toHaveBeenCalledOnce();
+  resolve(Response.json({ puzzle: saved }));
+  await waitFor(() => expect(play).toHaveBeenCalledTimes(2));
+});
 it("hides the answer, sends a move to the server and displays the saved solution", async () => {
   const request = mockedServer();
   render(<PuzzleSolver initialPuzzle={initial} nextId="next" />);

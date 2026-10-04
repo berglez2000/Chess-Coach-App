@@ -4,6 +4,7 @@ import { Chess } from "chess.js";
 import Link from "next/link";
 import { useRef, useState } from "react";
 import { ReplayBoard } from "@/components/chess/replay-board";
+import { useMoveSound } from "@/components/chess/use-move-sound";
 import type { PuzzleAction, SolverPuzzle } from "@/types/puzzle";
 
 const buttonClass = "rounded-lg border border-[#20382e]/30 px-4 py-2 text-sm font-medium hover:bg-white disabled:opacity-40";
@@ -21,6 +22,7 @@ const feedback: Record<string, string> = {
   FINISHED: "This attempt has ended. Retry to practice again.",
 };
 export function PuzzleSolver({ initialPuzzle, nextId, learningNavigation }: { initialPuzzle: SolverPuzzle; nextId: string | null; learningNavigation?: { chapterUrl: string; previousUrl: string | null; nextUrl: string | null } }) {
+  const { play, muted, toggleMuted } = useMoveSound();
   const [puzzle, setPuzzle] = useState(initialPuzzle);
   const [pending, setPending] = useState(false);
   const [error, setError] = useState("");
@@ -46,6 +48,13 @@ export function PuzzleSolver({ initialPuzzle, nextId, learningNavigation }: { in
       } : { cache: "no-store" });
       const body = await response.json();
       if (body.puzzle) {
+        const saved: SolverPuzzle = body.puzzle;
+        // The player's sound starts during the input gesture. Announce an
+        // automatic reply only after the server confirms it.
+        if (response.ok && action?.action === "MOVE" && saved.history.length > puzzle.history.length + 1) {
+          const lastMove = saved.history.at(-1)!;
+          play(lastMove.san, new Chess(lastMove.fen).isGameOver());
+        }
         setPuzzle(body.puzzle); setUncertain(false); setRetryRequest(null); setMoveText("");
       }
       if (!response.ok) {
@@ -59,6 +68,15 @@ export function PuzzleSolver({ initialPuzzle, nextId, learningNavigation }: { in
   }
   function act(action: "MOVE" | "HINT" | "REVEAL" | "RETRY", move?: string) {
     if (locked || submitted.current) return;
+    if (action === "MOVE") {
+      // Start playback before awaiting fetch so browser gesture restrictions
+      // do not silence moves. Legal attempts sound even when not the solution.
+      const position = new Chess(puzzle.currentFen);
+      try {
+        const played = position.move({ from: move!.slice(0, 2), to: move!.slice(2, 4), promotion: move!.slice(4) || "q" });
+        play(played.san, position.isGameOver());
+      } catch { /* Illegal moves leave the position unchanged and stay silent. */ }
+    }
     const base = { requestId: crypto.randomUUID(), expectedRevision: puzzle.progress.revision };
     void transmit(action === "MOVE" ? { ...base, action, move: move! } : { ...base, action });
   }
@@ -80,6 +98,7 @@ export function PuzzleSolver({ initialPuzzle, nextId, learningNavigation }: { in
           if (piece?.color === board.turn()) { setSelected(square); setError(""); }
           else if (selected) move(selected, square);
         } : undefined} />
+      <button type="button" className={`${buttonClass} mt-3`} onClick={toggleMuted} aria-pressed={muted} aria-label="Mute sounds">Sound: {muted ? "off" : "on"}</button>
       <p className="mt-3 text-sm">{puzzle.playerColor === "WHITE" ? "White" : "Black"} to play · {puzzle.learning ? puzzle.learning.objective : puzzle.maxPlayerMoves === 1 ? "Find one strong move." : `Find the tactical sequence · up to ${puzzle.maxPlayerMoves} of your moves.`}</p>
       {puzzle.history.length > 0 && <p aria-label="Played sequence" className="mt-2 text-sm">Played: {puzzle.history.map(move => move.san).join(" → ")}</p>}
       {solving && <>

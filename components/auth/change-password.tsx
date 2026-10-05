@@ -1,4 +1,5 @@
 "use client";
+import styles from "@/components/ui/simple-page.module.css";
 import { useState, type FormEvent } from "react";
 import { authClient } from "@/lib/auth/client";
 import { useHydrated } from "./use-hydrated";
@@ -23,10 +24,10 @@ export function ChangePassword() {
     } catch { setError("Could not reach the server. Please try again."); }
     finally { setPending(false); }
   }
-  return <form method="post" onSubmit={submit} className="mt-8 max-w-md"><fieldset disabled={!hydrated || pending} className="space-y-5"><h2 className="text-xl font-semibold">Change password</h2>
-    {[["currentPassword", "Current password"], ["newPassword", "New password"], ["confirmation", "Confirm new password"]].map(([name, label]) => <label key={name} className="block">{label}<input className="mt-2 w-full rounded-lg border border-[#20382e]/30 bg-white p-3" name={name} type="password" required minLength={name === "currentPassword" ? undefined : 12} maxLength={128} autoComplete={name === "currentPassword" ? "current-password" : "new-password"} disabled={pending} /></label>)}
-    <p className="text-sm">Use 12–128 characters for your new password.</p>
-    {error && <p role="alert">{error}</p>}{message && <p role="status">{message}</p>}
-    <button disabled={pending} className="rounded-lg bg-[#20382e] px-6 py-3 font-semibold text-white disabled:opacity-50">{pending ? "Saving…" : "Change password"}</button>
+  return <form method="post" onSubmit={submit} ><fieldset disabled={!hydrated || pending} className={styles.fields}><h2 className={styles.cardTitle}>Change password</h2>
+    {[["currentPassword", "Current password"], ["newPassword", "New password"], ["confirmation", "Confirm new password"]].map(([name, label]) => <label key={name} className={styles.label}>{label}<input className={styles.input} name={name} type="password" required minLength={name === "currentPassword" ? undefined : 12} maxLength={128} autoComplete={name === "currentPassword" ? "current-password" : "new-password"} disabled={pending} /></label>)}
+    <p className={styles.hint}>Use 12–128 characters for your new password.</p>
+    {error && <p role="alert" className={styles.error}>{error}</p>}{message && <p role="status" className={styles.success}>{message}</p>}
+    <button disabled={pending} className={styles.primary}>{pending ? "Saving…" : "Change password"}</button>
   </fieldset></form>;
 }

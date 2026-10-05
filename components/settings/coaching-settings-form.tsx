@@ -1,4 +1,5 @@
 "use client";
+import styles from "@/components/ui/simple-page.module.css";
 import { useState, type FormEvent } from "react";
 import { PROVIDERS, type CoachingProvider, type CoachingSettings } from "@/lib/coaching/providers";
 
@@ -19,17 +20,17 @@ export function CoachingSettingsForm({ settings }: { settings: CoachingSettings 
     } catch { setMessage("Connection lost. Reload settings to check the saved selection."); }
     finally { setPending(false); }
   }
-  return <form onSubmit={save} className="mt-6 space-y-4 max-w-lg">
-    <p>Saved default: <strong>{PROVIDERS[saved.provider].label}</strong></p>
-    <label className="block" htmlFor="coaching-provider">Coaching provider</label>
-    <select id="coaching-provider" value={provider} disabled={pending} onChange={event => setProvider(event.target.value as CoachingProvider)} className="w-full rounded border p-3">
+  return <form onSubmit={save} className={styles.form}>
+    <p className={styles.saved}>Saved default: <strong>{PROVIDERS[saved.provider].label}</strong></p>
+    <label className={styles.label} htmlFor="coaching-provider">Coaching provider</label>
+    <select id="coaching-provider" value={provider} disabled={pending} onChange={event => setProvider(event.target.value as CoachingProvider)} className={styles.input}>
       {Object.entries(PROVIDERS).map(([value, config]) => <option key={value} value={value}>{config.label}</option>)}
     </select>
-    <ul className="space-y-2 text-sm">
-      {Object.entries(PROVIDERS).map(([value, config]) => <li key={value}>{config.label}: {saved.available[value as CoachingProvider] ? "Key configured" : `Unavailable — set ${config.key} in .env.local and restart the app.`}</li>)}
+    <ul className={styles.providers}>
+      {Object.entries(PROVIDERS).map(([value, config]) => <li key={value} className={styles.provider}><strong>{config.label}</strong> {saved.available[value as CoachingProvider] ? "Key configured" : `Unavailable — set ${config.key} in .env.local and restart the app.`}</li>)}
     </ul>
-    <p className="text-sm">This default applies when coaching starts. Saving it makes no AI request and does not change existing reviews. To replace a review’s coaching, use Regenerate coaching on that review. There is no automatic provider fallback.</p>
-    <button disabled={pending} className="rounded-lg bg-[#20382e] px-5 py-3 font-semibold text-white disabled:opacity-50">{pending ? "Saving…" : "Save provider"}</button>
-    {message && <p role="status">{message}</p>}
+    <p className={`${styles.hint} mb-5`}>This default applies when coaching starts. Saving it makes no AI request and does not change existing reviews. To replace a review’s coaching, use Regenerate coaching on that review. There is no automatic provider fallback.</p>
+    <button disabled={pending} className={styles.primary}>{pending ? "Saving…" : "Save provider"}</button>
+    {message && <p role="status" className={`${styles.notice} mt-4`}>{message}</p>}
   </form>;
 }

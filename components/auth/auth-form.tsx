@@ -1,5 +1,6 @@
 "use client";
 
+import styles from "@/components/ui/simple-page.module.css";
 import { useState, type FormEvent } from "react";
 import Link from "next/link";
 import { authClient } from "@/lib/auth/client";
@@ -34,15 +35,15 @@ export function AuthForm({ mode }: { mode: "sign-in" | "register" }) {
     } catch { setError("Could not reach the server. Please try again."); }
     finally { setPending(false); }
   }
-  const inputClass = "mt-2 w-full rounded-lg border border-[#20382e]/30 bg-white p-3";
-  return <form method="post" onSubmit={submit} className="mt-8"><fieldset disabled={!hydrated || pending} className="space-y-5">
-    {register && <label className="block">Name<input className={inputClass} name="name" autoComplete="name" required maxLength={100} disabled={pending} /></label>}
-    <label className="block">Email<input className={inputClass} name="email" type="email" autoComplete="email" required maxLength={254} disabled={pending} /></label>
-    <label className="block">Password<input className={inputClass} name="password" type="password" autoComplete={register ? "new-password" : "current-password"} required minLength={register ? 12 : undefined} maxLength={128} disabled={pending} /></label>
-    {register && <><p className="text-sm text-[#465c50]">Use 12–128 characters. A long, unique passphrase works well.</p><label className="block">Confirm password<input className={inputClass} name="confirmation" type="password" autoComplete="new-password" required minLength={12} maxLength={128} disabled={pending} /></label></>}
-    {error && <p role="alert">{error}</p>}
-    <button disabled={pending} className="w-full rounded-lg bg-[#20382e] px-6 py-3 font-semibold text-white disabled:opacity-50">{pending ? "Please wait…" : register ? "Create account" : "Sign in"}</button>
-    <p>{register ? "Already have an account? " : "New to Chess Coach? "}<Link className="underline" href={register ? "/sign-in" : "/register"}>{register ? "Sign in" : "Create account"}</Link></p>
-    {!register && <Link className="inline-block underline" href="/account-recovery">Forgot your password?</Link>}
+  const inputClass = styles.input;
+  return <form method="post" onSubmit={submit} className={styles.form}><fieldset disabled={!hydrated || pending} className={styles.fields}>
+    {register && <label className={styles.label}>Name<input className={inputClass} name="name" autoComplete="name" required maxLength={100} disabled={pending} /></label>}
+    <label className={styles.label}>Email<input className={inputClass} name="email" type="email" autoComplete="email" required maxLength={254} disabled={pending} /></label>
+    <label className={styles.label}>Password<input className={inputClass} name="password" type="password" autoComplete={register ? "new-password" : "current-password"} required minLength={register ? 12 : undefined} maxLength={128} disabled={pending} /></label>
+    {register && <><p className={styles.hint}>Use 12–128 characters. A long, unique passphrase works well.</p><label className={styles.label}>Confirm password<input className={inputClass} name="confirmation" type="password" autoComplete="new-password" required minLength={12} maxLength={128} disabled={pending} /></label></>}
+    {error && <p role="alert" className={styles.error}>{error}</p>}
+    <button disabled={pending} className={`${styles.primary} ${styles.fullWidth}`}>{pending ? "Please wait…" : register ? "Create account" : "Sign in"}</button>
+    <p className={styles.formFooter}>{register ? "Already have an account? " : "New to Chess Coach? "}<Link className={styles.link} href={register ? "/sign-in" : "/register"}>{register ? "Sign in" : "Create account"}</Link></p>
+    {!register && <Link className={`${styles.link} justify-center`} href="/account-recovery">Forgot your password?</Link>}
   </fieldset></form>;
 }

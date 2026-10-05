@@ -11,6 +11,8 @@ export default async function LearningPage() {
     <h1 className="text-3xl font-semibold">Learning library</h1>
     <p className="mt-3 text-sm">Study books by chapter and practice their exercises. Your exercise progress is saved separately from PDF reading progress.</p>
     <Link href="/learning/history" className="mt-3 inline-block text-sm underline">Exercise history</Link>
+    <Link href="/learning/profile" className="ml-4 mt-3 inline-block text-sm underline">Learning profile</Link>
+    <Link href="/learning/plan" className="ml-4 mt-3 inline-block text-sm underline">Weekly plan</Link>
     {!materials.length && <p className="mt-6">No learning materials yet. Create a material or add the supplied Mate in One sample.</p>}
     <ul className="mt-6 grid gap-4 sm:grid-cols-2">{materials.map(material => {
       const exercises = material.chapters.flatMap(chapter => chapter.exercises).filter(e => e.published);

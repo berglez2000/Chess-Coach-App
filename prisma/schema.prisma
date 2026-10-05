@@ -47,6 +47,10 @@ model User {
   books Book[]
   learningMaterials LearningMaterial[]
   learningProgress LearningProgress[]
+  learningProfiles LearningProfileRevision[]
+  weeklyPlanWorkspace WeeklyPlanWorkspace?
+  weeklyPlanGenerations WeeklyPlanGeneration[]
+  weeklyPlanVersions WeeklyPlanVersion[]
 }
 
 model Session {
@@ -393,4 +397,67 @@ model LearningAttempt {
   assisted Boolean
   createdAt DateTime @default(now())
   @@unique([progressId, requestId])
+}
+
+// Immutable survey inputs; future plans can pin a specific profile revision.
+model LearningProfileRevision {
+  id String @id @default(cuid())
+  userId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  revision Int
+  answers Json
+  resourceTitles Json
+  createdAt DateTime @default(now())
+  @@unique([userId, revision])
+}
+
+
+model WeeklyPlanWorkspace {
+  userId String @id
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  revision Int @default(0)
+  draftId String? @unique
+  draft WeeklyPlanGeneration? @relation("PlanDraft", fields: [draftId], references: [id], onDelete: SetNull)
+  generationId String? @unique
+  generation WeeklyPlanGeneration? @relation("PlanGeneration", fields: [generationId], references: [id], onDelete: SetNull)
+  acceptedId String? @unique
+  accepted WeeklyPlanVersion? @relation(fields: [acceptedId], references: [id], onDelete: SetNull)
+}
+model WeeklyPlanGeneration {
+  id String @id @default(cuid())
+  userId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  requestId String
+  baseRevision Int
+  status String @default("RUNNING")
+  leaseUntil DateTime
+  inputs Json
+  provider CoachingProvider
+  requestedModel String
+  model String?
+  definition Json?
+  generatedDefinition Json?
+  draftRevision Int @default(0)
+  error String?
+  createdAt DateTime @default(now())
+  draftFor WeeklyPlanWorkspace? @relation("PlanDraft")
+  generationFor WeeklyPlanWorkspace? @relation("PlanGeneration")
+  @@unique([userId, requestId])
+  @@index([userId, createdAt])
+}
+model WeeklyPlanVersion {
+  id String @id @default(cuid())
+  userId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  version Int
+  generationId String
+  draftRevision Int
+  definition Json
+  inputs Json
+  provider CoachingProvider
+  model String
+  acceptedAt DateTime @default(now())
+  currentFor WeeklyPlanWorkspace?
+  @@unique([userId, version])
+  @@unique([userId, generationId, draftRevision])
 }

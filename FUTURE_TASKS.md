@@ -2,7 +2,7 @@
 
 Source: [original ideas](CHESS_COACH_FUTURE_SPECS.md). Existing V0.1 work and evidence remain in [TASKS.md](TASKS.md).
 
-This backlog is not authorization to implement every task. The user authorized email/password auth and ownership (TASK-029–030) and review exploration (TASK-028), then requested starting the next tasks on 2026-10-01. TASK-031–032 are implemented. The user requested TASK-033 and TASK-034 on 2026-10-02; both are now implemented. On 2026-10-03 the user requested refinement of TASK-035–037 around their supplied book exercise and future PDF extraction, then authorized starting implementation. TASK-035–036 are now implemented; TASK-037 onward remain TODO. IDs continue after TASK-027; dependencies and the recommended sequence determine implementation order. Resolve a task's open decisions before implementing that task. Record implementation evidence before marking it DONE.
+This backlog is not authorization to implement every task. The user authorized email/password auth and ownership (TASK-029–030) and review exploration (TASK-028), then requested starting the next tasks on 2026-10-01. TASK-031–032 are implemented. The user requested TASK-033 and TASK-034 on 2026-10-02; both are now implemented. On 2026-10-03 the user requested refinement of TASK-035–037 around their supplied book exercise and future PDF extraction, then authorized starting implementation. TASK-035–036 and TASK-038–039 are now implemented; TASK-037 and TASK-040–041 remain TODO. On 2026-10-04 the user removed automatic PDF import from scope in favor of manual authoring, deferred TASK-037, and authorized TASK-038–039, confirming reusable weekly plans. IDs continue after TASK-027; dependencies and the recommended sequence determine implementation order. Resolve a task's open decisions before implementing that task. Record implementation evidence before marking it DONE.
 
 ## Priority and sequence
 
@@ -10,7 +10,7 @@ This backlog is not authorization to implement every task. The user authorized e
 - **P2:** learning-library expansion after the core practice workflow.
 - **P3:** features that depend on learning content or a public launch.
 
-Recommended sequence: **029 → 030 → 028 → 031 → 032 → 033 → 034 → 035 → 036 → 037 → 038 → 039 → 040 → 041**. **TASK-042 can start after TASK-035–036**, independently of TASK-037 for supported move-based chapters and independently of the weekly-plan/public-launch tasks.
+Recommended remaining sequence: **040 → 041**. **TASK-037 is deferred** and can resume independently when the user supplies a representative example.
 
 The app is for personal use initially, but accounts and data ownership come first by user decision so future multi-user use is handled now. Complete TASK-029–030 before the other new features. The landing page remains later; it can move earlier if public launch becomes a priority.
 
@@ -20,16 +20,17 @@ TASK-026 is still BLOCKED by existing release acceptance requirements. Track it 
 
 1. Personal use first, with authentication and user ownership implemented now for future growth.
 2. Review-board Reset returns to the exploration starting position.
-3. The initial learning workflow uses manually added exercises and remains usable without PDF extraction. PDFs retain their separate `/books` page. The user wants future automated diagram/solution extraction into the learning database; TASK-042 records that follow-up.
+3. Learning exercises are added manually. PDFs retain their separate `/books` page. Automatic PDF-to-exercise import was removed from scope by the user on 2026-10-04.
 4. Email/password login only initially. Keep user identity independent of credentials so Google can be added later through explicit account linking.
 5. Review exploration uses manual play for both sides without live engine evaluation (confirmed for TASK-028).
 6. PDFs, reading progress, and positioned checkmarks are stored in PostgreSQL and synchronized through the owning account (confirmed for TASK-034 on 2026-10-02).
+7. Weekly learning plans are reusable templates (confirmed for TASK-039 on 2026-10-04); dated weekly tracking remains TASK-040.
 
 ## Remaining implementation decisions
 
-Before TASK-037 implementation, inspect a user-supplied Missing Piece example and its solution to establish the required placement and objective. Before TASK-039, settle whether weekly plans are reusable templates or dated schedules.
+Before TASK-037 implementation, inspect a user-supplied Missing Piece example and its solution to establish the required placement and objective. Weekly plans use reusable templates (confirmed by the user on 2026-10-04).
 
-TASK-031 started with one-move puzzles; TASK-033 extends new generation to at most three solver moves (five total plies). The refined learning tasks below specify implementation defaults: account owners author private material; shared curated content has operator-controlled publication; answer-changing revisions require fresh completion while retaining history. These defaults are planning choices, not claims of separately confirmed user preferences. Editable weekly plan templates without calendar integration remain a proposal. Automatic PDF diagram/solution extraction is planned separately under TASK-042 and is not required to complete TASK-035–037.
+TASK-031 started with one-move puzzles; TASK-033 extends new generation to at most three solver moves (five total plies). The refined learning tasks below specify implementation defaults: account owners author private material; shared curated content has operator-controlled publication; answer-changing revisions require fresh completion while retaining history. These defaults are planning choices, not claims of separately confirmed user preferences. Reusable editable weekly plan templates without calendar integration were confirmed on 2026-10-04. Automatic PDF diagram/solution extraction is no longer planned; exercise authoring remains manual.
 
 ## Tasks
 
@@ -256,7 +257,7 @@ Notes (2026-10-03): chapter practice reuses the real puzzle board, promotions/co
 
 Attempts/completion are per user and immutable answer revision. Request IDs, revision checks, and transactional row claims handle stale tabs and lost responses; assistance and first completion survive reload/retry. Practice URLs pin the answer revision so reload cannot silently adopt a newly published answer. Chapter resume prefers an unfinished current attempt; current totals exclude drafts/archives and count the current published revision once. Earlier/archived completions remain in `/learning/history`. Initial practice DTOs conceal solutions and explanations. PDF reading progress stays independent.
 
-Verification: the checks under TASK-035 passed. Unit fixtures cover the supplied mate, multiple immediate solutions, forced Mate in Two/Three, the at-most-four mate bound with promotion, a seven-ply authored sequence, rejection of cooperative mating lines, bounded-search failure, branch legality/conflicting replies, and preserved legacy limits. Integration checks cover completion/reload, assistance/reveal/retry, simultaneous duplicate delivery, stale revisions, pinned earlier attempts, new-answer completion reset, presentation-only identity, archives, and private progress for shared content. Both learning Chromium journeys passed actual board clicks, wrong answers, reload, assisted/unassisted completion, chapter resume/totals, and history. Existing White desktop and Black 390px personal-puzzle Chromium journeys also passed. A combined run encountered the existing signup rate limit; running learning and puzzle suites separately resolved the test issue without changing authentication. No live engine/provider acceptance or PDF extraction is claimed; TASK-026/037/042 remain separate.
+Verification: the checks under TASK-035 passed. Unit fixtures cover the supplied mate, multiple immediate solutions, forced Mate in Two/Three, the at-most-four mate bound with promotion, a seven-ply authored sequence, rejection of cooperative mating lines, bounded-search failure, branch legality/conflicting replies, and preserved legacy limits. Integration checks cover completion/reload, assistance/reveal/retry, simultaneous duplicate delivery, stale revisions, pinned earlier attempts, new-answer completion reset, presentation-only identity, archives, and private progress for shared content. Both learning Chromium journeys passed actual board clicks, wrong answers, reload, assisted/unassisted completion, chapter resume/totals, and history. Existing White desktop and Black 390px personal-puzzle Chromium journeys also passed. A combined run encountered the existing signup rate limit; running learning and puzzle suites separately resolved the test issue without changing authentication. No live engine/provider acceptance or PDF extraction is claimed; TASK-026/037 remain separate.
 
 ### TASK-037 — Add “Find the missing piece” authoring and practice
 
@@ -282,7 +283,7 @@ Verification: all three answer modes with original fixtures, occupied/disallowed
 
 ### TASK-038 — Capture learning goals and availability
 
-Status: TODO  
+Status: DONE
 Priority: P2  
 Dependencies: TASK-029, TASK-030
 
@@ -295,13 +296,19 @@ Acceptance:
 
 Verification: incomplete survey, invalid availability, editing, persistence, and user isolation.
 
+Notes (2026-10-04): implemented `/learning/profile`, linked from Learning and Account, with ten questions covering experience, optional rating/platform/time control, goals, weaknesses (including Not sure), playing habits, available days with independent minute budgets, preferred activities, visible learning materials/owned PDFs, other resources, and current focus. Review shows all answers and weekly minutes before saving. Editing/cancel, reload persistence, unavailable-resource feedback, and failed-save retry are included. No AI/provider calls or weekly plan generation occur.
+
+Profiles are owner-scoped immutable database snapshots with versioned answers and selected resource titles. Future plans can reference the saved snapshot ID; editing creates a new snapshot without rewriting earlier inputs. Server validation rejects incomplete/invalid schedules, duplicate selections, unsupported values, unknown fields, and inaccessible resources. Transactions serialize saves; stale edits fail and identical lost-response retries return the already saved result. Applied the additive migration to the dedicated test and local development databases.
+
+Verification: Node 24.21.0 lint, typecheck, all 475 unit/component tests, all 77 integration tests, and webpack production build passed. Desktop (1200px) and mobile (390px) Chromium journeys passed library navigation, incomplete-form validation, unknown rating, different daily budgets, review-before-save, save/reload/edit, stale-tab rejection, invalid direct requests, origin checks, unauthenticated denial, and cross-account isolation. Integration tests verify reopened-client persistence, retained earlier snapshots, resource isolation, concurrent saves, and idempotent retries. Initial browser checks required disambiguating the Next.js route announcer and waiting for the existing signup limit; the final suite reuses its second account and passes without authentication changes. TASK-039 and existing TASK-026 release blockers remain separate.
+
 ### TASK-039 — Generate an editable weekly learning plan
 
-Status: TODO  
+Status: DONE
 Priority: P3  
 Dependencies: TASK-038, TASK-036
 
-Scope: use the selected AI provider to propose sessions for tactics, own-game puzzles, lessons, endgames, and review based on the survey and available material. Default proposal: reusable weekly template.
+Scope: use the selected AI provider to propose sessions for tactics, own-game puzzles, lessons, endgames, and review based on the survey and available material. Confirmed format: reusable weekly template.
 
 Acceptance:
 - Validate structured output, time totals, available days, and referenced content IDs before saving.
@@ -310,6 +317,14 @@ Acceptance:
 - No automatic paid calls on page load; record provider/model and the inputs used.
 
 Verification: deterministic provider fixtures for invalid schedules, nonexistent resources, timeout, edits, and regeneration. Record a separate live acceptance check when configured.
+
+Notes (2026-10-04): implemented `/learning/plan` with explicit selected-provider generation, persisted proposal preview, session/title editing, add/remove, exact per-day totals, separate acceptance, and explicit regeneration. The server builds a bounded owner-visible resource catalog, prioritizes selected profile resources, and includes only learning materials/chapters with published exercises plus available PDFs/games/puzzles. Generic sessions have explicit labels and fixed instructions; provider output cannot introduce links/resource descriptions or improvement claims. Both Anthropic and OpenAI adapters use structured output and semantic schedule/resource validation. No provider calls occur on page load or status polling, and no provider fallback exists.
+
+Generation stores the profile and resource snapshot, requested/actual model, provider, original generated definition, editable proposal, and durable request identity. One request is bounded to 60 seconds/4,096 output tokens with no automatic paid retries. User-row locks, revisions, and two-minute fenced leases handle concurrent generation/edit/accept, lost-response retries, expiry/recovery, and late responses. Failures retain the accepted template and previous proposal. Acceptance creates an immutable version with its original inputs; profile edits do not rewrite it. Content visibility is rechecked before saved edits/acceptance, and unavailable references are labeled. Applied the additive migration to test and local development databases. Completion/skip/reschedule and calendar weeks remain TASK-040.
+
+Verification: Node 24.21.0 lint, typecheck, all 500 unit/component tests, all 84 integration tests, and webpack production build passed. Desktop (1200px) and mobile (390px) Chromium journeys passed library entry, missing-profile state, no generation on load, actual published-chapter references, explicit generation, request replay, editing/generic study, save/accept/reload, provider switching, failed regeneration preserving acceptance, new-profile snapshots, identical-template regeneration with explicit review/acceptance, invalid schedules, origin/session checks, and cross-account mutation denial. Additional fixtures verify SDK refusals/incomplete output, sanitized errors/missing keys, invalid references/budgets, lost responses, simultaneous requests/edits, expiry/fencing/late timeout responses, deleted/private content, and retained original definitions/accepted history. A PostgreSQL JSON key-order retry issue found during integration was corrected by canonical validation before comparison.
+
+Separate live acceptance: OpenAI `gpt-5.4-mini-2026-03-17` generated three valid sessions totaling 65 minutes in 4,026 ms from synthetic inputs, with no database writes/account data. Anthropic's configured API key was rejected; successful live Anthropic acceptance is not claimed. Its deterministic adapter tests pass. `npm run test:plan -- OPENAI|ANTHROPIC` provides an explicit bounded smoke check. TASK-026 release acceptance remains separate.
 
 ### TASK-040 — Follow the plan and record weekly completion
 
@@ -340,41 +355,3 @@ Acceptance:
 - Upcoming capabilities are labeled accurately; layout works on mobile and with keyboard navigation.
 
 Verification: anonymous/signed-in navigation, route redirects, responsive layout, and accessibility checks. Hosting, pricing, subscriptions, and payments are not included in this task.
-
-### TASK-042 — Build an automatic PDF-to-exercise import pipeline
-
-Status: TODO
-Priority: P2
-Dependencies: TASK-035, TASK-036
-
-Requested (2026-10-03): create a pipeline that automatically adds positions and matching solutions from the user's PDF book to the learning database. This expands the existing PDF-extraction placeholder into an implementation task; implementation has not started.
-
-Scope: select an owned PDF from `/books`, a target private learning material, and diagram/answer page ranges; automatically identify chapters and numbered exercises, reconstruct board positions as FEN, match published solutions, validate them, and persist exercises using the authoring/revision system from TASK-035 and the correctness policy from TASK-036. Preserve the book's exercise numbers, chapter structure, titles/prompts, and published answers. Use the existing TASK-034 PDF storage/rendering, including compressed diagram decoding. PDF reading progress remains separate.
-
-Initial delivery: import a small representative batch of Mate in One exercises from `1001 chess exercises for beginners`, including their answer pages, then extend to the supported move-based chapters and whole-book batches. The user-supplied exercise 1 is the first known reference position/solution. Missing Piece exercises are identified and reported as unsupported until TASK-037 is implemented; they do not block importing supported chapters.
-
-Pipeline:
-1. **Start a durable import job:** record the owning user, source PDF identity/digest, target material, selected page ranges, extraction configuration/version, and explicit processing limits. Return a job ID and progress rather than holding one browser request open for the entire book.
-2. **Find chapters and exercises:** extract available PDF text; render pages/crop diagrams for visual recognition when needed. Detect exercise numbers, titles/prompts, chapter membership, board coordinates/orientation, and diagram bounds. Keep PDF page indices distinct from printed page labels.
-3. **Reconstruct positions:** recognize every occupied square and piece color/kind, build a piece map and FEN, and obtain side to move/objective from the diagram or chapter instructions. Castling/en-passant state requires source evidence or an explicit confirmed chapter/import setting; unresolved state is flagged rather than silently invented.
-4. **Match book answers:** locate the corresponding answer pages, associate solutions by book/chapter/exercise identity, parse SAN and published variations, and retain the source answer text separately from accepted practice branches. Detect missing, duplicate, or ambiguous matches.
-5. **Validate and persist:** reuse server-side position/solution/objective validation. Automatically create owner-scoped exercise drafts with provenance, diagram evidence, extraction confidence/issues, and validation results; mark successful drafts validated. Failed or inconclusive extraction/validation must remain reviewable and cannot be presented as a correct playable exercise.
-6. **Review and publish:** show source diagrams beside reconstructed boards and matched answers, allow corrections/revalidation, and provide batch publication of validated exercises. Initially, the owner explicitly approves publication; automatic insertion into the database does not require manual entry of every exercise. Fully unattended publication is a later decision informed by measured extraction accuracy.
-
-Acceptance:
-- One explicit import action processes the chosen batch through extraction, solution matching, validation, and database insertion. The UI reports discovered, extracted, validated, review-needed, published, skipped/unsupported, and failed counts with reasons and source-page links.
-- Newly created chapters/exercises preserve book ordering and stable internal IDs. Chapter-title proposals and inferred boundaries are reviewable; no silent reassignment of existing authored exercises.
-- Source records include PDF identity, diagram/answer page indices and printed labels when available, diagram bounds/evidence, exercise reference, extraction method/model/version, applicable chapter assumptions, and validation method/evidence. Do not fabricate absent titles, prompts, page labels, or answers.
-- Every imported solution is checked for legal transitions and the stated objective using TASK-036. AI/recognition confidence alone cannot establish correctness. Mate-proof search limits remain explicit; an import cannot bypass publication validation because the answer came from a book.
-- Retries, duplicate submissions, resumed jobs, and re-imports do not create duplicate exercises. Use owner, material/source identity, chapter/exercise reference, and versioned extraction identity to distinguish reprocessing from a genuinely different source. Never overwrite manually corrected content or published answers silently; proposed replacements require explicit review and create revisions while preserving progress/history.
-- Jobs persist stage/checkpoint and per-exercise outcomes. Support bounded batches, progress polling, cancellation, retry of failed items, and restart recovery. Lease/token fencing or equivalent safeguards prevent stale workers from publishing results after cancellation or supersession. Partial success remains available without misreporting the batch as fully imported.
-- PDF access, job status/results, draft editing, and publication enforce account ownership on the server. Importing a private book does not share its exercises, source images, or PDF with other users.
-- Extraction runs only after an explicit action. Define and display any external PDF/image processing and applicable provider/model, maximum pages/items, concurrency, timeout, and cost budget before starting. No paid calls occur on page load; provider failures preserve saved drafts and existing learning content.
-- Keep extraction compatible with the existing authoring schema and draft/validated/published lifecycle. Deleting a source PDF does not delete imported exercise definitions or completion history; source links report unavailable evidence honestly.
-
-Decisions before implementation:
-- Inspect representative diagram and answer pages from the actual PDF to choose text extraction, local recognition, vision-provider processing, or a combination. Do not assume that every diagram directly contains an extractable FEN.
-- Select the first batch/page ranges and target material, and confirm any book-wide side-to-move/castling/en-passant assumptions that the source leaves unstated.
-- Set the extraction provider/local tooling and processing/cost limits. Initial batch approval remains the publication default; changing to unattended publication requires a defined quality policy.
-
-Verification: a small end-to-end batch containing the supplied `Rxa6#` example plus manually checked additional diagrams and matched answer pages; compare extracted FEN, solver, chapter/number, and solution with that checked reference set. Include both colors where available, multiple diagrams per page, compressed diagrams, wrong orientation/piece recognition, repeated numbers across chapters, ambiguous/missing answers, unsupported types, validation/search-limit failures, provider timeout, cancellation/restart, stale workers, retries/re-import deduplication, manual corrections, answer revisions, and two-user isolation. Run a browser journey PDF selection → import progress → draft comparison/correction → batch publication → chapter practice with saved completion. Report observed accuracy, counts, costs when applicable, and unresolved cases before scaling to the full book.

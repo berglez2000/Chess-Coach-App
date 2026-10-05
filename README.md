@@ -549,4 +549,40 @@ npm run learning:admin -- share owner@example.com material-id
 
 The command checks the selected owner and requires at least one published exercise. Shared material is read-only in the browser; each learner's progress remains private and source PDFs remain owner-only. There is no automatic sharing or browser endpoint for granting publication rights.
 
-Apply `npx prisma migrate deploy` and `npm run db:generate` on other installations. The additive `20261003120000_learning` migration creates only learning tables; it does not rewrite games, puzzles, or books. PDF diagram/solution extraction remains TASK-042 and is not performed by this workflow.
+Apply `npx prisma migrate deploy` and `npm run db:generate` on other installations. The additive `20261003120000_learning` migration creates only learning tables; it does not rewrite games, puzzles, or books. Exercise entry is manual; automatic PDF diagram/solution extraction is outside the planned scope.
+
+
+## Learning profile (TASK-038)
+
+Open **Learning → Learning profile** (`/learning/profile`), also linked from **Account**. Answer the ten short questions about experience, optional rating and its platform/time control, goals, weaknesses, playing habits, study days/minutes, preferred activities, resources, and current focus. Unknown experience/rating and weaknesses are supported. Select at least one goal, weakness (or Not sure), activity, and study day. Each study day has its own integer budget of 5–240 minutes.
+
+**Review answers** shows a weekly time summary and all answers before **Save learning profile**. Edit or cancel changes later; reload restores the saved profile. Resource options include owned PDFs and visible active learning materials; selecting a resource does not share it. Removed/archived resources retain their original titles in the saved summary and can be removed when editing. Saving checks resource visibility again on the server.
+
+Profiles are private account data. Each accepted save creates an immutable input snapshot, allowing future plans to pin the exact answers and resource titles used. Concurrent edits are rejected with feedback; repeating the same save after a lost response returns the existing result. Weekly plan generation is available at `/learning/plan`; the profile screen itself makes no AI calls.
+
+The additive `20261004100000_learning_profile` migration has been applied to this workspace's development database. Other installations should run `npx prisma migrate deploy` and `npm run db:generate`.
+
+
+## Weekly learning plans (TASK-039)
+
+Open **Learning → Weekly plan** (`/learning/plan`), also linked from the learning profile. Plans are reusable weekly templates, as confirmed by the user. Save a learning profile first, then explicitly choose **Generate weekly plan**. Generation uses the provider selected in **Settings**, its existing server API key, and the model configured in `lib/coaching/providers.ts`; it never silently switches providers.
+
+The page states which provider/model will receive saved profile answers and resource titles before generation. One explicit request is bounded to **60 seconds**, **4,096 output tokens**, and **zero automatic provider retries**. Page loads and status polling make no paid calls. The catalog contains at most 100 options: owned PDFs, visible materials and chapters with published exercises, and saved-game/personal-puzzle libraries when nonempty. Preferred profile resources are prioritized. Exercise answers and PDF bytes are not sent to the provider. Unsupported/draft-only learning chapters are excluded.
+
+A proposal contains sessions by weekday, activity, minute budget, and an optional catalog reference. Generic/offline sessions are clearly labeled and have fixed instructions; app resources link to their actual library/chapter. Generated display titles and instructions are neutral, and the provider cannot introduce URLs, resource descriptions, or promised rating gains. Both providers use structured output, with server checks for exact daily time totals, allowed weekdays, whole session lengths, known resources, and activity compatibility. [Official OpenAI Structured Outputs guidance](https://developers.openai.com/api/docs/guides/structured-outputs) informed the Responses implementation.
+
+**Edit proposal** supports a custom title, day/minutes/activity/resource changes, and adding/removing sessions. Per-day totals remain visible. **Save proposal changes** persists the draft; **Accept weekly plan** separately makes it the current template. **Edit accepted plan** creates draft changes while preserving the accepted version until acceptance. Regeneration keeps the current accepted plan and prior proposal if the provider fails. Changed profiles are flagged; a plan retains the original profile version and finite content snapshot rather than adopting new answers silently.
+
+Generation request IDs prevent duplicate paid requests after lost responses. A two-minute lease and fencing prevent late results from replacing a newer proposal, and an expired request can be replaced by an explicit new generation. Status refresh is read-only; it does not regenerate. Server ownership/origin checks, locked user rows, and revisions protect concurrent edits and acceptance. Deleted or newly private resources are rechecked before accepting/editing and shown as unavailable in existing templates. Accepted versions and their provider/model/inputs remain immutable for future weekly tracking; no completion/skip/reschedule flow is included yet (TASK-040).
+
+The additive `20261004120000_weekly_plans` migration has been applied to the dedicated test and workspace development databases. Other installations should run `npx prisma migrate deploy` and `npm run db:generate`.
+
+Run a separate, potentially paid live check with synthetic inputs and no database writes:
+
+```bash
+npm run test:plan -- OPENAI
+# or explicitly choose the other provider:
+npm run test:plan -- ANTHROPIC
+```
+
+Live acceptance on 2026-10-04: OpenAI succeeded in 4,026 ms using `gpt-5.4-mini-2026-03-17`, returning three valid sessions totaling the synthetic profile's 65-minute budget. Anthropic rejected its configured key; its adapter is covered by deterministic SDK and browser tests, but successful live Anthropic acceptance is not claimed. Update that key or select OpenAI in Settings to generate with the working configuration.

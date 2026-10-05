@@ -24,7 +24,8 @@
     "predev": "node scripts/check-node.mjs && node scripts/prepare-pdf-worker.mjs",
     "prebuild": "node scripts/check-node.mjs && node scripts/prepare-pdf-worker.mjs",
     "prestart": "node scripts/check-node.mjs && node scripts/prepare-pdf-worker.mjs",
-    "learning:admin": "node --conditions=react-server --import tsx scripts/learning-admin.ts"
+    "learning:admin": "node --conditions=react-server --import tsx scripts/learning-admin.ts",
+    "test:plan": "node --conditions=react-server --import tsx scripts/check-weekly-plan.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.127.0",

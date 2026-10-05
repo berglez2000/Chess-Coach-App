@@ -1,0 +1,64 @@
+import { randomUUID } from "node:crypto";
+import { expect, test, type BrowserContext } from "@playwright/test";
+const origin = "http://127.0.0.1:3100";
+let otherState: Awaited<ReturnType<BrowserContext["storageState"]>> | undefined;
+for (const width of [1200, 390]) test(`weekly plan: generate, edit, accept, regenerate and isolate at ${width}px`, async ({ page, browser }) => {
+  test.setTimeout(90000); await page.setViewportSize({ width, height: 900 });
+  expect((await page.request.post("/api/auth/sign-up/email", { headers: { origin }, data: { name: "Plan tester", email: `e2e-${process.env.CHESS_E2E_RUN_ID}-${randomUUID()}@example.test`, password: "weekly plan browser passphrase" } })).status()).toBe(200);
+  await page.goto("/learning/plan"); await expect(page.getByRole("button", { name: "Generate weekly plan" })).toBeDisabled();
+  expect((await (await page.request.get("/api/learning/plan")).json()).state.generation).toBeNull();
+  const materialResponse = await page.request.post("/api/learning", { headers: { origin }, data: { kind: "sample" } }); expect(materialResponse.status()).toBe(200);
+  const materialId = (await materialResponse.json()).materialId;
+  const answers = { experience: "Not sure", rating: null, ratingPlatform: "", ratingTimeControl: "Not sure", goals: ["Reduce blunders"], weaknesses: ["Calculation"], playingFrequency: "A few games a week", usualTimeControl: "Rapid", availability: [{ day: "Tuesday", minutes: 20 }, { day: "Saturday", minutes: 45 }], activities: ["Puzzles", "Book exercises"], resources: [{ kind: "material", id: materialId }], otherResources: "", focus: "Calculation practice" };
+  expect((await page.request.put("/api/learning/profile", { headers: { origin }, data: { expectedRevision: 0, answers } })).status()).toBe(200);
+  expect((await page.request.put("/api/settings", { headers: { origin }, data: { provider: "OPENAI" } })).status()).toBe(200);
+  await page.goto("/learning"); await page.getByRole("link", { name: "Weekly plan", exact: true }).click();
+  let generationRequest: object | undefined;
+  page.on("request", request => { if (request.method() === "POST" && request.url().endsWith("/api/learning/plan")) { const body = request.postDataJSON(); if (body.action === "GENERATE") generationRequest = body; } });
+  await page.getByRole("button", { name: "Generate weekly plan" }).click();
+  const proposal = page.getByRole("region", { name: "Weekly plan proposal" });
+  await expect(proposal.getByRole("heading", { name: "Review proposal" })).toBeVisible();
+  await expect(proposal.getByRole("link", { name: /1001 chess exercises.*Mate in One/ })).toHaveCount(2);
+  const generated = (await (await page.request.get("/api/learning/plan")).json()).state;
+  expect(generated.accepted).toBeNull(); expect(generated.draft.provider).toBe("OPENAI");
+  expect((await page.request.post("/api/learning/plan", { headers: { origin }, data: generationRequest })).status()).toBe(200);
+  expect((await (await page.request.get("/api/learning/plan")).json()).state.revision).toBe(generated.revision);
+  await page.getByRole("button", { name: "Edit proposal" }).click();
+  await page.getByLabel("Plan title").fill("My weekly template"); await page.getByLabel("Session 2 activity").selectOption("Endgames");
+  await page.getByRole("button", { name: "Save proposal changes" }).click(); await expect(page.getByRole("status", { name: "Weekly plan feedback" })).toContainText("Proposal changes saved");
+  await expect(proposal.getByText("Generic study · choose your own resource")).toBeVisible();
+  await page.getByRole("button", { name: "Accept weekly plan" }).click(); await expect(page.getByRole("region", { name: "Accepted weekly plan" })).toContainText("My weekly template");
+  await page.reload(); await expect(page.getByRole("region", { name: "Accepted weekly plan" })).toContainText("Accepted version 1");
+  const accepted = (await (await page.request.get("/api/learning/plan")).json()).state.accepted;
+  expect((await page.request.put("/api/learning/profile", { headers: { origin }, data: { expectedRevision: 1, answers: { ...answers, focus: "E2E plan failure" } } })).status()).toBe(200);
+  await page.reload(); await page.getByRole("button", { name: "Generate new proposal" }).click(); await expect(page.getByRole("alert", { name: "Plan generation feedback" })).toContainText("Synthetic provider timeout");
+  expect((await (await page.request.get("/api/learning/plan")).json()).state.accepted.id).toBe(accepted.id);
+  await expect(page.getByRole("region", { name: "Accepted weekly plan" })).toContainText("My weekly template");
+  expect((await page.request.put("/api/learning/profile", { headers: { origin }, data: { expectedRevision: 2, answers } })).status()).toBe(200);
+  expect((await page.request.put("/api/settings", { headers: { origin }, data: { provider: "ANTHROPIC" } })).status()).toBe(200);
+  await page.reload(); await page.getByRole("button", { name: "Generate new proposal" }).click(); await expect(proposal.getByRole("heading", { name: "Review proposal" })).toBeVisible();
+  const next = (await (await page.request.get("/api/learning/plan")).json()).state;
+  expect(next.draft.provider).toBe("ANTHROPIC"); expect(next.draft.inputs.profile.revision).toBe(3); expect(next.accepted.id).toBe(accepted.id);
+  const invalid = { ...next.draft.definition, sessions: [{ day: "Monday", minutes: 30, activity: "Tactics", resourceKey: "chapter:invented" }] };
+  expect((await page.request.post("/api/learning/plan", { headers: { origin }, data: { action: "EDIT", expectedRevision: next.revision, draftId: next.draft.id, draftRevision: 0, definition: invalid } })).status()).toBe(400);
+  expect((await page.request.post("/api/learning/plan", { headers: { origin: "https://other.example" }, data: { action: "ACCEPT", expectedRevision: next.revision, draftId: next.draft.id, draftRevision: 0 } })).status()).toBe(403);
+  const other = await browser.newContext({ baseURL: origin });
+  try {
+    expect((await other.request.get("/api/learning/plan")).status()).toBe(401);
+    expect((await other.request.post("/api/learning/plan", { headers: { origin }, data: { action: "GENERATE", expectedRevision: 0, requestId: randomUUID() } })).status()).toBe(401);
+    if (otherState) await other.addCookies(otherState.cookies);
+    else {
+      expect((await other.request.post("/api/auth/sign-up/email", { headers: { origin }, data: { name: "Other plan tester", email: `e2e-${process.env.CHESS_E2E_RUN_ID}-${randomUUID()}@example.test`, password: "other weekly plan passphrase" } })).status()).toBe(200);
+      otherState = await other.storageState();
+    }
+    expect((await (await other.request.get("/api/learning/plan")).json()).state.accepted).toBeNull();
+    expect((await other.request.post("/api/learning/plan", { headers: { origin }, data: { action: "ACCEPT", expectedRevision: next.revision, draftId: next.draft.id, draftRevision: 0 } })).status()).toBe(404);
+  } finally { await other.close(); }
+  await page.getByRole("button", { name: "Accept weekly plan" }).click(); await expect(page.getByRole("region", { name: "Accepted weekly plan" })).toContainText("Accepted version 2");
+  await page.reload(); await page.getByRole("button", { name: "Generate new proposal" }).click();
+  await expect(proposal.getByRole("heading", { name: "Review proposal" })).toBeVisible();
+  await expect(page.getByRole("region", { name: "Accepted weekly plan" })).toContainText("Accepted version 2");
+  await page.getByRole("button", { name: "Accept weekly plan" }).click(); await expect(page.getByRole("region", { name: "Accepted weekly plan" })).toContainText("Accepted version 3");
+  await page.reload(); expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  await page.screenshot({ path: `test-results/weekly-plan-${width}.png`, fullPage: true });
+});

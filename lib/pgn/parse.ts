@@ -1,3 +1,4 @@
+import { pgnReviewMetadata } from "./review-metadata";
 import { Chess } from "chess.js";
 import type { GameResult, ParsedGame } from "@/types/game";
 import { PgnParseError } from "./error";
@@ -73,10 +74,13 @@ export function parsePgn(input: string): ParsedGame {
   if (history.some((move) => move.san === "--")) {
     throw new PgnParseError("UNSUPPORTED_PGN", "Analysis null moves are not supported in a game PGN.");
   }
+  const display = pgnReviewMetadata(source);
   return {
     pgn: input,
     initialFen: history[0].before,
     metadata: {
+      ...(display.whiteRating ? { whiteRating: display.whiteRating } : {}),
+      ...(display.blackRating ? { blackRating: display.blackRating } : {}),
       whiteName: optional(headers.White), blackName: optional(headers.Black),
       result: (markers[0]?.[0] ?? headers.Result ?? "*") as GameResult,
       playedAt: playedAt(headers.Date), event: optional(headers.Event),
@@ -85,6 +89,7 @@ export function parsePgn(input: string): ParsedGame {
       timeControl: optional(headers.TimeControl), termination: optional(headers.Termination),
     },
     moves: history.map((move, index) => ({
+      ...(display.clocks[index + 1] !== undefined ? { clockSeconds: display.clocks[index + 1] } : {}),
       ply: index + 1,
       moveNumber: Number(move.before.split(" ")[5]),
       color: move.color === "w" ? "WHITE" : "BLACK",

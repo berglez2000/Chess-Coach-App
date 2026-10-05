@@ -185,3 +185,32 @@ test("unavailable provider shows configuration guidance and preserves engine rev
   await page.reload();
   await expect(page.getByRole("button", { name: "Retry coaching", exact: true })).toBeEnabled();
 });
+
+test("optional PGN ratings and clocks survive saving and the review fits desktop and mobile", async ({ page }) => {
+  const player = `E2E-${process.env.CHESS_E2E_RUN_ID}-ratings`;
+  const response = await page.request.post("/api/games", {
+    headers: { origin: "http://127.0.0.1:3100" },
+    data: { userColor: "WHITE", pgn: '[White "Aljaz"]\n[Black "Opponent"]\n[WhiteElo "1719"]\n[BlackElo "1742"]\n[Opening "King’s Pawn"]\n[TimeControl "600+5"]\n1. e4 {[%clk 0:09:58]} e5 {[%clk 0:09:55]} 2. Nf3 *'.replace('[White "Aljaz"]', `[White "${player}"]`) },
+  });
+  expect(response.status()).toBe(201);
+  const { gameId } = await response.json();
+  ids.push(gameId);
+  await page.goto(`/games/${gameId}?ply=2`);
+  await expect(page.getByText("(1719)", { exact: true })).toBeVisible();
+  await expect(page.getByText("(1742)", { exact: true })).toBeVisible();
+  await expect(page.getByLabel(`${player} clock`, { exact: true })).toHaveText("9:58");
+  await expect(page.getByLabel("Opponent clock", { exact: true })).toHaveText("9:55");
+  await page.reload();
+  await expect(page.getByLabel(`${player} clock`, { exact: true })).toHaveText("9:58");
+  for (const width of [1440, 390]) {
+    await page.setViewportSize({ width, height: 1000 });
+    await expect(page.getByRole("img", { name: /Game position/ })).toBeVisible();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    await page.screenshot({ path: `test-results/game-review-${width}.png`, fullPage: true });
+  }
+  await page.getByRole("tab", { name: "Engine", exact: true }).click();
+  await expect(page.getByRole("tabpanel", { name: "Engine", exact: true })).toContainText("No saved engine analysis");
+  await page.getByRole("button", { name: "Next", exact: true }).click();
+  await expect(page.getByLabel(`${player} clock`, { exact: true })).toHaveCount(0);
+  await expect(page.getByLabel("Opponent clock", { exact: true })).toHaveText("9:55");
+});

@@ -1,3 +1,4 @@
+import { pgnReviewMetadata } from "@/lib/pgn/review-metadata";
 import { requireOwnerId } from "@/lib/auth/owner";
 import { positiveHighlightPlies } from "@/lib/coaching/review-highlights";
 import { toReviewAnalysis } from "@/lib/analysis/review";
@@ -27,7 +28,7 @@ export async function getDashboard(db: PrismaClient, ownerId: string): Promise<{
 export async function findGame(db: PrismaClient, id: string, ownerId: string): Promise<SavedGame | null> {
   const stored = await db.game.findUnique({ where: { id, ownerId: requireOwnerId(ownerId) }, select: {
     ...summarySelect, analysisError: true, analysisLeaseUntil: true, initialFen: true, event: true, site: true, round: true,
-    eco: true, timeControl: true, termination: true,
+    eco: true, timeControl: true, termination: true, pgn: true,
     coachingProvider: true, coachingRevision: true, coachingSummary: true, coachingStrengths: true, coachingImprovements: true, coachingModel: true,
     moves: { orderBy: { ply: "asc" }, select: {
       engineAnalysis: { select: { assessment: true, bestMoveSan: true, pvSan: true, runId: true, analyzedAt: true } },
@@ -37,6 +38,7 @@ export async function findGame(db: PrismaClient, id: string, ownerId: string): P
   } });
   if (!stored) return null;
   const { whiteName, blackName, result, openingName, event, site, round, eco, timeControl, termination } = stored;
+  const display = pgnReviewMetadata(stored.pgn ?? "");
   const playedAt = stored.playedAt?.toISOString() ?? null;
 
   const coaching: GameCoachingSummary | null =
@@ -56,11 +58,12 @@ export async function findGame(db: PrismaClient, id: string, ownerId: string): P
       coaching,
       moves: stored.moves.map(({ engineAnalysis, coachingAnnotation, ...move }) => ({
         ...move,
+        ...(display.clocks[move.ply] !== undefined ? { clockSeconds: display.clocks[move.ply] } : {}),
         ...(positivePlies.has(move.ply) ? { positiveHighlight: true } : {}),
         analysis: toReviewAnalysis(engineAnalysis),
         coaching: toReviewCoachingAnnotation(coachingAnnotation),
       })),
-      metadata: { whiteName, blackName, result: result as GameResult, playedAt, openingName, event, site, round, eco, timeControl, termination },
+      metadata: { ...(display.whiteRating ? { whiteRating: display.whiteRating } : {}), ...(display.blackRating ? { blackRating: display.blackRating } : {}), whiteName, blackName, result: result as GameResult, playedAt, openingName, event, site, round, eco, timeControl, termination },
     },
   };
 }

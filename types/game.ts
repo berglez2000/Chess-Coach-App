@@ -9,12 +9,15 @@ export interface ParsedGameMove {
   uci: string;
   fenBefore: string;
   fenAfter: string;
+  clockSeconds?: number;
 }
 
 export interface ParsedGame {
   pgn: string;
   initialFen: string;
   metadata: {
+    whiteRating?: number;
+    blackRating?: number;
     whiteName: string | null;
     blackName: string | null;
     result: GameResult;

@@ -149,3 +149,32 @@ describe("Keyboard navigation", () => {
     expect(screen.getByText(/Half-move 0 of/)).toBeVisible();
   });
 });
+
+it("shows supplied player ratings and clocks, follows replay and hides missing clock samples", () => {
+  const game = parsePgn('[White "Aljaz"]\n[Black "Opponent"]\n[WhiteElo "1719"]\n1. e4 {[%clk 0:09:58]} e5 {[%clk 0:09:55]} 2. Nf3 *');
+  render(<GameReview game={game} userColor="WHITE" status="PENDING" />);
+  expect(screen.getByText("(1719)")).toBeVisible();
+  expect(screen.queryByLabelText("Aljaz clock")).toBeNull();
+  fireEvent.click(screen.getByRole("button", { name: "Next" }));
+  expect(screen.getByLabelText("Aljaz clock")).toHaveTextContent("9:58");
+  fireEvent.click(screen.getByRole("button", { name: "Next" }));
+  expect(screen.getByLabelText("Opponent clock")).toHaveTextContent("9:55");
+  fireEvent.click(screen.getByRole("button", { name: "Flip board" }));
+  expect(screen.getByLabelText("Aljaz clock")).toHaveTextContent("9:58");
+  fireEvent.click(screen.getByRole("button", { name: "Next" }));
+  expect(screen.queryByLabelText("Aljaz clock")).toBeNull();
+  fireEvent.click(screen.getByRole("button", { name: "Start" }));
+  expect(screen.queryByLabelText("Opponent clock")).toBeNull();
+});
+
+it("switches review tabs by keyboard without advancing replay", () => {
+  render(<GameReview game={parsePgn("1. e4 e5 *")} userColor="WHITE" status="PENDING" />);
+  const coaching = screen.getByRole("tab", { name: "Coaching" });
+  fireEvent.keyDown(coaching, { key: "ArrowRight" });
+  expect(screen.getByRole("tab", { name: "Moves" })).toHaveFocus();
+  expect(screen.getByRole("tab", { name: "Moves" })).toHaveAttribute("aria-selected", "true");
+  expect(screen.getByText(/Half-move 0 of/)).toBeVisible();
+  fireEvent.click(screen.getByRole("tab", { name: "Engine" }));
+  expect(screen.getByRole("region", { name: "Engine analysis" })).toBeVisible();
+  expect(screen.getByRole("tabpanel")).toHaveAccessibleName("Engine");
+});

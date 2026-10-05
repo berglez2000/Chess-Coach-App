@@ -129,3 +129,22 @@ describe("PGN errors", () => {
   it.each([fixture("multiple"), "1. e4 e5 1-0 1. d4 d5 0-1", "1. e4 * 1. d4", '1. e4\n[Event "Second"]\n1. d4'])("rejects multiple games (%#)", (pgn) => expectError(pgn, "MULTIPLE_GAMES"));
   it("rejects unsupported variants", () => expectError('[Variant "Chess960"]\n1. e4 *', "UNSUPPORTED_PGN"));
 });
+
+it("retains optional ratings and main-line clocks without using variation clocks", () => {
+  const game = parsePgn('[WhiteElo "1719"]\n[BlackElo "1742"]\n1. e4 {[%clk 0:09:58.5]} (1. d4 {[%clk 0:01:00]}) e5 {[%clk 0:09:55]} 2. Nf3 *');
+  expect(game.metadata).toMatchObject({ whiteRating: 1719, blackRating: 1742 });
+  expect(game.moves.map(move => move.clockSeconds)).toEqual([598.5, 595, undefined]);
+});
+
+it("does not invent ratings or clocks and ignores invalid optional data", () => {
+  const game = parsePgn('[WhiteElo "?"]\n[BlackElo "0"]\n1. e4 {[%clk 0:99:10]} e5 *');
+  expect(game.metadata.whiteRating).toBeUndefined();
+  expect(game.metadata.blackRating).toBeUndefined();
+  expect(game.moves.every(move => move.clockSeconds === undefined)).toBe(true);
+});
+
+it("associates clock comments by ply even when the position repeats", () => {
+  const game = parsePgn('1. Nf3 {[%clk 0:10:00]} Nf6 2. Ng1 Ng8 3. Nf3 {[%clk 0:09:40]} *');
+  expect(game.moves[0].clockSeconds).toBe(600);
+  expect(game.moves[4].clockSeconds).toBe(580);
+});

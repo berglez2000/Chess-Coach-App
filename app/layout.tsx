@@ -1,6 +1,5 @@
-import { AccountMenu } from "@/components/auth/account-menu";
+import { AppShell } from "@/components/ui/app-shell";
 import type { Metadata } from "next";
-import Link from "next/link";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -20,22 +19,7 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <header className="border-b border-[#20382e]/15">
-          <div className="mx-auto flex max-w-[1200px] flex-wrap gap-4 items-center px-6 py-6 sm:px-10">
-            <Link
-              href="/"
-              className="text-lg font-semibold tracking-tight focus-visible:outline-2 focus-visible:outline-offset-4"
-            >
-              Chess Coach
-            </Link>
-            <Link href="/puzzles" className="ml-auto underline focus-visible:outline-2 focus-visible:outline-offset-4">Puzzles</Link>
-            <Link href="/learning" className="underline focus-visible:outline-2 focus-visible:outline-offset-4">Learning</Link>
-            <Link href="/books" className="underline focus-visible:outline-2 focus-visible:outline-offset-4">Books</Link>
-            <Link href="/settings" className="underline focus-visible:outline-2 focus-visible:outline-offset-4">Settings</Link>
-            <AccountMenu />
-          </div>
-        </header>
-        {children}
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   );

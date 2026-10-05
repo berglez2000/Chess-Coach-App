@@ -4,12 +4,12 @@ import type { PrismaClient } from "@/generated/prisma/client";
 import type { BookAction, BookSummary, ReaderBook } from "./contract";
 import { BookError } from "./pdf";
 
-const summarySelect = { id: true, name: true, totalPages: true, currentPage: true, revision: true, createdAt: true, lastRead: true, thumbnail: true } as const;
+const summarySelect = { id: true, name: true, totalPages: true, currentPage: true, revision: true, createdAt: true, lastRead: true, thumbnail: true, _count: { select: { marks: true } } } as const;
 const readerSelect = { ...summarySelect, marks: { select: { id: true, page: true, x: true, y: true }, orderBy: { id: "asc" as const } } } as const;
-type SummaryRow = { id: string; name: string; totalPages: number; currentPage: number; revision: number; createdAt: Date; lastRead: Date | null; thumbnail: Uint8Array | null };
+type SummaryRow = { id: string; name: string; totalPages: number; currentPage: number; revision: number; createdAt: Date; lastRead: Date | null; thumbnail: Uint8Array | null; _count: { marks: number } };
 function summary(row: SummaryRow): BookSummary {
-  const { thumbnail, ...rest } = row;
-  return { ...rest, createdAt: row.createdAt.toISOString(), lastRead: row.lastRead?.toISOString() ?? null, hasThumbnail: thumbnail !== null };
+  const { thumbnail, _count, ...rest } = row;
+  return { ...rest, createdAt: row.createdAt.toISOString(), lastRead: row.lastRead?.toISOString() ?? null, hasThumbnail: thumbnail !== null, markCount: _count.marks };
 }
 function reader(row: SummaryRow & { marks: ReaderBook["marks"] }): ReaderBook { return { ...summary(row), marks: row.marks }; }
 

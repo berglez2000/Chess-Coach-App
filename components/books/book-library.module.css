@@ -1,0 +1,61 @@
+.page { width: 100%; max-width: 1200px; padding: var(--sp-10) var(--sp-12); font-size: 15px; line-height: 1.5; }
+.pageHeader { margin-bottom: var(--sp-10); }
+.breadcrumb { display: flex; align-items: center; gap: var(--sp-2); font-size: 13px; color: var(--fg-3); margin-bottom: var(--sp-4); }
+.breadcrumb a { text-decoration: none; }
+.breadcrumb a:hover { color: var(--fg-2); }
+.breadcrumbSeparator { color: var(--border); }
+.pageTitle { font-size: 28px; font-weight: 700; letter-spacing: -.025em; margin-bottom: var(--sp-2); }
+.pageSubtitle { font-size: 14px; color: var(--fg-3); max-width: 540px; line-height: 1.6; }
+.uploadZone { display: block; border: 2px dashed var(--border); border-radius: var(--r-lg); padding: var(--sp-10) var(--sp-8); text-align: center; background: var(--surface); cursor: pointer; transition: border-color .15s, background .15s; margin-bottom: var(--sp-10); }
+.uploadZone:not([aria-disabled="true"]):hover, .dragOver { border-color: var(--green); background: var(--green-subtle); }
+.uploadZone:focus-within { outline: 2px solid var(--green); outline-offset: 4px; }
+.uploadZone[aria-disabled="true"] { cursor: default; opacity: .65; }
+.uploadIcon { width: 48px; height: 48px; background: var(--green-subtle); border-radius: 50%; display: grid; place-items: center; margin: 0 auto var(--sp-4); color: var(--green); }
+.uploadTitle { display: block; font-size: 15px; font-weight: 600; margin-bottom: var(--sp-2); }
+.uploadSubtitle { display: block; font-size: 13px; color: var(--fg-3); margin-bottom: var(--sp-5); }
+.uploadButton { display: inline-flex; align-items: center; gap: var(--sp-2); padding: 8px var(--sp-5); background: var(--green); color: white; font-size: 14px; font-weight: 600; border-radius: var(--r-sm); }
+.uploadMeta { display: block; font-size: 12px; color: var(--fg-3); margin-top: var(--sp-3); }
+.sectionHeader { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: var(--sp-6); }
+.sectionTitle { font-size: 18px; font-weight: 700; letter-spacing: -.02em; }
+.sectionTools { display: flex; align-items: baseline; gap: 16px; }
+.sectionCount, .refresh { font-size: 13px; color: var(--fg-3); }
+.refresh { text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.booksGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: var(--sp-6); list-style: none; }
+.bookCard { min-width: 0; background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-card); transition: box-shadow .15s, transform .15s; }
+.bookCard:hover { box-shadow: var(--shadow-elevated); transform: translateY(-2px); }
+.bookCover { aspect-ratio: 2 / 3; background: var(--surface-2); position: relative; overflow: hidden; }
+.coverButton { display: flex; width: 100%; height: 100%; align-items: center; justify-content: center; cursor: pointer; }
+.coverImage { width: 100%; height: 100%; object-fit: contain; }
+.fallbackCover { display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 18px; padding: 24px; width: 100%; height: 100%; background: linear-gradient(135deg, #2d4a3a, #1a3028); color: #e8d5a3; }
+.fallbackTitle { font-size: 16px; font-weight: 600; text-align: center; overflow-wrap: anywhere; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+.bookProgressBar { position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--border-light); pointer-events: none; }
+.bookProgressFill { height: 100%; background: var(--green); }
+.bookInfo { padding: var(--sp-4); }
+.bookTitle { font-size: 13px; font-weight: 600; line-height: 1.35; margin-bottom: var(--sp-2); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; overflow-wrap: anywhere; }
+.bookMeta { font-size: 11px; color: var(--fg-3); margin-bottom: var(--sp-3); font-family: var(--font-mono); }
+.bookActions { display: flex; gap: var(--sp-2); }
+.actionButton { min-width: 0; flex: 1; padding: 6px var(--sp-3); font-size: 12px; font-weight: 600; border-radius: var(--r-sm); cursor: pointer; transition: background .12s, color .12s; text-align: center; }
+.readButton { background: var(--green); color: white; border: 1px solid var(--green); }
+.readButton:hover { background: var(--green-hover); }
+.removeButton { background: transparent; color: var(--fg-3); border: 1px solid var(--border); }
+.removeButton:hover { background: var(--status-error-bg); color: var(--status-error); border-color: var(--status-error); }
+.checkmarkBadge { position: absolute; top: var(--sp-3); right: var(--sp-3); background: rgba(255,255,255,.92); border-radius: 999px; padding: 3px 8px; font-size: 11px; font-weight: 600; color: var(--fg-2); display: flex; align-items: center; gap: 4px; pointer-events: none; }
+.checkmarkBadge svg { color: var(--status-success); }
+.confirmation { margin: 0 var(--sp-4) var(--sp-4); padding: var(--sp-3); background: var(--surface-2); border-radius: var(--r-sm); font-size: 12px; }
+.confirmation p { margin-bottom: var(--sp-3); }
+.confirmationActions { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
+.confirmationActions button { flex-basis: 100%; }
+.alert { border: 1px solid var(--status-error); background: var(--status-error-bg); border-radius: var(--r-md); padding: var(--sp-4); margin-bottom: var(--sp-5); font-size: 13px; overflow-wrap: anywhere; }
+.status { color: var(--fg-2); font-size: 13px; }
+.status:not(:empty) { margin-bottom: var(--sp-5); }
+.emptyState { border: 1px solid var(--border-light); border-radius: var(--r-lg); background: var(--surface); padding: var(--sp-10) var(--sp-5); text-align: center; color: var(--fg-3); font-size: 14px; }
+.emptyState svg { margin: 0 auto var(--sp-3); }
+.page button:disabled { opacity: .5; cursor: default; }
+.page button:focus-visible, .page a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+@media (max-width: 1023px) { .page { padding: var(--sp-8); } }
+@media (max-width: 767px) { .page { padding: var(--sp-6) var(--sp-5); } .booksGrid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--sp-4); } .sectionTools { gap: 10px; } .uploadZone { padding: var(--sp-8) var(--sp-4); } }
+@media (max-width: 359px) { .booksGrid { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .bookCard, .uploadZone { transition: none; } .bookCard:hover { transform: none; } }
+
+@media (max-width: 767px) { .bookActions .actionButton { padding: 7px 4px; } }
+.page:has([data-book-reader]) { padding: 0; max-width: none; }

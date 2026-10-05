@@ -37,8 +37,13 @@ it("persists the PDF, page and positioned checkmarks, and deduplicates imports w
   expect(await own().list()).toHaveLength(1);
   expect((await own().list())[0]).not.toHaveProperty("pdf");
   expect((await own().list())[0]).not.toHaveProperty("thumbnail");
+  expect((await own().list())[0]).toMatchObject({ markCount: 1 });
+  expect((await own().list())[0]).not.toHaveProperty("marks");
+  expect((await own().list())[0]).not.toHaveProperty("_count");
   const removed = await own().change(book.id, { action: "removeMark", markId: book.marks[0].id, revision: book.revision });
   expect(removed.marks).toEqual([]);
+  expect(removed.markCount).toBe(0);
+  expect((await own().list())[0].markCount).toBe(0);
 });
 it("isolates all reads and mutations including raw PDFs, thumbnails, and identical files", async () => {
   const book = await saved();

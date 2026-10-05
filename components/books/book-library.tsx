@@ -1,6 +1,9 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { Icon } from "@/components/ui/icon";
+import styles from "./book-library.module.css";
 import { authClient } from "@/lib/auth/client";
 import { MAX_PDF_BYTES, type BookSummary, type ReaderBook } from "@/lib/books/contract";
 import { BookReader, type ReaderAction } from "./book-reader";
@@ -20,6 +23,8 @@ function AccountBooks() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
+  const [dragging, setDragging] = useState(false);
+  const [uploading, setUploading] = useState("");
   const [removing, setRemoving] = useState<string | null>(null);
   const lock = useRef(false);
   const controller = useRef<AbortController | null>(null);
@@ -65,54 +70,88 @@ function AccountBooks() {
   }
 
   if (book) return <>
-    {error && <p role="alert" className="mb-4 rounded bg-red-50 p-3">{error}</p>}
-    <BookReader key={book.id} book={book} busy={busy} onChange={change} onBack={() => { if (!lock.current) { setBook(null); setError(""); } }} />
+    <BookReader key={book.id} saveError={error} book={book} busy={busy} onChange={change} onBack={() => { if (!lock.current) { setBook(null); setError(""); } }} />
   </>;
 
   return <>
-    <h1 className="text-3xl font-semibold">Your books</h1>
-    <p className="mt-3 text-sm text-[#465c50]">PDFs, reading position, and checkmarks are saved privately to your account and available on your other devices.</p>
-    <p className="mt-2 text-sm">Import PDFs up to 100 MB each. To move books from the standalone reader, re-import the original PDFs here; its old reading position and checkmarks are not transferred.</p>
-    <label className="mt-6 block rounded-2xl border border-dashed border-[#20382e]/40 bg-white p-6"
-      onDragOver={event => event.preventDefault()} onDrop={event => {
-        event.preventDefault(); if (!busy) void importFiles(Array.from(event.dataTransfer.files));
+    <header className={styles.pageHeader}>
+      <nav className={styles.breadcrumb} aria-label="Breadcrumb">
+        <Link href="/">Home</Link><span className={styles.breadcrumbSeparator} aria-hidden="true">/</span><span aria-current="page">Books</span>
+      </nav>
+      <h1 className={styles.pageTitle}>Your library</h1>
+      <p className={styles.pageSubtitle}>Upload chess books as PDFs to read and annotate with checkmarks. Reading position and marks are saved privately to your account.</p>
+    </header>
+    <label className={`${styles.uploadZone} ${dragging ? styles.dragOver : ""}`} aria-disabled={busy || loading}
+      onDragEnter={event => { event.preventDefault(); if (!busy && !loading) setDragging(true); }}
+      onDragOver={event => { event.preventDefault(); event.dataTransfer.dropEffect = busy || loading ? "none" : "copy"; }}
+      onDragLeave={event => { if (!(event.relatedTarget instanceof Node) || !event.currentTarget.contains(event.relatedTarget)) setDragging(false); }}
+      onDrop={event => {
+        event.preventDefault(); setDragging(false);
+        if (!busy && !loading) void importFiles(Array.from(event.dataTransfer.files));
       }}>
-      <span className="block font-semibold">Import PDFs</span>
-      <span className="mt-1 block text-sm">Choose files or drop them here.</span>
-      <input type="file" accept=".pdf,application/pdf" multiple disabled={busy || loading} className="mt-3 block max-w-full" onChange={event => {
+      <span className={styles.uploadIcon}><Icon name="upload" size={22}/></span>
+      <span className={styles.uploadTitle}>Add a book</span>
+      <span className={styles.uploadSubtitle}>Drag and drop a PDF here, or click to browse</span>
+      <span className={styles.uploadButton}><Icon name="upload" size={15}/>Choose PDF</span>
+      <span className={styles.uploadMeta}>PDF only · Up to 100 MB per file · Multiple files supported</span>
+      <input type="file" aria-label="Choose PDFs" accept=".pdf,application/pdf" multiple disabled={busy || loading} className="sr-only" onChange={event => {
         const files = Array.from(event.target.files ?? []); event.target.value = ""; void importFiles(files);
       }} />
     </label>
-    {error && <p role="alert" className="mt-4 rounded bg-red-50 p-3">{error}</p>}
-    <p role="status" aria-live="polite" className="mt-4">{busy ? "Saving your books…" : loading ? "Loading your books…" : notice}</p>
-    {!loading && !books.length && <p className="mt-4">No books yet. Import a PDF to start reading.</p>}
-    <button type="button" className="mt-3 underline" disabled={busy || loading} onClick={() => void load()}>Refresh library</button>
-    <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {books.map(item => <li key={item.id} className="min-w-0 rounded-2xl border border-[#20382e]/15 bg-white p-5">
-        {item.hasThumbnail && /* Private endpoint: never pass these images through Next's public optimizer. */
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={`/api/books/${item.id}/thumbnail`} alt="" loading="lazy" className="mb-3 h-40 max-w-full object-contain" />}
-        <h2 className="break-words text-lg font-semibold">{item.name}</h2>
-        <p className="mt-2 text-sm">Page {item.currentPage} of {item.totalPages}</p>
-        <div className="mt-4 flex flex-wrap gap-4">
-          <button className="underline" disabled={busy} onClick={() => void run(async () => setBook((await request(`/api/books/${item.id}`)).book))}>Read {item.name}</button>
-          <button className="underline" disabled={busy} onClick={() => setRemoving(item.id)}>Remove {item.name}</button>
+    {error && <p role="alert" className={styles.alert}>{error}</p>}
+    <p role="status" aria-live="polite" className={styles.status}>{busy ? uploading ? `Importing ${uploading}…` : "Saving your books…" : loading ? "Loading your books…" : notice}</p>
+    <section aria-labelledby="books-heading">
+      <div className={styles.sectionHeader}>
+        <h2 id="books-heading" className={styles.sectionTitle}>Books</h2>
+        <div className={styles.sectionTools}>
+          {!loading && <span className={styles.sectionCount}>{books.length} {books.length === 1 ? "book" : "books"}</span>}
+          <button type="button" className={styles.refresh} disabled={busy || loading} onClick={() => void load()}>Refresh library</button>
         </div>
-        {removing === item.id && <div className="mt-4 rounded bg-[#f3f0e6] p-3">
-          <p>Remove this PDF and its reading progress and checkmarks?</p>
-          <div className="mt-2 flex gap-4"><button className="underline" disabled={busy} onClick={() => void run(async () => {
-            await request(`/api/books/${item.id}`, { method: "DELETE" }); setBooks(rows => rows.filter(row => row.id !== item.id)); setRemoving(null); setNotice("Book removed.");
-          })}>Confirm removal</button><button className="underline" disabled={busy} onClick={() => setRemoving(null)}>Cancel</button></div>
-        </div>}
-      </li>)}
-    </ul>
+      </div>
+      {!loading && !books.length && !error && <div className={styles.emptyState}><Icon name="books" size={28}/><p>No books yet. Import a PDF to start reading.</p></div>}
+      <ul className={styles.booksGrid}>
+        {books.map(item => {
+          const started = item.lastRead !== null || item.currentPage > 1;
+          const percent = started ? item.currentPage / item.totalPages * 100 : 0;
+          return <li key={item.id} className={styles.bookCard}>
+            <div className={styles.bookCover}>
+              <button type="button" className={styles.coverButton} aria-label={`Preview ${item.name}`} disabled={busy} onClick={() => void openBook(item.id)}><BookCover book={item}/></button>
+              {item.markCount > 0 && <span className={styles.checkmarkBadge}><Icon name="check" size={11}/>{item.markCount} {item.markCount === 1 ? "mark" : "marks"}</span>}
+              <div className={styles.bookProgressBar} role="progressbar" aria-label={`Reading progress for ${item.name}`} aria-valuemin={0} aria-valuemax={item.totalPages} aria-valuenow={started ? item.currentPage : 0} aria-valuetext={started ? `Page ${item.currentPage} of ${item.totalPages}` : "Not started"}><div className={styles.bookProgressFill} style={{ width: `${percent}%` }}/></div>
+            </div>
+            <div className={styles.bookInfo}>
+              <h3 className={styles.bookTitle} title={item.name}>{item.name}</h3>
+              <p className={styles.bookMeta}>{started ? `p. ${item.currentPage} / ${item.totalPages}` : `Not started · ${item.totalPages} pages`}</p>
+              <div className={styles.bookActions}>
+                <button type="button" className={`${styles.actionButton} ${styles.readButton}`} aria-label={`${started ? "Continue" : "Open"} ${item.name}`} disabled={busy} onClick={() => void openBook(item.id)}>{started ? "Continue" : "Open"}</button>
+                <button type="button" className={`${styles.actionButton} ${styles.removeButton}`} aria-label={`Remove ${item.name}`} disabled={busy} onClick={() => setRemoving(item.id)}>Remove</button>
+              </div>
+            </div>
+            {removing === item.id && <div role="group" aria-label={`Confirm removal of ${item.name}`} className={styles.confirmation}>
+              <p>Remove this PDF and its reading progress and checkmarks?</p>
+              <div className={styles.confirmationActions}>
+                <button type="button" className={`${styles.actionButton} ${styles.removeButton}`} disabled={busy} onClick={() => void run(async () => {
+                  await request(`/api/books/${item.id}`, { method: "DELETE" }); setBooks(rows => rows.filter(row => row.id !== item.id)); setRemoving(null); setNotice("Book removed.");
+                })}>Confirm removal</button>
+                <button type="button" className={`${styles.actionButton} ${styles.readButton}`} disabled={busy} onClick={() => setRemoving(null)}>Cancel</button>
+              </div>
+            </div>}
+          </li>;
+        })}
+      </ul>
+    </section>
   </>;
+
+  async function openBook(id: string) {
+    await run(async () => setBook((await request(`/api/books/${id}`)).book));
+  }
 
   async function importFiles(files: File[]) {
     if (!files.length) return;
     await run(async () => {
       const failures: string[] = []; let count = 0;
       for (const file of files) {
+        setUploading(file.name);
         try {
           if (file.size > MAX_PDF_BYTES) throw new Error("PDFs must be 100 MB or smaller.");
           if (!file.name.toLowerCase().endsWith(".pdf") && file.type !== "application/pdf") throw new Error("Choose a PDF file.");
@@ -121,9 +160,20 @@ function AccountBooks() {
           setBooks(rows => [saved, ...rows.filter(row => row.id !== saved.id)]); count++;
         } catch (error) { failures.push(`${file.name}: ${message(error)}`); }
       }
+      setUploading("");
       setNotice(`${count} PDF${count === 1 ? "" : "s"} imported. Re-importing the same PDF keeps its progress.`);
       if (failures.length) setError(failures.join(" "));
     });
   }
 }
 function message(error: unknown) { return error instanceof Error ? error.message : "Could not load or save your books. Please try again."; }
+
+function BookCover({ book }: { book: BookSummary }) {
+  const [failed, setFailed] = useState(false);
+  if (book.hasThumbnail && !failed) {
+    // Private images must bypass the public Next.js image optimizer.
+    // eslint-disable-next-line @next/next/no-img-element
+    return <img src={`/api/books/${book.id}/thumbnail`} alt="" loading="lazy" className={styles.coverImage} onError={() => setFailed(true)}/>;
+  }
+  return <span className={styles.fallbackCover} aria-hidden="true"><Icon name="books" size={36}/><span className={styles.fallbackTitle}>{book.name}</span></span>;
+}

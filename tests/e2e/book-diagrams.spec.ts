@@ -20,7 +20,7 @@ test("JBIG2 diagrams render on the reference book's puzzle page", async ({ page 
   const uploaded = await page.request.post(`${origin}/api/books?name=Diagram%20reference`, { headers: { origin, "Content-Type": "application/pdf" }, data: await readFile(source) });
   expect(uploaded.status(), await uploaded.text()).toBe(201);
   await page.goto("/books");
-  await page.getByRole("button", { name: "Read Diagram reference", exact: true }).click();
+  await page.getByRole("button", { name: /^(Open|Continue) Diagram reference$/ }).click();
   await expect(page.getByRole("button", { name: "Next page", exact: true })).toBeEnabled();
   await page.getByLabel("Page number", { exact: true }).fill("7");
   await page.getByRole("button", { name: "Go", exact: true }).click();

@@ -17,11 +17,13 @@ for (const width of [1200, 390]) test(`database books reader at ${width}px`, asy
   expect(signup.status()).toBe(200);
   await page.goto("/books");
   await expect(page.getByText("No books yet.", { exact: false })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Your library", exact: true })).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   const input = page.locator('input[type="file"]');
   await input.setInputFiles({ name: "Broken.pdf", mimeType: "application/pdf", buffer: Buffer.from("%PDF-1.4\ninvalid") });
   await expect(page.getByRole("main").getByRole("alert")).toContainText("Could not read this PDF");
   await input.setInputFiles({ name: "Sample.pdf", mimeType: "application/pdf", buffer: pdf });
-  await expect(page.getByRole("button", { name: "Read Sample", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: /^(Open|Continue) Sample$/ })).toBeVisible();
   const { books } = await (await page.request.get("/api/books")).json();
   const id = books[0].id;
   expect(books[0].hasThumbnail).toBe(true);
@@ -30,8 +32,20 @@ for (const width of [1200, 390]) test(`database books reader at ${width}px`, asy
   expect(file.headers()["cache-control"]).toBe("private, no-store");
   expect(await file.body()).toEqual(pdf);
 
-  await page.getByRole("button", { name: "Read Sample", exact: true }).click();
+  await page.getByRole("button", { name: /^(Open|Continue) Sample$/ }).click();
   await expect(page.getByRole("status").filter({ hasText: "Page 1 of 3 · Saved" })).toBeVisible();
+  await expect(page.getByRole("region", { name: "PDF viewport", exact: true })).toBeVisible();
+  const readerHeight = await page.getByRole("region", { name: "Book reader", exact: true }).evaluate(element => element.getBoundingClientRect().height);
+  expect(readerHeight).toBe(844);
+  if (width === 390) await expect(page.getByRole("navigation", { name: "Mobile navigation", exact: true })).toBeHidden();
+  await page.getByLabel("Zoom level", { exact: true }).selectOption("1.5");
+  await expect(page.getByRole("status").filter({ hasText: "Page 1 of 3 · Saved" })).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.getByRole("button", { name: "Fit page width", exact: true }).click();
+  await expect(page.getByRole("status").filter({ hasText: "Page 1 of 3 · Saved" })).toBeVisible();
+  const fitsViewport = await page.getByRole("region", { name: "PDF viewport", exact: true }).evaluate(element => element.scrollWidth <= element.clientWidth);
+  expect(fitsViewport).toBe(true);
+
   await page.getByRole("button", { name: "Next page", exact: true }).click();
   await expect(page.getByRole("status").filter({ hasText: "Page 2 of 3 · Saved" })).toBeVisible();
   await page.getByRole("button", { name: "Place checkmarks", exact: true }).click();
@@ -40,15 +54,16 @@ for (const width of [1200, 390]) test(`database books reader at ${width}px`, asy
   if (!box) throw new Error("PDF canvas missing");
   await page.mouse.click(box.x + box.width * 0.25, box.y + box.height * 0.25);
   await expect(page.getByRole("button", { name: "Remove checkmark 1", exact: true })).toBeEnabled();
+  await page.screenshot({ path: `/tmp/chess-book-reader-${width}.png` });
   await page.getByRole("button", { name: "Zoom in", exact: true }).click();
   await expect(page.getByRole("status").filter({ hasText: "Page 2 of 3 · Saved" })).toBeVisible();
   await page.getByRole("button", { name: "Fit page width", exact: true }).click();
   await page.reload();
-  await page.getByRole("button", { name: "Read Sample", exact: true }).click();
+  await page.getByRole("button", { name: /^(Open|Continue) Sample$/ }).click();
   await expect(page.getByRole("status").filter({ hasText: "Page 2 of 3 · Saved" })).toBeVisible();
   await expect(page.getByRole("button", { name: "Remove checkmark 1", exact: true })).toBeVisible();
   await page.getByRole("button", { name: "Remove checkmark 1", exact: true }).click();
-  await expect(page.getByText("0 checkmarks on this page · 0 in this book", { exact: true })).toBeVisible();
+  await expect(page.getByText("0 on this page · 0 total", { exact: true })).toBeVisible();
   await page.getByRole("button", { name: "Add checkmark at page center", exact: true }).click();
   await expect(page.getByRole("button", { name: "Remove checkmark 1", exact: true })).toBeEnabled();
   await page.getByRole("heading", { name: "Sample", exact: true }).click();
@@ -58,6 +73,16 @@ for (const width of [1200, 390]) test(`database books reader at ${width}px`, asy
   await page.getByRole("button", { name: "Go", exact: true }).click();
   await expect(page.getByRole("status").filter({ hasText: "Page 1 of 3 · Saved" })).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+
+  await page.getByRole("button", { name: "Back to books", exact: true }).click();
+  if (width === 390) await expect(page.getByRole("navigation", { name: "Mobile navigation", exact: true })).toBeVisible();
+  await expect(page.getByText("1 mark", { exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: /^(Open|Continue) Sample$/ })).toHaveText("Continue");
+  await expect(page.getByRole("progressbar", { name: "Reading progress for Sample", exact: true })).toHaveAttribute("aria-valuenow", "1");
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.screenshot({ path: `/tmp/chess-books-library-${width}.png`, fullPage: true });
+  await page.getByRole("button", { name: /^(Open|Continue) Sample$/ }).click();
+  await expect(page.getByRole("status").filter({ hasText: "Page 1 of 3 · Saved" })).toBeVisible();
 
   const other = await browser.newContext();
   const otherEmail = email();
@@ -71,7 +96,9 @@ for (const width of [1200, 390]) test(`database books reader at ${width}px`, asy
 
   // A stale tab must discard its open document when this browser changes account.
   const accountTab = await page.context().newPage();
+  await accountTab.setViewportSize({ width, height: 844 });
   await accountTab.goto("/profile");
+  if (width === 390) await accountTab.getByLabel("Account menu", { exact: true }).click();
   await accountTab.getByRole("button", { name: "Sign out", exact: true }).click();
   await expect(accountTab).toHaveURL(/\/sign-in$/);
   await page.bringToFront();
@@ -86,6 +113,7 @@ for (const width of [1200, 390]) test(`database books reader at ${width}px`, asy
   expect((await page.request.get(`/api/books/${id}/file`)).status()).toBe(404);
   await accountTab.close();
 
+  if (width === 390) await page.getByLabel("Account menu", { exact: true }).click();
   await page.getByRole("button", { name: "Sign out", exact: true }).click();
   await page.getByLabel("Email", { exact: true }).fill(ownerEmail);
   await page.getByLabel("Password", { exact: true }).fill(password);
@@ -96,10 +124,10 @@ for (const width of [1200, 390]) test(`database books reader at ${width}px`, asy
   await expect(page.getByRole("status")).toContainText("1 PDF imported");
   expect((await (await page.request.get("/api/books")).json()).books).toHaveLength(1);
   await page.locator('input[type="file"]').setInputFiles({ name: "Second.pdf", mimeType: "application/pdf", buffer: Buffer.concat([pdf, Buffer.from("\n")]) });
-  await expect(page.getByRole("button", { name: "Read Second", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: /^(Open|Continue) Second$/ })).toBeVisible();
   await page.getByRole("button", { name: "Remove Sample", exact: true }).click();
   await page.getByRole("button", { name: "Confirm removal", exact: true }).click();
-  await expect(page.getByRole("button", { name: "Read Sample", exact: true })).toHaveCount(0);
-  await expect(page.getByRole("button", { name: "Read Second", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: /^(Open|Continue) Sample$/ })).toHaveCount(0);
+  await expect(page.getByRole("button", { name: /^(Open|Continue) Second$/ })).toBeVisible();
   expect((await page.request.get(`/api/books/${id}/file`)).status()).toBe(404);
 });

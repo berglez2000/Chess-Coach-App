@@ -16,6 +16,6 @@ export const bookActionSchema = z.discriminatedUnion("action", [
 export type BookAction = z.infer<typeof bookActionSchema>;
 export type BookSummary = {
   id: string; name: string; totalPages: number; currentPage: number; revision: number;
-  createdAt: string; lastRead: string | null; hasThumbnail: boolean;
+  createdAt: string; lastRead: string | null; hasThumbnail: boolean; markCount: number;
 };
 export type ReaderBook = BookSummary & { marks: { id: string; page: number; x: number; y: number }[] };

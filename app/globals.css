@@ -1,16 +1,75 @@
 @import "tailwindcss";
 
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 400; font-display: swap; src: url("/fonts/inter-400.ttf") format("truetype"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 500; font-display: swap; src: url("/fonts/inter-500.ttf") format("truetype"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 600; font-display: swap; src: url("/fonts/inter-600.ttf") format("truetype"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 700; font-display: swap; src: url("/fonts/inter-700.ttf") format("truetype"); }
+
 :root {
-  color-scheme: light;
-  background: #f6f5f0;
-  color: #20382e;
-  font-family: Arial, Helvetica, sans-serif;
-}
+      /* --- Core palette (OKLch) --- */
+      --bg:           oklch(97.5% 0.006 120);   /* warm neutral page */
+      --surface:      oklch(100% 0 0);           /* white cards */
+      --surface-2:    oklch(96% 0.007 120);      /* inset / secondary surface */
+      --fg:           oklch(22% 0.025 155);      /* forest ink — from #20382e */
+      --fg-2:         oklch(38% 0.020 148);      /* secondary text — #465c50 */
+      --fg-3:         oklch(48% 0.016 148);      /* muted text — #657467 */
+      --border:       oklch(88% 0.010 148);      /* #20382e at ~15% */
+      --border-light: oklch(92% 0.006 148);      /* hairline */
 
-body {
-  margin: 0;
-}
+      /* --- Brand / actions --- */
+      --green:        oklch(22% 0.025 155);      /* primary = #20382e */
+      --green-hover:  oklch(28% 0.025 155);      /* #345443 hover */
+      --green-subtle: oklch(94% 0.015 145);      /* #e4eddf tint */
 
-::selection {
-  background: #d5e5cc;
-}
+      /* --- Chess-specific move quality --- */
+      --quality-good:       oklch(56% 0.14 155); /* emerald */
+      --quality-good-bg:    oklch(96% 0.04 155);
+      --quality-inaccuracy: oklch(68% 0.16 85);  /* amber */
+      --quality-inaccuracy-bg: oklch(97% 0.06 85);
+      --quality-mistake:    oklch(68% 0.18 48);  /* orange */
+      --quality-mistake-bg: oklch(96% 0.06 48);
+      --quality-blunder:    oklch(54% 0.22 25);  /* red */
+      --quality-blunder-bg: oklch(97% 0.06 25);
+      --quality-unknown:    oklch(55% 0.008 240);
+      --quality-unknown-bg: oklch(96% 0.003 240);
+
+      /* --- Board palette (walnut + maple) --- */
+      --board-dark:   #b58863;   /* walnut */
+      --board-light:  #f0d9b5;   /* maple */
+      --board-last-from: rgba(246, 214, 74, 0.38);
+      --board-last-to:   rgba(246, 214, 74, 0.56);
+
+      /* --- Status --- */
+      --status-error:   oklch(55% 0.22 25);
+      --status-error-bg: oklch(98% 0.04 25);
+      --status-success: oklch(52% 0.15 155);
+      --status-success-bg: oklch(96% 0.04 155);
+      --status-warn:    oklch(62% 0.17 75);
+      --status-warn-bg: oklch(97% 0.05 75);
+      --status-info:    oklch(52% 0.13 240);
+      --status-info-bg: oklch(96% 0.04 240);
+
+      /* --- Spacing scale (4px base) --- */
+      --sp-1: 4px;   --sp-2: 8px;   --sp-3: 12px;  --sp-4: 16px;
+      --sp-5: 20px;  --sp-6: 24px;  --sp-8: 32px;  --sp-10: 40px;
+      --sp-12: 48px; --sp-16: 64px; --sp-20: 80px;
+
+      /* --- Radius --- */
+      --r-sm: 6px;
+      --r-md: 10px;
+      --r-lg: 16px;
+      --r-xl: 20px;
+
+      /* --- Shadows --- */
+      --shadow-card: 0 1px 3px rgba(32,56,46,0.06), 0 1px 2px rgba(32,56,46,0.04);
+      --shadow-elevated: 0 4px 16px rgba(32,56,46,0.08), 0 1px 4px rgba(32,56,46,0.04);
+
+      /* --- Type --- */
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', Menlo, monospace;
+    }
+
+
+:root { color-scheme: light; background: var(--bg); color: var(--fg); font-family: var(--font); }
+body { margin: 0; }
+::selection { background: var(--green-subtle); }

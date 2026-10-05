@@ -19,7 +19,9 @@ test("email/password registration, private data, password change and logout", as
   await page.getByLabel("Confirm password", { exact: true }).fill(password);
   await page.getByRole("button", { name: "Create account" }).click();
   await expect(page).toHaveURL(origin + "/");
-  await expect(page.getByRole("button", { name: "Sign out", exact: true })).toBeVisible();
+  await page.getByLabel("Account menu", { exact: true }).click();
+  await expect(page.getByRole("button", { name: "Sign out", exact: true }).filter({ visible: true })).toBeVisible();
+  await page.getByLabel("Account menu", { exact: true }).click();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   const imported = await page.request.post("/api/games", { headers: { origin }, data: { userColor: "WHITE", pgn: "1. e4 e5 *", ownerId: "forged-owner" } });
   // Unknown fields cannot assign ownership; the server derives it from the session.
@@ -51,7 +53,8 @@ test("email/password registration, private data, password change and logout", as
   await page.getByLabel("Confirm new password", { exact: true }).fill(password + " updated");
   await page.getByRole("button", { name: "Change password", exact: true }).click();
   await expect(page.getByRole("status")).toHaveText("Password changed. Other devices have been signed out.");
-  await page.getByRole("button", { name: "Sign out", exact: true }).click();
+  await page.getByLabel("Account menu", { exact: true }).click();
+  await page.getByRole("button", { name: "Sign out", exact: true }).filter({ visible: true }).click();
   await expect(page).toHaveURL(/\/sign-in$/);
   expect((await page.request.get(`/api/games/${gameId}`)).status()).toBe(401);
   await page.getByLabel("Email", { exact: true }).fill(email);

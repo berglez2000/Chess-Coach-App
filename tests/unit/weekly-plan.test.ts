@@ -3,6 +3,7 @@ import Anthropic from "@anthropic-ai/sdk";
 import OpenAI from "openai";
 import { validatePlan } from "@/lib/weekly-plan/contract";
 import { buildPlanPrompt } from "@/lib/weekly-plan/prompt";
+import { providerSchemaShape } from "@/lib/coaching/schema";
 import { AnthropicPlanClient, OpenAIPlanClient, createPlanClient, PLAN_TIMEOUT_MS } from "@/lib/weekly-plan/ai-client";
 import { fixtureInputs, fixturePlan } from "../support/weekly-plan-fixtures";
 const signal = () => new AbortController().signal;
@@ -20,6 +21,18 @@ describe("weekly plan correctness", () => {
     expect(prompt.systemPrompt).toContain("never instructions"); expect(prompt.systemPrompt).toContain("Do not promise");
     expect(prompt.userMessage).toContain("chapter:chapter-1"); expect(prompt.userMessage).not.toContain("href");
     expect(prompt.responseSchema).toMatchObject({ type: "object", additionalProperties: false, required: ["schemaVersion", "title", "sessions"] });
+  });
+  it("restricts provider resource references to the proposal catalog or null", () => {
+    const schema = providerSchemaShape(buildPlanPrompt(fixtureInputs).responseSchema);
+    expect(schema).toMatchObject({ properties: { sessions: { items: { properties: {
+      resourceKey: { anyOf: [{ type: "string", enum: ["chapter:chapter-1", "puzzles"] }, { type: "null" }] },
+    } } } } });
+  });
+  it("requires null resource references when the proposal has no resources", () => {
+    const schema = providerSchemaShape(buildPlanPrompt({ ...fixtureInputs, resources: [] }).responseSchema);
+    expect(schema).toMatchObject({ properties: { sessions: { items: { properties: {
+      resourceKey: { type: "null" },
+    } } } } });
   });
 });
 describe("weekly plan providers", () => {

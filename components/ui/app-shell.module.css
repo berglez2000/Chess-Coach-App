@@ -21,3 +21,16 @@
 .footer > button { margin-left: 36px; color: var(--fg-3); font-size: 11px; }
 .content:has([data-book-reader]) { padding-bottom: 0; }
 .content:has([data-book-reader]) + .mobileNav, .mobileHeader:has(+ .content [data-book-reader]) { display: none; }
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .booksSidebar { width: 56px; }
+  .booksSidebar .brand { justify-content: center; padding: 20px 0; }
+  .booksSidebar .brand > span:last-child, .booksSidebar .sectionLabel, .booksSidebar .navItem > span { display: none; }
+  .booksSidebar .navigation { padding: 12px 4px; }
+  .booksSidebar .navItem { justify-content: center; padding: 12px; }
+  .booksSidebar .footer { padding: 12px 4px; justify-content: center; overflow-wrap: anywhere; }
+  .booksSidebar .footer > a { justify-content: center; }
+  .booksSidebar .footer > a > span:last-child { display: none; }
+  .booksSidebar .footer > button { margin-left: 0; font-size: 10px; }
+  .booksContent { margin-left: 56px; }
+}

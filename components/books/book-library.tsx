@@ -12,7 +12,9 @@ export function BookLibrary({ ownerId }: { ownerId: string }) {
   const { data, isPending } = authClient.useSession();
   // Unmount the reader and its PDF worker when a session changes, including another tab.
   if (isPending) return <p role="status">Checking your account…</p>;
-  if (data?.user.id !== ownerId) return <p role="alert">Your account session changed. <a href="/books" className="underline">Reload your books</a> or <a href="/sign-in" className="underline">sign in</a>.</p>;
+  // A full reload clears cached private content after an account change.
+  // eslint-disable-next-line @next/next/no-html-link-for-pages
+  if (data?.user.id !== ownerId) return <p role="alert">Your account session changed. <a href="/learning" className="underline">Reload your books</a> or <a href="/sign-in" className="underline">sign in</a>.</p>;
   return <AccountBooks />;
 }
 
@@ -25,6 +27,7 @@ function AccountBooks() {
   const [notice, setNotice] = useState("");
   const [dragging, setDragging] = useState(false);
   const [uploading, setUploading] = useState("");
+  const [uploadBatch, setUploadBatch] = useState({ completed: 0, total: 0 });
   const [removing, setRemoving] = useState<string | null>(null);
   const lock = useRef(false);
   const controller = useRef<AbortController | null>(null);
@@ -76,10 +79,11 @@ function AccountBooks() {
   return <>
     <header className={styles.pageHeader}>
       <nav className={styles.breadcrumb} aria-label="Breadcrumb">
-        <Link href="/">Home</Link><span className={styles.breadcrumbSeparator} aria-hidden="true">/</span><span aria-current="page">Books</span>
+        <Link href="/">Home</Link><span className={styles.breadcrumbSeparator} aria-hidden="true">/</span><span aria-current="page">Learning</span>
       </nav>
       <h1 className={styles.pageTitle}>Your library</h1>
       <p className={styles.pageSubtitle}>Upload chess books as PDFs to read and annotate with checkmarks. Reading position and marks are saved privately to your account.</p>
+      <nav className={styles.learningLinks} aria-label="Learning tools"><Link href="/learning/materials">Study materials</Link><Link href="/learning/history">Exercise history</Link><Link href="/learning/profile">Learning profile</Link><Link href="/learning/plan">Weekly plan</Link></nav>
     </header>
     <label className={`${styles.uploadZone} ${dragging ? styles.dragOver : ""}`} aria-disabled={busy || loading}
       onDragEnter={event => { event.preventDefault(); if (!busy && !loading) setDragging(true); }}
@@ -98,6 +102,14 @@ function AccountBooks() {
         const files = Array.from(event.target.files ?? []); event.target.value = ""; void importFiles(files);
       }} />
     </label>
+    {uploading && <div className={styles.uploadProgress} role="status" aria-live="polite">
+      <span className={styles.uploadProgressIcon}><Icon name="books" size={18}/></span>
+      <div className={styles.uploadProgressInfo}>
+        <p className={styles.uploadProgressName}>{uploading}</p>
+        <progress className={styles.uploadProgressBar} aria-label="Books imported" value={uploadBatch.completed} max={uploadBatch.total}/>
+      </div>
+      <span className={styles.uploadProgressCount}>{uploadBatch.completed} / {uploadBatch.total} imported</span>
+    </div>}
     {error && <p role="alert" className={styles.alert}>{error}</p>}
     <p role="status" aria-live="polite" className={styles.status}>{busy ? uploading ? `Importing ${uploading}…` : "Saving your books…" : loading ? "Loading your books…" : notice}</p>
     <section aria-labelledby="books-heading">
@@ -108,7 +120,7 @@ function AccountBooks() {
           <button type="button" className={styles.refresh} disabled={busy || loading} onClick={() => void load()}>Refresh library</button>
         </div>
       </div>
-      {!loading && !books.length && !error && <div className={styles.emptyState}><Icon name="books" size={28}/><p>No books yet. Import a PDF to start reading.</p></div>}
+      {!loading && !books.length && !error && <div className={styles.emptyState}><span className={styles.emptyIcon}><Icon name="books" size={26}/></span><h3 className={styles.emptyTitle}>No books yet</h3><p className={styles.emptySubtitle}>Upload your first chess book to start reading and marking your progress.</p></div>}
       <ul className={styles.booksGrid}>
         {books.map(item => {
           const started = item.lastRead !== null || item.currentPage > 1;
@@ -150,6 +162,7 @@ function AccountBooks() {
     if (!files.length) return;
     await run(async () => {
       const failures: string[] = []; let count = 0;
+      setUploadBatch({ completed: 0, total: files.length });
       for (const file of files) {
         setUploading(file.name);
         try {
@@ -158,6 +171,7 @@ function AccountBooks() {
           const name = file.name.replace(/\.pdf$/i, "").replace(/[-_]/g, " ").trim().slice(0, 200) || "Untitled book";
           const saved: ReaderBook = (await request(`/api/books?${new URLSearchParams({ name })}`, { method: "POST", headers: { "Content-Type": "application/pdf" }, body: file })).book;
           setBooks(rows => [saved, ...rows.filter(row => row.id !== saved.id)]); count++;
+          setUploadBatch({ completed: count, total: files.length });
         } catch (error) { failures.push(`${file.name}: ${message(error)}`); }
       }
       setUploading("");
@@ -175,5 +189,5 @@ function BookCover({ book }: { book: BookSummary }) {
     // eslint-disable-next-line @next/next/no-img-element
     return <img src={`/api/books/${book.id}/thumbnail`} alt="" loading="lazy" className={styles.coverImage} onError={() => setFailed(true)}/>;
   }
-  return <span className={styles.fallbackCover} aria-hidden="true"><Icon name="books" size={36}/><span className={styles.fallbackTitle}>{book.name}</span></span>;
+  return <span className={styles.fallbackCover} aria-hidden="true"><span className={styles.fallbackPaper}><span className={styles.fallbackLabel}>Chess library</span><span className={styles.fallbackTitle}>{book.name}</span><span className={styles.fallbackPieces}>♞ ♜ ♝</span><span className={styles.fallbackLabel}>PDF · {book.totalPages} pages</span></span></span>;
 }

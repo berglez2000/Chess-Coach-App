@@ -5,7 +5,7 @@ for (const width of [1200,390]) test(`learning: author, validate, publish and pr
   test.setTimeout(90000);await page.setViewportSize({width,height:900});
   const email=`e2e-${process.env.CHESS_E2E_RUN_ID}-${randomUUID()}@example.test`;
   expect((await page.request.post("/api/auth/sign-up/email",{headers:{origin},data:{name:"Learning tester",email,password:"learning browser passphrase"}})).status()).toBe(200);
-  await page.goto("/learning");await page.getByRole("button",{name:"Add Mate in One sample"}).click();
+  await page.goto("/learning/materials");await page.getByRole("button",{name:"Add Mate in One sample"}).click();
   await expect(page.getByRole("heading",{name:"1001 chess exercises for beginners"})).toBeVisible();
   await page.getByRole("link",{name:"Mate in One",exact:true}).click();
   await expect(page.getByText("0 / 1 current exercises completed")).toBeVisible();

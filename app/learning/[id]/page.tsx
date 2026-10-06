@@ -10,7 +10,7 @@ export default async function MaterialPage({ params }: { params: Promise<{ id: s
   const material = (await library(getDb(), user.id)).find(row => row.id === id); if (!material) notFound();
   const editable = material.ownerId === user.id && !material.shared;
   return <main id="main-content" className="mx-auto max-w-[1100px] px-4 py-8 sm:px-8">
-    <Link href="/learning" className="text-sm underline">Learning library</Link><h1 className="mt-4 text-3xl font-semibold">{material.title}</h1><p className="mt-2 text-sm">{material.edition}</p>
+    <Link href="/learning/materials" className="text-sm underline">Learning library</Link><h1 className="mt-4 text-3xl font-semibold">{material.title}</h1><p className="mt-2 text-sm">{material.edition}</p>
     {!material.chapters.length && <p className="mt-6">No chapters yet.</p>}
     <ol className="mt-6 space-y-4">{material.chapters.map(chapter => {
       const playable = chapter.exercises.filter(e => e.published);

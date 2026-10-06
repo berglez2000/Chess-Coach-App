@@ -48,7 +48,7 @@
 .alert { border: 1px solid var(--status-error); background: var(--status-error-bg); border-radius: var(--r-md); padding: var(--sp-4); margin-bottom: var(--sp-5); font-size: 13px; overflow-wrap: anywhere; }
 .status { color: var(--fg-2); font-size: 13px; }
 .status:not(:empty) { margin-bottom: var(--sp-5); }
-.emptyState { border: 1px solid var(--border-light); border-radius: var(--r-lg); background: var(--surface); padding: var(--sp-10) var(--sp-5); text-align: center; color: var(--fg-3); font-size: 14px; }
+.emptyState { padding: var(--sp-16) var(--sp-8); text-align: center; color: var(--fg-3); font-size: 14px; }
 .emptyState svg { margin: 0 auto var(--sp-3); }
 .page button:disabled { opacity: .5; cursor: default; }
 .page button:focus-visible, .page a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
@@ -59,3 +59,29 @@
 
 @media (max-width: 767px) { .bookActions .actionButton { padding: 7px 4px; } }
 .page:has([data-book-reader]) { padding: 0; max-width: none; }
+
+.fallbackPaper { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; width: 100%; aspect-ratio: 2 / 3; padding: 16px; border-radius: 3px; background: #e8d5a3; color: #1a3028; box-shadow: 2px 2px 8px rgba(0,0,0,.3); }
+.fallbackLabel { font-size: 9px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+.fallbackPieces { font-size: 32px; }
+.bookCard:nth-child(3n + 2) .fallbackCover { background: linear-gradient(135deg, #3d2b1f, #5c3d24); }
+.bookCard:nth-child(3n + 2) .fallbackPaper { background: #f5f0e8; color: #3d2b1f; }
+.bookCard:nth-child(3n + 3) .fallbackCover { background: linear-gradient(135deg, #1a2744, #2d3f6b); }
+.bookCard:nth-child(3n + 3) .fallbackPaper { background: #dce8f5; color: #1a2744; }
+.checkmarkBadge { backdrop-filter: blur(4px); }
+.emptyIcon { display: grid; place-items: center; width: 56px; height: 56px; margin: 0 auto var(--sp-5); border-radius: 50%; background: var(--surface-2); }
+.emptyIcon svg { margin: 0; opacity: .5; }
+.emptyTitle { font-size: 16px; font-weight: 600; color: var(--fg-2); margin-bottom: var(--sp-2); }
+.emptySubtitle { max-width: 320px; margin: 0 auto; line-height: 1.6; }
+.uploadProgress { display: flex; align-items: center; gap: var(--sp-4); margin-bottom: var(--sp-6); padding: var(--sp-4) var(--sp-5); border: 1px solid var(--border-light); border-radius: var(--r-md); background: var(--surface); }
+.uploadProgressIcon { display: grid; place-items: center; width: 36px; height: 36px; flex-shrink: 0; background: var(--status-info-bg); color: var(--status-info); border-radius: var(--r-sm); }
+.uploadProgressInfo { flex: 1; min-width: 0; }
+.uploadProgressName { font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.uploadProgressBar { display: block; width: 100%; height: 4px; margin-top: var(--sp-2); border: 0; border-radius: 2px; overflow: hidden; background: var(--border-light); accent-color: var(--green); }
+.uploadProgressBar::-webkit-progress-bar { background: var(--border-light); }
+.uploadProgressBar::-webkit-progress-value { background: var(--green); }
+.uploadProgressBar::-moz-progress-bar { background: var(--green); }
+.uploadProgressCount { color: var(--fg-3); font-family: var(--font-mono); font-size: 12px; }
+@media (max-width: 767px) { .uploadProgress { flex-wrap: wrap; } .uploadProgressCount { margin-left: 52px; } .fallbackCover { padding: 16px; } .fallbackTitle { font-size: 13px; } }
+
+.learningLinks { display: flex; flex-wrap: wrap; gap: 12px 20px; margin-top: var(--sp-5); font-size: 13px; color: var(--fg-2); }
+.learningLinks a { text-decoration: underline; text-underline-offset: 3px; }

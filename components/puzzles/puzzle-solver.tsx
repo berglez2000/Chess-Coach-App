@@ -147,7 +147,7 @@ export function PuzzleSolver({ initialPuzzle, nextId, learningNavigation }: { in
           {learningNavigation.previousUrl && <Link className="underline" href={learningNavigation.previousUrl}>← Previous exercise</Link>}
           {learningNavigation.nextUrl && <Link className="underline font-semibold" href={learningNavigation.nextUrl}>Next exercise →</Link>}
           <Link className="underline" href={learningNavigation.chapterUrl}>Return to chapter</Link>
-          <Link className="underline" href="/learning">Learning library</Link>
+          <Link className="underline" href="/learning/materials">Learning library</Link>
         </> : <>
         {nextId ? <Link className="font-semibold underline" href={`/puzzles/${nextId}`}>Next puzzle →</Link> : <Link className="font-semibold underline" href={`/puzzles?game=${puzzle.gameId}`}>Back to this game’s puzzles</Link>}
         <Link className="underline" href={`/games/${puzzle.gameId}?ply=${puzzle.sourcePly}`}>Return to source review</Link>

@@ -22,7 +22,7 @@ export async function planInputs(db: PrismaClient, userId: string): Promise<Plan
   const resources: PlanResource[] = [];
   if (puzzleCount) resources.push({ key: "puzzles", kind: "puzzles", id: null, title: `Your saved game puzzles (${puzzleCount})`, href: "/puzzles", preferred: profile.answers.activities.includes("Puzzles"), activities: ["Own-game puzzles", "Tactics"] });
   if (gameCount) resources.push({ key: "games", kind: "games", id: null, title: `Your saved games (${gameCount})`, href: "/games", preferred: profile.answers.activities.includes("Game review"), activities: ["Game review"] });
-  const bookResource = (b: { id: string; name: string }): PlanResource => ({ key: `book:${b.id}`, kind: "book", id: b.id, title: b.name, href: "/books", preferred: preferred.has(`book:${b.id}`), activities: ["Reading", "Lessons", "Endgames"] });
+  const bookResource = (b: { id: string; name: string }): PlanResource => ({ key: `book:${b.id}`, kind: "book", id: b.id, title: b.name, href: "/learning", preferred: preferred.has(`book:${b.id}`), activities: ["Reading", "Lessons", "Endgames"] });
   const materialResource = (m: { id: string; title: string }): PlanResource => ({ key: `material:${m.id}`, kind: "material", id: m.id, title: m.title, href: `/learning/${m.id}`, preferred: preferred.has(`material:${m.id}`), activities: ["Tactics", "Lessons"] });
   const base = [...preferredBooks.map(bookResource), ...preferredMaterials.map(materialResource), ...otherBooks.map(bookResource), ...otherMaterials.map(materialResource)].slice(0, MAX_PLAN_RESOURCES - resources.length);
   resources.push(...base);

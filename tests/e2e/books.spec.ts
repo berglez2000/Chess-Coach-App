@@ -10,13 +10,14 @@ for (const width of [1200, 390]) test(`database books reader at ${width}px`, asy
   const password = "books browser test passphrase";
   const email = () => `e2e-${process.env.CHESS_E2E_RUN_ID}-${randomUUID()}@example.test`;
   const ownerEmail = email();
-  await page.goto("/books");
+  await page.goto("/learning");
   await expect(page).toHaveURL(/\/sign-in$/);
   expect((await page.request.get("/api/books")).status()).toBe(401);
   const signup = await page.request.post("/api/auth/sign-up/email", { headers: { origin }, data: { name: "Book reader", email: ownerEmail, password } });
   expect(signup.status()).toBe(200);
   await page.goto("/books");
-  await expect(page.getByText("No books yet.", { exact: false })).toBeVisible();
+  await expect(page).toHaveURL(/\/learning$/);
+  await expect(page.getByRole("heading", { name: "No books yet", exact: true })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Your library", exact: true })).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   const input = page.locator('input[type="file"]');
@@ -108,8 +109,8 @@ for (const width of [1200, 390]) test(`database books reader at ${width}px`, asy
   await accountTab.getByLabel("Password", { exact: true }).fill(password);
   await accountTab.getByRole("button", { name: "Sign in", exact: true }).click();
   await expect(accountTab).toHaveURL(origin + "/");
-  await page.goto("/books");
-  await expect(page.getByText("No books yet.", { exact: false })).toBeVisible();
+  await page.goto("/learning");
+  await expect(page.getByRole("heading", { name: "No books yet", exact: true })).toBeVisible();
   expect((await page.request.get(`/api/books/${id}/file`)).status()).toBe(404);
   await accountTab.close();
 
@@ -119,7 +120,7 @@ for (const width of [1200, 390]) test(`database books reader at ${width}px`, asy
   await page.getByLabel("Password", { exact: true }).fill(password);
   await page.getByRole("button", { name: "Sign in", exact: true }).click();
   await expect(page).toHaveURL(origin + "/");
-  await page.goto("/books");
+  await page.goto("/learning");
   await page.locator('input[type="file"]').setInputFiles({ name: "Sample.pdf", mimeType: "application/pdf", buffer: pdf });
   await expect(page.getByRole("status")).toContainText("1 PDF imported");
   expect((await (await page.request.get("/api/books")).json()).books).toHaveLength(1);

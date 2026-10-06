@@ -1,0 +1,53 @@
+.header { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-bottom: 32px; }
+.header > a { flex-shrink: 0; }
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 0 0 36px; }
+.stat { padding: 20px; background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--r-lg); box-shadow: var(--shadow-card); }
+.stat dt { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--fg-3); }
+.stat dd { margin: 12px 0 0; font-size: 32px; font-weight: 700; letter-spacing: -.04em; line-height: 1; font-variant-numeric: tabular-nums; }
+.sectionHeader { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 16px; }
+.sectionHeader h2 { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 600; letter-spacing: -.01em; }
+.sectionHeader p { font-size: 12px; color: var(--fg-3); }
+.count { padding: 2px 8px; background: var(--green-subtle); border-radius: 999px; font-size: 11px; font-weight: 600; letter-spacing: 0; }
+.list { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+.game { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 22px 24px; border: 1px solid var(--border-light); border-radius: var(--r-lg); background: var(--surface); box-shadow: var(--shadow-card); transition: border-color .15s, box-shadow .15s; }
+.game:hover { border-color: var(--border); box-shadow: var(--shadow-elevated); }
+.gameDetails { min-width: 0; }
+.gameTitle { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 8px; }
+.reviewLink { font-size: 16px; font-weight: 600; letter-spacing: -.015em; overflow-wrap: anywhere; }
+.reviewLink::after { content: ""; position: absolute; inset: 0; border-radius: var(--r-lg); }
+.reviewLink:focus-visible { outline: none; }
+.game:has(.reviewLink:focus-visible) { outline: 2px solid var(--green); outline-offset: 3px; }
+.metadata { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 6px; font-size: 12px; line-height: 1.6; color: var(--fg-3); overflow-wrap: anywhere; }
+.separator { margin: 0 3px; }
+.score { font-family: var(--font-mono); color: var(--fg-2); }
+.colorDot { width: 10px; height: 10px; border: 1px solid var(--fg-3); border-radius: 50%; flex-shrink: 0; }
+.white { background: var(--surface); }
+.black { background: var(--fg); border-color: var(--fg); }
+.gameAside { display: flex; align-items: flex-end; flex-direction: column; gap: 14px; flex-shrink: 0; }
+.badge { display: inline-flex; align-items: center; padding: 4px 9px; border-radius: 999px; font-size: 11px; font-weight: 600; line-height: 1.5; }
+.success { background: var(--status-success-bg); color: var(--status-success); }
+.loss { background: var(--status-error-bg); color: var(--status-error); }
+.neutral { background: var(--surface-2); color: var(--fg-2); }
+.progress { background: var(--status-info-bg); color: var(--status-info); }
+.reviewHint { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; color: var(--fg-2); }
+.reviewHint span { transition: transform .15s; }
+.game:hover .reviewHint span { transform: translateX(3px); }
+.empty { display: flex; align-items: center; flex-direction: column; padding: 64px 24px; text-align: center; background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--r-xl); box-shadow: var(--shadow-card); }
+.emptyIcon { display: grid; place-items: center; width: 64px; height: 64px; margin-bottom: 20px; border-radius: var(--r-lg); background: var(--green-subtle); color: var(--green); }
+.empty h2 { font-size: 22px; font-weight: 600; letter-spacing: -.02em; }
+.empty p { max-width: 420px; margin: 12px 0 24px; color: var(--fg-3); font-size: 14px; line-height: 1.7; }
+.loading { display: grid; gap: 12px; margin-top: 32px; }
+.skeleton { height: 124px; border: 1px solid var(--border-light); border-radius: var(--r-lg); background: linear-gradient(90deg, var(--surface-2) 25%, var(--surface) 50%, var(--surface-2) 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; }
+@keyframes shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+@media (max-width: 900px) { .header { align-items: flex-start; flex-direction: column; } }
+@media (max-width: 600px) {
+  .stats { gap: 8px; margin-bottom: 28px; }
+  .stat { padding: 14px 10px; }
+  .stat dt { align-items: flex-start; flex-direction: column; font-size: 11px; }
+  .stat dd { font-size: 26px; }
+  .sectionHeader { align-items: flex-start; flex-direction: column; gap: 4px; }
+  .game { align-items: stretch; flex-direction: column; gap: 16px; padding: 20px; }
+  .gameAside { align-items: center; flex-direction: row; justify-content: space-between; gap: 8px; padding-top: 14px; border-top: 1px solid var(--border-light); }
+  .empty { padding: 40px 20px; }
+}
+@media (prefers-reduced-motion: reduce) { .skeleton { animation: none; } .game, .reviewHint span { transition: none; } }

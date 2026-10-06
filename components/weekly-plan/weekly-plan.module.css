@@ -1,0 +1,66 @@
+.editor { display: grid; gap: 24px; margin-top: 32px; }
+.setup, .plan { min-width: 0; padding: 24px; background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--r-xl); box-shadow: var(--shadow-card); }
+.cardHeading { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+.cardHeading h2 { font-size: 17px; font-weight: 600; letter-spacing: -.01em; }
+.cardHeading p { margin-top: 4px; font-size: 13px; color: var(--fg-3); }
+.activityIcon { display: grid; place-items: center; flex-shrink: 0; width: 36px; height: 36px; border-radius: var(--r-md); background: var(--green-subtle); color: var(--green); }
+.cardHeading > .activityIcon { width: 44px; height: 44px; }
+.overview { display: grid; grid-template-columns: 1fr 1fr 1.5fr; gap: 24px; padding: 20px; margin-bottom: 20px; border: 1px solid var(--border-light); border-radius: var(--r-md); background: var(--surface-2); }
+.overview dt { color: var(--fg-3); font-size: 11px; font-weight: 600; }
+.overview dd { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px; margin: 8px 0 0; font-size: 28px; font-weight: 700; letter-spacing: -.03em; line-height: 1.2; font-variant-numeric: tabular-nums; }
+.overview dd span { color: var(--fg-3); font-size: 12px; font-weight: 400; letter-spacing: 0; }
+.overview .focus { font-size: 14px; font-weight: 600; letter-spacing: 0; line-height: 1.6; overflow-wrap: anywhere; }
+.setup > p { font-size: 14px; line-height: 1.7; color: var(--fg-2); }
+.hint { margin-top: 10px; font-size: 12px; line-height: 1.7; color: var(--fg-3); overflow-wrap: anywhere; }
+.setup > .hint { font-size: 12px; color: var(--fg-3); }
+.actions { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+.secondary, .editAccepted { display: inline-flex; align-items: center; justify-content: center; padding: 10px 16px; border: 1px solid var(--border); border-radius: var(--r-md); background: var(--surface); color: var(--fg); font-size: 13px; font-weight: 600; cursor: pointer; transition: background .15s; }
+.secondary:hover, .editAccepted:hover { background: var(--surface-2); }
+.secondary:disabled, .editAccepted:disabled, .remove:disabled { opacity: .4; cursor: not-allowed; }
+.editAccepted { margin-top: 20px; }
+.sectionTitle { margin-top: 8px; font-size: 20px; font-weight: 600; letter-spacing: -.02em; }
+.sectionTitle:focus-visible { outline: 2px solid var(--green); outline-offset: 5px; border-radius: var(--r-sm); }
+.planTitle { font-size: 20px; font-weight: 600; letter-spacing: -.02em; overflow-wrap: anywhere; }
+.summary { margin-top: 20px; }
+.schedule { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: start; }
+.day { min-width: 0; border: 1px solid var(--border-light); border-radius: var(--r-lg); overflow: hidden; }
+.dayHeader { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding: 14px 16px; border-bottom: 1px solid var(--border-light); background: var(--surface-2); font-size: 14px; font-weight: 600; }
+.duration { padding: 3px 8px; border-radius: 999px; background: var(--surface); font-size: 11px; font-weight: 500; color: var(--fg-2); }
+.sessions { margin: 0; padding: 0; list-style: none; }
+.session { display: flex; align-items: flex-start; gap: 12px; padding: 18px 16px; }
+.session + .session { border-top: 1px solid var(--border-light); }
+.session > div { min-width: 0; flex: 1; }
+.activity { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 6px; font-size: 13px; font-weight: 600; }
+.activity > span { font-size: 11px; font-weight: 500; color: var(--fg-3); }
+.resource { margin-top: 6px; font-size: 12px; line-height: 1.6; color: var(--fg-2); overflow-wrap: anywhere; }
+.resourceLink { font-weight: 500; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--border); }
+.resourceLink:hover { text-decoration-color: var(--green); }
+.instruction { margin-top: 8px; font-size: 12px; line-height: 1.65; color: var(--fg-3); }
+.details { margin-top: 20px; padding: 14px 16px; border: 1px solid var(--border-light); border-radius: var(--r-md); background: var(--surface-2); font-size: 12px; line-height: 1.7; color: var(--fg-3); overflow-wrap: anywhere; }
+.details summary { color: var(--fg-2); font-size: 12px; font-weight: 500; cursor: pointer; }
+.empty { display: flex; align-items: center; flex-direction: column; padding: 40px 24px; text-align: center; border: 1px dashed var(--border); border-radius: var(--r-xl); }
+.emptyIcon { display: grid; place-items: center; width: 56px; height: 56px; margin-bottom: 16px; border-radius: var(--r-lg); background: var(--green-subtle); }
+.empty h3 { font-size: 17px; font-weight: 600; letter-spacing: -.01em; }
+.empty p { max-width: 400px; margin-top: 8px; color: var(--fg-3); font-size: 13px; line-height: 1.7; }
+.form { margin-top: 24px; }
+.fields { display: grid; gap: 20px; min-width: 0; }
+.sessionEditor { min-width: 0; padding: 20px; border: 1px solid var(--border); border-radius: var(--r-lg); }
+.legend { padding: 0 8px; color: var(--fg-2); font-size: 12px; font-weight: 600; }
+.fieldGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.fieldGrid label, .resourceLabel { font-size: 12px; font-weight: 600; }
+.resourceLabel { display: block; margin-top: 16px; }
+.remove { margin-top: 16px; color: var(--status-error); font-size: 12px; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.budgets { display: flex; flex-wrap: wrap; gap: 8px 20px; padding: 16px; border: 1px solid var(--border-light); border-radius: var(--r-md); background: var(--surface-2); font-size: 12px; line-height: 1.6; color: var(--fg-2); list-style: none; }
+.editor button:focus-visible, .editor a:focus-visible, .details summary:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+@media (max-width: 900px) { .schedule { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 600px) {
+  .editor { margin-top: 24px; gap: 20px; }
+  .setup, .plan { padding: 20px; }
+  .overview { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; padding: 16px; }
+  .overview > div:last-child { grid-column: 1 / -1; padding-top: 12px; border-top: 1px solid var(--border); }
+  .fieldGrid { grid-template-columns: minmax(0, 1fr); }
+  .sessionEditor { padding: 16px; }
+  .actions { align-items: stretch; flex-direction: column; }
+  .actions > button { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) { .secondary, .editAccepted { transition: none; } }

@@ -7,7 +7,7 @@ for (const width of [1200,390]) test(`learning: author, validate, publish and pr
   expect((await page.request.post("/api/auth/sign-up/email",{headers:{origin},data:{name:"Learning tester",email,password:"learning browser passphrase"}})).status()).toBe(200);
   await page.goto("/learning/materials");await page.getByRole("button",{name:"Add Mate in One sample"}).click();
   await expect(page.getByRole("heading",{name:"1001 chess exercises for beginners"})).toBeVisible();
-  await page.getByRole("link",{name:"Mate in One",exact:true}).click();
+  await page.getByRole("link",{name:"Open chapter",exact:true}).click();
   await expect(page.getByText("0 / 1 current exercises completed")).toBeVisible();
   await page.getByRole("link",{name:"1. The pin is mightier than the sword",exact:true}).click();
   await expect(page).toHaveURL(/\/learning\/exercises\/[^/?]+\?revision=[^/]+$/);
@@ -16,11 +16,12 @@ for (const width of [1200,390]) test(`learning: author, validate, publish and pr
   const id=new URL(page.url()).pathname.split("/").at(-1)!;
   const initial=(await (await page.request.get(`/api/learning/exercises/${id}`)).json()).puzzle;
   expect(initial.learning.publishedSolution).toBeNull();expect(initial.learning.explanation).toBeNull();expect(initial.solutionLine).toBeNull();
+  await page.getByText("Move entry and promotion",{exact:true}).click();
   await page.getByLabel("Move coordinates").fill("a1a4");await page.getByRole("button",{name:"Check move"}).click();
   await expect(page.getByRole("status",{name:"Puzzle feedback"})).toContainText("legal, but it is not a solution");
   const board=page.getByRole("group",{name:/Puzzle position/});await board.locator('[data-square="a1"]').click();await board.locator('[data-square="a6"]').click();
   await expect(page.getByText("First completion saved · Unassisted")).toBeVisible();
-  await expect(page.getByText("Book solution: Rxa6#")).toBeVisible();await page.reload();await expect(page.getByText("First completion saved · Unassisted")).toBeVisible();
+  await expect(page.getByText("Rxa6#",{exact:true})).toBeVisible();await page.reload();await expect(page.getByText("First completion saved · Unassisted")).toBeVisible();
   await page.getByRole("link",{name:"Return to chapter"}).click();await expect(page.getByText("1 / 1 current exercises completed")).toBeVisible();
   await page.getByRole("link",{name:"Add exercise",exact:true}).click();
   await page.getByLabel("Exercise number",{exact:true}).fill("2");await page.getByLabel("Title",{exact:true}).fill("Another pin exercise");
@@ -37,8 +38,9 @@ for (const width of [1200,390]) test(`learning: author, validate, publish and pr
   const second=page.url().split("/").at(-2)!;
   await page.getByRole("link",{name:"Mate in One",exact:true}).click();await expect(page.getByText("1 / 2 current exercises completed")).toBeVisible();
   await page.getByRole("link",{name:"Resume chapter",exact:true}).click();await expect(page).toHaveURL(new RegExp(`/learning/exercises/${second}\\?revision=`));
-  await page.getByRole("button",{name:"Reveal solution"}).click();await expect(page.getByText("Book solution: Rxa6#")).toBeVisible();await expect(page.getByText(/First completion saved/)).toHaveCount(0);
+  await page.getByRole("button",{name:"Reveal solution"}).click();await expect(page.getByText("Rxa6#",{exact:true})).toBeVisible();await expect(page.getByText(/First completion saved/)).toHaveCount(0);
   await page.reload();await page.getByRole("button",{name:"Retry puzzle"}).click();await expect(page.getByRole("status",{name:"Puzzle feedback"})).toContainText("Starting position restored");
+  await page.getByText("Move entry and promotion",{exact:true}).click();
   await page.getByLabel("Move coordinates").fill("a1a6");await page.getByRole("button",{name:"Check move"}).click();await expect(page.getByText("First completion saved · Assisted")).toBeVisible();
   await page.getByRole("link",{name:"Return to chapter"}).click();await expect(page.getByText("2 / 2 current exercises completed")).toBeVisible();
   const other=await browser.newContext({baseURL:origin});

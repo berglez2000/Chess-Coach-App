@@ -3,9 +3,12 @@
 import { Chess } from "chess.js";
 import Link from "next/link";
 import { useRef, useState } from "react";
+import { PromotionPicker } from "@/components/chess/promotion-picker";
 import { ReplayBoard } from "@/components/chess/replay-board";
 import { useMoveSound } from "@/components/chess/use-move-sound";
 import type { PuzzleAction, SolverPuzzle } from "@/types/puzzle";
+
+import styles from "@/components/learning/practice.module.css";
 
 const buttonClass = "rounded-lg border border-[#20382e]/30 px-4 py-2 text-sm font-medium hover:bg-white disabled:opacity-40";
 const feedback: Record<string, string> = {
@@ -21,7 +24,7 @@ const feedback: Record<string, string> = {
   RETRY: "Starting position restored. Try again.",
   FINISHED: "This attempt has ended. Retry to practice again.",
 };
-export function PuzzleSolver({ initialPuzzle, nextId, learningNavigation }: { initialPuzzle: SolverPuzzle; nextId: string | null; learningNavigation?: { chapterUrl: string; previousUrl: string | null; nextUrl: string | null } }) {
+export function PuzzleSolver({ initialPuzzle, nextId, learningNavigation }: { initialPuzzle: SolverPuzzle; nextId: string | null; learningNavigation?: { chapterUrl: string; previousUrl: string | null; nextUrl: string | null; title?: string; chapterTitle?: string; number?: string } }) {
   const { play, muted, toggleMuted } = useMoveSound();
   const [puzzle, setPuzzle] = useState(initialPuzzle);
   const [pending, setPending] = useState(false);
@@ -29,11 +32,12 @@ export function PuzzleSolver({ initialPuzzle, nextId, learningNavigation }: { in
   const [uncertain, setUncertain] = useState(false);
   const [selected, setSelected] = useState<string | null>(null);
   const [moveText, setMoveText] = useState("");
-  const [promotion, setPromotion] = useState("q");
+  const [flipped, setFlipped] = useState(false);
+  const [promotionMove, setPromotionMove] = useState<{ from: string; to: string; color: "w" | "b" } | null>(null);
   const submitted = useRef(false);
   const [retryRequest, setRetryRequest] = useState<PuzzleAction | null>(null);
   const solving = puzzle.progress.state === "SOLVING";
-  const locked = pending || uncertain;
+  const locked = pending || uncertain || !!promotionMove;
   const displayedFen = puzzle.progress.state === "REVEALED" ? puzzle.solutionLine?.at(-1)?.fen ?? puzzle.currentFen : puzzle.currentFen;
   const board = new Chess(displayedFen);
 
@@ -66,8 +70,8 @@ export function PuzzleSolver({ initialPuzzle, nextId, learningNavigation }: { in
       setUncertain(true);
     } finally { submitted.current = false; setPending(false); }
   }
-  function act(action: "MOVE" | "HINT" | "REVEAL" | "RETRY", move?: string) {
-    if (locked || submitted.current) return;
+  function act(action: "MOVE" | "HINT" | "REVEAL" | "RETRY", move?: string, promotionConfirmed = false) {
+    if (pending || uncertain || (promotionMove && !promotionConfirmed) || submitted.current) return;
     if (action === "MOVE") {
       // Start playback before awaiting fetch so browser gesture restrictions
       // do not silence moves. Legal attempts sound even when not the solution.
@@ -80,17 +84,28 @@ export function PuzzleSolver({ initialPuzzle, nextId, learningNavigation }: { in
     const base = { requestId: crypto.randomUUID(), expectedRevision: puzzle.progress.revision };
     void transmit(action === "MOVE" ? { ...base, action, move: move! } : { ...base, action });
   }
-  function move(from: string, to: string, promote = promotion) {
+  function move(from: string, to: string) {
     if (!solving || locked) return false;
     const piece = board.get(from as Parameters<typeof board.get>[0]);
-    const suffix = piece?.type === "p" && /^[a-h][18]$/.test(to) ? promote : "";
-    act("MOVE", from + to + suffix);
+    const legalPromotion = piece?.type === "p" && board.moves({ square: from as Parameters<typeof board.get>[0], verbose: true }).some(candidate => candidate.to === to && candidate.promotion);
+    if (legalPromotion) {
+      setPromotionMove({ from, to, color: piece.color });
+      return false;
+    }
+    act("MOVE", from + to);
     // Wait for the authoritative saved result before changing the board.
     return false;
   }
-  return <section aria-label="Puzzle practice" aria-busy={pending} className="mt-6 grid min-w-0 gap-6 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
-    <div className="min-w-0">
-      <ReplayBoard positionLabel="Puzzle" fen={displayedFen} userColor={puzzle.playerColor}
+  return <>
+    {promotionMove && <PromotionPicker color={promotionMove.color} onCancel={() => { setPromotionMove(null); setSelected(null); }} onChoose={piece => {
+      const coordinates = promotionMove.from + promotionMove.to + piece;
+      setPromotionMove(null);
+      act("MOVE", coordinates, true);
+    }} />}
+    <section aria-label="Puzzle practice" aria-busy={pending} className={learningNavigation ? styles.solver : "mt-6 grid min-w-0 gap-6 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]"}>
+    <div className={learningNavigation ? styles.boardPanel : "min-w-0"}>
+      {learningNavigation && <div className={styles.strip}><span className={styles.colorDot} style={{ background: puzzle.playerColor === "WHITE" ? "var(--fg)" : "white" }}/><strong>{puzzle.playerColor === "WHITE" ? "Black" : "White"}</strong><small>Opponent</small></div>}
+      <ReplayBoard positionLabel="Puzzle" flipped={flipped} fen={displayedFen} userColor={puzzle.playerColor}
         lastMove={puzzle.progress.state === "REVEALED" ? puzzle.solutionLine?.at(-1)?.uci : puzzle.history.at(-1)?.uci} selectedSquare={selected}
         onMove={solving && !locked ? move : undefined}
         onSquareClick={solving && !locked ? square => {
@@ -98,14 +113,10 @@ export function PuzzleSolver({ initialPuzzle, nextId, learningNavigation }: { in
           if (piece?.color === board.turn()) { setSelected(square); setError(""); }
           else if (selected) move(selected, square);
         } : undefined} />
-      <button type="button" className={`${buttonClass} mt-3`} onClick={toggleMuted} aria-pressed={muted} aria-label="Mute sounds">Sound: {muted ? "off" : "on"}</button>
-      <p className="mt-3 text-sm">{puzzle.playerColor === "WHITE" ? "White" : "Black"} to play · {puzzle.learning ? puzzle.learning.objective : puzzle.maxPlayerMoves === 1 ? "Find one strong move." : `Find the tactical sequence · up to ${puzzle.maxPlayerMoves} of your moves.`}</p>
+      {learningNavigation ? <><div className={styles.controls}><button type="button" onClick={() => setFlipped(value => !value)} aria-label="Flip board">⇄ Flip board</button><button type="button" onClick={toggleMuted} aria-pressed={muted} aria-label="Mute sounds">Sound: {muted ? "off" : "on"}</button><span>{puzzle.playerColor === "WHITE" ? "White" : "Black"} to move</span></div><div className={styles.strip}><span className={styles.colorDot} style={{ background: puzzle.playerColor === "WHITE" ? "white" : "var(--fg)" }}/><strong>{puzzle.playerColor === "WHITE" ? "White" : "Black"}</strong><small>You{solving ? " — to move" : ""}</small></div></> : <><button type="button" className={`${buttonClass} mt-3`} onClick={toggleMuted} aria-pressed={muted} aria-label="Mute sounds">Sound: {muted ? "off" : "on"}</button><p className="mt-3 text-sm">{puzzle.playerColor === "WHITE" ? "White" : "Black"} to play · {puzzle.maxPlayerMoves === 1 ? "Find one strong move." : `Find the tactical sequence · up to ${puzzle.maxPlayerMoves} of your moves.`}</p></>}
       {puzzle.history.length > 0 && <p aria-label="Played sequence" className="mt-2 text-sm">Played: {puzzle.history.map(move => move.san).join(" → ")}</p>}
-      {solving && <>
-        <p className="mt-2 text-sm text-[#465c50]">Drag a piece, select its square and destination, or enter move coordinates. Choose a promotion piece before moving a pawn to the last rank.</p>
-        <label className="mt-3 block text-sm">Promotion piece <select disabled={locked} className="rounded border p-2" value={promotion} onChange={event => setPromotion(event.target.value)}>
-          <option value="q">Queen</option><option value="r">Rook</option><option value="b">Bishop</option><option value="n">Knight</option>
-        </select></label>
+      {solving && <details className={learningNavigation ? styles.entry : "mt-3"} open={learningNavigation ? undefined : true}><summary>Move entry and promotion</summary>
+        <p className="mt-2 text-sm text-[#465c50]">Drag a piece, select its square and destination, or enter move coordinates. When a pawn reaches the last rank, choose its promotion piece.</p>
         <form className="mt-3 flex flex-wrap items-end gap-2" onSubmit={event => {
           event.preventDefault();
           const input = moveText.trim().toLowerCase();
@@ -116,23 +127,25 @@ export function PuzzleSolver({ initialPuzzle, nextId, learningNavigation }: { in
           <label className="text-sm">Move coordinates<input disabled={locked} className="ml-2 w-28 rounded border p-2" value={moveText} onChange={event => setMoveText(event.target.value)} placeholder="e2e4" /></label>
           <button disabled={locked} className={buttonClass}>Check move</button>
         </form>
-      </>}
+      </details>}
     </div>
-    <div className="space-y-4 rounded-2xl border border-[#20382e]/15 bg-white p-5">
-      <h2 className="text-lg font-semibold">{puzzle.learning?.objective ?? "Find the better move"}</h2>
+    <div className={learningNavigation ? styles.right : "space-y-4 rounded-2xl border border-[#20382e]/15 bg-white p-5"}>
+      <div className={learningNavigation ? `${styles.card} space-y-4` : "space-y-4"}>
+      {learningNavigation && <><p className={styles.eyebrow}>{learningNavigation.chapterTitle} · Exercise {learningNavigation.number}</p><h1>{learningNavigation.title}</h1></>}
+      <h2 className={learningNavigation ? styles.objective : "text-lg font-semibold"}>{puzzle.learning?.objective ?? "Find the better move"}</h2>
       {puzzle.learning?.prompt && <p className="text-sm">{puzzle.learning.prompt}</p>}
-      {puzzle.learning?.hint && <p className="text-sm">{puzzle.learning.hint}</p>}
-      {puzzle.learning?.publishedSolution && <p className="text-sm">Book solution: {puzzle.learning.publishedSolution}</p>}
-      {puzzle.learning?.explanation && <p className="text-sm">{puzzle.learning.explanation}</p>}
-      <p role="status" aria-label="Puzzle feedback" className="text-sm" aria-live="polite">{pending ? "Saving progress…" : feedback[puzzle.progress.lastOutcome ?? ""] ?? "Your answer is checked after you play a move."}</p>
+      {learningNavigation && !puzzle.learning?.publishedSolution && <div className={styles.field}><p className={styles.label}>Book solution</p><p className={styles.notes}>Reveal the solution or solve the exercise to see the book answer.</p></div>}
+      {puzzle.learning?.hint && <div className={styles.hint}><p className={styles.label}>Hint</p><p>{puzzle.learning.hint}</p></div>}
+      {puzzle.learning?.publishedSolution && <div className={styles.solution}><p className={styles.label}>Book solution</p><p>{puzzle.learning.publishedSolution}</p></div>}
+      <p role="status" aria-label="Puzzle feedback" className={learningNavigation ? styles.feedback : "text-sm"} aria-live="polite">{pending ? "Saving progress…" : feedback[puzzle.progress.lastOutcome ?? ""] ?? "Your answer is checked after you play a move."}</p>
       {puzzle.hintSquare && <p className="text-sm">Hint: move the piece on <strong>{puzzle.hintSquare}</strong>.</p>}
       {puzzle.solutionLine && <p className="text-sm">Solution: <strong>{puzzle.solutionLine.map(move => move.san).join(" → ")}</strong></p>}
       {puzzle.goal && <p className="text-sm">{puzzle.goal === "mate" ? "Checkmate reached." : puzzle.goal === "terminal" ? "The game has ended." : "Validated sequence complete. This puzzle ends here; the game may continue."}</p>}
       <p className="text-sm">Moves tried: {puzzle.progress.moveAttempts}</p>
       <p className="text-sm">{puzzle.progress.assisted ? "Assisted practice: you have used help or already seen the solution." : "No hints or reveals used."}</p>
       {puzzle.progress.completedAt && <p className="text-sm font-semibold">First completion saved · {puzzle.progress.completionAssisted ? "Assisted" : "Unassisted"}</p>}
-      <div className="flex flex-wrap gap-2">
-        <button type="button" disabled={locked || !solving} className={buttonClass} onClick={() => act("HINT")}>Hint</button>
+      <div className={learningNavigation ? styles.actions : "flex flex-wrap gap-2"}>
+        <button type="button" disabled={locked || !solving} className={buttonClass} onClick={() => act("HINT")}>{learningNavigation ? "Show hint" : "Hint"}</button>
         <button type="button" disabled={locked || !solving} className={buttonClass} onClick={() => act("REVEAL")}>Reveal solution</button>
         <button type="button" disabled={locked} className={buttonClass} onClick={() => act("RETRY")}>Retry puzzle</button>
       </div>
@@ -142,7 +155,9 @@ export function PuzzleSolver({ initialPuzzle, nextId, learningNavigation }: { in
         <button type="button" disabled={pending} className={buttonClass} onClick={() => void transmit()}>Refresh saved progress</button>
         {retryRequest && <button type="button" disabled={pending} className={buttonClass} onClick={() => void transmit(retryRequest!)}>Retry saving action</button>}
       </div>}
-      <nav aria-label="Puzzle navigation" className="flex flex-col gap-3 text-sm">
+      </div>
+      {puzzle.learning?.explanation && <section className={styles.card}><h2 className="mb-2 text-sm font-semibold">Explanation</h2><p>{puzzle.learning.explanation}</p></section>}
+      <nav aria-label="Puzzle navigation" className={learningNavigation ? `${styles.card} ${styles.navigation}` : "flex flex-col gap-3 text-sm"}>
         {learningNavigation ? <>
           {learningNavigation.previousUrl && <Link className="underline" href={learningNavigation.previousUrl}>← Previous exercise</Link>}
           {learningNavigation.nextUrl && <Link className="underline font-semibold" href={learningNavigation.nextUrl}>Next exercise →</Link>}
@@ -155,5 +170,5 @@ export function PuzzleSolver({ initialPuzzle, nextId, learningNavigation }: { in
         </>}
       </nav>
     </div>
-  </section>;
+  </section></>;
 }

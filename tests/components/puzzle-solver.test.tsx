@@ -128,7 +128,7 @@ it("loads updated progress on a stale-tab conflict", async () => {
   expect(screen.getByText(/Hint: move/)).toHaveTextContent("e2");
   expect(screen.getByRole("button", { name: "Check move" })).toBeEnabled();
 });
-it("orients Black puzzles and submits underpromotion selected before moving", async () => {
+it("orients Black puzzles and submits underpromotion chosen after moving", async () => {
   const board = new Chess(); board.move("e4");
   const black = solverDto({ ...definition, playerColor: "BLACK", startingFen: board.fen() }, INITIAL_PROGRESS);
   const { unmount } = render(<PuzzleSolver initialPuzzle={black} nextId={null} />);
@@ -137,8 +137,12 @@ it("orients Black puzzles and submits underpromotion selected before moving", as
   const promotion = solverDto({ ...definition, startingFen: "7k/P7/8/8/8/8/8/7K w - - 0 1", acceptedMoves: ["a7a8n"] }, INITIAL_PROGRESS);
   const request = vi.fn(async () => Response.json({ puzzle: promotion })); vi.stubGlobal("fetch", request);
   render(<PuzzleSolver initialPuzzle={promotion} nextId={null} />);
-  fireEvent.change(screen.getByLabelText("Promotion piece"), { target: { value: "n" } });
+  Object.defineProperty(HTMLDialogElement.prototype, "showModal", { configurable: true, value: function (this: HTMLDialogElement) { this.setAttribute("open", ""); } });
   enter("a7a8");
+  expect(request).not.toHaveBeenCalled();
+  expect(screen.getByRole("dialog", { name: "Promote your pawn" })).toBeInTheDocument();
+  for (const piece of ["queen", "rook", "knight", "bishop"]) expect(screen.getByRole("button", { name: `Promote to ${piece}` })).toBeVisible();
+  fireEvent.click(screen.getByRole("button", { name: "Promote to knight" }));
   await waitFor(() => expect(request).toHaveBeenCalledOnce());
   expect(JSON.parse((request.mock.calls[0] as unknown as [string, RequestInit])[1].body as string)).toHaveProperty("move", "a7a8n");
 });
@@ -185,4 +189,24 @@ it("locks input while a move/reply is delayed and restarts the saved sequence cl
   await waitFor(() => expect(screen.queryByLabelText("Played sequence")).not.toBeInTheDocument());
   expect(screen.getByRole("button", { name: "Check move" })).toBeEnabled();
   expect(request).toHaveBeenCalledTimes(2);
+});
+
+it.each(["q", "r", "n", "b"])("offers %s promotion after moving a Black pawn on the board", async code => {
+  Object.defineProperty(HTMLDialogElement.prototype, "showModal", { configurable: true, value: function (this: HTMLDialogElement) { this.setAttribute("open", ""); } });
+  const puzzle = solverDto({ ...definition, playerColor: "BLACK", startingFen: "7k/8/8/8/8/8/p7/7K b - - 0 1", acceptedMoves: [`a2a1${code}`] }, INITIAL_PROGRESS);
+  const request = vi.fn(async () => Response.json({ puzzle })); vi.stubGlobal("fetch", request);
+  render(<PuzzleSolver initialPuzzle={puzzle} nextId={null} />);
+  const board = screen.getByRole("group", { name: "Puzzle position, Black at the bottom" });
+  fireEvent.click(board.querySelector('[data-square="a2"]')!);
+  fireEvent.click(board.querySelector('[data-square="a1"]')!);
+  expect(request).not.toHaveBeenCalled();
+  fireEvent.click(screen.getByRole("button", { name: "Cancel move" }));
+  expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+  expect(request).not.toHaveBeenCalled();
+  fireEvent.click(board.querySelector('[data-square="a2"]')!);
+  fireEvent.click(board.querySelector('[data-square="a1"]')!);
+  const name = { q: "queen", r: "rook", n: "knight", b: "bishop" }[code];
+  fireEvent.click(screen.getByRole("button", { name: `Promote to ${name}` }));
+  await waitFor(() => expect(request).toHaveBeenCalledOnce());
+  expect(JSON.parse((request.mock.calls[0] as unknown as [string, RequestInit])[1].body as string)).toHaveProperty("move", `a2a1${code}`);
 });

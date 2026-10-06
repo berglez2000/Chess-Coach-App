@@ -2,10 +2,10 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import styles from "./simple-page.module.css";
 
-type PageProps = { title: string; description: string; children: ReactNode };
+type PageProps = { title: string; description: string; children: ReactNode; wide?: boolean };
 
-export function SimplePage({ title, description, children }: PageProps) {
-  return <main id="main-content" className={styles.page}>
+export function SimplePage({ title, description, children, wide = false }: PageProps) {
+  return <main id="main-content" className={`${styles.page} ${wide ? styles.wide : ""}`}>
     <nav className={styles.breadcrumb} aria-label="Breadcrumb"><Link href="/">Dashboard</Link><span aria-hidden="true">/</span><span>{title}</span></nav>
     <header><p className={styles.eyebrow}>Your workspace</p><h1 className={styles.heading}>{title}</h1><p className={styles.description}>{description}</p></header>
     <div className={styles.content}>{children}</div>

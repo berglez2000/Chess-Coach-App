@@ -45,6 +45,7 @@ model User {
   settings      UserSettings?
   puzzleProgress PuzzleProgress[]
   books Book[]
+  openings Opening[]
   learningMaterials LearningMaterial[]
   learningProgress LearningProgress[]
   learningProfiles LearningProfileRevision[]
@@ -460,4 +461,31 @@ model WeeklyPlanVersion {
   currentFor WeeklyPlanWorkspace?
   @@unique([userId, version])
   @@unique([userId, generationId, draftRevision])
+}
+
+
+model Opening {
+  id String @id @default(cuid())
+  ownerId String
+  owner User @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  name String
+  description String @db.Text
+  color ChessColor
+  startFen String
+  lines Json
+  revision Int @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  videos OpeningVideo[]
+  @@index([ownerId, updatedAt])
+}
+
+model OpeningVideo {
+  id String @id
+  openingId String
+  opening Opening @relation(fields: [openingId], references: [id], onDelete: Cascade)
+  name String
+  size Int
+  createdAt DateTime @default(now())
+  @@index([openingId, createdAt])
 }

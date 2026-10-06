@@ -1,5 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { spawnSync } from "node:child_process";
+import { unlink } from "node:fs/promises";
+import { join } from "node:path";
 import { assertTestDatabase, createTestDb } from "../tests/support/database";
 import { testDatabaseUrl } from "../tests/support/database-url";
 
@@ -26,6 +28,8 @@ async function main() {
       else if (originalSettings === null) await db.appSettings.deleteMany({ where: { id: "local" } });
       await db.game.deleteMany({ where: { whiteName: { startsWith: `E2E-${runId}-` } } });
       await db.game.deleteMany({ where: { owner: { email: { startsWith: `e2e-${runId}-` } } } });
+      const videos = await db.openingVideo.findMany({ where: { opening: { owner: { email: { startsWith: `e2e-${runId}-` } } } }, select: { id: true } });
+      for (const video of videos) await unlink(join(process.cwd(), ".storage", "opening-videos", `${video.id}.mp4`)).catch(() => {});
       await db.user.deleteMany({ where: { email: { startsWith: `e2e-${runId}-` } } });
     } finally { await db.$disconnect(); }
   }

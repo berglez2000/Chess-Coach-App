@@ -2,7 +2,7 @@
 
 Source: [original ideas](CHESS_COACH_FUTURE_SPECS.md). Existing V0.1 work and evidence remain in [TASKS.md](TASKS.md).
 
-This backlog is not authorization to implement every task. The user authorized email/password auth and ownership (TASK-029–030) and review exploration (TASK-028), then requested starting the next tasks on 2026-10-01. TASK-031–032 are implemented. The user requested TASK-033 and TASK-034 on 2026-10-02; both are now implemented. On 2026-10-03 the user requested refinement of TASK-035–037 around their supplied book exercise and future PDF extraction, then authorized starting implementation. TASK-035–036 and TASK-038–039 are now implemented; TASK-037 and TASK-040–041 remain TODO. On 2026-10-04 the user removed automatic PDF import from scope in favor of manual authoring, deferred TASK-037, and authorized TASK-038–039, confirming reusable weekly plans. IDs continue after TASK-027; dependencies and the recommended sequence determine implementation order. Resolve a task's open decisions before implementing that task. Record implementation evidence before marking it DONE.
+This backlog is not authorization to implement every task. The user authorized email/password auth and ownership (TASK-029–030) and review exploration (TASK-028), then requested starting the next tasks on 2026-10-01. TASK-031–032 are implemented. The user requested TASK-033 and TASK-034 on 2026-10-02; both are now implemented. On 2026-10-03 the user requested refinement of TASK-035–037 around their supplied book exercise and future PDF extraction, then authorized starting implementation. TASK-035–036 and TASK-038–039 are now implemented; TASK-037 remains deferred; TASK-040 is rejected; TASK-041–044 were TODO at that planning stage (TASK-042 was subsequently confirmed complete by the user). On 2026-10-04 the user removed automatic PDF import from scope in favor of manual authoring, deferred TASK-037, and authorized TASK-038–039, confirming reusable weekly plans. On 2026-10-05 the user rejected TASK-040, authorized TASK-041, kept TASK-037 low priority, and requested tasks for app-wide UI polish, more book exercises, and endgame practice. On 2026-10-06 the user requested backlog entries for manually authored opening preparation/practice, adjustable Stockfish play, and deeper analysis; opening practice is the most important of these new ideas. The user subsequently confirmed the existing UI/design work was already done and authorized TASK-045, confirming board/PGN authoring, saved-branch acceptance, transposition matching, and private local MP4 uploads capped at 100 MB. TASK-045 is implemented; TASK-046–047 remain planning entries, not implementation authorization. IDs continue after TASK-027; dependencies and the recommended sequence determine implementation order. Resolve a task's open decisions before implementing that task. Record implementation evidence before marking it DONE.
 
 ## Priority and sequence
 
@@ -10,9 +10,9 @@ This backlog is not authorization to implement every task. The user authorized e
 - **P2:** learning-library expansion after the core practice workflow.
 - **P3:** features that depend on learning content or a public launch.
 
-Recommended remaining sequence: **040 → 041**. **TASK-037 is deferred** and can resume independently when the user supplies a representative example.
+TASK-042 was reported complete by the user on 2026-10-06; its prior design-first sequence is no longer the next step. TASK-045 opening library/practice is now implemented. Recommended next feature sequence: **047 deeper analysis → 046 Stockfish play → 044 endgame integration**. TASK-041 landing/app entry remains separately authorized; TASK-043 content expansion depends on supplied source exercises. This does not change the existing authorization for TASK-041. Content entry for TASK-043 can proceed independently when source exercises are available. **TASK-040 is REJECTED** and excluded from implementation. **TASK-037 is deferred / low priority** and can resume independently when the user supplies a representative example.
 
-The app is for personal use initially, but accounts and data ownership come first by user decision so future multi-user use is handled now. Complete TASK-029–030 before the other new features. The landing page remains later; it can move earlier if public launch becomes a priority.
+The app is for personal use initially, but accounts and data ownership come first by user decision so future multi-user use is handled now. Complete TASK-029–030 before the other new features. The landing page is now authorized; coordinate its design with TASK-042. Public launch is not required to implement it.
 
 TASK-026 is still BLOCKED by existing release acceptance requirements. Track it separately; new planning does not resolve its missing live coaching evidence or build decision. Public deployment is a separate scope decision, not an implied part of adding login or a landing page.
 
@@ -24,9 +24,18 @@ TASK-026 is still BLOCKED by existing release acceptance requirements. Track it 
 4. Email/password login only initially. Keep user identity independent of credentials so Google can be added later through explicit account linking.
 5. Review exploration uses manual play for both sides without live engine evaluation (confirmed for TASK-028).
 6. PDFs, reading progress, and positioned checkmarks are stored in PostgreSQL and synchronized through the owning account (confirmed for TASK-034 on 2026-10-02).
-7. Weekly learning plans are reusable templates (confirmed for TASK-039 on 2026-10-04); dated weekly tracking remains TASK-040.
+7. Weekly learning plans are reusable templates (confirmed for TASK-039 on 2026-10-04); dated weekly tracking (TASK-040) was rejected on 2026-10-05. Keep the reusable template workflow.
+
+8. TASK-041 is authorized; TASK-037 is not urgent.
+9. UI polish must cover every page, with designs prepared using Open Design and design files/previews shared in the session before UI implementation.
+10. Expand manually authored book content with Forks, Pins, Mate in Three, Mate in Four, and further chapters agreed from the source book.
+11. Manually author opening descriptions, uploaded MP4 videos, and approximately 20–30 variations per opening. Opening practice selects a random variation and automatically plays the opponent’s moves.
+12. Endgame practice includes playing a supplied board position to completion against Stockfish, with adjustable engine strength.
+13. Deeper analysis shows the top three engine moves, continuation lines, an evaluation bar, and numerical evaluations; expose it in opening preparation, game review, Stockfish play, and a standalone analysis page.
 
 ## Remaining implementation decisions
+
+For TASK-041, confirm the proposed landing/dashboard routes. For TASK-043, identify the source exercises and target chapters/counts. For TASK-044, agree initial endgame topics, position sources, and correctness policy; Stockfish play from a supplied position is now requested. TASK-045 decisions were confirmed in this session and are recorded below. For TASK-046–047, decide engine execution, strength controls, search budgets, and analysis availability during active practice/play.
 
 Before TASK-037 implementation, inspect a user-supplied Missing Piece example and its solution to establish the required placement and objective. Weekly plans use reusable templates (confirmed by the user on 2026-10-04).
 
@@ -320,7 +329,7 @@ Verification: deterministic provider fixtures for invalid schedules, nonexistent
 
 Notes (2026-10-04): implemented `/learning/plan` with explicit selected-provider generation, persisted proposal preview, session/title editing, add/remove, exact per-day totals, separate acceptance, and explicit regeneration. The server builds a bounded owner-visible resource catalog, prioritizes selected profile resources, and includes only learning materials/chapters with published exercises plus available PDFs/games/puzzles. Generic sessions have explicit labels and fixed instructions; provider output cannot introduce links/resource descriptions or improvement claims. Both Anthropic and OpenAI adapters use structured output and semantic schedule/resource validation. No provider calls occur on page load or status polling, and no provider fallback exists.
 
-Generation stores the profile and resource snapshot, requested/actual model, provider, original generated definition, editable proposal, and durable request identity. One request is bounded to 60 seconds/4,096 output tokens with no automatic paid retries. User-row locks, revisions, and two-minute fenced leases handle concurrent generation/edit/accept, lost-response retries, expiry/recovery, and late responses. Failures retain the accepted template and previous proposal. Acceptance creates an immutable version with its original inputs; profile edits do not rewrite it. Content visibility is rechecked before saved edits/acceptance, and unavailable references are labeled. Applied the additive migration to test and local development databases. Completion/skip/reschedule and calendar weeks remain TASK-040.
+Generation stores the profile and resource snapshot, requested/actual model, provider, original generated definition, editable proposal, and durable request identity. One request is bounded to 60 seconds/4,096 output tokens with no automatic paid retries. User-row locks, revisions, and two-minute fenced leases handle concurrent generation/edit/accept, lost-response retries, expiry/recovery, and late responses. Failures retain the accepted template and previous proposal. Acceptance creates an immutable version with its original inputs; profile edits do not rewrite it. Content visibility is rechecked before saved edits/acceptance, and unavailable references are labeled. Applied the additive migration to test and local development databases. Completion/skip/reschedule and calendar weeks were originally deferred to TASK-040; that task was rejected on 2026-10-05.
 
 Verification: Node 24.21.0 lint, typecheck, all 500 unit/component tests, all 84 integration tests, and webpack production build passed. Desktop (1200px) and mobile (390px) Chromium journeys passed library entry, missing-profile state, no generation on load, actual published-chapter references, explicit generation, request replay, editing/generic study, save/accept/reload, provider switching, failed regeneration preserving acceptance, new-profile snapshots, identical-template regeneration with explicit review/acceptance, invalid schedules, origin/session checks, and cross-account mutation denial. Additional fixtures verify SDK refusals/incomplete output, sanitized errors/missing keys, invalid references/budgets, lost responses, simultaneous requests/edits, expiry/fencing/late timeout responses, deleted/private content, and retained original definitions/accepted history. A PostgreSQL JSON key-order retry issue found during integration was corrected by canonical validation before comparison.
 
@@ -328,9 +337,11 @@ Separate live acceptance: OpenAI `gpt-5.4-mini-2026-03-17` generated three valid
 
 ### TASK-040 — Follow the plan and record weekly completion
 
-Status: TODO  
+Status: REJECTED
 Priority: P3  
 Dependencies: TASK-039
+
+Decision (2026-10-05): rejected by the user. Retain the original scope below for history only; do not implement or include in the recommended sequence. Reusable weekly templates from TASK-039 remain supported.
 
 Scope: show this week's sessions, link to their activities, and support complete/skip/reschedule with weekly progress. Snapshot template sessions into dated weeks so recurring use has distinct history.
 
@@ -344,7 +355,7 @@ Verification: week rollover, rescheduling, repeated completion, and plan replace
 ### TASK-041 — Add the public landing page and app entry flow
 
 Status: TODO  
-Priority: P3; raise to P1 for public launch  
+Priority: P1 (authorized by the user on 2026-10-05)
 Dependencies: TASK-029 and TASK-030 for registration/sign-in calls to action
 
 Scope: modern responsive page explaining review, practice, and learning with accurate screenshots/examples and clear entry actions. Propose `/` for the landing page and `/dashboard` for the existing dashboard; confirm this route choice before implementation.
@@ -355,3 +366,140 @@ Acceptance:
 - Upcoming capabilities are labeled accurately; layout works on mobile and with keyboard navigation.
 
 Verification: anonymous/signed-in navigation, route redirects, responsive layout, and accessibility checks. Hosting, pricing, subscriptions, and payments are not included in this task.
+
+
+### TASK-042 — Modernize the UI/UX across every page
+
+Status: DONE (user-confirmed on 2026-10-06)
+Priority: P1
+Dependencies: existing application pages; coordinate with TASK-041
+
+Completion note: the user confirmed this existing work was already done when asked about starting the design phase. TASK-045 reuses the current visual system. This session did not create or independently audit the prior Open Design files.
+
+Scope: improve every page's UI and UX through a consistent modern visual system and clearer interactions. Prepare designs first using Open Design, retain the generated design files, and share the designs/previews in the session before implementation. Open Design was unavailable in the planning session; tool availability must be resolved before claiming this design requirement complete.
+
+Design coverage:
+- Inventory all routes and shared navigation, including the landing/dashboard, game library/import/review/exploration, puzzles, Books/PDF reader, Learning/materials/chapters/authoring/practice/history, learning profile/weekly plan, settings, and account/auth/recovery screens.
+- Establish typography, color, spacing, layout, cards, forms, buttons, navigation, and chess-board surroundings as reusable styles/components.
+- Provide desktop and mobile designs plus loading, empty, error, validation, disabled, and success states where relevant. Share design files and preview images in the session with a route coverage checklist.
+
+Acceptance:
+- Every page receives a documented UI/UX review and implementation against the prepared designs; no route is silently omitted.
+- Improve information hierarchy, navigation, form feedback, readability, and primary actions while preserving working chess, authoring, account, and persistence flows.
+- Layouts work on narrow mobile screens and desktop; controls support keyboard navigation, visible focus, accessible labels, and readable contrast.
+- Keep shared components consistent and preserve board interaction, promotion, PDF controls, and concealed practice answers.
+
+Verification: route-by-route design/implementation coverage, desktop/mobile visual review, keyboard checks, and browser journeys for the affected core flows. Record design artifact locations and share previews before page implementation; do not mark DONE for designs alone.
+
+### TASK-043 — Add more book puzzle chapters and exercises
+
+Status: TODO
+Priority: P2
+Dependencies: TASK-035, TASK-036
+
+Scope: expand the existing book material with manually entered Forks, Pins, Mate in Three, Mate in Four, and further agreed chapters. This is content expansion using the existing authoring/practice system. Automatic PDF extraction remains outside scope.
+
+Before entry: inspect the supplied book/source exercises and answers, identify existing material/chapter content to avoid duplicates, and agree the chapter order and first batch of exercise numbers/counts. Do not invent positions or label original fixtures as book exercises.
+
+Acceptance:
+- Preserve chapter names/order, printed exercise numbers, diagram/answer page references, side to move, exact positions, published answers, and explanations where supplied.
+- Validate every exercise before publication. Mate in Three/Four must satisfy the existing forced-mate policy; legal cooperative lines alone are insufficient. Forks/Pins use explicit legal tactical branches and instructional endpoints.
+- Exercises exceeding current validation/solution limits remain drafts with actionable feedback; identify any required validator extension separately.
+- New published exercises participate in chapter navigation, resume, hints/reveal, and versioned progress without resetting existing completions.
+- Record an entry report with source coverage, added/skipped/duplicate exercise numbers, and validation issues. Select the intended account/material explicitly; retain existing ownership and operator-controlled sharing.
+
+Verification: compare entered positions/solutions to source material, replay validated branches, and practice representative Forks, Pins, Mate in Three, and Mate in Four exercises with saved completion/reload. No supplied batch means content entry remains pending.
+
+### TASK-044 — Add endgame practice
+
+Status: TODO
+Priority: P2
+Dependencies: TASK-046 for Stockfish play; TASK-035, TASK-036 where existing learning content/progress is reused
+
+Scope: provide dedicated endgame learning/practice with clear objectives, feedback, retry, hints/reveal, explanations, and saved private progress. On 2026-10-06 the user specified starting from a supplied board position and playing to completion against Stockfish. Initial topics, objectives, and position sources remain to be selected.
+
+Decisions before implementation:
+- Choose the first topics and representative positions. Suggested starting topics for discussion: king-and-pawn endings, opposition, basic checkmates, and basic rook endings.
+- Implement open play against Stockfish from a supplied position via TASK-046. Decide whether guided finite exercises should also be offered; existing learning exercises can support some finite lines.
+- Define each objective (mate, promote, win, or hold a draw), accepted alternatives, opponent policy, completion boundary, and correctness evidence. Specify engine/tablebase requirements and availability if selected; a single authored line cannot establish every endgame outcome.
+- Decide how users enter endgame practice and whether content lives in the existing material/chapter structure or needs a dedicated view. Agree the initial content batch and its sources.
+
+Acceptance:
+- Each playable position has a stated objective and validated legal setup; feedback distinguishes illegal moves, proven objective failures, accepted alternatives, and unvalidated continuations.
+- Practice supports both colors, legal opponent replies, promotion, terminal outcomes, restart, and meaningful explanation under the selected policy.
+- Solutions remain concealed until hint/reveal/completion; assistance and first completion use versioned private progress, with reload and duplicate-request safeguards.
+- Display unavailable validation/opponent services clearly and preserve progress on failures. Any incomplete coverage or bounded validation is explained accurately.
+
+Verification: representative agreed endgame positions, objective correctness and alternatives, win/draw/stalemate handling, both colors, promotions, hints/reveal/retry, reload, revision changes, and cross-user isolation. Refine these checks once the first practice mode is chosen.
+
+
+### TASK-045 — Add a manually authored opening library and variation practice
+
+Status: DONE
+Priority: P1 (highest priority among the new ideas added on 2026-10-06)
+Dependencies: existing account ownership, game library, and shared chessboard; TASK-047 for later integrated engine analysis
+
+Scope: add an openings listing and a separate detail page for each manually added opening. Include a short description, the user's games played in that opening, uploaded MP4 videos, and a Lichess-study-like editor for manually entering and editing approximately 20–30 variations. The central feature is practicing randomly selected authored variations while the computer automatically plays the opponent's moves.
+
+Acceptance:
+- Owners can create/edit openings, descriptions, videos, and legal branching variations for both colors; preserve private ownership and validate authored moves.
+- Opening detail pages show related owned games under a defined matching rule and playable uploaded MP4 videos, with useful empty/error states.
+- Practice selects a random variation from the chosen opening, accepts the user's moves, automatically plays the opponent's authored replies, and lets the user continue to the next variation.
+- Support legal board interaction, promotion, retry, and a clear completion boundary. Define how wrong moves, hints/reveal, and moves belonging to another saved branch are handled before implementation.
+- Reuse ReplayBoard and the existing boardTheme/customPieces wooden board and image pieces for authoring and practice.
+
+Decisions before implementation: choose practice color/start position controls, game matching by move sequence or position (including transpositions), video storage/upload limits, and variation selection/repetition policy. Mistake tracking and weighted repetition are possible extensions, not confirmed requirements.
+
+Verification: create/edit an opening with branching variations, match representative owned games, upload/play MP4s, and practice random variations for both colors with automatic replies, incorrect moves, promotions, completion, next variation, and ownership isolation.
+
+
+Confirmed decisions (2026-10-06): board-based branching authoring plus PGN import/export; per-opening practice color and optional custom starting FEN; accept another saved branch and continue its authored replies; incorrect moves do not change the position; hint/reveal and retry; shuffle without selection repeats until the cycle finishes; position matching includes transpositions; private MP4 uploads on local server disk with a 100 MiB per-file bound.
+
+Implementation (2026-10-06): added `/openings`, create/detail/edit/practice pages, desktop/mobile navigation and a dashboard entry. Openings and legal variation definitions are private PostgreSQL data with optimistic revision checks. The editor branches from selected moves, extends leaves, renames/removes lines, imports nested SAN PGN variations, and exports separate PGN games. Supports up to 100 variations and 160 plies per line; supplied positions check both kings, the non-moving king's check state, and castling pieces. All boards use ReplayBoard and the existing wooden assets, including selectable promotion pieces.
+
+Practice selects a shuffled authored line, automatically replies for the opponent, and accepts other saved branches. Illegal/incorrect moves preserve the position. Hint/reveal assistance persists through retry; completion and next variation have explicit boundaries. Practice is session-only, with no saved attempt history or live engine evaluation. Related owned games are matched through FEN position identity without clocks, after four plies for a normal start or from a custom start, within the first 40 plies; latest 50 matches are shown. Private MP4 streaming supports byte ranges and ownership/origin checks, stores random filenames outside `public/` in `.storage/opening-videos/`, and cleans failed uploads and removed videos. Back up storage with the database; browser codec support is required.
+
+Verification: Node 24.21.0 lint, TypeScript, all 531 unit/component tests, three opening database integration tests, and webpack production build passed. Three Chromium browser journeys passed: desktop (1200px), mobile (390px), and nested-PGN/custom-FEN/promotion branches. Checks cover real board clicks, both practice colors, wrong/illegal moves, automatic replies, hint/reveal/retry/next, underpromotion, reload, transposed-game matching, real H.264 MP4 playback/range requests, and unauthenticated/cross-user opening/video denial. Added 21 unit/component tests for opening legality, imports, position identity, special moves, randomized selection, editor/practice interactions, bounded JSON/video reads, and storage errors. Applied `20261006150000_openings` to dedicated test and local development databases. TASK-026 release blockers remain separate.
+
+Runtime follow-up (2026-10-06): the existing dev server retained a pre-opening Prisma singleton through hot reload, causing `db.opening` to be undefined despite the applied migration. The shared database cache now records generated model names and replaces/disconnects a stale singleton when the models change. Opening error recovery uses Next 16.3 `retry()` to refetch, and its message no longer incorrectly assumes a database outage. Verified the development opening repository query, lint/typecheck, and four regression tests covering cache reuse/replacement and error retry.
+
+Practice refinement (2026-10-06): user requested move sounds, a one-second pause for computer replies, and larger boards. Opening authoring/practice now uses the existing move-sound hook and assets with shared mute controls; accepted user moves appear/sound immediately and replies are scheduled one second later. Pending replies lock board input/hints and cancel on retry/reveal/unmount. Wider opening pages and reduced board card padding enlarge desktop and mobile boards while preserving the wooden theme. Regression checks cover timing, illegal/incorrect silence, mute, Black’s initial reply, and stale-timer cancellation. Verification: all 538 unit/component tests, lint, TypeScript/webpack production build, and all three opening browser journeys passed. Browser checks confirm move-audio calls, larger boards (at least 550px at 1200px viewport and 340px at 390px), and no mobile horizontal overflow; desktop/mobile screenshots were visually reviewed.
+
+### TASK-046 — Play against Stockfish with adjustable strength
+
+Status: TODO
+Priority: P2
+Dependencies: existing legal move handling and shared chessboard; coordinate engine execution with TASK-047
+
+Scope: play a complete game against Stockfish with adjustable difficulty. Support both the normal starting position and a supplied board position so TASK-044 can use the same opponent for endgame practice.
+
+Acceptance:
+- Select a side and engine strength; validate supplied positions and have Stockfish play legal replies automatically.
+- Handle promotion, checkmate, stalemate, draws, resignation, restart, and engine failures with clear game state.
+- Endgame practice can start from a supplied position and continue to the end against Stockfish.
+- Integrate deeper analysis from TASK-047 with an explicit policy for when suggestions are visible during play versus afterward.
+- Reuse ReplayBoard and the existing wooden board/piece assets; preserve private ownership for saved sessions if persistence is included.
+
+Decisions before implementation: engine execution location, strength settings and their limits, time controls/search budgets, position input method, and whether games/session history are saved.
+
+Verification: games at representative strength settings, both colors, custom endgame starts, legal engine replies, promotions, terminal outcomes, restart, and engine interruption/recovery.
+
+### TASK-047 — Add deeper analysis with the top three engine moves
+
+Status: TODO
+Priority: P1
+Dependencies: existing Stockfish analysis integration, legal move handling, game review, and shared chessboard; TASK-045/TASK-046 for their respective integrations
+
+Scope: provide deeper position analysis for opening preparation, game review, and Stockfish play, plus a standalone analysis page where the user manually plays moves for White and Black. Show the best, second-best, and third-best engine moves with continuation lines, an evaluation bar, and numerical evaluations such as +0.32, +0.28, and +0.14. Support understanding and exploring alternatives without requiring the user to choose the engine's top move.
+
+Acceptance:
+- Use MultiPV analysis to display up to three legal candidate moves and their continuations; handle positions with fewer legal moves and mate scores correctly.
+- Keep evaluation perspective consistent and clearly labeled; show search depth/progress so partial results are understandable.
+- Manually enter moves for either side, navigate the explored line, and analyze the currently selected position.
+- Integrate the same analysis controls into opening preparation, game review, and Stockfish play while preserving existing review exploration behavior unless the user enables analysis.
+- Cancel or supersede stale searches when the position changes; clearly handle engine unavailability and bounded search limits.
+- Reuse ReplayBoard and the existing wooden board/piece assets throughout.
+
+Decisions before implementation: engine execution/reuse, depth/time controls, starting-position input, variation saving, and when analysis is available during practice/play. Avoid circular dependencies by building the shared analyzer and standalone page before dependent integrations.
+
+Verification: top-three results from representative positions, fewer-than-three moves, mate/terminal positions, both evaluation perspectives, manual branches and navigation, rapid position changes, and each integrated entry point.

@@ -26,3 +26,6 @@ generated/prisma/
 
 # Version-matched PDF.js worker copied from the installed dependency
 public/pdfjs/
+
+# Private opening videos (back up with the database)
+.storage/

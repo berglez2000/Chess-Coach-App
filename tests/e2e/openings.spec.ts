@@ -1,0 +1,81 @@
+import { randomUUID } from "node:crypto";
+import { readFile } from "node:fs/promises";
+import { test, expect } from "@playwright/test";
+const origin = "http://127.0.0.1:3100";
+for (const width of [1200, 390]) test(`opening authoring, practice, private MP4 playback at ${width}px`, async ({ page, browser }) => {
+  test.setTimeout(120000); await page.setViewportSize({ width, height: 900 });
+  await page.addInitScript(() => {
+    const tracker = window as unknown as { openingMoveSounds: string[] };
+    tracker.openingMoveSounds = [];
+    const original = HTMLMediaElement.prototype.play;
+    HTMLMediaElement.prototype.play = function() {
+      if (this.src.includes("/sounds/")) tracker.openingMoveSounds.push(new URL(this.src).pathname);
+      return original.call(this);
+    };
+  });
+  const email = `e2e-${process.env.CHESS_E2E_RUN_ID}-${randomUUID()}@example.test`;
+  expect((await page.request.post("/api/auth/sign-up/email", { headers: { origin }, data: { name: "Opening tester", email, password: "opening browser passphrase" } })).status()).toBe(200);
+  await page.goto("/openings"); await page.getByRole("link", { name: "Add opening", exact: true }).click();
+  await page.getByLabel("Opening name").fill("Queens pawn repertoire"); await page.getByLabel("Description", { exact: true }).fill("Practice transposed queen pawn positions.");
+  const board = page.getByRole("group", { name: /Opening position/ });
+  await board.locator('[data-square="g1"]').click(); await board.locator('[data-square="f3"]').click();
+  for (const move of ["d7d5", "d2d4", "g8f6"]) { await page.getByLabel("Move coordinates").fill(move); await page.getByRole("button", { name: "Play move", exact: true }).click(); }
+  await expect(page.getByRole("heading", { name: "Variations (1)" })).toBeVisible();
+  await page.getByRole("button", { name: "Save opening" }).click(); await expect(page).toHaveURL(/\/openings\/(?!new$)[^/]+$/);
+  const id = new URL(page.url()).pathname.split("/").at(-1)!;
+  await expect(page.getByRole("heading", { name: "Queens pawn repertoire", exact: true })).toBeVisible(); await page.reload(); await expect(page.getByRole("heading", { name: "Queens pawn repertoire", exact: true })).toBeVisible();
+  const imported = await page.request.post("/api/games", { headers: { origin }, data: { userColor: "WHITE", pgn: '[White "Transposed"]\n[Black "Opponent"]\n\n1. d4 Nf6 2. Nf3 d5 *' } }); expect(imported.status()).toBe(201);
+  await page.reload(); await expect(page.getByRole("link", { name: /Transposed vs Opponent/ })).toBeVisible();
+  await page.getByLabel("Video title").fill("Opening clip"); await page.getByLabel("MP4 file").setInputFiles("tests/fixtures/opening-video.mp4"); await page.getByRole("button", { name: "Upload video" }).click();
+  await expect(page.getByText("Video uploaded.")).toBeVisible();
+  const video = page.locator("video"); await expect.poll(() => video.evaluate((element: HTMLVideoElement) => element.readyState)).toBeGreaterThanOrEqual(1);
+  await video.evaluate((element: HTMLVideoElement) => element.play()); await expect.poll(() => video.evaluate((element: HTMLVideoElement) => element.currentTime)).toBeGreaterThan(0);
+  const dto = (await (await page.request.get(`/api/openings/${id}`)).json()).opening; const videoId = dto.videos[0].id;
+  const ranged = await page.request.get(`/api/openings/${id}/videos/${videoId}`, { headers: { range: "bytes=0-31" } }); expect(ranged.status()).toBe(206); expect((await ranged.body()).length).toBe(32);
+  await page.getByRole("link", { name: "Practice variations", exact: true }).click(); await page.getByRole("button", { name: "Start practice" }).click();
+  await page.getByLabel("Move coordinates").fill("e2e5"); await page.getByRole("button", { name: "Play move", exact: true }).click(); await expect(page.getByRole("status", { name: "Practice feedback" })).toContainText("Illegal");
+  await page.getByLabel("Move coordinates").fill("e2e4"); await page.getByRole("button", { name: "Play move", exact: true }).click(); await expect(page.getByRole("status", { name: "Practice feedback" })).toContainText("not in a saved branch");
+  const practiceBoard = page.getByRole("group", { name: /Opening position/ }); await practiceBoard.locator('[data-square="g1"]').click(); await practiceBoard.locator('[data-square="f3"]').click(); await expect(page.getByText("Played: Nf3 · d5")).toBeVisible();
+  await page.getByRole("button", { name: "Hint", exact: true }).click(); await expect(page.getByText("Try d4.")).toBeVisible();
+  await page.getByLabel("Move coordinates").fill("d2d4"); await page.getByRole("button", { name: "Play move", exact: true }).click(); await expect(page.getByRole("heading", { name: "Variation complete" })).toBeVisible();
+  expect(await page.evaluate(() => (window as unknown as { openingMoveSounds: string[] }).openingMoveSounds.length)).toBeGreaterThanOrEqual(4);
+  const boardSize = await page.locator("#game-replay-board").boundingBox();
+  expect(boardSize!.width).toBeGreaterThanOrEqual(width === 390 ? 340 : 550);
+  await page.screenshot({ path: `test-results/opening-practice-${width}.png`, fullPage: true });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  await page.getByRole("button", { name: "Retry variation" }).click(); await page.getByRole("button", { name: "Reveal", exact: true }).click(); await expect(page.getByRole("heading", { name: "Solution revealed" })).toBeVisible();
+  await page.getByRole("button", { name: "Next variation" }).click(); await expect(page.getByRole("heading", { name: "Your move", exact: true })).toBeVisible();
+  const other = await browser.newContext({ baseURL: origin });
+  try {
+    expect((await other.request.get(`/api/openings/${id}/videos/${videoId}`)).status()).toBe(401);
+    expect((await other.request.post("/api/auth/sign-up/email", { headers: { origin }, data: { name: "Other", email: `e2e-${process.env.CHESS_E2E_RUN_ID}-${randomUUID()}@example.test`, password: "other opening passphrase" } })).status()).toBe(200);
+    expect((await other.request.get(`/api/openings/${id}`)).status()).toBe(404);
+    expect((await other.request.put(`/api/openings/${id}`, { headers: { origin }, data: { revision: dto.revision, content: { name: "Stolen", description: dto.description, startFen: dto.startFen, color: dto.color, lines: dto.lines } } })).status()).toBe(404);
+    expect((await other.request.get(`/api/openings/${id}/videos/${videoId}`)).status()).toBe(404);
+    expect((await other.request.delete(`/api/openings/${id}/videos/${videoId}`, { headers: { origin } })).status()).toBe(404);
+    expect((await other.request.post(`/api/openings/${id}/videos?name=Foreign`, { headers: { origin, "content-type": "video/mp4" }, data: await readFile("tests/fixtures/opening-video.mp4") })).status()).toBe(404);
+  } finally { await other.close(); }
+  await page.goto(`/openings/${id}/edit`); await page.getByLabel("Practice color").selectOption("BLACK"); await page.getByRole("button", { name: "Save opening" }).click(); await expect(page.getByText("Opening saved.")).toBeVisible();
+  await page.goto(`/openings/${id}/practice`); await page.getByRole("button", { name: "Start practice" }).click(); await expect(page.getByText("Played: Nf3")).toBeVisible(); await expect(page.getByRole("group", { name: /Black at the bottom/ })).toBeVisible();
+  await page.getByLabel("Move coordinates").fill("d7d5"); await page.getByRole("button", { name: "Play move", exact: true }).click(); await expect(page.getByText("Played: Nf3 · d5 · d4")).toBeVisible();
+  await page.getByLabel("Move coordinates").fill("g8f6"); await page.getByRole("button", { name: "Play move", exact: true }).click(); await expect(page.getByRole("heading", { name: "Variation complete" })).toBeVisible();
+  expect((await page.request.delete(`/api/openings/${id}/videos/${videoId}`, { headers: { origin } })).status()).toBe(200);
+});
+test("nested PGN import, custom FEN, and promotion into another saved branch", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 900 });
+  expect((await page.request.post("/api/auth/sign-up/email", { headers: { origin }, data: { name: "Promotion tester", email: `e2e-${process.env.CHESS_E2E_RUN_ID}-${randomUUID()}@example.test`, password: "promotion browser passphrase" } })).status()).toBe(200);
+  await page.goto("/openings/new"); await page.getByLabel("Opening name").fill("Promotion branches");
+  await page.getByText("Starting position", { exact: true }).click();
+  await page.getByLabel("Starting FEN").fill("7k/P7/8/8/8/8/8/7K w - - 0 1"); await page.getByRole("button", { name: "Apply starting position" }).click();
+  await page.getByRole("textbox", { name: "PGN", exact: true }).fill("1. a8=Q+ (1. a8=N) Kh7 2. Qf8 *"); await page.getByRole("button", { name: "Import PGN", exact: true }).click(); await expect(page.getByRole("heading", { name: "Variations (2)" })).toBeVisible();
+  await page.getByRole("button", { name: "Save opening" }).click(); await expect(page.getByRole("heading", { name: "Promotion branches", exact: true })).toBeVisible();
+  const id = new URL(page.url()).pathname.split("/").at(-1)!;
+  await page.getByRole("link", { name: "Practice variations" }).click(); await page.getByRole("button", { name: "Start practice" }).click();
+  const board = page.getByRole("group", { name: /Opening position/ }); await board.locator('[data-square="a7"]').click(); await board.locator('[data-square="a8"]').click();
+  await expect(page.getByRole("dialog", { name: "Promote your pawn" })).toBeVisible(); await page.getByRole("button", { name: "Promote to knight" }).click();
+  await expect(page.getByRole("heading", { name: "Variation complete" })).toBeVisible(); await expect(page.getByText(/Completed without hints/)).toBeVisible();
+  await page.getByRole("button", { name: "Next variation" }).click(); await expect(page.getByRole("heading", { name: "Your move", exact: true })).toBeVisible();
+  await page.getByLabel("Move coordinates").fill("a7a8q"); await page.getByRole("button", { name: "Play move", exact: true }).click(); await expect(page.getByText("Played: a8=Q+ · Kh7")).toBeVisible();
+  await page.getByLabel("Move coordinates").fill("a8f8"); await page.getByRole("button", { name: "Play move", exact: true }).click(); await expect(page.getByRole("heading", { name: "Variation complete" })).toBeVisible();
+  await page.goto(`/openings/${id}/edit`); await page.getByRole("button", { name: "Export to text" }).click(); await expect(page.getByRole("textbox", { name: "PGN", exact: true })).toHaveValue(/FEN/);
+});

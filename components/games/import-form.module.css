@@ -1,0 +1,29 @@
+.layout { display: grid; grid-template-columns: minmax(0, 1fr) 280px; align-items: start; gap: 24px; margin-top: 32px; }
+.card { min-width: 0; padding: 24px; border: 1px solid var(--border-light); border-radius: var(--r-xl); background: var(--surface); box-shadow: var(--shadow-card); }
+.cardHeader { display: flex; align-items: center; gap: 12px; padding-bottom: 20px; border-bottom: 1px solid var(--border-light); }
+.cardHeader h2, .guide h2 { font-size: 17px; font-weight: 600; letter-spacing: -.01em; }
+.cardHeader p { margin-top: 4px; color: var(--fg-3); font-size: 12px; line-height: 1.6; }
+.icon { display: grid; place-items: center; flex-shrink: 0; width: 44px; height: 44px; border-radius: var(--r-md); background: var(--green-subtle); color: var(--green); }
+.form { display: grid; gap: 24px; margin-top: 24px; }
+.hint { margin-top: 6px; color: var(--fg-3); font-size: 12px; line-height: 1.6; }
+.colorSelect { max-width: 280px; font-size: 14px; cursor: pointer; }
+.pgn { min-height: 260px; resize: vertical; font-family: var(--font-mono); font-size: 13px; line-height: 1.8; background: var(--surface-2); }
+.pgn::placeholder { color: var(--fg-3); opacity: .8; }
+.form [aria-invalid="true"] { border-color: var(--status-error); }
+.form [aria-invalid="true"]:focus { box-shadow: 0 0 0 3px var(--status-error-bg); }
+.form :disabled { cursor: wait; }
+.fieldError { margin-top: 8px; color: var(--status-error); font-size: 12px; line-height: 1.6; }
+.footer { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 16px; padding-top: 20px; border-top: 1px solid var(--border-light); }
+.footer .hint { margin: 0; }
+.success { margin-top: 20px; }
+.guide { padding: 24px; border: 1px solid var(--border-light); border-radius: var(--r-lg); background: var(--surface-2); }
+.guide > .icon { margin-bottom: 16px; background: var(--surface); }
+.guide > p { margin-top: 10px; color: var(--fg-2); font-size: 13px; line-height: 1.75; }
+.tip { margin-top: 24px; }
+.tip h3, .next h3 { font-size: 12px; font-weight: 600; }
+.tip p, .next p { margin-top: 6px; color: var(--fg-3); font-size: 12px; line-height: 1.75; }
+.tip code { color: var(--fg-2); font-family: var(--font-mono); font-size: 11px; }
+.next { display: flex; align-items: flex-start; gap: 10px; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); }
+.next > svg { flex-shrink: 0; margin-top: 2px; color: var(--fg-3); }
+@media (max-width: 1023px) { .layout { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 600px) { .layout { margin-top: 24px; gap: 20px; } .card, .guide { padding: 20px; } .colorSelect { max-width: none; } .footer { align-items: stretch; flex-direction: column; } .footer .hint { text-align: center; } }

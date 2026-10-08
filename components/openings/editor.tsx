@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { DEFAULT_POSITION } from "chess.js";
-import { EMPTY_OPENING, exportPgn, importPgn, position, validateContent, type OpeningContent } from "@/lib/openings/content";
+import { EMPTY_OPENING, exportPgn, importPgn, position, validateContent, type OpeningContent, type OpeningLine } from "@/lib/openings/content";
 import type { OpeningDto } from "@/lib/openings/repository";
 import { MoveBoard } from "./move-board";
 import styles from "./openings.module.css";
@@ -16,6 +16,8 @@ export function OpeningEditor({ initial }: { initial?: OpeningDto }) {
   const [lineIndex, setLineIndex] = useState(0);
   const [fenInput, setFenInput] = useState(content.startFen);
   const [pgn, setPgn] = useState("");
+  const [sourceUrl, setSourceUrl] = useState("");
+  const [importing, setImporting] = useState(false);
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
   const [busy, setBusy] = useState(false);
@@ -56,13 +58,33 @@ export function OpeningEditor({ initial }: { initial?: OpeningDto }) {
     } catch (cause) { setError(cause instanceof Error ? cause.message : "Could not save your opening."); }
     finally { setBusy(false); }
   }
+  function mergeImported(incoming: OpeningLine[]) {
+    const merged = [...content.lines];
+    for (const line of incoming) {
+      if (!merged.some(existing => existing.moves.join(" ") === line.moves.join(" "))) merged.push(line);
+    }
+    if (accept({ ...content, lines: merged })) {
+      setNotice(`Imported ${merged.length - content.lines.length} variations. Save opening to keep them.`);
+      setMoves([]); setLineIndex(0);
+    }
+  }
+  async function importUrl() {
+    setImporting(true); setError(""); setNotice("");
+    try {
+      const response = await fetch("/api/openings/import", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ url: sourceUrl, startFen: content.startFen }) });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error?.message || "URL import failed.");
+      mergeImported(data.lines);
+    } catch (cause) { setError(cause instanceof Error ? cause.message : "URL import failed."); }
+    finally { setImporting(false); }
+  }
   const chess = position(content.startFen, moves);
   const activeLine = content.lines[lineIndex];
   function navigate(next: string[]) { setMoves(next); setError(""); }
   return <div className={styles.stack}>
-    <div className={styles.actions}><button className={styles.primary} disabled={busy} onClick={save}>{busy ? "Saving…" : "Save opening"}</button>{initial && <Link className={styles.button} href={`/openings/${initial.id}`}>Opening overview</Link>}<span className={styles.muted}>{dirty ? "Unsaved changes" : initial ? "All changes saved" : "New opening"}</span></div>
+    <div className={styles.actions}><button className={styles.primary} disabled={busy || importing} onClick={save}>{busy ? "Saving…" : "Save opening"}</button>{initial && <Link className={styles.button} href={`/openings/${initial.id}`}>Opening overview</Link>}<span className={styles.muted}>{dirty ? "Unsaved changes" : initial ? "All changes saved" : "New opening"}</span></div>
     {error && <p role="alert" className={styles.error}>{error}</p>}{notice && <p role="status" className={styles.status}>{notice}</p>}
-    <fieldset disabled={busy} className={styles.stack}>
+    <fieldset disabled={busy || importing} className={styles.stack}>
       <div className={styles.card}>
         <label className={styles.field}>Opening name<input value={content.name} maxLength={200} onChange={event => setContent({ ...content, name: event.target.value })} /></label>
         <label className={styles.field}>Description<textarea value={content.description} maxLength={20000} onChange={event => setContent({ ...content, description: event.target.value })} /></label>
@@ -86,9 +108,14 @@ export function OpeningEditor({ initial }: { initial?: OpeningDto }) {
           })}
         </div>
       </div>
+      <div className={styles.card}><h2>Import variations from URL</h2>
+        <p className={styles.muted}>Paste a public Lichess study URL to import every chapter and PGN branch, or a raw GitHub / Gist PGN URL. Existing variations are kept and duplicates skipped. Up to 100 variations and 250 KB.</p>
+        <label className={styles.field}>Source URL<input type="url" value={sourceUrl} maxLength={2048} placeholder="https://lichess.org/study/…" onChange={event => setSourceUrl(event.target.value)} /></label>
+        <button type="button" className={styles.button} disabled={!sourceUrl.trim() || importing} onClick={importUrl}>{importing ? "Importing…" : "Import from URL"}</button>
+      </div>
       <div className={styles.card}><h2>PGN import / export</h2><p className={styles.muted}>Import mainlines and nested PGN branches. Import adds variations; existing move sequences are kept once. Export saves each authored line as a separate PGN game.</p>
         <label className={styles.field}>PGN<textarea value={pgn} onChange={event => setPgn(event.target.value)} maxLength={250000} /></label>
-        <div className={styles.actions}><button type="button" className={styles.button} onClick={() => { try { const incoming = importPgn(pgn, content.startFen); const merged = [...content.lines]; for (const line of incoming) { if (!merged.some(existing => existing.moves.join(" ") === line.moves.join(" "))) merged.push(line); } if (accept({ ...content, lines: merged })) { setNotice(`Imported ${merged.length - content.lines.length} variations.`); setMoves([]); } } catch (cause) { setError(cause instanceof Error ? cause.message : "PGN import failed."); } }}>Import PGN</button>
+        <div className={styles.actions}><button type="button" className={styles.button} onClick={() => { try { mergeImported(importPgn(pgn, content.startFen)); } catch (cause) { setError(cause instanceof Error ? cause.message : "PGN import failed."); } }}>Import PGN</button>
         <button type="button" className={styles.button} disabled={!content.lines.length} onClick={() => { setPgn(exportPgn(content)); setNotice("Exported PGN is in the text field. Copy it or download it."); }}>Export to text</button>
         <button type="button" className={styles.button} disabled={!content.lines.length} onClick={() => { const url = URL.createObjectURL(new Blob([exportPgn(content)], { type: "application/x-chess-pgn" })); const anchor = document.createElement("a"); anchor.href = url; anchor.download = "opening.pgn"; anchor.click(); URL.revokeObjectURL(url); }}>Download PGN</button></div>
       </div>

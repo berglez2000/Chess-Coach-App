@@ -5,6 +5,7 @@ vi.mock("@/lib/db/client", () => ({ getDb: () => db }));
 vi.mock("@/lib/openings/repository", () => ({ openingRepository: (_db: unknown, ownerId: string) => ({ get: (id: string) => get(ownerId, id), update: (id: string, revision: number, content: unknown) => update(ownerId, id, revision, content), create: (content: unknown) => create(ownerId, content) }) }));
 import { GET, PUT } from "@/app/api/openings/[id]/route";
 import { POST } from "@/app/api/openings/route";
+import { POST as importUrl } from "@/app/api/openings/import/route";
 import { EMPTY_OPENING, OpeningError } from "@/lib/openings/content";
 const context = { params: Promise.resolve({ id: "opening" }) };
 const content = { ...EMPTY_OPENING, name: "Opening" };
@@ -15,6 +16,7 @@ it.each([401, 403])("authenticates before parsing or accessing private openings 
   expect((await GET(new Request("http://local"), context)).status).toBe(status);
   expect((await PUT(request({}), context)).status).toBe(status);
   expect((await POST(request({}, "POST"))).status).toBe(status);
+  expect((await importUrl(request({}, "POST"))).status).toBe(status);
   expect(get).not.toHaveBeenCalled(); expect(update).not.toHaveBeenCalled(); expect(create).not.toHaveBeenCalled();
 });
 it("takes ownership from the session and prevents shared caching", async () => {

@@ -27,3 +27,18 @@ it("conceals the selected solution, plays replies, handles incorrect moves, hint
   fireEvent.click(screen.getByRole("button", { name: "Reveal" })); expect(screen.getByText("Authored solution")).toBeVisible(); expect(screen.getByRole("button", { name: "Play move" })).toBeDisabled();
   fireEvent.click(screen.getByRole("button", { name: "Next variation" })); expect(screen.queryByText("Authored solution")).not.toBeInTheDocument();
 });
+it("imports URL variations, skips duplicates, and saves the merged opening", async () => {
+  const fetcher = vi.fn()
+    .mockResolvedValueOnce({ ok: true, json: async () => ({ lines: [...content.lines, { name: "French", moves: ["e2e4", "e7e6"] }] }) })
+    .mockResolvedValueOnce({ ok: true, json: async () => ({ opening: { revision: 1 } }) });
+  vi.stubGlobal("fetch", fetcher);
+  render(<OpeningEditor initial={{ ...content, id: "opening", revision: 0, videos: [] }} />);
+  fireEvent.change(screen.getByLabelText("Source URL"), { target: { value: "https://lichess.org/study/abcdefgh" } });
+  fireEvent.click(screen.getByRole("button", { name: "Import from URL" }));
+  await waitFor(() => expect(screen.getByText(/Imported 1 variations/)).toBeVisible());
+  expect(screen.getByText("Variations (2)")).toBeVisible();
+  expect(fetcher.mock.calls[0][0]).toBe("/api/openings/import");
+  fireEvent.click(screen.getByRole("button", { name: "Save opening" }));
+  await waitFor(() => expect(screen.getByText("Opening saved.")).toBeVisible());
+  expect(JSON.parse(fetcher.mock.calls[1][1].body).content.lines).toHaveLength(2);
+});

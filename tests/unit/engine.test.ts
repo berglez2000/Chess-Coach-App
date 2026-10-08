@@ -155,3 +155,49 @@ it("validates secondary MultiPV continuations too", async () => {
   const fixture = processFixture("info depth 14 multipv 1 score cp 250 pv e2e4\ninfo depth 14 multipv 2 score cp 20 pv d2d5\nbestmove e2e4\n");
   await expect(createStockfish({ ...config, multiPv: 2 }, fixture.start).analyze(fen)).rejects.toHaveProperty("code", "PROTOCOL");
 });
+it("streams coherent top-three iterations and returns the last complete depth", async () => {
+  const fixture = processFixture("info depth 10 multipv 1 score cp 30 pv e2e4 e7e5\ninfo depth 10 multipv 2 score cp 20 pv d2d4 d7d5\ninfo depth 10 multipv 3 score cp 10 pv g1f3 g8f6\ninfo depth 11 multipv 1 score cp 35 pv e2e4 e7e5\nbestmove e2e4\n");
+  const progress = vi.fn();
+  const result = await createStockfish({ ...config, multiPv: 3 }, fixture.start).analyze(fen, { onProgress: progress });
+  expect(result.variations?.map(line => line.depth)).toEqual([10, 10, 10]);
+  expect(result.variations?.map(line => line.pv[0])).toEqual(["e2e4", "d2d4", "g1f3"]);
+  expect(progress).toHaveBeenCalledTimes(4);
+  expect(progress.mock.calls.at(-1)?.[0].variations?.map((line: { depth: number }) => line.depth)).toEqual([11]);
+  expect(fixture.commands).toContain("setoption name MultiPV value 3");
+});
+it("handles fewer legal roots and validates third-ranked continuations", async () => {
+  const oneMove = "r7/8/8/8/8/2k5/8/K7 w - - 0 1";
+  expect(new Chess(oneMove).moves()).toHaveLength(1);
+  const fixture = processFixture("info depth 7 multipv 1 score cp -500 pv a1b1\nbestmove a1b1\n");
+  expect((await createStockfish({ ...config, multiPv: 3 }, fixture.start).analyze(oneMove)).variations).toHaveLength(1);
+  const bad = processFixture("info depth 7 multipv 1 score cp 30 pv e2e4\ninfo depth 7 multipv 2 score cp 20 pv d2d4\ninfo depth 7 multipv 3 score cp 10 pv g1g4\nbestmove e2e4\n");
+  await expect(createStockfish({ ...config, multiPv: 3 }, bad.start).analyze(fen)).rejects.toHaveProperty("code", "PROTOCOL");
+});
+it("aborts an active process and removes its abort listener after cleanup", async () => {
+  const fixture = processFixture("", { hang: true });
+  const controller = new AbortController();
+  const remove = vi.spyOn(controller.signal, "removeEventListener");
+  const pending = createStockfish(config, fixture.start).analyze(fen, { signal: controller.signal });
+  const assertion = expect(pending).rejects.toHaveProperty("code", "CANCELLED");
+  controller.abort(); await assertion;
+  expect(fixture.commands).toContain("quit");
+  expect(fixture.child.stdout.destroyed).toBe(true);
+  expect(remove).toHaveBeenCalledWith("abort", expect.any(Function));
+  const cancelled = processFixture();
+  await expect(createStockfish(config, cancelled.start).analyze(fen, { signal: controller.signal })).rejects.toHaveProperty("code", "CANCELLED");
+  expect(cancelled.start).not.toHaveBeenCalled();
+});
+it("preserves validated move history in the UCI position command", async () => {
+  const board = new Chess(); board.move("e4");
+  const fixture = processFixture("info depth 12 score cp 10 pv e7e5\nbestmove e7e5\n");
+  await createStockfish(config, fixture.start).analyze(board.fen(), { history: { startFen: fen, moves: ["e2e4"] } });
+  expect(fixture.commands).toContain(`position fen ${fen} moves e2e4`);
+  const invalid = processFixture();
+  await expect(createStockfish(config, invalid.start).analyze(board.fen(), { history: { startFen: fen, moves: ["d2d4"] } })).rejects.toHaveProperty("code", "INVALID_FEN");
+  expect(invalid.start).not.toHaveBeenCalled();
+});
+it("keeps final candidates consistent with a changed engine best move", async () => {
+  const fixture = processFixture("info depth 10 multipv 1 score cp 30 pv e2e4\ninfo depth 10 multipv 2 score cp 20 pv d2d4\ninfo depth 10 multipv 3 score cp 10 pv g1f3\ninfo depth 11 multipv 1 score cp 35 pv d2d4\nbestmove d2d4\n");
+  const result = await createStockfish({ ...config, multiPv: 3 }, fixture.start).analyze(fen);
+  expect(result.bestMove).toBe("d2d4"); expect(result.variations?.[0].pv[0]).toBe("d2d4"); expect(result.variations).toHaveLength(1);
+});

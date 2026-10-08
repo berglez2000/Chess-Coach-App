@@ -1,0 +1,31 @@
+.layout { display: grid; grid-template-columns: minmax(0,760px) minmax(280px,1fr); gap: 24px; align-items: start; }
+.stack { display: grid; gap: 16px; min-width: 0; }
+.card, .panel { min-width: 0; padding: 20px; border: 1px solid var(--border-light); border-radius: 16px; background: var(--surface); box-shadow: var(--shadow-card); }
+.panel { display: grid; gap: 14px; margin-top: 16px; }
+.panel h2 { font-size: 18px; font-weight: 650; }
+.actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.muted { font-size: 13px; color: var(--fg-3); line-height: 1.7; }
+.button, .primary { border: 1px solid var(--border); border-radius: 8px; padding: 9px 14px; font-size: 13px; font-weight: 600; cursor: pointer; }
+.primary { background: var(--green); color: white; border-color: var(--green); }
+.button:hover { background: var(--green-subtle); }
+.primary:hover { background: var(--green-hover); }
+.button:disabled { opacity: .5; cursor: default; }
+.button:focus-visible, .primary:focus-visible, .field input:focus-visible, .limit select:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+.badge { border-radius: 6px; padding: 4px 8px; font-size: 11px; background: var(--green-subtle); color: var(--green); }
+.field { display: grid; gap: 6px; font-size: 13px; }
+.field input, .limit select { min-width: 0; border: 1px solid var(--border); border-radius: 8px; padding: 9px; background: var(--surface); color: var(--fg); }
+.field input { width: 100%; }
+.limit { display: grid; gap: 4px; font-size: 12px; }
+.results { display: flex; align-items: stretch; gap: 12px; min-height: 100px; }
+.lines { flex: 1; min-width: 0; }
+.candidate { border-bottom: 1px solid var(--border-light); padding: 12px 0; }
+.score { margin-left: auto; font: 600 14px var(--font-mono); color: var(--green); }
+.continuation { margin: 10px 0; font: 12px/1.8 var(--font-mono); overflow-wrap: anywhere; }
+.error { background: var(--status-error-bg); color: var(--status-error); border-radius: 8px; padding: 12px; font-size: 13px; }
+.terminal { padding: 12px 0; font-weight: 600; }
+.moves { display: flex; gap: 5px; flex-wrap: wrap; }
+.move { border: 1px solid var(--border-light); border-radius: 6px; padding: 5px 8px; font: 12px var(--font-mono); cursor: pointer; }
+.move[aria-pressed=true] { background: var(--green-subtle); border-color: var(--green); }
+.fen { overflow-wrap: anywhere; font-size: 11px; color: var(--fg-3); }
+@media(max-width:1199px) { .layout { grid-template-columns: 1fr; } }
+@media(max-width:767px) { .card { padding: 8px; } .panel { padding: 16px; } }

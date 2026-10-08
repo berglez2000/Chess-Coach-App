@@ -27,6 +27,7 @@ export default async function HomePage() {
   const sessions = dashboard?.plan?.definition.sessions.filter(session => session.day === day) ?? [];
   const minutes = sessions.reduce((total, session) => total + session.minutes, 0);
   const quick: { href: string; label: string; icon: IconName; sub: string }[] = [
+    { href: "/analysis", label: "Analysis", icon: "games", sub: "Explore the top three engine moves" },
     { href: "/openings", label: "Openings", icon: "games", sub: "Study and practice your repertoire" },
     { href: "/puzzles", label: "Puzzles", icon: "puzzles", sub: dashboard ? `${dashboard.puzzles} generated from your games` : "Practice your game positions" },
     { href: "/learning", label: "Books", icon: "books", sub: dashboard ? `${dashboard.books} PDFs uploaded` : "Your reading library" },

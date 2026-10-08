@@ -14,6 +14,12 @@ export interface EngineResult {
   /** Ranked root lines, present only when MultiPV was requested. */
   variations?: EngineInfo[];
 }
+export interface EngineSearchOptions {
+  signal?: AbortSignal;
+  onProgress?: (result: EngineResult) => void;
+  /** Preserve repetition context for manually explored lines. */
+  history?: { startFen: string; moves: string[] };
+}
 export interface ChessEngine {
-  analyze(fen: string): Promise<EngineResult>;
+  analyze(fen: string, options?: EngineSearchOptions): Promise<EngineResult>;
 }

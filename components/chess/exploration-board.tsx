@@ -3,6 +3,7 @@
 import { useState } from "react";
 import type { ChessColor } from "@/types/game";
 import { explorationFen, explorationPosition, exploreMove, type Exploration } from "@/lib/pgn/exploration";
+import { PositionAnalysisPanel } from "@/components/analysis/position-panel";
 import { ReplayBoard } from "./replay-board";
 
 const buttonClass = "rounded-lg border border-[#20382e]/30 px-3 py-2 text-sm font-medium hover:bg-white disabled:opacity-40";
@@ -34,7 +35,7 @@ export function ExplorationBoard({ startFen, userColor, flipped, onExit }: {
     setMoveText("");
   }
   return <div className="min-w-0">
-    <p className="mb-3 rounded-lg bg-[#e4eddf] p-3 text-sm"><strong>Exploring a variation</strong> · Play both sides. Moves are temporary; saved analysis is hidden. No live evaluation.</p>
+    <p className="mb-3 rounded-lg bg-[#e4eddf] p-3 text-sm"><strong>Exploring a variation</strong> · Play both sides. Moves are temporary; saved analysis is hidden. Live analysis is available below when enabled.</p>
     <ReplayBoard fen={explorationFen(variation)} userColor={userColor} flipped={flipped}
       lastMove={variation.moves.at(-1)} selectedSquare={selected} onMove={move}
       onSquareClick={square => {
@@ -63,5 +64,6 @@ export function ExplorationBoard({ startFen, userColor, flipped, onExit }: {
       <button type="button" className={buttonClass} onClick={() => changeMoves([])}>Reset variation</button>
       <button type="button" className={buttonClass} onClick={onExit}>Return to review</button>
     </div>
+    <PositionAnalysisPanel position={variation} whiteBottom={(userColor === "WHITE") !== flipped} onPlay={line => { const uci = line[0]; move(uci.slice(0, 2), uci.slice(2, 4), uci[4] ?? "q"); }} />
   </div>;
 }

@@ -12,12 +12,19 @@ const startProcess: StartProcess = path => spawn(path, [], { shell: false, stdio
 export function createStockfish(config: EngineConfig, start: StartProcess = startProcess): ChessEngine {
   const settings = validateEngineConfig(config);
   return {
-    async analyze(fen) {
+    async analyze(fen, options = {}) {
       let board: Chess;
       try {
         if (/[\r\n\0]/.test(fen) || fen.trim().split(/\s+/).length !== 6) throw new Error();
         board = new Chess(fen);
+        if (options.history) {
+          const previous = new Chess(options.history.startFen);
+          if (/[\r\n\0]/.test(options.history.startFen) || options.history.startFen.trim().split(/\s+/).length !== 6 || options.history.moves.length > 400) throw new Error();
+          for (const move of options.history.moves) { if (!/^[a-h][1-8][a-h][1-8][qrbn]?$/.test(move)) throw new Error(); previous.move(move); }
+          if (previous.fen() !== board.fen()) throw new Error();
+        }
       } catch { throw new EngineError("INVALID_FEN", "Provide a valid standard-chess FEN."); }
+      if (options.signal?.aborted) throw new EngineError("CANCELLED", "Analysis cancelled.");
       let child: ChildProcessWithoutNullStreams;
       try { child = start(settings.path); }
       catch { throw new EngineError("UNAVAILABLE", "Could not start Stockfish. Check its executable path and permissions."); }
@@ -25,7 +32,15 @@ export function createStockfish(config: EngineConfig, start: StartProcess = star
         let phase: "uci" | "ready" | "search" | "closing" = "uci";
         let buffer = "";
         let evaluation: EngineInfo | null = null;
-        const variations = new Map<number, EngineInfo>();
+        const variations = new Map<number, Map<number, EngineInfo>>();
+        const lineCount = Math.min(settings.multiPv ?? 1, board.moves().length);
+        const snapshot = (complete = false, bestRoot?: string | null): EngineResult => {
+          const groups = [...variations.entries()].sort((a, b) => b[0] - a[0]);
+          const group = groups.find(([, ranks]) => ranks.has(1) && (!bestRoot || ranks.get(1)?.pv[0] === bestRoot) && new Set([...ranks.values()].map(info => info.pv[0])).size === ranks.size && (!complete || ranks.size === lineCount))?.[1];
+          const lines: EngineInfo[] = [];
+          if (group) for (let rank = 1; rank <= lineCount; rank++) { const info = group.get(rank); if (!info) break; lines.push(info); }
+          return { perspective: board.turn() === "w" ? "WHITE" : "BLACK", bestMove: lines[0]?.pv[0] ?? null, evaluation: lines[0] ?? evaluation, ...((settings.multiPv ?? 1) > 1 ? { variations: lines } : {}) };
+        };
         let result: EngineResult | undefined;
         let failure: EngineError | undefined;
         let closed = false;
@@ -34,6 +49,7 @@ export function createStockfish(config: EngineConfig, start: StartProcess = star
         let deadline: ReturnType<typeof setTimeout>;
         const cleanup = () => {
           clearTimeout(deadline); clearTimeout(killTimer); clearTimeout(closeTimer);
+          options.signal?.removeEventListener("abort", abort);
           child.stdout.off("data", data);
           child.off("error", processError); child.off("close", close);
           child.stdin.destroy(); child.stdout.destroy(); child.stderr.destroy();
@@ -62,6 +78,7 @@ export function createStockfish(config: EngineConfig, start: StartProcess = star
           }, 1500);
           send("stop"); send("quit");
         };
+        const abort = () => finish(new EngineError("CANCELLED", "Analysis cancelled."));
         const processError = () => finish(new EngineError("UNAVAILABLE", "Stockfish could not run. Check its executable path and permissions."));
         const close = () => {
           closed = true;
@@ -77,26 +94,30 @@ export function createStockfish(config: EngineConfig, start: StartProcess = star
             phase = "search";
             clearTimeout(deadline);
             deadline = setTimeout(() => finish(new EngineError("TIMEOUT", "Stockfish analysis timed out. Try a lower search limit.")), settings.timeoutMs);
-            send(`position fen ${fen}`);
+            send(options.history ? `position fen ${options.history.startFen} moves ${options.history.moves.join(" ")}` : `position fen ${fen}`);
             send(settings.moveTimeMs === undefined ? `go depth ${settings.depth}` : `go movetime ${settings.moveTimeMs}`);
           } else if (phase === "search") {
             if (text.startsWith("bestmove")) {
               const bestMove = parseBestMove(text);
               const legal = board.moves({ verbose: true }).map(move => move.from + move.to + (move.promotion ?? ""));
               if ((bestMove === null && legal.length > 0) || (bestMove !== null && !legal.includes(bestMove))) throw new EngineError("PROTOCOL", "Stockfish returned a best move inconsistent with the position.");
-              result = { perspective: board.turn() === "w" ? "WHITE" : "BLACK", bestMove, evaluation };
-              if (settings.multiPv === 2) result.variations = [variations.get(1), variations.get(2)].filter((info): info is EngineInfo => Boolean(info));
+              result = { ...snapshot(true, bestMove), bestMove };
+              if ((settings.multiPv ?? 1) > 1 && !result.variations?.length) result = { ...snapshot(false, bestMove), bestMove };
               finish();
             } else {
-              const rank = settings.multiPv === 2 ? Number(/\bmultipv (\d+)\b/.exec(text)?.[1] ?? 1) : 1;
+              const rank = (settings.multiPv ?? 1) > 1 ? Number(/\bmultipv (\d+)\b/.exec(text)?.[1] ?? 1) : 1;
               if (rank < 1 || rank > (settings.multiPv ?? 1)) return;
               const info = parseInfo(text, rank);
               if (info) {
                 const variation = new Chess(fen);
                 try { for (const move of info.pv) variation.move({ from: move.slice(0, 2), to: move.slice(2, 4), promotion: move[4] }); }
                 catch { throw new EngineError("PROTOCOL", "Stockfish returned an illegal principal variation."); }
-                variations.set(rank, info);
+                const ranks = variations.get(info.depth) ?? new Map<number, EngineInfo>();
+                ranks.set(rank, info); variations.set(info.depth, ranks);
+                // Bound retained depth snapshots; keep only recent search iterations.
+                if (variations.size > 32) variations.delete(Math.min(...variations.keys()));
                 if (rank === 1) evaluation = info;
+                options.onProgress?.(snapshot());
               }
             }
           }
@@ -114,7 +135,8 @@ export function createStockfish(config: EngineConfig, start: StartProcess = star
         child.stdout.on("error", processError); child.stderr.on("error", processError);
         child.stderr.resume();
         deadline = setTimeout(() => finish(new EngineError("TIMEOUT", "Stockfish initialization timed out.")), 5000);
-        send("uci");
+        options.signal?.addEventListener("abort", abort, { once: true });
+        if (options.signal?.aborted) abort(); else send("uci");
       });
     },
   };

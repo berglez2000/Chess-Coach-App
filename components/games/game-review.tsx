@@ -5,6 +5,7 @@ import { Chess } from "chess.js";
 import { useCallback, useEffect, useState } from "react";
 import type { ChessColor } from "@/types/game";
 import type { AnalysisStatus, ReviewGame } from "@/types/saved-game";
+import { PositionAnalysisPanel } from "@/components/analysis/position-panel";
 import { ExplorationBoard } from "@/components/chess/exploration-board";
 import { ReplayBoard } from "@/components/chess/replay-board";
 import { useMoveSound } from "@/components/chess/use-move-sound";
@@ -112,7 +113,7 @@ export function GameReview({ game, userColor, status, initialPly = 0 }: { game: 
         <span className="text-sm text-[#657467]">{critical.length} moments to learn from · Both players</span>
       </div>}
 
-          {exploration ? <ExplorationBoard startFen={exploration} userColor={userColor} flipped={flipped} onExit={() => setExploration(null)} /> : <>
+          {exploration ? <ExplorationBoard key={exploration} startFen={exploration} userColor={userColor} flipped={flipped} onExit={() => setExploration(null)} /> : <>
           {player(whiteBottom ? "BLACK" : "WHITE")}
           <div className="flex items-stretch gap-2 sm:gap-3">
             <EvaluationBar evaluation={preview ? null : selectedPly === 0 ? game.moves[0]?.analysis?.before : selectedMove?.analysis?.after}
@@ -152,7 +153,7 @@ export function GameReview({ game, userColor, status, initialPly = 0 }: { game: 
             }}>{name[0].toUpperCase() + name.slice(1)}</button>)}
           </div>
           <div id="review-tab-panel" role="tabpanel" aria-labelledby={`review-tab-${tab}`} className={styles.panelContent}>
-          {tab === "engine" && !exploration && <EnginePanel initial={selectedPly === 0} analysis={analysis} />}
+          {tab === "engine" && !exploration && <><EnginePanel initial={selectedPly === 0} analysis={analysis} /><PositionAnalysisPanel position={preview ? { startFen: fen, moves: [] } : { startFen: game.initialFen, moves: game.moves.slice(0, selectedPly).map(move => move.uci) }} whiteBottom={whiteBottom} /></>}
           {tab === "engine" && exploration && <p className="p-5 text-sm">Return to review to see saved engine analysis.</p>}
           {tab === "coaching" && <>
           {exploration ? <p className="rounded-2xl bg-white p-5 text-sm">Recorded evaluations and coaching are hidden during exploration. Select a game move to leave the variation, or return to review to restore your selected position.</p> : <div className="rounded-2xl border border-[#20382e]/15 bg-white p-5">

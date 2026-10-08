@@ -5,13 +5,17 @@ import Link from "next/link";
 import { DEFAULT_POSITION } from "chess.js";
 import { EMPTY_OPENING, exportPgn, importPgn, position, validateContent, type OpeningContent, type OpeningLine } from "@/lib/openings/content";
 import type { OpeningDto } from "@/lib/openings/repository";
+import { useMoveSound } from "@/components/chess/use-move-sound";
+import { PositionAnalysisPanel } from "@/components/analysis/position-panel";
 import { MoveBoard } from "./move-board";
 import styles from "./openings.module.css";
 export function OpeningEditor({ initial }: { initial?: OpeningDto }) {
   const router = useRouter();
+  const sound = useMoveSound();
   const [content, setContent] = useState<OpeningContent>(initial ? { name: initial.name, description: initial.description, color: initial.color, startFen: initial.startFen, lines: initial.lines } : EMPTY_OPENING);
   const [revision, setRevision] = useState(initial?.revision ?? 0);
   const [saved, setSaved] = useState(JSON.stringify(content));
+  const [boardFlipped, setBoardFlipped] = useState(false);
   const [moves, setMoves] = useState<string[]>([]);
   const [lineIndex, setLineIndex] = useState(0);
   const [fenInput, setFenInput] = useState(content.startFen);
@@ -89,14 +93,14 @@ export function OpeningEditor({ initial }: { initial?: OpeningDto }) {
         <label className={styles.field}>Opening name<input value={content.name} maxLength={200} onChange={event => setContent({ ...content, name: event.target.value })} /></label>
         <label className={styles.field}>Description<textarea value={content.description} maxLength={20000} onChange={event => setContent({ ...content, description: event.target.value })} /></label>
         <label className={styles.field}>Practice color<select value={content.color} onChange={event => setContent({ ...content, color: event.target.value as OpeningContent["color"] })}><option value="WHITE">White</option><option value="BLACK">Black</option></select></label>
-        <details><summary>Starting position</summary><label className={styles.field}>Starting FEN<input value={fenInput} onChange={event => setFenInput(event.target.value)} /></label><p className={styles.muted}>Applying a different starting position clears the current variations. Save or export them first.</p><div className={styles.actions}><button type="button" className={styles.button} onClick={() => { try { const fen = position(fenInput).fen(); if (fen !== content.startFen) { if (accept({ ...content, startFen: fen, lines: [] })) { setMoves([]); setLineIndex(0); } } } catch { setError("Enter a valid FEN with both kings."); } }}>Apply starting position</button><button type="button" className={styles.button} onClick={() => setFenInput(DEFAULT_POSITION)}>Use normal starting FEN</button></div></details>
+        <details><summary>Starting position</summary><label className={styles.field}>Starting FEN<input value={fenInput} onChange={event => setFenInput(event.target.value)} /></label><p className={styles.muted}>Applying a different starting position clears the current variations. Save or export them first.</p><div className={styles.actions}><button type="button" className={styles.button} onClick={() => { try { const fen = position(fenInput).fen(); if (fen !== content.startFen) { if (accept({ ...content, startFen: fen, lines: [] })) { setMoves([]); setLineIndex(0); setBoardFlipped(false); } } } catch { setError("Enter a valid FEN with both kings."); } }}>Apply starting position</button><button type="button" className={styles.button} onClick={() => setFenInput(DEFAULT_POSITION)}>Use normal starting FEN</button></div></details>
       </div>
       <div className={styles.layout}>
-        <div className={`${styles.card} ${styles.boardCard}`}><h2>Variation board</h2><MoveBoard key={content.startFen} content={content} moves={moves} onPlay={play} disabled={busy} />
+        <div className={`${styles.card} ${styles.boardCard}`}><h2>Variation board</h2><MoveBoard key={content.startFen} content={content} moves={moves} onPlay={play} disabled={busy} onFlip={setBoardFlipped} sound={sound} />
           <div className={styles.actions}><button type="button" className={styles.button} onClick={() => navigate([])}>Start</button><button type="button" className={styles.button} disabled={!moves.length} onClick={() => navigate(moves.slice(0, -1))}>Previous</button><button type="button" className={styles.button} disabled={!activeLine || moves.length >= activeLine.moves.length} onClick={() => navigate(activeLine.moves.slice(0, moves.length + 1))}>Next</button><button type="button" className={styles.button} disabled={!activeLine} onClick={() => navigate(activeLine.moves)}>End</button></div>
           <p className={styles.muted}>Current line: {chess.history().join(" · ") || "Starting position"}</p>
         </div>
-        <div className={styles.card}><h2>Variations ({content.lines.length})</h2><p className={styles.muted}>Play moves to extend a line. Select an earlier move and play a different move to create a branch. Aim for 20–30 variations; up to 100 are supported.</p>
+        <div className={styles.stack}><PositionAnalysisPanel position={{ startFen: content.startFen, moves }} whiteBottom={(content.color === "WHITE") !== boardFlipped} onPlay={busy || importing ? undefined : line => { const board = position(content.startFen, moves); if (play(line[0])) { const move = board.move(line[0]); sound.play(move.san, board.isGameOver()); } }} /><div className={styles.card}><h2>Variations ({content.lines.length})</h2><p className={styles.muted}>Play moves to extend a line. Select an earlier move and play a different move to create a branch. Aim for 20–30 variations; up to 100 are supported.</p>
           {!content.lines.length && <p className={styles.status}>Play your first move or import a PGN to begin.</p>}
           {content.lines.map((line, index) => {
             const history = position(content.startFen, line.moves).history({ verbose: true });
@@ -106,7 +110,7 @@ export function OpeningEditor({ initial }: { initial?: OpeningDto }) {
               <div className={styles.actions}><button type="button" className={styles.button} onClick={() => { setLineIndex(index); navigate(line.moves); }}>View line</button><button type="button" className={styles.button} onClick={() => { setContent({ ...content, lines: content.lines.filter((_, i) => i !== index) }); setMoves([]); setLineIndex(0); }}>Remove variation {index + 1}</button></div>
             </div>;
           })}
-        </div>
+        </div></div>
       </div>
       <div className={styles.card}><h2>Import variations from URL</h2>
         <p className={styles.muted}>Paste a public Lichess study URL to import every chapter and PGN branch, or a raw GitHub / Gist PGN URL. Existing variations are kept and duplicates skipped. Up to 100 variations and 250 KB.</p>

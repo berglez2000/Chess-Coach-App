@@ -5,8 +5,8 @@ import { squaresToPlacement } from "@/lib/chesslink/protocol";
 import { physicalMove, differingSquares } from "@/lib/play/physical-board";
 import styles from "@/components/analysis/analysis.module.css";
 export type PhysicalStatus = { connected: boolean; placement: string | null };
-export function MillenniumBoard({ fen, sessionId, guideMove, acceptMoves, onMove, onStatus, onDisconnect }: {
-  fen: string; sessionId: number; guideMove: boolean; acceptMoves: boolean; onMove: (uci: string) => void;
+export function MillenniumBoard({ opponentName = "Stockfish", fen, sessionId, guideMove, acceptMoves, onMove, onStatus, onDisconnect }: {
+  opponentName?: string; fen: string; sessionId: number; guideMove: boolean; acceptMoves: boolean; onMove: (uci: string) => void;
   onStatus: (status: PhysicalStatus) => void; onDisconnect: () => void;
 }) {
   const [connected, setConnected] = useState(false);
@@ -71,7 +71,7 @@ export function MillenniumBoard({ fen, sessionId, guideMove, acceptMoves, onMove
       if (!changed && next !== expected) return;
       if (timer.current) clearTimeout(timer.current);
       if (next === expected) { armed.current = current.current.fen; setMessage("Physical board synchronized."); return; }
-      setMessage("Board changed. Waiting for the completed move or Stockfish position.");
+      setMessage("Board changed. Waiting for the completed move or engine position.");
       const expectedFen = current.current.fen; const expectedSession = current.current.sessionId;
       timer.current = setTimeout(() => {
         const state = current.current;
@@ -100,8 +100,8 @@ export function MillenniumBoard({ fen, sessionId, guideMove, acceptMoves, onMove
   }
   const synchronized = connected && placement === fen.split(" ")[0];
   return <section className={styles.stack} aria-label="Millennium board connection">
-    <p className={styles.muted}>Put the King Performance in CLink mode and close other board apps. Stockfish is the opponent. Move its replies on the physical board using the screen; LED prompts mark the pieces and squares needed to complete its reply.</p>
-    <label><input type="checkbox" checked={ledEnabled} onChange={event => setLedEnabled(event.target.checked)} /> Stockfish LED prompts</label>
+    <p className={styles.muted}>Put the King Performance in CLink mode and close other board apps. {opponentName} is the opponent. Move its replies on the physical board using the screen; LED prompts mark the pieces and squares needed to complete its reply.</p>
+    <label><input type="checkbox" checked={ledEnabled} onChange={event => setLedEnabled(event.target.checked)} /> {opponentName} LED prompts</label>
     <p role="status" aria-label="LED status">{ledMessage}</p>
     <button className={styles.button} disabled={!connected || !ledEnabled} onClick={() => setLedRetry(value => value + 1)}>Retry LED prompt</button>
     <label><input type="checkbox" checked={listenOnly} disabled={connected || connecting} onChange={event => setListenOnly(event.target.checked)} /> Skip initial queries (LED prompts still enabled)</label>

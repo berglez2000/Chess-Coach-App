@@ -1,13 +1,14 @@
 import { DEFAULT_POSITION } from "chess.js";
 import { beforeEach, expect, it, vi } from "vitest";
-const { auth, analyze, create } = vi.hoisted(() => ({ auth: vi.fn(), analyze: vi.fn(), create: vi.fn() }));
+const { auth, analyze, create, maia } = vi.hoisted(() => ({ auth: vi.fn(), analyze: vi.fn(), create: vi.fn(), maia: vi.fn() }));
 vi.mock("@/lib/auth/session", () => ({ requireApiUser: auth }));
 vi.mock("@/lib/engine/stockfish", () => ({ createStockfish: create }));
+vi.mock("@/lib/engine/maia", () => ({ createMaia: maia }));
 import { POST } from "@/app/api/play/route";
 import { DIFFICULTIES } from "@/lib/play/contract";
 const body = { startFen: DEFAULT_POSITION, moves: [], color: "BLACK", difficulty: "casual" };
 const request = (input: unknown = body, signal?: AbortSignal) => new Request("http://local/api/play", { method: "POST", body: JSON.stringify(input), signal });
-beforeEach(() => { vi.clearAllMocks(); auth.mockResolvedValue({ id: "play-owner" }); create.mockReturnValue({ analyze }); analyze.mockResolvedValue({ bestMove: "e2e4" }); });
+beforeEach(() => { vi.clearAllMocks(); auth.mockResolvedValue({ id: "play-owner" }); create.mockReturnValue({ analyze }); maia.mockReturnValue({ analyze }); analyze.mockResolvedValue({ bestMove: "e2e4" }); });
 it.each([401,403])("checks session/origin before engine access (%s)", async status => { auth.mockResolvedValue(new Response(null, { status })); expect((await POST(request("bad"))).status).toBe(status); expect(create).not.toHaveBeenCalled(); });
 it.each(Object.keys(DIFFICULTIES))("bounds difficulty %s and returns a private reply", async difficulty => {
   const response = await POST(request({ ...body, difficulty }));
@@ -21,7 +22,7 @@ it("replays Black replies from complete legal history", async () => {
   expect(analyze).toHaveBeenCalledWith(expect.stringContaining(" b "), expect.objectContaining({ history: { startFen: DEFAULT_POSITION, moves: ["e2e4"] } }));
 });
 it("rejects illegal, wrong-turn, forged, unsupported, and oversized input", async () => {
-  for (const input of [{ ...body, moves: ["e2e5"] }, { ...body, color: "WHITE" }, { ...body, userId: "other" }, { ...body, difficulty: "unlimited" }, { ...body, startFen: "x".repeat(11000) }]) expect((await POST(request(input))).status).toBe(400);
+  for (const input of [{ ...body, moves: ["e2e5"] }, { ...body, color: "WHITE" }, { ...body, userId: "other" }, { ...body, difficulty: "unlimited" }, { ...body, opponent: "unknown" }, { ...body, startFen: "x".repeat(11000) }]) expect((await POST(request(input))).status).toBe(400);
   expect(create).not.toHaveBeenCalled();
 });
 it("handles custom terminal starts without spawning", async () => {
@@ -38,4 +39,21 @@ it("fences concurrent requests and passes abort to the process", async () => {
   await vi.waitFor(() => expect(analyze).toHaveBeenCalled());
   expect((await POST(request())).status).toBe(429); controller.abort(); expect((await pending).status).toBe(503);
   analyze.mockResolvedValue({ bestMove: "e2e4" }); expect((await POST(request())).status).toBe(200);
+});
+
+it("routes human-like games to Maia with the selected rating and complete history", async () => {
+  vi.stubEnv("MAIA_PATH", "/test/maia3-5m");
+  try {
+    expect((await POST(request({ ...body, opponent: "maia", difficulty: "challenging" }))).status).toBe(200);
+    expect(maia).toHaveBeenCalledWith("/test/maia3-5m", 1700);
+    expect(create).not.toHaveBeenCalled();
+    expect(analyze).toHaveBeenCalledWith(DEFAULT_POSITION, expect.objectContaining({ history: { startFen: DEFAULT_POSITION, moves: [] } }));
+  } finally { vi.unstubAllEnvs(); }
+});
+it("reports Maia failures without silently falling back to Stockfish", async () => {
+  analyze.mockRejectedValueOnce(new Error("secret path"));
+  const response = await POST(request({ ...body, opponent: "maia" }));
+  expect(response.status).toBe(503);
+  expect(await response.text()).toContain("MAIA_PATH");
+  expect(create).not.toHaveBeenCalled();
 });

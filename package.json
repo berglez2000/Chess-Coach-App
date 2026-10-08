@@ -20,6 +20,7 @@
     "auth:admin": "node --conditions=react-server --import tsx scripts/auth-admin.ts",
     "test:integration": "tsx scripts/test-integration.ts",
     "test:engine": "node --conditions=react-server --import tsx scripts/check-engine.ts",
+    "test:maia": "node --conditions=react-server --import tsx scripts/check-maia.ts",
     "test:play": "node --conditions=react-server --import tsx scripts/check-play.ts",
     "test:position-analysis": "node --conditions=react-server --import tsx scripts/check-position-analysis.ts",
     "test:e2e": "tsx scripts/test-e2e.ts",

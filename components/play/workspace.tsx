@@ -7,7 +7,7 @@ import { PromotionPicker } from "@/components/chess/promotion-picker";
 import { useMoveSound } from "@/components/chess/use-move-sound";
 import { PositionAnalysisPanel } from "@/components/analysis/position-panel";
 import { validatePosition } from "@/lib/position-analysis/contract";
-import { DIFFICULTIES, type Difficulty } from "@/lib/play/contract";
+import { DIFFICULTIES, OPPONENTS, MAIA_RATINGS, type Opponent, type Difficulty } from "@/lib/play/contract";
 import { MillenniumBoard, type PhysicalStatus } from "./millennium-board";
 import styles from "@/components/analysis/analysis.module.css";
 export function PlayWorkspace() {
@@ -16,8 +16,9 @@ export function PlayWorkspace() {
   const [physical, setPhysical] = useState<PhysicalStatus>({ connected: false, placement: null });
   const [fenInput, setFenInput] = useState(DEFAULT_POSITION);
   const [color, setColor] = useState<"WHITE" | "BLACK">("WHITE");
+  const [opponent, setOpponent] = useState<Opponent>("stockfish");
   const [difficulty, setDifficulty] = useState<Difficulty>("casual");
-  const [game, setGame] = useState<{ startFen: string; color: "WHITE" | "BLACK"; difficulty: Difficulty; moves: string[]; id: number } | null>(null);
+  const [game, setGame] = useState<{ startFen: string; color: "WHITE" | "BLACK"; difficulty: Difficulty; opponent: Opponent; moves: string[]; id: number } | null>(null);
   const [resigned, setResigned] = useState(false);
   const [paused, setPaused] = useState(false);
   const [thinking, setThinking] = useState(false);
@@ -45,7 +46,7 @@ export function PlayWorkspace() {
     async function reply() {
       setThinking(true); setError("");
       try {
-        const response = await fetch("/api/play", { method: "POST", headers: { "Content-Type": "application/json" }, signal: controller.signal, body: JSON.stringify({ startFen: game!.startFen, moves: game!.moves, color: game!.color, difficulty: game!.difficulty }) });
+        const response = await fetch("/api/play", { method: "POST", headers: { "Content-Type": "application/json" }, signal: controller.signal, body: JSON.stringify({ startFen: game!.startFen, moves: game!.moves, color: game!.color, difficulty: game!.difficulty, opponent: game!.opponent }) });
         const data = await response.json();
         if (!response.ok) throw new Error(data.error?.message ?? "Engine reply failed.");
         if (!active) return;
@@ -63,7 +64,7 @@ export function PlayWorkspace() {
   function start() {
     try {
       const startFen = validatePosition(fenInput).fen(); request.current?.abort();
-      setGame({ startFen, color, difficulty, moves: [], id: Date.now() });
+      setGame({ startFen, color, difficulty, opponent, moves: [], id: Date.now() });
       setResigned(false); setPaused(false); setThinking(false); setAnalysis(false); setPromotion(null); setSelected(null); setCoordinates(""); setError("");
     } catch (cause) { setError(cause instanceof Error ? cause.message : "Invalid starting position."); }
   }
@@ -76,14 +77,15 @@ export function PlayWorkspace() {
     catch { setError("Illegal move. Try another move."); return false; }
   }
   const result = resigned ? game?.color === "WHITE" ? "0-1" : "1-0" : board.isCheckmate() ? board.turn() === "w" ? "0-1" : "1-0" : board.isDraw() ? "1/2-1/2" : "*";
+  const opponentName = (game?.opponent ?? opponent) === "maia" ? "Maia" : "Stockfish";
   function download() {
-    board.header("Event", "Chess Coach practice", "White", game?.color === "WHITE" ? "Player" : "Stockfish", "Black", game?.color === "BLACK" ? "Player" : "Stockfish", "Result", result);
+    board.header("Event", "Chess Coach practice", "White", game?.color === "WHITE" ? "Player" : opponentName, "Black", game?.color === "BLACK" ? "Player" : opponentName, "Result", result);
     const url = URL.createObjectURL(new Blob([board.pgn()], { type: "application/x-chess-pgn" }));
-    const link = document.createElement("a"); link.href = url; link.download = "stockfish-practice.pgn"; link.click(); URL.revokeObjectURL(url);
+    const link = document.createElement("a"); link.href = url; link.download = `${opponentName.toLowerCase()}-practice.pgn`; link.click(); URL.revokeObjectURL(url);
   }
-  return <div className={styles.layout}><section className={`${styles.card} ${styles.stack}`} aria-label="Stockfish game">
-    <ReplayBoard fen={fen} userColor={game?.color ?? color} flipped={flipped} positionLabel="Stockfish play" lastMove={game?.moves.at(-1)} selectedSquare={selected} onMove={canMove && !millennium ? play : undefined} onSquareClick={canMove && !millennium ? square => { if (board.get(square as Parameters<typeof board.get>[0])?.color === board.turn()) setSelected(square); else if (selected) play(selected, square); } : undefined} />
-    <p role="status" aria-label="Game status">{!game ? "Choose your settings and start a game." : ended ? `${resigned ? "Resigned" : board.isCheckmate() ? "Checkmate" : board.isStalemate() ? "Stalemate" : "Draw"} · ${result}` : analysis ? "Analysis assistance enabled · Play paused" : paused ? "Play paused" : !physicalReady ? "Synchronize the physical board with the position shown" : thinking || !humanTurn ? "Stockfish to move" : `Your turn${board.isCheck() ? " · Check" : ""}`}</p>
+  return <div className={styles.layout}><section className={`${styles.card} ${styles.stack}`} aria-label={`${opponentName} game`}>
+    <ReplayBoard fen={fen} userColor={game?.color ?? color} flipped={flipped} positionLabel={`${opponentName} play`} lastMove={game?.moves.at(-1)} selectedSquare={selected} onMove={canMove && !millennium ? play : undefined} onSquareClick={canMove && !millennium ? square => { if (board.get(square as Parameters<typeof board.get>[0])?.color === board.turn()) setSelected(square); else if (selected) play(selected, square); } : undefined} />
+    <p role="status" aria-label="Game status">{!game ? "Choose your settings and start a game." : ended ? `${resigned ? "Resigned" : board.isCheckmate() ? "Checkmate" : board.isStalemate() ? "Stalemate" : "Draw"} · ${result}` : analysis ? "Analysis assistance enabled · Play paused" : paused ? "Play paused" : !physicalReady ? "Synchronize the physical board with the position shown" : thinking || !humanTurn ? `${opponentName} to move` : `Your turn${board.isCheck() ? " · Check" : ""}`}</p>
     <div className={styles.actions}><button className={styles.button} onClick={() => setFlipped(!flipped)}>Flip board</button><button className={styles.button} onClick={sound.toggleMuted}>{sound.muted ? "Unmute moves" : "Mute moves"}</button>
     {game && !ended && <><button className={styles.button} disabled={analysis} onClick={() => { request.current?.abort(); setThinking(false); setPaused(!paused); setRetry(retry + 1); }}>{paused ? "Resume / retry engine" : "Pause"}</button><button className={styles.button} onClick={() => { request.current?.abort(); setThinking(false); setResigned(true); setPromotion(null); }}>Resign</button></>}
     {game && <button className={styles.button} onClick={download}>Download PGN</button>}</div>
@@ -94,11 +96,12 @@ export function PlayWorkspace() {
     <p className={styles.fen}>{fen}</p>
   </section><section className={`${styles.card} ${styles.stack}`} aria-label="Play settings">
     <label className={styles.limit}>Move input<select disabled={!hydrated} aria-label="Move input" value={millennium ? "millennium" : "screen"} onChange={event => { request.current?.abort(); setThinking(false); setPaused(Boolean(game)); setPhysical({ connected: false, placement: null }); setMillennium(event.target.value === "millennium"); setSelected(null); setPromotion(null); }}><option value="screen">On-screen board</option><option value="millennium">Millennium board (ChessLink)</option></select></label>
-    {millennium && <MillenniumBoard guideMove={!!game && !resigned && !paused && !analysis && board.history({ verbose: true }).at(-1)?.color === (game.color === "WHITE" ? "b" : "w")} sessionId={game?.id ?? 0} fen={fen} acceptMoves={canMove} onMove={uci => play(uci.slice(0,2), uci.slice(2,4), uci[4], true)} onStatus={setPhysical} onDisconnect={() => { request.current?.abort(); setThinking(false); setPaused(Boolean(game)); }} />}
+    {millennium && <MillenniumBoard opponentName={opponentName} guideMove={!!game && !resigned && !paused && !analysis && board.history({ verbose: true }).at(-1)?.color === (game.color === "WHITE" ? "b" : "w")} sessionId={game?.id ?? 0} fen={fen} acceptMoves={canMove} onMove={uci => play(uci.slice(0,2), uci.slice(2,4), uci[4], true)} onStatus={setPhysical} onDisconnect={() => { request.current?.abort(); setThinking(false); setPaused(Boolean(game)); }} />}
     {game && millennium && game.moves.length > 0 && <p className={styles.muted}>Last move: {board.history().at(-1)} ({game.moves.at(-1)}). Match the displayed board before playing your next move.</p>}
     <label className={styles.limit}>Your color<select disabled={!hydrated} aria-label="Your color" value={color} onChange={event => setColor(event.target.value as typeof color)}><option value="WHITE">White</option><option value="BLACK">Black</option></select></label>
-    <label className={styles.limit}>Difficulty<select disabled={!hydrated} aria-label="Difficulty" value={difficulty} onChange={event => setDifficulty(event.target.value as Difficulty)}>{Object.entries(DIFFICULTIES).map(([key,value]) => <option key={key} value={key}>{value.label}</option>)}</select></label>
-    <p className={styles.muted}>Difficulty uses Stockfish skill levels, with 0.25–2 seconds per reply. These presets are not calibrated Elo ratings. No clock is used.</p>
+    <label className={styles.limit}>Opponent<select disabled={!hydrated} aria-label="Opponent" value={opponent} onChange={event => setOpponent(event.target.value as Opponent)}>{Object.entries(OPPONENTS).map(([key, label]) => <option key={key} value={key}>{label}</option>)}</select></label>
+    <label className={styles.limit}>Difficulty<select disabled={!hydrated} aria-label="Difficulty" value={difficulty} onChange={event => setDifficulty(event.target.value as Difficulty)}>{Object.entries(DIFFICULTIES).map(([key,value]) => <option key={key} value={key}>{value.label}{opponent === "maia" ? ` · ${MAIA_RATINGS[key as Difficulty]}` : ""}</option>)}</select></label>
+    <p className={styles.muted}>{opponent === "maia" ? "Maia predicts human moves at the selected rating, with varied replies. Ratings describe the modeled player level, not guaranteed playing strength. Requires a configured Maia engine on the server." : "Difficulty uses Stockfish skill levels, with 0.25–2 seconds per reply. These presets are not calibrated Elo ratings."} No clock is used.</p>
     <label className={styles.field}>Starting FEN<input disabled={!hydrated} value={fenInput} maxLength={200} onChange={event => setFenInput(event.target.value)} /></label>
     <button className={styles.button} onClick={() => setFenInput(DEFAULT_POSITION)}>Use normal starting position</button>
     <button className={styles.button} disabled={!hydrated} onClick={start}>{game ? "Restart with these settings" : "Start game"}</button>

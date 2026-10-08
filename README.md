@@ -117,6 +117,7 @@ npm run db:check
 - Port 5433 busy: choose another localhost host port in `compose.yaml` and update the URL to match.
 - Invalid/missing configuration: set `DATABASE_URL` in `.env.local` to a PostgreSQL URL with a host and database name.
 - Connection failure: check `docker compose ps` and `docker compose logs postgres`, then verify host, port, and credentials. Initial database/user/password settings only initialize a fresh volume; changing Compose values does not update credentials in an existing database.
+- `Can't reach database server at 127.0.0.1:5433`: start Docker/Colima, then run `docker-compose up -d --wait postgres` (or `docker compose up -d --wait postgres`) and `npm run db:check`. Starting Next.js alone does not start PostgreSQL. The development database restarts with Docker unless you explicitly stop it; after an explicit stop, run the same `up` command again.
 - Missing generated client: run `npm run db:generate` (also needed after installing with `--ignore-scripts`).
 
 The setup follows the [Prisma client documentation](https://www.prisma.io/docs/orm/v7/prisma-client/setup-and-configuration/introduction) and [Docker PostgreSQL guide](https://docs.docker.com/guides/postgresql/).
@@ -634,9 +635,9 @@ If you already played while paused, enter the complete SAN move sequence in **Mo
 
 King LED prompts: Listen only is enabled by default and sends no ChessLink commands. The user confirmed LEDs work with this mode on their board. Disabling it enables initial queries for troubleshooting and may interrupt the prompts.
 
-## Play Stockfish (TASK-046)
+## Play an engine (TASK-046)
 
-Open **Play Stockfish** (`/play`) from the sidebar, mobile account menu, or dashboard. Choose White/Black and Easy, Casual, Challenging, or Strong, then start from the normal position or a valid six-field FEN. Settings apply when starting/restarting. The wooden ReplayBoard supports dragging, square clicks, coordinate entry, and all promotion choices. Stockfish plays the other side automatically; pause/resume, retry after failure, resignation, board flipping, and move sounds are available. Checkmate, stalemate, and chess.js draw outcomes end play. No clock is used.
+Open **Play an engine** (`/play`) from the sidebar, mobile account menu, or dashboard. Choose Stockfish or Maia, White/Black, and Easy, Casual, Challenging, or Strong, then start from the normal position or a valid six-field FEN. Settings apply when starting/restarting. The wooden ReplayBoard supports dragging, square clicks, coordinate entry, and all promotion choices. The selected engine plays the other side automatically; pause/resume, retry after failure, resignation, board flipping, and move sounds are available. Checkmate, stalemate, and chess.js draw outcomes end play. No clock is used.
 
 Difficulty uses Stockfish Skill Level 0/5/10/20 with 250/500/1,000/2,000 ms per reply; these are not calibrated Elo ratings. Each server-side reply uses an isolated process, one thread, 16 MiB hash, a five-second initialization deadline, and a search deadline five seconds beyond its thinking budget. Full legal move history preserves repetition context. Requests require a session and the configured Origin, reject oversized/unknown payloads and wrong-turn positions, and share the existing per-user/two-process capacity guard with analysis. Pause, restart, resignation, leaving, and analysis assistance abort stale work; late responses cannot alter the new game. The initial limit is 400 half-moves.
 
@@ -653,3 +654,35 @@ Stockfish's reply appears on screen as SAN and coordinates with board highlighti
 Software verification uses simulated Bluetooth and legal engine responses. Physical King/ChessLink acceptance for Stockfish play remains to be checked on the user's hardware, especially notifications in CLink mode and special moves. PGN export and temporary-session behavior are shared with normal Stockfish play.
 
 LED output uses the documented ChessLink `L`/`X` commands, the calibrated square order, XOR checksums and odd parity, and serialized 20-byte BLE packets. No brightness/EEPROM settings are changed. Bluetooth failures remain visible with reconnect/retry instructions. Simulation verifies exact frame content and clearing, but actual illumination still needs confirmation on the physical King/ChessLink. Protocol reference: [ChessLink LED specification](https://github.com/domschl/python-mchess/blob/master/mchess/magic-board.md).
+
+### Human-like Maia opponent
+
+The Play page also offers **Maia (human-like)**, powered by the official
+[Maia-3 UCI engine](https://github.com/CSSLab/maia3). Its Easy/Casual/Challenging/Strong
+presets model ratings of 900/1300/1700/2100. These are model inputs, not measured
+opponent Elo. Maia samples its human move predictions instead of searching for the
+strongest continuation; Stockfish continues to provide all analysis assistance.
+Opponent settings apply on start/restart, including PGN opponent names and physical-board prompts.
+
+Install Maia separately in a Python virtual environment on the application server:
+
+```sh
+git clone https://github.com/CSSLab/maia3.git /tmp/maia3
+python3 -m venv .venv-maia
+.venv-maia/bin/python -m pip install /tmp/maia3
+.venv-maia/bin/maia3-cache --model maia3-5m
+```
+
+Set `MAIA_PATH` to the **absolute path** of `.venv-maia/bin/maia3-5m` and restart the app.
+The model cache must be available to the account running the app. In containers,
+install the engine and cache inside the application container or image; a host path
+alone is insufficient. No Python dependency or model is bundled by npm.
+
+Replies run on CPU with real UCI move history, temperature 1, a fresh random seed,
+local cached files only, a 60-second initialization deadline, and a 30-second reply
+deadline. Each reply uses an isolated process and the shared analysis capacity guard.
+Missing installation/cache produces a retryable configuration error; it never silently
+switches to Stockfish. Maia compatibility scores are discarded rather than displayed
+as Stockfish evaluations.
+
+After setup, run `npm run test:maia` to verify legal White/Black replies at every preset with the real model.

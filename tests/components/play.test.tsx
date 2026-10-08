@@ -46,3 +46,17 @@ it("pauses play for explicit analysis assistance and conceals suggestions initia
   fireEvent.click(screen.getByRole("button", { name: "Show analysis assistance" })); expect(screen.getByLabelText("Game status")).toHaveTextContent("Play paused"); expect(screen.getByRole("button", { name: "Play move" })).toBeDisabled(); expect(screen.getByRole("button", { name: "Analyze position" })).toBeVisible();
   fireEvent.click(screen.getByRole("button", { name: "Close analysis" })); expect(screen.getByRole("button", { name: "Play move" })).toBeEnabled();
 });
+
+it("sends the chosen opponent and holds it fixed until restart", async () => {
+  const fetcher = setup();
+  fireEvent.change(screen.getByLabelText("Opponent"), { target: { value: "maia" } });
+  expect(screen.getByRole("option", { name: "Casual · 1300" })).toBeInTheDocument();
+  fireEvent.click(screen.getByRole("button", { name: "Start game" }));
+  fireEvent.change(screen.getByLabelText("Opponent"), { target: { value: "stockfish" } });
+  play("e2e4");
+  await waitFor(() => expect(screen.getByLabelText("Game moves")).toHaveTextContent("e5"));
+  expect(JSON.parse(fetcher.mock.calls[0][1].body)).toMatchObject({ opponent: "maia", difficulty: "casual" });
+  expect(screen.getByLabelText("Maia game")).toBeInTheDocument();
+  fireEvent.click(screen.getByRole("button", { name: "Restart with these settings" }));
+  expect(screen.getByLabelText("Stockfish game")).toBeInTheDocument();
+});

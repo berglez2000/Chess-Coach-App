@@ -6,8 +6,11 @@ export const DIFFICULTIES = {
   challenging: { label: "Challenging", skillLevel: 10, milliseconds: 1000 },
   strong: { label: "Strong", skillLevel: 20, milliseconds: 2000 },
 } as const;
+export const OPPONENTS = { stockfish: "Stockfish", maia: "Maia (human-like)" } as const;
+export type Opponent = keyof typeof OPPONENTS;
+export const MAIA_RATINGS: Record<Difficulty, number> = { easy: 900, casual: 1300, challenging: 1700, strong: 2100 };
 export type Difficulty = keyof typeof DIFFICULTIES;
-const schema = z.object({ startFen: z.string().max(200), moves: z.array(z.string()).max(400), color: z.enum(["WHITE", "BLACK"]), difficulty: z.enum(["easy", "casual", "challenging", "strong"]) }).strict();
+const schema = z.object({ opponent: z.enum(["stockfish", "maia"]).default("stockfish"), startFen: z.string().max(200), moves: z.array(z.string()).max(400), color: z.enum(["WHITE", "BLACK"]), difficulty: z.enum(["easy", "casual", "challenging", "strong"]) }).strict();
 export function readPlayRequest(raw: unknown) {
   const input = schema.parse(raw);
   const { board } = readAnalysisRequest({ startFen: input.startFen, moves: input.moves, preset: "quick" });

@@ -3,6 +3,7 @@ import { PassThrough, Writable } from "node:stream";
 import type { ChildProcessWithoutNullStreams } from "node:child_process";
 import { afterEach, expect, it, vi } from "vitest";
 import { Chess } from "chess.js";
+import { createMaia } from "@/lib/engine/maia";
 import { createStockfish } from "@/lib/engine/stockfish";
 import { parseInfo, parseBestMove } from "@/lib/engine/protocol";
 import { readEngineConfig } from "@/lib/engine/config";
@@ -207,4 +208,30 @@ it.each([0, 5, 10, 20])("sets Stockfish skill %s without changing analysis defau
 });
 it.each([-1,21,1.5,NaN])("rejects invalid skill %s", skillLevel => {
   expect(() => createStockfish({ ...config, skillLevel })).toThrow("Skill level");
+});
+
+it("runs Maia with rating, history and sampling while discarding compatibility scores", async () => {
+  const fixture = processFixture();
+  const engine = createMaia("/test/maia3-5m", 1300, fixture.start);
+  expect(await engine.analyze(fen, { history: { startFen: fen, moves: [] } })).toEqual({ perspective: "WHITE", bestMove: "e2e4", evaluation: null });
+  expect(fixture.start).toHaveBeenCalledWith("/test/maia3-5m", ["--use-uci-history", "--local-files-only", "--device", "cpu", "--seed", expect.stringMatching(/^\d+$/)]);
+  expect(fixture.commands).toContain("setoption name Elo value 1300");
+  expect(fixture.commands).toContain("setoption name Temperature value 1");
+  expect(fixture.commands).toContain("go nodes 1");
+  expect(fixture.commands).not.toContain("setoption name Skill Level value 5");
+  expect(fixture.child.stdout.destroyed).toBe(true);
+});
+it("rejects unsafe Maia paths, invalid ratings and illegal engine replies", async () => {
+  for (const path of ["", "relative/maia", "/maia\nquit"]) expect(() => createMaia(path, 1300)).toThrow();
+  for (const rating of [599, 2601, 1300.5, NaN]) expect(() => createMaia("/test/maia", rating)).toThrow();
+  const fixture = processFixture("bestmove e2e5\n");
+  await expect(createMaia("/test/maia", 1300, fixture.start).analyze(fen)).rejects.toMatchObject({ code: "PROTOCOL" });
+});
+it("cancels Maia during model initialization and terminates its process", async () => {
+  const fixture = processFixture("", { noInit: true });
+  const controller = new AbortController();
+  const reply = createMaia("/test/maia", 1300, fixture.start).analyze(fen, { signal: controller.signal });
+  controller.abort();
+  await expect(reply).rejects.toMatchObject({ code: "CANCELLED" });
+  expect(fixture.commands).toContain("quit");
 });

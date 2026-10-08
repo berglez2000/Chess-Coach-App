@@ -201,3 +201,10 @@ it("keeps final candidates consistent with a changed engine best move", async ()
   const result = await createStockfish({ ...config, multiPv: 3 }, fixture.start).analyze(fen);
   expect(result.bestMove).toBe("d2d4"); expect(result.variations?.[0].pv[0]).toBe("d2d4"); expect(result.variations).toHaveLength(1);
 });
+it.each([0, 5, 10, 20])("sets Stockfish skill %s without changing analysis defaults", async skillLevel => {
+  const fixture = processFixture(); await createStockfish({ ...config, skillLevel }, fixture.start).analyze(fen);
+  expect(fixture.commands).toContain(`setoption name Skill Level value ${skillLevel}`);
+});
+it.each([-1,21,1.5,NaN])("rejects invalid skill %s", skillLevel => {
+  expect(() => createStockfish({ ...config, skillLevel })).toThrow("Skill level");
+});

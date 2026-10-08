@@ -7,8 +7,10 @@ export interface EngineConfig {
   moveTimeMs?: number;
   timeoutMs: number;
   multiPv?: 1 | 2 | 3;
+  skillLevel?: number;
 }
 export function validateEngineConfig(config: EngineConfig): EngineConfig {
+  if (config.skillLevel !== undefined && (!Number.isInteger(config.skillLevel) || config.skillLevel < 0 || config.skillLevel > 20)) throw new EngineError("CONFIG", "Skill level must be an integer from 0 to 20.");
   if (config.multiPv !== undefined && config.multiPv !== 1 && config.multiPv !== 2 && config.multiPv !== 3) throw new EngineError("CONFIG", "MultiPV must be 1, 2, or 3.");
   if (!config.path || !isAbsolute(config.path) || /[\r\n\0]/.test(config.path)) {
     throw new EngineError("CONFIG", "Set STOCKFISH_PATH to the absolute path of the Stockfish executable.");

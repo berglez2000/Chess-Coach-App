@@ -37,9 +37,10 @@ export function matchPosition(moves: string[], placement: string): PositionMatch
 
 // Pressure boards report the departure press separately from the destination press.
 // Keep recording armed while changes fit a single legal move being carried out.
-export function isIncompleteMove(moves: string[], placement: string): boolean {
+export function isIncompleteMove(moves: string[], placement: string, startFen?: string): boolean {
   const expand = (fen: string) => fen.split(" ")[0].replaceAll("/", "").replace(/\d/g, digit => ".".repeat(Number(digit)));
-  const chess = recordingChess(moves);
+  const chess = startFen ? new Chess(startFen) : new Chess();
+  for (const move of moves) chess.move(move);
   const before = expand(chess.fen()), actual = expand(placement);
   if (actual.length !== 64 || actual === before) return false;
   return chess.moves({ verbose: true }).some(move => {

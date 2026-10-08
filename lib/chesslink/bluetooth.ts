@@ -1,4 +1,4 @@
-import { CHESSLINK_SERVICE, CHESSLINK_NOTIFY, CHESSLINK_WRITE, ChessLinkDecoder, queryBytes, type BoardMessage } from "./protocol";
+import { CHESSLINK_SERVICE, CHESSLINK_NOTIFY, CHESSLINK_WRITE, ChessLinkDecoder, queryBytes, ledBytes, clearLedBytes, type BoardMessage } from "./protocol";
 
 // Local interfaces keep the experimental browser API out of the server type surface.
 export interface LinkCharacteristic extends EventTarget {
@@ -32,6 +32,8 @@ export class ChessLinkConnection {
   private notify?: LinkCharacteristic;
   private timer?: ReturnType<typeof setTimeout>;
   private generation = 0;
+  private writes: Promise<void> = Promise.resolve();
+  private ownsLeds = false;
   private decoder = new ChessLinkDecoder();
   constructor(private onMessage: (message: BoardMessage) => void,
     private onDisconnect: (message: string) => void,
@@ -78,16 +80,14 @@ export class ChessLinkConnection {
         this.onDiagnostic("Connected in listen-only mode. No ChessLink commands will be sent.");
         return;
       }
-      const write = await withDeadline(service.getCharacteristic(CHESSLINK_WRITE));
-      if (generation !== this.generation) return;
       this.onDiagnostic("Connected. Querying initial version and position, then listening passively.");
       this.onDiagnostic("TX V (version query)");
-      await withDeadline(write.writeValueWithResponse(queryBytes("V")));
+      await this.write(queryBytes("V"));
       const queryInitialPosition = async () => {
         if (generation !== this.generation) return;
         try {
           this.onDiagnostic("TX S (position query)");
-          await withDeadline(write.writeValueWithResponse(queryBytes("S")));
+          await this.write(queryBytes("S"));
         } catch { if (generation === this.generation) this.disconnected(); }
       };
       if (generation === this.generation) this.timer = setTimeout(queryInitialPosition, 200);
@@ -97,20 +97,55 @@ export class ChessLinkConnection {
     }
   }
 
-  async queryOnce(command: "V" | "S") {
+
+  private write(bytes: Uint8Array<ArrayBuffer>) {
     const generation = this.generation;
-    const server = this.device?.gatt;
-    if (!server?.connected) throw new Error("Connect the board before requesting data.");
-    const service = await withDeadline(server.getPrimaryService(CHESSLINK_SERVICE));
-    if (generation !== this.generation) return;
-    const write = await withDeadline(service.getCharacteristic(CHESSLINK_WRITE));
-    if (generation !== this.generation) return;
+    const operation = this.writes.then(() => withDeadline((async () => {
+      if (generation !== this.generation) return;
+      const server = this.device?.gatt;
+      if (!server?.connected) throw new Error("Connect the board before requesting data.");
+      const service = await server.getPrimaryService(CHESSLINK_SERVICE);
+      if (generation !== this.generation) return;
+      const write = await service.getCharacteristic(CHESSLINK_WRITE);
+      // The transparent UART accepts fragmented commands; use conservative BLE payloads.
+      for (let offset = 0; offset < bytes.length; offset += 20) {
+        if (generation !== this.generation) return;
+        await write.writeValueWithResponse(bytes.slice(offset, offset + 20));
+      }
+    })()));
+    this.writes = operation.catch(() => { if (generation === this.generation) this.disconnected(); });
+    return operation;
+  }
+
+  async queryOnce(command: "V" | "S") {
     this.onDiagnostic(`TX ${command} (manual one-shot ${command === "V" ? "version" : "position"} query)`);
-    await withDeadline(write.writeValueWithResponse(queryBytes(command)));
+    await this.write(queryBytes(command));
+  }
+
+  async showLedSquares(squares: string[], reversed = false) {
+    const bytes = ledBytes(squares, reversed);
+    this.ownsLeds = true;
+    this.onDiagnostic(`TX L (LED squares: ${squares.join(" ")})`);
+    try { await this.write(bytes); }
+    catch (error) { this.onDiagnostic("LED output failed."); throw error; }
+  }
+
+  async clearLeds() {
+    if (!this.ownsLeds) return;
+    this.ownsLeds = false;
+    this.onDiagnostic("TX X (clear app LED prompts)");
+    await this.write(clearLedBytes());
+  }
+
+  async closeWithLeds() {
+    const generation = this.generation;
+    try { await this.clearLeds(); }
+    finally { if (generation === this.generation) this.close(); }
   }
 
   close() {
     this.generation++;
+    this.writes = Promise.resolve(); this.ownsLeds = false;
     clearTimeout(this.timer);
     this.notify?.removeEventListener("characteristicvaluechanged", this.receive);
     this.device?.removeEventListener("gattserverdisconnected", this.disconnected);

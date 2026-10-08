@@ -9,14 +9,28 @@ function checksum(text: string) {
     .toString(16).toUpperCase().padStart(2, "0");
 }
 
-// Restrict writes to non-mutating status/version queries. No reset, EEPROM or LED writes.
-export function queryBytes(command: "S" | "V"): Uint8Array<ArrayBuffer> {
+function commandBytes(command: string): Uint8Array<ArrayBuffer> {
   return Uint8Array.from(command + checksum(command), character => {
     const ascii = character.charCodeAt(0);
     let ones = 0;
     for (let bits = ascii; bits; bits >>= 1) ones += bits & 1;
     return ascii | (ones % 2 === 0 ? 128 : 0);
   });
+}
+
+// Only status/version and volatile LED output are exposed; no reset or EEPROM writes.
+export function queryBytes(command: "S" | "V") { return commandBytes(command); }
+export function clearLedBytes() { return commandBytes("X"); }
+export function ledBytes(squares: string[], reversed = false) {
+  if (squares.length > 64 || squares.some(square => !/^[a-h][1-8]$/.test(square))) throw new Error("Invalid LED squares.");
+  const leds = Array<number>(81).fill(0);
+  for (const square of squares) {
+    let file = square.charCodeAt(0) - 97; let rank = 8 - Number(square[1]);
+    if (reversed) { file = 7 - file; rank = 7 - rank; }
+    // Nine LEDs per file, from the A8 corner toward A1. Each square has four corners.
+    for (const index of [file * 9 + rank, file * 9 + rank + 1, (file + 1) * 9 + rank, (file + 1) * 9 + rank + 1]) leds[index] = 0x0f;
+  }
+  return commandBytes("L20" + leds.map(value => value.toString(16).toUpperCase().padStart(2,"0")).join(""));
 }
 
 export type BoardMessage = { kind: "position"; squares: string } | { kind: "version"; version: string };

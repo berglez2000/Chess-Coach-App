@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 import { Chess } from "chess.js";
-import { ChessLinkDecoder, queryBytes, squaresToPlacement, CHESSLINK_NOTIFY, CHESSLINK_SERVICE } from "@/lib/chesslink/protocol";
+import { ChessLinkDecoder, queryBytes, ledBytes, clearLedBytes, squaresToPlacement, CHESSLINK_NOTIFY, CHESSLINK_SERVICE } from "@/lib/chesslink/protocol";
 import { isIncompleteMove, matchPosition, readDraft, reconstructMoves, recordingChess, recordingPgn, type RecordingDraft } from "@/lib/chesslink/recording";
 import captured from "@/tests/fixtures/chesslink/m830-1.64-d4-e6-e4-d5.json";
 import { ChessLinkConnection, type LinkCharacteristic, type LinkDevice } from "@/lib/chesslink/bluetooth";
@@ -157,10 +157,44 @@ describe("Bluetooth lifecycle", () => {
     link.close();
     await expect(link.queryOnce("S")).rejects.toThrow("Connect the board");
   });
+  it("serializes fragmented LED commands with queries and clears only app-owned prompts", async () => {
+    const h = hardware(); const link = new ChessLinkConnection(vi.fn(), vi.fn(), vi.fn());
+    await link.connect(h.access);
+    await link.clearLeds(); expect(h.write.writeValueWithResponse).not.toHaveBeenCalled();
+    const output = link.showLedSquares(["e7", "e5"], true); const query = link.queryOnce("S");
+    await Promise.all([output,query]);
+    const packets = vi.mocked(h.write.writeValueWithResponse).mock.calls.map(call => call[0]);
+    expect(packets.slice(0,-1).every(packet => packet.length <= 20)).toBe(true);
+    expect([...Buffer.concat(packets.slice(0,-1))]).toEqual([...ledBytes(["e7","e5"],true)]);
+    expect(packets.at(-1)).toEqual(queryBytes("S"));
+    await link.closeWithLeds(); expect(h.write.writeValueWithResponse).toHaveBeenLastCalledWith(clearLedBytes()); expect(h.gatt.disconnect).toHaveBeenCalled();
+  });
+  it("drops remaining LED chunks and queued commands when disconnected", async () => {
+    const h = hardware(); const link = new ChessLinkConnection(vi.fn(),vi.fn(),vi.fn()); await link.connect(h.access);
+    let finish!: () => void;
+    vi.mocked(h.write.writeValueWithResponse).mockImplementationOnce(() => new Promise<void>(resolve => { finish = resolve; }));
+    const pending = link.showLedSquares(["a8"]); const queued = link.queryOnce("S");
+    await vi.waitFor(() => expect(finish).toBeDefined()); link.close(); finish(); await Promise.all([pending,queued]);
+    expect(h.write.writeValueWithResponse).toHaveBeenCalledTimes(1);
+  });
   it("cleans up after subscription fails", async () => {
     const h = hardware(); vi.mocked(h.notify.startNotifications).mockRejectedValue(new Error("BLE failure"));
     const link = new ChessLinkConnection(vi.fn(), vi.fn(), vi.fn());
     await expect(link.connect(h.access)).rejects.toThrow("BLE failure");
     expect(h.gatt.disconnect).toHaveBeenCalled();
   });
+});
+
+describe("LED framing", () => {
+  const text = (bytes: Uint8Array) => [...bytes].map(byte => String.fromCharCode(byte & 127)).join("");
+  it.each([false,true])("maps four corner LEDs with checksum and odd parity (reverse=%s)", reverse => {
+    const bytes = ledBytes(["a8"],reverse); const command = text(bytes);
+    expect(command).toHaveLength(167); expect(command.slice(0,3)).toBe("L20");
+    const lit = Array.from({ length:81 },(_,index) => command.slice(3+index*2,5+index*2) !== "00" ? index : -1).filter(index => index >= 0);
+    expect(lit).toEqual(reverse ? [70,71,79,80] : [0,1,9,10]);
+    expect(command.slice(-2)).toBe([...command.slice(0,-2)].reduce((sum,char) => sum ^ char.charCodeAt(0),0).toString(16).toUpperCase().padStart(2,"0"));
+    expect([...bytes].every(byte => byte.toString(2).replaceAll("0","").length % 2 === 1)).toBe(true);
+    expect(text(clearLedBytes())).toBe("X58");
+  });
+  it("rejects invalid squares without constructing hardware commands", () => { expect(() => ledBytes(["a9"])).toThrow(); });
 });

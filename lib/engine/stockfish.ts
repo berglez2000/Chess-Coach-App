@@ -89,7 +89,8 @@ export function createStockfish(config: EngineConfig, start: StartProcess = star
           if (phase === "uci" && text === "uciok") {
             phase = "ready";
             send("setoption name Threads value 1"); send("setoption name Hash value 16");
-            send(`setoption name MultiPV value ${settings.multiPv ?? 1}`); send("ucinewgame"); send("isready");
+            send(`setoption name MultiPV value ${settings.multiPv ?? 1}`); if (settings.skillLevel !== undefined) send(`setoption name Skill Level value ${settings.skillLevel}`);
+            send("ucinewgame"); send("isready");
           } else if (phase === "ready" && text === "readyok") {
             phase = "search";
             clearTimeout(deadline);

@@ -22,7 +22,7 @@ export default async function GamesPage() {
         <h1 className={shared.heading}>Your games</h1>
         <p className={shared.description}>Every game has a lesson. Revisit your moves and find your next improvement.</p>
       </div>
-      <Link href="/games/new" className={shared.primary}><Icon name="import" />Import a game</Link>
+      <div className="flex flex-wrap gap-3"><Link href="/games/record" className={shared.primary}>Record board game</Link><Link href="/games/new" className={shared.primary}><Icon name="import" />Import a game</Link></div>
     </header>
     {games.length === 0 ? <section className={styles.empty} aria-labelledby="empty-title">
       <span className={styles.emptyIcon}><Icon name="games" size={28} /></span>

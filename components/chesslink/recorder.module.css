@@ -1,0 +1,13 @@
+.layout { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(300px, 1fr); align-items: start; gap: 24px; margin-top: 28px; }
+.stack { display: grid; gap: 16px; min-width: 0; }
+.actions { display: flex; flex-wrap: wrap; align-items: end; gap: 10px; margin: 12px 0; }
+.secondary { padding: 10px 14px; border: 1px solid var(--border); border-radius: var(--r-md); background: var(--surface); color: var(--fg); cursor: pointer; font-size: 13px; }
+.secondary:disabled { opacity: .4; cursor: not-allowed; }
+.secondary:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+.checkbox { display: flex; align-items: center; gap: 10px; font-size: 13px; }
+.placement { overflow-wrap: anywhere; font-family: monospace; font-size: 12px; line-height: 1.8; }
+.activity { max-height: 280px; overflow-y: auto; margin-top: 12px; border: 1px solid var(--border-light); border-radius: var(--r-md); padding: 10px; background: var(--surface-2); }
+.activityEntry { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px; padding: 6px 0; font-size: 12px; line-height: 1.6; overflow-wrap: anywhere; }
+.activityEntry time { color: var(--fg-3); font-variant-numeric: tabular-nums; }
+.moves { display: flex; flex-wrap: wrap; gap: 8px 12px; list-style: none; padding: 0; max-height: 220px; overflow-y: auto; font-size: 14px; }
+@media (max-width: 850px) { .layout { grid-template-columns: minmax(0, 1fr); } }

@@ -1,0 +1,55 @@
+{
+  "description": "User-supplied M830/ChessLink firmware 1.64 trace, 2026-10-08; consecutive identical frames omitted. Declared moves: 1. d4 e6 2. e4 d5.",
+  "expectedMoves": [
+    "d2d4",
+    "e7e6",
+    "e2e4",
+    "d7d5"
+  ],
+  "frames": [
+    {
+      "time": "2026-10-08T05:05:08.109Z",
+      "hex": "76 b0 31 34 b0 37 b3"
+    },
+    {
+      "time": "2026-10-08T05:05:08.409Z",
+      "hex": "73 52 ce c2 cb 51 c2 ce 52 d0 d0 d0 d0 d0 d0 d0 d0 ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae 70 70 70 70 70 70 70 70 f2 6e 62 6b f1 62 6e f2 37 b3"
+    },
+    {
+      "time": "2026-10-08T05:05:29.561Z",
+      "hex": "73 52 ce c2 cb 51 c2 ce 52 d0 d0 d0 d0 ae d0 d0 d0 ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae 70 70 70 70 70 70 70 70 f2 6e 62 6b f1 62 6e f2 b0 c4"
+    },
+    {
+      "time": "2026-10-08T05:05:31.000Z",
+      "hex": "73 52 ce c2 cb 51 c2 ce 52 d0 d0 d0 d0 ae d0 d0 d0 ae ae ae ae ae ae ae ae ae ae ae ae d0 ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae 70 70 70 70 70 70 70 70 f2 6e 62 6b f1 62 6e f2 37 b3"
+    },
+    {
+      "time": "2026-10-08T05:05:46.570Z",
+      "hex": "73 52 ce c2 cb 51 c2 ce 52 d0 d0 d0 d0 ae d0 d0 d0 ae ae ae ae ae ae ae ae ae ae ae ae d0 ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae 70 70 70 ae 70 70 70 70 f2 6e 62 6b f1 62 6e f2 32 c4"
+    },
+    {
+      "time": "2026-10-08T05:05:48.161Z",
+      "hex": "73 52 ce c2 cb 51 c2 ce 52 d0 d0 d0 d0 ae d0 d0 d0 ae ae ae ae ae ae ae ae ae ae ae ae d0 ae ae ae ae ae ae ae ae ae ae ae ae ae ae 70 ae ae ae ae 70 70 70 ae 70 70 70 70 f2 6e 62 6b f1 62 6e f2 37 b3 73 52 ce c2 cb 51 c2 ce 52 d0 d0 d0 d0 ae d0 d0 d0 ae ae ae ae ae ae ae ae ae ae ae ae d0 ae ae ae ae ae ae ae ae ae ae ae ae ae ae 70 ae ae ae ae 70 70 70 ae 70 70 70 70 f2 6e 62 6b f1 62 6e f2 37 b3"
+    },
+    {
+      "time": "2026-10-08T05:05:48.640Z",
+      "hex": "73 52 ce c2 cb 51 c2 ce 52 d0 d0 d0 d0 ae d0 d0 d0 ae ae ae ae ae ae ae ae ae ae ae ae d0 ae ae ae ae ae ae ae ae ae ae ae ae ae ae 70 ae ae ae ae 70 70 70 ae 70 70 70 70 f2 6e 62 6b f1 62 6e f2 37 b3"
+    },
+    {
+      "time": "2026-10-08T05:05:57.941Z",
+      "hex": "73 52 ce c2 cb 51 c2 ce 52 d0 d0 d0 ae ae d0 d0 d0 ae ae ae ae ae ae ae ae ae ae ae ae d0 ae ae ae ae ae ae ae ae ae ae ae ae ae ae 70 ae ae ae ae 70 70 70 ae 70 70 70 70 f2 6e 62 6b f1 62 6e f2 b0 c4"
+    },
+    {
+      "time": "2026-10-08T05:05:59.021Z",
+      "hex": "73 52 ce c2 cb 51 c2 ce 52 d0 d0 d0 ae ae d0 d0 d0 ae ae ae ae ae ae ae ae ae ae ae d0 d0 ae ae ae ae ae ae ae ae ae ae ae ae ae ae 70 ae ae ae ae 70 70 70 ae 70 70 70 70 f2 6e 62 6b f1 62 6e f2 37 b3"
+    },
+    {
+      "time": "2026-10-08T05:06:05.831Z",
+      "hex": "73 52 ce c2 cb 51 c2 ce 52 d0 d0 d0 ae ae d0 d0 d0 ae ae ae ae ae ae ae ae ae ae ae d0 d0 ae ae ae ae ae ae ae ae ae ae ae ae ae ae 70 ae ae ae ae 70 70 70 ae ae 70 70 70 f2 6e 62 6b f1 62 6e f2 32 c4"
+    },
+    {
+      "time": "2026-10-08T05:06:06.790Z",
+      "hex": "73 52 ce c2 cb 51 c2 ce 52 d0 d0 d0 ae ae d0 d0 d0 ae ae ae ae ae ae ae ae ae ae ae d0 d0 ae ae ae ae ae ae ae 70 ae ae ae ae ae ae 70 ae ae ae ae 70 70 70 ae ae 70 70 70 f2 6e 62 6b f1 62 6e f2 37 b3"
+    }
+  ]
+}

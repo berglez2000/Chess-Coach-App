@@ -16,7 +16,7 @@ export async function POST(request: Request) {
   }
   // Connect only after validation; configuration failures are sanitized by the service.
   const result = await importGame(input, {
-    create: (game, color) => createImportRepository(getDb(), user.id).create(game, color),
+    create: (game, color, recordingId) => createImportRepository(getDb(), user.id).create(game, color, recordingId),
   });
   return Response.json(result, { status: "error" in result ? result.error.code === "IMPORT_FAILED" ? 500 : 400 : 201 });
 }

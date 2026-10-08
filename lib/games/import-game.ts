@@ -5,7 +5,7 @@ import type { ChessColor, ParsedGame } from "@/types/game";
 import type { ImportResponse } from "@/types/import";
 
 export interface ImportRepository {
-  create(game: ParsedGame, userColor: ChessColor): Promise<{ id: string }>;
+  create(game: ParsedGame, userColor: ChessColor, recordingId?: string): Promise<{ id: string }>;
 }
 
 export async function importGame(input: unknown, repository: ImportRepository): Promise<ImportResponse> {
@@ -20,7 +20,9 @@ export async function importGame(input: unknown, repository: ImportRepository): 
   }
   try {
     const game = parsePgn(validated.data.pgn);
-    const { id } = await repository.create(game, validated.data.userColor);
+    const { id } = validated.data.recordingId
+      ? await repository.create(game, validated.data.userColor, validated.data.recordingId)
+      : await repository.create(game, validated.data.userColor);
     return { gameId: id, status: "PENDING", userColor: validated.data.userColor, game };
   } catch (error) {
     if (error instanceof PgnParseError) {

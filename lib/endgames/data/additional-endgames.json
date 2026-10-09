@@ -1,0 +1,1802 @@
+[
+  {
+    "id": "cet-basic-queen-001",
+    "title": "Queen · 1",
+    "topic": "Basic checkmates",
+    "subtopic": "Queen",
+    "fen": "8/3k4/8/8/8/8/2K5/2Q5 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Restrict the king, bring your own king closer, and leave legal moves until the final check.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Basic",
+      "group": "Queen",
+      "position": 1,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:46.858Z",
+      "category": "win",
+      "dtz": 15,
+      "dtm": 15,
+      "fen": "8/3k4/8/8/8/8/2K5/2Q5 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-basic-queen-002",
+    "title": "Queen · 2",
+    "topic": "Basic checkmates",
+    "subtopic": "Queen",
+    "fen": "8/3k4/8/5K2/8/8/8/7Q w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Restrict the king, bring your own king closer, and leave legal moves until the final check.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Basic",
+      "group": "Queen",
+      "position": 2,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:47.110Z",
+      "category": "win",
+      "dtz": 11,
+      "dtm": 11,
+      "fen": "8/3k4/8/5K2/8/8/8/7Q w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-basic-queen-003",
+    "title": "Queen · 3",
+    "topic": "Basic checkmates",
+    "subtopic": "Queen",
+    "fen": "8/3Q4/8/8/4k3/8/8/K7 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Restrict the king, bring your own king closer, and leave legal moves until the final check.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Basic",
+      "group": "Queen",
+      "position": 3,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:47.357Z",
+      "category": "win",
+      "dtz": 17,
+      "dtm": 17,
+      "fen": "8/3Q4/8/8/4k3/8/8/K7 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-basic-queen-004",
+    "title": "Queen · 4",
+    "topic": "Basic checkmates",
+    "subtopic": "Queen",
+    "fen": "8/8/8/8/5k2/8/8/K2Q4 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Restrict the king, bring your own king closer, and leave legal moves until the final check.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Basic",
+      "group": "Queen",
+      "position": 4,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:47.614Z",
+      "category": "win",
+      "dtz": 17,
+      "dtm": 17,
+      "fen": "8/8/8/8/5k2/8/8/K2Q4 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-basic-rook-001",
+    "title": "Rook · 1",
+    "topic": "Basic checkmates",
+    "subtopic": "Rook",
+    "fen": "8/8/8/8/3k4/5K2/8/5R2 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Cut off the king and coordinate your king with the rook.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Basic",
+      "group": "Rook",
+      "position": 1,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:47.872Z",
+      "category": "win",
+      "dtz": 25,
+      "dtm": 25,
+      "fen": "8/8/8/8/3k4/5K2/8/5R2 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-basic-rook-002",
+    "title": "Rook · 2",
+    "topic": "Basic checkmates",
+    "subtopic": "Rook",
+    "fen": "8/8/8/4R3/8/6k1/8/1K6 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Cut off the king and coordinate your king with the rook.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Basic",
+      "group": "Rook",
+      "position": 2,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:48.120Z",
+      "category": "win",
+      "dtz": 23,
+      "dtm": 23,
+      "fen": "8/8/8/4R3/8/6k1/8/1K6 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-basic-rook-003",
+    "title": "Rook · 3",
+    "topic": "Basic checkmates",
+    "subtopic": "Rook",
+    "fen": "4R3/8/8/8/8/8/3k4/K7 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Cut off the king and coordinate your king with the rook.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Basic",
+      "group": "Rook",
+      "position": 3,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:48.368Z",
+      "category": "win",
+      "dtz": 29,
+      "dtm": 29,
+      "fen": "4R3/8/8/8/8/8/3k4/K7 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-basic-rook-004",
+    "title": "Rook · 4",
+    "topic": "Basic checkmates",
+    "subtopic": "Rook",
+    "fen": "8/8/6R1/8/8/8/5k2/K7 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Cut off the king and coordinate your king with the rook.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Basic",
+      "group": "Rook",
+      "position": 4,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:48.614Z",
+      "category": "win",
+      "dtz": 27,
+      "dtm": 27,
+      "fen": "8/8/6R1/8/8/8/5k2/K7 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-basic-two-rooks-001",
+    "title": "Two Rooks · 1",
+    "topic": "Basic checkmates",
+    "subtopic": "Two Rooks",
+    "fen": "8/8/8/8/8/3k4/R1R5/K7 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Use alternating rook checks to reduce the available ranks; protect both rooks.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Basic",
+      "group": "Two Rooks",
+      "position": 1,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:48.861Z",
+      "category": "win",
+      "dtz": 6,
+      "dtm": 13,
+      "fen": "8/8/8/8/8/3k4/R1R5/K7 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-basic-two-rooks-002",
+    "title": "Two Rooks · 2",
+    "topic": "Basic checkmates",
+    "subtopic": "Two Rooks",
+    "fen": "R7/8/8/8/8/3k4/2R5/K7 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Use alternating rook checks to reduce the available ranks; protect both rooks.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Basic",
+      "group": "Two Rooks",
+      "position": 2,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:49.108Z",
+      "category": "win",
+      "dtz": 6,
+      "dtm": 13,
+      "fen": "R7/8/8/8/8/3k4/2R5/K7 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-basic-two-rooks-003",
+    "title": "Two Rooks · 3",
+    "topic": "Basic checkmates",
+    "subtopic": "Two Rooks",
+    "fen": "8/8/8/8/8/4k3/2R5/K2R4 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Use alternating rook checks to reduce the available ranks; protect both rooks.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Basic",
+      "group": "Two Rooks",
+      "position": 3,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:49.353Z",
+      "category": "win",
+      "dtz": 6,
+      "dtm": 13,
+      "fen": "8/8/8/8/8/4k3/2R5/K2R4 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-basic-two-rooks-004",
+    "title": "Two Rooks · 4",
+    "topic": "Basic checkmates",
+    "subtopic": "Two Rooks",
+    "fen": "8/8/8/8/4k3/6R1/7R/K7 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Use alternating rook checks to reduce the available ranks; protect both rooks.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Basic",
+      "group": "Two Rooks",
+      "position": 4,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:49.597Z",
+      "category": "win",
+      "dtz": 6,
+      "dtm": 13,
+      "fen": "8/8/8/8/4k3/6R1/7R/K7 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-pawn-two-pawns-vs-pawn-001",
+    "title": "Two Pawns vs Pawn · 1",
+    "topic": "King and pawn",
+    "subtopic": "Two Pawns vs Pawn",
+    "fen": "5K2/2p5/8/2k5/8/2P5/4P3/8 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Compare pawn races and use your king to support a breakthrough.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Pawn",
+      "group": "Two Pawns vs Pawn",
+      "position": 1,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:49.842Z",
+      "category": "win",
+      "dtz": 11,
+      "dtm": 49,
+      "fen": "5K2/2p5/8/2k5/8/2P5/4P3/8 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-pawn-two-pawns-vs-pawn-002",
+    "title": "Two Pawns vs Pawn · 2",
+    "topic": "King and pawn",
+    "subtopic": "Two Pawns vs Pawn",
+    "fen": "7k/8/5pP1/3K4/6P1/8/8/8 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Compare pawn races and use your king to support a breakthrough.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Pawn",
+      "group": "Two Pawns vs Pawn",
+      "position": 2,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:50.090Z",
+      "category": "win",
+      "dtz": 5,
+      "dtm": 31,
+      "fen": "7k/8/5pP1/3K4/6P1/8/8/8 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-pawn-two-pawns-vs-pawn-003",
+    "title": "Two Pawns vs Pawn · 3",
+    "topic": "King and pawn",
+    "subtopic": "Two Pawns vs Pawn",
+    "fen": "8/8/2p5/1P1k4/1P6/6K1/8/8 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Compare pawn races and use your king to support a breakthrough.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Pawn",
+      "group": "Two Pawns vs Pawn",
+      "position": 3,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:50.336Z",
+      "category": "win",
+      "dtz": 1,
+      "dtm": 37,
+      "fen": "8/8/2p5/1P1k4/1P6/6K1/8/8 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-pawn-two-pawns-vs-pawn-004",
+    "title": "Two Pawns vs Pawn · 4",
+    "topic": "King and pawn",
+    "subtopic": "Two Pawns vs Pawn",
+    "fen": "8/3k4/8/5pP1/8/8/6P1/1K6 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Compare pawn races and use your king to support a breakthrough.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Pawn",
+      "group": "Two Pawns vs Pawn",
+      "position": 4,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:50.677Z",
+      "category": "win",
+      "dtz": 15,
+      "dtm": 55,
+      "fen": "8/3k4/8/5pP1/8/8/6P1/1K6 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-pawn-two-pawns-vs-pawn-005",
+    "title": "Two Pawns vs Pawn · 5",
+    "topic": "King and pawn",
+    "subtopic": "Two Pawns vs Pawn",
+    "fen": "5k2/8/5P1p/4K2P/8/8/8/8 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Compare pawn races and use your king to support a breakthrough.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Pawn",
+      "group": "Two Pawns vs Pawn",
+      "position": 5,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:50.924Z",
+      "category": "win",
+      "dtz": 11,
+      "dtm": 31,
+      "fen": "5k2/8/5P1p/4K2P/8/8/8/8 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-pawn-two-pawns-vs-pawn-006",
+    "title": "Two Pawns vs Pawn · 6",
+    "topic": "King and pawn",
+    "subtopic": "Two Pawns vs Pawn",
+    "fen": "8/6p1/3k4/8/3K1PP1/8/8/8 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Compare pawn races and use your king to support a breakthrough.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Pawn",
+      "group": "Two Pawns vs Pawn",
+      "position": 6,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:51.174Z",
+      "category": "win",
+      "dtz": 1,
+      "dtm": 49,
+      "fen": "8/6p1/3k4/8/3K1PP1/8/8/8 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-pawn-two-pawns-vs-pawn-007",
+    "title": "Two Pawns vs Pawn · 7",
+    "topic": "King and pawn",
+    "subtopic": "Two Pawns vs Pawn",
+    "fen": "8/8/3p4/1Pk5/2P5/8/2K5/8 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Compare pawn races and use your king to support a breakthrough.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Pawn",
+      "group": "Two Pawns vs Pawn",
+      "position": 7,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:51.430Z",
+      "category": "win",
+      "dtz": 7,
+      "dtm": 37,
+      "fen": "8/8/3p4/1Pk5/2P5/8/2K5/8 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-pawn-two-pawns-vs-pawn-008",
+    "title": "Two Pawns vs Pawn · 8",
+    "topic": "King and pawn",
+    "subtopic": "Two Pawns vs Pawn",
+    "fen": "8/6k1/7p/7K/8/8/6PP/8 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Compare pawn races and use your king to support a breakthrough.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Pawn",
+      "group": "Two Pawns vs Pawn",
+      "position": 8,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:51.675Z",
+      "category": "win",
+      "dtz": 1,
+      "dtm": 57,
+      "fen": "8/6k1/7p/7K/8/8/6PP/8 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-rook-pawn-rook-vs-pawn-001",
+    "title": "Rook vs Pawn · 1",
+    "topic": "Rook",
+    "subtopic": "Rook vs Pawn",
+    "fen": "8/8/8/8/8/p7/k1K5/2R5 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Compare promotion threats with your king distance. Use checks to gain time.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Rook-Pawn",
+      "group": "Rook vs Pawn",
+      "position": 1,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:51.918Z",
+      "category": "win",
+      "dtz": 13,
+      "dtm": 41,
+      "fen": "8/8/8/8/8/p7/k1K5/2R5 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-rook-pawn-rook-vs-pawn-002",
+    "title": "Rook vs Pawn · 2",
+    "topic": "Rook",
+    "subtopic": "Rook vs Pawn",
+    "fen": "K7/1R6/8/8/kp6/8/8/8 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Compare promotion threats with your king distance. Use checks to gain time.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Rook-Pawn",
+      "group": "Rook vs Pawn",
+      "position": 2,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:52.165Z",
+      "category": "win",
+      "dtz": 9,
+      "dtm": 45,
+      "fen": "K7/1R6/8/8/kp6/8/8/8 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-rook-pawn-rook-vs-pawn-003",
+    "title": "Rook vs Pawn · 3",
+    "topic": "Rook",
+    "subtopic": "Rook vs Pawn",
+    "fen": "8/8/8/K7/4p3/8/5k2/7R w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Compare promotion threats with your king distance. Use checks to gain time.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Rook-Pawn",
+      "group": "Rook vs Pawn",
+      "position": 3,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:52.414Z",
+      "category": "win",
+      "dtz": 9,
+      "dtm": 33,
+      "fen": "8/8/8/K7/4p3/8/5k2/7R w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-rook-pawn-rook-vs-pawn-004",
+    "title": "Rook vs Pawn · 4",
+    "topic": "Rook",
+    "subtopic": "Rook vs Pawn",
+    "fen": "8/K7/8/8/4pk2/8/8/R7 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Compare promotion threats with your king distance. Use checks to gain time.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Rook-Pawn",
+      "group": "Rook vs Pawn",
+      "position": 4,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:52.665Z",
+      "category": "win",
+      "dtz": 9,
+      "dtm": 37,
+      "fen": "8/K7/8/8/4pk2/8/8/R7 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-rook-pawn-rook-vs-pawn-005",
+    "title": "Rook vs Pawn · 5",
+    "topic": "Rook",
+    "subtopic": "Rook vs Pawn",
+    "fen": "8/1K6/8/8/3pk3/8/8/R7 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Compare promotion threats with your king distance. Use checks to gain time.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Rook-Pawn",
+      "group": "Rook vs Pawn",
+      "position": 5,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:52.915Z",
+      "category": "win",
+      "dtz": 7,
+      "dtm": 37,
+      "fen": "8/1K6/8/8/3pk3/8/8/R7 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-rook-pawn-rook-vs-pawn-006",
+    "title": "Rook vs Pawn · 6",
+    "topic": "Rook",
+    "subtopic": "Rook vs Pawn",
+    "fen": "8/3K4/8/8/1p1k4/8/8/7R w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Compare promotion threats with your king distance. Use checks to gain time.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Rook-Pawn",
+      "group": "Rook vs Pawn",
+      "position": 6,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:53.162Z",
+      "category": "win",
+      "dtz": 9,
+      "dtm": 43,
+      "fen": "8/3K4/8/8/1p1k4/8/8/7R w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-rook-pawn-rook-vs-pawn-007",
+    "title": "Rook vs Pawn · 7",
+    "topic": "Rook",
+    "subtopic": "Rook vs Pawn",
+    "fen": "8/5K2/8/8/4pk2/8/8/R7 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Compare promotion threats with your king distance. Use checks to gain time.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Rook-Pawn",
+      "group": "Rook vs Pawn",
+      "position": 7,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:53.411Z",
+      "category": "win",
+      "dtz": 7,
+      "dtm": 33,
+      "fen": "8/5K2/8/8/4pk2/8/8/R7 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-rook-pawn-rook-vs-pawn-008",
+    "title": "Rook vs Pawn · 8",
+    "topic": "Rook",
+    "subtopic": "Rook vs Pawn",
+    "fen": "8/5K2/4R3/6kp/8/8/8/8 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Compare promotion threats with your king distance. Use checks to gain time.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Rook-Pawn",
+      "group": "Rook vs Pawn",
+      "position": 8,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:53.669Z",
+      "category": "win",
+      "dtz": 5,
+      "dtm": 39,
+      "fen": "8/5K2/4R3/6kp/8/8/8/8 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-rook-pawn-rook-pawn-vs-rook-001",
+    "title": "Rook Pawn vs Rook · 1",
+    "topic": "Rook",
+    "subtopic": "Rook Pawn vs Rook",
+    "fen": "8/1R6/6P1/8/6r1/7k/8/7K w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Activate your king and rook while watching checks from the defending rook.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Rook-Pawn",
+      "group": "Rook Pawn vs Rook",
+      "position": 1,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:53.917Z",
+      "category": "win",
+      "dtz": 1,
+      "dtm": 67,
+      "fen": "8/1R6/6P1/8/6r1/7k/8/7K w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-rook-pawn-rook-pawn-vs-rook-002",
+    "title": "Rook Pawn vs Rook · 2",
+    "topic": "Rook",
+    "subtopic": "Rook Pawn vs Rook",
+    "fen": "7r/2R5/6P1/8/8/8/K7/6k1 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Activate your king and rook while watching checks from the defending rook.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Rook-Pawn",
+      "group": "Rook Pawn vs Rook",
+      "position": 2,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:54.166Z",
+      "category": "win",
+      "dtz": 1,
+      "dtm": 63,
+      "fen": "7r/2R5/6P1/8/8/8/K7/6k1 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-rook-pawn-rook-pawn-vs-rook-003",
+    "title": "Rook Pawn vs Rook · 3",
+    "topic": "Rook",
+    "subtopic": "Rook Pawn vs Rook",
+    "fen": "8/8/5R1P/8/8/8/3r4/K1k5 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Activate your king and rook while watching checks from the defending rook.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Rook-Pawn",
+      "group": "Rook Pawn vs Rook",
+      "position": 3,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:54.410Z",
+      "category": "win",
+      "dtz": 1,
+      "dtm": 75,
+      "fen": "8/8/5R1P/8/8/8/3r4/K1k5 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-rook-pawn-rook-pawn-vs-rook-004",
+    "title": "Rook Pawn vs Rook · 4",
+    "topic": "Rook",
+    "subtopic": "Rook Pawn vs Rook",
+    "fen": "R7/P7/8/8/7K/8/r6k/8 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Activate your king and rook while watching checks from the defending rook.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Rook-Pawn",
+      "group": "Rook Pawn vs Rook",
+      "position": 4,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:54.658Z",
+      "category": "win",
+      "dtz": 21,
+      "dtm": 45,
+      "fen": "R7/P7/8/8/7K/8/r6k/8 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-rook-pawn-rook-pawn-vs-rook-005",
+    "title": "Rook Pawn vs Rook · 5",
+    "topic": "Rook",
+    "subtopic": "Rook Pawn vs Rook",
+    "fen": "8/8/P3k3/4r3/8/8/8/1K5R w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Activate your king and rook while watching checks from the defending rook.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Rook-Pawn",
+      "group": "Rook Pawn vs Rook",
+      "position": 5,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:54.903Z",
+      "category": "win",
+      "dtz": 1,
+      "dtm": 49,
+      "fen": "8/8/P3k3/4r3/8/8/8/1K5R w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-rook-pawn-rook-pawn-vs-rook-006",
+    "title": "Rook Pawn vs Rook · 6",
+    "topic": "Rook",
+    "subtopic": "Rook Pawn vs Rook",
+    "fen": "R7/8/8/8/4K3/8/7P/6kr w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Activate your king and rook while watching checks from the defending rook.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Rook-Pawn",
+      "group": "Rook Pawn vs Rook",
+      "position": 6,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:55.148Z",
+      "category": "win",
+      "dtz": 3,
+      "dtm": 31,
+      "fen": "R7/8/8/8/4K3/8/7P/6kr w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-rook-pawn-rook-pawn-vs-rook-007",
+    "title": "Rook Pawn vs Rook · 7",
+    "topic": "Rook",
+    "subtopic": "Rook Pawn vs Rook",
+    "fen": "8/3k4/6rP/8/8/8/5R2/5K2 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Activate your king and rook while watching checks from the defending rook.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Rook-Pawn",
+      "group": "Rook Pawn vs Rook",
+      "position": 7,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:55.393Z",
+      "category": "win",
+      "dtz": 1,
+      "dtm": 57,
+      "fen": "8/3k4/6rP/8/8/8/5R2/5K2 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-rook-pawn-rook-pawn-vs-rook-008",
+    "title": "Rook Pawn vs Rook · 8",
+    "topic": "Rook",
+    "subtopic": "Rook Pawn vs Rook",
+    "fen": "R7/P7/8/8/6K1/8/6k1/r7 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Activate your king and rook while watching checks from the defending rook.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Rook-Pawn",
+      "group": "Rook Pawn vs Rook",
+      "position": 8,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:55.641Z",
+      "category": "win",
+      "dtz": 17,
+      "dtm": 45,
+      "fen": "R7/P7/8/8/6K1/8/6k1/r7 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-bishop-bishop-pawn-vs-king-001",
+    "title": "Bishop Pawn vs King · 1",
+    "topic": "Bishop",
+    "subtopic": "Bishop Pawn vs King",
+    "fen": "8/1kP5/8/3K4/8/8/8/7B w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Check whether your bishop controls the promotion square before advancing.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Bishop",
+      "group": "Bishop Pawn vs King",
+      "position": 1,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:55.891Z",
+      "category": "win",
+      "dtz": 4,
+      "dtm": 17,
+      "fen": "8/1kP5/8/3K4/8/8/8/7B w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-bishop-bishop-pawn-vs-king-002",
+    "title": "Bishop Pawn vs King · 2",
+    "topic": "Bishop",
+    "subtopic": "Bishop Pawn vs King",
+    "fen": "4k3/8/8/7P/8/4K2B/8/8 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Check whether your bishop controls the promotion square before advancing.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Bishop",
+      "group": "Bishop Pawn vs King",
+      "position": 2,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:56.139Z",
+      "category": "win",
+      "dtz": 3,
+      "dtm": 31,
+      "fen": "4k3/8/8/7P/8/4K2B/8/8 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-bishop-bishop-pawn-vs-king-003",
+    "title": "Bishop Pawn vs King · 3",
+    "topic": "Bishop",
+    "subtopic": "Bishop Pawn vs King",
+    "fen": "8/8/8/8/8/2K4B/5k1P/8 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Check whether your bishop controls the promotion square before advancing.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Bishop",
+      "group": "Bishop Pawn vs King",
+      "position": 3,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:56.387Z",
+      "category": "win",
+      "dtz": 3,
+      "dtm": 27,
+      "fen": "8/8/8/8/8/2K4B/5k1P/8 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-bishop-king-vs-bishop-pawn-001",
+    "title": "King vs Bishop Pawn · 1",
+    "topic": "Bishop",
+    "subtopic": "King vs Bishop Pawn",
+    "fen": "8/8/5K1p/8/3k4/8/8/6b1 w - - 0 1",
+    "color": "WHITE",
+    "objective": "draw",
+    "description": "Hold a draw against Stockfish. Play until the game ends in a draw.",
+    "hint": "Look for a safe promotion-corner blockade and avoid being driven away.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Bishop",
+      "group": "King vs Bishop Pawn",
+      "position": 1,
+      "target": "draw",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:56.634Z",
+      "category": "draw",
+      "dtz": 0,
+      "dtm": 0,
+      "fen": "8/8/5K1p/8/3k4/8/8/6b1 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-bishop-king-vs-bishop-pawn-002",
+    "title": "King vs Bishop Pawn · 2",
+    "topic": "Bishop",
+    "subtopic": "King vs Bishop Pawn",
+    "fen": "4k3/p7/8/6K1/8/8/4b3/8 w - - 0 1",
+    "color": "WHITE",
+    "objective": "draw",
+    "description": "Hold a draw against Stockfish. Play until the game ends in a draw.",
+    "hint": "Look for a safe promotion-corner blockade and avoid being driven away.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Bishop",
+      "group": "King vs Bishop Pawn",
+      "position": 2,
+      "target": "draw",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:56.876Z",
+      "category": "draw",
+      "dtz": 0,
+      "dtm": 0,
+      "fen": "4k3/p7/8/6K1/8/8/4b3/8 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-bishop-king-vs-bishop-pawn-003",
+    "title": "King vs Bishop Pawn · 3",
+    "topic": "Bishop",
+    "subtopic": "King vs Bishop Pawn",
+    "fen": "8/8/3k4/8/p7/7b/8/4K3 w - - 0 1",
+    "color": "WHITE",
+    "objective": "draw",
+    "description": "Hold a draw against Stockfish. Play until the game ends in a draw.",
+    "hint": "Look for a safe promotion-corner blockade and avoid being driven away.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Bishop",
+      "group": "King vs Bishop Pawn",
+      "position": 3,
+      "target": "draw",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:57.121Z",
+      "category": "draw",
+      "dtz": 0,
+      "dtm": 0,
+      "fen": "8/8/3k4/8/p7/7b/8/4K3 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-bishop-king-vs-bishop-pawn-004",
+    "title": "King vs Bishop Pawn · 4",
+    "topic": "Bishop",
+    "subtopic": "King vs Bishop Pawn",
+    "fen": "7k/p4K2/8/7b/8/8/8/8 w - - 0 1",
+    "color": "WHITE",
+    "objective": "draw",
+    "description": "Hold a draw against Stockfish. Play until the game ends in a draw.",
+    "hint": "Look for a safe promotion-corner blockade and avoid being driven away.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Bishop",
+      "group": "King vs Bishop Pawn",
+      "position": 4,
+      "target": "draw",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:57.367Z",
+      "category": "draw",
+      "dtz": 0,
+      "dtm": 0,
+      "fen": "7k/p4K2/8/7b/8/8/8/8 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-bishop-king-vs-bishop-pawn-005",
+    "title": "King vs Bishop Pawn · 5",
+    "topic": "Bishop",
+    "subtopic": "King vs Bishop Pawn",
+    "fen": "7k/p7/6K1/7b/8/8/8/8 w - - 0 1",
+    "color": "WHITE",
+    "objective": "draw",
+    "description": "Hold a draw against Stockfish. Play until the game ends in a draw.",
+    "hint": "Look for a safe promotion-corner blockade and avoid being driven away.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Bishop",
+      "group": "King vs Bishop Pawn",
+      "position": 5,
+      "target": "draw",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:57.613Z",
+      "category": "draw",
+      "dtz": 0,
+      "dtm": 0,
+      "fen": "7k/p7/6K1/7b/8/8/8/8 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-knight-knight-vs-pawn-001",
+    "title": "Knight vs Pawn · 1",
+    "topic": "Knight",
+    "subtopic": "Knight vs Pawn",
+    "fen": "8/8/8/8/3K4/p7/k2N4/8 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Calculate knight routes and pawn promotion threats; every tempo matters.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Knight",
+      "group": "Knight vs Pawn",
+      "position": 1,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:57.861Z",
+      "category": "win",
+      "dtz": 12,
+      "dtm": 13,
+      "fen": "8/8/8/8/3K4/p7/k2N4/8 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-knight-knight-vs-pawn-002",
+    "title": "Knight vs Pawn · 2",
+    "topic": "Knight",
+    "subtopic": "Knight vs Pawn",
+    "fen": "8/8/8/8/8/p7/k2K4/5N2 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Calculate knight routes and pawn promotion threats; every tempo matters.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Knight",
+      "group": "Knight vs Pawn",
+      "position": 2,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:58.106Z",
+      "category": "win",
+      "dtz": 12,
+      "dtm": 13,
+      "fen": "8/8/8/8/8/p7/k2K4/5N2 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-knight-knight-vs-pawn-003",
+    "title": "Knight vs Pawn · 3",
+    "topic": "Knight",
+    "subtopic": "Knight vs Pawn",
+    "fen": "8/8/8/8/2K5/p7/k2N4/8 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Calculate knight routes and pawn promotion threats; every tempo matters.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Knight",
+      "group": "Knight vs Pawn",
+      "position": 3,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:58.352Z",
+      "category": "win",
+      "dtz": 12,
+      "dtm": 13,
+      "fen": "8/8/8/8/2K5/p7/k2N4/8 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-knight-knight-vs-pawn-004",
+    "title": "Knight vs Pawn · 4",
+    "topic": "Knight",
+    "subtopic": "Knight vs Pawn",
+    "fen": "8/8/8/8/2N5/p7/k2K4/8 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Calculate knight routes and pawn promotion threats; every tempo matters.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Knight",
+      "group": "Knight vs Pawn",
+      "position": 4,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:58.598Z",
+      "category": "win",
+      "dtz": 12,
+      "dtm": 13,
+      "fen": "8/8/8/8/2N5/p7/k2K4/8 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-knight-knight-vs-two-pawns-001",
+    "title": "Knight vs Two Pawns · 1",
+    "topic": "Knight",
+    "subtopic": "Knight vs Two Pawns",
+    "fen": "8/4k2N/7p/1p6/8/8/K7/8 w - - 0 1",
+    "color": "WHITE",
+    "objective": "draw",
+    "description": "Hold a draw against Stockfish. Play until the game ends in a draw.",
+    "hint": "Coordinate the king and knight to blockade the pawns before they advance.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Knight",
+      "group": "Knight vs Two Pawns",
+      "position": 1,
+      "target": "draw",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:58.843Z",
+      "category": "draw",
+      "dtz": 0,
+      "dtm": 0,
+      "fen": "8/4k2N/7p/1p6/8/8/K7/8 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-knight-knight-vs-two-pawns-002",
+    "title": "Knight vs Two Pawns · 2",
+    "topic": "Knight",
+    "subtopic": "Knight vs Two Pawns",
+    "fen": "1k5K/8/p7/1N4p1/8/8/8/8 w - - 0 1",
+    "color": "WHITE",
+    "objective": "draw",
+    "description": "Hold a draw against Stockfish. Play until the game ends in a draw.",
+    "hint": "Coordinate the king and knight to blockade the pawns before they advance.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Knight",
+      "group": "Knight vs Two Pawns",
+      "position": 2,
+      "target": "draw",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:59.087Z",
+      "category": "draw",
+      "dtz": 0,
+      "dtm": 0,
+      "fen": "1k5K/8/p7/1N4p1/8/8/8/8 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-knight-knight-vs-two-pawns-003",
+    "title": "Knight vs Two Pawns · 3",
+    "topic": "Knight",
+    "subtopic": "Knight vs Two Pawns",
+    "fen": "8/8/8/8/5pk1/3p4/8/6NK w - - 0 1",
+    "color": "WHITE",
+    "objective": "draw",
+    "description": "Hold a draw against Stockfish. Play until the game ends in a draw.",
+    "hint": "Coordinate the king and knight to blockade the pawns before they advance.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Knight",
+      "group": "Knight vs Two Pawns",
+      "position": 3,
+      "target": "draw",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:59.332Z",
+      "category": "draw",
+      "dtz": 0,
+      "dtm": 0,
+      "fen": "8/8/8/8/5pk1/3p4/8/6NK w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-knight-knight-vs-two-pawns-004",
+    "title": "Knight vs Two Pawns · 4",
+    "topic": "Knight",
+    "subtopic": "Knight vs Two Pawns",
+    "fen": "8/8/8/8/8/4K1pp/8/3N3k w - - 0 1",
+    "color": "WHITE",
+    "objective": "draw",
+    "description": "Hold a draw against Stockfish. Play until the game ends in a draw.",
+    "hint": "Coordinate the king and knight to blockade the pawns before they advance.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Knight",
+      "group": "Knight vs Two Pawns",
+      "position": 4,
+      "target": "draw",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:59.576Z",
+      "category": "draw",
+      "dtz": 0,
+      "dtm": 0,
+      "fen": "8/8/8/8/8/4K1pp/8/3N3k w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-queen-queen-vs-pawn-001",
+    "title": "Queen vs Pawn · 1",
+    "topic": "Queen",
+    "subtopic": "Queen vs Pawn",
+    "fen": "8/8/K7/8/8/5p2/6k1/Q7 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Use checks to bring your king closer and check stalemate traps before capturing.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Queen",
+      "group": "Queen vs Pawn",
+      "position": 1,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:46:59.820Z",
+      "category": "win",
+      "dtz": 15,
+      "dtm": 27,
+      "fen": "8/8/K7/8/8/5p2/6k1/Q7 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-queen-queen-vs-pawn-002",
+    "title": "Queen vs Pawn · 2",
+    "topic": "Queen",
+    "subtopic": "Queen vs Pawn",
+    "fen": "8/8/7K/8/8/2p5/1k6/7Q w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Use checks to bring your king closer and check stalemate traps before capturing.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Queen",
+      "group": "Queen vs Pawn",
+      "position": 2,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:47:00.068Z",
+      "category": "win",
+      "dtz": 15,
+      "dtm": 27,
+      "fen": "8/8/7K/8/8/2p5/1k6/7Q w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-queen-queen-vs-pawn-003",
+    "title": "Queen vs Pawn · 3",
+    "topic": "Queen",
+    "subtopic": "Queen vs Pawn",
+    "fen": "1Q6/1K6/8/8/8/5p2/8/7k w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Use checks to bring your king closer and check stalemate traps before capturing.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Queen",
+      "group": "Queen vs Pawn",
+      "position": 3,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:47:00.312Z",
+      "category": "win",
+      "dtz": 17,
+      "dtm": 29,
+      "fen": "1Q6/1K6/8/8/8/5p2/8/7k w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-queen-queen-vs-pawn-004",
+    "title": "Queen vs Pawn · 4",
+    "topic": "Queen",
+    "subtopic": "Queen vs Pawn",
+    "fen": "Q7/8/8/4K3/8/3k4/2p5/8 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Use checks to bring your king closer and check stalemate traps before capturing.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Queen",
+      "group": "Queen vs Pawn",
+      "position": 4,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:47:00.559Z",
+      "category": "win",
+      "dtz": 14,
+      "dtm": 21,
+      "fen": "Q7/8/8/4K3/8/3k4/2p5/8 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-queen-queen-vs-rook-001",
+    "title": "Queen vs Rook · 1",
+    "topic": "Queen",
+    "subtopic": "Queen vs Rook",
+    "fen": "1rk5/4Q3/K7/8/8/8/8/8 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Coordinate king and queen to separate the rook from its king; watch checks and stalemate.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Queen",
+      "group": "Queen vs Rook",
+      "position": 1,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:47:00.803Z",
+      "category": "win",
+      "dtz": 7,
+      "dtm": 21,
+      "fen": "1rk5/4Q3/K7/8/8/8/8/8 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-queen-queen-vs-rook-002",
+    "title": "Queen vs Rook · 2",
+    "topic": "Queen",
+    "subtopic": "Queen vs Rook",
+    "fen": "2k5/4r3/1K6/3Q4/8/8/8/8 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Coordinate king and queen to separate the rook from its king; watch checks and stalemate.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Queen",
+      "group": "Queen vs Rook",
+      "position": 2,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:47:01.050Z",
+      "category": "win",
+      "dtz": 31,
+      "dtm": 37,
+      "fen": "2k5/4r3/1K6/3Q4/8/8/8/8 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-queen-queen-vs-rook-003",
+    "title": "Queen vs Rook · 3",
+    "topic": "Queen",
+    "subtopic": "Queen vs Rook",
+    "fen": "Q7/2kr4/8/2K5/8/8/8/8 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Coordinate king and queen to separate the rook from its king; watch checks and stalemate.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Queen",
+      "group": "Queen vs Rook",
+      "position": 3,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:47:01.297Z",
+      "category": "win",
+      "dtz": 19,
+      "dtm": 31,
+      "fen": "Q7/2kr4/8/2K5/8/8/8/8 w - - 0 1"
+    }
+  },
+  {
+    "id": "cet-queen-queen-vs-rook-004",
+    "title": "Queen vs Rook · 4",
+    "topic": "Queen",
+    "subtopic": "Queen vs Rook",
+    "fen": "8/2k1r3/8/2K2Q2/8/8/8/8 w - - 0 1",
+    "color": "WHITE",
+    "objective": "mate",
+    "description": "Convert this winning endgame and finish with checkmate.",
+    "hint": "Coordinate king and queen to separate the rook from its king; watch checks and stalemate.",
+    "source": {
+      "name": "Chess Endgame Training",
+      "url": "https://github.com/supertorpe/chessendgametraining/blob/0ff395ac711f54969fd2009d9b3df416a0eae936/code/src/static/endgamedatabase.json",
+      "revision": "0ff395ac711f54969fd2009d9b3df416a0eae936",
+      "category": "Queen",
+      "group": "Queen vs Rook",
+      "position": 4,
+      "target": "checkmate",
+      "license": "GPL-3.0",
+      "upstreamDatabase": "https://ecochessopeningcodes.blogspot.com/"
+    },
+    "validation": {
+      "service": "Lichess Syzygy",
+      "checkedAt": "2026-10-09T11:47:01.546Z",
+      "category": "win",
+      "dtz": 25,
+      "dtm": 33,
+      "fen": "8/2k1r3/8/2K2Q2/8/8/8/8 w - - 0 1"
+    }
+  }
+]

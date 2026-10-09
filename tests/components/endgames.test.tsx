@@ -46,7 +46,7 @@ it("loads the chosen setup, conceals hints, locks settings, and resets hints on 
 });
 
 it("organizes every position into a chapter and links to its own practice route", () => {
-  expect(ENDGAME_CHAPTERS.flatMap(chapter => chapterPositions(chapter.id))).toEqual(ENDGAMES);
+  expect(ENDGAME_CHAPTERS.flatMap(chapter => chapterPositions(chapter.id)).map(p => p.id).sort()).toEqual(ENDGAMES.map(p => p.id).sort());
   expect(chapterPositions("unknown")).toEqual([]);
   const { unmount } = render(<EndgameLibrary />);
   expect(screen.getByRole("link", { name: "Open King and pawn endgames" })).toHaveAttribute("href", "/endgames/king-and-pawn");
@@ -59,7 +59,7 @@ it("organizes every position into a chapter and links to its own practice route"
 });
 
 it("publishes 50 unique imports with verified objectives and source references", () => {
-  const imported = ENDGAMES.filter(position => position.source);
+  const imported = ENDGAMES.filter(position => position.source?.category === "Pawn" && position.subtopic !== "Two Pawns vs Pawn");
   expect(imported).toHaveLength(50);
   expect(imported.filter(position => position.objective === "mate")).toHaveLength(39);
   expect(imported.filter(position => position.objective === "draw")).toHaveLength(11);
@@ -84,4 +84,17 @@ it("paginates the collection and filters topics without losing practice links", 
   expect(screen.getAllByRole("link", { name: /^Practice / })).toHaveLength(4);
   expect(screen.getByRole("link", { name: "Previous page" })).toHaveAttribute("href", "/endgames/king-and-pawn?page=1&group=Pawn+vs+Pawn");
   expect(screen.queryByRole("link", { name: "Next page" })).not.toBeInTheDocument();
+});
+
+it("adds 60 verified positions across six chapters without changing existing identities", () => {
+  expect(ENDGAME_CHAPTERS).toHaveLength(6);
+  expect(ENDGAMES).toHaveLength(116);
+  const added = ENDGAMES.filter(p => p.source && !(p.source.category === "Pawn" && p.subtopic !== "Two Pawns vs Pawn"));
+  expect(added).toHaveLength(60);
+  expect(new Set(added.map(p => p.topic)).size).toBe(6);
+  for (const position of added) {
+    expect(position.validation?.fen).toBe(position.fen);
+    expect(position.validation?.category).toBe(position.objective === "draw" ? "draw" : "win");
+    expect(new Chess(position.fen).board().flat().filter(Boolean).length).toBeLessThanOrEqual(7);
+  }
 });

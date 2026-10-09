@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Uncover check and attack the queen",
+    "fen": "7k/8/4qpp1/8/5K2/7N/8/7R w - - 0 1",
+    "text": "Ng5 uncovers the rook\u2019s check along the h-file and attacks the queen. Black must answer the check, allowing the knight to capture the queen next.",
+    "demonstration": "Ng5+"
+  },
+  {
+    "title": "Defend with checkmate",
+    "fen": "k7/pR6/8/2p5/8/8/6B1/K1q5 w - - 0 1",
+    "text": "Rb1 blocks the queen\u2019s check and opens the bishop\u2019s diagonal to the black king. The discovered check is checkmate.",
+    "demonstration": "Rb1#"
+  },
+  {
+    "title": "The windmill",
+    "fen": "k7/1R6/p1B5/1np4q/1b6/8/8/K7 w - - 0 1",
+    "text": "The rook repeatedly captures a piece and returns to b7 with check. Each discovered bishop check forces the king away; each rook check brings it back. White collects the knight, bishop, and queen.",
+    "demonstration": "Rxb5+ Ka7 Rb7+ Ka8 Rxb4+ Ka7 Rb7+ Ka8 Rh7+ Kb8 Rxh5"
+  }
+]

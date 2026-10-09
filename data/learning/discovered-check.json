@@ -1,0 +1,537 @@
+[
+  {
+    "number": "277",
+    "title": "Simple does it",
+    "order": 277,
+    "bookLines": [
+      "e5+ Kc5 exd6 Kxd6 Kd3"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/8/3b4/3p4/2k1PR2/8/3K4/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered check or the preparation that makes it decisive.",
+      "solutionText": "e5+ Kc5 exd6 Kxd6 Kd3",
+      "hint": "Look for a line to the enemy king blocked by one of your pieces. Can that piece move with a second threat?",
+      "explanation": "The pawn uncovers the rook\u2019s check and attacks the bishop. The king approaches the remaining pawn to finish the win. Book continuation: e5+ Kc5 exd6 Kxd6 Kd3.",
+      "diagramPage": "40",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 34
+    }
+  },
+  {
+    "number": "278",
+    "title": "Also here",
+    "order": 278,
+    "bookLines": [
+      "Kf6+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1B6/6r1/8/4K3/8/2P3k1/8/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered check or the preparation that makes it decisive.",
+      "solutionText": "Kf6+",
+      "hint": "Look for a line to the enemy king blocked by one of your pieces. Can that piece move with a second threat?",
+      "explanation": "Moving the king reveals the bishop\u2019s attack on g3 and attacks the rook. Book continuation: Kf6+.",
+      "diagramPage": "40",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 34
+    }
+  },
+  {
+    "number": "279",
+    "title": "One little check",
+    "order": 279,
+    "bookLines": [
+      "Nc3+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "K7/8/2B5/3N4/8/8/8/1q5k w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered check or the preparation that makes it decisive.",
+      "solutionText": "Nc3+",
+      "hint": "Look for a line to the enemy king blocked by one of your pieces. Can that piece move with a second threat?",
+      "explanation": "The knight reveals the bishop\u2019s check and attacks the queen on b1. Book continuation: Nc3+.",
+      "diagramPage": "40",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 34
+    }
+  },
+  {
+    "number": "280",
+    "title": "I can check too",
+    "order": 280,
+    "bookLines": [
+      "Bf6+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "7k/6q1/8/8/7B/8/8/K6R w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered check or the preparation that makes it decisive.",
+      "solutionText": "Bf6+",
+      "hint": "Look for a line to the enemy king blocked by one of your pieces. Can that piece move with a second threat?",
+      "explanation": "A double check forces the king to move, leaving the queen available to the bishop. Book continuation: Bf6+.",
+      "diagramPage": "40",
+      "answerPage": "129",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 34
+    }
+  },
+  {
+    "number": "281",
+    "title": "Winning the rook",
+    "order": 281,
+    "bookLines": [
+      "cxd6+ Kd3 dxe7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/4r3/1B1p4/2P3K1/8/4k3/8/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered check or the preparation that makes it decisive.",
+      "solutionText": "cxd6+ Kd3 dxe7",
+      "hint": "Look for a line to the enemy king blocked by one of your pieces. Can that piece move with a second threat?",
+      "explanation": "The pawn reveals a bishop check, then captures the rook. Book continuation: cxd6+ Kd3 dxe7.",
+      "diagramPage": "40",
+      "answerPage": "129",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 34
+    }
+  },
+  {
+    "number": "282",
+    "title": "Unpin to win",
+    "order": 282,
+    "bookLines": [
+      "Rxb4 axb4 Nxd5+ Kd7 Nb6+ Ke7 Rc7+ Kd8 Nxa8",
+      "Rxb4 axb4 Nxd5+ Kxd5 Rc5#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r6r/1p4p1/2k1bp2/p2p3p/Rb1PpB1P/1PN1P3/1B1K1PP1/2R5 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered check or the preparation that makes it decisive.",
+      "solutionText": "Rxb4 axb4 Nxd5+ Kd7 Nb6+ Ke7 Rc7+",
+      "hint": "Look for a line to the enemy king blocked by one of your pieces. Can that piece move with a second threat?",
+      "explanation": "The rook sacrifice removes the pin on the knight. Discovered checks then lead to the a8 rook. Book continuation: Rxb4 axb4 Nxd5+ Kd7 Nb6+ Ke7 Rc7+ Kd8 Nxa8. Additional book variations: Rxb4 axb4 Nxd5+ Kxd5 Rc5#. Practice ends after White\u2019s fourth move; the full continuation is shown above.",
+      "diagramPage": "40",
+      "answerPage": "129",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 34
+    }
+  },
+  {
+    "number": "283",
+    "title": "Not so hard",
+    "order": 283,
+    "bookLines": [
+      "Rxb6+ Kf8 Rxb7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4r3/pb4k1/1p3Rp1/3p4/3B4/2P5/P2K2PP/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered check or the preparation that makes it decisive.",
+      "solutionText": "Rxb6+ Kf8 Rxb7",
+      "hint": "Look for a line to the enemy king blocked by one of your pieces. Can that piece move with a second threat?",
+      "explanation": "The rook captures a pawn with discovered check, then takes the bishop. Book continuation: Rxb6+ Kf8 Rxb7.",
+      "diagramPage": "40",
+      "answerPage": "129",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 34
+    }
+  },
+  {
+    "number": "284",
+    "title": "White to move and win",
+    "order": 284,
+    "bookLines": [
+      "Rh8+ Kxh8 Bxg7+ Kxg7 Qxd5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4R3/6rk/3p2r1/p2q3p/P2B4/2P4P/1P1Q2P1/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered check or the preparation that makes it decisive.",
+      "solutionText": "Rh8+ Kxh8 Bxg7+ Kxg7 Qxd5",
+      "hint": "Look for a line to the enemy king blocked by one of your pieces. Can that piece move with a second threat?",
+      "explanation": "The rook is sacrificed to deflect the king and reveal the bishop\u2019s check, winning the queen. Book continuation: Rh8+ Kxh8 Bxg7+ Kxg7 Qxd5.",
+      "diagramPage": "40",
+      "answerPage": "129",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 34
+    }
+  },
+  {
+    "number": "285",
+    "title": "Deflection and discovered check",
+    "order": 285,
+    "bookLines": [
+      "Qxf8 Qxf8 c8=Q+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2q2r2/R1P4k/6pp/1pQ5/1P3P2/8/6PP/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered check or the preparation that makes it decisive.",
+      "solutionText": "Qxf8 Qxf8 c8=Q+",
+      "hint": "Look for a line to the enemy king blocked by one of your pieces. Can that piece move with a second threat?",
+      "explanation": "The queen sacrifice draws the black queen onto the f-file. Promotion uncovers the rook\u2019s check and wins the queen. Book continuation: Qxf8 Qxf8 c8=Q+.",
+      "diagramPage": "40",
+      "answerPage": "129",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 34
+    }
+  },
+  {
+    "number": "286",
+    "title": "Decoy and discovered check",
+    "order": 286,
+    "bookLines": [
+      "Qxh7+ Kxh7 Nf5+ Bh6 Rxh6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r4rk1/pp1qn1bp/4pp2/3p4/5P1N/2PQBP2/PP3K2/6RR w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered check or the preparation that makes it decisive.",
+      "solutionText": "Qxh7+ Kxh7 Nf5+ Bh6 Rxh6#",
+      "hint": "Look for a line to the enemy king blocked by one of your pieces. Can that piece move with a second threat?",
+      "explanation": "The queen sacrifice decoys the king onto the h-file. Moving the knight gives double check and leads to mate. Book continuation: Qxh7+ Kxh7 Nf5+ Bh6 Rxh6#.",
+      "diagramPage": "40",
+      "answerPage": "129",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 34
+    }
+  },
+  {
+    "number": "287",
+    "title": "Surprisingly frequent",
+    "order": 287,
+    "bookLines": [
+      "Nxd4",
+      "Nxd4 Qxd4 Bh7+ Kxh7 Rxd4"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1r4k1/q3bpp1/p2p3p/8/3n4/1N1B3P/PP2QPP1/3R2K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered check or the preparation that makes it decisive.",
+      "solutionText": "Nxd4",
+      "hint": "Look for a line to the enemy king blocked by one of your pieces. Can that piece move with a second threat?",
+      "explanation": "Moving the knight opens the rook\u2019s attack on the knight on d4. If Black recaptures with the queen, a discovered check recovers it. Book continuation: Nxd4. Additional book variations: Nxd4 Qxd4 Bh7+ Kxh7 Rxd4.",
+      "diagramPage": "40",
+      "answerPage": "129",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 34
+    }
+  },
+  {
+    "number": "288",
+    "title": "Clearing the diagonal",
+    "order": 288,
+    "bookLines": [
+      "Nf6+ Kxf6 Nh5+ Kf7 Qh7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r4r2/3q4/2p3kp/1P1n2p1/4N3/6N1/6PP/1Q2R1K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered check or the preparation that makes it decisive.",
+      "solutionText": "Nf6+ Kxf6 Nh5+ Kf7 Qh7#",
+      "hint": "Look for a line to the enemy king blocked by one of your pieces. Can that piece move with a second threat?",
+      "explanation": "The first knight sacrifice clears the queen\u2019s diagonal. The second knight moves with check to make Qh7 mate possible. Book continuation: Nf6+ Kxf6 Nh5+ Kf7 Qh7#.",
+      "diagramPage": "40",
+      "answerPage": "129",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 34
+    }
+  },
+  {
+    "number": "289",
+    "title": "A beautiful combination",
+    "order": 289,
+    "bookLines": [
+      "Bxf8+ Qxh4 Rxf7+ Kh8 Bg7+ Kg8 Rxe7+ Kh7 Bf6+ Kh6 Bxh4",
+      "Bxf8+ Qxh4 Rxf7+ Kg8 Rf4+ Kh7 Rxh4#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1r3r2/4pp1k/4B1pB/n2Pp3/2q4Q/8/6PP/5RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered check or the preparation that makes it decisive.",
+      "solutionText": "Bxf8+ Qxh4 Rxf7+ Kh8 Bg7+ Kg8 Rxe7+",
+      "hint": "Look for a line to the enemy king blocked by one of your pieces. Can that piece move with a second threat?",
+      "explanation": "The bishop capture opens the f-file for a series of discovered checks and a final capture of the queen. Book continuation: Bxf8+ Qxh4 Rxf7+ Kh8 Bg7+ Kg8 Rxe7+ Kh7 Bf6+ Kh6 Bxh4. Additional book variations: Bxf8+ Qxh4 Rxf7+ Kg8 Rf4+ Kh7 Rxh4#. Practice ends after White\u2019s fourth move; the full continuation is shown above.",
+      "diagramPage": "41",
+      "answerPage": "129",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 35
+    }
+  },
+  {
+    "number": "290",
+    "title": "A stylish mate",
+    "order": 290,
+    "bookLines": [
+      "Ne6+ exf4 Bg7#",
+      "Ne6+ g5 Qf6+ Qg6 Bc1 Bxe6 Bxg5+ Kh5 Bf3+ Bg4 Bxg4+ Kxg4 Rf4+ exf4 Qxf4+ Kh5 Qh4#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1b2r2/5P1p/ppn3pk/2p1p1Nq/1bP1PQ2/3P4/PB4BP/1R3RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered check or the preparation that makes it decisive.",
+      "solutionText": "Ne6+ exf4 Bg7#",
+      "hint": "Look for a line to the enemy king blocked by one of your pieces. Can that piece move with a second threat?",
+      "explanation": "The knight move uncovers a bishop check. If the queen is captured, White launches a mating attack. Book continuation: Ne6+ exf4 Bg7#. Additional book variations: Ne6+ g5 Qf6+ Qg6 Bc1 Bxe6 Bxg5+ Kh5 Bf3+ Bg4 Bxg4+ Kxg4 Rf4+ exf4 Qxf4+ Kh5 Qh4#.",
+      "diagramPage": "41",
+      "answerPage": "129",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 35
+    }
+  },
+  {
+    "number": "291",
+    "title": "Nice and quick",
+    "order": 291,
+    "bookLines": [
+      "Nc8+ Nc5 Qxc5+ Qxc5 Rd8#",
+      "Nc8+ Qc5 Qxc5+ Nxc5 Rd8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1r3kr1/2qn1pp1/3Nb3/6Pp/8/Q4P2/PPP4P/2KRR3 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered check or the preparation that makes it decisive.",
+      "solutionText": "Nc8+ Nc5 Qxc5+ Qxc5 Rd8#",
+      "hint": "Look for a line to the enemy king blocked by one of your pieces. Can that piece move with a second threat?",
+      "explanation": "Moving the knight uncovers the rook\u2019s check. The queen sacrifice then clears the way for mate. Book continuation: Nc8+ Nc5 Qxc5+ Qxc5 Rd8#. Additional book variations: Nc8+ Qc5 Qxc5+ Nxc5 Rd8#.",
+      "diagramPage": "41",
+      "answerPage": "129",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 35
+    }
+  },
+  {
+    "number": "292",
+    "title": "Out of the blue",
+    "order": 292,
+    "bookLines": [
+      "Rxg7+ axb5 Nf6+ Kd8 Rd7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2r1kb1r/1p1R2pp/p3p3/1Q3p2/4N3/8/PPP2PpP/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered check or the preparation that makes it decisive.",
+      "solutionText": "Rxg7+ axb5 Nf6+ Kd8 Rd7#",
+      "hint": "Look for a line to the enemy king blocked by one of your pieces. Can that piece move with a second threat?",
+      "explanation": "The rook sacrifice opens the queen\u2019s diagonal and sets up a discovered check followed by mate. Book continuation: Rxg7+ axb5 Nf6+ Kd8 Rd7#.",
+      "diagramPage": "41",
+      "answerPage": "129",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 35
+    }
+  },
+  {
+    "number": "293",
+    "title": "First you have to prepare",
+    "order": 293,
+    "bookLines": [
+      "Rxh6+ gxh6 Re7+ Kg8 Rxf7 Kxf7 Qxa5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1rr4k/5qp1/4R2p/p1p1R3/2P2P2/P1Q3P1/7P/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered check or the preparation that makes it decisive.",
+      "solutionText": "Rxh6+ gxh6 Re7+ Kg8 Rxf7 Kxf7 Qxa5",
+      "hint": "Look for a line to the enemy king blocked by one of your pieces. Can that piece move with a second threat?",
+      "explanation": "The rook sacrifice draws the g7 pawn off the queen\u2019s diagonal to h8. Moving the second rook then uncovers check and attacks the queen. Book continuation: Rxh6+ gxh6 Re7+ Kg8 Rxf7 Kxf7 Qxa5.",
+      "diagramPage": "41",
+      "answerPage": "129",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 35
+    }
+  },
+  {
+    "number": "294",
+    "title": "Two shattering checks",
+    "order": 294,
+    "bookLines": [
+      "Rxg6+ fxg6 d6+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3r1rk1/2p1qp2/p5p1/1p1P3p/5b1P/P2P4/BP3P2/2RQ1KR1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered check or the preparation that makes it decisive.",
+      "solutionText": "Rxg6+ fxg6 d6+",
+      "hint": "Look for a line to the enemy king blocked by one of your pieces. Can that piece move with a second threat?",
+      "explanation": "The rook sacrifice removes the f7 pawn. Advancing d6 uncovers the bishop\u2019s check and attacks the queen. Book continuation: Rxg6+ fxg6 d6+.",
+      "diagramPage": "41",
+      "answerPage": "129",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 35
+    }
+  },
+  {
+    "number": "295",
+    "title": "Deflection and discovered check",
+    "order": 295,
+    "bookLines": [
+      "Nxg6+ Qxg6 Rxc4+ Qg7 Qxg7+ Kxg7 Rc7+",
+      "Nxg6+ hxg6 Rh3#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3r3k/p5qp/bp2B1p1/3P1p2/2n2N2/2R5/PQ3PPP/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered check or the preparation that makes it decisive.",
+      "solutionText": "Nxg6+ Qxg6 Rxc4+ Qg7 Qxg7+ Kxg7 Rc7+",
+      "hint": "Look for a line to the enemy king blocked by one of your pieces. Can that piece move with a second threat?",
+      "explanation": "The knight sacrifice deflects the queen. Moving the rook reveals the queen\u2019s check and wins material. Book continuation: Nxg6+ Qxg6 Rxc4+ Qg7 Qxg7+ Kxg7 Rc7+. Additional book variations: Nxg6+ hxg6 Rh3#.",
+      "diagramPage": "41",
+      "answerPage": "129",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 35
+    }
+  },
+  {
+    "number": "296",
+    "title": "An overloaded knight",
+    "order": 296,
+    "bookLines": [
+      "Bxh7+ Kh8 Bf5+ Kg8 Bxd7",
+      "Bxh7+ Nxh7 Qxd7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2r2rk1/pp1qbppp/5n2/3p4/3P4/7Q/PP3PPP/RBB1R1K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered check or the preparation that makes it decisive.",
+      "solutionText": "Bxh7+ Kh8 Bf5+ Kg8 Bxd7",
+      "hint": "Look for a line to the enemy king blocked by one of your pieces. Can that piece move with a second threat?",
+      "explanation": "The knight cannot capture the bishop without abandoning the queen. The bishop returns with discovered check. Book continuation: Bxh7+ Kh8 Bf5+ Kg8 Bxd7. Additional book variations: Bxh7+ Nxh7 Qxd7.",
+      "diagramPage": "41",
+      "answerPage": "129",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 35
+    }
+  },
+  {
+    "number": "297",
+    "title": "Gaining a knight",
+    "order": 297,
+    "bookLines": [
+      "Nb5+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/2n5/8/4k3/8/2N5/1B6/K7 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered check or the preparation that makes it decisive.",
+      "solutionText": "Nb5+",
+      "hint": "Look for a line to the enemy king blocked by one of your pieces. Can that piece move with a second threat?",
+      "explanation": "The knight move reveals the bishop\u2019s check and attacks the black knight, which cannot be protected. Book continuation: Nb5+.",
+      "diagramPage": "41",
+      "answerPage": "129",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 35
+    }
+  },
+  {
+    "number": "298",
+    "title": "How to prevent mate?",
+    "order": 298,
+    "bookLines": [
+      "f4+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/8/8/4q3/8/8/K1k2P1R/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered check or the preparation that makes it decisive.",
+      "solutionText": "f4+",
+      "hint": "Look for a line to the enemy king blocked by one of your pieces. Can that piece move with a second threat?",
+      "explanation": "Advancing the pawn checks, blocks the queen\u2019s diagonal to a1, and uncovers the rook\u2019s attack on the queen. Book continuation: f4+.",
+      "diagramPage": "41",
+      "answerPage": "129",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 35
+    }
+  },
+  {
+    "number": "299",
+    "title": "Turning the corner",
+    "order": 299,
+    "bookLines": [
+      "Nh1+ Kc6 Nxf2"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/8/3k4/8/4K3/6N1/5bpB/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered check or the preparation that makes it decisive.",
+      "solutionText": "Nh1+ Kc6 Nxf2",
+      "hint": "Look for a line to the enemy king blocked by one of your pieces. Can that piece move with a second threat?",
+      "explanation": "The knight reaches the edge with discovered check, then captures the bishop. Book continuation: Nh1+ Kc6 Nxf2.",
+      "diagramPage": "41",
+      "answerPage": "129",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 35
+    }
+  },
+  {
+    "number": "300",
+    "title": "Mate in 3 to finish things off",
+    "order": 300,
+    "bookLines": [
+      "Kb6+ Rxg2 d8=Q+ Bb8 Qd5#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "k5r1/3P4/2K5/8/1N6/8/6Bb/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered check or the preparation that makes it decisive.",
+      "solutionText": "Kb6+ Rxg2 d8=Q+ Bb8 Qd5#",
+      "hint": "Look for a line to the enemy king blocked by one of your pieces. Can that piece move with a second threat?",
+      "explanation": "Moving the king uncovers the bishop\u2019s check. Promotion gives another check, and the queen delivers mate. Book continuation: Kb6+ Rxg2 d8=Q+ Bb8 Qd5#.",
+      "diagramPage": "41",
+      "answerPage": "129",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 35
+    }
+  }
+]

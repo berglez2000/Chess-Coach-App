@@ -3,6 +3,8 @@ import { expect, it, vi } from "vitest";
 const { requireUser } = vi.hoisted(() => ({ requireUser: vi.fn(async () => ({ id: "test-user" })) }));
 vi.mock("@/lib/auth/session", () => ({ requireUser }));
 vi.mock("next/navigation", () => ({ notFound: () => { throw new Error("NOT_FOUND"); } }));
+vi.mock("@/lib/db/client", () => ({ getDb: () => ({}) }));
+vi.mock("@/lib/endgames/repository", () => ({ getEndgameProgress: vi.fn(async () => ({ revision: 0, snapshot: null, completedAt: null, completionAssisted: null, attempts: 0 })), listEndgameProgress: vi.fn(async () => ({})) }));
 import ChapterPage from "@/app/endgames/[chapterId]/page";
 import PracticePage from "@/app/endgames/[chapterId]/[positionId]/page";
 

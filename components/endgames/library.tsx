@@ -1,3 +1,4 @@
+import type { EndgameProgress } from "@/lib/endgames/progress";
 import Image from "next/image";
 import Link from "next/link";
 import { ENDGAME_CHAPTERS, chapterPositions } from "@/lib/endgames/catalog";
@@ -7,7 +8,7 @@ import styles from "./endgames.module.css";
 
 type Chapter = (typeof ENDGAME_CHAPTERS)[number];
 
-export function EndgameLibrary() {
+export function EndgameLibrary({ progress = {} }: { progress?: Record<string, EndgameProgress> } = {}) {
   return <>
     <header className={books.pageHeader}>
       <nav className={books.breadcrumb} aria-label="Breadcrumb"><Link href="/">Home</Link><span aria-hidden="true">/</span><span aria-current="page">Endgames</span></nav>
@@ -22,14 +23,14 @@ export function EndgameLibrary() {
           <span className={styles.pieces} aria-hidden="true">{chapter.pieces.map(piece => <Image key={piece} src={`/images/${piece}.png`} width={64} height={64} alt="" />)}</span>
           <span className={styles.coverTitle}>{chapter.title}</span>
         </Link>
-        <div className={books.bookInfo}><h3 className={books.bookTitle}>{chapter.title}</h3><p className={books.bookMeta}>{chapterPositions(chapter.id).length} positions · Stockfish practice</p><p className={styles.description}>{chapter.description}</p><Link href={`/endgames/${chapter.id}`} className={`${books.actionButton} ${books.readButton} ${styles.open}`}>Open chapter</Link></div>
+        <div className={books.bookInfo}><h3 className={books.bookTitle}>{chapter.title}</h3><p className={books.bookMeta}>{chapterPositions(chapter.id).length} positions · {chapterPositions(chapter.id).filter(position => progress[position.id]?.completedAt).length} completed</p><p className={styles.description}>{chapter.description}</p><Link href={`/endgames/${chapter.id}`} className={`${books.actionButton} ${books.readButton} ${styles.open}`}>Open chapter</Link></div>
       </li>)}</ul>
     </section>
-    <p className={styles.note}>Original and sourced practice positions. Sessions are temporary; download PGN to keep your game. Saved exercise progress is not available yet.</p>
+    <p className={styles.note}>Original and sourced practice positions. Practice sessions and first completions are saved privately to your account. Download PGN to keep a copy of an attempt.</p>
   </>;
 }
 
-export function EndgameChapter({ chapter, page = 1, group }: { chapter: Chapter; page?: number; group?: string }) {
+export function EndgameChapter({ chapter, page = 1, group, progress = {} }: { chapter: Chapter; page?: number; group?: string; progress?: Record<string, EndgameProgress> }) {
   const all = chapterPositions(chapter.id);
   const groups = Array.from(new Set(all.map(position => position.subtopic ?? "Introduction")));
   const selectedGroup = groups.includes(group ?? "") ? group : undefined;
@@ -45,11 +46,11 @@ export function EndgameChapter({ chapter, page = 1, group }: { chapter: Chapter;
       <h1 className={books.pageTitle}>{chapter.title}</h1><p className={books.pageSubtitle}>{chapter.description}</p>
     </header>
     <section aria-labelledby="positions-heading">
-      <div className={books.sectionHeader}><h2 id="positions-heading" className={books.sectionTitle}>Practice positions</h2><span className={books.sectionCount}>{positions.length} positions</span></div>
+      <div className={books.sectionHeader}><h2 id="positions-heading" className={books.sectionTitle}>Practice positions</h2><span className={books.sectionCount}>{positions.length} positions · {positions.filter(position => progress[position.id]?.completedAt).length} completed</span></div>
       {groups.length > 1 && <nav className={styles.filters} aria-label="Position topics"><Link href={href(1, "")} aria-current={!selectedGroup ? "page" : undefined}>All positions</Link>{groups.map(item => <Link key={item} href={href(1, item)} aria-current={selectedGroup === item ? "page" : undefined}>{item}</Link>)}</nav>}
       <ul className={books.booksGrid}>{visible.map((position) => <li key={position.id} className={books.bookCard}>
         <div className={styles.preview}><ReplayBoard fen={position.fen} userColor={position.color} positionLabel={`${position.title} preview`} /></div>
-        <div className={books.bookInfo}><p className={books.bookMeta}>Position {all.findIndex(item => item.id === position.id) + 1} · Play {position.color === "WHITE" ? "White" : "Black"}</p><h3 className={books.bookTitle}>{position.title}</h3>{position.subtopic && <p className={books.bookMeta}>{position.subtopic}</p>}<p className={styles.description}>{position.description}</p><p className={books.bookMeta}>Objective: {position.objective === "mate" ? "Checkmate" : "Hold a draw"}</p><Link className={`${books.actionButton} ${books.readButton} ${styles.open}`} href={`/endgames/${chapter.id}/${position.id}`}>Practice {position.title}</Link></div>
+        <div className={books.bookInfo}><p className={books.bookMeta}>Position {all.findIndex(item => item.id === position.id) + 1} · Play {position.color === "WHITE" ? "White" : "Black"}</p><h3 className={books.bookTitle}>{position.title}</h3>{position.subtopic && <p className={books.bookMeta}>{position.subtopic}</p>}<p className={styles.description}>{position.description}</p><p className={books.bookMeta}>Objective: {position.objective === "mate" ? "Checkmate" : "Hold a draw"}</p><p className={books.bookMeta}>{progress[position.id]?.completedAt ? `Completed ${progress[position.id].completionAssisted ? "with assistance" : "without assistance"}` : progress[position.id]?.snapshot ? "In progress · Resume saved game" : "Not started"}</p><Link className={`${books.actionButton} ${books.readButton} ${styles.open}`} href={`/endgames/${chapter.id}/${position.id}`}>Practice {position.title}</Link></div>
       </li>)}</ul>
     </section>
     {pages > 1 && <nav className={styles.filters} aria-label="Position pages">{current > 1 && <Link href={href(current - 1)}>Previous page</Link>}<span>Page {current} of {pages}</span>{current < pages && <Link href={href(current + 1)}>Next page</Link>}</nav>}

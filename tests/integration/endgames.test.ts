@@ -1,0 +1,33 @@
+import { randomUUID } from "node:crypto";
+import { afterAll, beforeAll, expect, it } from "vitest";
+import { assertTestDatabase, createTestDb } from "../support/database";
+import { createTestOwner } from "../support/test-owner";
+import { getEndgameProgress, saveEndgameProgress } from "@/lib/endgames/repository";
+import { ENDGAMES } from "@/lib/endgames/catalog";
+const db = createTestDb(); const owners: string[] = [];
+beforeAll(async () => { await assertTestDatabase(db); owners.push(await createTestOwner(db), await createTestOwner(db)); });
+afterAll(async () => { await assertTestDatabase(db); await db.user.deleteMany({ where: { id: { in: owners } } }); await db.$disconnect(); });
+const position = { ...ENDGAMES[0], id: "integration-mate", fen: "7k/8/5KQ1/8/8/8/8/8 w - - 0 1" };
+it("persists recovery and first completion, isolates owners/versions, and deduplicates concurrent retries", async () => {
+  const input = { requestId: randomUUID(), expectedRevision: 0, snapshot: { sessionId: randomUUID(), difficulty: "casual" as const, moves: [] as string[], resigned: false, hintUsed: false, analysisUsed: false } };
+  const starts = await Promise.all([saveEndgameProgress(db, owners[0], position, input), saveEndgameProgress(db, owners[0], position, input)]);
+  expect(starts.every(result => result.status === "OK")).toBe(true);
+  expect((await getEndgameProgress(db, owners[0], position)).attempts).toBe(1);
+  expect((await getEndgameProgress(db, owners[1], position)).snapshot).toBeNull();
+  const completed = await saveEndgameProgress(db, owners[0], position, { requestId: randomUUID(), expectedRevision: 1, snapshot: { ...input.snapshot, moves: ["g6g7"], hintUsed: true } });
+  expect(completed.progress.completionAssisted).toBe(true);
+  expect((await getEndgameProgress(db, owners[0], position)).snapshot?.moves).toEqual(["g6g7"]);
+  const stale = await saveEndgameProgress(db, owners[0], position, { ...input, requestId: randomUUID() }); expect(stale.status).toBe("CONFLICT");
+  const restart = await saveEndgameProgress(db, owners[0], position, { requestId: randomUUID(), expectedRevision: 2, snapshot: { ...input.snapshot, sessionId: randomUUID() } });
+  expect(restart.progress.completedAt).toBe(completed.progress.completedAt); expect(restart.progress.attempts).toBe(2);
+  expect((await getEndgameProgress(db, owners[0], { ...position, objective: "draw" })).completedAt).toBeNull();
+  expect(await db.endgameAction.count({ where: { progress: { userId: owners[0] } } })).toBe(3);
+});
+it("allows one concurrent edit and rolls invalid histories back", async () => {
+  const progress = await getEndgameProgress(db, owners[0], position);
+  const edits = await Promise.all([false, true].map(hintUsed => saveEndgameProgress(db, owners[0], position, { requestId: randomUUID(), expectedRevision: progress.revision, snapshot: { ...progress.snapshot!, hintUsed } })));
+  expect(edits.filter(result => result.status === "OK")).toHaveLength(1);
+  const current = await getEndgameProgress(db, owners[0], position);
+  await expect(saveEndgameProgress(db, owners[0], position, { requestId: randomUUID(), expectedRevision: current.revision, snapshot: { ...current.snapshot!, moves: ["a1a8"] } })).rejects.toThrow();
+  expect((await getEndgameProgress(db, owners[0], position)).revision).toBe(current.revision);
+});

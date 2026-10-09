@@ -46,6 +46,7 @@ model User {
   puzzleProgress PuzzleProgress[]
   books Book[]
   openings Opening[]
+  endgameProgress EndgameProgress[]
   learningMaterials LearningMaterial[]
   learningProgress LearningProgress[]
   learningProfiles LearningProfileRevision[]
@@ -488,4 +489,29 @@ model OpeningVideo {
   size Int
   createdAt DateTime @default(now())
   @@index([openingId, createdAt])
+}
+
+model EndgameProgress {
+  id String @id @default(cuid())
+  userId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  positionId String
+  version String
+  revision Int @default(0)
+  snapshot Json?
+  attempts Int @default(0)
+  completedAt DateTime?
+  completionAssisted Boolean?
+  actions EndgameAction[]
+  @@unique([userId, positionId, version])
+}
+model EndgameAction {
+  id String @id @default(cuid())
+  progressId String
+  progress EndgameProgress @relation(fields: [progressId], references: [id], onDelete: Cascade)
+  requestId String
+  expectedRevision Int
+  snapshot Json
+  createdAt DateTime @default(now())
+  @@unique([progressId, requestId])
 }

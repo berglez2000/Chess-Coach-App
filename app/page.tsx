@@ -29,6 +29,7 @@ export default async function HomePage() {
   const quick: { href: string; label: string; icon: IconName; sub: string }[] = [
     { href: "/play", label: "Play an engine", icon: "games", sub: "Choose your opponent’s difficulty" },
     { href: "/analysis", label: "Analysis", icon: "games", sub: "Explore the top three engine moves" },
+    { href: "/endgames", label: "Endgames", icon: "learning", sub: "Practice endings against Stockfish" },
     { href: "/openings", label: "Openings", icon: "games", sub: "Study and practice your repertoire" },
     { href: "/puzzles", label: "Puzzles", icon: "puzzles", sub: dashboard ? `${dashboard.puzzles} generated from your games` : "Practice your game positions" },
     { href: "/learning", label: "Books", icon: "books", sub: dashboard ? `${dashboard.books} PDFs uploaded` : "Your reading library" },

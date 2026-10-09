@@ -686,3 +686,13 @@ switches to Stockfish. Maia compatibility scores are discarded rather than displ
 as Stockfish evaluations.
 
 After setup, run `npm run test:maia` to verify legal White/Black replies at every preset with the real model.
+
+## Endgame practice
+
+Open **Endgames** (`/endgames`) from the dashboard, sidebar, or mobile account menu. Six original setups cover basic checkmates, advanced-pawn conversion for White and Black, and rook-pawn draw defense. Choose a position, select Stockfish difficulty, and start. The position, player side, and opponent are fixed for each exercise. Practice uses the existing wooden board, move controls, promotion picker, pause/retry, restart, physical-board input, and PGN download.
+
+Hints are initially concealed. Analysis assistance pauses play. Objective feedback checks the final game outcome: the player must deliver checkmate for mating objectives, or reach a draw for defensive objectives. Promotion alone does not complete a mating exercise. Intermediate moves are legal but are not graded with an engine or tablebase. Sessions and objective results are temporary; saved versioned learning progress and session recovery remain follow-up work under TASK-044. Download PGN before leaving or restarting to keep the game.
+
+Endgames are organized into **Basic checkmates** and **King and pawn endgames** chapters. The `/endgames` chapter grid follows the Learning library layout. Open a chapter to browse wooden-board previews and objectives, then select a position to practice. Chapter and position URLs support direct links and browser navigation; practice includes previous/next position links. The current collection contains six original positions and can be expanded within these chapters.
+
+The first bulk batch adds **50 sourced king-and-pawn positions**, bringing that chapter to **53 positions**: 24 Pawn vs King, 16 Pawn vs Pawn, and 10 Two Pawns vs King imports, alongside three original setups. Each imported starting objective was checked against the live Lichess tablebase (39 wins, 11 draws). Browse by topic with 12 positions per page. Source references and the collection's license are linked on practice screens. See [the import report](docs/imports/king-and-pawn.md) for attribution, selection, validation evidence, and reproduction. Tablebase checks run during import; practice continues to use local Stockfish without tablebase queries.

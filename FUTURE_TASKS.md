@@ -412,7 +412,7 @@ Verification: compare entered positions/solutions to source material, replay val
 
 ### TASK-044 — Add endgame practice
 
-Status: TODO
+Status: IN PROGRESS — initial position library and Stockfish practice implemented
 Priority: P2
 Dependencies: TASK-046 for Stockfish play; TASK-035, TASK-036 where existing learning content/progress is reused
 
@@ -432,6 +432,16 @@ Acceptance:
 
 Verification: representative agreed endgame positions, objective correctness and alternatives, win/draw/stalemate handling, both colors, promotions, hints/reveal/retry, reload, revision changes, and cross-user isolation. Refine these checks once the first practice mode is chosen.
 
+
+Implementation (2026-10-08): added authenticated `/endgames`, dashboard/sidebar/mobile entry points, and six original teaching setups: king/queen, king/rook, queen as Black, advanced-pawn conversion for both colors, and rook-pawn draw defense. These are original positions, not imported book content. Practice reuses ReplayBoard, the wooden assets, and PlayWorkspace with fixed starting FEN/player side/Stockfish opponent, adjustable difficulty, legal moves, promotion, restart, PGN export, optional hints, and opt-in analysis assistance. Objective feedback uses the actual final chess.js outcome: checkmate must be delivered by the player; a draw objective requires a drawn game; resignation fails. Promotion alone does not complete a mating objective. Intermediate continuations are not graded.
+
+This implements the recommended initial position-library slice. Saved versioned progress, assistance tracking, reload recovery, guided reveal/solutions, and engine/tablebase correctness grading remain unimplemented; the UI states these limitations. TASK-044 stays IN PROGRESS rather than DONE. No database migration or external position-source dependency was added.
+
+Verification: Node 24.21.0 lint, typecheck, all 657 unit/component tests (74 files), and webpack production build passed. Tests cover catalog legality/nonterminal setups for both colors, outcome/winner/resignation checks, preset locking, hidden hints, restart, and navigation. No new live Stockfish or browser acceptance run is claimed. Lint ignores local Python virtual environments so Maia's third-party JavaScript is not treated as application source.
+
+Chapter follow-up (2026-10-08): reorganized `/endgames` as a Learning-style chapter grid with Basic checkmates and King and pawn endgames. Authenticated `/endgames/[chapterId]` pages list each chapter's positions with wooden ReplayBoard previews, player color, objectives, and practice links. `/endgames/[chapterId]/[positionId]` opens the existing Stockfish workspace with chapter breadcrumbs and previous/next navigation. Unknown IDs and cross-chapter position URLs return not-found. Existing six positions and practice behavior are preserved; content expansion and persistent progress remain separate work. Lint, typecheck, focused component/route tests, and webpack production build verify the change.
+
+Bulk-content follow-up (2026-10-08): user authorized the first king-and-pawn bulk import. Added 50 positions from the pinned Chess Endgame Training data collection (24 Pawn vs King, 16 Pawn vs Pawn, 10 Two Pawns vs King), retaining source revision, group, index, target, and license notice. All selected FENs passed legality/nonterminal/material/duplicate checks and live Lichess tablebase verification: 39 `win` and 11 `draw` objectives. The chapter now has 53 positions; Basic checkmates remains at three. Added topic filters, 12-position pagination, per-practice source/license links, a checksum-pinned reproducible import script, and [import report/evidence](docs/imports/king-and-pawn.md). Descriptions/hints are newly written; these positions are labeled sourced, not original. Lint, typecheck, 15 focused tests, and webpack production build passed. Saved learning progress and per-move grading remain follow-ups; no new database writes or browser acceptance run is claimed.
 
 ### TASK-045 — Add a manually authored opening library and variation practice
 

@@ -18,6 +18,7 @@ export default async function PuzzlesPage({ searchParams }: { searchParams: Prom
   return <main id="main-content" className="mx-auto max-w-[1200px] px-4 py-8 sm:px-8">
     <h1 className="text-3xl font-semibold">{gameId ? "Puzzles from this game" : "Your puzzles"}</h1>
     <p className="mt-3 text-sm text-[#465c50]">Practice one move at a time. Progress and assistance are saved to your account.</p>
+    <Link className="mt-4 inline-block font-semibold underline" href={gameId ? `/replay?game=${gameId}` : "/replay"}>Beat your past self →</Link>
     <p className="mt-2 text-sm">{count} {count === 1 ? "puzzle" : "puzzles"}</p>
     {!rows.length && <p className="mt-6">{count ? "No puzzles on this page." : "No puzzles yet. Open a saved game, finish engine analysis, and choose Generate puzzles."}</p>}
     <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

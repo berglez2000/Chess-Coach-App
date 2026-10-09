@@ -2,6 +2,7 @@
 
 import { Chess } from "chess.js";
 import Link from "next/link";
+import type { ReactNode } from "react";
 import { useRef, useState } from "react";
 import { PromotionPicker } from "@/components/chess/promotion-picker";
 import { ReplayBoard } from "@/components/chess/replay-board";
@@ -24,7 +25,7 @@ const feedback: Record<string, string> = {
   RETRY: "Starting position restored. Try again.",
   FINISHED: "This attempt has ended. Retry to practice again.",
 };
-export function PuzzleSolver({ initialPuzzle, nextId, learningNavigation }: { initialPuzzle: SolverPuzzle; nextId: string | null; learningNavigation?: { chapterUrl: string; previousUrl: string | null; nextUrl: string | null; title?: string; chapterTitle?: string; number?: string } }) {
+export function PuzzleSolver({ initialPuzzle, nextId, learningNavigation, sessionPractice }: { sessionPractice?: { endpoint: string; locked?: boolean; onBusy?: (busy: boolean) => void; onResponse: (body: unknown) => void; comparison: ReactNode; navigation: ReactNode }; initialPuzzle: SolverPuzzle; nextId: string | null; learningNavigation?: { chapterUrl: string; previousUrl: string | null; nextUrl: string | null; title?: string; chapterTitle?: string; number?: string } }) {
   const { play, muted, toggleMuted } = useMoveSound();
   const [puzzle, setPuzzle] = useState(initialPuzzle);
   const [pending, setPending] = useState(false);
@@ -37,20 +38,21 @@ export function PuzzleSolver({ initialPuzzle, nextId, learningNavigation }: { in
   const submitted = useRef(false);
   const [retryRequest, setRetryRequest] = useState<PuzzleAction | null>(null);
   const solving = puzzle.progress.state === "SOLVING";
-  const locked = pending || uncertain || !!promotionMove;
+  const locked = pending || uncertain || !!promotionMove || !!sessionPractice?.locked;
   const displayedFen = puzzle.progress.state === "REVEALED" ? puzzle.solutionLine?.at(-1)?.fen ?? puzzle.currentFen : puzzle.currentFen;
   const board = new Chess(displayedFen);
 
   async function transmit(action?: PuzzleAction) {
     if (submitted.current) return;
     submitted.current = true;
-    setPending(true); setError(""); setSelected(null);
+    setPending(true); sessionPractice?.onBusy?.(true); setError(""); setSelected(null);
     if (action) setRetryRequest(action);
     try {
-      const response = await fetch(puzzle.learning ? `/api/learning/exercises/${puzzle.id}?revision=${puzzle.learning.revisionId}` : `/api/puzzles/${puzzle.id}`, action ? {
+      const response = await fetch(sessionPractice?.endpoint ?? (puzzle.learning ? `/api/learning/exercises/${puzzle.id}?revision=${puzzle.learning.revisionId}` : `/api/puzzles/${puzzle.id}`), action ? {
         method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(action),
       } : { cache: "no-store" });
       const body = await response.json();
+      sessionPractice?.onResponse(body);
       if (body.puzzle) {
         const saved: SolverPuzzle = body.puzzle;
         // The player's sound starts during the input gesture. Announce an
@@ -68,7 +70,7 @@ export function PuzzleSolver({ initialPuzzle, nextId, learningNavigation }: { in
     } catch {
       setError("Connection lost. Refresh saved progress or retry saving the same action.");
       setUncertain(true);
-    } finally { submitted.current = false; setPending(false); }
+    } finally { submitted.current = false; setPending(false); sessionPractice?.onBusy?.(false); }
   }
   function act(action: "MOVE" | "HINT" | "REVEAL" | "RETRY", move?: string, promotionConfirmed = false) {
     if (pending || uncertain || (promotionMove && !promotionConfirmed) || submitted.current) return;
@@ -137,19 +139,19 @@ export function PuzzleSolver({ initialPuzzle, nextId, learningNavigation }: { in
       {learningNavigation && !puzzle.learning?.publishedSolution && <div className={styles.field}><p className={styles.label}>Book solution</p><p className={styles.notes}>Reveal the solution or solve the exercise to see the book answer.</p></div>}
       {puzzle.learning?.hint && <div className={styles.hint}><p className={styles.label}>Hint</p><p>{puzzle.learning.hint}</p></div>}
       {puzzle.learning?.publishedSolution && <div className={styles.solution}><p className={styles.label}>Book solution</p><p>{puzzle.learning.publishedSolution}</p></div>}
-      <p role="status" aria-label="Puzzle feedback" className={learningNavigation ? styles.feedback : "text-sm"} aria-live="polite">{pending ? "Saving progress…" : feedback[puzzle.progress.lastOutcome ?? ""] ?? "Your answer is checked after you play a move."}</p>
+      <p role="status" aria-label="Puzzle feedback" className={learningNavigation ? styles.feedback : "text-sm"} aria-live="polite">{pending ? "Saving progress…" : (sessionPractice && puzzle.progress.lastOutcome === "INCORRECT" ? "That move is legal, but it is not the validated solution. Try again." : feedback[puzzle.progress.lastOutcome ?? ""]) ?? "Your answer is checked after you play a move."}</p>
       {puzzle.hintSquare && <p className="text-sm">Hint: move the piece on <strong>{puzzle.hintSquare}</strong>.</p>}
       {puzzle.solutionLine && <p className="text-sm">Solution: <strong>{puzzle.solutionLine.map(move => move.san).join(" → ")}</strong></p>}
       {puzzle.goal && <p className="text-sm">{puzzle.goal === "mate" ? "Checkmate reached." : puzzle.goal === "terminal" ? "The game has ended." : "Validated sequence complete. This puzzle ends here; the game may continue."}</p>}
       <p className="text-sm">Moves tried: {puzzle.progress.moveAttempts}</p>
       <p className="text-sm">{puzzle.progress.assisted ? "Assisted practice: you have used help or already seen the solution." : "No hints or reveals used."}</p>
-      {puzzle.progress.completedAt && <p className="text-sm font-semibold">First completion saved · {puzzle.progress.completionAssisted ? "Assisted" : "Unassisted"}</p>}
+      {!sessionPractice && puzzle.progress.completedAt && <p className="text-sm font-semibold">First completion saved · {puzzle.progress.completionAssisted ? "Assisted" : "Unassisted"}</p>}
       <div className={learningNavigation ? styles.actions : "flex flex-wrap gap-2"}>
         <button type="button" disabled={locked || !solving} className={buttonClass} onClick={() => act("HINT")}>{learningNavigation ? "Show hint" : "Hint"}</button>
         <button type="button" disabled={locked || !solving} className={buttonClass} onClick={() => act("REVEAL")}>Reveal solution</button>
-        <button type="button" disabled={locked} className={buttonClass} onClick={() => act("RETRY")}>Retry puzzle</button>
+        <button type="button" disabled={locked || (!!sessionPractice && !solving)} className={buttonClass} onClick={() => act("RETRY")}>Retry puzzle</button>
       </div>
-      <p className="text-xs text-[#657467]">Hints and reveals are saved. Retrying keeps that assistance and your first completion history.</p>
+      <p className="text-xs text-[#657467]">{sessionPractice ? "Retrying preserves mistakes and assistance. Start another session for a fresh attempt." : "Hints and reveals are saved. Retrying keeps that assistance and your first completion history."}</p>
       {error && <p role="alert" className="text-sm text-red-800">{error}</p>}
       {uncertain && <div className="flex flex-wrap gap-2">
         <button type="button" disabled={pending} className={buttonClass} onClick={() => void transmit()}>Refresh saved progress</button>
@@ -157,8 +159,9 @@ export function PuzzleSolver({ initialPuzzle, nextId, learningNavigation }: { in
       </div>}
       </div>
       {puzzle.learning?.explanation && <section className={styles.card}><h2 className="mb-2 text-sm font-semibold">Explanation</h2><p>{puzzle.learning.explanation}</p></section>}
+      {sessionPractice?.comparison}
       <nav aria-label="Puzzle navigation" className={learningNavigation ? `${styles.card} ${styles.navigation}` : "flex flex-col gap-3 text-sm"}>
-        {learningNavigation ? <>
+        {sessionPractice ? sessionPractice.navigation : learningNavigation ? <>
           {learningNavigation.previousUrl && <Link className="underline" href={learningNavigation.previousUrl}>← Previous exercise</Link>}
           {learningNavigation.nextUrl && <Link className="underline font-semibold" href={learningNavigation.nextUrl}>Next exercise →</Link>}
           <Link className="underline" href={learningNavigation.chapterUrl}>Return to chapter</Link>

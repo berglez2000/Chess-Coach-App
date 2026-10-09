@@ -696,3 +696,13 @@ Hints are initially concealed. Analysis assistance pauses play. Objective feedba
 Endgames are organized into **Basic checkmates** and **King and pawn endgames** chapters. The `/endgames` chapter grid follows the Learning library layout. Open a chapter to browse wooden-board previews and objectives, then select a position to practice. Chapter and position URLs support direct links and browser navigation; practice includes previous/next position links. The current collection contains six original positions and can be expanded within these chapters.
 
 The first bulk batch adds **50 sourced king-and-pawn positions**, bringing that chapter to **53 positions**: 24 Pawn vs King, 16 Pawn vs Pawn, and 10 Two Pawns vs King imports, alongside three original setups. Each imported starting objective was checked against the live Lichess tablebase (39 wins, 11 draws). Browse by topic with 12 positions per page. Source references and the collection's license are linked on practice screens. See [the import report](docs/imports/king-and-pawn.md) for attribution, selection, validation evidence, and reproduction. Tablebase checks run during import; practice continues to use local Stockfish without tablebase queries.
+
+## Beat your past self
+
+Open **Puzzles → Beat your past self** (`/replay`), or use the same link in a game's puzzle-generation panel. Generate personal puzzles from a reviewed game first. This mode reuses the existing conservative Stockfish-validated tactical puzzles; some mistakes have no eligible winning tactic.
+
+Each session selects up to five distinct positions, preferring unseen challenges, then unsuccessful/assisted practice, then solved positions. Solve the complete validated sequence with automatic opponent replies. The original move, first legal attempt, solution, and available saved coaching appear after solving or revealing. Hints and reveals count as assistance; illegal moves do not count as attempts. Results distinguish first-try solves, solves after retry, assisted solves, reveals, and skips.
+
+Sessions resume after reload and save independent attempts without changing existing puzzle completion. Start another session for fresh attempt history. Source-game deletion removes its challenge snapshots and associated move-action history. No new AI requests or automatic puzzle generation run when starting practice.
+
+Apply the additive migrations with `npx prisma migrate deploy`, regenerate the client with `npm run db:generate`, and restart the app after updating an existing installation. See [the implementation plan](BEAT_YOUR_PAST_SELF_PLAN.md) for scope and acceptance criteria.

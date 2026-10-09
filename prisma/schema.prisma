@@ -44,6 +44,7 @@ model User {
   games         Game[]
   settings      UserSettings?
   puzzleProgress PuzzleProgress[]
+  replaySessions ReplaySession[]
   books Book[]
   openings Opening[]
   endgameProgress EndgameProgress[]
@@ -149,6 +150,7 @@ model Game {
   updatedAt      DateTime       @updatedAt
   moves          GameMove[]
   puzzleGenerations PuzzleGeneration[]
+  replayChallenges ReplayChallenge[]
 
   @@index([createdAt, id])
   @@index([ownerId, createdAt, id])
@@ -514,4 +516,51 @@ model EndgameAction {
   snapshot Json
   createdAt DateTime @default(now())
   @@unique([progressId, requestId])
+}
+
+// Independent attempts at private game positions; source deletion removes snapshots.
+model ReplaySession {
+  id String @id @default(cuid())
+  userId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  requestId String
+  scopeGameId String?
+  revision Int @default(0)
+  currentIndex Int @default(0)
+  completedAt DateTime?
+  createdAt DateTime @default(now())
+  challenges ReplayChallenge[]
+  actions ReplayAction[]
+  @@unique([userId, requestId])
+  @@index([userId, completedAt, createdAt])
+}
+model ReplayChallenge {
+  id String @id @default(cuid())
+  sessionId String
+  session ReplaySession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  gameId String
+  game Game @relation(fields: [gameId], references: [id], onDelete: Cascade)
+  actions ReplayAction[]
+  puzzleId String
+  order Int
+  definition Json
+  comparison Json
+  progress Json
+  firstMove String?
+  mistakes Int @default(0)
+  skipped Boolean @default(false)
+  @@unique([sessionId, order])
+  @@index([gameId])
+}
+model ReplayAction {
+  id String @id @default(cuid())
+  sessionId String
+  session ReplaySession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  challengeId String?
+  challenge ReplayChallenge? @relation(fields: [challengeId], references: [id], onDelete: Cascade)
+  requestId String
+  payload Json
+  createdAt DateTime @default(now())
+  @@unique([sessionId, requestId])
+  @@index([challengeId])
 }

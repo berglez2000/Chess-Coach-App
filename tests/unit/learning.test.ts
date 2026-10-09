@@ -32,7 +32,7 @@ describe("learning validation", () => {
     expect(() => validateContent({ ...SAMPLE_CONTENT, solver:"BLACK" })).toThrow("Side to move");
     expect(() => validateContent({ ...SAMPLE_CONTENT, fen:"8/8/8/8/8/8/8/8 w - - 0 1" })).toThrow("valid full FEN");
     expect(() => validateContent({ ...SAMPLE_CONTENT, solutionText:"Ra8#" })).toThrow("Invalid solution");
-    expect(() => validateContent({ ...SAMPLE_CONTENT, type:"MISSING_PIECE" })).toThrow("rules");
+    expect(() => validateContent({ ...SAMPLE_CONTENT, type:"MISSING_PIECE" })).toThrow("placement");
     expect(() => validateContent({ ...SAMPLE_CONTENT, solutionText:"Ra2" })).toThrow("reach checkmate");
   });
   it("checks multiple sequence branches independently and rejects conflicting replies", () => {

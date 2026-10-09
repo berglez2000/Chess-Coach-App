@@ -3,8 +3,11 @@ import { z } from "zod";
 import type { PuzzleSolution } from "@/types/puzzle";
 import { playUci, readSolution } from "@/lib/puzzles/sequence";
 
+import { placedPosition } from "./placement";
+
 export const contentSchema = z.object({
   type: z.enum(["MOVE", "MISSING_PIECE"]).default("MOVE"),
+  placementPiece: z.enum(["p", "n", "b", "r", "q"]).default("n"),
   fen: z.string().max(200).default(""), solver: z.enum(["WHITE", "BLACK"]).default("WHITE"),
   prompt: z.string().max(2000).default(""), objective: z.enum(["MATE", "SEQUENCE"]).default("MATE"),
   mateIn: z.number().int().min(1).max(4).default(1),
@@ -25,7 +28,7 @@ export class LearningError extends Error {
 export function answerIdentity(content: LearningContent) {
   // Provenance is presentation metadata; hints/explanations can expose answers and belong to the pinned revision.
   return JSON.stringify([content.type, content.fen, content.solver, content.prompt, content.objective, content.mateIn,
-    content.solutionText, content.hint, content.explanation]);
+    content.solutionText, content.hint, content.explanation, ...(content.type === "MISSING_PIECE" ? [content.placementPiece] : [])]);
 }
 function position(content: LearningContent) {
   let board: Chess;
@@ -72,7 +75,7 @@ export function sanLines(content: LearningContent) {
 /** Exhaustive bounded AND/OR proof. No PV, prose, or cooperative line is treated as forced mate. */
 export function validateContent(raw: unknown, limits = { nodes: 100000, milliseconds: 5000 }): Validation {
   const content = contentSchema.parse(raw);
-  if (content.type !== "MOVE") throw new LearningError("Missing Piece practice will be added after its rules are defined.");
+  if (content.type === "MISSING_PIECE") return validatePlacement(content);
   const board = position(content);
   const authored = sanLines(content);
   const roots = [...new Set(authored.map(line => line.moves[0]))];
@@ -139,4 +142,29 @@ export function validateContent(raw: unknown, limits = { nodes: 100000, millisec
   const acceptedMoves = [...new Set(lines.map(line => line.moves[0]))];
   readSolution({ version: 2, maxPlayerMoves: 4, lines }, content.fen, acceptedMoves, content.solver);
   return { method: "exhaustive-forced-mate-v1", nodes, solution: { version: 2, maxPlayerMoves: 4, lines }, acceptedMoves, fingerprint: answerIdentity(content) };
+}
+
+function validatePlacement(content: LearningContent): Validation {
+  let board: Chess;
+  try { board = new Chess(content.fen); } catch { throw new LearningError("Enter a valid full FEN before validating."); }
+  if (board.turn() !== (content.solver === "WHITE" ? "w" : "b")) throw new LearningError("Side to move must match the solver.");
+  const piece = content.placementPiece;
+  const symbol = piece === "p" ? "" : piece.toUpperCase();
+  const answers = content.solutionText.trim().split(/\n+/).map(line => {
+    const match = line.trim().match(new RegExp(`^(?:1\\.\\s*)?${symbol}([a-h][1-8])([+#]?)$`));
+    if (!match) throw new LearningError(`Enter a placement such as ${symbol}g6${content.objective === "MATE" ? "#" : ""}, one per line.`);
+    try {
+      const placed = placedPosition(content.fen, piece, match[1], content.solver);
+      if (content.objective === "MATE" && !placed.isCheckmate()) throw new Error("The placement does not create checkmate.");
+      if (match[2] === "#" && !placed.isCheckmate()) throw new Error("The supplied checkmate suffix is incorrect.");
+      if (match[2] === "+" && !placed.isCheck()) throw new Error("The supplied check suffix is incorrect.");
+    } catch (error) { throw new LearningError(error instanceof Error ? error.message : "Invalid placement."); }
+    return `${piece}@${match[1]}`;
+  });
+  const accepted = [...new Set(answers)];
+  if (content.objective === "MATE") for (const square of SQUARES) {
+    try { if (placedPosition(content.fen, piece, square, content.solver).isCheckmate() && !accepted.includes(`${piece}@${square}`)) accepted.push(`${piece}@${square}`); } catch { /* occupied or invalid square */ }
+  }
+  return { method: content.objective === "MATE" ? "exhaustive-placement-mate-v1" : "authored-placement-v1", nodes: content.objective === "MATE" ? 64 : answers.length,
+    acceptedMoves: accepted, solution: { version: 2, maxPlayerMoves: 4, lines: [] }, fingerprint: answerIdentity(content) };
 }

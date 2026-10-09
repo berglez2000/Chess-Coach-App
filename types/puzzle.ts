@@ -13,7 +13,7 @@ export interface PuzzleState {
   completionAssisted: boolean | null;
 }
 export interface SolverPuzzle {
-  learning?: { revisionId: string; objective: string; prompt: string; hint: string | null; publishedSolution: string | null; explanation: string | null };
+  learning?: { type?: "MOVE" | "MISSING_PIECE"; placementPiece?: "p" | "n" | "b" | "r" | "q"; revisionId: string; objective: string; prompt: string; hint: string | null; publishedSolution: string | null; explanation: string | null };
   id: string;
   startingFen: string;
   playerColor: ChessColor;

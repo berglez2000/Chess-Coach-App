@@ -13,7 +13,7 @@ export function ReplayBoard({ fen, userColor, flipped = false, lastMove, moveQua
   const file = destination ? destination.charCodeAt(0) - 97 : 0;
   const rank = destination ? Number(destination[1]) - 1 : 0;
   return (
-    <div className="relative w-full min-w-0" role={onMove ? "group" : "img"} aria-label={`${positionLabel ?? (onMove ? "Exploration" : "Game")} position, ${whiteBottom ? "White" : "Black"} at the bottom${destination && moveQuality ? `, move quality ${moveQuality} on ${destination}` : ""}`}>
+    <div className="relative w-full min-w-0" role={onMove || onSquareClick ? "group" : "img"} aria-label={`${positionLabel ?? (onMove ? "Exploration" : "Game")} position, ${whiteBottom ? "White" : "Black"} at the bottom${destination && moveQuality ? `, move quality ${moveQuality} on ${destination}` : ""}`}>
       <Chessboard options={{
         id: "game-replay",
         position: fen,

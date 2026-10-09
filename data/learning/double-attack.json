@@ -1,0 +1,701 @@
+[
+  {
+    "number": "217",
+    "title": "Nasty pin",
+    "order": 217,
+    "content": {
+      "type": "MOVE",
+      "fen": "1r4k1/p4p2/7R/8/6b1/8/B5PP/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the double attack that wins material or creates two decisive threats.",
+      "solutionText": "Rg6+ Kf8 Rxg4",
+      "hint": "Look for loose pieces, checks, and threats against the king. Can one move create two threats?",
+      "explanation": "The check forces the king away, allowing the rook to capture the bishop.",
+      "diagramPage": "31",
+      "answerPage": "127",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 27
+    }
+  },
+  {
+    "number": "218",
+    "title": "This won’t take you long",
+    "order": 218,
+    "content": {
+      "type": "MOVE",
+      "fen": "r2q1rk1/1ppbb1pp/pnp1p3/4N3/8/8/PPP1QPPP/RNBR2K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the double attack that wins material or creates two decisive threats.",
+      "solutionText": "Nxd7 Nxd7 Qxe6+",
+      "hint": "Look for loose pieces, checks, and threats against the king. Can one move create two threats?",
+      "explanation": "Removing the bishop exposes a queen fork of the king and knight. After a king move, Rxd7 wins the knight.",
+      "diagramPage": "31",
+      "answerPage": "127",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 27
+    }
+  },
+  {
+    "number": "219",
+    "title": "A simple double threat",
+    "order": 219,
+    "content": {
+      "type": "MOVE",
+      "fen": "3r3k/ppp3pp/1q6/n7/8/2B2P1P/PPB3P1/2Q4K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the double attack that wins material or creates two decisive threats.",
+      "solutionText": "Qg5 Rg8 Qh4 h6 Qe4",
+      "hint": "Look for loose pieces, checks, and threats against the king. Can one move create two threats?",
+      "explanation": "Qg5 threatens Qxg7 mate and the rook on d8. After Rg8, Qh4 threatens mate on h7; after ...h6, Qe4 attacks the queen and threatens mate on h7. Against ...Rd7, Qf5 attacks the rook and threatens mate on h7. Additional book variation: Qg5 Rd7 Qf5.",
+      "diagramPage": "31",
+      "answerPage": "127",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 27
+    },
+    "bookVariations": [
+      "Qg5 Rd7 Qf5"
+    ]
+  },
+  {
+    "number": "220",
+    "title": "Loose pieces drop off",
+    "order": 220,
+    "content": {
+      "type": "MOVE",
+      "fen": "r1bqk2r/pppp1ppp/8/3Ppn2/1b6/4P1P1/PP1P1PBP/R1BQK1NR w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the double attack that wins material or creates two decisive threats.",
+      "solutionText": "Qg4",
+      "hint": "Look for loose pieces, checks, and threats against the king. Can one move create two threats?",
+      "explanation": "The queen attacks the undefended bishop on b4 and knight on f5.",
+      "diagramPage": "31",
+      "answerPage": "127",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 27
+    }
+  },
+  {
+    "number": "221",
+    "title": "Black was a World Champion!",
+    "order": 221,
+    "content": {
+      "type": "MOVE",
+      "fen": "r2qk2r/p2p1ppp/1pbbp3/7n/2P1P3/P1N1B3/1PQ2PPP/R3KB1R w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the double attack that wins material or creates two decisive threats.",
+      "solutionText": "Qd1",
+      "hint": "Look for loose pieces, checks, and threats against the king. Can one move create two threats?",
+      "explanation": "The queen attacks both the bishop on d6 and knight on h5. Christiansen–Karpov, 1993.",
+      "diagramPage": "31",
+      "answerPage": "127",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 27
+    }
+  },
+  {
+    "number": "222",
+    "title": "Two more loose pieces",
+    "order": 222,
+    "content": {
+      "type": "MOVE",
+      "fen": "5kn1/p1b1nppQ/1p6/4p3/r7/P6P/1P3PP1/5RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the double attack that wins material or creates two decisive threats.",
+      "solutionText": "Qc2",
+      "hint": "Look for loose pieces, checks, and threats against the king. Can one move create two threats?",
+      "explanation": "The queen attacks the rook on a4 and bishop on c7.",
+      "diagramPage": "31",
+      "answerPage": "127",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 27
+    }
+  },
+  {
+    "number": "223",
+    "title": "One move with two objectives",
+    "order": 223,
+    "content": {
+      "type": "MOVE",
+      "fen": "2r2rk1/ppq2ppp/2p5/8/3b4/3B3P/PPP1QPP1/R4RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the double attack that wins material or creates two decisive threats.",
+      "solutionText": "Qe4",
+      "hint": "Look for loose pieces, checks, and threats against the king. Can one move create two threats?",
+      "explanation": "The queen attacks the bishop on d4 and threatens Qxh7 mate.",
+      "diagramPage": "31",
+      "answerPage": "127",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 27
+    }
+  },
+  {
+    "number": "224",
+    "title": "The same idea",
+    "order": 224,
+    "content": {
+      "type": "MOVE",
+      "fen": "5rk1/pp2bppp/2pq4/8/8/2P2Q1P/PPB2PP1/4R2K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the double attack that wins material or creates two decisive threats.",
+      "solutionText": "Qe4",
+      "hint": "Look for loose pieces, checks, and threats against the king. Can one move create two threats?",
+      "explanation": "The queen attacks the bishop on e7 and threatens Qxh7 mate.",
+      "diagramPage": "31",
+      "answerPage": "127",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 27
+    }
+  },
+  {
+    "number": "225",
+    "title": "A pawn provides the answer",
+    "order": 225,
+    "content": {
+      "type": "MOVE",
+      "fen": "r2rnk2/5ppp/pp2P3/4P3/3N4/Pb4P1/1P3K1P/2RR4 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the double attack that wins material or creates two decisive threats.",
+      "solutionText": "e7+ Kxe7 Nc6+",
+      "hint": "Look for loose pieces, checks, and threats against the king. Can one move create two threats?",
+      "explanation": "The pawn check draws the king onto e7, where the knight forks the king and rook on d8.",
+      "diagramPage": "31",
+      "answerPage": "127",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 27
+    }
+  },
+  {
+    "number": "226",
+    "title": "Simple chess",
+    "order": 226,
+    "content": {
+      "type": "MOVE",
+      "fen": "5rk1/5ppp/b1p1p3/2PnP3/1q1B4/6P1/4rP1P/1BQRR1K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the double attack that wins material or creates two decisive threats.",
+      "solutionText": "Rxe2 Bxe2 Qc2",
+      "hint": "Look for loose pieces, checks, and threats against the king. Can one move create two threats?",
+      "explanation": "Exchanging the rook draws the bishop onto e2. Qc2 attacks that bishop and threatens Qxh7 mate. Wojtkiewicz–Privman, 2003.",
+      "diagramPage": "31",
+      "answerPage": "127",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 27
+    }
+  },
+  {
+    "number": "227",
+    "title": "Check then a double attack",
+    "order": 227,
+    "content": {
+      "type": "MOVE",
+      "fen": "r6k/2p2p1p/p5p1/p7/2r5/2P4P/1P3PP1/4Q1K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the double attack that wins material or creates two decisive threats.",
+      "solutionText": "Qe5+ Kg8 Qd5",
+      "hint": "Look for loose pieces, checks, and threats against the king. Can one move create two threats?",
+      "explanation": "The check gains time to place the queen on d5, attacking both rooks.",
+      "diagramPage": "31",
+      "answerPage": "127",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 27
+    }
+  },
+  {
+    "number": "228",
+    "title": "This is trickier",
+    "order": 228,
+    "content": {
+      "type": "MOVE",
+      "fen": "6k1/5pb1/1p1N3p/p5p1/5q2/Q6P/PPr5/3RR2K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the double attack that wins material or creates two decisive threats.",
+      "solutionText": "Re8+ Kh7 Qd3+",
+      "hint": "Look for loose pieces, checks, and threats against the king. Can one move create two threats?",
+      "explanation": "After the rook check, Qd3 checks the king and attacks the rook on c2. The book also gives ...Bf8 Rxf8+ Kxf8 Nf5+ Kg8 Qf8+ Kxf8 Rd8 mate (Vidmar–Euwe, 1929); this longer sideline is outside the trainer’s seven-half-move limit.",
+      "diagramPage": "31",
+      "answerPage": "127",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 27
+    }
+  },
+  {
+    "number": "229",
+    "title": "Objective: undefended pieces",
+    "order": 229,
+    "content": {
+      "type": "MOVE",
+      "fen": "8/8/4np2/4pk1p/RNr4P/P3KP2/1P6/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the double attack that wins material or creates two decisive threats.",
+      "solutionText": "Nd5 Rc7 Nxc7 Nxc7 Rc4",
+      "hint": "Look for loose pieces, checks, and threats against the king. Can one move create two threats?",
+      "explanation": "Nd5 attacks the rook and threatens Ne7 mate. After ...Rc7, White exchanges on c7 and forks the knight and king with Rc4. Additional book variation: Nd5 Rxa4 Ne7#.",
+      "diagramPage": "32",
+      "answerPage": "127",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 28
+    },
+    "bookVariations": [
+      "Nd5 Rxa4 Ne7#"
+    ]
+  },
+  {
+    "number": "230",
+    "title": "A pawn for a piece",
+    "order": 230,
+    "content": {
+      "type": "MOVE",
+      "fen": "2r2rk1/pbqnbppp/1p6/3Pp3/2p1P3/P1P2N2/1BB1QPPP/3RR1K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the double attack that wins material or creates two decisive threats.",
+      "solutionText": "d6 Bxd6 Qd2",
+      "hint": "Look for loose pieces, checks, and threats against the king. Can one move create two threats?",
+      "explanation": "The pawn sacrifice draws the bishop onto d6. Qd2 pins and attacks it; moving the bishop exposes the knight on d7.",
+      "diagramPage": "32",
+      "answerPage": "127",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 28
+    }
+  },
+  {
+    "number": "231",
+    "title": "A pawn is a pawn",
+    "order": 231,
+    "content": {
+      "type": "MOVE",
+      "fen": "r3k2r/pp2qppp/2p3b1/P2pP3/1b1P4/2N4P/1P1B1PP1/R2Q1RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the double attack that wins material or creates two decisive threats.",
+      "solutionText": "Nxd5 cxd5 Qa4+",
+      "hint": "Look for loose pieces, checks, and threats against the king. Can one move create two threats?",
+      "explanation": "The temporary knight sacrifice opens the queen’s diagonal. Qa4 checks and attacks the bishop on b4, recovering a piece with an extra pawn.",
+      "diagramPage": "32",
+      "answerPage": "127",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 28
+    }
+  },
+  {
+    "number": "232",
+    "title": "Temporary sacrifice",
+    "order": 232,
+    "content": {
+      "type": "MOVE",
+      "fen": "2r3k1/4bppp/1r2p3/qb6/5B2/2N3R1/PP3PPP/2R1Q2K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the double attack that wins material or creates two decisive threats.",
+      "solutionText": "Bc7 Rxc7 Qe5",
+      "hint": "Look for loose pieces, checks, and threats against the king. Can one move create two threats?",
+      "explanation": "The bishop sacrifice draws a rook to c7. Qe5 threatens Qxg7 mate and the rook on c7, winning the exchange.",
+      "diagramPage": "32",
+      "answerPage": "127",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 28
+    }
+  },
+  {
+    "number": "233",
+    "title": "An unpleasant choice to make",
+    "order": 233,
+    "content": {
+      "type": "MOVE",
+      "fen": "3r1q1k/p5b1/1r3p1p/1ppBpQpP/4P3/2P3P1/PP1R1PK1/3R4 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the double attack that wins material or creates two decisive threats.",
+      "solutionText": "Bg8 Qxg8 Rxd8",
+      "hint": "Look for loose pieces, checks, and threats against the king. Can one move create two threats?",
+      "explanation": "Bg8 threatens Qh7 mate. If the queen captures the bishop, it stops defending the rook on d8.",
+      "diagramPage": "32",
+      "answerPage": "127",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 28
+    }
+  },
+  {
+    "number": "234",
+    "title": "Protectors in close proximity",
+    "order": 234,
+    "content": {
+      "type": "MOVE",
+      "fen": "4rbnk/2pq2pp/p2p1p2/1p1P2N1/1P1P4/4BQ1P/P4PP1/5RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the double attack that wins material or creates two decisive threats.",
+      "solutionText": "Qf5 Qxf5 Nf7#",
+      "hint": "Look for loose pieces, checks, and threats against the king. Can one move create two threats?",
+      "explanation": "Qf5 threatens Qxh7 mate. Capturing the queen permits Nf7 mate; capturing the knight leaves the black queen undefended. Additional book variation: Qf5 fxg5 Qxd7.",
+      "diagramPage": "32",
+      "answerPage": "127",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 28
+    },
+    "bookVariations": [
+      "Qf5 fxg5 Qxd7"
+    ]
+  },
+  {
+    "number": "235",
+    "title": "The eighth",
+    "order": 235,
+    "content": {
+      "type": "MOVE",
+      "fen": "7k/p2q2pp/2pP1p2/2r1p3/P7/7P/3Q1PP1/3R2K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the double attack that wins material or creates two decisive threats.",
+      "solutionText": "Qb4",
+      "hint": "Look for loose pieces, checks, and threats against the king. Can one move create two threats?",
+      "explanation": "The queen attacks the rook on c5 and threatens Qb8+, winning the black queen on d7.",
+      "diagramPage": "32",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 28
+    }
+  },
+  {
+    "number": "236",
+    "title": "Look out for loose pieces",
+    "order": 236,
+    "content": {
+      "type": "MOVE",
+      "fen": "r1b1r1k1/pp3p1p/5qpB/3p4/3b4/1Q4P1/PP3PBP/3R1RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the double attack that wins material or creates two decisive threats.",
+      "solutionText": "Qa4",
+      "hint": "Look for loose pieces, checks, and threats against the king. Can one move create two threats?",
+      "explanation": "The queen attacks the bishop on d4 and rook on e8.",
+      "diagramPage": "32",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 28
+    }
+  },
+  {
+    "number": "237",
+    "title": "His or Her Majesty?",
+    "order": 237,
+    "content": {
+      "type": "MOVE",
+      "fen": "2r3k1/p2q1ppp/1p1b4/2p2N2/8/2PP4/PP2Q1PP/R6K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the double attack that wins material or creates two decisive threats.",
+      "solutionText": "Qg4",
+      "hint": "Look for loose pieces, checks, and threats against the king. Can one move create two threats?",
+      "explanation": "The queen threatens Qxg7 mate and the knight fork Nh6+, which wins the queen on d7.",
+      "diagramPage": "32",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 28
+    }
+  },
+  {
+    "number": "238",
+    "title": "Make mine a double",
+    "order": 238,
+    "content": {
+      "type": "MOVE",
+      "fen": "r2r4/k4pp1/pp3q2/2pPR3/P7/2P1N2P/5PPQ/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the double attack that wins material or creates two decisive threats.",
+      "solutionText": "Re6",
+      "hint": "Look for loose pieces, checks, and threats against the king. Can one move create two threats?",
+      "explanation": "The rook attacks the queen on f6 and threatens Qc7 mate.",
+      "diagramPage": "32",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 28
+    }
+  },
+  {
+    "number": "239",
+    "title": "The knight on the rim is grim",
+    "order": 239,
+    "content": {
+      "type": "MOVE",
+      "fen": "r2r2k1/pp1bqp2/4p1pp/nP6/4Q3/2PB1N2/P4PPP/R2R2K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the double attack that wins material or creates two decisive threats.",
+      "solutionText": "Qb4 Qxb4 cxb4",
+      "hint": "Look for loose pieces, checks, and threats against the king. Can one move create two threats?",
+      "explanation": "The queen attacks the black queen and knight. After the queen exchange, the knight on a5 has no safe escape. Maric–Bukal, 1973.",
+      "diagramPage": "32",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 28
+    }
+  },
+  {
+    "number": "240",
+    "title": "Sweet and simple",
+    "order": 240,
+    "content": {
+      "type": "MOVE",
+      "fen": "r7/pp5k/2p1b1p1/8/7r/1PQ5/P5PP/5R1K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the double attack that wins material or creates two decisive threats.",
+      "solutionText": "Qe1",
+      "hint": "Look for loose pieces, checks, and threats against the king. Can one move create two threats?",
+      "explanation": "The queen attacks the bishop on e6 and rook on h4.",
+      "diagramPage": "32",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 28
+    }
+  },
+  {
+    "number": "241",
+    "title": "The back rank is the key",
+    "order": 241,
+    "content": {
+      "type": "MOVE",
+      "fen": "rn3q1k/1bp3pp/p7/3P4/2QP4/2NB4/PP4PP/2K1R3 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the double attack that wins material or creates two decisive threats.",
+      "solutionText": "Qb4 Qc8 Qxb7",
+      "hint": "Look for loose pieces, checks, and threats against the king. Can one move create two threats?",
+      "explanation": "The queen attacks the queen on f8 and bishop on b7. Capturing on b4 allows a winning back-rank check. Morphy–Mongredien, 1859. Additional book variation: Qb4 Qxb4 Re8+.",
+      "diagramPage": "33",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 29
+    },
+    "bookVariations": [
+      "Qb4 Qxb4 Re8+"
+    ]
+  },
+  {
+    "number": "242",
+    "title": "You gain a rook",
+    "order": 242,
+    "content": {
+      "type": "MOVE",
+      "fen": "r7/8/p2R1rk1/1p3q1p/3Q3P/2P3P1/5P2/R5K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the double attack that wins material or creates two decisive threats.",
+      "solutionText": "Rxf6+ Qxf6 Qe4+",
+      "hint": "Look for loose pieces, checks, and threats against the king. Can one move create two threats?",
+      "explanation": "The rook sacrifice draws the queen onto f6. Qe4 checks the king and attacks the rook on a8.",
+      "diagramPage": "33",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 29
+    }
+  },
+  {
+    "number": "243",
+    "title": "A long move",
+    "order": 243,
+    "content": {
+      "type": "MOVE",
+      "fen": "r4rk1/pQp2p1p/6p1/6N1/8/3PP1P1/4KP2/b7 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the double attack that wins material or creates two decisive threats.",
+      "solutionText": "Qh1",
+      "hint": "Look for loose pieces, checks, and threats against the king. Can one move create two threats?",
+      "explanation": "The queen attacks the bishop on a1 and threatens Qxh7 mate.",
+      "diagramPage": "33",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 29
+    }
+  },
+  {
+    "number": "244",
+    "title": "Nice and simple",
+    "order": 244,
+    "content": {
+      "type": "MOVE",
+      "fen": "1r4k1/5p1p/6pB/8/8/4Q2P/qn3PK1/1R6 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the double attack that wins material or creates two decisive threats.",
+      "solutionText": "Qe5",
+      "hint": "Look for loose pieces, checks, and threats against the king. Can one move create two threats?",
+      "explanation": "The queen threatens Qg7 mate and attacks the rook on b8.",
+      "diagramPage": "33",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 29
+    }
+  },
+  {
+    "number": "245",
+    "title": "A winning discovery",
+    "order": 245,
+    "content": {
+      "type": "MOVE",
+      "fen": "5r1k/1bQ3np/2p3p1/1pP1R3/1P6/B4q2/B4N2/5K2 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the double attack that wins material or creates two decisive threats.",
+      "solutionText": "Rf5",
+      "hint": "Look for loose pieces, checks, and threats against the king. Can one move create two threats?",
+      "explanation": "Moving the rook uncovers the bishop’s attack on the queen on f3 and threatens Qxg7 mate. Plachetka–Peev, 1970.",
+      "diagramPage": "33",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 29
+    }
+  },
+  {
+    "number": "246",
+    "title": "Something unexpected",
+    "order": 246,
+    "content": {
+      "type": "MOVE",
+      "fen": "r1bq1r2/pp2Rpk1/6p1/3pb3/7Q/2PB4/P4PP1/RN3K2 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the double attack that wins material or creates two decisive threats.",
+      "solutionText": "Qg5",
+      "hint": "Look for loose pieces, checks, and threats against the king. Can one move create two threats?",
+      "explanation": "The queen adds a second attack on the bishop on e5 and threatens Qxg6+.",
+      "diagramPage": "33",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 29
+    }
+  },
+  {
+    "number": "247",
+    "title": "Two targets",
+    "order": 247,
+    "content": {
+      "type": "MOVE",
+      "fen": "r4rk1/1p3pbp/1n1pq3/p5P1/3P4/1PN1BQ1R/1P5P/R6K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the double attack that wins material or creates two decisive threats.",
+      "solutionText": "d5",
+      "hint": "Look for loose pieces, checks, and threats against the king. Can one move create two threats?",
+      "explanation": "The pawn attacks the queen on e6 and opens the bishop’s diagonal to the knight on b6.",
+      "diagramPage": "33",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 29
+    }
+  },
+  {
+    "number": "248",
+    "title": "Discovery and double attack",
+    "order": 248,
+    "content": {
+      "type": "MOVE",
+      "fen": "r4rk1/pp3ppp/2pb1n2/q7/8/P4QP1/1PPN1PBP/3R1RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the double attack that wins material or creates two decisive threats.",
+      "solutionText": "Nc4",
+      "hint": "Look for loose pieces, checks, and threats against the king. Can one move create two threats?",
+      "explanation": "The knight forks the queen on a5 and bishop on d6.",
+      "diagramPage": "33",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 29
+    }
+  },
+  {
+    "number": "249",
+    "title": "All the ingredients are there",
+    "order": 249,
+    "content": {
+      "type": "MOVE",
+      "fen": "3r2k1/5ppp/bn6/ppp2N2/3Pq3/P1P5/1B1Q2PP/2R3K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the double attack that wins material or creates two decisive threats.",
+      "solutionText": "Qg5",
+      "hint": "Look for loose pieces, checks, and threats against the king. Can one move create two threats?",
+      "explanation": "The queen threatens Qxg7 mate and attacks the rook on d8.",
+      "diagramPage": "33",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 29
+    }
+  },
+  {
+    "number": "250",
+    "title": "Fifth rank",
+    "order": 250,
+    "content": {
+      "type": "MOVE",
+      "fen": "1rr3k1/4qppp/pn6/1pp1n2b/4P3/P1PP2QP/2B3PN/R1B2RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the double attack that wins material or creates two decisive threats.",
+      "solutionText": "Rf5",
+      "hint": "Look for loose pieces, checks, and threats against the king. Can one move create two threats?",
+      "explanation": "The rook attacks the knight on e5 and bishop on h5.",
+      "diagramPage": "33",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 29
+    }
+  },
+  {
+    "number": "251",
+    "title": "If only the king were…",
+    "order": 251,
+    "content": {
+      "type": "MOVE",
+      "fen": "6kr/np1pp3/2q5/p7/8/5PN1/PPP3P1/1K1Q3R w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the double attack that wins material or creates two decisive threats.",
+      "solutionText": "Rxh8+ Kxh8 Qd4+",
+      "hint": "Look for loose pieces, checks, and threats against the king. Can one move create two threats?",
+      "explanation": "The rook sacrifice draws the king onto h8. Qd4 checks and attacks the knight on a7.",
+      "diagramPage": "33",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 29
+    }
+  },
+  {
+    "number": "252",
+    "title": "Two bishops in danger",
+    "order": 252,
+    "content": {
+      "type": "MOVE",
+      "fen": "r3k2r/ppqn1ppp/2nbp3/1Bpp4/Q2P2b1/2P1PN2/PP1N1PPP/R1B2RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the double attack that wins material or creates two decisive threats.",
+      "solutionText": "dxc5 Bxf3 cxd6 Qxd6 Nxf3",
+      "hint": "Look for loose pieces, checks, and threats against the king. Can one move create two threats?",
+      "explanation": "The pawn attacks the bishop on d6 and uncovers the queen’s attack on the bishop on g4. The book’s alternate line has a printed move-number typo; the legal continuation is ...Nxc5 Qxg4. Additional book variation: dxc5 Nxc5 Qxg4.",
+      "diagramPage": "33",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 29
+    },
+    "bookVariations": [
+      "dxc5 Nxc5 Qxg4"
+    ]
+  }
+]

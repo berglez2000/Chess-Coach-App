@@ -1,5 +1,6 @@
 import type { LearningProgress, PrismaClient, Prisma } from "@/generated/prisma/client";
 import { requireOwnerId } from "@/lib/auth/owner";
+import { applyPlacementAction, placementDto, placementNames } from "./placement";
 import { z } from "zod";
 import { answerIdentity, contentSchema, LearningError, SAMPLE_CONTENT, validateContent, type Validation } from "./content";
 import { applyPuzzleAction, INITIAL_PROGRESS, solverDto, type PuzzleDefinition } from "@/lib/puzzles/solve";
@@ -96,7 +97,7 @@ export async function mutate(db: PrismaClient, userId: string, raw: unknown) {
     const row = await tx.learningExercise.findUniqueOrThrow({ where: { id: input.id }, include: { published: true } });
     const validation = row.validation as unknown as Validation | null;
     if (!validation?.solution || validation.fingerprint !== answerIdentity(content)) throw new LearningError("Validate this draft before publishing.");
-    if (content.type !== "MOVE" || row.archived) throw new LearningError("Only active validated move exercises can be published.");
+    if (row.archived) throw new LearningError("Only active validated exercises can be published.");
     if (row.published && answerIdentity(contentSchema.parse(row.published.content)) === answerIdentity(content)) {
       await tx.learningExercise.update({ where: { id: row.id }, data: { status: "PUBLISHED" } });
     } else {
@@ -118,8 +119,9 @@ function definition(id: string, content: unknown, validation: unknown): PuzzleDe
 }
 function dto(id: string, revisionId: string, content: unknown, validation: unknown, saved: PuzzleState) {
   const parsed = contentSchema.parse(content);
-  return { ...solverDto(definition(id, content, validation), saved), learning: { revisionId,
-    objective: parsed.objective === "MATE" ? `Mate in ${parsed.mateIn}` : "Play the authored tactical sequence",
+  return { ...(parsed.type === "MISSING_PIECE" ? placementDto(id, parsed, (validation as unknown as Validation).acceptedMoves, saved) : solverDto(definition(id, content, validation), saved)), learning: { revisionId,
+    type: parsed.type, placementPiece: parsed.type === "MISSING_PIECE" ? parsed.placementPiece : undefined,
+    objective: parsed.type === "MISSING_PIECE" ? `Place a ${placementNames[parsed.placementPiece]}${parsed.objective === "MATE" ? " to give checkmate" : " to win"}` : parsed.objective === "MATE" ? `Mate in ${parsed.mateIn}` : "Play the authored tactical sequence",
     prompt: parsed.prompt, hint: saved.hintUsed ? parsed.hint : null,
     publishedSolution: saved.state !== "SOLVING" ? parsed.solutionText : null,
     explanation: saved.state !== "SOLVING" ? parsed.explanation : null } };
@@ -152,7 +154,8 @@ export async function act(db: PrismaClient, userId: string, exerciseId: string, 
       const current = await tx.learningProgress.findUniqueOrThrow({ where: { id: saved.id } });
       return { status: "CONFLICT" as const, puzzle: dto(exerciseId, row.id, row.content, row.validation, progress(current)) };
     }
-    let next = applyPuzzleAction(definition(exerciseId, row.content, row.validation), { ...progress(saved), revision: action.expectedRevision }, action);
+    const parsed = contentSchema.parse(row.content);
+    let next = parsed.type === "MISSING_PIECE" ? applyPlacementAction(parsed, (row.validation as unknown as Validation).acceptedMoves, progress(saved), action) : applyPuzzleAction(definition(exerciseId, row.content, row.validation), { ...progress(saved), revision: action.expectedRevision }, action);
     if (next.lastOutcome === "INCORRECT" && contentSchema.parse(row.content).objective === "SEQUENCE") next = { ...next, lastOutcome: "UNSUPPORTED" };
     await tx.learningProgress.update({ where: { id: saved.id }, data: { ...next, completedAt: next.completedAt ? new Date(next.completedAt) : null } });
     await tx.learningAttempt.create({ data: { progressId: saved.id, requestId: action.requestId, expectedRevision: action.expectedRevision, action: action.action,

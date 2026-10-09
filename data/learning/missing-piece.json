@@ -1,0 +1,542 @@
+[
+  {
+    "number": "187",
+    "title": "Add a knight and it’s mate",
+    "order": 187,
+    "content": {
+      "type": "MISSING_PIECE",
+      "fen": "6rk/6pp/8/1p1b4/p7/3P4/PPP5/1K5R w - - 0 1",
+      "solver": "WHITE",
+      "placementPiece": "n",
+      "objective": "MATE",
+      "mateIn": 1,
+      "prompt": "Place a white knight on an empty square to checkmate Black. This is a placement, not a move from another square.",
+      "solutionText": "Ng6#",
+      "diagramPage": "",
+      "answerPage": "127",
+      "explanation": ""
+    }
+  },
+  {
+    "number": "188",
+    "title": "Add a knight and it’s mate",
+    "order": 188,
+    "content": {
+      "type": "MISSING_PIECE",
+      "fen": "7r/p1q1n3/bk6/p6p/6p1/5Q2/4BPPP/R5K1 w - - 0 1",
+      "solver": "WHITE",
+      "placementPiece": "n",
+      "objective": "MATE",
+      "mateIn": 1,
+      "prompt": "Place a white knight on an empty square to checkmate Black. This is a placement, not a move from another square.",
+      "solutionText": "Na4#",
+      "diagramPage": "",
+      "answerPage": "127",
+      "explanation": ""
+    }
+  },
+  {
+    "number": "189",
+    "title": "Add a knight and it’s mate",
+    "order": 189,
+    "content": {
+      "type": "MISSING_PIECE",
+      "fen": "8/pp6/2p1qbp1/4k2b/4P3/B1P4P/5NPK/3Q4 w - - 0 1",
+      "solver": "WHITE",
+      "placementPiece": "n",
+      "objective": "MATE",
+      "mateIn": 1,
+      "prompt": "Place a white knight on an empty square to checkmate Black. This is a placement, not a move from another square.",
+      "solutionText": "Nd3#",
+      "diagramPage": "",
+      "answerPage": "127",
+      "explanation": ""
+    }
+  },
+  {
+    "number": "190",
+    "title": "Add a bishop and it’s mate",
+    "order": 190,
+    "content": {
+      "type": "MISSING_PIECE",
+      "fen": "5bkr/3p2p1/1n4Pp/4p3/8/4PNN1/5PPP/2n2RK1 w - - 0 1",
+      "solver": "WHITE",
+      "placementPiece": "b",
+      "objective": "MATE",
+      "mateIn": 1,
+      "prompt": "Place a white bishop on an empty square to checkmate Black. This is a placement, not a move from another square.",
+      "solutionText": "Bf7#",
+      "diagramPage": "",
+      "answerPage": "127",
+      "explanation": ""
+    }
+  },
+  {
+    "number": "191",
+    "title": "Add a bishop and it’s mate",
+    "order": 191,
+    "content": {
+      "type": "MISSING_PIECE",
+      "fen": "1b2r2k/7p/6pN/2p5/8/pn2P3/5PPP/3R2K1 w - - 0 1",
+      "solver": "WHITE",
+      "placementPiece": "b",
+      "objective": "MATE",
+      "mateIn": 1,
+      "prompt": "Place a white bishop on an empty square to checkmate Black. This is a placement, not a move from another square.",
+      "solutionText": "Bf6#",
+      "diagramPage": "",
+      "answerPage": "127",
+      "explanation": ""
+    }
+  },
+  {
+    "number": "192",
+    "title": "Add a bishop and it’s mate",
+    "order": 192,
+    "content": {
+      "type": "MISSING_PIECE",
+      "fen": "2r4n/8/Q7/6pk/4p2p/3qN3/5PPP/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "placementPiece": "b",
+      "objective": "MATE",
+      "mateIn": 1,
+      "prompt": "Place a white bishop on an empty square to checkmate Black. This is a placement, not a move from another square.",
+      "solutionText": "Bg4#",
+      "diagramPage": "",
+      "answerPage": "127",
+      "explanation": ""
+    }
+  },
+  {
+    "number": "193",
+    "title": "Add a bishop and it’s mate",
+    "order": 193,
+    "content": {
+      "type": "MISSING_PIECE",
+      "fen": "4qk1n/4b3/8/4p3/5p2/1B1N4/P1P5/1K6 w - - 0 1",
+      "solver": "WHITE",
+      "placementPiece": "b",
+      "objective": "MATE",
+      "mateIn": 1,
+      "prompt": "Place a white bishop on an empty square to checkmate Black. This is a placement, not a move from another square.",
+      "solutionText": "Bh6#",
+      "diagramPage": "",
+      "answerPage": "127",
+      "explanation": ""
+    }
+  },
+  {
+    "number": "194",
+    "title": "Add a bishop and it’s mate",
+    "order": 194,
+    "content": {
+      "type": "MISSING_PIECE",
+      "fen": "k2q4/b1n5/Np6/8/8/8/PPP5/1K6 w - - 0 1",
+      "solver": "WHITE",
+      "placementPiece": "b",
+      "objective": "MATE",
+      "mateIn": 1,
+      "prompt": "Place a white bishop on an empty square to checkmate Black. This is a placement, not a move from another square.",
+      "solutionText": "Bc6#",
+      "diagramPage": "",
+      "answerPage": "127",
+      "explanation": ""
+    }
+  },
+  {
+    "number": "195",
+    "title": "Add a queen and it’s mate",
+    "order": 195,
+    "content": {
+      "type": "MISSING_PIECE",
+      "fen": "q7/2np4/4k3/4p3/2P2pN1/8/5PPP/7K w - - 0 1",
+      "solver": "WHITE",
+      "placementPiece": "q",
+      "objective": "MATE",
+      "mateIn": 1,
+      "prompt": "Place a white queen on an empty square to checkmate Black. This is a placement, not a move from another square.",
+      "solutionText": "Qf6#",
+      "diagramPage": "",
+      "answerPage": "127",
+      "explanation": ""
+    }
+  },
+  {
+    "number": "196",
+    "title": "Add a rook and it’s mate",
+    "order": 196,
+    "content": {
+      "type": "MISSING_PIECE",
+      "fen": "R1rkr3/2p1p3/1b5p/7B/8/8/5PPP/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "placementPiece": "r",
+      "objective": "MATE",
+      "mateIn": 1,
+      "prompt": "Place a white rook on an empty square to checkmate Black. This is a placement, not a move from another square.",
+      "solutionText": "Rd5#",
+      "diagramPage": "",
+      "answerPage": "127",
+      "explanation": ""
+    }
+  },
+  {
+    "number": "197",
+    "title": "Add a rook and it’s mate",
+    "order": 197,
+    "content": {
+      "type": "MISSING_PIECE",
+      "fen": "6rk/3pp1n1/2p5/1p6/p4p2/4NP2/PPPP2P1/2K5 w - - 0 1",
+      "solver": "WHITE",
+      "placementPiece": "r",
+      "objective": "MATE",
+      "mateIn": 1,
+      "prompt": "Place a white rook on an empty square to checkmate Black. This is a placement, not a move from another square.",
+      "solutionText": "Rh6#",
+      "diagramPage": "",
+      "answerPage": "127",
+      "explanation": ""
+    }
+  },
+  {
+    "number": "198",
+    "title": "Add a rook and it’s mate",
+    "order": 198,
+    "content": {
+      "type": "MISSING_PIECE",
+      "fen": "3rkn2/8/3P1p2/8/8/2N4P/3p2P1/7K w - - 0 1",
+      "solver": "WHITE",
+      "placementPiece": "r",
+      "objective": "MATE",
+      "mateIn": 1,
+      "prompt": "Place a white rook on an empty square to checkmate Black. This is a placement, not a move from another square.",
+      "solutionText": "Re7#",
+      "diagramPage": "",
+      "answerPage": "127",
+      "explanation": ""
+    }
+  },
+  {
+    "number": "199",
+    "title": "Add a pawn and it’s mate",
+    "order": 199,
+    "content": {
+      "type": "MISSING_PIECE",
+      "fen": "Q6r/q3pbkp/1b6/3N4/8/P7/1PB5/1K5R w - - 0 1",
+      "solver": "WHITE",
+      "placementPiece": "p",
+      "objective": "MATE",
+      "mateIn": 1,
+      "prompt": "Place a white pawn on an empty square to checkmate Black. This is a placement, not a move from another square.",
+      "solutionText": "h6#",
+      "diagramPage": "",
+      "answerPage": "127",
+      "explanation": ""
+    }
+  },
+  {
+    "number": "200",
+    "title": "Add a pawn and it’s mate",
+    "order": 200,
+    "content": {
+      "type": "MISSING_PIECE",
+      "fen": "1R6/4nk2/8/3P3P/7K/8/1B6/6r1 w - - 0 1",
+      "solver": "WHITE",
+      "placementPiece": "p",
+      "objective": "MATE",
+      "mateIn": 1,
+      "prompt": "Place a white pawn on an empty square to checkmate Black. This is a placement, not a move from another square.",
+      "solutionText": "e6#",
+      "diagramPage": "",
+      "answerPage": "127",
+      "explanation": ""
+    }
+  },
+  {
+    "number": "201",
+    "title": "Add a bishop and it’s mate",
+    "order": 201,
+    "content": {
+      "type": "MISSING_PIECE",
+      "fen": "7k/4Np2/7p/q5p1/8/P5PP/1PB2PK1/4R3 w - - 0 1",
+      "solver": "WHITE",
+      "placementPiece": "b",
+      "objective": "MATE",
+      "mateIn": 1,
+      "prompt": "Place a white bishop on an empty square to checkmate Black. This is a placement, not a move from another square.",
+      "solutionText": "Bf6#",
+      "diagramPage": "",
+      "answerPage": "127",
+      "explanation": ""
+    }
+  },
+  {
+    "number": "202",
+    "title": "Add a rook and it’s mate",
+    "order": 202,
+    "content": {
+      "type": "MISSING_PIECE",
+      "fen": "2B5/p2bpq2/p3k3/2P5/4PP1B/5K1P/8/8 w - - 0 1",
+      "solver": "WHITE",
+      "placementPiece": "r",
+      "objective": "MATE",
+      "mateIn": 1,
+      "prompt": "Place a white rook on an empty square to checkmate Black. This is a placement, not a move from another square.",
+      "solutionText": "Rc6#",
+      "diagramPage": "",
+      "answerPage": "127",
+      "explanation": ""
+    }
+  },
+  {
+    "number": "203",
+    "title": "Add a queen and it’s mate",
+    "order": 203,
+    "content": {
+      "type": "MISSING_PIECE",
+      "fen": "4kq2/n3p3/p3Pp2/8/8/6BP/5PP1/7K w - - 0 1",
+      "solver": "WHITE",
+      "placementPiece": "q",
+      "objective": "MATE",
+      "mateIn": 1,
+      "prompt": "Place a white queen on an empty square to checkmate Black. This is a placement, not a move from another square.",
+      "solutionText": "Qd7#",
+      "diagramPage": "",
+      "answerPage": "127",
+      "explanation": ""
+    }
+  },
+  {
+    "number": "204",
+    "title": "Add a bishop and it’s mate",
+    "order": 204,
+    "content": {
+      "type": "MISSING_PIECE",
+      "fen": "6bk/1N5p/3p2p1/5p2/1p6/pn4PP/5P1K/8 w - - 0 1",
+      "solver": "WHITE",
+      "placementPiece": "b",
+      "objective": "MATE",
+      "mateIn": 1,
+      "prompt": "Place a white bishop on an empty square to checkmate Black. This is a placement, not a move from another square.",
+      "solutionText": "Bf6#",
+      "diagramPage": "",
+      "answerPage": "127",
+      "explanation": ""
+    }
+  },
+  {
+    "number": "205",
+    "title": "Add a rook and it’s mate",
+    "order": 205,
+    "content": {
+      "type": "MISSING_PIECE",
+      "fen": "7R/1b2rkn1/p2pp3/1p4P1/4p3/r2B4/2P4P/7K w - - 0 1",
+      "solver": "WHITE",
+      "placementPiece": "r",
+      "objective": "MATE",
+      "mateIn": 1,
+      "prompt": "Place a white rook on an empty square to checkmate Black. This is a placement, not a move from another square.",
+      "solutionText": "Rf6#",
+      "diagramPage": "",
+      "answerPage": "127",
+      "explanation": ""
+    }
+  },
+  {
+    "number": "206",
+    "title": "Add a bishop and it’s mate",
+    "order": 206,
+    "content": {
+      "type": "MISSING_PIECE",
+      "fen": "8/q3p3/5p2/4pP2/4Pk2/3KN2R/8/8 w - - 0 1",
+      "solver": "WHITE",
+      "placementPiece": "b",
+      "objective": "MATE",
+      "mateIn": 1,
+      "prompt": "Place a white bishop on an empty square to checkmate Black. This is a placement, not a move from another square.",
+      "solutionText": "Bh6#",
+      "diagramPage": "",
+      "answerPage": "127",
+      "explanation": ""
+    }
+  },
+  {
+    "number": "207",
+    "title": "Add a rook and it’s mate",
+    "order": 207,
+    "content": {
+      "type": "MISSING_PIECE",
+      "fen": "8/q3p3/5p2/4pP2/4Pk2/3KN2R/8/8 w - - 0 1",
+      "solver": "WHITE",
+      "placementPiece": "r",
+      "objective": "MATE",
+      "mateIn": 1,
+      "prompt": "Place a white rook on an empty square to checkmate Black. This is a placement, not a move from another square.",
+      "solutionText": "Rg4#",
+      "diagramPage": "",
+      "answerPage": "127",
+      "explanation": ""
+    }
+  },
+  {
+    "number": "208",
+    "title": "Add a knight and it’s mate",
+    "order": 208,
+    "content": {
+      "type": "MISSING_PIECE",
+      "fen": "3R4/p1r2kp1/2p2n1p/2P5/Pp1P4/1P5r/2K1RP2/8 w - - 0 1",
+      "solver": "WHITE",
+      "placementPiece": "n",
+      "objective": "MATE",
+      "mateIn": 1,
+      "prompt": "Place a white knight on an empty square to checkmate Black. This is a placement, not a move from another square.",
+      "solutionText": "Nh8#",
+      "diagramPage": "",
+      "answerPage": "127",
+      "explanation": ""
+    }
+  },
+  {
+    "number": "209",
+    "title": "Add a queen and it’s mate",
+    "order": 209,
+    "content": {
+      "type": "MISSING_PIECE",
+      "fen": "4kb2/1R4pp/q1r1bp2/p4p1P/3P1B2/P7/1P1K1P2/4R3 w - - 0 1",
+      "solver": "WHITE",
+      "placementPiece": "q",
+      "objective": "MATE",
+      "mateIn": 1,
+      "prompt": "Place a white queen on an empty square to checkmate Black. This is a placement, not a move from another square.",
+      "solutionText": "Qd7#",
+      "diagramPage": "",
+      "answerPage": "127",
+      "explanation": ""
+    }
+  },
+  {
+    "number": "210",
+    "title": "Add a rook and it’s mate",
+    "order": 210,
+    "content": {
+      "type": "MISSING_PIECE",
+      "fen": "6r1/1b3pnk/1p6/p1pqP2P/P7/R7/1P3PP1/2B3K1 w - - 0 1",
+      "solver": "WHITE",
+      "placementPiece": "r",
+      "objective": "MATE",
+      "mateIn": 1,
+      "prompt": "Place a white rook on an empty square to checkmate Black. This is a placement, not a move from another square.",
+      "solutionText": "Rh6#",
+      "diagramPage": "",
+      "answerPage": "127",
+      "explanation": ""
+    }
+  },
+  {
+    "number": "211",
+    "title": "Add a knight and it’s mate",
+    "order": 211,
+    "content": {
+      "type": "MISSING_PIECE",
+      "fen": "4rrk1/p1b4p/1p6/2p4R/4q3/1PQ4P/P1P2PP1/3R2K1 w - - 0 1",
+      "solver": "WHITE",
+      "placementPiece": "n",
+      "objective": "MATE",
+      "mateIn": 1,
+      "prompt": "Place a white knight on an empty square to checkmate Black. This is a placement, not a move from another square.",
+      "solutionText": "Nh6#",
+      "diagramPage": "",
+      "answerPage": "127",
+      "explanation": ""
+    }
+  },
+  {
+    "number": "212",
+    "title": "Add a rook and it’s mate",
+    "order": 212,
+    "content": {
+      "type": "MISSING_PIECE",
+      "fen": "2r5/ppr2p2/1k2p3/3pPp1p/1P1NbP2/2P1K1PP/1P6/R7 w - - 0 1",
+      "solver": "WHITE",
+      "placementPiece": "r",
+      "objective": "MATE",
+      "mateIn": 1,
+      "prompt": "Place a white rook on an empty square to checkmate Black. This is a placement, not a move from another square.",
+      "solutionText": "Rb5#",
+      "diagramPage": "",
+      "answerPage": "127",
+      "explanation": ""
+    }
+  },
+  {
+    "number": "213",
+    "title": "Add a rook and it’s mate",
+    "order": 213,
+    "content": {
+      "type": "MISSING_PIECE",
+      "fen": "1k5r/6p1/KN6/2p2pp1/1b4P1/4P2P/5P2/8 w - - 0 1",
+      "solver": "WHITE",
+      "placementPiece": "r",
+      "objective": "MATE",
+      "mateIn": 1,
+      "prompt": "Place a white rook on an empty square to checkmate Black. This is a placement, not a move from another square.",
+      "solutionText": "Rb7#",
+      "diagramPage": "",
+      "answerPage": "127",
+      "explanation": ""
+    }
+  },
+  {
+    "number": "214",
+    "title": "Add a bishop and win",
+    "order": 214,
+    "content": {
+      "type": "MISSING_PIECE",
+      "fen": "4n1k1/1p4pp/p6Q/1b1q4/8/7P/P4P1K/6R1 w - - 0 1",
+      "solver": "WHITE",
+      "placementPiece": "b",
+      "objective": "SEQUENCE",
+      "mateIn": 1,
+      "prompt": "Place a white bishop on an empty square to create a winning position. This is a placement, not a move from another square.",
+      "solutionText": "Be6+",
+      "diagramPage": "",
+      "answerPage": "127",
+      "explanation": "The book’s winning placement. Practice checks the supplied answer; it does not prove a forced win."
+    }
+  },
+  {
+    "number": "215",
+    "title": "Add a knight and win",
+    "order": 215,
+    "content": {
+      "type": "MISSING_PIECE",
+      "fen": "6k1/1b3pp1/2q4p/8/6Q1/7P/2B1nPP1/7K w - - 0 1",
+      "solver": "WHITE",
+      "placementPiece": "n",
+      "objective": "SEQUENCE",
+      "mateIn": 1,
+      "prompt": "Place a white knight on an empty square to create a winning position. This is a placement, not a move from another square.",
+      "solutionText": "Ne7",
+      "diagramPage": "",
+      "answerPage": "127",
+      "explanation": "The book’s winning placement. Practice checks the supplied answer; it does not prove a forced win."
+    }
+  },
+  {
+    "number": "216",
+    "title": "Add a rook and win",
+    "order": 216,
+    "content": {
+      "type": "MISSING_PIECE",
+      "fen": "4q1k1/P5pp/8/8/8/6bB/5PP1/7K w - - 0 1",
+      "solver": "WHITE",
+      "placementPiece": "r",
+      "objective": "SEQUENCE",
+      "mateIn": 1,
+      "prompt": "Place a white rook on an empty square to create a winning position. This is a placement, not a move from another square.",
+      "solutionText": "Rc8",
+      "diagramPage": "",
+      "answerPage": "127",
+      "explanation": "The book’s winning placement. Practice checks the supplied answer; it does not prove a forced win."
+    }
+  }
+]

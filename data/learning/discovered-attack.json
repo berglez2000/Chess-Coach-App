@@ -1,0 +1,549 @@
+[
+  {
+    "number": "253",
+    "title": "One small step",
+    "order": 253,
+    "bookLines": [
+      "g6 hxg6 Qxc5",
+      "g6 Ne6 Qxh7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1bq1rk1/ppp2ppp/8/2n3PQ/3pP3/P7/1PP2PBP/3RK1NR w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered attack that wins material or creates a decisive threat.",
+      "solutionText": "g6 hxg6 Qxc5",
+      "hint": "Look for a bishop, rook, or queen whose line is blocked by one of your own pieces. Can that piece move with a threat?",
+      "explanation": "Advancing the pawn opens the queen’s fifth-rank attack on the knight and threatens Qh7 mate. Black cannot meet both threats. Book continuation: g6 hxg6 Qxc5. Additional book variations: g6 Ne6 Qxh7#.",
+      "diagramPage": "36",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 31
+    }
+  },
+  {
+    "number": "254",
+    "title": "Discovery then double attack",
+    "order": 254,
+    "bookLines": [
+      "Nf5 Qe8 Ne7+ Kf7 Nxc8"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2r3k1/3q2bp/1p2p1p1/4n3/3Np3/B1P1P1P1/1P2QP2/3R2K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered attack that wins material or creates a decisive threat.",
+      "solutionText": "Nf5 Qe8 Ne7+ Kf7 Nxc8",
+      "hint": "Look for a bishop, rook, or queen whose line is blocked by one of your own pieces. Can that piece move with a threat?",
+      "explanation": "The knight moves with an attack on the queen, then forks the king and rook from e7. Book continuation: Nf5 Qe8 Ne7+ Kf7 Nxc8.",
+      "diagramPage": "36",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 31
+    }
+  },
+  {
+    "number": "255",
+    "title": "How to advance the pawn?",
+    "order": 255,
+    "bookLines": [
+      "Rc8 Rxa7 Kb6+",
+      "Rc8 Kb4 a8=Q"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "R7/P7/2K5/8/2k5/8/8/r7 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered attack that wins material or creates a decisive threat.",
+      "solutionText": "Rc8 Rxa7 Kb6+",
+      "hint": "Look for a bishop, rook, or queen whose line is blocked by one of your own pieces. Can that piece move with a threat?",
+      "explanation": "The rook leaves the a-file to clear the pawn’s promotion square. After Black captures the pawn, Kb6 uncovers the rook’s check along the c-file. If the king moves to b4 instead, the pawn promotes. Book continuation: Rc8 Rxa7 Kb6+. Additional book variations: Rc8 Kb4 a8=Q.",
+      "diagramPage": "36",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 31
+    }
+  },
+  {
+    "number": "256",
+    "title": "Discovery then double attack",
+    "order": 256,
+    "bookLines": [
+      "Bf8 Rxf8 Rxc8",
+      "Bf8 Rxc1 Qxg7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2rr3k/p4bpp/5p2/1qBn4/3p2Q1/P5P1/5PBP/2R2RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered attack that wins material or creates a decisive threat.",
+      "solutionText": "Bf8 Rxf8 Rxc8",
+      "hint": "Look for a bishop, rook, or queen whose line is blocked by one of your own pieces. Can that piece move with a threat?",
+      "explanation": "Moving the bishop opens the rook’s attack on c8 and threatens Qxg7 mate. Capturing the bishop permits White to win the exchange. Book continuation: Bf8 Rxf8 Rxc8. Additional book variations: Bf8 Rxc1 Qxg7#.",
+      "diagramPage": "36",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 31
+    }
+  },
+  {
+    "number": "257",
+    "title": "A couple of checks",
+    "order": 257,
+    "bookLines": [
+      "Rxf8+ Kxf8 Bd6+ Rxd6 Qxf5+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1R3b2/3p1k1p/6r1/5q2/5B2/5Q2/6PP/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered attack that wins material or creates a decisive threat.",
+      "solutionText": "Rxf8+ Kxf8 Bd6+ Rxd6 Qxf5+",
+      "hint": "Look for a bishop, rook, or queen whose line is blocked by one of your own pieces. Can that piece move with a threat?",
+      "explanation": "The rook sacrifice draws the king onto f8. Bd6 checks while uncovering the queen’s attack on the black queen. Book continuation: Rxf8+ Kxf8 Bd6+ Rxd6 Qxf5+.",
+      "diagramPage": "36",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 31
+    }
+  },
+  {
+    "number": "258",
+    "title": "Freeing the diagonal",
+    "order": 258,
+    "bookLines": [
+      "Re7 Rxe7 Qh7+ Kf8 Qh8#",
+      "Re7 g6 Rxd7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r3r1k1/1p1q1pp1/p1pb4/6Np/3PR2P/PP1Q2P1/1B3PK1/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered attack that wins material or creates a decisive threat.",
+      "solutionText": "Re7 Rxe7 Qh7+ Kf8 Qh8#",
+      "hint": "Look for a bishop, rook, or queen whose line is blocked by one of your own pieces. Can that piece move with a threat?",
+      "explanation": "The rook move clears the bishop’s diagonal toward g7. Capturing the rook allows the queen to deliver mate; ...g6 leaves the queen on d7 available for capture. Book continuation: Re7 Rxe7 Qh7+ Kf8 Qh8#. Additional book variations: Re7 g6 Rxd7.",
+      "diagramPage": "36",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 31
+    }
+  },
+  {
+    "number": "259",
+    "title": "The long diagonal is weak",
+    "order": 259,
+    "bookLines": [
+      "Nd5 Bxd4 Nxe7+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1b2rk1/2p1qnbp/p1pp2p1/5p2/2PQP3/1PN2N1P/PB3PP1/3R1RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered attack that wins material or creates a decisive threat.",
+      "solutionText": "Nd5 Bxd4 Nxe7+",
+      "hint": "Look for a bishop, rook, or queen whose line is blocked by one of your own pieces. Can that piece move with a threat?",
+      "explanation": "The knight attacks the queen on e7. If Black captures White’s queen on d4, that opens the bishop’s diagonal from b2. Nxe7+ then recovers the black queen, leaving White an extra piece. Book continuation: Nd5 Bxd4 Nxe7+.",
+      "diagramPage": "36",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 31
+    }
+  },
+  {
+    "number": "260",
+    "title": "This is a classic",
+    "order": 260,
+    "bookLines": [
+      "Rxe7 Bxe7 Qg4 g6 Nh6+",
+      "Rxe7 Bxe7 Qg4 Bf6 Nh6+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r4rk1/1p1qnppp/p2p1b2/3P1N2/8/5Q2/PP3PPP/R1B1R1K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered attack that wins material or creates a decisive threat.",
+      "solutionText": "Rxe7 Bxe7 Qg4 g6 Nh6+",
+      "hint": "Look for a bishop, rook, or queen whose line is blocked by one of your own pieces. Can that piece move with a threat?",
+      "explanation": "The exchange sacrifice clears the e-file and lures the bishop away. Qg4 threatens mate on g7 and a knight fork on h6. Book continuation: Rxe7 Bxe7 Qg4 g6 Nh6+. Additional book variations: Rxe7 Bxe7 Qg4 Bf6 Nh6+.",
+      "diagramPage": "36",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 31
+    }
+  },
+  {
+    "number": "261",
+    "title": "The queen is a goner",
+    "order": 261,
+    "bookLines": [
+      "Qf5+ Kg8 Nf6+ gxf6 Qxd3",
+      "Qf5+ g6 Qxf7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2Q4r/5ppk/7p/8/4N3/3q3P/5PP1/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered attack that wins material or creates a decisive threat.",
+      "solutionText": "Qf5+ Kg8 Nf6+ gxf6 Qxd3",
+      "hint": "Look for a bishop, rook, or queen whose line is blocked by one of your own pieces. Can that piece move with a threat?",
+      "explanation": "The queen checks and protects the knight’s fork. Nf6+ clears the diagonal to the black queen; capturing the knight allows Qxd3. Book continuation: Qf5+ Kg8 Nf6+ gxf6 Qxd3. Additional book variations: Qf5+ g6 Qxf7#.",
+      "diagramPage": "36",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 31
+    }
+  },
+  {
+    "number": "262",
+    "title": "A most unpleasant choice",
+    "order": 262,
+    "bookLines": [
+      "Rh6 Qg5 Ng6+ Qxg6 Rxg6 hxg6 Qe7",
+      "Rh6 Qxa3 Ng6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1b3rk/p3q1pp/2pR4/5p2/5N2/Q5PP/PP3P2/3R2K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered attack that wins material or creates a decisive threat.",
+      "solutionText": "Rh6 Qg5 Ng6+ Qxg6 Rxg6 hxg6 Qe7",
+      "hint": "Look for a bishop, rook, or queen whose line is blocked by one of your own pieces. Can that piece move with a threat?",
+      "explanation": "Rh6 threatens Ng6 mate while uncovering the queen’s attack on e7. After the forced exchanges, Qe7 threatens Qh4. Dlugy–Stojko, 1991. Book continuation: Rh6 Qg5 Ng6+ Qxg6 Rxg6 hxg6 Qe7. Additional book variations: Rh6 Qxa3 Ng6#.",
+      "diagramPage": "36",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 31
+    }
+  },
+  {
+    "number": "263",
+    "title": "Double trouble",
+    "order": 263,
+    "bookLines": [
+      "Bb5 Qxb5 Qh3#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/3q4/7p/6p1/r4pk1/1pQB4/1P2PP1K/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered attack that wins material or creates a decisive threat.",
+      "solutionText": "Bb5 Qxb5 Qh3#",
+      "hint": "Look for a bishop, rook, or queen whose line is blocked by one of your own pieces. Can that piece move with a threat?",
+      "explanation": "The bishop leaves d3, opening the queen’s route to h3, while attacking the rook on a4. Capturing the bishop allows mate. Book continuation: Bb5 Qxb5 Qh3#.",
+      "diagramPage": "36",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 31
+    }
+  },
+  {
+    "number": "264",
+    "title": "The queen or smothered mate",
+    "order": 264,
+    "bookLines": [
+      "Nd6 Qxg5 Nf7#",
+      "Nd6 Bg6 Qxa5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r5rk/n2R2pp/4p3/qN4Q1/5p2/8/P1b2PPP/5RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered attack that wins material or creates a decisive threat.",
+      "solutionText": "Nd6 Qxg5 Nf7#",
+      "hint": "Look for a bishop, rook, or queen whose line is blocked by one of your own pieces. Can that piece move with a threat?",
+      "explanation": "The knight opens the rook’s attack on the queen on a5 and threatens smothered mate on f7. Book continuation: Nd6 Qxg5 Nf7#. Additional book variations: Nd6 Bg6 Qxa5.",
+      "diagramPage": "36",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 31
+    }
+  },
+  {
+    "number": "265",
+    "title": "Discovery and pin",
+    "order": 265,
+    "bookLines": [
+      "Be7 Nf6 Rxd7 Nxg4 Rxd8+ Rxd8 Bxd8 Kxd8",
+      "Be7 Qxg4 Rxd8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2kr2nr/1ppq2pp/p1pB4/8/6Q1/8/PP3PPP/RN1R2K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered attack that wins material or creates a decisive threat.",
+      "solutionText": "Be7 Nf6 Rxd7 Nxg4 Rxd8+ Rxd8 Bxd8",
+      "hint": "Look for a bishop, rook, or queen whose line is blocked by one of your own pieces. Can that piece move with a threat?",
+      "explanation": "Be7 opens the rook’s attack along the d-file. The bishop can escape safely because capturing White’s queen allows a back-rank mate. Volchov–Kreslavsky, 1970. Book continuation: Be7 Nf6 Rxd7 Nxg4 Rxd8+ Rxd8 Bxd8 Kxd8. Additional book variations: Be7 Qxg4 Rxd8#. Practice ends after White’s fourth move; the remaining book continuation is shown here.",
+      "diagramPage": "37",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 32
+    }
+  },
+  {
+    "number": "266",
+    "title": "White is on top",
+    "order": 266,
+    "bookLines": [
+      "Bd1 Qd3 Rxf6"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3rk1r1/5p1p/p2p1bp1/3Qn3/Np2P3/1P3B2/P1q3PP/R4R1K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered attack that wins material or creates a decisive threat.",
+      "solutionText": "Bd1 Qd3 Rxf6",
+      "hint": "Look for a bishop, rook, or queen whose line is blocked by one of your own pieces. Can that piece move with a threat?",
+      "explanation": "The bishop move reveals the rook’s attack on the bishop on f6 and attacks the black queen along the diagonal from d1 to c2. Book continuation: Bd1 Qd3 Rxf6.",
+      "diagramPage": "37",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 32
+    }
+  },
+  {
+    "number": "267",
+    "title": "The king looks vulnerable",
+    "order": 267,
+    "bookLines": [
+      "f6 Nxf6 Qxe5+ Kc6 Rxg7",
+      "f6 Bxf6 Rxf7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3rn3/pp1q1rbR/3k4/2p1pP1Q/3pP3/P2P1N2/1PP4P/5RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered attack that wins material or creates a decisive threat.",
+      "solutionText": "f6 Nxf6 Qxe5+ Kc6 Rxg7",
+      "hint": "Look for a bishop, rook, or queen whose line is blocked by one of your own pieces. Can that piece move with a threat?",
+      "explanation": "The pawn advance uncovers the queen’s attack on e5 and attacks the bishop on g7. After a capture on f6, White wins material with checks. Smyslov–Kotov, 1943. Book continuation: f6 Nxf6 Qxe5+ Kc6 Rxg7. Additional book variations: f6 Bxf6 Rxf7.",
+      "diagramPage": "37",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 32
+    }
+  },
+  {
+    "number": "268",
+    "title": "Winning attack",
+    "order": 268,
+    "bookLines": [
+      "Rxg7 Kxg7 Rg3+ Kh7 Qc2+ Kh8 Nxf7+ Rxf7 Bxc7",
+      "Rxg7 Kxg7 Rg3+ Kf8 Bxh6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3r1k2/ppqnrpp1/2pNpn1p/2P4P/3P1B2/3R2R1/PP2QPP1/1K6 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered attack that wins material or creates a decisive threat.",
+      "solutionText": "Rxg7 Kxg7 Rg3+ Kh7 Qc2+ Kh8 Nxf7+",
+      "hint": "Look for a bishop, rook, or queen whose line is blocked by one of your own pieces. Can that piece move with a threat?",
+      "explanation": "The rook capture sets up a discovered attack on the queen. Subsequent checks force Black to respond to the king threats while White wins material. Nikolenko–Ivanov, 1999. Book continuation: Rxg7 Kxg7 Rg3+ Kh7 Qc2+ Kh8 Nxf7+ Rxf7 Bxc7. Additional book variations: Rxg7 Kxg7 Rg3+ Kf8 Bxh6#. Practice ends after White’s fourth move; the remaining book continuation is shown here.",
+      "diagramPage": "37",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 32
+    }
+  },
+  {
+    "number": "269",
+    "title": "Won endgame",
+    "order": 269,
+    "bookLines": [
+      "Rxf8+ Kxf8 Bh6+ Ke8 Rxd7 Kxd7 g4",
+      "Rxf8+ Kxf8 Bh6+ Rg7 g4"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2R2bk1/3r3p/4ppp1/7n/8/8/3B1PPP/3R1K2 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered attack that wins material or creates a decisive threat.",
+      "solutionText": "Rxf8+ Kxf8 Bh6+ Ke8 Rxd7 Kxd7 g4",
+      "hint": "Look for a bishop, rook, or queen whose line is blocked by one of your own pieces. Can that piece move with a threat?",
+      "explanation": "The rook sacrifice forces the king onto f8. Moving the bishop with check uncovers the rook’s attack on d7; the pawn advance traps the knight. Book continuation: Rxf8+ Kxf8 Bh6+ Ke8 Rxd7 Kxd7 g4. Additional book variations: Rxf8+ Kxf8 Bh6+ Rg7 g4. The book cautions that playing Bh6 immediately is uncertain after Rxd1+ Ke2 Ng7 Kxd1 e5.",
+      "diagramPage": "37",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 32
+    }
+  },
+  {
+    "number": "270",
+    "title": "Discovery on the queen",
+    "order": 270,
+    "bookLines": [
+      "Qxc6 bxc6 Rb4+",
+      "Qxc6 Qxd4 Bxc7+ Rxc7 Qe8+ Rc8 Qxc8+ Kxc8 Bxd4"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1kr5/ppp5/2nB1qp1/5p2/P2R3p/1P3Q1P/1BP3P1/7K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered attack that wins material or creates a decisive threat.",
+      "solutionText": "Qxc6 bxc6 Rb4+",
+      "hint": "Look for a bishop, rook, or queen whose line is blocked by one of your own pieces. Can that piece move with a threat?",
+      "explanation": "Capturing the knight attacks the queen and opens the bishop’s diagonal to b8. Taking White’s queen permits a rook check that wins a piece. Book continuation: Qxc6 bxc6 Rb4+. Additional book variations: Qxc6 Qxd4 Bxc7+ Rxc7 Qe8+ Rc8 Qxc8+ Kxc8 Bxd4.",
+      "diagramPage": "37",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 32
+    }
+  },
+  {
+    "number": "271",
+    "title": "Immediate victory",
+    "order": 271,
+    "bookLines": [
+      "Ng5 fxg5 Bxd5+",
+      "Ng5 Bxg2 Qxh7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4rbk1/pq4pp/1p3p2/3b1Q2/1P1P4/5NP1/5PBP/1R4K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered attack that wins material or creates a decisive threat.",
+      "solutionText": "Ng5 fxg5 Bxd5+",
+      "hint": "Look for a bishop, rook, or queen whose line is blocked by one of your own pieces. Can that piece move with a threat?",
+      "explanation": "The knight move uncovers the bishop’s attack on d5 and threatens mate on h7. Capturing the knight allows White to win the black queen with check. Book continuation: Ng5 fxg5 Bxd5+. Additional book variations: Ng5 Bxg2 Qxh7#.",
+      "diagramPage": "37",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 32
+    }
+  },
+  {
+    "number": "272",
+    "title": "An intermediate exercise",
+    "order": 272,
+    "bookLines": [
+      "Nxd5 Rxc1 Nxe7+ Kf8 Ng6+ fxg6 Kxc1"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2r3k1/b1N1npp1/7p/3p4/3P4/1N2P3/1P1K3P/2R5 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered attack that wins material or creates a decisive threat.",
+      "solutionText": "Nxd5 Rxc1 Nxe7+ Kf8 Ng6+ fxg6 Kxc1",
+      "hint": "Look for a bishop, rook, or queen whose line is blocked by one of your own pieces. Can that piece move with a threat?",
+      "explanation": "White inserts a knight check before recapturing the rook. The second knight check forces a pawn capture and opens the king’s route to c1. Book continuation: Nxd5 Rxc1 Nxe7+ Kf8 Ng6+ fxg6 Kxc1.",
+      "diagramPage": "37",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 32
+    }
+  },
+  {
+    "number": "273",
+    "title": "The back rank",
+    "order": 273,
+    "bookLines": [
+      "Qxb8+ Nxb8 Ba3 Bxb1 Bxc5",
+      "Qxb8+ Nxb8 Ba3 Qxa3 Rxb8+ Qf8 Rxf8+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1r4k1/pQp2ppp/n7/2q2b2/8/6P1/PB1PPP1P/1R2K2R w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered attack that wins material or creates a decisive threat.",
+      "solutionText": "Qxb8+ Nxb8 Ba3 Bxb1 Bxc5",
+      "hint": "Look for a bishop, rook, or queen whose line is blocked by one of your own pieces. Can that piece move with a threat?",
+      "explanation": "The queen sacrifice draws the knight away from a6. Ba3 uncovers the rook’s attack along the b-file and attacks the queen. Book continuation: Qxb8+ Nxb8 Ba3 Bxb1 Bxc5. Additional book variations: Qxb8+ Nxb8 Ba3 Qxa3 Rxb8+ Qf8 Rxf8+.",
+      "diagramPage": "37",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 32
+    }
+  },
+  {
+    "number": "274",
+    "title": "Black’s pieces are badly placed",
+    "order": 274,
+    "bookLines": [
+      "Ne4 dxe4 Rxc6 Qd5 Rxc7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r4rk1/2bn1pp1/p1bqp1p1/2NpN1B1/3P4/8/PP3PPP/2RQR1K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered attack that wins material or creates a decisive threat.",
+      "solutionText": "Ne4 dxe4 Rxc6 Qd5 Rxc7",
+      "hint": "Look for a bishop, rook, or queen whose line is blocked by one of your own pieces. Can that piece move with a threat?",
+      "explanation": "The knight moves out of the rook’s way and attacks the queen. After ...dxe4, White exploits the open c-file to capture both bishops. Book continuation: Ne4 dxe4 Rxc6 Qd5 Rxc7.",
+      "diagramPage": "37",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 32
+    }
+  },
+  {
+    "number": "275",
+    "title": "An elegant double threat",
+    "order": 275,
+    "bookLines": [
+      "Ne6 Qxf3 Qg7#",
+      "Ne6 Qxe6 Rh3#",
+      "Ne6 Qxe5 Rh3+ Qh5 g5#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2r2rn1/pp3p1p/5qpk/2p1Q3/3pPNP1/3P1R2/PPP4P/R5K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered attack that wins material or creates a decisive threat.",
+      "solutionText": "Ne6 Qxf3 Qg7#",
+      "hint": "Look for a bishop, rook, or queen whose line is blocked by one of your own pieces. Can that piece move with a threat?",
+      "explanation": "Moving the knight opens the rook’s route to h3 and attacks the queen. Taking the rook, knight, or white queen permits a mating attack. Book continuation: Ne6 Qxf3 Qg7#. Additional book variations: Ne6 Qxe6 Rh3#; Ne6 Qxe5 Rh3+ Qh5 g5#.",
+      "diagramPage": "37",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 32
+    }
+  },
+  {
+    "number": "276",
+    "title": "Mating attack",
+    "order": 276,
+    "bookLines": [
+      "Ng5 Qxe3 Bh7+ Kh8 Nexf7#",
+      "Ng5 hxg5 Bh7+ Kf8 Nd7#",
+      "Bh7+ Kxh7 Ng5+ Kg8 Nxh3"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r3r1k1/p3npp1/bb2p2p/3pN2n/P2P2P1/1P2QN1q/1B3P1P/1BR1R1K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the discovered attack that wins material or creates a decisive threat.",
+      "solutionText": "Ng5 Qxe3 Bh7+ Kh8 Nexf7#",
+      "hint": "Look for a bishop, rook, or queen whose line is blocked by one of your own pieces. Can that piece move with a threat?",
+      "explanation": "The knight moves from f3 to g5, opening the bishop’s diagonal and threatening mate. Prasad–Aaron, 1982. The book also gives the simpler alternative Bh7+ Kxh7 Ng5+ Kg8 Nxh3, winning the queen. Book continuation: Ng5 Qxe3 Bh7+ Kh8 Nexf7#. Additional book variations: Ng5 hxg5 Bh7+ Kf8 Nd7#. Additional book alternative: Bh7+ Kxh7 Ng5+ Kg8 Nxh3.",
+      "diagramPage": "37",
+      "answerPage": "128",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 32
+    }
+  }
+]

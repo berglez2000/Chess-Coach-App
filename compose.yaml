@@ -3,6 +3,7 @@ name: chess-coach-app
 services:
   postgres:
     image: postgres:18
+    restart: unless-stopped
     environment:
       POSTGRES_USER: chess_coach
       POSTGRES_PASSWORD: chess_coach_local

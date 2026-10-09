@@ -37,6 +37,7 @@ export function PuzzleSolver({ initialPuzzle, nextId, learningNavigation, sessio
   const [promotionMove, setPromotionMove] = useState<{ from: string; to: string; color: "w" | "b" } | null>(null);
   const submitted = useRef(false);
   const [retryRequest, setRetryRequest] = useState<PuzzleAction | null>(null);
+  const placementPiece = puzzle.learning?.type === "MISSING_PIECE" ? puzzle.learning.placementPiece : undefined;
   const solving = puzzle.progress.state === "SOLVING";
   const locked = pending || uncertain || !!promotionMove || !!sessionPractice?.locked;
   const displayedFen = puzzle.progress.state === "REVEALED" ? puzzle.solutionLine?.at(-1)?.fen ?? puzzle.currentFen : puzzle.currentFen;
@@ -74,7 +75,7 @@ export function PuzzleSolver({ initialPuzzle, nextId, learningNavigation, sessio
   }
   function act(action: "MOVE" | "HINT" | "REVEAL" | "RETRY", move?: string, promotionConfirmed = false) {
     if (pending || uncertain || (promotionMove && !promotionConfirmed) || submitted.current) return;
-    if (action === "MOVE") {
+    if (action === "MOVE" && !placementPiece) {
       // Start playback before awaiting fetch so browser gesture restrictions
       // do not silence moves. Legal attempts sound even when not the solution.
       const position = new Chess(puzzle.currentFen);
@@ -108,26 +109,31 @@ export function PuzzleSolver({ initialPuzzle, nextId, learningNavigation, sessio
     <div className={learningNavigation ? styles.boardPanel : "min-w-0"}>
       {learningNavigation && <div className={styles.strip}><span className={styles.colorDot} style={{ background: puzzle.playerColor === "WHITE" ? "var(--fg)" : "white" }}/><strong>{puzzle.playerColor === "WHITE" ? "Black" : "White"}</strong><small>Opponent</small></div>}
       <ReplayBoard positionLabel="Puzzle" flipped={flipped} fen={displayedFen} userColor={puzzle.playerColor}
-        lastMove={puzzle.progress.state === "REVEALED" ? puzzle.solutionLine?.at(-1)?.uci : puzzle.history.at(-1)?.uci} selectedSquare={selected}
-        onMove={solving && !locked ? move : undefined}
+        lastMove={placementPiece ? undefined : puzzle.progress.state === "REVEALED" ? puzzle.solutionLine?.at(-1)?.uci : puzzle.history.at(-1)?.uci} selectedSquare={selected}
+        onMove={solving && !locked && !placementPiece ? move : undefined}
         onSquareClick={solving && !locked ? square => {
+          if (placementPiece) { act("MOVE", `${placementPiece}@${square}`); return; }
           const piece = board.get(square as Parameters<typeof board.get>[0]);
           if (piece?.color === board.turn()) { setSelected(square); setError(""); }
           else if (selected) move(selected, square);
         } : undefined} />
-      {learningNavigation ? <><div className={styles.controls}><button type="button" onClick={() => setFlipped(value => !value)} aria-label="Flip board">⇄ Flip board</button><button type="button" onClick={toggleMuted} aria-pressed={muted} aria-label="Mute sounds">Sound: {muted ? "off" : "on"}</button><span>{puzzle.playerColor === "WHITE" ? "White" : "Black"} to move</span></div><div className={styles.strip}><span className={styles.colorDot} style={{ background: puzzle.playerColor === "WHITE" ? "white" : "var(--fg)" }}/><strong>{puzzle.playerColor === "WHITE" ? "White" : "Black"}</strong><small>You{solving ? " — to move" : ""}</small></div></> : <><button type="button" className={`${buttonClass} mt-3`} onClick={toggleMuted} aria-pressed={muted} aria-label="Mute sounds">Sound: {muted ? "off" : "on"}</button><p className="mt-3 text-sm">{puzzle.playerColor === "WHITE" ? "White" : "Black"} to play · {puzzle.maxPlayerMoves === 1 ? "Find one strong move." : `Find the tactical sequence · up to ${puzzle.maxPlayerMoves} of your moves.`}</p></>}
+      {learningNavigation ? <><div className={styles.controls}><button type="button" onClick={() => setFlipped(value => !value)} aria-label="Flip board">⇄ Flip board</button><button type="button" onClick={toggleMuted} aria-pressed={muted} aria-label="Mute sounds">Sound: {muted ? "off" : "on"}</button><span>{placementPiece ? "Place the missing piece" : `${puzzle.playerColor === "WHITE" ? "White" : "Black"} to move`}</span></div><div className={styles.strip}><span className={styles.colorDot} style={{ background: puzzle.playerColor === "WHITE" ? "white" : "var(--fg)" }}/><strong>{puzzle.playerColor === "WHITE" ? "White" : "Black"}</strong><small>You{solving ? placementPiece ? " — place a piece" : " — to move" : ""}</small></div></> : <><button type="button" className={`${buttonClass} mt-3`} onClick={toggleMuted} aria-pressed={muted} aria-label="Mute sounds">Sound: {muted ? "off" : "on"}</button><p className="mt-3 text-sm">{puzzle.playerColor === "WHITE" ? "White" : "Black"} to play · {puzzle.maxPlayerMoves === 1 ? "Find one strong move." : `Find the tactical sequence · up to ${puzzle.maxPlayerMoves} of your moves.`}</p></>}
       {puzzle.history.length > 0 && <p aria-label="Played sequence" className="mt-2 text-sm">Played: {puzzle.history.map(move => move.san).join(" → ")}</p>}
-      {solving && <details className={learningNavigation ? styles.entry : "mt-3"} open={learningNavigation ? undefined : true}><summary>Move entry and promotion</summary>
-        <p className="mt-2 text-sm text-[#465c50]">Drag a piece, select its square and destination, or enter move coordinates. When a pawn reaches the last rank, choose its promotion piece.</p>
+      {solving && <details className={learningNavigation ? styles.entry : "mt-3"} open={learningNavigation ? undefined : true}><summary>{placementPiece ? "Place by square" : "Move entry and promotion"}</summary>
+        <p className="mt-2 text-sm text-[#465c50]">{placementPiece ? "Click an empty square to add the specified piece, or enter its square below." : "Drag a piece, select its square and destination, or enter move coordinates. When a pawn reaches the last rank, choose its promotion piece."}</p>
         <form className="mt-3 flex flex-wrap items-end gap-2" onSubmit={event => {
           event.preventDefault();
           const input = moveText.trim().toLowerCase();
+          if (placementPiece) {
+            if (!/^[a-h][1-8]$/.test(input)) { setError("Enter a square such as g6."); return; }
+            act("MOVE", `${placementPiece}@${input}`); return;
+          }
           if (!/^[a-h][1-8][a-h][1-8][qrbn]?$/.test(input)) { setError("Enter a move such as e2e4 or a7a8n."); return; }
           if (input.length === 5) act("MOVE", input);
           else move(input.slice(0, 2), input.slice(2, 4));
         }}>
-          <label className="text-sm">Move coordinates<input disabled={locked} className="ml-2 w-28 rounded border p-2" value={moveText} onChange={event => setMoveText(event.target.value)} placeholder="e2e4" /></label>
-          <button disabled={locked} className={buttonClass}>Check move</button>
+          <label className="text-sm">{placementPiece ? "Placement square" : "Move coordinates"}<input disabled={locked} className="ml-2 w-28 rounded border p-2" value={moveText} onChange={event => setMoveText(event.target.value)} placeholder={placementPiece ? "g6" : "e2e4"} /></label>
+          <button disabled={locked} className={buttonClass}>{placementPiece ? "Check placement" : "Check move"}</button>
         </form>
       </details>}
     </div>
@@ -139,11 +145,11 @@ export function PuzzleSolver({ initialPuzzle, nextId, learningNavigation, sessio
       {learningNavigation && !puzzle.learning?.publishedSolution && <div className={styles.field}><p className={styles.label}>Book solution</p><p className={styles.notes}>Reveal the solution or solve the exercise to see the book answer.</p></div>}
       {puzzle.learning?.hint && <div className={styles.hint}><p className={styles.label}>Hint</p><p>{puzzle.learning.hint}</p></div>}
       {puzzle.learning?.publishedSolution && <div className={styles.solution}><p className={styles.label}>Book solution</p><p>{puzzle.learning.publishedSolution}</p></div>}
-      <p role="status" aria-label="Puzzle feedback" className={learningNavigation ? styles.feedback : "text-sm"} aria-live="polite">{pending ? "Saving progress…" : (sessionPractice && puzzle.progress.lastOutcome === "INCORRECT" ? "That move is legal, but it is not the validated solution. Try again." : feedback[puzzle.progress.lastOutcome ?? ""]) ?? "Your answer is checked after you play a move."}</p>
-      {puzzle.hintSquare && <p className="text-sm">Hint: move the piece on <strong>{puzzle.hintSquare}</strong>.</p>}
+      <p role="status" aria-label="Puzzle feedback" className={learningNavigation ? styles.feedback : "text-sm"} aria-live="polite">{pending ? "Saving progress…" : (sessionPractice && puzzle.progress.lastOutcome === "INCORRECT" ? "That move is legal, but it is not the validated solution. Try again." : (placementPiece && puzzle.progress.lastOutcome === "ILLEGAL" ? "Choose an empty square that leaves your king safe. Pawns cannot be placed on the first or last rank." : placementPiece && puzzle.progress.lastOutcome === "INCORRECT" ? "That placement does not give checkmate. Try another square." : placementPiece && puzzle.progress.lastOutcome === "UNSUPPORTED" ? "That placement is outside the book’s supplied answer. Try another square." : feedback[puzzle.progress.lastOutcome ?? ""])) ?? (placementPiece ? "Choose an empty square for the missing piece." : "Your answer is checked after you play a move.")}</p>
+      {puzzle.hintSquare && <p className="text-sm">Hint: {placementPiece ? "place the missing piece on" : "move the piece on"} <strong>{puzzle.hintSquare}</strong>.</p>}
       {puzzle.solutionLine && <p className="text-sm">Solution: <strong>{puzzle.solutionLine.map(move => move.san).join(" → ")}</strong></p>}
       {puzzle.goal && <p className="text-sm">{puzzle.goal === "mate" ? "Checkmate reached." : puzzle.goal === "terminal" ? "The game has ended." : "Validated sequence complete. This puzzle ends here; the game may continue."}</p>}
-      <p className="text-sm">Moves tried: {puzzle.progress.moveAttempts}</p>
+      <p className="text-sm">{placementPiece ? "Placements tried" : "Moves tried"}: {puzzle.progress.moveAttempts}</p>
       <p className="text-sm">{puzzle.progress.assisted ? "Assisted practice: you have used help or already seen the solution." : "No hints or reveals used."}</p>
       {!sessionPractice && puzzle.progress.completedAt && <p className="text-sm font-semibold">First completion saved · {puzzle.progress.completionAssisted ? "Assisted" : "Unassisted"}</p>}
       <div className={learningNavigation ? styles.actions : "flex flex-wrap gap-2"}>

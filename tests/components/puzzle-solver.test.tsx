@@ -210,3 +210,30 @@ it.each(["q", "r", "n", "b"])("offers %s promotion after moving a Black pawn on 
   await waitFor(() => expect(request).toHaveBeenCalledOnce());
   expect(JSON.parse((request.mock.calls[0] as unknown as [string, RequestInit])[1].body as string)).toHaveProperty("move", `a2a1${code}`);
 });
+
+it("places the missing piece by board click and keyboard without moving an existing piece", async () => {
+  const { contentSchema, validateContent } = await import("@/lib/learning/content");
+  const { applyPlacementAction, placementDto } = await import("@/lib/learning/placement");
+  const content = contentSchema.parse({ type: "MISSING_PIECE", placementPiece: "n", fen: "6rk/6pp/8/1p1b4/p7/3P4/PPP5/1K5R w - - 0 1", solutionText: "Ng6#" });
+  const accepted = validateContent(content).acceptedMoves;
+  let state = { ...INITIAL_PROGRESS };
+  const dto = () => ({ ...placementDto("placement", content, accepted, state), learning: { revisionId: "revision", type: "MISSING_PIECE" as const, placementPiece: content.placementPiece, objective: "Place a knight to give checkmate", prompt: "Add a knight", hint: null, publishedSolution: state.state === "SOLVING" ? null : content.solutionText, explanation: null } });
+  const fetcher = vi.fn(async (_url: string, options: RequestInit) => {
+    state = applyPlacementAction(content, accepted, state, JSON.parse(options.body as string));
+    return Response.json({ puzzle: dto() });
+  });
+  vi.stubGlobal("fetch", fetcher);
+  render(<PuzzleSolver initialPuzzle={dto()} nextId={null} />);
+  expect(screen.queryByLabelText("Move coordinates")).not.toBeInTheDocument();
+  expect(screen.queryByText(/Ng6/)).not.toBeInTheDocument();
+  const board = screen.getByRole("group", { name: "Puzzle position, White at the bottom" });
+  fireEvent.click(board.querySelector('[data-square="h8"]')!);
+  await waitFor(() => expect(screen.getByRole("status", { name: "Puzzle feedback" })).toHaveTextContent("empty square"));
+  fireEvent.change(screen.getByLabelText("Placement square"), { target: { value: "e4" } });
+  fireEvent.click(screen.getByRole("button", { name: "Check placement" }));
+  await waitFor(() => expect(screen.getByRole("status", { name: "Puzzle feedback" })).toHaveTextContent("does not give checkmate"));
+  fireEvent.click(board.querySelector('[data-square="g6"]')!);
+  await waitFor(() => expect(screen.getByText(/First completion saved/)).toHaveTextContent("Unassisted"));
+  expect(screen.getByText(/^Solution:/)).toHaveTextContent("Ng6#");
+  expect(fetcher.mock.calls.map(call => JSON.parse(call[1].body as string).move)).toEqual(["n@h8", "n@e4", "n@g6"]);
+});

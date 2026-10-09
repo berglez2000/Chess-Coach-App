@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Move one piece, reveal another attack",
+    "fen": "5rk1/5ppp/1qp2n2/3p1b2/4p3/1NP1P1PP/5PB1/1R1Q2K1 w - - 0 1",
+    "text": "Nd4 moves the knight out of the rook’s way. The rook on b1 now attacks the queen on b6, while the knight attacks the bishop on f5. Black must save the queen, allowing White to capture the bishop.",
+    "demonstration": "Nd4"
+  },
+  {
+    "title": "Look for a defensive threat",
+    "fen": "5rk1/5ppp/1q6/4p3/2r4P/1NP1P1Pb/5P2/1RRQ2K1 w - - 0 1",
+    "text": "Nd2 uncovers the rook’s attack on the queen and attacks the rook on c4. But Black has Qc6, threatening Qg2 mate. White must respond to that threat, giving Black time to save the rook: for example, e4 Rxc3. Check the opponent’s strongest replies before assuming both threats will win material.",
+    "demonstration": "Nd2 Qc6 e4 Rxc3"
+  }
+]

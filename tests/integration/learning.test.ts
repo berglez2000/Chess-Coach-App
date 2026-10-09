@@ -89,3 +89,24 @@ it("creates the supplied sample only in the explicit owning account and deduplic
   expect(material.shared).toBe(false);expect(material.chapters[0].exercises[0].published).not.toBeNull();
   expect((await library(db,owners[0])).some(m=>m.id===results[0].id)).toBe(false);
 });
+
+it("publishes placement exercises and saves private, idempotent progress", async () => {
+  const f = await fixture();
+  const content = { type: "MISSING_PIECE", placementPiece: "n", fen: "6rk/6pp/8/1p1b4/p7/3P4/PPP5/1K5R w - - 0 1", solutionText: "Ng6#", prompt: "Add a knight and it’s mate" };
+  const exercise = await mutate(db, owners[0], { kind: "exercise", chapterId: f.chapterId, number: "187", title: "Missing knight", order: 187, content });
+  await mutate(db, owners[0], { kind: "validate", id: exercise.id, expectedRevision: 0 });
+  await mutate(db, owners[0], { kind: "publish", id: exercise.id, expectedRevision: 1 });
+  const initial = (await practice(db, owners[0], exercise.id))!;
+  const revisionId = initial.learning.revisionId;
+  expect(initial).toMatchObject({ currentFen: content.fen, solution: null, learning: { type: "MISSING_PIECE", placementPiece: "n", publishedSolution: null } });
+  expect(JSON.stringify(initial)).not.toContain("g6");
+  expect(await act(db, owners[1], exercise.id, revisionId, action(0, "n@g6"))).toEqual({ status: "NOT_FOUND" });
+  expect(await act(db, owners[0], exercise.id, revisionId, action(0, "h1h6"))).toMatchObject({ puzzle: { progress: { lastOutcome: "ILLEGAL" }, currentFen: content.fen } });
+  const input = action(1, "n@g6");
+  const results = await Promise.all([act(db, owners[0], exercise.id, revisionId, input), act(db, owners[0], exercise.id, revisionId, input)]);
+  for (const result of results) expect(result).toMatchObject({ status: "OK", puzzle: { progress: { state: "SOLVED", completionAssisted: false }, learning: { publishedSolution: "Ng6#" } } });
+  expect(await db.learningAttempt.count({ where: { progress: { revisionId } } })).toBe(2);
+  const completedAt = (await practice(db, owners[0], exercise.id))!.progress.completedAt;
+  await act(db, owners[0], exercise.id, revisionId, { action: "RETRY", requestId: randomUUID(), expectedRevision: 2 });
+  expect(await practice(db, owners[0], exercise.id)).toMatchObject({ currentFen: content.fen, progress: { completedAt, state: "SOLVING", assisted: true } });
+});

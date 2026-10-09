@@ -1,7 +1,11 @@
 import { requireApiUser } from "@/lib/auth/session";
 import { getDb } from "@/lib/db/client";
 import { act, practice } from "@/lib/learning/repository";
-import { puzzleActionSchema } from "@/lib/puzzles/solve";
+import { z } from "zod";
+const learningActionSchema = z.discriminatedUnion("action", [
+  z.object({ requestId: z.uuid(), expectedRevision: z.number().int().min(0).max(2147483646), action: z.literal("MOVE"), move: z.string().regex(/^(?:[a-h][1-8][a-h][1-8][qrbn]?|[pnbrq]@[a-h][1-8])$/) }).strict(),
+  z.object({ requestId: z.uuid(), expectedRevision: z.number().int().min(0).max(2147483646), action: z.enum(["HINT", "REVEAL", "RETRY"]) }).strict(),
+]);
 export const runtime = "nodejs";
 const missing = () => Response.json({ error: { message: "Exercise not found or revision no longer available. Return to the chapter." } }, { status: 404 });
 const unavailable = () => Response.json({ error: { message: "Could not save or load progress. Refresh before retrying." } }, { status: 503 });
@@ -15,7 +19,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
 export async function POST(request: Request, { params }: { params: Promise<{ id: string }> }) {
   const user = await requireApiUser(request); if (user instanceof Response) return user;
   let input;
-  try { input = puzzleActionSchema.safeParse(await request.json()); } catch { /* invalid JSON */ }
+  try { input = learningActionSchema.safeParse(await request.json()); } catch { /* invalid JSON */ }
   if (!input?.success) return Response.json({ error: { message: "Invalid exercise action." } }, { status: 400 });
   const revisionId = new URL(request.url).searchParams.get("revision"); if (!revisionId || revisionId.length > 100) return missing();
   try {

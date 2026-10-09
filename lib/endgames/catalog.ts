@@ -1,6 +1,7 @@
 import type { Chess } from "chess.js";
 import importedPawnPositions from "./data/king-and-pawn.json";
 import additionalPositions from "./data/additional-endgames.json";
+import piecePositions from "./data/piece-endgames.json";
 
 export type EndgamePosition = {
   id: string;
@@ -26,13 +27,14 @@ export const ENDGAMES: EndgamePosition[] = [
   { id: "rook-pawn-draw", title: "Defend the promotion corner", topic: "King and pawn", fen: "7k/8/5K1P/8/8/8/8/8 b - - 0 1", color: "BLACK", objective: "draw", description: "Hold a draw against a rook pawn with your king in its promotion corner.", hint: "Stay near the promotion corner. A stalemate is a successful draw for the defender." },
   ...importedPawnPositions as EndgamePosition[],
   ...additionalPositions as EndgamePosition[],
+  ...piecePositions as EndgamePosition[],
 ];
 
 export const ENDGAME_CHAPTERS = [
   { id: "basic-checkmates", title: "Basic checkmates", topic: "Basic checkmates", description: "Learn to coordinate your king with a queen or rook and finish with checkmate.", pieces: ["wk", "wq", "wr"] },
   { id: "king-and-pawn", title: "King and pawn endgames", topic: "King and pawn", description: "Practice pawn-versus-king, pawn-versus-pawn, and two-pawn endings with winning and drawing objectives.", pieces: ["wk", "wp", "bk"] },
   { id: "rook", title: "Rook endgames", topic: "Rook", description: "Practice rook-versus-pawn races and rook-and-pawn conversion with active kings and rooks.", pieces: ["wk", "wr", "wp"] },
-  { id: "bishop", title: "Bishop endgames", topic: "Bishop", description: "Explore bishop-and-pawn conversion and defending the promotion corner.", pieces: ["wk", "wb", "wp"] },
+  { id: "bishop", title: "Bishop endgames", topic: "Bishop", description: "Explore bishop-and-pawn conversion, bishop-versus-bishop endings, and defense against passed pawns.", pieces: ["wk", "wb", "wp"] },
   { id: "knight", title: "Knight endgames", topic: "Knight", description: "Calculate knight routes, coordinate your king, and stop dangerous passed pawns.", pieces: ["wk", "wn", "wp"] },
   { id: "queen", title: "Queen endgames", topic: "Queen", description: "Practice queen-versus-pawn technique and the more advanced queen-versus-rook ending.", pieces: ["wk", "wq", "bp"] },
 ] as const;

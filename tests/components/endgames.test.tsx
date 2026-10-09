@@ -2,6 +2,8 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { Chess } from "chess.js";
 import { afterEach, expect, it, vi } from "vitest";
 import { ENDGAMES, ENDGAME_CHAPTERS, chapterPositions, endgameFeedback } from "@/lib/endgames/catalog";
+import additionalPositions from "@/lib/endgames/data/additional-endgames.json";
+import piecePositions from "@/lib/endgames/data/piece-endgames.json";
 import { validatePosition } from "@/lib/position-analysis/contract";
 import { PlayWorkspace } from "@/components/play/workspace";
 import { EndgameChapter, EndgameLibrary } from "@/components/endgames/library";
@@ -88,13 +90,25 @@ it("paginates the collection and filters topics without losing practice links", 
 
 it("adds 60 verified positions across six chapters without changing existing identities", () => {
   expect(ENDGAME_CHAPTERS).toHaveLength(6);
-  expect(ENDGAMES).toHaveLength(116);
-  const added = ENDGAMES.filter(p => p.source && !(p.source.category === "Pawn" && p.subtopic !== "Two Pawns vs Pawn"));
+  expect(ENDGAMES).toHaveLength(196);
+  const added = ENDGAMES.filter(p => additionalPositions.some(item => item.id === p.id));
   expect(added).toHaveLength(60);
   expect(new Set(added.map(p => p.topic)).size).toBe(6);
   for (const position of added) {
     expect(position.validation?.fen).toBe(position.fen);
     expect(position.validation?.category).toBe(position.objective === "draw" ? "draw" : "win");
     expect(new Chess(position.fen).board().flat().filter(Boolean).length).toBeLessThanOrEqual(7);
+  }
+});
+
+it("expands each piece chapter by 20 unique tablebase-verified practices", () => {
+  expect(piecePositions).toHaveLength(80);
+  for (const [chapter, total] of [["rook", 36], ["bishop", 28], ["knight", 28], ["queen", 28]] as const) {
+    expect(chapterPositions(chapter)).toHaveLength(total);
+    expect(chapterPositions(chapter).filter(p => piecePositions.some(item => item.id === p.id))).toHaveLength(20);
+  }
+  for (const position of piecePositions) {
+    expect(position.validation.fen).toBe(position.fen);
+    expect(position.validation.category).toBe(position.objective === "draw" ? "draw" : "win");
   }
 });

@@ -453,6 +453,9 @@ Saved-progress verification: all 669 unit/component tests passed, followed by fi
 Chapter expansion (2026-10-09): user requested more endgame examples and chapter structure. Added 60 checksum-pinned Chess Endgame Training positions: 12 basic checkmates, 8 two-pawns-versus-pawn, 16 rook, 8 bishop, 8 knight, and 8 queen endings. Library now has six material-based chapters and 116 positions, with position-family filters. Existing IDs/FENs/routes/progress versions remain unchanged. All 60 passed legality/nonterminal/material/duplicate checks and live Lichess Syzygy verification (51 exact wins, 9 exact draws). Source attribution and validation evidence are retained in [the expansion report](docs/imports/additional-endgames.md). These checks establish starting objectives only; guided solutions and per-move grading remain open. Verification: 13 focused catalog/component/route/progress tests, TypeScript, lint, and webpack production build passed. No new browser or live Stockfish acceptance run is claimed.
 
 
+Further piece practice (2026-10-09): user requested more Rook, Bishop, Knight, and Queen examples. Added 20 to each chapter (80 total); chapter totals are now 36, 28, 28, and 28 respectively, and the entire library has 196 positions. Bishop filters now include Bishop Pawn vs Bishop and Bishop vs Two Pawns. All prior positions and progress versions remain unchanged. Live Lichess Syzygy verified 60 exact winning and 20 exact drawing starting objectives; legality/nonterminal/material/catalog-wide duplicate checks passed. Source provenance, reproducible importer, and evidence are retained in [the report](docs/imports/piece-endgames.md). Verification: 14 focused catalog/component/route/progress tests, TypeScript, lint, and webpack production build passed. No new browser or live Stockfish run is claimed. Per-move grading remains open.
+
+
 ### TASK-045 — Add a manually authored opening library and variation practice
 
 Status: DONE

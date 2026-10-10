@@ -1,0 +1,35 @@
+[
+  {
+    "title": "Underpromote with check",
+    "fen": "6k1/1p3p2/p2prPq1/8/7p/2Q5/PP4P1/5RK1 w - - 0 1",
+    "text": "Remove the rook with a queen sacrifice so the f-pawn can advance. Black threatens mate after a queen promotion, but promotion to a knight checks and forks the queen.",
+    "demonstration": "Qc8+ Kh7 Qxe6 fxe6 f7 h3 f8=N+ Kg7 Nxg6 Kxg6",
+    "bookLines": [
+      "Qc8+ Kh7 Qxe6 fxe6 f7 h3 f8=Q Qxg2#"
+    ]
+  },
+  {
+    "title": "Block the king\u2019s path",
+    "fen": "8/4p3/5p2/3P4/1P3k2/8/8/7K w - - 0 1",
+    "text": "The king can initially catch the b-pawn. Sacrificing the d-pawn blocks the diagonal it needs, letting the b-pawn escape the king\u2019s square.",
+    "demonstration": "d6 exd6 b5 Ke5 b6 Kd5 b7"
+  },
+  {
+    "title": "A knight blocks the pursuit",
+    "fen": "6k1/5pp1/8/B2n4/5P2/P5Pp/4KQ2/7q w - - 0 1",
+    "text": "White\u2019s queen exchange seems to let the king catch the h-pawn. Black\u2019s knight move instead blocks the king\u2019s route. This example begins with White\u2019s mistaken move; Black then exploits it.",
+    "demonstration": "Qf3 Qxf3+ Kxf3 Ne3"
+  },
+  {
+    "title": "Promotion threat and skewer",
+    "fen": "6R1/2pk4/P2p4/1P3p2/8/8/r4PK1/8 w - - 0 1",
+    "text": "Sacrifice the b-pawn to force the c-pawn off its file. Advance the a-pawn to draw the rook onto a7, then check on g7 before winning the rook.",
+    "demonstration": "b6 cxb6 a7 Rxa7 Rg7+ Ke6 Rxa7"
+  },
+  {
+    "title": "Deflect the promotion defender",
+    "fen": "6k1/3qrp2/6p1/1P6/1Q6/5P2/3p2PP/3R2K1 b - - 0 1",
+    "text": "Black sacrifices the rook on e1 to draw White\u2019s rook away. A queen check then deflects White\u2019s queen from the promotion square, and the pawn promotes with mate.",
+    "demonstration": "Re1+ Rxe1 Qd4+ Qxd4 dxe1=Q#"
+  }
+]

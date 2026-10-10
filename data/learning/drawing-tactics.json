@@ -1,0 +1,541 @@
+[
+  {
+    "number": "469",
+    "title": "A decoy draws",
+    "order": 469,
+    "bookLines": [
+      "Rc4+ Qxc4"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/8/2k5/K7/7R/8/8/2q5 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Rc4+",
+      "hint": "Look for stalemate, perpetual check, or a sacrifice that reaches a drawn ending. Which pieces still have legal moves?",
+      "explanation": "Sacrifice the rook with check, leaving the king with no legal move. Book continuation: Rc4+ Qxc4. Practice finishes on White\u2019s sacrifice; Black\u2019s capture completes the stalemate shown in the full line.",
+      "diagramPage": "72",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 62
+    }
+  },
+  {
+    "number": "470",
+    "title": "Also here",
+    "order": 470,
+    "bookLines": [
+      "Rd3+ Qxd3"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/8/8/8/8/1k4q1/8/2KR4 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Rd3+",
+      "hint": "Look for stalemate, perpetual check, or a sacrifice that reaches a drawn ending. Which pieces still have legal moves?",
+      "explanation": "Force the queen to capture the last movable piece to create stalemate. Book continuation: Rd3+ Qxd3. Practice finishes on White\u2019s sacrifice; Black\u2019s capture completes the stalemate shown in the full line.",
+      "diagramPage": "72",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 62
+    }
+  },
+  {
+    "number": "471",
+    "title": "Now let me think\u2026",
+    "order": 471,
+    "bookLines": [
+      "Rh3+ Kxh3"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/8/8/8/8/5qk1/7R/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Rh3+",
+      "hint": "Look for stalemate, perpetual check, or a sacrifice that reaches a drawn ending. Which pieces still have legal moves?",
+      "explanation": "Give up the rook with check; Black\u2019s queen then confines the king without checking it. Book continuation: Rh3+ Kxh3. Practice finishes on White\u2019s sacrifice; Black\u2019s capture completes the stalemate shown in the full line.",
+      "diagramPage": "72",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 62
+    }
+  },
+  {
+    "number": "472",
+    "title": "Another type of mate",
+    "order": 472,
+    "bookLines": [
+      "Rc1 Qxc1"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/8/8/8/p1k5/P1q5/K7/1R6 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Rc1",
+      "hint": "Look for stalemate, perpetual check, or a sacrifice that reaches a drawn ending. Which pieces still have legal moves?",
+      "explanation": "Offer the rook to leave the white king and blocked pawn without a legal move. Book continuation: Rc1 Qxc1. Practice finishes on White\u2019s sacrifice; Black\u2019s capture completes the stalemate shown in the full line.",
+      "diagramPage": "72",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 62
+    }
+  },
+  {
+    "number": "473",
+    "title": "Who would have thought?",
+    "order": 473,
+    "bookLines": [
+      "Rxb2 Rh2+ Kf3 Rxb2",
+      "Rxb2 Rh2+ Kf3 Rh3+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1R6/8/8/5k2/5p2/7r/1p2K3/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Rxb2 Rh2+ Kf3",
+      "hint": "Look for stalemate, perpetual check, or a sacrifice that reaches a drawn ending. Which pieces still have legal moves?",
+      "explanation": "Capture the passed pawn, then place the king where losing the rook produces stalemate. Book continuation: Rxb2 Rh2+ Kf3 Rxb2. Additional book variations: Rxb2 Rh2+ Kf3 Rh3+. Practice finishes on White\u2019s sacrifice; Black\u2019s capture completes the stalemate shown in the full line.",
+      "diagramPage": "72",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 62
+    }
+  },
+  {
+    "number": "474",
+    "title": "Minor piece stalemate",
+    "order": 474,
+    "bookLines": [
+      "Bd3+ Bxd3"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "K7/3n4/k4p2/5P1p/7P/8/4b3/1B6 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Bd3+",
+      "hint": "Look for stalemate, perpetual check, or a sacrifice that reaches a drawn ending. Which pieces still have legal moves?",
+      "explanation": "Sacrifice the bishop: the king and blocked pawns have no legal moves afterward. Book continuation: Bd3+ Bxd3. Practice finishes on White\u2019s sacrifice; Black\u2019s capture completes the stalemate shown in the full line.",
+      "diagramPage": "72",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 62
+    }
+  },
+  {
+    "number": "475",
+    "title": "Composed draw",
+    "order": 475,
+    "bookLines": [
+      "Rf5 Qxf5",
+      "Rf5 Qc5 Rxc5+ bxc5 Kg5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/8/pp6/kq5R/p4p1K/P1p2P1P/2P5/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Rf5",
+      "hint": "Look for stalemate, perpetual check, or a sacrifice that reaches a drawn ending. Which pieces still have legal moves?",
+      "explanation": "Offer the rook on f5 to leave only blocked pawns and a trapped king. Book continuation: Rf5 Qxf5. Additional book variations: Rf5 Qc5 Rxc5+ bxc5 Kg5. Practice finishes on White\u2019s sacrifice; Black\u2019s capture completes the stalemate shown in the full line. The tempting Rxb5+ axb5 Kg5 b4 leaves Black winning.",
+      "diagramPage": "72",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 62
+    },
+    "analysisLines": [
+      "Rxb5+ axb5 Kg5 b4"
+    ]
+  },
+  {
+    "number": "476",
+    "title": "Never surrender",
+    "order": 476,
+    "bookLines": [
+      "Qa5+ Kb8 Qd8+ Ka7 Qa5+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "k7/1p6/8/8/8/8/1q4rP/4Q2K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Qa5+ Kb8 Qd8+ Ka7 Qa5+",
+      "hint": "Look for stalemate, perpetual check, or a sacrifice that reaches a drawn ending. Which pieces still have legal moves?",
+      "explanation": "Give checks along the same diagonal and file to keep the king in a perpetual loop. Book continuation: Qa5+ Kb8 Qd8+ Ka7 Qa5+.",
+      "diagramPage": "72",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 62
+    }
+  },
+  {
+    "number": "477",
+    "title": "Back and forth",
+    "order": 477,
+    "bookLines": [
+      "Ng6+ Kg8 Ne7+ Kh8 Ng6+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5r1k/5nnp/5p2/8/7N/7R/PP1q1r1P/1K6 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Ng6+ Kg8 Ne7+ Kh8 Ng6+",
+      "hint": "Look for stalemate, perpetual check, or a sacrifice that reaches a drawn ending. Which pieces still have legal moves?",
+      "explanation": "Alternate knight checks while the black pieces obstruct their king\u2019s escape. Book continuation: Ng6+ Kg8 Ne7+ Kh8 Ng6+.",
+      "diagramPage": "72",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 62
+    }
+  },
+  {
+    "number": "478",
+    "title": "Into the heart of darkness",
+    "order": 478,
+    "bookLines": [
+      "Qg2+ Rxg2"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6Q1/8/8/3p4/8/5K2/7r/2q4k w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Qg2+",
+      "hint": "Look for stalemate, perpetual check, or a sacrifice that reaches a drawn ending. Which pieces still have legal moves?",
+      "explanation": "Draw the rook onto g2 so White has no legal king move after losing the queen. Book continuation: Qg2+ Rxg2. Practice finishes on White\u2019s sacrifice; Black\u2019s capture completes the stalemate shown in the full line.",
+      "diagramPage": "72",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 62
+    }
+  },
+  {
+    "number": "479",
+    "title": "All is not lost",
+    "order": 479,
+    "bookLines": [
+      "Rb5 c1=Q Rc5+ Qxc5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2k5/1R6/K7/7p/7P/8/2p5/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Rb5 c1=Q Rc5+",
+      "hint": "Look for stalemate, perpetual check, or a sacrifice that reaches a drawn ending. Which pieces still have legal moves?",
+      "explanation": "Allow promotion, then force the queen to capture the rook and leave a stalemate. Book continuation: Rb5 c1=Q Rc5+ Qxc5. Practice finishes on White\u2019s sacrifice; Black\u2019s capture completes the stalemate shown in the full line.",
+      "diagramPage": "72",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 62
+    }
+  },
+  {
+    "number": "480",
+    "title": "Drawing geometry",
+    "order": 480,
+    "bookLines": [
+      "Qf4+ Qxf4"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/7p/p4Qpk/8/1q4PK/2p4P/8/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Qf4+",
+      "hint": "Look for stalemate, perpetual check, or a sacrifice that reaches a drawn ending. Which pieces still have legal moves?",
+      "explanation": "Offer the queen on a square where Black\u2019s capture confines the king without giving check. Book continuation: Qf4+ Qxf4. Practice finishes on White\u2019s sacrifice; Black\u2019s capture completes the stalemate shown in the full line.",
+      "diagramPage": "72",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 62
+    }
+  },
+  {
+    "number": "481",
+    "title": "Only one piece can move",
+    "order": 481,
+    "bookLines": [
+      "Qg8+ Kxg8"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "7k/6p1/7p/8/1p6/pQqp4/P7/3K4 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Qg8+",
+      "hint": "Look for stalemate, perpetual check, or a sacrifice that reaches a drawn ending. Which pieces still have legal moves?",
+      "explanation": "The queen is White\u2019s only mobile piece. Sacrifice it with check to reach stalemate. Book continuation: Qg8+ Kxg8. Practice finishes on White\u2019s sacrifice; Black\u2019s capture completes the stalemate shown in the full line.",
+      "diagramPage": "73",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 63
+    }
+  },
+  {
+    "number": "482",
+    "title": "Just where I want you",
+    "order": 482,
+    "bookLines": [
+      "Qf2+ Qxf2"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6b1/8/5k2/2p5/1pP5/pP6/P2q4/6QK w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Qf2+",
+      "hint": "Look for stalemate, perpetual check, or a sacrifice that reaches a drawn ending. Which pieces still have legal moves?",
+      "explanation": "Deflect the queen onto f2, where it covers every escape square of the white king. Book continuation: Qf2+ Qxf2. Practice finishes on White\u2019s sacrifice; Black\u2019s capture completes the stalemate shown in the full line.",
+      "diagramPage": "73",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 63
+    }
+  },
+  {
+    "number": "483",
+    "title": "Stay calm",
+    "order": 483,
+    "bookLines": [
+      "Kg1 Nf3+ Qxf3+ Rxf3",
+      "Kg1 Rxf4"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/8/5r2/6n1/5Q2/7k/5Kp1/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Kg1 Nf3+ Qxf3+",
+      "hint": "Look for stalemate, perpetual check, or a sacrifice that reaches a drawn ending. Which pieces still have legal moves?",
+      "explanation": "Place the king on g1 and sacrifice the queen to reach a stalemate. Book continuation: Kg1 Nf3+ Qxf3+ Rxf3. Additional book variations: Kg1 Rxf4. Practice finishes on White\u2019s sacrifice; Black\u2019s capture completes the stalemate shown in the full line. Avoid Qxf6: ...Ne4+ loses the chance to construct the stalemate.",
+      "diagramPage": "73",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 63
+    },
+    "analysisLines": [
+      "Qxf6 Ne4+"
+    ]
+  },
+  {
+    "number": "484",
+    "title": "And after I promote \u2026?",
+    "order": 484,
+    "bookLines": [
+      "h8=Q+ Ke4 Qh1+ Qxh1"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/7P/4b1p1/2pp4/1p1k4/1P2p3/4K3/6q1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "h8=Q+ Ke4 Qh1+",
+      "hint": "Look for stalemate, perpetual check, or a sacrifice that reaches a drawn ending. Which pieces still have legal moves?",
+      "explanation": "Promote with check, then sacrifice the new queen where the king and blocked pawn cannot move. Book continuation: h8=Q+ Ke4 Qh1+ Qxh1. Practice finishes on White\u2019s sacrifice; Black\u2019s capture completes the stalemate shown in the full line.",
+      "diagramPage": "73",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 63
+    }
+  },
+  {
+    "number": "485",
+    "title": "Pay any price",
+    "order": 485,
+    "bookLines": [
+      "Qg5+ Kxg5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/3p4/2p1pk2/4n3/5p2/5P1K/2r5/6Q1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Qg5+",
+      "hint": "Look for stalemate, perpetual check, or a sacrifice that reaches a drawn ending. Which pieces still have legal moves?",
+      "explanation": "Sacrifice the queen with check. The trapped king and blocked pawn then have no legal moves. Book continuation: Qg5+ Kxg5. Practice finishes on White\u2019s sacrifice; Black\u2019s capture completes the stalemate shown in the full line.",
+      "diagramPage": "73",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 63
+    }
+  },
+  {
+    "number": "486",
+    "title": "Black was hoping for more",
+    "order": 486,
+    "bookLines": [
+      "Bf2+ Qxf2"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/8/8/8/3k4/6B1/p7/K2b2q1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Bf2+",
+      "hint": "Look for stalemate, perpetual check, or a sacrifice that reaches a drawn ending. Which pieces still have legal moves?",
+      "explanation": "Offer the bishop with check to remove White\u2019s final legal move. Book continuation: Bf2+ Qxf2. Practice finishes on White\u2019s sacrifice; Black\u2019s capture completes the stalemate shown in the full line.",
+      "diagramPage": "73",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 63
+    }
+  },
+  {
+    "number": "487",
+    "title": "Royal encounter",
+    "order": 487,
+    "bookLines": [
+      "Qg3+ Kxg3"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6Q1/8/8/2n4p/7k/8/4K3/2q5 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Qg3+",
+      "hint": "Look for stalemate, perpetual check, or a sacrifice that reaches a drawn ending. Which pieces still have legal moves?",
+      "explanation": "Sacrifice the queen to bring the black king onto a square that traps the white king. Book continuation: Qg3+ Kxg3. Practice finishes on White\u2019s sacrifice; Black\u2019s capture completes the stalemate shown in the full line.",
+      "diagramPage": "73",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 63
+    }
+  },
+  {
+    "number": "488",
+    "title": "The queen or perpetual?",
+    "order": 488,
+    "bookLines": [
+      "Bd5+ Kh7 Be4+ Kg8 Bd5+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5bkr/1BR3p1/q6p/8/8/7r/PPP5/1K5R w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Bd5+ Kh7 Be4+ Kg8 Bd5+",
+      "hint": "Look for stalemate, perpetual check, or a sacrifice that reaches a drawn ending. Which pieces still have legal moves?",
+      "explanation": "Keep the king in a perpetual-check loop instead of collecting the queen. Book continuation: Bd5+ Kh7 Be4+ Kg8 Bd5+.",
+      "diagramPage": "73",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 63
+    }
+  },
+  {
+    "number": "489",
+    "title": "Draw study",
+    "order": 489,
+    "bookLines": [
+      "Bf3 Qxf3",
+      "Bxa8 Kxa8 Kf2 Kb8 Ke3 Kc7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "qk6/p7/P5p1/6p1/6Pp/7P/6BP/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Bf3",
+      "hint": "Look for stalemate, perpetual check, or a sacrifice that reaches a drawn ending. Which pieces still have legal moves?",
+      "explanation": "Sacrifice the bishop to leave the king and every pawn unable to move. Book continuation: Bf3 Qxf3. Additional book variations: Bxa8 Kxa8 Kf2 Kb8 Ke3 Kc7. Practice finishes on White\u2019s sacrifice; Black\u2019s capture completes the stalemate shown in the full line.",
+      "diagramPage": "73",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 63
+    }
+  },
+  {
+    "number": "490",
+    "title": "Little choice",
+    "order": 490,
+    "bookLines": [
+      "g5 hxg5",
+      "g5 Bxg5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/8/7p/8/6P1/4b1k1/8/7K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "g5",
+      "hint": "Look for stalemate, perpetual check, or a sacrifice that reaches a drawn ending. Which pieces still have legal moves?",
+      "explanation": "The only legal move offers the pawn. Taking it with the h-pawn leaves stalemate. Book continuation: g5 hxg5. Additional book variations: g5 Bxg5. Practice finishes on White\u2019s sacrifice; Black\u2019s capture completes the stalemate shown in the full line.",
+      "diagramPage": "73",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 63
+    }
+  },
+  {
+    "number": "491",
+    "title": "Do what you must!",
+    "order": 491,
+    "bookLines": [
+      "g7 Rxg7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/r7/5kPK/7P/8/8/8/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "g7",
+      "hint": "Look for stalemate, perpetual check, or a sacrifice that reaches a drawn ending. Which pieces still have legal moves?",
+      "explanation": "The only legal move advances the pawn; its capture leaves the king stalemated. Book continuation: g7 Rxg7. Practice finishes on White\u2019s sacrifice; Black\u2019s capture completes the stalemate shown in the full line.",
+      "diagramPage": "73",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 63
+    }
+  },
+  {
+    "number": "492",
+    "title": "How to stop mate?",
+    "order": 492,
+    "bookLines": [
+      "Qf1+ Rxf1"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5k2/8/8/3pp1p1/4b1Pp/3nP2P/4Q2K/r7 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Qf1+",
+      "hint": "Look for stalemate, perpetual check, or a sacrifice that reaches a drawn ending. Which pieces still have legal moves?",
+      "explanation": "Prevent the mating attack by sacrificing the queen with check, forcing a stalemate. Book continuation: Qf1+ Rxf1. Practice finishes on White\u2019s sacrifice; Black\u2019s capture completes the stalemate shown in the full line.",
+      "diagramPage": "73",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 63
+    }
+  }
+]

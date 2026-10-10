@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Draw the king onto f8",
+    "fen": "r1b3k1/ppq2ppp/2n5/8/1Q2N3/4B3/PPP3PP/2K1R3 w - - 0 1",
+    "text": "First clear g6 with Nf6+. Then sacrifice the queen on f8 to lure the king onto that square. Bh6+ forces the king back to g8, and Re8 finishes the attack.",
+    "demonstration": "Nf6+ gxf6 Qf8+ Kxf8 Bh6+ Kg8 Re8#"
+  },
+  {
+    "title": "Decoy and knight fork",
+    "fen": "4q1k1/8/5P2/5N2/8/7P/6P1/6K1 w - - 0 1",
+    "text": "The pawn check draws either the queen or king onto f7. The knight then forks king and queen, winning material.",
+    "demonstration": "f7+ Qxf7 Nh6+",
+    "bookLines": [
+      "f7+ Kxf7 Nd6+"
+    ]
+  },
+  {
+    "title": "Decoy and pin",
+    "fen": "8/k7/1q6/8/8/N1B5/1P6/1K6 w - - 0 1",
+    "text": "Bd4 pins the queen to its king. Capturing the bishop draws the queen onto d4, where Nb5+ forks king and queen.",
+    "demonstration": "Bd4 Qxd4 Nb5+"
+  }
+]

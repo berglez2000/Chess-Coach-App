@@ -1,0 +1,817 @@
+[
+  {
+    "number": "433",
+    "title": "Keep it simple",
+    "order": 433,
+    "bookLines": [
+      "Nb5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5k2/NP3pp1/3p4/7p/P2Pp1bP/1r2P1P1/3K1P2/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use promotion threats, a breakthrough, or underpromotion to find the winning continuation.",
+      "solutionText": "Nb5",
+      "hint": "Check what stops the passed pawn. Consider a sacrifice, a king move, or promoting to a piece other than a queen.",
+      "explanation": "The knight blocks the rook’s access to b8 so the pawn can promote. Book continuation: Nb5.",
+      "diagramPage": "65",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 55
+    }
+  },
+  {
+    "number": "434",
+    "title": "Nothing automatic",
+    "order": 434,
+    "bookLines": [
+      "b8=R"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/1P6/k7/p7/K7/8/8/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use promotion threats, a breakthrough, or underpromotion to find the winning continuation.",
+      "solutionText": "b8=R",
+      "hint": "Check what stops the passed pawn. Consider a sacrifice, a king move, or promoting to a piece other than a queen.",
+      "explanation": "Promote to a rook: choosing a queen would stalemate Black. Book continuation: b8=R.",
+      "diagramPage": "65",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 55
+    }
+  },
+  {
+    "number": "435",
+    "title": "Counter-instinctive",
+    "order": 435,
+    "bookLines": [
+      "Bb7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "B2k4/P6r/3P4/8/2p5/8/8/2K5 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use promotion threats, a breakthrough, or underpromotion to find the winning continuation.",
+      "solutionText": "Bb7",
+      "hint": "Check what stops the passed pawn. Consider a sacrifice, a king move, or promoting to a piece other than a queen.",
+      "explanation": "Offer the bishop to clear a8 for promotion on the next move. Book continuation: Bb7.",
+      "diagramPage": "65",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 55
+    }
+  },
+  {
+    "number": "436",
+    "title": "A pin",
+    "order": 436,
+    "bookLines": [
+      "f7 Bc5 Bd4 Bxd4 f8=Q",
+      "f7 Bc5 Bd4 Kb7 Bxc5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/k7/1b3P2/8/8/8/1B4K1/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use promotion threats, a breakthrough, or underpromotion to find the winning continuation.",
+      "solutionText": "f7 Bc5 Bd4 Bxd4 f8=Q",
+      "hint": "Check what stops the passed pawn. Consider a sacrifice, a king move, or promoting to a piece other than a queen.",
+      "explanation": "Pin the defending bishop so it cannot stop the pawn. Book continuation: f7 Bc5 Bd4 Bxd4 f8=Q. Additional book variations: f7 Bc5 Bd4 Kb7 Bxc5.",
+      "diagramPage": "65",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 55
+    }
+  },
+  {
+    "number": "437",
+    "title": "What’s the hurry?",
+    "order": 437,
+    "bookLines": [
+      "Nd7 Kc6 Kb2 Kc7 Kc3 Kc6 Kd4 Kc7 Kd5 Kc8 Kd6",
+      "Nd7 Kxd7 a7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1N6/2k5/P7/8/8/8/8/1K6 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use promotion threats, a breakthrough, or underpromotion to find the winning continuation.",
+      "solutionText": "Nd7 Kc6 Kb2 Kc7 Kc3 Kc6 Kd4",
+      "hint": "Check what stops the passed pawn. Consider a sacrifice, a king move, or promoting to a piece other than a queen.",
+      "explanation": "Deny the black king access to b6 before advancing the pawn. The white king approaches while the knight keeps the promotion route available. Book continuation: Nd7 Kc6 Kb2 Kc7 Kc3 Kc6 Kd4 Kc7 Kd5 Kc8 Kd6. Practice covers the first four White moves; the full continuation is shown above.",
+      "diagramPage": "65",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 55
+    }
+  },
+  {
+    "number": "438",
+    "title": "Let me repeat that",
+    "order": 438,
+    "bookLines": [
+      "Rc8+ Rxc8 Rxc8+ Kxc8 bxa7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1k3r2/pp3rpp/1P6/P7/8/8/2R2PPP/2R3K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use promotion threats, a breakthrough, or underpromotion to find the winning continuation.",
+      "solutionText": "Rc8+ Rxc8 Rxc8+ Kxc8 bxa7",
+      "hint": "Check what stops the passed pawn. Consider a sacrifice, a king move, or promoting to a piece other than a queen.",
+      "explanation": "Sacrifice both rooks to lure the king away from the promotion square. Book continuation: Rc8+ Rxc8 Rxc8+ Kxc8 bxa7.",
+      "diagramPage": "65",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 55
+    }
+  },
+  {
+    "number": "439",
+    "title": "Mate in 19!",
+    "order": 439,
+    "bookLines": [
+      "Rxb6 axb6 a7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/p7/Pp4R1/8/1n4K1/8/8/1k6 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use promotion threats, a breakthrough, or underpromotion to find the winning continuation.",
+      "solutionText": "Rxb6 axb6 a7",
+      "hint": "Check what stops the passed pawn. Consider a sacrifice, a king move, or promoting to a piece other than a queen.",
+      "explanation": "Draw the a7 pawn away, then advance the passed a-pawn. Book continuation: Rxb6 axb6 a7.",
+      "diagramPage": "65",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 55
+    }
+  },
+  {
+    "number": "440",
+    "title": "Black wants it to be theoretical",
+    "order": 440,
+    "bookLines": [
+      "Bh7",
+      "Bh7 Kf8 Ke4 Kf7 Kf5 Kf8 Kf6 Ke8 Bg6+ Kf8 h7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/5k2/7P/8/8/5K2/2B5/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use promotion threats, a breakthrough, or underpromotion to find the winning continuation.",
+      "solutionText": "Bh7",
+      "hint": "Check what stops the passed pawn. Consider a sacrifice, a king move, or promoting to a piece other than a queen.",
+      "explanation": "Protect the pawn’s advance. Black cannot establish the wrong-bishop rook-pawn draw while the king is kept away from h8. Book continuation: Bh7. Additional book variations: Bh7 Kf8 Ke4 Kf7 Kf5 Kf8 Kf6 Ke8 Bg6+ Kf8 h7.",
+      "diagramPage": "65",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 55
+    }
+  },
+  {
+    "number": "441",
+    "title": "A pointless promotion",
+    "order": 441,
+    "bookLines": [
+      "Ke8 g2 Kd8 g1=Q Bxc7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1k3K2/pPr5/P7/8/5B2/6p1/8/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use promotion threats, a breakthrough, or underpromotion to find the winning continuation.",
+      "solutionText": "Ke8 g2 Kd8 g1=Q Bxc7#",
+      "hint": "Check what stops the passed pawn. Consider a sacrifice, a king move, or promoting to a piece other than a queen.",
+      "explanation": "Use the bishop to win the rook with check even if Black promotes. Book continuation: Ke8 g2 Kd8 g1=Q Bxc7#. The printed Bxc7+ is checkmate in the supplied diagram, so the playable notation is Bxc7#.",
+      "diagramPage": "65",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 55
+    }
+  },
+  {
+    "number": "442",
+    "title": "Getting ahead",
+    "order": 442,
+    "bookLines": [
+      "c7 Rxe6 c8=Q+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4k3/p3r3/1pP1R1p1/7p/8/6P1/P4P1P/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use promotion threats, a breakthrough, or underpromotion to find the winning continuation.",
+      "solutionText": "c7 Rxe6 c8=Q+",
+      "hint": "Check what stops the passed pawn. Consider a sacrifice, a king move, or promoting to a piece other than a queen.",
+      "explanation": "The advanced pawn forces promotion while the rook is distracted. Book continuation: c7 Rxe6 c8=Q+.",
+      "diagramPage": "65",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 55
+    }
+  },
+  {
+    "number": "443",
+    "title": "Mate in 4",
+    "order": 443,
+    "bookLines": [
+      "Qh8+ Kxh8 g7+ Kg8 Bh7+ Kxh7 g8=Q#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3Q4/p3b1k1/2p2rPp/2q5/4B3/P2P4/7P/6RK w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use promotion threats, a breakthrough, or underpromotion to find the winning continuation.",
+      "solutionText": "Qh8+ Kxh8 g7+ Kg8 Bh7+ Kxh7 g8=Q#",
+      "hint": "Check what stops the passed pawn. Consider a sacrifice, a king move, or promoting to a piece other than a queen.",
+      "explanation": "Sacrifice the queen and bishop to promote with mate. Book continuation: Qh8+ Kxh8 g7+ Kg8 Bh7+ Kxh7 g8=Q#.",
+      "diagramPage": "65",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 55
+    }
+  },
+  {
+    "number": "444",
+    "title": "Plan B",
+    "order": 444,
+    "bookLines": [
+      "Rb5 cxb5 b7 Ra5 b8=Q+ Kd7 Qb7+",
+      "Rb5 c5 b7 Ra5 b8=Q+ Kd7 Qb7+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4k3/4pp2/pPp3p1/3RP2p/r4P2/5K1P/6P1/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use promotion threats, a breakthrough, or underpromotion to find the winning continuation.",
+      "solutionText": "Rb5 cxb5 b7 Ra5 b8=Q+ Kd7 Qb7+",
+      "hint": "Check what stops the passed pawn. Consider a sacrifice, a king move, or promoting to a piece other than a queen.",
+      "explanation": "Close the b-file with a rook sacrifice, allowing the pawn to promote. Book continuation: Rb5 cxb5 b7 Ra5 b8=Q+ Kd7 Qb7+. Additional book variations: Rb5 c5 b7 Ra5 b8=Q+ Kd7 Qb7+.",
+      "diagramPage": "65",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 55
+    }
+  },
+  {
+    "number": "445",
+    "title": "e8 or f8!",
+    "order": 445,
+    "bookLines": [
+      "Rf8+ Nxf8 e7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1k6/ppp3pp/4P1n1/8/8/1P4bP/P5P1/5R1K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use promotion threats, a breakthrough, or underpromotion to find the winning continuation.",
+      "solutionText": "Rf8+ Nxf8 e7",
+      "hint": "Check what stops the passed pawn. Consider a sacrifice, a king move, or promoting to a piece other than a queen.",
+      "explanation": "The rook sacrifice forces the knight away from e8 and opens a promotion route. Book continuation: Rf8+ Nxf8 e7.",
+      "diagramPage": "66",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 56
+    }
+  },
+  {
+    "number": "446",
+    "title": "Pawnbroker",
+    "order": 446,
+    "bookLines": [
+      "axb6 Qxb3 bxa7 Qxb2 a8=Q Qxc3 Bd6"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5nk1/pp4pp/1n3p2/P7/2q5/1QP3BP/1P2PPP1/7K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use promotion threats, a breakthrough, or underpromotion to find the winning continuation.",
+      "solutionText": "axb6 Qxb3 bxa7 Qxb2 a8=Q Qxc3 Bd6",
+      "hint": "Check what stops the passed pawn. Consider a sacrifice, a king move, or promoting to a piece other than a queen.",
+      "explanation": "Trade queens indirectly while the passed pawn promotes, then activate the bishop. Book continuation: axb6 Qxb3 bxa7 Qxb2 a8=Q Qxc3 Bd6.",
+      "diagramPage": "66",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 56
+    }
+  },
+  {
+    "number": "447",
+    "title": "An easy win",
+    "order": 447,
+    "bookLines": [
+      "Rd8+ Rxd8 Rf8+ Kxf8 cxd8=Q+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2r1k3/ppP1r1pp/3R4/5R2/8/6P1/P4PP1/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use promotion threats, a breakthrough, or underpromotion to find the winning continuation.",
+      "solutionText": "Rd8+ Rxd8 Rf8+ Kxf8 cxd8=Q+",
+      "hint": "Check what stops the passed pawn. Consider a sacrifice, a king move, or promoting to a piece other than a queen.",
+      "explanation": "Sacrifice both rooks to clear a promotion square with check. Book continuation: Rd8+ Rxd8 Rf8+ Kxf8 cxd8=Q+.",
+      "diagramPage": "66",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 56
+    }
+  },
+  {
+    "number": "448",
+    "title": "Choose wisely",
+    "order": 448,
+    "bookLines": [
+      "g8=B",
+      "g8=B Kg1 Ne2+ Kg2 Bd5#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/6P1/8/8/5N2/7p/7p/4K2k w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use promotion threats, a breakthrough, or underpromotion to find the winning continuation.",
+      "solutionText": "g8=B",
+      "hint": "Check what stops the passed pawn. Consider a sacrifice, a king move, or promoting to a piece other than a queen.",
+      "explanation": "Underpromote to a bishop: queen or rook promotion immediately stalemates Black. Book continuation: g8=B. Additional book variations: g8=B Kg1 Ne2+ Kg2 Bd5#.",
+      "diagramPage": "66",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 56
+    }
+  },
+  {
+    "number": "449",
+    "title": "Promotion time",
+    "order": 449,
+    "bookLines": [
+      "Rxg7+ Nxg7 h6",
+      "Rxg7+ Nxg7 h6 Rg4 h7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/2k3p1/1pp2p2/4pn1P/5r1P/1PP5/2P5/2K3RR w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use promotion threats, a breakthrough, or underpromotion to find the winning continuation.",
+      "solutionText": "Rxg7+ Nxg7 h6",
+      "hint": "Check what stops the passed pawn. Consider a sacrifice, a king move, or promoting to a piece other than a queen.",
+      "explanation": "Draw the knight away from h6 so the pawn can advance to promotion. Book continuation: Rxg7+ Nxg7 h6. Additional book variations: Rxg7+ Nxg7 h6 Rg4 h7.",
+      "diagramPage": "66",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 56
+    }
+  },
+  {
+    "number": "450",
+    "title": "Mr Tal does it again",
+    "order": 450,
+    "bookLines": [
+      "Ne6 Bb3 h7",
+      "Ne6 Kxe6 h7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/8/p4kpP/5p2/b2N4/8/5PP1/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use promotion threats, a breakthrough, or underpromotion to find the winning continuation.",
+      "solutionText": "Ne6 Bb3 h7",
+      "hint": "Check what stops the passed pawn. Consider a sacrifice, a king move, or promoting to a piece other than a queen.",
+      "explanation": "Control g7 before advancing the pawn so the king cannot stop promotion. Book continuation: Ne6 Bb3 h7. Additional book variations: Ne6 Kxe6 h7.",
+      "diagramPage": "66",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 56
+    }
+  },
+  {
+    "number": "451",
+    "title": "Unassisted",
+    "order": 451,
+    "bookLines": [
+      "e7 Nxe7 d6 Kf8 d7",
+      "e7 Nxe7 d6 Nd5 d7",
+      "e7 Nxe7 d6 f5 d7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6k1/5p2/2p1P1n1/3P4/8/8/8/1K6 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use promotion threats, a breakthrough, or underpromotion to find the winning continuation.",
+      "solutionText": "e7 Nxe7 d6 Kf8 d7",
+      "hint": "Check what stops the passed pawn. Consider a sacrifice, a king move, or promoting to a piece other than a queen.",
+      "explanation": "One pawn sacrifices itself to clear the other’s path; the pawn on c6 prevents the knight from returning. Book continuation: e7 Nxe7 d6 Kf8 d7. Additional book variations: e7 Nxe7 d6 Nd5 d7; e7 Nxe7 d6 f5 d7.",
+      "diagramPage": "66",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 56
+    }
+  },
+  {
+    "number": "452",
+    "title": "Black wasn’t expecting this",
+    "order": 452,
+    "bookLines": [
+      "Nf7 Rxf7 Rh8+ Kxh8 gxf7",
+      "Nf7 Rxf7 gxf7+ Kxf7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5rk1/ppp3p1/4p1P1/P5N1/3P4/6K1/1Pr5/7R w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use promotion threats, a breakthrough, or underpromotion to find the winning continuation.",
+      "solutionText": "Nf7 Rxf7 Rh8+ Kxh8 gxf7",
+      "hint": "Check what stops the passed pawn. Consider a sacrifice, a king move, or promoting to a piece other than a queen.",
+      "explanation": "Offer the knight, then sacrifice the rook to deflect the king so the pawn promotes. Book continuation: Nf7 Rxf7 Rh8+ Kxh8 gxf7. Additional book variations: Nf7 Rxf7 gxf7+ Kxf7.",
+      "diagramPage": "66",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 56
+    }
+  },
+  {
+    "number": "453",
+    "title": "How to prevent promotion?",
+    "order": 453,
+    "bookLines": [
+      "Rf5 Kxf5 g4+ Kxg4 Kg2"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/1p6/6k1/2R5/p7/8/PPP2pP1/7K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use promotion threats, a breakthrough, or underpromotion to find the winning continuation.",
+      "solutionText": "Rf5 Kxf5 g4+ Kxg4 Kg2",
+      "hint": "Check what stops the passed pawn. Consider a sacrifice, a king move, or promoting to a piece other than a queen.",
+      "explanation": "The rook sacrifice draws the king away from g6, allowing a pawn check and king blockade. Book continuation: Rf5 Kxf5 g4+ Kxg4 Kg2.",
+      "diagramPage": "66",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 56
+    }
+  },
+  {
+    "number": "454",
+    "title": "Worth remembering",
+    "order": 454,
+    "bookLines": [
+      "g5 Kxf5 gxh6 c2 Kd2 Kg5 h7",
+      "g5 fxg5 f6"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/8/5p1p/5P1P/4k1P1/2p5/4K3/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use promotion threats, a breakthrough, or underpromotion to find the winning continuation.",
+      "solutionText": "g5 Kxf5 gxh6 c2 Kd2 Kg5 h7",
+      "hint": "Check what stops the passed pawn. Consider a sacrifice, a king move, or promoting to a piece other than a queen.",
+      "explanation": "Give up the g-pawn to create a passed h-pawn; the white king stops the c-pawn. Book continuation: g5 Kxf5 gxh6 c2 Kd2 Kg5 h7. Additional book variations: g5 fxg5 f6.",
+      "diagramPage": "66",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 56
+    }
+  },
+  {
+    "number": "455",
+    "title": "White’s queen is threatened",
+    "order": 455,
+    "bookLines": [
+      "exf6 Rxg7 fxg7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3qk1r1/pb1pppQp/1p3n2/2r1P3/2P5/1P3P2/P2BB2P/N3K2R w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use promotion threats, a breakthrough, or underpromotion to find the winning continuation.",
+      "solutionText": "exf6 Rxg7 fxg7",
+      "hint": "Check what stops the passed pawn. Consider a sacrifice, a king move, or promoting to a piece other than a queen.",
+      "explanation": "Ignore the attacked queen: the pawn opens a path to promotion. Book continuation: exf6 Rxg7 fxg7.",
+      "diagramPage": "66",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 56
+    }
+  },
+  {
+    "number": "456",
+    "title": "Target a8",
+    "order": 456,
+    "bookLines": [
+      "Qxa7 Rxa7 bxa7 Nc2+ Kd2 Nxa1 Rxa1 O-O a8=Q"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1b1k2r/pp2qpp1/1P4np/2p1p3/1nB1P3/Q2PBN2/5PPP/R3K2R w k - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use promotion threats, a breakthrough, or underpromotion to find the winning continuation.",
+      "solutionText": "Qxa7 Rxa7 bxa7 Nc2+ Kd2 Nxa1 Rxa1",
+      "hint": "Check what stops the passed pawn. Consider a sacrifice, a king move, or promoting to a piece other than a queen.",
+      "explanation": "Sacrifice the queen to create a decisive passed pawn on the a-file. Book continuation: Qxa7 Rxa7 bxa7 Nc2+ Kd2 Nxa1 Rxa1 O-O a8=Q. Practice covers the first four White moves; the full continuation is shown above.",
+      "diagramPage": "66",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 56
+    }
+  },
+  {
+    "number": "457",
+    "title": "Distant passed pawns",
+    "order": 457,
+    "bookLines": [
+      "g8=Q+ Qxg8 Qxg8+ Kxg8 b4",
+      "g8=Q+ Qxg8 Qxg8+ Kxg8 b4 Kh7 a4 Kxh6 b5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3q4/5pPk/p3p2P/8/8/1Pp2P2/P1P5/1K4Q1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use promotion threats, a breakthrough, or underpromotion to find the winning continuation.",
+      "solutionText": "g8=Q+ Qxg8 Qxg8+ Kxg8 b4",
+      "hint": "Check what stops the passed pawn. Consider a sacrifice, a king move, or promoting to a piece other than a queen.",
+      "explanation": "Simplify into a winning pawn ending: the distant passed pawns divert the king. Book continuation: g8=Q+ Qxg8 Qxg8+ Kxg8 b4. Additional book variations: g8=Q+ Qxg8 Qxg8+ Kxg8 b4 Kh7 a4 Kxh6 b5.",
+      "diagramPage": "67",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 57
+    }
+  },
+  {
+    "number": "458",
+    "title": "Mate in 4",
+    "order": 458,
+    "bookLines": [
+      "Re8+ Qxe8 f7+ Qe5 Bxe5+ Bxe5 f8=Q#",
+      "Re8+ Qf8 Rxf8+ Bxf8 f7+ Bg7 f8=Q#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "7k/p4q1p/3b1Pp1/1p4P1/3B1n2/P2P3P/1PP2P2/2K1R3 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use promotion threats, a breakthrough, or underpromotion to find the winning continuation.",
+      "solutionText": "Re8+ Qxe8 f7+ Qe5 Bxe5+ Bxe5 f8=Q#",
+      "hint": "Check what stops the passed pawn. Consider a sacrifice, a king move, or promoting to a piece other than a queen.",
+      "explanation": "Sacrifice the rook to divert the queen, then clear the f-file for a mating promotion. Book continuation: Re8+ Qxe8 f7+ Qe5 Bxe5+ Bxe5 f8=Q#. Additional book variations: Re8+ Qf8 Rxf8+ Bxf8 f7+ Bg7 f8=Q#.",
+      "diagramPage": "67",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 57
+    }
+  },
+  {
+    "number": "459",
+    "title": "Which is the problem piece?",
+    "order": 459,
+    "bookLines": [
+      "Qxe4+ dxe4 gxh7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r2qkbn1/pp3ppr/2p3P1/3p4/Q3b3/2P5/PP2PPP1/RNB1KB2 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use promotion threats, a breakthrough, or underpromotion to find the winning continuation.",
+      "solutionText": "Qxe4+ dxe4 gxh7",
+      "hint": "Check what stops the passed pawn. Consider a sacrifice, a king move, or promoting to a piece other than a queen.",
+      "explanation": "Deflect the bishop’s supporting pawn, then remove the rook that prevents promotion. Book continuation: Qxe4+ dxe4 gxh7.",
+      "diagramPage": "67",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 57
+    }
+  },
+  {
+    "number": "460",
+    "title": "Out of the square?",
+    "order": 460,
+    "bookLines": [
+      "Kf7 h5 Ke6 h4 Kd5 h3 Kc4 h2 Bb4 h1=Q b3#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6K1/8/7p/8/k7/2B5/1P6/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use promotion threats, a breakthrough, or underpromotion to find the winning continuation.",
+      "solutionText": "Kf7 h5 Ke6 h4 Kd5 h3 Kc4",
+      "hint": "Check what stops the passed pawn. Consider a sacrifice, a king move, or promoting to a piece other than a queen.",
+      "explanation": "Approach the pawn while threatening to help your own pawn; promotion cannot prevent the mating net. Book continuation: Kf7 h5 Ke6 h4 Kd5 h3 Kc4 h2 Bb4 h1=Q b3#. Practice covers the first four White moves; the full continuation is shown above.",
+      "diagramPage": "67",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 57
+    }
+  },
+  {
+    "number": "461",
+    "title": "Pin and mate",
+    "order": 461,
+    "bookLines": [
+      "Bg2 Qxg2 c8=Q#",
+      "Bg2 Qxg2 c8=Q#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "k7/1qP5/1P6/KP6/8/7B/7p/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use promotion threats, a breakthrough, or underpromotion to find the winning continuation.",
+      "solutionText": "Bg2 Qxg2 c8=Q#",
+      "hint": "Check what stops the passed pawn. Consider a sacrifice, a king move, or promoting to a piece other than a queen.",
+      "explanation": "Offer the bishop to deflect the queen from guarding c8, allowing promotion with mate. Book continuation: Bg2 Qxg2 c8=Q#. Additional book variations: Bg2 Qxg2 c8=Q#.",
+      "diagramPage": "67",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 57
+    }
+  },
+  {
+    "number": "462",
+    "title": "Deflection",
+    "order": 462,
+    "bookLines": [
+      "Na6+ Nxa6 d8=Q+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/p1kP3p/4K1p1/2N2p2/1n6/8/6PP/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use promotion threats, a breakthrough, or underpromotion to find the winning continuation.",
+      "solutionText": "Na6+ Nxa6 d8=Q+",
+      "hint": "Check what stops the passed pawn. Consider a sacrifice, a king move, or promoting to a piece other than a queen.",
+      "explanation": "Deflect the knight from the promotion square with check. Book continuation: Na6+ Nxa6 d8=Q+.",
+      "diagramPage": "67",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 57
+    }
+  },
+  {
+    "number": "463",
+    "title": "This is weird!",
+    "order": 463,
+    "bookLines": [
+      "a6 Kc7 a7 Nc5 a8=N+",
+      "a6 Nc5 a7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/1n6/3k4/P7/8/8/8/K7 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use promotion threats, a breakthrough, or underpromotion to find the winning continuation.",
+      "solutionText": "a6 Kc7 a7 Nc5 a8=N+",
+      "hint": "Check what stops the passed pawn. Consider a sacrifice, a king move, or promoting to a piece other than a queen.",
+      "explanation": "Promote to a knight to avoid allowing Black to capture a newly promoted queen with check. Book continuation: a6 Kc7 a7 Nc5 a8=N+. Additional book variations: a6 Nc5 a7.",
+      "diagramPage": "67",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 57
+    }
+  },
+  {
+    "number": "464",
+    "title": "An active king",
+    "order": 464,
+    "bookLines": [
+      "Kh5",
+      "Kh5 Kxe5 h7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/p4p2/5k1P/1p2N1p1/2p1P1K1/2P5/PP6/2b5 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use promotion threats, a breakthrough, or underpromotion to find the winning continuation.",
+      "solutionText": "Kh5",
+      "hint": "Check what stops the passed pawn. Consider a sacrifice, a king move, or promoting to a piece other than a queen.",
+      "explanation": "The king supports the pawn and threatens a knight fork if Black captures on e5. Book continuation: Kh5. Additional book variations: Kh5 Kxe5 h7.",
+      "diagramPage": "67",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 57
+    }
+  },
+  {
+    "number": "465",
+    "title": "An endgame study",
+    "order": 465,
+    "bookLines": [
+      "h3 Kh5 h4 Kxh4 Kxg8"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6b1/6K1/7P/6k1/8/8/7P/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use promotion threats, a breakthrough, or underpromotion to find the winning continuation.",
+      "solutionText": "h3 Kh5 h4 Kxh4 Kxg8",
+      "hint": "Check what stops the passed pawn. Consider a sacrifice, a king move, or promoting to a piece other than a queen.",
+      "explanation": "h3 preserves the option of h4, forcing zugzwang. The king captures the bishop only when it no longer allows Black to stop the h6 pawn. Book continuation: h3 Kh5 h4 Kxh4 Kxg8.",
+      "diagramPage": "67",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 57
+    }
+  },
+  {
+    "number": "466",
+    "title": "A famous theme",
+    "order": 466,
+    "bookLines": [
+      "Be4 Qexe4 a8=Q+ Qxa8 e8=Q+",
+      "Be4 Qhxe4 e8=Q+ Qxe8 a8=Q#",
+      "Be4 Qhxe4 e8=Q+ Kb7 a8=Q#",
+      "Be4 Qexe4 e8=Q+ Qxe8 a8=Q+ Qxa8"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2k5/P2pP3/1p1P1pBK/1P6/5P1p/7p/8/4q2q w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use promotion threats, a breakthrough, or underpromotion to find the winning continuation.",
+      "solutionText": "Be4 Qexe4 a8=Q+ Qxa8 e8=Q+",
+      "hint": "Check what stops the passed pawn. Consider a sacrifice, a king move, or promoting to a piece other than a queen.",
+      "explanation": "Be4 offers the bishop to either queen. After ...Qexe4, promote on a8 first, drawing that queen away before e8=Q+. After ...Qhxe4, promote on e8 first so the remaining queen cannot cover a8. Book continuations: Be4 Qexe4 a8=Q+ Qxa8 e8=Q+; Be4 Qhxe4 e8=Q+ Qxe8 a8=Q#; Be4 Qhxe4 e8=Q+ Kb7 a8=Q#; Be4 Qexe4 e8=Q+ Qxe8 a8=Q+ Qxa8.",
+      "diagramPage": "67",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 57
+    }
+  },
+  {
+    "number": "467",
+    "title": "A round of applause if you get this!",
+    "order": 467,
+    "bookLines": [
+      "c5",
+      "c5 Nxc5 c7",
+      "c5 Re3 cxb7 Re8 a4",
+      "c5 Re3 cxb7 Re8 a4"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6k1/pn4pp/2P5/8/2P5/1r6/P5PK/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use promotion threats, a breakthrough, or underpromotion to find the winning continuation.",
+      "solutionText": "c5",
+      "hint": "Check what stops the passed pawn. Consider a sacrifice, a king move, or promoting to a piece other than a queen.",
+      "explanation": "Keep the pawn on c6 to deny the knight access to d6, controlling both b7 and b5. Book continuation: c5. Additional book variations: c5 Nxc5 c7; c5 Re3 cxb7 Re8 a4; c5 Re3 cxb7 Re8 a4.",
+      "diagramPage": "67",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 57
+    }
+  },
+  {
+    "number": "468",
+    "title": "The most famous study of them all",
+    "order": 468,
+    "bookLines": [
+      "c8=R",
+      "c8=R Ra4 Kb3"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/2P5/8/8/3r4/8/2K5/k7 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use promotion threats, a breakthrough, or underpromotion to find the winning continuation.",
+      "solutionText": "c8=R",
+      "hint": "Check what stops the passed pawn. Consider a sacrifice, a king move, or promoting to a piece other than a queen.",
+      "explanation": "A queen promotion allows ...Rc4+, when Qxc4 stalemates Black. Underpromote to a rook to threaten mate on a8. After ...Ra4, Kb3 threatens both the rook and mate on c1. Book continuation: c8=R Ra4 Kb3.",
+      "diagramPage": "67",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 57
+    }
+  }
+]

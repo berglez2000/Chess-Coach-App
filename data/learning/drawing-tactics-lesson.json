@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Break open the king for perpetual check",
+    "fen": "5rk1/5ppp/4p3/3pP3/q3P3/1p2Q3/1P3P1P/1K4R1 w - - 0 1",
+    "text": "Black threatens ...Qa2+. Sacrifice the rook on g7 to expose the king. Queen checks on g5 and f6 then repeat the position. Declining the rook allows a second sacrifice on h7 and another checking loop.",
+    "demonstration": "Rxg7+ Kxg7 Qg5+ Kh8 Qf6+ Kg8 Qg5+",
+    "bookLines": [
+      "Rxg7+ Kh8 Rxh7+ Kxh7 Qh3+ Kg6 Qg4+ Kh7 Qh5+"
+    ]
+  },
+  {
+    "title": "Liquidate into a wrong-bishop draw",
+    "fen": "6k1/8/8/2n5/7P/1P3K2/2B5/8 b - - 0 1",
+    "text": "Black sacrifices the knight for the dangerous b-pawn. After the bishop recaptures, the king heads for h8. White\u2019s dark-square bishop cannot control the light-square promotion square, so the remaining rook pawn cannot win against correct defense.",
+    "demonstration": "Nxb3 Bxb3+ Kh8"
+  }
+]

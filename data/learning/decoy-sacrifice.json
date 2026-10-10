@@ -1,0 +1,544 @@
+[
+  {
+    "number": "409",
+    "title": "Please come this way",
+    "order": 409,
+    "bookLines": [
+      "Rc7 Qxc7 Qxh7+ Ke6 Qxc7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r7/3q1k1p/p4p2/1p2p1p1/8/1P6/P5PP/1QR4K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a decoy sacrifice that draws an opponent onto a critical square.",
+      "solutionText": "Rc7 Qxc7 Qxh7+ Ke6 Qxc7",
+      "hint": "Which square would make the king or another piece vulnerable to a fork, skewer, or mating attack?",
+      "explanation": "Draw the queen onto c7, then check on h7 to win it. Book continuation: Rc7 Qxc7 Qxh7+ Ke6 Qxc7.",
+      "diagramPage": "61",
+      "answerPage": "131",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 51
+    }
+  },
+  {
+    "number": "410",
+    "title": "Decoy and fork",
+    "order": 410,
+    "bookLines": [
+      "Rh8+ Kxh8 Ng6+ Kg8 Ne7+",
+      "Rh8+ Kxh8 Ng6+ Kh7 Ne7+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2q3k1/6p1/r3pn2/3p4/3b1NP1/1p1Q4/1P1B1P2/1K5R w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a decoy sacrifice that draws an opponent onto a critical square.",
+      "solutionText": "Rh8+ Kxh8 Ng6+ Kg8 Ne7+",
+      "hint": "Which square would make the king or another piece vulnerable to a fork, skewer, or mating attack?",
+      "explanation": "Decoy the king onto h8, enabling a knight fork of king and queen. Book continuation: Rh8+ Kxh8 Ng6+ Kg8 Ne7+. Additional book variations: Rh8+ Kxh8 Ng6+ Kh7 Ne7+.",
+      "diagramPage": "61",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 51
+    }
+  },
+  {
+    "number": "411",
+    "title": "Mate in 2",
+    "order": 411,
+    "bookLines": [
+      "Qf8+ Kxf8 Rd8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6k1/1p3p2/p6p/5Np1/5q2/Q6P/PPr5/3R3K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a decoy sacrifice that draws an opponent onto a critical square.",
+      "solutionText": "Qf8+ Kxf8 Rd8#",
+      "hint": "Which square would make the king or another piece vulnerable to a fork, skewer, or mating attack?",
+      "explanation": "Lure the king onto f8 so the rook can deliver back rank mate. Book continuation: Qf8+ Kxf8 Rd8#.",
+      "diagramPage": "61",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 51
+    }
+  },
+  {
+    "number": "412",
+    "title": "Also in 2",
+    "order": 412,
+    "bookLines": [
+      "Qxh6+ Kxh6 Rh2#",
+      "Qxh6+ Kg8 Qh8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/p2q1r1k/2b2B1p/5P2/8/P7/R2Q4/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a decoy sacrifice that draws an opponent onto a critical square.",
+      "solutionText": "Qxh6+ Kxh6 Rh2#",
+      "hint": "Which square would make the king or another piece vulnerable to a fork, skewer, or mating attack?",
+      "explanation": "The queen sacrifice draws the king onto the h-file. Book continuation: Qxh6+ Kxh6 Rh2#. Additional book variations: Qxh6+ Kg8 Qh8#.",
+      "diagramPage": "61",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 51
+    }
+  },
+  {
+    "number": "413",
+    "title": "Decoy and skewer",
+    "order": 413,
+    "bookLines": [
+      "Be5+ Kxe5 Qf4+ Ke6 Qxc7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6r1/2q5/1p1k2p1/2pp3p/8/1P4PP/PB4P1/2Q3K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a decoy sacrifice that draws an opponent onto a critical square.",
+      "solutionText": "Be5+ Kxe5 Qf4+ Ke6 Qxc7",
+      "hint": "Which square would make the king or another piece vulnerable to a fork, skewer, or mating attack?",
+      "explanation": "Offer the bishop to draw the king onto the queen’s skewer diagonal. Book continuation: Be5+ Kxe5 Qf4+ Ke6 Qxc7.",
+      "diagramPage": "61",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 51
+    }
+  },
+  {
+    "number": "414",
+    "title": "Double decoy",
+    "order": 414,
+    "bookLines": [
+      "Rxh4 Qxh4 Qxf8+ Kxf8 Ng6+ Kf7 Nxh4"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1b2rk1/pp4p1/2p4n/2Qp1pq1/3P1N1n/3BP1N1/PP3PP1/1K1R3R w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a decoy sacrifice that draws an opponent onto a critical square.",
+      "solutionText": "Rxh4 Qxh4 Qxf8+ Kxf8 Ng6+ Kf7 Nxh4",
+      "hint": "Which square would make the king or another piece vulnerable to a fork, skewer, or mating attack?",
+      "explanation": "Two sacrifices place the king and queen where the knight can fork them. Book continuation: Rxh4 Qxh4 Qxf8+ Kxf8 Ng6+ Kf7 Nxh4.",
+      "diagramPage": "61",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 51
+    }
+  },
+  {
+    "number": "415",
+    "title": "Mate in 5",
+    "order": 415,
+    "bookLines": [
+      "Qg7+ Kxg7 Rfxf7+ Kg8 Rg7+ Kh8 Rh7+ Kg8 Rbg7#",
+      "Qh7+ Kxh7 Rfxf7+ Kg8 Rg7+ Kh8 Rh7+ Kg8 Rbg7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3r2k1/pR3p2/2n3pQ/2Bp4/P2P3K/5R1P/4r1q1/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a decoy sacrifice that draws an opponent onto a critical square.",
+      "solutionText": "Qg7+ Kxg7 Rfxf7+ Kg8 Rg7+ Kh8 Rh7+",
+      "hint": "Which square would make the king or another piece vulnerable to a fork, skewer, or mating attack?",
+      "explanation": "Decoy the king onto g7, then coordinate the rooks to force mate. Book continuation: Qg7+ Kxg7 Rfxf7+ Kg8 Rg7+ Kh8 Rh7+ Kg8 Rbg7#. Additional book variations: Qh7+ Kxh7 Rfxf7+ Kg8 Rg7+ Kh8 Rh7+ Kg8 Rbg7#. Practice covers the first four White moves; the full continuation is shown above.",
+      "diagramPage": "61",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 51
+    }
+  },
+  {
+    "number": "416",
+    "title": "Two pinned knights",
+    "order": 416,
+    "bookLines": [
+      "Rd8+ Kxd8 Qxe4"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1b1kb1r/ppp2ppp/2n2n2/6B1/Q3q3/8/PPP2PPP/2KR1BNR w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a decoy sacrifice that draws an opponent onto a critical square.",
+      "solutionText": "Rd8+ Kxd8 Qxe4",
+      "hint": "Which square would make the king or another piece vulnerable to a fork, skewer, or mating attack?",
+      "explanation": "The rook sacrifice draws the king away and frees the queen to capture e4. Book continuation: Rd8+ Kxd8 Qxe4.",
+      "diagramPage": "61",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 51
+    }
+  },
+  {
+    "number": "417",
+    "title": "Sweet",
+    "order": 417,
+    "bookLines": [
+      "Qh6+ Kxh6 Bf8+ Kh5 g4#",
+      "Qh6+ Kf7 Qf8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/qp4kp/2p3p1/3n4/1B5P/5PPK/r7/2Q1R3 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a decoy sacrifice that draws an opponent onto a critical square.",
+      "solutionText": "Qh6+ Kxh6 Bf8+ Kh5 g4#",
+      "hint": "Which square would make the king or another piece vulnerable to a fork, skewer, or mating attack?",
+      "explanation": "Offer the queen to bring the king into a bishop and pawn mating net. Book continuation: Qh6+ Kxh6 Bf8+ Kh5 g4#. Additional book variations: Qh6+ Kf7 Qf8#.",
+      "diagramPage": "61",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 51
+    }
+  },
+  {
+    "number": "418",
+    "title": "This may take you a while",
+    "order": 418,
+    "bookLines": [
+      "Rc3 dxc3 Qxc6 Rxc6 Rd8+",
+      "Rc3 Qxb6 Rxc8+",
+      "Rc3 Ne7 Rxc6 Nxc6 Qb7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2r4k/7p/1Qq2pnP/p4p2/r2pP3/6R1/5PP1/3R2K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a decoy sacrifice that draws an opponent onto a critical square.",
+      "solutionText": "Rc3 dxc3 Qxc6 Rxc6 Rd8+",
+      "hint": "Which square would make the king or another piece vulnerable to a fork, skewer, or mating attack?",
+      "explanation": "The rook sacrifice draws the pawn away; the queen then decoys the rook off the back rank. Book continuation: Rc3 dxc3 Qxc6 Rxc6 Rd8+. Additional book variations: Rc3 Qxb6 Rxc8+. Additional book variation: Rc3 Ne7 Rxc6 Nxc6 Qb7. Rd8 is check rather than immediate mate: Black can interpose the knight on f8, after which Rxf8 is mate.",
+      "diagramPage": "61",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 51
+    }
+  },
+  {
+    "number": "419",
+    "title": "Out of the blue",
+    "order": 419,
+    "bookLines": [
+      "Qxe6+ Kxe6 Bh3#",
+      "Qxe6+ Ke8 g6"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r6r/2qkb3/1n2p1Q1/3pP1Pp/1p1P4/1p2B3/1P3RBP/5NK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a decoy sacrifice that draws an opponent onto a critical square.",
+      "solutionText": "Qxe6+ Kxe6 Bh3#",
+      "hint": "Which square would make the king or another piece vulnerable to a fork, skewer, or mating attack?",
+      "explanation": "Draw the king onto e6, where the bishop delivers mate along the diagonal. Book continuation: Qxe6+ Kxe6 Bh3#. Additional book variations: Qxe6+ Ke8 g6.",
+      "diagramPage": "61",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 51
+    }
+  },
+  {
+    "number": "420",
+    "title": "Better development",
+    "order": 420,
+    "bookLines": [
+      "Bf7+ Kxf7 Bxe5+ Ke8 Bxc7",
+      "Bf7+ Kd8 Ne6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1b1k2r/b1qpn2p/p5p1/4p3/1p1NPB2/1BPQ4/PP4PP/2KR1R2 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a decoy sacrifice that draws an opponent onto a critical square.",
+      "solutionText": "Bf7+ Kxf7 Bxe5+ Ke8 Bxc7",
+      "hint": "Which square would make the king or another piece vulnerable to a fork, skewer, or mating attack?",
+      "explanation": "Decoy the king away from e8, then uncover the rook’s attack on the queen. Book continuation: Bf7+ Kxf7 Bxe5+ Ke8 Bxc7. Additional book variations: Bf7+ Kd8 Ne6#.",
+      "diagramPage": "61",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 51
+    }
+  },
+  {
+    "number": "421",
+    "title": "Mating net",
+    "order": 421,
+    "bookLines": [
+      "Rh8+ Kxh8 Bxf7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2r1r1k1/1b3pp1/1n4p1/p1p1p3/1pB1P3/1P3NP1/P4PK1/R6R w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a decoy sacrifice that draws an opponent onto a critical square.",
+      "solutionText": "Rh8+ Kxh8 Bxf7",
+      "hint": "Which square would make the king or another piece vulnerable to a fork, skewer, or mating attack?",
+      "explanation": "The rook sacrifice draws the king onto h8; the bishop clears the h-file for the other rook. Book continuation: Rh8+ Kxh8 Bxf7.",
+      "diagramPage": "62",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 52
+    }
+  },
+  {
+    "number": "422",
+    "title": "Prepare to reposition your rook",
+    "order": 422,
+    "bookLines": [
+      "Bf8+ Rxf8 Rd3"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r2r4/1p1R3p/5p1k/b1B1Pp2/p4P2/P7/1P5P/1K4R1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a decoy sacrifice that draws an opponent onto a critical square.",
+      "solutionText": "Bf8+ Rxf8 Rd3",
+      "hint": "Which square would make the king or another piece vulnerable to a fork, skewer, or mating attack?",
+      "explanation": "Deflect the d8 rook, then lift your rook to the third rank with mate on h3 threatened. Book continuation: Bf8+ Rxf8 Rd3.",
+      "diagramPage": "62",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 52
+    }
+  },
+  {
+    "number": "423",
+    "title": "Deflection and decoy",
+    "order": 423,
+    "bookLines": [
+      "Qxe8+ Qxe8 Rxc8 Qxc8 Ne7+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1brqr1k1/pp3pp1/4n2p/3Np3/QP2P3/P6P/3N1PP1/2R2RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a decoy sacrifice that draws an opponent onto a critical square.",
+      "solutionText": "Qxe8+ Qxe8 Rxc8 Qxc8 Ne7+",
+      "hint": "Which square would make the king or another piece vulnerable to a fork, skewer, or mating attack?",
+      "explanation": "Sacrifice queen and rook to draw the black queen onto c8 for a knight fork. Book continuation: Qxe8+ Qxe8 Rxc8 Qxc8 Ne7+.",
+      "diagramPage": "62",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 52
+    }
+  },
+  {
+    "number": "424",
+    "title": "A brilliant continuation",
+    "order": 424,
+    "bookLines": [
+      "Qxc8 Qxc8 Rxc6 Qe8 Rc8 Qxc8 Ne7+ Kf8 Nxc8",
+      "Qxc8 Qxc8 Rxc6 Qxc6 Ne7+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2r1q1k1/p4ppp/2n5/1p1N4/6Q1/1P4P1/Pb4BP/2R4K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a decoy sacrifice that draws an opponent onto a critical square.",
+      "solutionText": "Qxc8 Qxc8 Rxc6 Qe8 Rc8 Qxc8 Ne7+",
+      "hint": "Which square would make the king or another piece vulnerable to a fork, skewer, or mating attack?",
+      "explanation": "The queen sacrifice starts a sequence that decoys the queen onto c8 for the knight fork. Book continuation: Qxc8 Qxc8 Rxc6 Qe8 Rc8 Qxc8 Ne7+ Kf8 Nxc8. Additional book variations: Qxc8 Qxc8 Rxc6 Qxc6 Ne7+. Practice covers the first four White moves; the full continuation is shown above.",
+      "diagramPage": "62",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 52
+    }
+  },
+  {
+    "number": "425",
+    "title": "Little big man",
+    "order": 425,
+    "bookLines": [
+      "d5+ Ke5 Qe7+",
+      "d5+ Kxd5 Nc3+",
+      "d5+ Kf5 Ng3+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/2Q4p/3nkp2/1p6/3Pq3/8/4N1PP/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a decoy sacrifice that draws an opponent onto a critical square.",
+      "solutionText": "d5+ Ke5 Qe7+",
+      "hint": "Which square would make the king or another piece vulnerable to a fork, skewer, or mating attack?",
+      "explanation": "Offer the pawn to draw the king or knight onto a square that permits a fork. Book continuation: d5+ Ke5 Qe7+. Additional book variations: d5+ Kxd5 Nc3+; d5+ Kf5 Ng3+.",
+      "diagramPage": "62",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 52
+    }
+  },
+  {
+    "number": "426",
+    "title": "Sprightly knights",
+    "order": 426,
+    "bookLines": [
+      "Nxg7 Kxg7 Qxf6+ Kxf6 Nxd5+ Kg6 Nxc7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r3rnk1/ppq2ppp/5n2/2bp1N2/8/2N2Q2/PPP2PPP/R1B2RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a decoy sacrifice that draws an opponent onto a critical square.",
+      "solutionText": "Nxg7 Kxg7 Qxf6+ Kxf6 Nxd5+ Kg6 Nxc7",
+      "hint": "Which square would make the king or another piece vulnerable to a fork, skewer, or mating attack?",
+      "explanation": "Two decoys lead to a knight fork that wins the queen. Book continuation: Nxg7 Kxg7 Qxf6+ Kxf6 Nxd5+ Kg6 Nxc7.",
+      "diagramPage": "62",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 52
+    }
+  },
+  {
+    "number": "427",
+    "title": "Black looks solid…",
+    "order": 427,
+    "bookLines": [
+      "Bxe6+ Bxe6 Qf8+ Kxf8 Nxe6+ Ke7 Nxc7 Kd6 Ne8+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1n6/2qb1kp1/1p2pp1p/1P1p4/1Q1P1N2/4P1PB/5P1P/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a decoy sacrifice that draws an opponent onto a critical square.",
+      "solutionText": "Bxe6+ Bxe6 Qf8+ Kxf8 Nxe6+ Ke7 Nxc7",
+      "hint": "Which square would make the king or another piece vulnerable to a fork, skewer, or mating attack?",
+      "explanation": "Sacrifice the bishop and queen to draw targets onto the knight’s fork squares. Book continuation: Bxe6+ Bxe6 Qf8+ Kxf8 Nxe6+ Ke7 Nxc7 Kd6 Ne8+. Practice covers the first four White moves; the full continuation is shown above.",
+      "diagramPage": "62",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 52
+    }
+  },
+  {
+    "number": "428",
+    "title": "Gaining a tempo",
+    "order": 428,
+    "bookLines": [
+      "a4 Bxa4 Qa3 Bb5 Rxb5 Qxa3 Rb7+ Kg8 bxa3"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r4r2/6kp/2pqppp1/pbR5/3P4/4QN2/PP3PPP/2R3K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a decoy sacrifice that draws an opponent onto a critical square.",
+      "solutionText": "a4 Bxa4 Qa3 Bb5 Rxb5 Qxa3 Rb7+",
+      "hint": "Which square would make the king or another piece vulnerable to a fork, skewer, or mating attack?",
+      "explanation": "Draw the bishop onto a4, then use an intermediate queen check before recapturing. Book continuation: a4 Bxa4 Qa3 Bb5 Rxb5 Qxa3 Rb7+ Kg8 bxa3. Practice covers the first four White moves; the full continuation is shown above.",
+      "diagramPage": "62",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 52
+    }
+  },
+  {
+    "number": "429",
+    "title": "This is special!",
+    "order": 429,
+    "bookLines": [
+      "Bxf7+ Kxf7 Ne6 Kxe6 Qd5+ Kf6 Qf5#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1bqr1k1/pppnbppp/2np4/8/2BNP3/2N4P/PPP2PP1/R1BQR1K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a decoy sacrifice that draws an opponent onto a critical square.",
+      "solutionText": "Bxf7+ Kxf7 Ne6 Kxe6 Qd5+ Kf6 Qf5#",
+      "hint": "Which square would make the king or another piece vulnerable to a fork, skewer, or mating attack?",
+      "explanation": "Draw the king out with bishop and knight sacrifices, then finish with queen checks. Book continuation: Bxf7+ Kxf7 Ne6 Kxe6 Qd5+ Kf6 Qf5#.",
+      "diagramPage": "62",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 52
+    }
+  },
+  {
+    "number": "430",
+    "title": "The most famous decoy sacrifice",
+    "order": 430,
+    "bookLines": [
+      "Qxh7+ Kxh7 Nxf6+ Kh6 Neg4+ Kg5 h4+ Kf4 g3+ Kf3 Be2+ Kg2 Rh2+ Kg1 O-O-O#",
+      "Qxh7+ Kxh7 Nxf6+ Kh8 Ng6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "rn3rk1/pbppq1pp/1p2pb2/4N2Q/3PN3/3B4/PPP2PPP/R3K2R w Q - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a decoy sacrifice that draws an opponent onto a critical square.",
+      "solutionText": "Qxh7+ Kxh7 Nxf6+ Kh6 Neg4+ Kg5 h4+",
+      "hint": "Which square would make the king or another piece vulnerable to a fork, skewer, or mating attack?",
+      "explanation": "Lasker’s queen sacrifice draws the king into a long forced hunt, ending with castling mate. Book continuation: Qxh7+ Kxh7 Nxf6+ Kh6 Neg4+ Kg5 h4+ Kf4 g3+ Kf3 Be2+ Kg2 Rh2+ Kg1 O-O-O#. Additional book variation: Qxh7+ Kxh7 Nxf6+ Kh8 Ng6#. Practice covers the first four White moves; the full continuation is shown above.",
+      "diagramPage": "62",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 52
+    }
+  },
+  {
+    "number": "431",
+    "title": "Spectacular sacrifice",
+    "order": 431,
+    "bookLines": [
+      "Qxg7+ Kxg7 Nxd7+",
+      "Qxg7+ Kxg7 Nxd7+ Kg8 Nf6+ Kf7 Nd5+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4rnk1/2qn2p1/p3b2p/1pp1N3/2P5/4P1Q1/PB4PP/1B3RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a decoy sacrifice that draws an opponent onto a critical square.",
+      "solutionText": "Qxg7+ Kxg7 Nxd7+",
+      "hint": "Which square would make the king or another piece vulnerable to a fork, skewer, or mating attack?",
+      "explanation": "Decoy the king onto g7, then capture the knight with a discovered bishop check. Book continuation: Qxg7+ Kxg7 Nxd7+. Additional book variations: Qxg7+ Kxg7 Nxd7+ Kg8 Nf6+ Kf7 Nd5+.",
+      "diagramPage": "62",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 52
+    }
+  },
+  {
+    "number": "432",
+    "title": "Get him where you want him",
+    "order": 432,
+    "bookLines": [
+      "Nf7 Kxf7 fxg5+",
+      "Nf7 Qf6 fxg5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1b1k2r/pp1n3p/2pb3q/3pN1p1/3PpP2/1N2P3/PP4PP/R2QBRK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a decoy sacrifice that draws an opponent onto a critical square.",
+      "solutionText": "Nf7 Kxf7 fxg5+",
+      "hint": "Which square would make the king or another piece vulnerable to a fork, skewer, or mating attack?",
+      "explanation": "The knight sacrifice draws the king onto the open f-file, enabling a discovered rook check. Book continuation: Nf7 Kxf7 fxg5+. Additional book variations: Nf7 Qf6 fxg5.",
+      "diagramPage": "62",
+      "answerPage": "132",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 52
+    }
+  }
+]

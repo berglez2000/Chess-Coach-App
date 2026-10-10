@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Build pressure on an absolute pin",
+    "fen": "8/1k3p2/8/3r4/8/5B2/2P1K3/8 b - - 0 1",
+    "text": "The rook on d5 is pinned to the king by Bf3. After ...Kc6, Bxd5+ only wins the exchange and lets Black recapture. White can instead play c4, attacking the pinned rook again and winning it outright.",
+    "demonstration": "Kc6 c4"
+  },
+  {
+    "title": "A pinned defender cannot stop mate",
+    "fen": "2R3nk/6q1/8/8/8/2B5/3Q3K/8 w - - 0 1",
+    "text": "The knight on g8 shields its king from the rook but is pinned. Qh6 is mate: neither the knight nor the queen on g7 can capture it without exposing the king.",
+    "demonstration": "Qh6#"
+  },
+  {
+    "title": "Check the opponent’s reply",
+    "fen": "6k1/5b2/8/6n1/6R1/8/2P5/3K4 b - - 0 1",
+    "text": "White has played Rg4 to attack the knight pinned to the king. Black replies ...Bh5, pinning the attacking rook to White’s king and turning the tables.",
+    "demonstration": "Bh5"
+  },
+  {
+    "title": "A relative pin can be broken",
+    "fen": "r1bqkb1r/pppn1ppp/5n2/3p2B1/3P4/2N5/PP2PPPP/R2QKBNR w - - 0 1",
+    "text": "The f6 knight is pinned to the queen, not the king. Nxd5 is a mistake: Black answers ...Nxd5, allows Bxd8, then uses ...Bb4+ and ...Bxd2+ before recovering the queen. White ends a piece down.",
+    "demonstration": "Nxd5 Nxd5 Bxd8 Bb4+ Qd2 Bxd2+ Kxd2 Kxd8"
+  },
+  {
+    "title": "Unpin by attacking the bishop",
+    "fen": "r1bqk2r/ppp1bppp/2np1n2/1B1Pp3/4P3/5N2/PPP2PPP/RNBQK2R b - - 0 1",
+    "text": "The c6 knight is pinned and attacked by d5, but ...a6 drives the bishop to a4 and ...b5 attacks it again. After dxc6, ...bxa4 recovers a piece; after Bb3, ...Na5 releases the knight. Examine these active defenses before spending time preventing every pin.",
+    "demonstration": "a6 Ba4 b5 dxc6 bxa4"
+  }
+]

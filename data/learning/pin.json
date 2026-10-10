@@ -1,0 +1,802 @@
+[
+  {
+    "number": "325",
+    "title": "Let's get started",
+    "order": 325,
+    "bookLines": [
+      "Nd5+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/p1r3n1/R1p2k2/4p3/8/1P2NPP1/P6P/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use a pin, or break one, to find the winning continuation.",
+      "solutionText": "Nd5+",
+      "hint": "Trace the lines between kings, queens, and rooks. Can a pinned piece really capture, and can you add another attacker?",
+      "explanation": "The knight forks king and rook. The c6 pawn is pinned to the king on f6 by Ra6 and cannot capture the knight. Book continuation: Nd5+.",
+      "diagramPage": "49",
+      "answerPage": "129",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 41
+    }
+  },
+  {
+    "number": "326",
+    "title": "This won't take you long",
+    "order": 326,
+    "bookLines": [
+      "Bxc5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2bq1rk1/5pbp/1npp2p1/2n5/2P1P3/1PN1B1PP/2Q2PB1/3R2K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use a pin, or break one, to find the winning continuation.",
+      "solutionText": "Bxc5",
+      "hint": "Trace the lines between kings, queens, and rooks. Can a pinned piece really capture, and can you add another attacker?",
+      "explanation": "The d6 pawn is pinned to the queen on d8 by the rook on d1. Book continuation: Bxc5.",
+      "diagramPage": "49",
+      "answerPage": "129",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 41
+    }
+  },
+  {
+    "number": "327",
+    "title": "In one",
+    "order": 327,
+    "bookLines": [
+      "Qa8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2k5/2nq1pp1/p1Q1p3/P3PbPp/3P4/2R2P2/1P4PK/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use a pin, or break one, to find the winning continuation.",
+      "solutionText": "Qa8#",
+      "hint": "Trace the lines between kings, queens, and rooks. Can a pinned piece really capture, and can you add another attacker?",
+      "explanation": "The knight on c7 cannot block on a8 because it is pinned along the c-file. Book continuation: Qa8#.",
+      "diagramPage": "49",
+      "answerPage": "129",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 41
+    }
+  },
+  {
+    "number": "328",
+    "title": "Forget about en passant!",
+    "order": 328,
+    "bookLines": [
+      "b4#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/8/p4p2/k1K5/p7/R7/1P4p1/5q2 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use a pin, or break one, to find the winning continuation.",
+      "solutionText": "b4#",
+      "hint": "Trace the lines between kings, queens, and rooks. Can a pinned piece really capture, and can you add another attacker?",
+      "explanation": "The a4 pawn is pinned to its king by the rook; capturing en passant would expose the king. Book continuation: b4#.",
+      "diagramPage": "49",
+      "answerPage": "129",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 41
+    }
+  },
+  {
+    "number": "329",
+    "title": "Apparent defence",
+    "order": 329,
+    "bookLines": [
+      "Qxg7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6k1/4qrp1/3p3Q/p1pB1p2/1pP4P/1P5P/P7/B1n4K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use a pin, or break one, to find the winning continuation.",
+      "solutionText": "Qxg7#",
+      "hint": "Trace the lines between kings, queens, and rooks. Can a pinned piece really capture, and can you add another attacker?",
+      "explanation": "The rook on f7 is pinned to the king by Bd5. Szekely–Arkhipov, 1992. Book continuation: Qxg7#.",
+      "diagramPage": "49",
+      "answerPage": "129",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 41
+    }
+  },
+  {
+    "number": "330",
+    "title": "Time to get close",
+    "order": 330,
+    "bookLines": [
+      "Qf6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4rkr1/1p1Rn1pp/p1p1p2B/5p2/3Q4/8/PPq1PPPP/3R2K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use a pin, or break one, to find the winning continuation.",
+      "solutionText": "Qf6#",
+      "hint": "Trace the lines between kings, queens, and rooks. Can a pinned piece really capture, and can you add another attacker?",
+      "explanation": "Qf6 mates because the g7 pawn is pinned to its king by Bh6 and cannot capture the queen. Book continuation: Qf6#.",
+      "diagramPage": "49",
+      "answerPage": "129",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 41
+    }
+  },
+  {
+    "number": "331",
+    "title": "A pawn for a piece",
+    "order": 331,
+    "bookLines": [
+      "c4 Nxc4 Rxd5+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r2k4/1pp2rpp/pn3p2/3n4/8/P4NB1/1PP3PP/2KRR3 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use a pin, or break one, to find the winning continuation.",
+      "solutionText": "c4 Nxc4 Rxd5+",
+      "hint": "Trace the lines between kings, queens, and rooks. Can a pinned piece really capture, and can you add another attacker?",
+      "explanation": "The c-pawn attacks the knight; after it captures, the d-file pin wins it. Book continuation: c4 Nxc4 Rxd5+.",
+      "diagramPage": "49",
+      "answerPage": "129",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 41
+    }
+  },
+  {
+    "number": "332",
+    "title": "White's pinned queen looks a goner",
+    "order": 332,
+    "bookLines": [
+      "Rg1"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6k1/q1pp2bp/8/8/8/8/PQ3P2/KR6 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use a pin, or break one, to find the winning continuation.",
+      "solutionText": "Rg1",
+      "hint": "Trace the lines between kings, queens, and rooks. Can a pinned piece really capture, and can you add another attacker?",
+      "explanation": "Moving the rook to g1 pins the bishop on g7 to the king and threatens to win it. Book continuation: Rg1.",
+      "diagramPage": "49",
+      "answerPage": "129",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 41
+    }
+  },
+  {
+    "number": "333",
+    "title": "A piece up for grabs",
+    "order": 333,
+    "bookLines": [
+      "Rxf6 Rxf6 g5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/5rkp/5bp1/8/6PP/2B2R2/6K1/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use a pin, or break one, to find the winning continuation.",
+      "solutionText": "Rxf6 Rxf6 g5",
+      "hint": "Trace the lines between kings, queens, and rooks. Can a pinned piece really capture, and can you add another attacker?",
+      "explanation": "The rook sacrifice sets up a pawn attack on the rook, now pinned by Bc3. Book continuation: Rxf6 Rxf6 g5.",
+      "diagramPage": "49",
+      "answerPage": "129",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 41
+    }
+  },
+  {
+    "number": "334",
+    "title": "The pin provides a fork",
+    "order": 334,
+    "bookLines": [
+      "Nb5+ Kc8 Nd6+",
+      "Nb5+ Kb8 Qa7+ Kc8 Nd6+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "7r/1bk2q2/2p2p2/p1Q1pP1p/4P2P/2N3r1/PPPR4/2K5 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use a pin, or break one, to find the winning continuation.",
+      "solutionText": "Nb5+ Kc8 Nd6+",
+      "hint": "Trace the lines between kings, queens, and rooks. Can a pinned piece really capture, and can you add another attacker?",
+      "explanation": "The pinned c6 pawn cannot capture the knight, which forks king and queen on d6. Book continuation: Nb5+ Kc8 Nd6+. Additional book variations: Nb5+ Kb8 Qa7+ Kc8 Nd6+.",
+      "diagramPage": "49",
+      "answerPage": "129",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 41
+    }
+  },
+  {
+    "number": "335",
+    "title": "Loose pieces…",
+    "order": 335,
+    "bookLines": [
+      "Nxb4 cxb4 Bxb6",
+      "Nxb4 a5 Nd3"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/1n3k2/pb2p1p1/2p1Pp1p/1pP2P1P/1P1N2P1/P1K2B2/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use a pin, or break one, to find the winning continuation.",
+      "solutionText": "Nxb4 cxb4 Bxb6",
+      "hint": "Trace the lines between kings, queens, and rooks. Can a pinned piece really capture, and can you add another attacker?",
+      "explanation": "The knight capture exploits the c5 pawn's pin to the bishop on b6. Book continuation: Nxb4 cxb4 Bxb6. Additional book variations: Nxb4 a5 Nd3.",
+      "diagramPage": "49",
+      "answerPage": "129",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 41
+    }
+  },
+  {
+    "number": "336",
+    "title": "Absolute and relative",
+    "order": 336,
+    "bookLines": [
+      "Rb1 Qxc5 Rxb7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "rn6/kp3p2/pq4p1/N1Q4p/8/P6P/5PP1/3R2K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use a pin, or break one, to find the winning continuation.",
+      "solutionText": "Rb1 Qxc5 Rxb7#",
+      "hint": "Trace the lines between kings, queens, and rooks. Can a pinned piece really capture, and can you add another attacker?",
+      "explanation": "Qc5 pins the black queen on b6 to its king on a7, so Qxb1 is illegal. Rb1 also ties the queen to defending b7: after Qxc5, Rxb7 mates. Book continuation: Rb1 Qxc5 Rxb7#.",
+      "diagramPage": "49",
+      "answerPage": "129",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 41
+    }
+  },
+  {
+    "number": "337",
+    "title": "This is a classic",
+    "order": 337,
+    "bookLines": [
+      "Qxh7+ Kxh7 Rh5#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3r2rk/p4p1p/3p1Pp1/3R4/2p1B2Q/8/1q4PP/4R1K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use a pin, or break one, to find the winning continuation.",
+      "solutionText": "Qxh7+ Kxh7 Rh5#",
+      "hint": "Trace the lines between kings, queens, and rooks. Can a pinned piece really capture, and can you add another attacker?",
+      "explanation": "The g6 pawn is pinned to the king by the bishop on e4, allowing Rh5 mate. Book continuation: Qxh7+ Kxh7 Rh5#.",
+      "diagramPage": "50",
+      "answerPage": "129",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 42
+    }
+  },
+  {
+    "number": "338",
+    "title": "A pin and something in between",
+    "order": 338,
+    "bookLines": [
+      "Rd1 Qxc4 Rxd8+ Kf7 bxc4"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3r2k1/1p5p/6p1/p2q1p2/P1Q5/1P5P/1P6/5RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use a pin, or break one, to find the winning continuation.",
+      "solutionText": "Rd1 Qxc4 Rxd8+ Kf7 bxc4",
+      "hint": "Trace the lines between kings, queens, and rooks. Can a pinned piece really capture, and can you add another attacker?",
+      "explanation": "The rook pins the queen to Rd8. Before recapturing on c4, White takes the rook with check. Book continuation: Rd1 Qxc4 Rxd8+ Kf7 bxc4.",
+      "diagramPage": "50",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 42
+    }
+  },
+  {
+    "number": "339",
+    "title": "He who pins last…",
+    "order": 339,
+    "bookLines": [
+      "Rxe6 Rxe6 b6+ Kxb6 Rh6",
+      "Rxe6 Rxe6 b6+ Kb8 Rh8+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/kp2q3/pR2r2r/1P1p4/P2P4/4Q2R/4K3/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use a pin, or break one, to find the winning continuation.",
+      "solutionText": "Rxe6 Rxe6 b6+ Kxb6 Rh6",
+      "hint": "Trace the lines between kings, queens, and rooks. Can a pinned piece really capture, and can you add another attacker?",
+      "explanation": "After the rook exchanges, b6 checks the king while the e6 rook shields its queen on e7. After Kxb6, Rh6 pins that rook to the king. If the king retreats to b8, Rh8 checks before Rh6 wins the rook. Book continuation: Rxe6 Rxe6 b6+ Kxb6 Rh6. Additional book variations: Rxe6 Rxe6 b6+ Kb8 Rh8+.",
+      "diagramPage": "50",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 42
+    }
+  },
+  {
+    "number": "340",
+    "title": "Let's go back a little",
+    "order": 340,
+    "bookLines": [
+      "Qh4+ Kg8 Qg3+ Kh8 Bc3"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5r1k/4R3/p1pp4/3p1bQ1/3q1P2/7P/P2B2P1/7K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use a pin, or break one, to find the winning continuation.",
+      "solutionText": "Qh4+ Kg8 Qg3+ Kh8 Bc3",
+      "hint": "Trace the lines between kings, queens, and rooks. Can a pinned piece really capture, and can you add another attacker?",
+      "explanation": "The queen checks gain time to retreat onto the g-file. Bc3 pins Black's queen to the king. Book continuation: Qh4+ Kg8 Qg3+ Kh8 Bc3.",
+      "diagramPage": "50",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 42
+    }
+  },
+  {
+    "number": "341",
+    "title": "We've seen this one before",
+    "order": 341,
+    "bookLines": [
+      "Qa3 Rc8 Rxc5 Qxc5 Rc1 Qxa3 Rxc8+ Ke7 bxa3",
+      "Qa3 Rc8 Rxc5 Rxc5 Rc1"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r4k2/pp3ppp/1q2p1b1/2r1P3/Q7/8/PP2BPPP/2R2RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use a pin, or break one, to find the winning continuation.",
+      "solutionText": "Qa3 Rc8 Rxc5 Qxc5 Rc1 Qxa3 Rxc8+",
+      "hint": "Trace the lines between kings, queens, and rooks. Can a pinned piece really capture, and can you add another attacker?",
+      "explanation": "Qa3 pins the rook to the queen. After the exchange, Rc1 renews the pin; the main line uses an intermediate check before recapturing the queen. Book continuation: Qa3 Rc8 Rxc5 Qxc5 Rc1 Qxa3 Rxc8+ Ke7 bxa3. Additional book variations: Qa3 Rc8 Rxc5 Rxc5 Rc1. Practice ends after White’s fourth move; the full book continuation is retained above.",
+      "diagramPage": "50",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 42
+    }
+  },
+  {
+    "number": "342",
+    "title": "Opening lines",
+    "order": 342,
+    "bookLines": [
+      "Rxf6 Qxf6 d6+ Kxd6 Qxf6+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2r5/1p1bkp2/p2q1p2/3Pp3/7Q/1B6/P1P3PP/1K3R2 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use a pin, or break one, to find the winning continuation.",
+      "solutionText": "Rxf6 Qxf6 d6+ Kxd6 Qxf6+",
+      "hint": "Trace the lines between kings, queens, and rooks. Can a pinned piece really capture, and can you add another attacker?",
+      "explanation": "The rook sacrifice opens the diagonal. The queen is pinned to the king and cannot capture the checking d6 pawn. Book continuation: Rxf6 Qxf6 d6+ Kxd6 Qxf6+.",
+      "diagramPage": "50",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 42
+    }
+  },
+  {
+    "number": "343",
+    "title": "Who's pinning whom?",
+    "order": 343,
+    "bookLines": [
+      "Be6"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/2p1P3/2p5/p1Pb3p/6B1/1k2rR2/1P4K1/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use a pin, or break one, to find the winning continuation.",
+      "solutionText": "Be6",
+      "hint": "Trace the lines between kings, queens, and rooks. Can a pinned piece really capture, and can you add another attacker?",
+      "explanation": "Both the bishop on d5 and rook on e3 become pinned. Bxf3 is illegal and e8=Q cannot be stopped. Book continuation: Be6.",
+      "diagramPage": "50",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 42
+    }
+  },
+  {
+    "number": "344",
+    "title": "A pin and deflection",
+    "order": 344,
+    "bookLines": [
+      "Qa8 Rxa8 fxe7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3r3k/p1p1qp2/1pQ1pPpp/8/8/8/PPP2PPP/3R2K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use a pin, or break one, to find the winning continuation.",
+      "solutionText": "Qa8 Rxa8 fxe7",
+      "hint": "Trace the lines between kings, queens, and rooks. Can a pinned piece really capture, and can you add another attacker?",
+      "explanation": "The queen sacrifice deflects the rook from d8. The f7 pawn is pinned to its king, allowing fxe7 with the decisive threat of Rd8. Book continuation: Qa8 Rxa8 fxe7.",
+      "diagramPage": "50",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 42
+    }
+  },
+  {
+    "number": "345",
+    "title": "Immediate victory",
+    "order": 345,
+    "bookLines": [
+      "Rf1"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4Rrk1/3P2pp/p2q4/1p6/3p4/P7/1PP3P1/1K1R4 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use a pin, or break one, to find the winning continuation.",
+      "solutionText": "Rf1",
+      "hint": "Trace the lines between kings, queens, and rooks. Can a pinned piece really capture, and can you add another attacker?",
+      "explanation": "Rf1 adds a second attack on the pinned rook on f8. Black cannot avoid losing a rook. Book continuation: Rf1.",
+      "diagramPage": "50",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 42
+    }
+  },
+  {
+    "number": "346",
+    "title": "Pinned protector",
+    "order": 346,
+    "bookLines": [
+      "Rd7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3r1r1k/pp5p/2p3pQ/1q2n3/4P3/2B5/PPP5/2KRR3 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use a pin, or break one, to find the winning continuation.",
+      "solutionText": "Rd7",
+      "hint": "Trace the lines between kings, queens, and rooks. Can a pinned piece really capture, and can you add another attacker?",
+      "explanation": "The knight on e5 is pinned to the queen. Rd7 attacks h7; Black cannot prevent mate. Book continuation: Rd7.",
+      "diagramPage": "50",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 42
+    }
+  },
+  {
+    "number": "347",
+    "title": "No more pin",
+    "order": 347,
+    "bookLines": [
+      "Qxd4"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6k1/r6p/pp1p2p1/2pP2q1/P1Pb4/4B3/1P1Q2PP/5RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use a pin, or break one, to find the winning continuation.",
+      "solutionText": "Qxd4",
+      "hint": "Trace the lines between kings, queens, and rooks. Can a pinned piece really capture, and can you add another attacker?",
+      "explanation": "Capturing the bishop removes the pin along the diagonal and wins a piece. Toran–Kuypers, 1965. Book continuation: Qxd4.",
+      "diagramPage": "50",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 42
+    }
+  },
+  {
+    "number": "348",
+    "title": "Did you read the intro?",
+    "order": 348,
+    "bookLines": [
+      "Nxd4 Bxd1 Bb5+ Qd7 Bxd7+ Kxd7 Kxd1"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r2qkbnr/pp2pppp/8/3p4/3n2b1/5N2/PPPN1PPP/R1BQKB1R w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use a pin, or break one, to find the winning continuation.",
+      "solutionText": "Nxd4 Bxd1 Bb5+ Qd7 Bxd7+ Kxd7 Kxd1",
+      "hint": "Trace the lines between kings, queens, and rooks. Can a pinned piece really capture, and can you add another attacker?",
+      "explanation": "The knight moves despite its relative pin to the queen. The intermediate bishop check recovers the queen and leaves White a piece ahead. Book continuation: Nxd4 Bxd1 Bb5+ Qd7 Bxd7+ Kxd7 Kxd1.",
+      "diagramPage": "50",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 42
+    }
+  },
+  {
+    "number": "349",
+    "title": "This is pretty",
+    "order": 349,
+    "bookLines": [
+      "Ra4 Nc5 b6 Nxa4 b7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "k1K5/b7/8/1P6/4R3/3n4/8/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use a pin, or break one, to find the winning continuation.",
+      "solutionText": "Ra4 Nc5 b6 Nxa4 b7#",
+      "hint": "Trace the lines between kings, queens, and rooks. Can a pinned piece really capture, and can you add another attacker?",
+      "explanation": "The bishop is pinned to the king. The rook sacrifice distracts the knight and the pawn delivers mate. Book continuation: Ra4 Nc5 b6 Nxa4 b7#.",
+      "diagramPage": "51",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 43
+    }
+  },
+  {
+    "number": "350",
+    "title": "The e-file is the key",
+    "order": 350,
+    "bookLines": [
+      "Nxe6 fxe6 Qxd5",
+      "Nxe6 Qxh5 Ng7+ Kd8 Re8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r3kb1r/2pn1p1p/p3p1p1/1P1q2NQ/2pP4/2P3P1/5P1P/R1B1R1K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use a pin, or break one, to find the winning continuation.",
+      "solutionText": "Nxe6 fxe6 Qxd5",
+      "hint": "Trace the lines between kings, queens, and rooks. Can a pinned piece really capture, and can you add another attacker?",
+      "explanation": "Nxe6 threatens the queen and mate. After fxe6, White wins the queen on d5; the c4 pawn is pinned to the king by Re1 and cannot recapture. Bareev–Yakovich, 1986. Book continuation: Nxe6 fxe6 Qxd5. Additional book variations: Nxe6 Qxh5 Ng7+ Kd8 Re8#.",
+      "diagramPage": "51",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 43
+    }
+  },
+  {
+    "number": "351",
+    "title": "Winning endgame",
+    "order": 351,
+    "bookLines": [
+      "b5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/p1r5/R1p3k1/8/1P2p3/8/1P3PP1/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use a pin, or break one, to find the winning continuation.",
+      "solutionText": "b5",
+      "hint": "Trace the lines between kings, queens, and rooks. Can a pinned piece really capture, and can you add another attacker?",
+      "explanation": "The c6 pawn is pinned to the rook on c7. Advancing b5 wins it and gives White a decisive advantage. Book continuation: b5.",
+      "diagramPage": "51",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 43
+    }
+  },
+  {
+    "number": "352",
+    "title": "Two pins",
+    "order": 352,
+    "bookLines": [
+      "Ng6+ Rxg6 Qxf8+",
+      "Ng6+ Kg8 Nxf8"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3b1q1k/6rp/2p4Q/p2pP3/3P1N2/1P4B1/P5K1/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use a pin, or break one, to find the winning continuation.",
+      "solutionText": "Ng6+ Rxg6 Qxf8+",
+      "hint": "Trace the lines between kings, queens, and rooks. Can a pinned piece really capture, and can you add another attacker?",
+      "explanation": "The h7 pawn is pinned to the king and the g7 rook is pinned to the queen. Bocharov–Babiy, 2004. Book continuation: Ng6+ Rxg6 Qxf8+. Additional book variations: Ng6+ Kg8 Nxf8.",
+      "diagramPage": "51",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 43
+    }
+  },
+  {
+    "number": "353",
+    "title": "A pinned pawn",
+    "order": 353,
+    "bookLines": [
+      "Bxd5 cxd5 Rxc8+ Bxc8 Rxc8+ Kf7 Qxf5+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2r3k1/3b2pp/1pp1r3/p2p1p2/Pq4P1/1PRQP1P1/6BP/2R3K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use a pin, or break one, to find the winning continuation.",
+      "solutionText": "Bxd5 cxd5 Rxc8+ Bxc8 Rxc8+ Kf7 Qxf5+",
+      "hint": "Trace the lines between kings, queens, and rooks. Can a pinned piece really capture, and can you add another attacker?",
+      "explanation": "The bishop capture exploits the c6 pawn’s relative pin to the queen on b4. White then wins material using the c-file and intermediate checks. Book continuation: Bxd5 cxd5 Rxc8+ Bxc8 Rxc8+ Kf7 Qxf5+.",
+      "diagramPage": "51",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 43
+    }
+  },
+  {
+    "number": "354",
+    "title": "A paralysing move",
+    "order": 354,
+    "bookLines": [
+      "Qc4 Qd6 Rd1 Bd4 Bxd4 Kf8 a5 exd4 a6",
+      "Qc4 Kf8 Rc1"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6k1/6pp/2q2p2/2brp3/P3Q3/4B1P1/5P1P/4R1K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use a pin, or break one, to find the winning continuation.",
+      "solutionText": "Qc4 Qd6 Rd1 Bd4 Bxd4 Kf8 a5",
+      "hint": "Trace the lines between kings, queens, and rooks. Can a pinned piece really capture, and can you add another attacker?",
+      "explanation": "Qc4 pins both the bishop and rook. White increases the pressure, then uses the passed a-pawn to gain a decisive advantage. Book continuation: Qc4 Qd6 Rd1 Bd4 Bxd4 Kf8 a5 exd4 a6. Additional book variations: Qc4 Kf8 Rc1. Practice ends after White’s fourth move; the full book continuation is retained above.",
+      "diagramPage": "51",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 43
+    }
+  },
+  {
+    "number": "355",
+    "title": "Two bishops will mate a lone king",
+    "order": 355,
+    "bookLines": [
+      "Ke5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/8/2kB4/3n4/4K3/5B2/8/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use a pin, or break one, to find the winning continuation.",
+      "solutionText": "Ke5",
+      "hint": "Trace the lines between kings, queens, and rooks. Can a pinned piece really capture, and can you add another attacker?",
+      "explanation": "The king protects Bd6, which pins the knight. White wins the knight and can mate with the two bishops. Book continuation: Ke5.",
+      "diagramPage": "51",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 43
+    }
+  },
+  {
+    "number": "356",
+    "title": "A pin and deflection",
+    "order": 356,
+    "bookLines": [
+      "Rg8 Rxg8 Qf6+ Ke8 Qf7+ Kd8 Qxg8+ Nf8 Rxf8+ Qxf8 Qxf8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1bk1r2/1ppp3p/p3n3/2qNP3/8/5Q2/PPP1B2P/2K2RR1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use a pin, or break one, to find the winning continuation.",
+      "solutionText": "Rg8 Rxg8 Qf6+ Ke8 Qf7+ Kd8 Qxg8+",
+      "hint": "Trace the lines between kings, queens, and rooks. Can a pinned piece really capture, and can you add another attacker?",
+      "explanation": "The rook sacrifice deflects the defender; repeated queen checks exploit the pinned e6 knight. Schlechter–Teichmann, 1908. Book continuation: Rg8 Rxg8 Qf6+ Ke8 Qf7+ Kd8 Qxg8+ Nf8 Rxf8+ Qxf8 Qxf8#. Practice ends after White’s fourth move; the full book continuation is retained above.",
+      "diagramPage": "51",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 43
+    }
+  },
+  {
+    "number": "357",
+    "title": "A poisonous pin",
+    "order": 357,
+    "bookLines": [
+      "R1c6 Rxc6 dxc6 Rxf4 cxd7",
+      "R1c6 Rxf4 Rxd6"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/p1Rb2k1/1p1r1ppp/3P4/4rN2/8/P5P1/2R3K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use a pin, or break one, to find the winning continuation.",
+      "solutionText": "R1c6 Rxc6 dxc6 Rxf4 cxd7",
+      "hint": "Trace the lines between kings, queens, and rooks. Can a pinned piece really capture, and can you add another attacker?",
+      "explanation": "R1c6 exploits the pinned bishop on d7. The source also discusses a promotion with discovered check after the recapture. Wijgerden–Donner, 1976. Book continuation: R1c6 Rxc6 dxc6 Rxf4 cxd7. Additional book variations: R1c6 Rxf4 Rxd6.",
+      "diagramPage": "51",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 43
+    }
+  },
+  {
+    "number": "358",
+    "title": "Killer cross pin",
+    "order": 358,
+    "bookLines": [
+      "Qf5 Rxh6 Qxf7 Rc6 Kc3"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/5q2/k4r1R/8/2p1Q3/8/2K5/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use a pin, or break one, to find the winning continuation.",
+      "solutionText": "Qf5 Rxh6 Qxf7 Rc6 Kc3",
+      "hint": "Trace the lines between kings, queens, and rooks. Can a pinned piece really capture, and can you add another attacker?",
+      "explanation": "Qf5 pins the rook to the king along the diagonal and to the queen along the f-file, winning the queen. Book continuation: Qf5 Rxh6 Qxf7 Rc6 Kc3.",
+      "diagramPage": "51",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 43
+    }
+  },
+  {
+    "number": "359",
+    "title": "An undefended queen",
+    "order": 359,
+    "bookLines": [
+      "Rxf8+ Kxf8 Qxd7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5nk1/3q2pp/1p2n3/p1bQP3/Pp1p4/3N4/1B4PP/5R1K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use a pin, or break one, to find the winning continuation.",
+      "solutionText": "Rxf8+ Kxf8 Qxd7",
+      "hint": "Trace the lines between kings, queens, and rooks. Can a pinned piece really capture, and can you add another attacker?",
+      "explanation": "The knight on e6 is pinned to the undefended queen. Kortchnoi–Golod, 2004. Book continuation: Rxf8+ Kxf8 Qxd7.",
+      "diagramPage": "51",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 43
+    }
+  },
+  {
+    "number": "360",
+    "title": "A composed pin",
+    "order": 360,
+    "bookLines": [
+      "Qg6 Nxc4 Qxg7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1b1qrk1/pp1p1pp1/5P1p/n3p2Q/2B5/8/8/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Use a pin, or break one, to find the winning continuation.",
+      "solutionText": "Qg6 Nxc4 Qxg7#",
+      "hint": "Trace the lines between kings, queens, and rooks. Can a pinned piece really capture, and can you add another attacker?",
+      "explanation": "The f7 and g7 pawns are pinned. Qg6 creates an immediate mating threat that Black cannot meet. Book continuation: Qg6 Nxc4 Qxg7#.",
+      "diagramPage": "51",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 43
+    }
+  }
+]

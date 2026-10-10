@@ -14,8 +14,8 @@ Source: contents-page image supplied on 2026-10-09. The image contains chapter t
 | Discovered check | 39 | Imported and published exercises 277–300; source and importer are checked in. |
 | Double check | 43 | Imported and published exercises 301–324; see `double-check.md`. |
 | Pin | 47 | Imported and published exercises 325–360; see `pin.md`. |
-| Skewer | 53 | Obtain diagrams and answers. |
-| Deflection | 57 | Obtain diagrams and answers. |
+| Skewer | 53 | Imported and published exercises 361–384; see `skewer.md`. |
+| Deflection | 57 | Imported and published exercises 385–408; see `deflection.md`. |
 | Decoy sacrifice | 61 | Obtain diagrams and answers. |
 | Pawn promotion | 65 | Obtain diagrams and answers. |
 | Drawing tactics | 71 | Obtain diagrams and answers; inspect required draw objective before publishing. |
@@ -29,7 +29,7 @@ These are printed page numbers from the image. PDF page indices must be checked 
 
 ## First batch
 
-Chapters through “Pin” are complete. The next chapter is “Skewer,” starting on printed page 53. Obtain its diagrams and corresponding answers before importing.
+Chapters through “Deflection” are complete. The next chapter is “Decoy sacrifice,” starting on printed page 61. Obtain its diagrams and corresponding answers before importing.
 
 For each exercise, capture its source number, title, exact position, side to move, objective, answer branches, and diagram/answer page references. Retain uncertain transcriptions as drafts. Validate legal moves and mating claims using the existing Learning workflow, and preserve exercise IDs and progress when updating an existing import.
 

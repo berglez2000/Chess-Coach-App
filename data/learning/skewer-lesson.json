@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Skewer the king and queen",
+    "fen": "2q5/8/8/5k2/8/8/3K4/5B2 w - - 0 1",
+    "text": "Bh3 checks the king on f5 along the diagonal to c8. After the king moves, the bishop captures the queen behind it.",
+    "demonstration": "Bh3+ Ke4 Bxc8"
+  },
+  {
+    "title": "Check the defender’s threats",
+    "fen": "8/1r6/1P6/3k3r/8/K1p5/4PPB1/2B5 b - - 0 1",
+    "text": "White has just played Bg2+, skewering the king and rook on b7. Black to move: ...Kc4 threatens ...Ra5 mate. Taking the rook with Bxb7 loses immediately. White must first meet the mating threat, giving Black time to save the rook.",
+    "demonstration": "Kc4 Bxb7 Ra5#"
+  }
+]

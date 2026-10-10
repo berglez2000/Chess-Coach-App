@@ -1,0 +1,544 @@
+[
+  {
+    "number": "361",
+    "title": "Straightforward",
+    "order": 361,
+    "bookLines": [
+      "Rh7+ Ke6 Rxa7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "7R/r4k2/8/8/8/8/6K1/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the skewer or the preparation that wins material.",
+      "solutionText": "Rh7+ Ke6 Rxa7",
+      "hint": "Look for two targets on the same line. A check, sacrifice, or promotion may force them into alignment.",
+      "explanation": "The rook checks the king along the seventh rank, then takes the rook behind it. Book continuation: Rh7+ Ke6 Rxa7.",
+      "diagramPage": "54",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 45
+    }
+  },
+  {
+    "number": "362",
+    "title": "Arriving first but…",
+    "order": 362,
+    "bookLines": [
+      "a8=Q+ Ke3 Qxh1"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/P7/1K6/8/8/5k2/8/7q w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the skewer or the preparation that wins material.",
+      "solutionText": "a8=Q+ Ke3 Qxh1",
+      "hint": "Look for two targets on the same line. A check, sacrifice, or promotion may force them into alignment.",
+      "explanation": "Promote with check, then capture the queen on the same diagonal. Book continuation: a8=Q+ Ke3 Qxh1.",
+      "diagramPage": "54",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 45
+    }
+  },
+  {
+    "number": "363",
+    "title": "This idea is worth promoting",
+    "order": 363,
+    "bookLines": [
+      "f8=Q+ Kxf8 Rh8+ Kg7 Rxc8",
+      "f8=Q+ Rxf8 Rxe7+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2r5/1R2bPk1/5pp1/8/p1B5/8/5r2/2K4R w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the skewer or the preparation that wins material.",
+      "solutionText": "f8=Q+ Kxf8 Rh8+ Kg7 Rxc8",
+      "hint": "Look for two targets on the same line. A check, sacrifice, or promotion may force them into alignment.",
+      "explanation": "Promotion deflects the king or rook. The main line sets up a rook skewer along the eighth rank. Book continuation: f8=Q+ Kxf8 Rh8+ Kg7 Rxc8. Additional book variations: f8=Q+ Rxf8 Rxe7+.",
+      "diagramPage": "54",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 45
+    }
+  },
+  {
+    "number": "364",
+    "title": "Forced rearrangement",
+    "order": 364,
+    "bookLines": [
+      "Nxd3 Rxd3 Ra7+ Kg6 Bh7+ Kg5 Bxd3"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1R4B1/3r2k1/5p1b/7p/1P6/3n4/1r3P1P/R3N1K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the skewer or the preparation that wins material.",
+      "solutionText": "Nxd3 Rxd3 Ra7+ Kg6 Bh7+ Kg5 Bxd3",
+      "hint": "Look for two targets on the same line. A check, sacrifice, or promotion may force them into alignment.",
+      "explanation": "Capture the knight to draw a rook onto d3, then use checks to arrange a bishop skewer of king and rook. Book continuation: Nxd3 Rxd3 Ra7+ Kg6 Bh7+ Kg5 Bxd3.",
+      "diagramPage": "54",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 45
+    }
+  },
+  {
+    "number": "365",
+    "title": "King and queen alignment",
+    "order": 365,
+    "bookLines": [
+      "Nd6+ Kd5 Qf3+ Kxd6 Qxa8"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "q3N3/8/7p/7K/4kp2/1pQ5/8/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the skewer or the preparation that wins material.",
+      "solutionText": "Nd6+ Kd5 Qf3+ Kxd6 Qxa8",
+      "hint": "Look for two targets on the same line. A check, sacrifice, or promotion may force them into alignment.",
+      "explanation": "The knight check draws the king onto a diagonal shared with its queen; Qf3 checks along that diagonal. Book continuation: Nd6+ Kd5 Qf3+ Kxd6 Qxa8.",
+      "diagramPage": "54",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 45
+    }
+  },
+  {
+    "number": "366",
+    "title": "Profit from a pin",
+    "order": 366,
+    "bookLines": [
+      "Be4 Qxb7 Bxb7 Nc6 Bxa8"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "rn3b1r/pQpk2p1/2qnppB1/8/6PP/2N1B3/PPP2P2/2KR3R w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the skewer or the preparation that wins material.",
+      "solutionText": "Be4 Qxb7 Bxb7 Nc6 Bxa8",
+      "hint": "Look for two targets on the same line. A check, sacrifice, or promotion may force them into alignment.",
+      "explanation": "The d6 knight is pinned to its king by Rd1, so it cannot capture a bishop on e4. Be4 skewers the queen on c6 and rook on a8. After the queen takes on b7, the bishop recaptures and then wins the rook. Book continuation: Be4 Qxb7 Bxb7 Nc6 Bxa8.",
+      "diagramPage": "54",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 45
+    }
+  },
+  {
+    "number": "367",
+    "title": "Check and skewer",
+    "order": 367,
+    "bookLines": [
+      "Ne5+ Ke6 Qg8+ Kd6 Qxb3"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3Q4/5knp/1nN3p1/2p5/5P2/1q6/1P4PP/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the skewer or the preparation that wins material.",
+      "solutionText": "Ne5+ Ke6 Qg8+ Kd6 Qxb3",
+      "hint": "Look for two targets on the same line. A check, sacrifice, or promotion may force them into alignment.",
+      "explanation": "The knight check sets up a queen skewer: Qg8 checks the king on e6 and attacks the queen behind it on b3. Book continuation: Ne5+ Ke6 Qg8+ Kd6 Qxb3.",
+      "diagramPage": "54",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 45
+    }
+  },
+  {
+    "number": "368",
+    "title": "Making it happen",
+    "order": 368,
+    "bookLines": [
+      "Qh3 Kxf7 Qh7+ Ke8 Qg8+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1q4k1/4pR2/pn2r1p1/6P1/8/P1P2Q2/KB5P/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the skewer or the preparation that wins material.",
+      "solutionText": "Qh3 Kxf7 Qh7+ Ke8 Qg8+",
+      "hint": "Look for two targets on the same line. A check, sacrifice, or promotion may force them into alignment.",
+      "explanation": "Qh3 threatens mate on h7. After the king takes the rook, queen checks lead to a skewer of the king and queen on b8. Book continuation: Qh3 Kxf7 Qh7+ Ke8 Qg8+.",
+      "diagramPage": "54",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 45
+    }
+  },
+  {
+    "number": "369",
+    "title": "Lineup",
+    "order": 369,
+    "bookLines": [
+      "Rh8 Bc7 Rh7+ Kf6 Rxc7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1b6/5k2/6p1/3K4/5p2/5P1R/8/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the skewer or the preparation that wins material.",
+      "solutionText": "Rh8 Bc7 Rh7+ Kf6 Rxc7",
+      "hint": "Look for two targets on the same line. A check, sacrifice, or promotion may force them into alignment.",
+      "explanation": "Rh8 lines up the bishop on b8. After ...Bc7, Rh7 checks and skewers the bishop. The premature Rh7+ allows Kf6 Rb7 Be5, saving the bishop. Book continuation: Rh8 Bc7 Rh7+ Kf6 Rxc7.",
+      "diagramPage": "54",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 45
+    },
+    "analysisLines": [
+      "Rh7+ Kf6 Rb7 Be5"
+    ]
+  },
+  {
+    "number": "370",
+    "title": "Reducing Black's options",
+    "order": 370,
+    "bookLines": [
+      "Kf6 Ke8 Rc8+ Kd7 Rxg8",
+      "Kf6 Bf7 Rc8+ Be8 Rd8 Kg8 Rxe8+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5kb1/8/8/4K3/8/8/8/2R5 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the skewer or the preparation that wins material.",
+      "solutionText": "Kf6 Ke8 Rc8+ Kd7 Rxg8",
+      "hint": "Look for two targets on the same line. A check, sacrifice, or promotion may force them into alignment.",
+      "explanation": "Kf6 restricts the king. Rc8 checks along the eighth rank and wins the bishop; blocking the check with the bishop does not save it. Book continuation: Kf6 Ke8 Rc8+ Kd7 Rxg8. Additional book variations: Kf6 Bf7 Rc8+ Be8 Rd8 Kg8 Rxe8+.",
+      "diagramPage": "54",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 45
+    }
+  },
+  {
+    "number": "371",
+    "title": "Exploiting a square",
+    "order": 371,
+    "bookLines": [
+      "Qe1 Ng6 Ba5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3r2k1/2q3pp/2p2p2/8/2Pp1P1n/1P6/P2B2PP/2Q2R1K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the skewer or the preparation that wins material.",
+      "solutionText": "Qe1 Ng6 Ba5",
+      "hint": "Look for two targets on the same line. A check, sacrifice, or promotion may force them into alignment.",
+      "explanation": "Qe1 vacates c1, preparing the bishop move. After ...Ng6, Ba5 skewers the queen on c7 and rook on d8 to win the exchange. Book continuation: Qe1 Ng6 Ba5.",
+      "diagramPage": "54",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 45
+    }
+  },
+  {
+    "number": "372",
+    "title": "White's pawn is pinned",
+    "order": 372,
+    "bookLines": [
+      "Qc4+ Qxc4 g8=Q+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "7K/6P1/4k3/8/7Q/p1q5/8/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the skewer or the preparation that wins material.",
+      "solutionText": "Qc4+ Qxc4 g8=Q+",
+      "hint": "Look for two targets on the same line. A check, sacrifice, or promotion may force them into alignment.",
+      "explanation": "Sacrifice the queen with check to unpin the g7 pawn. Promotion gives a skewer of king and queen. Book continuation: Qc4+ Qxc4 g8=Q+.",
+      "diagramPage": "54",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 45
+    }
+  },
+  {
+    "number": "373",
+    "title": "The long diagonal",
+    "order": 373,
+    "bookLines": [
+      "Rxe5 Rxe5 Bxd4"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "7k/B7/6pp/4br2/3pR3/3P4/6PP/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the skewer or the preparation that wins material.",
+      "solutionText": "Rxe5 Rxe5 Bxd4",
+      "hint": "Look for two targets on the same line. A check, sacrifice, or promotion may force them into alignment.",
+      "explanation": "The rook exchange draws the black rook onto e5. The bishop capture then pins it to the king on h8, allowing White to win it. Book continuation: Rxe5 Rxe5 Bxd4.",
+      "diagramPage": "55",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 46
+    }
+  },
+  {
+    "number": "374",
+    "title": "Immediate return on investment",
+    "order": 374,
+    "bookLines": [
+      "Rxe4 Rxe4 Bf3"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r4k2/6p1/7p/2p1p3/3rb1B1/1P5P/6PK/2R1R3 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the skewer or the preparation that wins material.",
+      "solutionText": "Rxe4 Rxe4 Bf3",
+      "hint": "Look for two targets on the same line. A check, sacrifice, or promotion may force them into alignment.",
+      "explanation": "Sacrifice the exchange, then skewer the rook on e4 to the rook on a8 with Bf3, winning a rook back. Book continuation: Rxe4 Rxe4 Bf3.",
+      "diagramPage": "55",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 46
+    }
+  },
+  {
+    "number": "375",
+    "title": "Another decoy and skewer",
+    "order": 375,
+    "bookLines": [
+      "Qg1+ Qxg1 g8=Q+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "7K/6P1/8/6k1/3q4/8/8/5Q2 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the skewer or the preparation that wins material.",
+      "solutionText": "Qg1+ Qxg1 g8=Q+",
+      "hint": "Look for two targets on the same line. A check, sacrifice, or promotion may force them into alignment.",
+      "explanation": "The queen sacrifice deflects Black's queen onto g1. Promotion checks and skewers that queen along the g-file. Book continuation: Qg1+ Qxg1 g8=Q+.",
+      "diagramPage": "55",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 46
+    }
+  },
+  {
+    "number": "376",
+    "title": "One small step",
+    "order": 376,
+    "bookLines": [
+      "e5 Qxe5 Bg3 Qe3 Bxb8"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1bb2rk1/r4ppp/p2q1n2/1p6/3pP2B/1N1P1P2/1P1N2PP/2RQ1R1K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the skewer or the preparation that wins material.",
+      "solutionText": "e5 Qxe5 Bg3 Qe3 Bxb8",
+      "hint": "Look for two targets on the same line. A check, sacrifice, or promotion may force them into alignment.",
+      "explanation": "The pawn move attacks the queen, gains time, and opens the bishop’s diagonal. Bg3 attacks the queen on e5 with the b8 bishop behind it. Playing Bg3 immediately allows Qb6, defending b8. Book continuation: e5 Qxe5 Bg3 Qe3 Bxb8.",
+      "diagramPage": "55",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 46
+    },
+    "analysisLines": [
+      "Bg3 Qb6"
+    ]
+  },
+  {
+    "number": "377",
+    "title": "A draw?",
+    "order": 377,
+    "bookLines": [
+      "b7 Rg8 Ra8+ Kxb7 Rxg8",
+      "b7 Kxa7 bxc8=Q"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1kr5/R1p5/1P6/8/8/8/8/2K5 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the skewer or the preparation that wins material.",
+      "solutionText": "b7 Rg8 Ra8+ Kxb7 Rxg8",
+      "hint": "Look for two targets on the same line. A check, sacrifice, or promotion may force them into alignment.",
+      "explanation": "The pawn advances to deny the rook safe squares. If the rook moves to g8, Ra8 checks and skewers it; capturing White's rook allows promotion. Book continuation: b7 Rg8 Ra8+ Kxb7 Rxg8. Additional book variations: b7 Kxa7 bxc8=Q.",
+      "diagramPage": "55",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 46
+    }
+  },
+  {
+    "number": "378",
+    "title": "Two well judged blows",
+    "order": 378,
+    "bookLines": [
+      "Nxe4+ dxe4 Qd8+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "7Q/8/3k4/2Np4/4p1K1/8/3q4/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the skewer or the preparation that wins material.",
+      "solutionText": "Nxe4+ dxe4 Qd8+",
+      "hint": "Look for two targets on the same line. A check, sacrifice, or promotion may force them into alignment.",
+      "explanation": "The knight fork forces the d-pawn away, opening a diagonal for a queen skewer of king and queen. Book continuation: Nxe4+ dxe4 Qd8+.",
+      "diagramPage": "55",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 46
+    }
+  },
+  {
+    "number": "379",
+    "title": "Decoy and skewer",
+    "order": 379,
+    "bookLines": [
+      "Be5+ Kxe5 Qc3+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2Q5/1p4q1/p4k2/6p1/P3b3/6BP/5PP1/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the skewer or the preparation that wins material.",
+      "solutionText": "Be5+ Kxe5 Qc3+",
+      "hint": "Look for two targets on the same line. A check, sacrifice, or promotion may force them into alignment.",
+      "explanation": "The bishop sacrifice draws the king onto e5. Qc3 checks on the diagonal and skewers Black's queen on g7. Short–Vaganian, 1989. Book continuation: Be5+ Kxe5 Qc3+.",
+      "diagramPage": "55",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 46
+    }
+  },
+  {
+    "number": "380",
+    "title": "First and foremost",
+    "order": 380,
+    "bookLines": [
+      "h7 a2 h8=Q a1=Q Qe8+ Kc5 Qc8+ Kb5 Qc4+ Ka5 b4+ Ka4 Qa6+ Kb3 Qxa1",
+      "h7 a2 h8=Q a1=Q Qe8+ Ka6 Qa8+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/8/1p2p2P/1k2K3/8/pPP5/8/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the skewer or the preparation that wins material.",
+      "solutionText": "h7 a2 h8=Q a1=Q Qe8+ Kc5 Qc8+",
+      "hint": "Look for two targets on the same line. A check, sacrifice, or promotion may force them into alignment.",
+      "explanation": "Promoting first gives White the initiative. Repeated checks drive the king onto a line with the newly promoted queen, which is lost to a skewer. Book continuation: h7 a2 h8=Q a1=Q Qe8+ Kc5 Qc8+ Kb5 Qc4+ Ka5 b4+ Ka4 Qa6+ Kb3 Qxa1. Additional book variations: h7 a2 h8=Q a1=Q Qe8+ Ka6 Qa8+. Practice ends after White’s fourth move; the full book continuation is retained above.",
+      "diagramPage": "55",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 46
+    }
+  },
+  {
+    "number": "381",
+    "title": "The queen or mate",
+    "order": 381,
+    "bookLines": [
+      "e6+ Kxe6 Qe5+ Kd7 Qg7+ Kc8 Qf8+ Kd7 Qf7+ Kd8 Qxb7",
+      "e6+ Kd8 Qh8+ Ke7 Qg7+",
+      "e6+ Kxe6 Qe5+ Kf7 Qc7+",
+      "e6+ Kxe6 Qe5+ Kd7 Qg7+ Kc8 Qf8+ Kd7 Qf7+ Kc8 Qe8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/1q1k4/1Pp3p1/3pPp1p/5P2/6P1/1Q5K/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the skewer or the preparation that wins material.",
+      "solutionText": "e6+ Kxe6 Qe5+ Kd7 Qg7+ Kc8 Qf8+",
+      "hint": "Look for two targets on the same line. A check, sacrifice, or promotion may force them into alignment.",
+      "explanation": "The pawn sacrifice opens the e-file and diagonal for queen checks. White drives the king into a skewer of the queen on b7, or threatens mate. Book continuation: e6+ Kxe6 Qe5+ Kd7 Qg7+ Kc8 Qf8+ Kd7 Qf7+ Kd8 Qxb7. Additional book variations: e6+ Kd8 Qh8+ Ke7 Qg7+; e6+ Kxe6 Qe5+ Kf7 Qc7+; e6+ Kxe6 Qe5+ Kd7 Qg7+ Kc8 Qf8+ Kd7 Qf7+ Kc8 Qe8#. Practice ends after White’s fourth move; the full book continuation is retained above.",
+      "diagramPage": "55",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 46
+    }
+  },
+  {
+    "number": "382",
+    "title": "Loose pieces…",
+    "order": 382,
+    "bookLines": [
+      "Rf1 Qxf1+ Nxf1",
+      "Rf1 Qxg3 Rxf8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5r1k/6pp/3p4/3Pn3/8/6NP/5qP1/1Q1R3K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the skewer or the preparation that wins material.",
+      "solutionText": "Rf1 Qxf1+ Nxf1",
+      "hint": "Look for two targets on the same line. A check, sacrifice, or promotion may force them into alignment.",
+      "explanation": "Rf1 attacks the undefended rook on f8 through the black queen. White wins material if the queen captures, or mates if it leaves the file. Book continuation: Rf1 Qxf1+ Nxf1. Additional book variations: Rf1 Qxg3 Rxf8#.",
+      "diagramPage": "55",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 46
+    }
+  },
+  {
+    "number": "383",
+    "title": "Materially minded",
+    "order": 383,
+    "bookLines": [
+      "Bd4 Qe6 Bxh8"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4k2r/5p2/2p5/4q2p/8/4B1PP/2P2Q2/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the skewer or the preparation that wins material.",
+      "solutionText": "Bd4 Qe6 Bxh8",
+      "hint": "Look for two targets on the same line. A check, sacrifice, or promotion may force them into alignment.",
+      "explanation": "Bd4 attacks the queen along the diagonal with the rook on h8 behind it. When the queen moves, the bishop takes the rook. Book continuation: Bd4 Qe6 Bxh8.",
+      "diagramPage": "55",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 46
+    }
+  },
+  {
+    "number": "384",
+    "title": "No defence",
+    "order": 384,
+    "bookLines": [
+      "Bf4"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1rb3k1/p1q2p1p/1p4p1/8/8/2PBB3/1P1Q2P1/2K5 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the skewer or the preparation that wins material.",
+      "solutionText": "Bf4",
+      "hint": "Look for two targets on the same line. A check, sacrifice, or promotion may force them into alignment.",
+      "explanation": "The bishop attacks the queen on c7 with the rook on b8 behind it. The queen cannot defend that rook from a safe square, so White wins it. Book continuation: Bf4.",
+      "diagramPage": "55",
+      "answerPage": "130",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 46
+    }
+  }
+]

@@ -1,0 +1,19 @@
+[
+  {
+    "title": "Deflect the queen from h4",
+    "fen": "3qrr1k/6p1/3p2P1/3N1p2/4pQ2/7P/8/2R4K w - - 0 1",
+    "text": "The black queen guards h4. Rc8 sacrifices the rook to draw that queen away. After ...Qxc8, Qh4 checks and Qh7 mates. The knight and pawns prevent the queen from returning to defend h4.",
+    "demonstration": "Rc8 Qxc8 Qh4+ Kg8 Qh7#"
+  },
+  {
+    "title": "Combine deflection, a pin, and overload",
+    "fen": "1r1q2rk/7p/7Q/8/2b2P2/6RP/6PK/4R3 w - - 0 1",
+    "text": "Re8 threatens mate and overloads the queen: it must protect the king while also guarding the b8 rook. After ...Qd4, White plays Rgxg8+ Bxg8 Rxb8. The queen can no longer cover every task. Alternatives ...Qb6 and ...Qc7 permit decisive queen checks.",
+    "demonstration": "Re8 Qd4 Rgxg8+ Bxg8 Rxb8",
+    "bookLines": [
+      "Re8 Qb6 Qg7#",
+      "Re8 Qc7 Qf6+ Qg7 Qxg7#"
+    ],
+    "sourceNote": "The printed follow-up ...Qe5+ f4 conflicts with the diagram: the white pawn is already on f4, blocking that check. Only the consistent main combination and queen sidelines are demonstrated."
+  }
+]

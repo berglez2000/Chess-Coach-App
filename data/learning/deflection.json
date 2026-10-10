@@ -1,0 +1,549 @@
+[
+  {
+    "number": "385",
+    "title": "Keep it simple",
+    "order": 385,
+    "bookLines": [
+      "Qa4+ Qxa4 Rc8+ Rd8 Rxd8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4kb1r/p4ppp/qp2p3/3rN1B1/3Q4/1P6/1P3PPP/2R3K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Deflect a defender from a piece or key square to find the winning continuation.",
+      "solutionText": "Qa4+ Qxa4 Rc8+ Rd8 Rxd8#",
+      "hint": "Identify what each defender protects. Can a check, capture, or sacrifice force it away?",
+      "explanation": "The queen sacrifice draws Black's queen away from c8. The rook invades with check and mates. Tal–Petrosian, 1975. Book continuation: Qa4+ Qxa4 Rc8+ Rd8 Rxd8#.",
+      "diagramPage": "58",
+      "answerPage": "131",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 48
+    }
+  },
+  {
+    "number": "386",
+    "title": "A quick mate",
+    "order": 386,
+    "bookLines": [
+      "Rd8+ Nxd8 Ba7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1k6/1Pr5/K1nR1p2/4p3/4P3/4BP2/8/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Deflect a defender from a piece or key square to find the winning continuation.",
+      "solutionText": "Rd8+ Nxd8 Ba7#",
+      "hint": "Identify what each defender protects. Can a check, capture, or sacrifice force it away?",
+      "explanation": "The rook sacrifice deflects the knight from c6, opening the bishop's mating diagonal. Book continuation: Rd8+ Nxd8 Ba7#.",
+      "diagramPage": "58",
+      "answerPage": "131",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 48
+    }
+  },
+  {
+    "number": "387",
+    "title": "Deflection and skewer",
+    "order": 387,
+    "bookLines": [
+      "Bb7+ Rxb7 Qd5+ Kf2 Qxh1"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2B5/8/5K2/4Q3/8/5k2/8/1r5q w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Deflect a defender from a piece or key square to find the winning continuation.",
+      "solutionText": "Bb7+ Rxb7 Qd5+ Kf2 Qxh1",
+      "hint": "Identify what each defender protects. Can a check, capture, or sacrifice force it away?",
+      "explanation": "The bishop sacrifice draws the rook away from b1. White can then skewer the king and queen along d5–h1. Book continuation: Bb7+ Rxb7 Qd5+ Kf2 Qxh1.",
+      "diagramPage": "58",
+      "answerPage": "131",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 48
+    }
+  },
+  {
+    "number": "388",
+    "title": "f5 is the key",
+    "order": 388,
+    "bookLines": [
+      "Qc7 Qxc7 Bf5#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6b1/1p3q1k/7p/6pP/4p1B1/P1BnP1Q1/1P4P1/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Deflect a defender from a piece or key square to find the winning continuation.",
+      "solutionText": "Qc7 Qxc7 Bf5#",
+      "hint": "Identify what each defender protects. Can a check, capture, or sacrifice force it away?",
+      "explanation": "The queen sacrifice deflects the black queen from defending f5, enabling the bishop mate. Book continuation: Qc7 Qxc7 Bf5#.",
+      "diagramPage": "58",
+      "answerPage": "131",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 48
+    }
+  },
+  {
+    "number": "389",
+    "title": "Back rank danger",
+    "order": 389,
+    "bookLines": [
+      "Qf7 Rg8 Qxg7+ Rxg7 Rc8+ Qe8 Rxe8#",
+      "Qf7 Rxf7 Rc8+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5r1k/1p4pp/8/1P5Q/r2Bq3/6P1/n4P1P/2R3K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Deflect a defender from a piece or key square to find the winning continuation.",
+      "solutionText": "Qf7 Rg8 Qxg7+ Rxg7 Rc8+ Qe8 Rxe8#",
+      "hint": "Identify what each defender protects. Can a check, capture, or sacrifice force it away?",
+      "explanation": "The queen attacks f8 and sacrifices on g7 to deflect the rook from the back rank, letting Rc8 mate. Book continuation: Qf7 Rg8 Qxg7+ Rxg7 Rc8+ Qe8 Rxe8#. Additional book variations: Qf7 Rxf7 Rc8+.",
+      "diagramPage": "58",
+      "answerPage": "131",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 48
+    }
+  },
+  {
+    "number": "390",
+    "title": "Elegant and effective",
+    "order": 390,
+    "bookLines": [
+      "Bxg5 Qxf3 Bh6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r3bk2/1p2b3/2n2q2/p2B2p1/2Pp4/PP3QP1/5P1P/2B1R1K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Deflect a defender from a piece or key square to find the winning continuation.",
+      "solutionText": "Bxg5 Qxf3 Bh6#",
+      "hint": "Identify what each defender protects. Can a check, capture, or sacrifice force it away?",
+      "explanation": "The bishop capture opens the diagonal to h6 and offers the queen. Taking it deflects the black queen from the defense of h6. Book continuation: Bxg5 Qxf3 Bh6#.",
+      "diagramPage": "58",
+      "answerPage": "131",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 48
+    }
+  },
+  {
+    "number": "391",
+    "title": "The objective: f8!",
+    "order": 391,
+    "bookLines": [
+      "Be6 dxe6 d7+ Kxd7 Kf8",
+      "Be6 Bh5 Bxd7+ Kxd7 Kf8"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4k3/3pPpK1/3P1Pb1/8/8/8/B7/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Deflect a defender from a piece or key square to find the winning continuation.",
+      "solutionText": "Be6 dxe6 d7+ Kxd7 Kf8",
+      "hint": "Identify what each defender protects. Can a check, capture, or sacrifice force it away?",
+      "explanation": "Be6 draws the d7 pawn off its file. The passed pawn then distracts the king, letting White reach f8 and promote the e-pawn. Book continuation: Be6 dxe6 d7+ Kxd7 Kf8. Additional book variations: Be6 Bh5 Bxd7+ Kxd7 Kf8.",
+      "diagramPage": "58",
+      "answerPage": "131",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 48
+    }
+  },
+  {
+    "number": "392",
+    "title": "The right rook",
+    "order": 392,
+    "bookLines": [
+      "Rf4+ gxf4 Rh4#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r4r2/pp3p1N/4q3/2p1n1p1/4P1k1/3p2P1/PPP3KR/5R2 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Deflect a defender from a piece or key square to find the winning continuation.",
+      "solutionText": "Rf4+ gxf4 Rh4#",
+      "hint": "Identify what each defender protects. Can a check, capture, or sacrifice force it away?",
+      "explanation": "Sacrifice the f1 rook to deflect the g5 pawn. The h2 rook then mates on h4. Reversing the rook moves fails: Rh4+ gxh4 Rf4+ Kh5 lets the king escape. Book continuation: Rf4+ gxf4 Rh4#.",
+      "diagramPage": "58",
+      "answerPage": "131",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 48
+    },
+    "analysisLines": [
+      "Rh4+ gxh4 Rf4+ Kh5"
+    ]
+  },
+  {
+    "number": "393",
+    "title": "Exchange sacrifice and deflection",
+    "order": 393,
+    "bookLines": [
+      "Rxd5 cxd5 Bb5 Qe7 Bxa4",
+      "Rxd5 cxd5 Bb5 Qxb5 Qxg7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5rk1/pp1q2p1/2p3Qp/2Pb1p2/r3n3/P3P3/1B2BPPP/3R1RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Deflect a defender from a piece or key square to find the winning continuation.",
+      "solutionText": "Rxd5 cxd5 Bb5 Qe7 Bxa4",
+      "hint": "Identify what each defender protects. Can a check, capture, or sacrifice force it away?",
+      "explanation": "The exchange sacrifice draws c6 away from its defense of b5. The bishop attacks the queen with the a4 rook behind it. Book continuation: Rxd5 cxd5 Bb5 Qe7 Bxa4. Additional book variations: Rxd5 cxd5 Bb5 Qxb5 Qxg7#.",
+      "diagramPage": "58",
+      "answerPage": "131",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 48
+    }
+  },
+  {
+    "number": "394",
+    "title": "Double deflection",
+    "order": 394,
+    "bookLines": [
+      "Rg8+ Rxg8 Qxd4+ Qxd4 Nf7#",
+      "Rg8+ Qxg8 Qxd4+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r4r1k/p2p3p/3N2RP/3q4/3p2Q1/8/P1P2PPK/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Deflect a defender from a piece or key square to find the winning continuation.",
+      "solutionText": "Rg8+ Rxg8 Qxd4+ Qxd4 Nf7#",
+      "hint": "Identify what each defender protects. Can a check, capture, or sacrifice force it away?",
+      "explanation": "Two sacrifices deflect the rook from f8 and the queen from defending f7, allowing the knight mate. Book continuation: Rg8+ Rxg8 Qxd4+ Qxd4 Nf7#. Additional book variations: Rg8+ Qxg8 Qxd4+.",
+      "diagramPage": "58",
+      "answerPage": "131",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 48
+    }
+  },
+  {
+    "number": "395",
+    "title": "The h-file",
+    "order": 395,
+    "bookLines": [
+      "Rb6 Qxb6 Qh8+ Kg6 Bh5#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2Q5/1R6/5q1k/3rnpp1/1P2p3/6P1/4BPK1/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Deflect a defender from a piece or key square to find the winning continuation.",
+      "solutionText": "Rb6 Qxb6 Qh8+ Kg6 Bh5#",
+      "hint": "Identify what each defender protects. Can a check, capture, or sacrifice force it away?",
+      "explanation": "The rook sacrifice deflects the queen from f6, opening the h-file mating combination. Mariotti–Panchenko, 1978. Book continuation: Rb6 Qxb6 Qh8+ Kg6 Bh5#.",
+      "diagramPage": "58",
+      "answerPage": "131",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 48
+    }
+  },
+  {
+    "number": "396",
+    "title": "Weakness on c6",
+    "order": 396,
+    "bookLines": [
+      "Qxe5 Qxe5 Bxc6+ Kb8 Rb7+ Ka8 Rb5#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "k1n5/p2R2bb/2p2qpp/4rp2/2P5/4Q1P1/PP3PBP/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Deflect a defender from a piece or key square to find the winning continuation.",
+      "solutionText": "Qxe5 Qxe5 Bxc6+ Kb8 Rb7+ Ka8 Rb5#",
+      "hint": "Identify what each defender protects. Can a check, capture, or sacrifice force it away?",
+      "explanation": "The queen sacrifice draws the defender away from c6. The bishop check and rook checks weave a mating net. Smyslov–Euwe, 1953. Book continuation: Qxe5 Qxe5 Bxc6+ Kb8 Rb7+ Ka8 Rb5#.",
+      "diagramPage": "58",
+      "answerPage": "131",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 48
+    }
+  },
+  {
+    "number": "397",
+    "title": "Double deflection & back rank mate",
+    "order": 397,
+    "bookLines": [
+      "Qxe5 Qxe5 Nxf7+ Rxf7 Rd8+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5r1k/ppq2ppp/2p4N/4b3/8/6Q1/PPP2PPP/3R2K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Deflect a defender from a piece or key square to find the winning continuation.",
+      "solutionText": "Qxe5 Qxe5 Nxf7+ Rxf7 Rd8+",
+      "hint": "Identify what each defender protects. Can a check, capture, or sacrifice force it away?",
+      "explanation": "The queen capture deflects the queen from d8. The knight sacrifice then draws the rook off the back rank, enabling a decisive rook check. Capablanca–Fonarov, 1918. Book continuation: Qxe5 Qxe5 Nxf7+ Rxf7 Rd8+.",
+      "diagramPage": "59",
+      "answerPage": "131",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 49
+    }
+  },
+  {
+    "number": "398",
+    "title": "Mate in 3",
+    "order": 398,
+    "bookLines": [
+      "Qe8+ Rxe8 Rd7+ Qxd7 Rxd7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2rr4/pq2k1Bp/1p2nN2/2b2p1Q/8/1P6/3R1PPP/3R2K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Deflect a defender from a piece or key square to find the winning continuation.",
+      "solutionText": "Qe8+ Rxe8 Rd7+ Qxd7 Rxd7#",
+      "hint": "Identify what each defender protects. Can a check, capture, or sacrifice force it away?",
+      "explanation": "The queen sacrifice deflects a rook from d8. The first rook sacrifice then deflects the queen, letting the second rook mate. Book continuation: Qe8+ Rxe8 Rd7+ Qxd7 Rxd7#.",
+      "diagramPage": "59",
+      "answerPage": "131",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 49
+    }
+  },
+  {
+    "number": "399",
+    "title": "Let the man through",
+    "order": 399,
+    "bookLines": [
+      "Qxe6 fxe6 f7 Qb1+ Kh2"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2Q5/1p3p1k/p2prPq1/8/7p/8/PP3RP1/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Deflect a defender from a piece or key square to find the winning continuation.",
+      "solutionText": "Qxe6 fxe6 f7 Qb1+ Kh2",
+      "hint": "Identify what each defender protects. Can a check, capture, or sacrifice force it away?",
+      "explanation": "Sacrifice the queen to deflect f7 away from the path of White's pawn. After f7, promotion cannot be stopped without losing Black's queen. Spassky–Larsen, 1969. Book continuation: Qxe6 fxe6 f7 Qb1+ Kh2.",
+      "diagramPage": "59",
+      "answerPage": "131",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 49
+    }
+  },
+  {
+    "number": "400",
+    "title": "Composed deflection",
+    "order": 400,
+    "bookLines": [
+      "Ra1 Rb4 b7 Kc5 Ra5+ Kc6 Kxb4",
+      "Ra1 Rxa1 b7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/R7/1P6/1k6/8/2K5/8/1r6 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Deflect a defender from a piece or key square to find the winning continuation.",
+      "solutionText": "Ra1 Rb4 b7 Kc5 Ra5+ Kc6 Kxb4",
+      "hint": "Identify what each defender protects. Can a check, capture, or sacrifice force it away?",
+      "explanation": "Ra1 draws the rook away from guarding the b-pawn. White then advances it and uses a rook check to win Black's rook. Advancing b7 immediately allows ...Kc6, drawing. Book continuation: Ra1 Rb4 b7 Kc5 Ra5+ Kc6 Kxb4. Additional book variations: Ra1 Rxa1 b7.",
+      "diagramPage": "59",
+      "answerPage": "131",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 49
+    },
+    "analysisLines": [
+      "b7 Kc6"
+    ]
+  },
+  {
+    "number": "401",
+    "title": "One step forward",
+    "order": 401,
+    "bookLines": [
+      "e6 Bf8 Bg7 Kxe6 Bxf8",
+      "e6 Bxc3 e7",
+      "e6 Bf8 Bg7 Bxg7 e7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/p4pbp/1p4p1/2p1Pk2/5P2/P1B2K2/1P3P1P/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Deflect a defender from a piece or key square to find the winning continuation.",
+      "solutionText": "e6 Bf8 Bg7 Kxe6 Bxf8",
+      "hint": "Identify what each defender protects. Can a check, capture, or sacrifice force it away?",
+      "explanation": "The pawn advance attacks the bishop. Bg7 then deflects it or the king from the promotion square. Book continuation: e6 Bf8 Bg7 Kxe6 Bxf8. Additional book variations: e6 Bxc3 e7; e6 Bf8 Bg7 Bxg7 e7.",
+      "diagramPage": "59",
+      "answerPage": "131",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 49
+    }
+  },
+  {
+    "number": "402",
+    "title": "Surprisingly effective",
+    "order": 402,
+    "bookLines": [
+      "Bd4 Qb1 Bxg7+ Rxg7 Qxb1",
+      "Bd4 Bxd4 Qxh6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6rk/6b1/6Qp/8/5P2/p5P1/q5PK/6B1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Deflect a defender from a piece or key square to find the winning continuation.",
+      "solutionText": "Bd4 Qb1 Bxg7+ Rxg7 Qxb1",
+      "hint": "Identify what each defender protects. Can a check, capture, or sacrifice force it away?",
+      "explanation": "Bd4 attacks the g7 defender. If the queen moves to b1, the bishop checks first to deflect the rook, then the queen captures on b1. Book continuation: Bd4 Qb1 Bxg7+ Rxg7 Qxb1. Additional book variations: Bd4 Bxd4 Qxh6#.",
+      "diagramPage": "59",
+      "answerPage": "131",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 49
+    }
+  },
+  {
+    "number": "403",
+    "title": "Smooth mate in 3",
+    "order": 403,
+    "bookLines": [
+      "Ng5+ Bxg5 R1f7+ Kh6 Rh8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5R2/1p5k/2r4b/4p2P/p2pN1p1/P2P2P1/4q3/5R1K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Deflect a defender from a piece or key square to find the winning continuation.",
+      "solutionText": "Ng5+ Bxg5 R1f7+ Kh6 Rh8#",
+      "hint": "Identify what each defender protects. Can a check, capture, or sacrifice force it away?",
+      "explanation": "The knight sacrifice deflects the bishop from h6. The f1 rook checks, and the other rook mates on h8. Book continuation: Ng5+ Bxg5 R1f7+ Kh6 Rh8#.",
+      "diagramPage": "59",
+      "answerPage": "131",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 49
+    }
+  },
+  {
+    "number": "404",
+    "title": "This is nice",
+    "order": 404,
+    "bookLines": [
+      "Rh5 Rxh5 fxe7",
+      "Rh5 Ng8 Rxh6+ Nxh6 e7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "7k/pp2n3/4PP1r/2p3R1/3p4/P7/1PP4P/7K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Deflect a defender from a piece or key square to find the winning continuation.",
+      "solutionText": "Rh5 Rxh5 fxe7",
+      "hint": "Identify what each defender protects. Can a check, capture, or sacrifice force it away?",
+      "explanation": "Rh5 deflects the rook from the sixth rank, allowing the passed pawn to advance. If the knight blocks instead, White sacrifices the rook to deflect it. The immediate fxe7 allows ...Rxe6, stopping the promotion. Book continuation: Rh5 Rxh5 fxe7. Additional book variations: Rh5 Ng8 Rxh6+ Nxh6 e7.",
+      "diagramPage": "59",
+      "answerPage": "131",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 49
+    },
+    "analysisLines": [
+      "fxe7 Rxe6"
+    ]
+  },
+  {
+    "number": "405",
+    "title": "A forceful knight",
+    "order": 405,
+    "bookLines": [
+      "Nd6+ Bxd6 Nxe4"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r3k2r/pp1n1ppp/2p1p3/5b2/PbNPq3/2N5/1P1K2PP/R1BQ1B1R w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Deflect a defender from a piece or key square to find the winning continuation.",
+      "solutionText": "Nd6+ Bxd6 Nxe4",
+      "hint": "Identify what each defender protects. Can a check, capture, or sacrifice force it away?",
+      "explanation": "The knight check deflects the bishop from defending e4. The other knight can then capture Black's queen. Book continuation: Nd6+ Bxd6 Nxe4.",
+      "diagramPage": "59",
+      "answerPage": "131",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 49
+    }
+  },
+  {
+    "number": "406",
+    "title": "A king has walked into danger",
+    "order": 406,
+    "bookLines": [
+      "Re6+ fxe6 Qg6#",
+      "Re6+ g6 Rxg6+ Kh7 Qxf7+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/5pp1/7k/1p2RQ1P/3q1p2/P7/3r1PP1/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Deflect a defender from a piece or key square to find the winning continuation.",
+      "solutionText": "Re6+ fxe6 Qg6#",
+      "hint": "Identify what each defender protects. Can a check, capture, or sacrifice force it away?",
+      "explanation": "The rook sacrifice deflects the f7 pawn from g6, allowing the queen mate. Karpov–Tarjan, 1976. Book continuation: Re6+ fxe6 Qg6#. Additional book variations: Re6+ g6 Rxg6+ Kh7 Qxf7+.",
+      "diagramPage": "59",
+      "answerPage": "131",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 49
+    }
+  },
+  {
+    "number": "407",
+    "title": "The black queen is overloaded",
+    "order": 407,
+    "bookLines": [
+      "Qa4 Qxa4 Rc8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4kb1r/2Rn1b2/q4p1p/4pNp1/3pPP2/3P2PP/1P4B1/3QN1K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Deflect a defender from a piece or key square to find the winning continuation.",
+      "solutionText": "Qa4 Qxa4 Rc8#",
+      "hint": "Identify what each defender protects. Can a check, capture, or sacrifice force it away?",
+      "explanation": "Qa4 attacks the queen and threatens mate on d7. Capturing it deflects the queen from c8, allowing the rook mate. Book continuation: Qa4 Qxa4 Rc8#.",
+      "diagramPage": "59",
+      "answerPage": "131",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 49
+    }
+  },
+  {
+    "number": "408",
+    "title": "h4 holds the answer",
+    "order": 408,
+    "bookLines": [
+      "Rb8 Qxb8 Qxh4"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3q1rk1/r5p1/2bpn1P1/p1pN1p2/P1PnP2p/3PB2P/5Q1K/1R1B1R2 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Deflect a defender from a piece or key square to find the winning continuation.",
+      "solutionText": "Rb8 Qxb8 Qxh4",
+      "hint": "Identify what each defender protects. Can a check, capture, or sacrifice force it away?",
+      "explanation": "The rook sacrifice draws the queen away from defending h4. The white queen captures there and creates an unstoppable mating attack. Botvinnik–Keres, 1966. Book continuation: Rb8 Qxb8 Qxh4.",
+      "diagramPage": "59",
+      "answerPage": "131",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 49
+    }
+  }
+]

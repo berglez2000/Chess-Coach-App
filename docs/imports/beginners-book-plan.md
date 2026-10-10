@@ -11,8 +11,8 @@ Source: contents-page image supplied on 2026-10-09. The image contains chapter t
 | The missing piece | 25 | Imported and published exercises 187–216 from supplied images; see `missing-piece.md`. |
 | Double attack | 29 | Imported and published exercises 217–252; see `double-attack.md`. |
 | Discovered attack | 35 | Imported and published exercises 253–276; see `discovered-attack.md`. |
-| Discovered check | 39 | Obtain diagrams and answers. |
-| Double check | 43 | Obtain diagrams and answers. |
+| Discovered check | 39 | Imported and published exercises 277–300; source and importer are checked in. |
+| Double check | 43 | Imported and published exercises 301–324; see `double-check.md`. |
 | Pin | 47 | Obtain diagrams and answers. |
 | Skewer | 53 | Obtain diagrams and answers. |
 | Deflection | 57 | Obtain diagrams and answers. |
@@ -29,7 +29,7 @@ These are printed page numbers from the image. PDF page indices must be checked 
 
 ## First batch
 
-“The missing piece,” “Double attack,” and “Discovered attack” are complete. The next chapter is “Discovered check,” starting on printed page 39. Obtain its diagrams and corresponding answers before importing.
+Chapters through “Double check” are complete. The next chapter is “Pin,” starting on printed page 47. Obtain its diagrams and corresponding answers before importing.
 
 For each exercise, capture its source number, title, exact position, side to move, objective, answer branches, and diagram/answer page references. Retain uncertain transcriptions as drafts. Validate legal moves and mating claims using the existing Learning workflow, and preserve exercise IDs and progress when updating an existing import.
 

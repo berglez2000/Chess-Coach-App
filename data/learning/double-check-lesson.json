@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Two checks, no escape",
+    "fen": "r2qkb1r/ppp2ppp/3p4/8/3nB1b1/3P1N2/PPP1QPPP/R1B1K2R w - - 0 1",
+    "text": "White plays Bc6 mate. The bishop checks the king along c6–e8 and uncovers the queen’s check on the e-file. Black has no safe king move. Capturing either checking piece would leave the other check unanswered.",
+    "demonstration": "Bc6#"
+  },
+  {
+    "title": "A double check reverses the attack",
+    "fen": "r7/qkp5/1np5/5n2/8/1N6/1Q2b1P1/6K1 b - - 0 1",
+    "text": "Black to move. Black’s tempting Nc4+ is a mistake: White answers Nc5+, checking with both knight and queen. Black must move the king to c8, instead of capturing the queen on b2 or knight on c5. White then plays Qh8 mate.",
+    "demonstration": "Nc4+ Nc5+ Kc8 Qh8#"
+  }
+]

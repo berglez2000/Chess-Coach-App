@@ -1,0 +1,3947 @@
+[
+  {
+    "number": "691",
+    "title": "First a warm up!",
+    "order": 691,
+    "bookLines": [
+      "Rxd1+ Rxd1 Qxc3"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3r4/p1r2bk1/5p2/2p1q1pp/8/1PR1P2P/P4QP1/2RB2K1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rxd1+ Rxd1 Qxc3",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Remove the defender with check, then capture the rook on c3. Book continuation: Rxd1+ Rxd1 Qxc3.",
+      "diagramPage": "93",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 83
+    }
+  },
+  {
+    "number": "692",
+    "title": "Now that your motor is running",
+    "order": 692,
+    "bookLines": [
+      "Qxh2+ Rxh2 Rg1#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2k5/2p5/6r1/1p5q/8/2N1Qn2/5PRP/7K b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qxh2+ Rxh2 Rg1#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the rook from the back rank to enable mate. Book continuation: Qxh2+ Rxh2 Rg1#.",
+      "diagramPage": "93",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 83
+    }
+  },
+  {
+    "number": "693",
+    "title": "Elementary, my dear Watson",
+    "order": 693,
+    "bookLines": [
+      "Rxd1+ Qxd1 Qf2#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2R5/5bk1/5p2/p6p/3qPp1P/5Pp1/4Q1P1/1r1NK2R b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rxd1+ Qxd1 Qf2#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Remove the knight that defends f2 with a rook sacrifice. Book continuation: Rxd1+ Qxd1 Qf2#.",
+      "diagramPage": "93",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 83
+    }
+  },
+  {
+    "number": "694",
+    "title": "In one",
+    "order": 694,
+    "bookLines": [
+      "Qh2#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5rk1/p4bpp/Np3p2/8/1P3PQ1/5BPP/P3Pq2/5nRK b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qh2#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "The queen and knight cooperate to mate the cornered king. Book continuation: Qh2#.",
+      "diagramPage": "93",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 83
+    }
+  },
+  {
+    "number": "695",
+    "title": "Equally quick",
+    "order": 695,
+    "bookLines": [
+      "Bc4#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/1p4pk/2p5/2Pb4/1P4nP/2P2N2/5pB1/5K2 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Bc4#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "The bishop closes the mating net around the king. Book continuation: Bc4#.",
+      "diagramPage": "93",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 83
+    }
+  },
+  {
+    "number": "696",
+    "title": "Tightening the noose",
+    "order": 696,
+    "bookLines": [
+      "Rff1 b3 Rg2+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5k2/5p1p/8/1p2R3/pR1P4/P7/KP3r2/6r1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rff1 b3 Rg2+",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Use the two rooks to confine the king and invade the second rank. Book continuation: Rff1 b3 Rg2+.",
+      "diagramPage": "93",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 83
+    }
+  },
+  {
+    "number": "697",
+    "title": "A cornered king",
+    "order": 697,
+    "bookLines": [
+      "Rg2+ Kh3 Rh1#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6r1/1Rp5/2P1k2p/5p1P/PP2p3/5p2/1BR2P1K/3r4 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rg2+ Kh3 Rh1#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Force the king onto h3, then deliver rook mate. Book continuation: Rg2+ Kh3 Rh1#.",
+      "diagramPage": "94",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 84
+    }
+  },
+  {
+    "number": "698",
+    "title": "Worth remembering",
+    "order": 698,
+    "bookLines": [
+      "Rb7+ axb7",
+      "Rb7+ Ka5 Rb2"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1k6/r7/PK6/8/8/8/8/7R b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Rb7+",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Draw: sacrifice the rook with check to force stalemate. Book continuation: Rb7+ axb7. Alternative continuations: Rb7+ Ka5 Rb2. Practice ends on Black’s fourth move or the last preceding Black move; the full continuation is shown here.",
+      "diagramPage": "94",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 84
+    }
+  },
+  {
+    "number": "699",
+    "title": "Behind in development",
+    "order": 699,
+    "bookLines": [
+      "Re8"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r5k1/ppp3pp/2n5/3p4/8/2P2P1b/PP1P1P1P/RNB3K1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Re8",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Pin the bishop on c1; mate on e1 is threatened. Book continuation: Re8.",
+      "diagramPage": "94",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 84
+    }
+  },
+  {
+    "number": "700",
+    "title": "Black wants to repeat",
+    "order": 700,
+    "bookLines": [
+      "Qg4+ Kh1 Qf3+ Kg1 Qg4+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3b2k1/1b1q1pp1/7p/3p4/P2P4/4P3/1P1Q1PKP/R1R5 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Qg4+ Kh1 Qf3+ Kg1 Qg4+",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Draw by perpetual check. Book continuation: Qg4+ Kh1 Qf3+ Kg1 Qg4+.",
+      "diagramPage": "94",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 84
+    }
+  },
+  {
+    "number": "701",
+    "title": "Black's king is in a tight spot",
+    "order": 701,
+    "bookLines": [
+      "Rc1+ Kb2 Rc2+ Kb1 Rc1+ Kxc1"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2r4k/5p1p/3R1NpP/6P1/1p2P3/1P1N1P2/P7/K7 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Rc1+ Kb2 Rc2+ Kb1 Rc1+",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Draw: repeated rook checks culminate in stalemate after White captures the rook. Book continuation: Rc1+ Kb2 Rc2+ Kb1 Rc1+ Kxc1. Practice ends on Black’s fourth move or the last preceding Black move; the full continuation is shown here.",
+      "diagramPage": "94",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 84
+    }
+  },
+  {
+    "number": "702",
+    "title": "Material gain",
+    "order": 702,
+    "bookLines": [
+      "Rxf4 Rxf4 g5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4rrk1/pp1q3p/3p2p1/2pPb3/5BP1/2PP2Q1/PP5R/5RK1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rxf4 Rxf4 g5",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Remove the pawn before forking the rook and bishop with the g-pawn. Book continuation: Rxf4 Rxf4 g5.",
+      "diagramPage": "94",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 84
+    }
+  },
+  {
+    "number": "703",
+    "title": "Elegant in its simplicity",
+    "order": 703,
+    "bookLines": [
+      "Qh1+ Kxh1 Rxf1#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6k1/2p2p2/2P5/7q/N4Pn1/1P4Q1/P5P1/3r1RK1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qh1+ Kxh1 Rxf1#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Sacrifice the queen to deflect the king onto the rook's mating rank. Book continuation: Qh1+ Kxh1 Rxf1#.",
+      "diagramPage": "94",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 84
+    }
+  },
+  {
+    "number": "704",
+    "title": "Quite a lineup",
+    "order": 704,
+    "bookLines": [
+      "Rxe3 Qxe3 Bxd4"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3qr1k1/6p1/1b6/8/3P4/4B3/3Q2P1/5RK1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rxe3 Qxe3 Bxd4",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the queen onto the bishop's diagonal, then win it with a skewer. Book continuation: Rxe3 Qxe3 Bxd4.",
+      "diagramPage": "94",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 84
+    }
+  },
+  {
+    "number": "705",
+    "title": "No price is too high for victory",
+    "order": 705,
+    "bookLines": [
+      "Qh1+ Kxh1 Rf1#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r3kr2/1pp4p/1p1p4/7q/4P1n1/2PP2Q1/PP4P1/R1BB2K1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qh1+ Kxh1 Rf1#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "The queen sacrifice pulls the king onto h1 for rook mate. Book continuation: Qh1+ Kxh1 Rf1#.",
+      "diagramPage": "94",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 84
+    }
+  },
+  {
+    "number": "706",
+    "title": "Making way",
+    "order": 706,
+    "bookLines": [
+      "Rh1+ Kxh1 Qh4+ Kg1 Qh2#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r2qk3/2p2pp1/pb2b3/1p1pP3/3P3r/1BN1BPp1/PP1Q2P1/R4RK1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rh1+ Kxh1 Qh4+ Kg1 Qh2#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Sacrifice the rook to clear the h-file for the queen. Book continuation: Rh1+ Kxh1 Qh4+ Kg1 Qh2#.",
+      "diagramPage": "94",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 84
+    }
+  },
+  {
+    "number": "707",
+    "title": "Two moves to go",
+    "order": 707,
+    "bookLines": [
+      "Rg1+ Kxg1 Nh3#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1Q6/r4p1k/P7/2p4p/4pn1N/5q2/5PrP/R4R1K b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rg1+ Kxg1 Nh3#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Decoy the king onto g1, then mate with the knight. Book continuation: Rg1+ Kxg1 Nh3#.",
+      "diagramPage": "94",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 84
+    }
+  },
+  {
+    "number": "708",
+    "title": "No comment",
+    "order": 708,
+    "bookLines": [
+      "Bc5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6k1/2q1bpp1/8/8/2PQ4/5N2/6P1/6K1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Bc5",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "The bishop attacks the queen while taking away its escape squares. Book continuation: Bc5.",
+      "diagramPage": "94",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 84
+    }
+  },
+  {
+    "number": "709",
+    "title": "A painful pin",
+    "order": 709,
+    "bookLines": [
+      "Ra8"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2r4k/6p1/B7/2p5/8/3P4/5PPP/6K1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Ra8",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Pin the bishop to the back rank: moving it permits mate. Book continuation: Ra8.",
+      "diagramPage": "95",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 85
+    }
+  },
+  {
+    "number": "710",
+    "title": "Straightforward mate in 2",
+    "order": 710,
+    "bookLines": [
+      "Rxf1+ Kxf1 Qh1#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6k1/2R1Q1p1/5n1p/1p1qpp2/1P1p4/3P2P1/4PP1P/r4BK1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rxf1+ Kxf1 Qh1#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Remove the bishop and deflect the king onto the mating square. Book continuation: Rxf1+ Kxf1 Qh1#.",
+      "diagramPage": "95",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 85
+    }
+  },
+  {
+    "number": "711",
+    "title": "God save the Queen",
+    "order": 711,
+    "bookLines": [
+      "Kh8 fxg5 Ng8"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1rbq1rk1/p3n2p/3ppp1Q/1p4pP/2pPPP2/2P3P1/PP2N1B1/2KR3R b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Kh8 fxg5 Ng8",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Move the king out of the pin, then attack the trapped queen with the knight. Book continuation: Kh8 fxg5 Ng8.",
+      "diagramPage": "95",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 85
+    }
+  },
+  {
+    "number": "712",
+    "title": "From g2 or h1!",
+    "order": 712,
+    "bookLines": [
+      "Re1+ Qxe1 Qxg2#",
+      "Re1+ Nxe1 Qh1#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "b3r1k1/p4ppp/1pq5/8/8/1P1P2P1/P1P2QNP/R2B2K1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Re1+ Qxe1 Qxg2#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Decoy the queen away from the defense of g2. Book continuation: Re1+ Qxe1 Qxg2#. Alternative continuations: Re1+ Nxe1 Qh1#.",
+      "diagramPage": "95",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 85
+    }
+  },
+  {
+    "number": "713",
+    "title": "Easy deflection",
+    "order": 713,
+    "bookLines": [
+      "Rg1+ Rxg1 Nf2#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4k1r1/ppp4p/8/4p3/4P3/2N4n/PPP3rP/3R1R1K b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rg1+ Rxg1 Nf2#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the rook, then finish with a knight fork and mate. Book continuation: Rg1+ Rxg1 Nf2#.",
+      "diagramPage": "95",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 85
+    }
+  },
+  {
+    "number": "714",
+    "title": "Mate on the back rank",
+    "order": 714,
+    "bookLines": [
+      "Bh3 Qxg5 Rf1#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5r1k/1pp3pp/2n5/p1PB2q1/2P3b1/P3P3/1P4QP/R1B3K1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Bh3 Qxg5 Rf1#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "The bishop move blocks the king's escape and creates a back rank mating threat. Book continuation: Bh3 Qxg5 Rf1#.",
+      "diagramPage": "95",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 85
+    }
+  },
+  {
+    "number": "715",
+    "title": "Mate in 2",
+    "order": 715,
+    "bookLines": [
+      "Rb2"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/p7/P2p4/1PpB4/2P5/kr1b4/8/K5R1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rb2",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Threaten Ra2# with the bishop protecting the mating square. Book continuation: Rb2.",
+      "diagramPage": "95",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 85
+    }
+  },
+  {
+    "number": "716",
+    "title": "An elementary tactic",
+    "order": 716,
+    "bookLines": [
+      "Rxe3+ Rxe3 Qh6+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6k1/5p2/p1q5/3pbQ2/1P2r1P1/P2RB2K/8/8 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rxe3+ Rxe3 Qh6+",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the rook onto e3, then skewer the king and rook with a queen check. Book continuation: Rxe3+ Rxe3 Qh6+.",
+      "diagramPage": "95",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 85
+    }
+  },
+  {
+    "number": "717",
+    "title": "White's attack backfires",
+    "order": 717,
+    "bookLines": [
+      "Be7+ Kh5 Rh3#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6r1/pppk1p1P/3bn3/8/4B2K/1Pr5/P3R3/R7 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Be7+ Kh5 Rh3#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "The bishop check drives the king into a rook mating net. Book continuation: Be7+ Kh5 Rh3#.",
+      "diagramPage": "95",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 85
+    }
+  },
+  {
+    "number": "718",
+    "title": "Paralysing pin",
+    "order": 718,
+    "bookLines": [
+      "Qxh2+ Kf1 Qxf2#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1b1k2r/1p3n2/p1n1p3/3pPp2/3P2pq/P1N1b1P1/1PN1BR1P/R1BQ2K1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qxh2+ Kf1 Qxf2#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "The rook is pinned, so the queen can invade with check. Book continuation: Qxh2+ Kf1 Qxf2#.",
+      "diagramPage": "95",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 85
+    }
+  },
+  {
+    "number": "719",
+    "title": "Cutting off the king",
+    "order": 719,
+    "bookLines": [
+      "d3"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5rk1/3Q2p1/2pb4/2p5/2PpP1n1/NP4P1/P1R2PPq/4RK2 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "d3",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Control e2 with the pawn, cutting off the king before Qh1#. Book continuation: d3.",
+      "diagramPage": "95",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 85
+    }
+  },
+  {
+    "number": "720",
+    "title": "Deadly two-step",
+    "order": 720,
+    "bookLines": [
+      "Ra1+ Bxa1 Rxa1#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6k1/4ppbp/r2Pb1p1/r7/4BP2/1P6/1BP3PP/1K2R2R b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Ra1+ Bxa1 Rxa1#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Sacrifice one rook to deflect the bishop, then mate with the other. Book continuation: Ra1+ Bxa1 Rxa1#.",
+      "diagramPage": "95",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 85
+    }
+  },
+  {
+    "number": "721",
+    "title": "4 moves and it's mate",
+    "order": 721,
+    "bookLines": [
+      "Qxd2+ Rxd2 Rf1+ Qe1 Rxe1+ Rd1 Rdxd1#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3r1rk1/6p1/1p5q/8/4Q3/8/PPPR4/2KR4 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qxd2+ Rxd2 Rf1+ Qe1 Rxe1+ Rd1 Rdxd1#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the rook and use both rooks to force back rank mate. Book continuation: Qxd2+ Rxd2 Rf1+ Qe1 Rxe1+ Rd1 Rdxd1#.",
+      "diagramPage": "96",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 86
+    }
+  },
+  {
+    "number": "722",
+    "title": "Here mate in 2",
+    "order": 722,
+    "bookLines": [
+      "Nh3+ Kh1 Bd5#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/7R/6pN/2k1P3/2b2nPP/8/1r6/6K1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Nh3+ Kh1 Bd5#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "The knight check forces the king into the bishop's mating diagonal. Book continuation: Nh3+ Kh1 Bd5#.",
+      "diagramPage": "96",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 86
+    }
+  },
+  {
+    "number": "723",
+    "title": "Also in 2",
+    "order": 723,
+    "bookLines": [
+      "Bf1+ Qxf1 Qg3#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1q4k1/8/5p2/p2p1Pp1/2pPn1P1/2Pb1N1K/P7/2B1Q3 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Bf1+ Qxf1 Qg3#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the queen onto f1 and finish on g3. Book continuation: Bf1+ Qxf1 Qg3#.",
+      "diagramPage": "96",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 86
+    }
+  },
+  {
+    "number": "724",
+    "title": "Something's got to give",
+    "order": 724,
+    "bookLines": [
+      "Qf3+ Rxf3 Rb1+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1r6/p2Q2pk/6rp/2p2P1q/2PpP3/3P4/P2R3P/5R1K b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qf3+ Rxf3 Rb1+",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the rook from the back rank; rook mate follows. Book continuation: Qf3+ Rxf3 Rb1+.",
+      "diagramPage": "96",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 86
+    }
+  },
+  {
+    "number": "725",
+    "title": "Weak diagonal",
+    "order": 725,
+    "bookLines": [
+      "Rxf2 Kxf2 Bc5+",
+      "Rxf2 Qxf2 Bc5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/Q3bpk1/6p1/1p1qP2p/2p2P2/8/PP1r1BPP/4R1K1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rxf2 Kxf2 Bc5+",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the king onto the bishop's diagonal to skewer the queen. Book continuation: Rxf2 Kxf2 Bc5+. Alternative continuations: Rxf2 Qxf2 Bc5.",
+      "diagramPage": "96",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 86
+    }
+  },
+  {
+    "number": "726",
+    "title": "Pretty as a picture",
+    "order": 726,
+    "bookLines": [
+      "Re2+ Nxe2 Ne4+ Kd1 Nf2#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5k2/4r1p1/1p6/b6P/3p1N2/2nP4/2PK4/2B3R1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Re2+ Nxe2 Ne4+ Kd1 Nf2#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Sacrifice the rook to create a knight mating net. Book continuation: Re2+ Nxe2 Ne4+ Kd1 Nf2#.",
+      "diagramPage": "96",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 86
+    }
+  },
+  {
+    "number": "727",
+    "title": "A round of applause",
+    "order": 727,
+    "bookLines": [
+      "Qh3+ Kxh3 Bf1+ Kh4 f5#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4rk2/p3b3/4qpp1/R2Q3p/1PpPB3/2Pb1PP1/6KP/3n2BR b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qh3+ Kxh3 Bf1+ Kh4 f5#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Queen and bishop sacrifices force the king onto a square where a pawn gives mate. Book continuation: Qh3+ Kxh3 Bf1+ Kh4 f5#.",
+      "diagramPage": "96",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 86
+    }
+  },
+  {
+    "number": "728",
+    "title": "Forcing mate",
+    "order": 728,
+    "bookLines": [
+      "Rxh3+ gxh3 g2+ Kxg2 Qg3+ Kh1 Qxh3#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/pp3pk1/2p4r/2P5/1P1p1q2/P2B2pP/4QbP1/5R1K b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rxh3+ gxh3 g2+ Kxg2 Qg3+ Kh1 Qxh3#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Sacrifice the rook and advance the pawn with check to open the queen's mating route. Book continuation: Rxh3+ gxh3 g2+ Kxg2 Qg3+ Kh1 Qxh3#.",
+      "diagramPage": "96",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 86
+    }
+  },
+  {
+    "number": "729",
+    "title": "Third rank",
+    "order": 729,
+    "bookLines": [
+      "Qa5+ Ba4 Qxa4+ bxa4 Ra3#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1kr5/ppp3p1/1q2p3/1B1pP3/3P2P1/1P5r/K1P1Q2P/1Rb4R b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qa5+ Ba4 Qxa4+ bxa4 Ra3#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the bishop and b-pawn to open the third rank for rook mate. Book continuation: Qa5+ Ba4 Qxa4+ bxa4 Ra3#.",
+      "diagramPage": "96",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 86
+    }
+  },
+  {
+    "number": "730",
+    "title": "Bishop bonanza",
+    "order": 730,
+    "bookLines": [
+      "Qxb1 Bxb1 Re2 Bc1 Re1"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4r1k1/pp3p1p/2p5/5p2/5P2/2PB2KP/P2B2P1/1Q4q1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qxb1 Bxb1 Re2 Bc1 Re1",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Sacrifice the queen to trap and win the bishops along the first two ranks. Book continuation: Qxb1 Bxb1 Re2 Bc1 Re1.",
+      "diagramPage": "96",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 86
+    }
+  },
+  {
+    "number": "731",
+    "title": "What double attack?",
+    "order": 731,
+    "bookLines": [
+      "Bxf2+ Qxf2 Nd3+",
+      "Bxf2+ Kxf2 Nxe4+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1bqk2r/pppp1ppp/5n2/2b1n3/4P3/1BP3Q1/PP3PPP/RNB1K1NR b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Bxf2+ Qxf2 Nd3+",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the queen, then fork it with a checking knight move. Book continuation: Bxf2+ Qxf2 Nd3+. Alternative continuations: Bxf2+ Kxf2 Nxe4+.",
+      "diagramPage": "96",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 86
+    }
+  },
+  {
+    "number": "732",
+    "title": "What back rank mate?",
+    "order": 732,
+    "bookLines": [
+      "Rd8 Qxf5 Rxd1#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2r3k1/5ppp/4p3/5q2/8/Pp1Q4/1P4PP/1K1R4 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rd8 Qxf5 Rxd1#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Pin the queen to the back rank: taking the queen on f5 allows mate. Book continuation: Rd8 Qxf5 Rxd1#.",
+      "diagramPage": "96",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 86
+    }
+  },
+  {
+    "number": "733",
+    "title": "Black picks up a piece!",
+    "order": 733,
+    "bookLines": [
+      "Nf5 Nxf5 Rxg2+ Kc3 Bxf5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6r1/1ppb1k2/p2p1p2/3P4/2P2P1N/4R1nP/PP1K2B1/8 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Nf5 Nxf5 Rxg2+ Kc3 Bxf5",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Insert a checking rook capture before recapturing the knight with the bishop. Book continuation: Nf5 Nxf5 Rxg2+ Kc3 Bxf5.",
+      "diagramPage": "97",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 87
+    }
+  },
+  {
+    "number": "734",
+    "title": "Weak on the light squares",
+    "order": 734,
+    "bookLines": [
+      "Bh3 Re1 Bg2 exd4 exd4 Qc2 Bxh1",
+      "Bh3 Nxh3 Ne2+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1b2rk1/pp2q1pp/3p4/1Pp1p3/2Pnp3/P1Q1P1P1/1B1P1P1P/2K2RNR b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Bh3 Re1 Bg2 exd4 exd4 Qc2 Bxh1",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "The bishop invades the light squares and wins the rook. Book continuation: Bh3 Re1 Bg2 exd4 exd4 Qc2 Bxh1. Alternative continuations: Bh3 Nxh3 Ne2+.",
+      "diagramPage": "97",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 87
+    }
+  },
+  {
+    "number": "735",
+    "title": "A round of applause for this one!",
+    "order": 735,
+    "bookLines": [
+      "Bg2+ Rxg2 Qf1+ Rg1 Ng3+ hxg3 Qh3#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "7k/1p4p1/7p/3P1n2/4Q3/2P2P1b/PP3q1P/6RK b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Bg2+ Rxg2 Qf1+ Rg1 Ng3+ hxg3 Qh3#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the rook and open the h-file for queen mate. Book continuation: Bg2+ Rxg2 Qf1+ Rg1 Ng3+ hxg3 Qh3#.",
+      "diagramPage": "97",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 87
+    }
+  },
+  {
+    "number": "736",
+    "title": "A pretty mate in 4",
+    "order": 736,
+    "bookLines": [
+      "Qxh2+ Kxh2 Ng4+ Kg1 Nh3+ Kf1 Nh2#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "7Q/2p1k1pp/1b1p1n2/pP2p2q/P1B1Pn2/B1P2bP1/R2N1P1P/4R1K1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qxh2+ Kxh2 Ng4+ Kg1 Nh3+ Kf1 Nh2#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Sacrifice the queen to force a series of knight checks ending in mate. Book continuation: Qxh2+ Kxh2 Ng4+ Kg1 Nh3+ Kf1 Nh2#.",
+      "diagramPage": "97",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 87
+    }
+  },
+  {
+    "number": "737",
+    "title": "A welcome skewer",
+    "order": 737,
+    "bookLines": [
+      "Rxa7 Rh7+ Ke6 Rxa7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "7R/P4k2/2K2p2/5p1p/5P1P/8/8/r7 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Rxa7 Rh7+ Ke6",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Draw: the rook can be captured because the resulting position is stalemate. Book continuation: Rxa7 Rh7+ Ke6 Rxa7. Practice ends on Black’s fourth move or the last preceding Black move; the full continuation is shown here.",
+      "diagramPage": "97",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 87
+    }
+  },
+  {
+    "number": "738",
+    "title": "Tactical retreat",
+    "order": 738,
+    "bookLines": [
+      "Qc6 Qxc6 Rd1+ Rf1 Rxf1#"
+    ],
+    "analysisLines": [
+      "Rd1+ Rf1"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3r3k/5Bpp/Q4R2/4p3/4q3/8/6PP/7K b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qc6 Qxc6 Rd1+ Rf1 Rxf1#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the queen from the first rank before invading with the rook. Book continuation: Qc6 Qxc6 Rd1+ Rf1 Rxf1#. Book analysis of other tries (not practice answers): Rd1+ Rf1.",
+      "diagramPage": "97",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 87
+    }
+  },
+  {
+    "number": "739",
+    "title": "We've seen this before",
+    "order": 739,
+    "bookLines": [
+      "Nf3+ exf3 Qxf1+ Kxf1 Bh3+ Kg1 Re1#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4r1k1/1pQ3pp/2p2p2/P3n3/6b1/6P1/4PP1P/1R1NqBK1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Nf3+ exf3 Qxf1+ Kxf1 Bh3+ Kg1 Re1#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "The knight and queen sacrifices clear the first rank for rook mate. Book continuation: Nf3+ exf3 Qxf1+ Kxf1 Bh3+ Kg1 Re1#.",
+      "diagramPage": "97",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 87
+    }
+  },
+  {
+    "number": "740",
+    "title": "Stylish perpetual",
+    "order": 740,
+    "bookLines": [
+      "Be2+ Kg2 Bf1+ Kf3 Be2+",
+      "Be2+ Ke4 Bg4+ Kd4 Bxd7",
+      "Be2+ Kg2 Bf1+ Kg1 Bh3#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/p2R1pkp/1p1B2pb/3B4/8/5KP1/PP3P1P/4rb2 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Be2+ Kg2 Bf1+ Kf3 Be2+",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Draw by repeated bishop checks. Book continuation: Be2+ Kg2 Bf1+ Kf3 Be2+. Alternative continuations: Be2+ Ke4 Bg4+ Kd4 Bxd7; Be2+ Kg2 Bf1+ Kg1 Bh3#.",
+      "diagramPage": "97",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 87
+    }
+  },
+  {
+    "number": "741",
+    "title": "A-bomb",
+    "order": 741,
+    "bookLines": [
+      "Rxa3+ Kxa3 Qc5+ Ka2 Qa7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r7/1kp4b/5n1p/1p2p3/6p1/BP3rR1/KPq1N2P/3Q3R b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rxa3+ Kxa3 Qc5+ Ka2 Qa7#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Open the a-file with a rook sacrifice, then force the queen mating net. Book continuation: Rxa3+ Kxa3 Qc5+ Ka2 Qa7#.",
+      "diagramPage": "97",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 87
+    }
+  },
+  {
+    "number": "742",
+    "title": "Made in Italy",
+    "order": 742,
+    "bookLines": [
+      "Rf1+ Kxf1 Qh1+ Kf2 Ng4#",
+      "Rf1+ Kh2 Qh1#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2k2r2/2p5/1pq5/p1p1n3/P1P4B/1R4Pp/2Q1R3/6K1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rf1+ Kxf1 Qh1+ Kf2 Ng4#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the king and finish with queen and knight cooperation. Book continuation: Rf1+ Kxf1 Qh1+ Kf2 Ng4#. Alternative continuations: Rf1+ Kh2 Qh1#.",
+      "diagramPage": "97",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 87
+    }
+  },
+  {
+    "number": "743",
+    "title": "Double check dynamite",
+    "order": 743,
+    "bookLines": [
+      "Qd1+ Kxd1 Ne3+ Ke1 Rd1#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3rk3/pp3p1p/6n1/2Qnp3/8/P1Pq4/4NPPP/R1B1K2R b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qd1+ Kxd1 Ne3+ Ke1 Rd1#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Sacrifice the queen to draw the king onto d1, then deliver double check and rook mate. Book continuation: Qd1+ Kxd1 Ne3+ Ke1 Rd1#.",
+      "diagramPage": "97",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 87
+    }
+  },
+  {
+    "number": "744",
+    "title": "I would like to repeat that",
+    "order": 744,
+    "bookLines": [
+      "Re1+ Kg2 Nh4+ Kh2 Nf3+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4r1k1/5pp1/8/1p1R4/8/1PP2nNP/R4P2/5K2 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Re1+ Kg2 Nh4+ Kh2 Nf3+",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Draw by perpetual check. Book continuation: Re1+ Kg2 Nh4+ Kh2 Nf3+.",
+      "diagramPage": "97",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 87
+    }
+  },
+  {
+    "number": "745",
+    "title": "One two three",
+    "order": 745,
+    "bookLines": [
+      "Qd1+ Rxd1 Nc2+ Nxc2 Rxd1#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1k1r4/1p4pp/4B3/8/1nQN4/1qn5/1P4PP/K4R2 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qd1+ Rxd1 Nc2+ Nxc2 Rxd1#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Decoy and deflect White's defenders to force rook mate. Book continuation: Qd1+ Rxd1 Nc2+ Nxc2 Rxd1#.",
+      "diagramPage": "98",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 88
+    }
+  },
+  {
+    "number": "746",
+    "title": "e3 is the key",
+    "order": 746,
+    "bookLines": [
+      "Rg3 Qxg3 Bh4 Bxa6 Bxg3+ hxg3 Qxa6",
+      "Rg3 hxg3 Qe3+ Be2 Qxe2#",
+      "Rg3 Qxg3 Bh4 Qxh4 Qe3+ Be2 Qxe2#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1r4r1/p2kb2p/bq2p3/3p1p2/5P2/2BB3Q/PP4PP/3RKR2 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rg3 Qxg3 Bh4 Bxa6 Bxg3+ hxg3 Qxa6",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the queen from the third rank, then win the bishop and queen. Book continuation: Rg3 Qxg3 Bh4 Bxa6 Bxg3+ hxg3 Qxa6. Alternative continuations: Rg3 hxg3 Qe3+ Be2 Qxe2#; Rg3 Qxg3 Bh4 Qxh4 Qe3+ Be2 Qxe2#.",
+      "diagramPage": "98",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 88
+    }
+  },
+  {
+    "number": "747",
+    "title": "A surprise for White",
+    "order": 747,
+    "bookLines": [
+      "Rxa3 Qxa3 Qe1+ Rxe1 Rxe1#",
+      "Rxa3 bxa3 Qxa1+ Rb1 Re1+ Rxe1 Qxe1+ Qf1 Qxf1#",
+      "Rxa3 Qd1 Rxa1 Qxa1 Qe1+",
+      "Rxa3 Rxa3 Qe1+ Qf1 Qxf1#"
+    ],
+    "analysisLines": [
+      "Qe1+ Qf1"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r3r1k1/1p1b1pp1/1p5p/3Pq3/1R6/P2Q1B2/1P4PP/R6K b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rxa3 Qxa3 Qe1+ Rxe1 Rxe1#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "The rook sacrifice exploits White's weak back rank. Book continuation: Rxa3 Qxa3 Qe1+ Rxe1 Rxe1#. Alternative continuations: Rxa3 bxa3 Qxa1+ Rb1 Re1+ Rxe1 Qxe1+ Qf1 Qxf1#; Rxa3 Qd1 Rxa1 Qxa1 Qe1+; Rxa3 Rxa3 Qe1+ Qf1 Qxf1#. Book analysis of other tries (not practice answers): Qe1+ Qf1.",
+      "diagramPage": "98",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 88
+    }
+  },
+  {
+    "number": "748",
+    "title": "The 2 pawns are not enough",
+    "order": 748,
+    "bookLines": [
+      "Rb6+ g6 Rxg6+ Kxg6"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1r4k1/6P1/7K/6P1/8/4R3/8/8 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Rb6+ g6 Rxg6+",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Draw: force the rook capture to leave Black stalemated. Book continuation: Rb6+ g6 Rxg6+ Kxg6. Practice ends on Black’s fourth move or the last preceding Black move; the full continuation is shown here.",
+      "diagramPage": "98",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 88
+    }
+  },
+  {
+    "number": "749",
+    "title": "Clearing a file to draw",
+    "order": 749,
+    "bookLines": [
+      "Rxc4 Qxc4 Qf2+ Kh2 Qh4+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4nrk1/p4q2/1p1p4/1P1P4/2N2rP1/3Q4/1P4P1/R3R1K1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Rxc4 Qxc4 Qf2+ Kh2 Qh4+",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Draw: remove the c-pawn to open a perpetual checking route. Book continuation: Rxc4 Qxc4 Qf2+ Kh2 Qh4+.",
+      "diagramPage": "98",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 88
+    }
+  },
+  {
+    "number": "750",
+    "title": "A knight for mate!",
+    "order": 750,
+    "bookLines": [
+      "Kh6 g3 g5+ Kh3 Nf4#",
+      "Kh6 Rcxd3 g5#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/6kp/1p4p1/2p2p2/7K/PPRnr3/3R2PP/8 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Kh6 g3 g5+ Kh3 Nf4#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "The king move supports a pawn check that forces knight mate. Book continuation: Kh6 g3 g5+ Kh3 Nf4#. Alternative continuations: Kh6 Rcxd3 g5#.",
+      "diagramPage": "98",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 88
+    }
+  },
+  {
+    "number": "751",
+    "title": "Sacrifice and double check",
+    "order": 751,
+    "bookLines": [
+      "Qxh3 gxh3 Nf2+ Kg1 Nxh3#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5r1k/1b4p1/p6p/4Pp1q/2pNnP2/7N/PPQ3PP/5R1K b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qxh3 gxh3 Nf2+ Kg1 Nxh3#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Sacrifice the queen to open the knight's checking and mating route. Book continuation: Qxh3 gxh3 Nf2+ Kg1 Nxh3#.",
+      "diagramPage": "98",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 88
+    }
+  },
+  {
+    "number": "752",
+    "title": "Back rank problems",
+    "order": 752,
+    "bookLines": [
+      "Rxd6 Qxd6 Rd8 Qxe7 Rd1#",
+      "Rxd6 exd6 Qe1+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3r1rk1/pp2qp1p/3N2p1/2pQP3/b1P2P2/8/PP4PP/2K2B1R b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rxd6 Qxd6 Rd8 Qxe7 Rd1#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the queen and control the d-file to force back rank mate. Book continuation: Rxd6 Qxd6 Rd8 Qxe7 Rd1#. Alternative continuations: Rxd6 exd6 Qe1+.",
+      "diagramPage": "98",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 88
+    }
+  },
+  {
+    "number": "753",
+    "title": "A cornered king gets mated",
+    "order": 753,
+    "bookLines": [
+      "Qh1+ Kxh1 Bf3+ Kh2 Rh1#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "R6R/1p6/8/pk6/4q3/6P1/P4Q1K/r2b4 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qh1+ Kxh1 Bf3+ Kh2 Rh1#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "The queen sacrifice sets up bishop and rook mate on the h-file. Book continuation: Qh1+ Kxh1 Bf3+ Kh2 Rh1#.",
+      "diagramPage": "98",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 88
+    }
+  },
+  {
+    "number": "754",
+    "title": "The back rank yet again",
+    "order": 754,
+    "bookLines": [
+      "Rh4 Qg2 Qxg2 Rxg2 Rh1+",
+      "Rh4 Qxh4 Qxg1+ Bd1 Qxd1#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "7k/1pp4p/3p2q1/p1nPp3/2P1Pr2/8/PPB5/1K4RQ b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rh4 Qg2 Qxg2 Rxg2 Rh1+",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Use the rook threat to force a queen exchange and win on the first rank. Book continuation: Rh4 Qg2 Qxg2 Rxg2 Rh1+. Alternative continuations: Rh4 Qxh4 Qxg1+ Bd1 Qxd1#.",
+      "diagramPage": "98",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 88
+    }
+  },
+  {
+    "number": "755",
+    "title": "Fighting to the last man",
+    "order": 755,
+    "bookLines": [
+      "b3 cxb3 Kxb3#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/8/5b2/8/1p6/2k5/2P5/KB6 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "b3 cxb3 Kxb3#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "The pawn move forces a capture that lets the king complete the mating net. Book continuation: b3 cxb3 Kxb3#.",
+      "diagramPage": "98",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 88
+    }
+  },
+  {
+    "number": "756",
+    "title": "Death on the dark squares",
+    "order": 756,
+    "bookLines": [
+      "f3 hxg5 f2#",
+      "f3 exf3 Qe3#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "rnb2rk1/ppp3pp/3p4/3Pp1q1/1PP2pnP/P1N5/1B2P1P1/R2Q1BKR b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "f3 hxg5 f2#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "The pawn advance threatens mate and exploits White's blocked king. Book continuation: f3 hxg5 f2#. Alternative continuations: f3 exf3 Qe3#.",
+      "diagramPage": "98",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 88
+    }
+  },
+  {
+    "number": "757",
+    "title": "The original Boden's mate",
+    "order": 757,
+    "bookLines": [
+      "Qxc3+ bxc3 Ba3#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2k2b1r/ppp3pp/2n2q2/3B1b2/5P2/2P1B3/PP1N3P/2KR3R b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qxc3+ bxc3 Ba3#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the b-pawn to open the bishops' mating diagonals. Book continuation: Qxc3+ bxc3 Ba3#.",
+      "diagramPage": "99",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 89
+    }
+  },
+  {
+    "number": "758",
+    "title": "From h2 or f1!",
+    "order": 758,
+    "bookLines": [
+      "Re2 Rxe2 Qxf1#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r3r1k1/1p3ppp/2p2b2/p7/8/Q1BP2Pq/PPP4P/4RR1K b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Re2 Rxe2 Qxf1#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "The rook threatens h2; taking it allows mate on f1. Book continuation: Re2 Rxe2 Qxf1#.",
+      "diagramPage": "99",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 89
+    }
+  },
+  {
+    "number": "759",
+    "title": "Cross-pins are nasty",
+    "order": 759,
+    "bookLines": [
+      "Qa6 Bxg6 Qxe2"
+    ],
+    "analysisLines": [
+      "Qb5 Qxe6+ Kh8 Qxg6"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2r2rk1/pp4pp/1q2p1b1/3p2b1/3P4/1P1B1P2/1B1PQ1P1/1K1R3R b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qa6 Bxg6 Qxe2",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "The queen move maintains the cross-pin and wins the queen on e2. Book continuation: Qa6 Bxg6 Qxe2. Book analysis of other tries (not practice answers): Qb5 Qxe6+ Kh8 Qxg6.",
+      "diagramPage": "99",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 89
+    }
+  },
+  {
+    "number": "760",
+    "title": "A surprise win for Black!",
+    "order": 760,
+    "bookLines": [
+      "Rh1+ Kxh1 Kg3"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/R7/R3B3/4r1pP/p4k2/8/6PK/r7 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rh1+ Kxh1 Kg3",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Sacrifice the rook to pull the king away from e1; rook mate cannot be stopped. Book continuation: Rh1+ Kxh1 Kg3.",
+      "diagramPage": "99",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 89
+    }
+  },
+  {
+    "number": "761",
+    "title": "Deadly two-step",
+    "order": 761,
+    "bookLines": [
+      "Rd1+ Nxd1 Qc4#",
+      "Rd1+ Ke2 Nd4#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1k6/1p1r4/8/8/q4p1Q/2N1bP2/2n3P1/1RB2K2 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rd1+ Nxd1 Qc4#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the knight from c3, then mate with the queen. Book continuation: Rd1+ Nxd1 Qc4#. Alternative continuations: Rd1+ Ke2 Nd4#.",
+      "diagramPage": "99",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 89
+    }
+  },
+  {
+    "number": "762",
+    "title": "Pinned pieces",
+    "order": 762,
+    "bookLines": [
+      "Qg2+ Qxg2 Ne2#",
+      "Qg2+ Rxg2 Nh3#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/kr4r1/1p6/2b5/4Qn2/6Rq/5N1P/5RKN b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qg2+ Qxg2 Ne2#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Decoy the queen onto g2, then finish with knight mate. Book continuation: Qg2+ Qxg2 Ne2#. Alternative continuations: Qg2+ Rxg2 Nh3#.",
+      "diagramPage": "99",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 89
+    }
+  },
+  {
+    "number": "763",
+    "title": "Also here",
+    "order": 763,
+    "bookLines": [
+      "Re3 Nxe3 Qxd3+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4r1k1/p4ppp/1p6/1q1N4/3b1P2/3R1Q2/P5PP/1r1R1K2 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Re3 Nxe3 Qxd3+",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the knight so the queen can capture the rook with check. Book continuation: Re3 Nxe3 Qxd3+.",
+      "diagramPage": "99",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 89
+    }
+  },
+  {
+    "number": "764",
+    "title": "A spanner in the works",
+    "order": 764,
+    "bookLines": [
+      "Rf5+ Ke3 Re5+ Kd4 Rd5+ Ke3 Re5+ Kf2 Rf5+ Kg1 Rf1+ Kh2 Rh1+ Kxh1"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/4P1R1/8/4r2p/5K1k/8/6P1/8 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Rf5+ Ke3 Re5+ Kd4 Rd5+ Ke3 Re5+",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Draw: checking rook sacrifices culminate in stalemate. Book continuation: Rf5+ Ke3 Re5+ Kd4 Rd5+ Ke3 Re5+ Kf2 Rf5+ Kg1 Rf1+ Kh2 Rh1+ Kxh1. Practice ends on Black’s fourth move or the last preceding Black move; the full continuation is shown here.",
+      "diagramPage": "99",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 89
+    }
+  },
+  {
+    "number": "765",
+    "title": "Checkmate in 2",
+    "order": 765,
+    "bookLines": [
+      "Rxf1+ Kxf1 Qf2#",
+      "Rxf1+ Rxf1 Qxh2#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5rk1/1p4pp/2pb4/4P3/1P1P2nq/3Q4/6BP/1R3NK1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rxf1+ Kxf1 Qf2#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the king and finish with queen mate on f2. Book continuation: Rxf1+ Kxf1 Qf2#. Alternative continuations: Rxf1+ Rxf1 Qxh2#.",
+      "diagramPage": "99",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 89
+    }
+  },
+  {
+    "number": "766",
+    "title": "It's all over for White",
+    "order": 766,
+    "bookLines": [
+      "Nb3 Rh1 Ra1#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r6k/8/7p/2nN1b2/8/8/1PP3B1/1K4R1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Nb3 Rh1 Ra1#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "The knight clears the rook's mating file while controlling escape squares. Book continuation: Nb3 Rh1 Ra1#.",
+      "diagramPage": "99",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 89
+    }
+  },
+  {
+    "number": "767",
+    "title": "Blockade the f-pawn",
+    "order": 767,
+    "bookLines": [
+      "Bf3+ Bxf3 Be5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r3r1k1/pp3pbp/3p2p1/2pP3b/2P1P3/2N4q/PP2BP1P/R3QR1K b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Bf3+ Bxf3 Be5",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the bishop to block the f-pawn; mate on h2 is threatened. Book continuation: Bf3+ Bxf3 Be5.",
+      "diagramPage": "99",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 89
+    }
+  },
+  {
+    "number": "768",
+    "title": "Think back rank",
+    "order": 768,
+    "bookLines": [
+      "Rxc3 bxc3 Qb1+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6k1/1q3p1p/b3p1p1/3p4/P1r2P2/2N5/1P1R1QPP/6K1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rxc3 bxc3 Qb1+",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the b-pawn, then invade the back rank with the queen. Book continuation: Rxc3 bxc3 Qb1+.",
+      "diagramPage": "99",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 89
+    }
+  },
+  {
+    "number": "769",
+    "title": "Imminent mate",
+    "order": 769,
+    "bookLines": [
+      "Rf2+ Qxf2 Qc1#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/2k2p2/1p1p4/p1pPpP2/2P1Pr2/PP2Q2R/1RK3P1/q2r4 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rf2+ Qxf2 Qc1#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the queen from c1 to enable mate. Book continuation: Rf2+ Qxf2 Qc1#.",
+      "diagramPage": "100",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 90
+    }
+  },
+  {
+    "number": "770",
+    "title": "Overload",
+    "order": 770,
+    "bookLines": [
+      "Qxe4 Nxe4 Ne2+ Kh2 Nxc3",
+      "Qxe4 Bxd4 Qxd4"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r2rb1k1/pp3pp1/4p1p1/1P2B3/2PnR2q/2Q3NP/P4PP1/R5K1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qxe4 Nxe4 Ne2+ Kh2 Nxc3",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "The knight on g3 cannot both protect e4 and prevent the fork on e2. Book continuation: Qxe4 Nxe4 Ne2+ Kh2 Nxc3. Alternative continuations: Qxe4 Bxd4 Qxd4.",
+      "diagramPage": "100",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 90
+    }
+  },
+  {
+    "number": "771",
+    "title": "Fast mate",
+    "order": 771,
+    "bookLines": [
+      "Qxg3+ hxg3 Rh1#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5k2/p4P1p/7r/4p3/2B1b1n1/1PP3Pq/P3Q2P/5RK1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qxg3+ hxg3 Rh1#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Open the h-file by sacrificing the queen on g3. Book continuation: Qxg3+ hxg3 Rh1#.",
+      "diagramPage": "100",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 90
+    }
+  },
+  {
+    "number": "772",
+    "title": "Closing in on the king",
+    "order": 772,
+    "bookLines": [
+      "Qxg5 fxg5 Bf3"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/4qpk1/1Q2p1p1/3pP1N1/3P1Pn1/P7/4b2r/R5K1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qxg5 fxg5 Bf3",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the f-pawn to clear the bishop's route and threaten mate on h1. Book continuation: Qxg5 fxg5 Bf3.",
+      "diagramPage": "100",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 90
+    }
+  },
+  {
+    "number": "773",
+    "title": "Fork then mate",
+    "order": 773,
+    "bookLines": [
+      "Nb3+ Bxb3 Qa1#",
+      "Nb3+ Kb1 Ned2#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "7k/q4pp1/5p2/2n3Pb/3Qn3/3p4/BP3B2/2K4R b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Nb3+ Bxb3 Qa1#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the bishop from a2 and invade with the queen. Book continuation: Nb3+ Bxb3 Qa1#. Alternative continuations: Nb3+ Kb1 Ned2#.",
+      "diagramPage": "100",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 90
+    }
+  },
+  {
+    "number": "774",
+    "title": "Black manages to save himself",
+    "order": 774,
+    "bookLines": [
+      "Rxf2+ Kxf2 Qxe3+ Kf1 Qc1+ Kg2 Qd2+ Kf3 Qe3+",
+      "Rxf2+ Kxf2 Qxe3+ Kxe3"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1Q6/8/4q2p/3p3k/3P2R1/4PKPP/r4P2/8 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Rxf2+ Kxf2 Qxe3+ Kf1 Qc1+ Kg2 Qd2+",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Draw by perpetual check; taking the queen instead permits stalemate. Book continuation: Rxf2+ Kxf2 Qxe3+ Kf1 Qc1+ Kg2 Qd2+ Kf3 Qe3+. Alternative continuations: Rxf2+ Kxf2 Qxe3+ Kxe3. Practice ends on Black’s fourth move or the last preceding Black move; the full continuation is shown here.",
+      "diagramPage": "100",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 90
+    }
+  },
+  {
+    "number": "775",
+    "title": "Rank and file",
+    "order": 775,
+    "bookLines": [
+      "Rb3 axb3 Qxd2",
+      "Rb3 Qxa5 Rxb1+",
+      "Rb3 Qd1 Rxb1 Qxb1 Qxf5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5rk1/1B2bp1p/p2p1p2/q4R2/8/2r5/P1PQ2PP/1R5K b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rb3 axb3 Qxd2",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Sacrifice the rook to deflect the a-pawn, then win the queen. Book continuation: Rb3 axb3 Qxd2. Alternative continuations: Rb3 Qxa5 Rxb1+; Rb3 Qd1 Rxb1 Qxb1 Qxf5.",
+      "diagramPage": "100",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 90
+    }
+  },
+  {
+    "number": "776",
+    "title": "Royal dilemma",
+    "order": 776,
+    "bookLines": [
+      "Nb4 cxb4 Qxb7",
+      "Nb4 Qxg2 Nxa2#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r4r1k/pQp3pp/2n5/2p2b2/8/2P5/PP1NBPqP/2KR3R b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Nb4 cxb4 Qxb7",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "The knight move threatens mate and attacks the queen. Book continuation: Nb4 cxb4 Qxb7. Alternative continuations: Nb4 Qxg2 Nxa2#.",
+      "diagramPage": "100",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 90
+    }
+  },
+  {
+    "number": "777",
+    "title": "Almost equal?",
+    "order": 777,
+    "bookLines": [
+      "Nb3+ axb3 Nc5 Qxg7 Nxb3#",
+      "Nb3+ axb3 Nc5 Nfe4 Nxb3+ Kc2 Nxd4+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r2qk2r/1ppnbpp1/3p2bp/p1nP4/2PQ1BPP/2N2P2/PP3N2/2KR1B1R b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Nb3+ axb3 Nc5 Qxg7 Nxb3#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the a-pawn and use a second knight to create an unstoppable mating threat. Book continuation: Nb3+ axb3 Nc5 Qxg7 Nxb3#. Alternative continuations: Nb3+ axb3 Nc5 Nfe4 Nxb3+ Kc2 Nxd4+.",
+      "diagramPage": "100",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 90
+    }
+  },
+  {
+    "number": "778",
+    "title": "Another important discovery",
+    "order": 778,
+    "bookLines": [
+      "Qf2+ Kxf2 Rd1+ Be3 Bxe3#"
+    ],
+    "analysisLines": [
+      "Qf2+ Kxf2 Rd2+ Ke1"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6nr/pQ4pp/2Bk4/2b5/3r1pbq/2N5/PPP3PP/R1B2K1R b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qf2+ Kxf2 Rd1+ Be3 Bxe3#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "The queen sacrifice deflects the king onto a discovered rook check. Book continuation: Qf2+ Kxf2 Rd1+ Be3 Bxe3#. Book analysis of other tries (not practice answers): Qf2+ Kxf2 Rd2+ Ke1.",
+      "diagramPage": "100",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 90
+    }
+  },
+  {
+    "number": "779",
+    "title": "A brutal threat",
+    "order": 779,
+    "bookLines": [
+      "Qa4 Bd3 Bxd3",
+      "Qa4 axb4 Qc2#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r3k2r/pp2n1b1/3p2p1/q1pPpbPp/1nP4P/P1N1Q3/1P1B1P2/2KR1BNR b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qa4 Bd3 Bxd3",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Attack the bishop and threaten queen mate; the capture wins material. Book continuation: Qa4 Bd3 Bxd3. Alternative continuations: Qa4 axb4 Qc2#.",
+      "diagramPage": "100",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 90
+    }
+  },
+  {
+    "number": "780",
+    "title": "Keep it simple",
+    "order": 780,
+    "bookLines": [
+      "Qf3+ Rxf3 gxf3+ Kxf3 Kf7 Ke4 Kxe7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5R2/4P1k1/6pp/p7/6p1/8/5PKP/3q4 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qf3+ Rxf3 gxf3+ Kxf3 Kf7 Ke4 Kxe7",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Liquidate into a won pawn ending before capturing the promotion threat. Book continuation: Qf3+ Rxf3 gxf3+ Kxf3 Kf7 Ke4 Kxe7.",
+      "diagramPage": "100",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 90
+    }
+  },
+  {
+    "number": "781",
+    "title": "Most effective",
+    "order": 781,
+    "bookLines": [
+      "Be5 Qxe5 Nf3+",
+      "Be5 Qh4 Nf3+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3rr1k1/qpb2p2/2p1pQp1/p7/P1BnP3/6P1/1P2NP1P/2RR2K1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Be5 Qxe5 Nf3+",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Trap the queen by combining the bishop attack and a knight fork. Book continuation: Be5 Qxe5 Nf3+. Alternative continuations: Be5 Qh4 Nf3+.",
+      "diagramPage": "101",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 91
+    }
+  },
+  {
+    "number": "782",
+    "title": "Precise play is needed",
+    "order": 782,
+    "bookLines": [
+      "f5+ Kxh3 f1=Q+ Kh4 Qh1+ Kg3 Qe1+ Kf4 Qf2#",
+      "f5+ Kxf5 f1=Q+",
+      "f5+ gxf6 f1=Q"
+    ],
+    "analysisLines": [
+      "f1=Q Rf6+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/p1k2p2/1p1R4/3PB1P1/6K1/7r/5p2/8 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "f5+ Kxh3 f1=Q+ Kh4 Qh1+ Kg3 Qe1+",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Advance with check before promoting, then force the queen mating net. Book continuation: f5+ Kxh3 f1=Q+ Kh4 Qh1+ Kg3 Qe1+ Kf4 Qf2#. Alternative continuations: f5+ Kxf5 f1=Q+; f5+ gxf6 f1=Q. Book analysis of other tries (not practice answers): f1=Q Rf6+. Practice ends on Black’s fourth move or the last preceding Black move; the full continuation is shown here.",
+      "diagramPage": "101",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 91
+    }
+  },
+  {
+    "number": "783",
+    "title": "Deflection and discovery",
+    "order": 783,
+    "bookLines": [
+      "Qb6 Bxb6 Ne2#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1r3r1k/p1p4p/3q2pb/3Ppb2/2Q2n2/P1N1BN2/1P4PP/2KR1R2 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qb6 Bxb6 Ne2#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Attack the bishop while threatening the mating square; its capture allows knight mate. Book continuation: Qb6 Bxb6 Ne2#.",
+      "diagramPage": "101",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 91
+    }
+  },
+  {
+    "number": "784",
+    "title": "A king that should have castled",
+    "order": 784,
+    "bookLines": [
+      "Rd8 Qe3 Qxc2"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2r5/pp3pkp/6p1/8/4P1P1/5b2/PqPQ1P1P/2R1K1R1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rd8 Qe3 Qxc2",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Activate the rook, then capture on c2 with a decisive threat of Rd1. Book continuation: Rd8 Qe3 Qxc2.",
+      "diagramPage": "101",
+      "answerPage": "138",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 91
+    }
+  },
+  {
+    "number": "785",
+    "title": "Black wins a piece",
+    "order": 785,
+    "bookLines": [
+      "Qe5 Rd1 Qxg3",
+      "Qe5 Qxe5 Nd3+ Kb1 Rxc1#",
+      "Qe5 Rc4 Nd3+ Kb1 Qxd4 Rxd4 Rc1#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2r3k1/5p1p/p3q1p1/2n3P1/1p1QP2P/1P4N1/PK6/2R5 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qe5 Rd1 Qxg3",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "The queen attacks the queen and knight while threatening a fork on d3. Book continuation: Qe5 Rd1 Qxg3. Alternative continuations: Qe5 Qxe5 Nd3+ Kb1 Rxc1#; Qe5 Rc4 Nd3+ Kb1 Qxd4 Rxd4 Rc1#.",
+      "diagramPage": "101",
+      "answerPage": "138–139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 91
+    }
+  },
+  {
+    "number": "786",
+    "title": "Logical and linear",
+    "order": 786,
+    "bookLines": [
+      "Qxd4 Rxd4 Rc1+ Qg1 Rxg1+ Kxg1 Bc5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2r3k1/p4p2/1p1b2p1/3Pq3/3N4/7P/PP4Q1/3R3K b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qxd4 Rxd4 Rc1+ Qg1 Rxg1+ Kxg1 Bc5",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the rook and queen, then skewer the king and rook with the bishop. Book continuation: Qxd4 Rxd4 Rc1+ Qg1 Rxg1+ Kxg1 Bc5.",
+      "diagramPage": "101",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 91
+    }
+  },
+  {
+    "number": "787",
+    "title": "2 moves to mate",
+    "order": 787,
+    "bookLines": [
+      "Rd3 Nxd3 Be6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3r2k1/1p4pp/2p5/pnP2b2/2K2N1P/P4P2/5BP1/7R b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rd3 Nxd3 Be6#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Decoy the knight away from the bishop's mating diagonal. Book continuation: Rd3 Nxd3 Be6#.",
+      "diagramPage": "101",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 91
+    }
+  },
+  {
+    "number": "788",
+    "title": "Unstoppable",
+    "order": 788,
+    "bookLines": [
+      "Nc3"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6R1/8/4p3/4P3/4np2/3r1k2/8/4K1B1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Nc3",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "The knight move prepares unstoppable mate on d1. Book continuation: Nc3.",
+      "diagramPage": "101",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 91
+    }
+  },
+  {
+    "number": "789",
+    "title": "Winning attack",
+    "order": 789,
+    "bookLines": [
+      "Rh1+ Kxh1 Qh4+ Kg2 Qxf2+ Kh1 Qh4+ Kg2 Qg3+ Kh1 Qh3#",
+      "Rh1+ Kxh1 Qh4+ Kg2 Qxf2+ Kh3 Qg3#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r3k2r/p3q3/1pp1p3/2b1p3/PPQ1Pp2/2N2P2/2P2P2/3RR1K1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rh1+ Kxh1 Qh4+ Kg2 Qxf2+ Kh1 Qh4+",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Sacrifice the rook to open the h-file and force a queen mating attack. Book continuation: Rh1+ Kxh1 Qh4+ Kg2 Qxf2+ Kh1 Qh4+ Kg2 Qg3+ Kh1 Qh3#. Alternative continuations: Rh1+ Kxh1 Qh4+ Kg2 Qxf2+ Kh3 Qg3#. Practice ends on Black’s fourth move or the last preceding Black move; the full continuation is shown here.",
+      "diagramPage": "101",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 91
+    }
+  },
+  {
+    "number": "790",
+    "title": "Unpinning the rook",
+    "order": 790,
+    "bookLines": [
+      "Qe4 Qc8+ Kg7 h3 Rf1+ Rxf1 Rxf1+ Kh2 Qxd3",
+      "Qe4 Qxe4 Rf1+ Rxf1 Rxf1#"
+    ],
+    "analysisLines": [
+      "d5 Qe1"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6k1/5r1p/1pqpQ1p1/p7/2P2r2/1P1R4/P5PP/3R3K b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qe4 Qc8+ Kg7 h3 Rf1+ Rxf1 Rxf1+",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Unpin the rook and escape the checking threat before winning White's rook. Book continuation: Qe4 Qc8+ Kg7 h3 Rf1+ Rxf1 Rxf1+ Kh2 Qxd3. Alternative continuations: Qe4 Qxe4 Rf1+ Rxf1 Rxf1#. Book analysis of other tries (not practice answers): d5 Qe1. Practice ends on Black’s fourth move or the last preceding Black move; the full continuation is shown here.",
+      "diagramPage": "101",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 91
+    }
+  },
+  {
+    "number": "791",
+    "title": "Opening lines",
+    "order": 791,
+    "bookLines": [
+      "Nf3+ gxf3 Rg5+ Kh1 Qxf2 Rg1 Qxf3+ Rg2 Qxg2#",
+      "Nf3+ gxf3 Rg5+ Kf1 Qh3+ Ke2 Re5#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3r2k1/Q4p2/Bp2p1pp/3r4/1P1n3q/P7/1P3PPP/2R1R1K1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Nf3+ gxf3 Rg5+ Kh1 Qxf2 Rg1 Qxf3+",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Open the g-file with a knight sacrifice, then force the queen and rook attack. Book continuation: Nf3+ gxf3 Rg5+ Kh1 Qxf2 Rg1 Qxf3+ Rg2 Qxg2#. Alternative continuations: Nf3+ gxf3 Rg5+ Kf1 Qh3+ Ke2 Re5#. Practice ends on Black’s fourth move or the last preceding Black move; the full continuation is shown here.",
+      "diagramPage": "101",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 91
+    }
+  },
+  {
+    "number": "792",
+    "title": "Balletic",
+    "order": 792,
+    "bookLines": [
+      "Ra7 Rf7 Bh6 Rfe7 Bf8 Rf7 Bh6 Rfd7 Bf8"
+    ],
+    "analysisLines": [
+      "Ra7 Rxh7 b1=Q",
+      "Ra7 Rf7 b1=Q Rxf8+ Kxf8 Rxb1",
+      "Ra7 Rf7 Bh6 Rfe7 b1=Q Re8+ Bf8 Rxb1",
+      "g5 Rb8 g4 Rdb7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5bk1/1R1R3p/6p1/8/8/6P1/rp3PKP/8 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Ra7 Rf7 Bh6 Rfe7 Bf8 Rf7 Bh6",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Draw: pin the rook on b7 and maintain the defensive bishop shuttle. Book continuation: Ra7 Rf7 Bh6 Rfe7 Bf8 Rf7 Bh6 Rfd7 Bf8. Book analysis of other tries (not practice answers): Ra7 Rxh7 b1=Q; Ra7 Rf7 b1=Q Rxf8+ Kxf8 Rxb1; Ra7 Rf7 Bh6 Rfe7 b1=Q Re8+ Bf8 Rxb1; g5 Rb8 g4 Rdb7. The book’s rook moves are disambiguated as Rfe7 and Rfd7 where needed. After Rxh7, promotion on b1 is legal but is not checkmate in the supplied diagram. Practice ends on Black’s fourth move or the last preceding Black move; the full continuation is shown here.",
+      "diagramPage": "101",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 91
+    }
+  },
+  {
+    "number": "793",
+    "title": "A cannon blast",
+    "order": 793,
+    "bookLines": [
+      "Rxh2+ Kxh2 Qf2+ Rg2 Rh8+ Rh5 Rxh5+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2r4r/3Q1bk1/pq4p1/5R2/2p5/2P2P2/PP5P/6RK b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rxh2+ Kxh2 Qf2+ Rg2 Rh8+ Rh5 Rxh5+",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the king, then use a rook check to win the remaining rook. Book continuation: Rxh2+ Kxh2 Qf2+ Rg2 Rh8+ Rh5 Rxh5+.",
+      "diagramPage": "102",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 92
+    }
+  },
+  {
+    "number": "794",
+    "title": "A discovery does it",
+    "order": 794,
+    "bookLines": [
+      "Qxg3 Nc6+ Bxc6 fxg3 Nf3+ Kf1 Bb5#",
+      "Qxg3 fxg3 Nf3#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2Q5/k1p3pp/pb2p3/1b6/1N1n4/P2q2BP/1P3PP1/6KR b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qxg3 Nc6+ Bxc6 fxg3 Nf3+ Kf1 Bb5#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Sacrifice the queen to open the bishop's diagonal and force mate. Book continuation: Qxg3 Nc6+ Bxc6 fxg3 Nf3+ Kf1 Bb5#. Alternative continuations: Qxg3 fxg3 Nf3#.",
+      "diagramPage": "102",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 92
+    }
+  },
+  {
+    "number": "795",
+    "title": "How to save the bishop?",
+    "order": 795,
+    "bookLines": [
+      "Bxf2+ Kd2 Bxe3+ Qxe3 Qxe3+ Kxe3 Nc6",
+      "Bxf2+ Bxf2 Qxc1+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "rnb1k2r/pp3ppp/4p3/3p4/NP3q2/2PQB1bP/P3PPP1/2R1KB1R b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Bxf2+ Kd2 Bxe3+ Qxe3 Qxe3+ Kxe3 Nc6",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "The checking bishop capture allows a queen exchange; the knight fork wins the loose rook. Book continuation: Bxf2+ Kd2 Bxe3+ Qxe3 Qxe3+ Kxe3 Nc6. Alternative continuations: Bxf2+ Bxf2 Qxc1+.",
+      "diagramPage": "102",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 92
+    }
+  },
+  {
+    "number": "796",
+    "title": "Fireworks",
+    "order": 796,
+    "bookLines": [
+      "Qg1+ Kxg1 Rbxg2+ Kh1 Rg1+ Rxg1 Nf2#",
+      "Qg1+ Rxg1 Nf2#",
+      "Qg1+ Kxg1 Rgxg2+ Kh1 Rxh2+ Kg1 Rbg2#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5k2/3p1p1p/pq1P1pr1/7N/2Q5/2Pn1P2/Pr4PP/R4R1K b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qg1+ Kxg1 Rbxg2+ Kh1 Rg1+ Rxg1 Nf2#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the king and rook, then deliver smothered mate. Book continuation: Qg1+ Kxg1 Rbxg2+ Kh1 Rg1+ Rxg1 Nf2#. Alternative continuations: Qg1+ Rxg1 Nf2#; Qg1+ Kxg1 Rgxg2+ Kh1 Rxh2+ Kg1 Rbg2#.",
+      "diagramPage": "102",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 92
+    }
+  },
+  {
+    "number": "797",
+    "title": "The f2 square...",
+    "order": 797,
+    "bookLines": [
+      "Qxh4 Kg2 Nf4+ Kf1 Qh1+ Ng1 Qg2#",
+      "Qxh4 Nxh4 Rxf2#",
+      "Qxh4 Ne4 dxe4"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r2q3k/1p3rb1/6p1/p1Np3P/3p3P/PP1P1N1n/4PP2/2RQRK2 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qxh4 Kg2 Nf4+ Kf1 Qh1+ Ng1 Qg2#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "The queen capture keeps pressure on f2 and starts a mating attack. Book continuation: Qxh4 Kg2 Nf4+ Kf1 Qh1+ Ng1 Qg2#. Alternative continuations: Qxh4 Nxh4 Rxf2#; Qxh4 Ne4 dxe4.",
+      "diagramPage": "102",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 92
+    }
+  },
+  {
+    "number": "798",
+    "title": "Mate in 3",
+    "order": 798,
+    "bookLines": [
+      "Nxg3+ hxg3 Qh6+ Bh3 Qxh3#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1b2rk1/pp4pp/2p1pq2/2bpPp2/2P1n3/1P3PP1/PBQ1P1BP/RN3R1K b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Nxg3+ hxg3 Qh6+ Bh3 Qxh3#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the h-pawn to open the queen's mating file. Book continuation: Nxg3+ hxg3 Qh6+ Bh3 Qxh3#.",
+      "diagramPage": "102",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 92
+    }
+  },
+  {
+    "number": "799",
+    "title": "I could do this forever",
+    "order": 799,
+    "bookLines": [
+      "Rh1+ Kg3 Rg1+ Kh2 Rh1+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/5p1k/5P2/R6p/3PbP1P/3n3P/3Q3K/1r6 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Rh1+ Kg3 Rg1+ Kh2 Rh1+",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Draw by perpetual rook checks. Book continuation: Rh1+ Kg3 Rg1+ Kh2 Rh1+.",
+      "diagramPage": "102",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 92
+    }
+  },
+  {
+    "number": "800",
+    "title": "Sacrifice and mate",
+    "order": 800,
+    "bookLines": [
+      "Qg2+ Kxg2 Nf4+ Kg1 Nh3#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2r3k1/1b3ppp/p3p3/Bp1n4/4q3/P2QP1P1/1P2BP1P/5RK1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qg2+ Kxg2 Nf4+ Kg1 Nh3#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Decoy the king to set up knight mate. Book continuation: Qg2+ Kxg2 Nf4+ Kg1 Nh3#.",
+      "diagramPage": "102",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 92
+    }
+  },
+  {
+    "number": "801",
+    "title": "Breaking the pin with a threat",
+    "order": 801,
+    "bookLines": [
+      "Qf6 Rh3 Nf3+ Rxf3 Qxb2"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/5pk1/1p2p1q1/3rn3/PP5R/8/1Q3PP1/5BK1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qf6 Rh3 Nf3+ Rxf3 Qxb2",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Break the knight's pin with threats against the rook and queen. Book continuation: Qf6 Rh3 Nf3+ Rxf3 Qxb2.",
+      "diagramPage": "102",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 92
+    }
+  },
+  {
+    "number": "802",
+    "title": "Greed is good",
+    "order": 802,
+    "bookLines": [
+      "Nc7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1b2rk1/pp2qppp/4nn2/1Bp1N3/4P3/2P4P/P1P2PP1/R1BQR1K1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Nc7",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "The knight simultaneously attacks the bishop and knight. Book continuation: Nc7.",
+      "diagramPage": "102",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 92
+    }
+  },
+  {
+    "number": "803",
+    "title": "Checkmate in 3",
+    "order": 803,
+    "bookLines": [
+      "Qa1+ Kxa1 Bd4+ Kb1 Ra1#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r6k/b5pp/q7/8/1p2Q3/3R4/2B5/1K6 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qa1+ Kxa1 Bd4+ Kb1 Ra1#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the king, then use the bishop check to force rook mate. Book continuation: Qa1+ Kxa1 Bd4+ Kb1 Ra1#.",
+      "diagramPage": "102",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 92
+    }
+  },
+  {
+    "number": "804",
+    "title": "Knight shift",
+    "order": 804,
+    "bookLines": [
+      "Ne3 fxe3 Qh4+ g3 Qxg3#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "rnbqkb1r/pppp1ppp/8/4P3/6n1/7P/PPPNPPP1/R1BQKBNR b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Ne3 fxe3 Qh4+ g3 Qxg3#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Sacrifice the knight to open the queen's diagonal to h4. Book continuation: Ne3 fxe3 Qh4+ g3 Qxg3#.",
+      "diagramPage": "102",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 92
+    }
+  },
+  {
+    "number": "805",
+    "title": "Reflect and deflect",
+    "order": 805,
+    "bookLines": [
+      "Bxe4 Qxe4 Qf1+ Rxf1 Rxf1#",
+      "Bxe4 Rxe4 Qf1+ Qxf1 Rxf1#",
+      "Bxe4 Qd1 Bxg2#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5r1k/ppp3pp/2b1p3/8/P1PPP3/2BQ4/5qPP/4R2K b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Bxe4 Qxe4 Qf1+ Rxf1 Rxf1#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the queen and rook in succession to force back rank mate. Book continuation: Bxe4 Qxe4 Qf1+ Rxf1 Rxf1#. Alternative continuations: Bxe4 Rxe4 Qf1+ Qxf1 Rxf1#; Bxe4 Qd1 Bxg2#.",
+      "diagramPage": "103",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 93
+    }
+  },
+  {
+    "number": "806",
+    "title": "Kingside collapse",
+    "order": 806,
+    "bookLines": [
+      "Qxh2+ Kxh2 Kf7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5rk1/1pp3p1/p2p2r1/4p3/1P2PP2/2P1QP1q/1P1N3R/5R1K b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qxh2+ Kxh2 Kf7",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Sacrifice the queen, then free the rook for an unstoppable Rh8 mating threat. Book continuation: Qxh2+ Kxh2 Kf7.",
+      "diagramPage": "103",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 93
+    }
+  },
+  {
+    "number": "807",
+    "title": "Pleasing to the eye",
+    "order": 807,
+    "bookLines": [
+      "Rh8 Qxh8 Bg5+ f4 Bh6"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r7/1kp3p1/3p1b2/pP1P3Q/8/6P1/1PP2P1p/2K5 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rh8 Qxh8 Bg5+ f4 Bh6",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the queen away from the h-pawn so it can promote. Book continuation: Rh8 Qxh8 Bg5+ f4 Bh6.",
+      "diagramPage": "103",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 93
+    }
+  },
+  {
+    "number": "808",
+    "title": "Decoy and discovery",
+    "order": 808,
+    "bookLines": [
+      "Qd3+ Kxd3 Bxc6+ Ke2 Bxa4"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2kr1b1r/p2b1ppp/2B1p3/2p5/Q3P3/2q5/P3KPPP/1RB4R b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qd3+ Kxd3 Bxc6+ Ke2 Bxa4",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Decoy the king onto the bishop's diagonal and win the queen with a discovered attack. Book continuation: Qd3+ Kxd3 Bxc6+ Ke2 Bxa4.",
+      "diagramPage": "103",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 93
+    }
+  },
+  {
+    "number": "809",
+    "title": "Overload",
+    "order": 809,
+    "bookLines": [
+      "Qg6 Qxg6 Rxd1+ Kh2 fxg6"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3r1rk1/p4pp1/1p2q2p/4P2Q/2p1RB2/Pn5P/1P3PP1/3R2K1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qg6 Qxg6 Rxd1+ Kh2 fxg6",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Overload the queen: it must defend e4, d1, and itself. Insert the rook check before recapturing. Book continuation: Qg6 Qxg6 Rxd1+ Kh2 fxg6.",
+      "diagramPage": "103",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 93
+    }
+  },
+  {
+    "number": "810",
+    "title": "Pretty mate in 3",
+    "order": 810,
+    "bookLines": [
+      "Qg1+ Rxg1 Nf2+ Kg2 Bh3#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1b2r1k/pp4pp/3p4/3B4/8/1QN3Pn/PP3q1P/R3R2K b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qg1+ Rxg1 Nf2+ Kg2 Bh3#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the rook, then finish with knight and bishop coordination. Book continuation: Qg1+ Rxg1 Nf2+ Kg2 Bh3#.",
+      "diagramPage": "103",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 93
+    }
+  },
+  {
+    "number": "811",
+    "title": "A pawn mates",
+    "order": 811,
+    "bookLines": [
+      "Ne3+ fxe3 Qf5+ Bxf5 exf5#",
+      "Ne3+ Bxe3 Bf3#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5rkn/pp2bq2/4p1p1/3bPn2/3p1BK1/P2B2PQ/1P3P1R/R7 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Ne3+ fxe3 Qf5+ Bxf5 exf5#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect both White defenders so the e-pawn can give mate. Book continuation: Ne3+ fxe3 Qf5+ Bxf5 exf5#. Alternative continuations: Ne3+ Bxe3 Bf3#.",
+      "diagramPage": "103",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 93
+    }
+  },
+  {
+    "number": "812",
+    "title": "This is a classic",
+    "order": 812,
+    "bookLines": [
+      "Rb1+ Rxb1 Nc2#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1kr5/1p6/1p4R1/3pN3/3P4/nPp1P3/Pr6/K1R5 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rb1+ Rxb1 Nc2#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the rook from the back rank to complete the knight mating net. Book continuation: Rb1+ Rxb1 Nc2#.",
+      "diagramPage": "103",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 93
+    }
+  },
+  {
+    "number": "813",
+    "title": "Double check devastation",
+    "order": 813,
+    "bookLines": [
+      "Qxg2+ Kxg2 Rg6+ Kf3 Nd2#",
+      "Qxg2+ Kxg2 Rg6+ Kh1 Nxf2#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r5k1/pbb2ppp/1p2r3/6q1/3Nn3/P2BP2P/1B2RPP1/4QR1K b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qxg2+ Kxg2 Rg6+ Kf3 Nd2#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Sacrifice the queen, then use double check to force knight mate. Book continuation: Qxg2+ Kxg2 Rg6+ Kf3 Nd2#. Alternative continuations: Qxg2+ Kxg2 Rg6+ Kh1 Nxf2#.",
+      "diagramPage": "103",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 93
+    }
+  },
+  {
+    "number": "814",
+    "title": "3 more moves to go",
+    "order": 814,
+    "bookLines": [
+      "Qxc2+ Kxc2 Bxe4+ Kd2 Rc2#",
+      "Qxc2+ Kxc2 Bxe4+ Kb3 Bc2#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1kr5/1p1r1pR1/p1bbp2p/2q5/3pN2P/5B2/PPP3P1/2KRQ3 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qxc2+ Kxc2 Bxe4+ Kd2 Rc2#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the king, clear the bishop diagonal, and finish with rook mate. Book continuation: Qxc2+ Kxc2 Bxe4+ Kd2 Rc2#. Alternative continuations: Qxc2+ Kxc2 Bxe4+ Kb3 Bc2#.",
+      "diagramPage": "103",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 93
+    }
+  },
+  {
+    "number": "815",
+    "title": "World Championship tactics",
+    "order": 815,
+    "bookLines": [
+      "Nf3+ gxf3 Rg6+ Kh1 Nf2#",
+      "Nf3+ Kh1 Nf2#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/7R/2r5/8/P3n3/8/3nk1PP/R5K1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Nf3+ gxf3 Rg6+ Kh1 Nf2#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Open the g-file with a knight sacrifice, then force mate with the other knight. Book continuation: Nf3+ gxf3 Rg6+ Kh1 Nf2#. Alternative continuations: Nf3+ Kh1 Nf2#.",
+      "diagramPage": "103",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 93
+    }
+  },
+  {
+    "number": "816",
+    "title": "Magical rearrangement",
+    "order": 816,
+    "bookLines": [
+      "Bd8 Rd7 Rxd4 Rxd4 Bb6"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6k1/2R1bppp/p7/1p3P2/3Br1P1/7P/PP6/6K1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Bd8 Rd7 Rxd4 Rxd4 Bb6",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Rearrange the bishop and rook to win the rook with a skewer. Book continuation: Bd8 Rd7 Rxd4 Rxd4 Bb6.",
+      "diagramPage": "103",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 93
+    }
+  },
+  {
+    "number": "817",
+    "title": "Mate follows deflection",
+    "order": 817,
+    "bookLines": [
+      "Rxd6 Rxd6 Rf3+ gxf3 Bf1#"
+    ],
+    "analysisLines": [
+      "Rf3+ gxf3 Bf1+ Rg2"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/7k/b2N1r2/p3Rpp1/7p/2P4K/1P1R2PP/5r2 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rxd6 Rxd6 Rf3+ gxf3 Bf1#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the rook, then open the bishop's mating diagonal with a second rook sacrifice. Book continuation: Rxd6 Rxd6 Rf3+ gxf3 Bf1#. Book analysis of other tries (not practice answers): Rf3+ gxf3 Bf1+ Rg2.",
+      "diagramPage": "104",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 94
+    }
+  },
+  {
+    "number": "818",
+    "title": "Better to win than to draw!",
+    "order": 818,
+    "bookLines": [
+      "Na4 Ka2 Nxb6 Kxb1",
+      "Na4 Kxa4 Ra1#",
+      "Na4 Qxa6 Ra1#",
+      "Na4 bxa4 Rxb6"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/8/pQ2pppk/2p5/5P2/KPn5/2P2P2/1r6 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Na4 Ka2 Nxb6",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Control b2 while attacking the queen; White loses decisive material. Book continuation: Na4 Ka2 Nxb6 Kxb1. Alternative continuations: Na4 Kxa4 Ra1#; Na4 Qxa6 Ra1#; Na4 bxa4 Rxb6. Practice ends on Black’s fourth move or the last preceding Black move; the full continuation is shown here.",
+      "diagramPage": "104",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 94
+    }
+  },
+  {
+    "number": "819",
+    "title": "White threatens both the rook and mate",
+    "order": 819,
+    "bookLines": [
+      "Rg2 Rxg2 Rxa3",
+      "Rg2 Rxd3 Rxf2+"
+    ],
+    "analysisLines": [
+      "h6 Rxd3"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3b3k/3p2pp/8/pP6/P7/R2r4/2K2R1P/6r1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rg2 Rxg2 Rxa3",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect and pin the rook before capturing the other rook on a3. Book continuation: Rg2 Rxg2 Rxa3. Alternative continuations: Rg2 Rxd3 Rxf2+. Book analysis of other tries (not practice answers): h6 Rxd3.",
+      "diagramPage": "104",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 94
+    }
+  },
+  {
+    "number": "820",
+    "title": "A brutal move",
+    "order": 820,
+    "bookLines": [
+      "Qe2 Rxe2 Rf1#",
+      "Qe2 Bxf2 Qxf2+ Kh1 Qxe1#"
+    ],
+    "analysisLines": [
+      "Qe2 Rc1 Rxg2+ Kh1 Rxh2+ Kg1 Qg2+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5r1k/p5pp/1pQ1R3/4P3/8/4B3/q4rPP/4R1K1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qe2 Rxe2 Rf1#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the rook from e1 to expose the king to mate. Book continuation: Qe2 Rxe2 Rf1#. Alternative continuations: Qe2 Bxf2 Qxf2+ Kh1 Qxe1#. Book analysis of other tries (not practice answers): Qe2 Rc1 Rxg2+ Kh1 Rxh2+ Kg1 Qg2+. The book marks Qg2 as mate in the Rc1 sideline. In the supplied diagram it is check, and White can capture the queen with Qxg2; the main Rxe2 Rf1# line is retained.",
+      "diagramPage": "104",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 94
+    }
+  },
+  {
+    "number": "821",
+    "title": "Does two things at once",
+    "order": 821,
+    "bookLines": [
+      "Nc4"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4r1k1/p2n2b1/1np3p1/8/1B1P4/5P2/qPP1N3/2KRQ2R b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Nc4",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Control the king's escape square d2 while threatening mate on a1 or b2. Book continuation: Nc4.",
+      "diagramPage": "104",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 94
+    }
+  },
+  {
+    "number": "822",
+    "title": "A type of epaulette mate",
+    "order": 822,
+    "bookLines": [
+      "Rxc2+ Kxc2 Qc3#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/3k3P/3P4/2p5/1p2p3/8/2P2r2/qQKR4 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rxc2+ Kxc2 Qc3#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Decoy the king onto c2 and exploit its blocked escape squares. Book continuation: Rxc2+ Kxc2 Qc3#.",
+      "diagramPage": "104",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 94
+    }
+  },
+  {
+    "number": "823",
+    "title": "Deflection",
+    "order": 823,
+    "bookLines": [
+      "Bh4 Qxh4 Nxe3#",
+      "Bh4 Qf3 Nf2+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "rnr3k1/p3b1pp/qp1pp3/5p2/3P1Pn1/4P1Q1/PP1N2PP/R1BKN1R1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Bh4 Qxh4 Nxe3#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the queen away from e3 before delivering knight mate. Book continuation: Bh4 Qxh4 Nxe3#. Alternative continuations: Bh4 Qf3 Nf2+.",
+      "diagramPage": "104",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 94
+    }
+  },
+  {
+    "number": "824",
+    "title": "It's actually quite simple",
+    "order": 824,
+    "bookLines": [
+      "Qh3 Rxe2 Qxf1#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4r1k1/pp1q1ppp/2pb4/3p4/3P1P2/3Q1P2/PP1Br2P/4RR1K b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qh3 Rxe2 Qxf1#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "The queen threatens f1; taking the rook permits mate. Book continuation: Qh3 Rxe2 Qxf1#.",
+      "diagramPage": "104",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 94
+    }
+  },
+  {
+    "number": "825",
+    "title": "A king without a future",
+    "order": 825,
+    "bookLines": [
+      "Qg3+ Bxg3 hxg3#",
+      "Qg3+ Bxg3 Bxg3#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5rk1/p1b3q1/1p3p2/3p1Q2/5B1p/1P2P2P/P4nPK/2R3N1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qg3+ Bxg3 hxg3#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Sacrifice the queen to let the h-pawn complete the mating net. Book continuation: Qg3+ Bxg3 hxg3#. Alternative continuations: Qg3+ Bxg3 Bxg3#.",
+      "diagramPage": "104",
+      "answerPage": "139",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 94
+    }
+  },
+  {
+    "number": "826",
+    "title": "The f3 square...",
+    "order": 826,
+    "bookLines": [
+      "Nh4 Rf2 R8g2+ Rxg2 Nf3#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6rk/ppR4p/3p4/3P1n2/PPN1Pp2/7P/3R3K/6r1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Nh4 Rf2 R8g2+ Rxg2 Nf3#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "The knight move starts a mating attack centered on f3. Book continuation: Nh4 Rf2 R8g2+ Rxg2 Nf3#.",
+      "diagramPage": "104",
+      "answerPage": "139–140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 94
+    }
+  },
+  {
+    "number": "827",
+    "title": "Brutally effective",
+    "order": 827,
+    "bookLines": [
+      "Qxh2+ Kxh2 hxg3#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2k1r2r/ppp3p1/5p2/5n2/7p/1QP3Pq/PP3PBP/3R2RK b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qxh2+ Kxh2 hxg3#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Open the h-file and let the pawn deliver mate. Book continuation: Qxh2+ Kxh2 hxg3#.",
+      "diagramPage": "104",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 94
+    }
+  },
+  {
+    "number": "828",
+    "title": "Intermediate check!",
+    "order": 828,
+    "bookLines": [
+      "Re2 Rxe2 Qxc3",
+      "Re2 Qxf6 Rxe1+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6k1/p5p1/1p3q2/2ppr2p/8/1PQ4P/P1P2PP1/4R1K1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Re2 Rxe2 Qxc3",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Attack c3 and f2, then win material after the rook capture. Book continuation: Re2 Rxe2 Qxc3. Alternative continuations: Re2 Qxf6 Rxe1+.",
+      "diagramPage": "104",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 94
+    }
+  },
+  {
+    "number": "829",
+    "title": "Boxed-in king",
+    "order": 829,
+    "bookLines": [
+      "Qc4+ Nxc4 bxc4#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5k2/6pp/p1qN4/1p1p4/3P4/2PKP2Q/PP3r2/3R4 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qc4+ Nxc4 bxc4#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Decoy the knight so the b-pawn can complete the mating net. Book continuation: Qc4+ Nxc4 bxc4#.",
+      "diagramPage": "105",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 95
+    }
+  },
+  {
+    "number": "830",
+    "title": "Graceful mate",
+    "order": 830,
+    "bookLines": [
+      "Rc1+ Kh2 Nxg4+ Kg3 Rg1#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6N1/2p5/p1Pk1p2/2r1n1p1/5nPP/1P2RR2/P4P2/6K1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rc1+ Kh2 Nxg4+ Kg3 Rg1#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Drive the king into a rook and knight mating net. Book continuation: Rc1+ Kh2 Nxg4+ Kg3 Rg1#.",
+      "diagramPage": "105",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 95
+    }
+  },
+  {
+    "number": "831",
+    "title": "Attack and defence",
+    "order": 831,
+    "bookLines": [
+      "Qd6 hxg4 Qxb4",
+      "Qd6 Qxd6 Rxe1#",
+      "Qd6 Rxe8+ Rxe8 Bd2 Qh2+ Kf1 Qh1#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r3r1k1/pppq1ppp/8/8/1Q4n1/7P/PPP2PP1/RNB1R1K1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qd6 hxg4 Qxb4",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the queen from defending e1 while attacking it along the third rank. Book continuation: Qd6 hxg4 Qxb4. Alternative continuations: Qd6 Qxd6 Rxe1#; Qd6 Rxe8+ Rxe8 Bd2 Qh2+ Kf1 Qh1#.",
+      "diagramPage": "105",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 95
+    }
+  },
+  {
+    "number": "832",
+    "title": "Postponing check",
+    "order": 832,
+    "bookLines": [
+      "Rxg2 Rxg2 Qf1+ Qg1 Bxg2#"
+    ],
+    "analysisLines": [
+      "Qf1+ Qg1 Rxg2 Qxf1"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3B2k1/7p/6p1/pq3p2/1p2bPr1/1P2Q3/P2R2PP/7K b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rxg2 Rxg2 Qf1+ Qg1 Bxg2#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Capture first, then deflect the queen with check to enable bishop mate. Book continuation: Rxg2 Rxg2 Qf1+ Qg1 Bxg2#. Book analysis of other tries (not practice answers): Qf1+ Qg1 Rxg2 Qxf1.",
+      "diagramPage": "105",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 95
+    }
+  },
+  {
+    "number": "833",
+    "title": "Back rank and pin",
+    "order": 833,
+    "bookLines": [
+      "Rc5 Rxc5 Qxb7",
+      "Rc5 dxc5 Qd1#",
+      "Rc5 Rxd7 Rc1#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/pQRq2pk/4p2p/3r1p2/3P4/P3P3/1P3PPP/6K1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rc5 Rxc5 Qxb7",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "The rook sacrifice exploits the pinned d-pawn and wins the queen. Book continuation: Rc5 Rxc5 Qxb7. Alternative continuations: Rc5 dxc5 Qd1#; Rc5 Rxd7 Rc1#.",
+      "diagramPage": "105",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 95
+    }
+  },
+  {
+    "number": "834",
+    "title": "Another look at a classic",
+    "order": 834,
+    "bookLines": [
+      "Qg1+ Rxg1 Nf2#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r3k2r/1p3ppp/pb1p4/4PQ2/2B2Pn1/N3q3/PP4PP/R4R1K b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qg1+ Rxg1 Nf2#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Sacrifice the queen to deflect the rook and deliver smothered mate. Book continuation: Qg1+ Rxg1 Nf2#.",
+      "diagramPage": "105",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 95
+    }
+  },
+  {
+    "number": "835",
+    "title": "In cold blood",
+    "order": 835,
+    "bookLines": [
+      "Kg7"
+    ],
+    "analysisLines": [
+      "Kxg6 Nf4+",
+      "fxg6 Qc7+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1Q6/5p1k/6Bp/1p1p4/pP1P2n1/P1P3Pq/4bPNP/6K1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Kg7",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Move the king to safety while preserving the unavoidable mating attack. Book continuation: Kg7. Book analysis of other tries (not practice answers): Kxg6 Nf4+; fxg6 Qc7+.",
+      "diagramPage": "105",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 95
+    }
+  },
+  {
+    "number": "836",
+    "title": "Light squares...",
+    "order": 836,
+    "bookLines": [
+      "Bh3+ Kxh3 Qf1#",
+      "Bh3+ Kf3 Qg4#",
+      "Bh3+ Kg1 Qf1#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3b2k1/5pp1/p2Bb3/1p1p3p/1Pq5/P1N1P1P1/1Q3PKP/8 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Bh3+ Kxh3 Qf1#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the king onto h3 and exploit the light squares. Book continuation: Bh3+ Kxh3 Qf1#. Alternative continuations: Bh3+ Kf3 Qg4#; Bh3+ Kg1 Qf1#.",
+      "diagramPage": "105",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 95
+    }
+  },
+  {
+    "number": "837",
+    "title": "Pin and counter-pin",
+    "order": 837,
+    "bookLines": [
+      "Rf8 Rd8 Qh4+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4r1k1/8/3R1Qpp/2p5/2P1p1q1/P3P3/1P2PK2/8 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rf8 Rd8 Qh4+",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Counter-pin White's queen to the king, then capture it with check. Book continuation: Rf8 Rd8 Qh4+.",
+      "diagramPage": "105",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 95
+    }
+  },
+  {
+    "number": "838",
+    "title": "Linear mate",
+    "order": 838,
+    "bookLines": [
+      "Nf2+ Rxf2 Qxa1+ Rf1 Qxf1#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6rk/2R4p/2N1pq2/1Pnp1p2/4nP2/4P3/7P/Q4R1K b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Nf2+ Rxf2 Qxa1+ Rf1 Qxf1#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the rook and force a queen invasion on the first rank. Book continuation: Nf2+ Rxf2 Qxa1+ Rf1 Qxf1#.",
+      "diagramPage": "105",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 95
+    }
+  },
+  {
+    "number": "839",
+    "title": "Out of the chaos",
+    "order": 839,
+    "bookLines": [
+      "Qc6+ Qxc6 Nb3#",
+      "Qc6+ Nc3 Qxb7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/pQp2ppk/3q3p/5b2/8/P3P3/1P3PPP/n1KN1B1R b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qc6+ Qxc6 Nb3#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Decoy the queen onto c6 so the knight can mate on b3. Book continuation: Qc6+ Qxc6 Nb3#. Alternative continuations: Qc6+ Nc3 Qxb7.",
+      "diagramPage": "105",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 95
+    }
+  },
+  {
+    "number": "840",
+    "title": "b2 is pivotal",
+    "order": 840,
+    "bookLines": [
+      "Qd2+ Kb1 Qxb2+ Rxb2 Rd1+ Kc2 Rd2+ Kb1 Rxb2#",
+      "Qd2+ Rxd2 Rxd2+ Kb1 Rxb2#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "7k/7p/3p3P/qB1Pp3/p1PbPp1Q/Pn1r4/1BK3R1/8 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qd2+ Kb1 Qxb2+ Rxb2 Rd1+ Kc2 Rd2+",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Decoy and deflect White's defenders around b2 to force rook mate. Book continuation: Qd2+ Kb1 Qxb2+ Rxb2 Rd1+ Kc2 Rd2+ Kb1 Rxb2#. Alternative continuations: Qd2+ Rxd2 Rxd2+ Kb1 Rxb2#. Practice ends on Black’s fourth move or the last preceding Black move; the full continuation is shown here.",
+      "diagramPage": "105",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 95
+    }
+  },
+  {
+    "number": "841",
+    "title": "The knights mate",
+    "order": 841,
+    "bookLines": [
+      "Qg2+ Rxg2 Nh3#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r4rk1/1p3ppp/1ppp4/4p3/3PPn2/1BN2Pnq/PPPQ1R1N/3R2K1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qg2+ Rxg2 Nh3#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the rook and let the knights finish the mating net. Book continuation: Qg2+ Rxg2 Nh3#.",
+      "diagramPage": "106",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 96
+    }
+  },
+  {
+    "number": "842",
+    "title": "A surprise mate",
+    "order": 842,
+    "bookLines": [
+      "Qe2 Rxe1 Qxf2+ Kh1 Qg1#"
+    ],
+    "analysisLines": [
+      "Bxf2+ Kh1"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4r1k1/bQp1qpp1/p2p3p/8/5Bn1/2P4P/PP3PP1/R2RrBK1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qe2 Rxe1 Qxf2+ Kh1 Qg1#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "The queen move forces a deflection and a mating invasion on f2. Book continuation: Qe2 Rxe1 Qxf2+ Kh1 Qg1#. Book analysis of other tries (not practice answers): Bxf2+ Kh1.",
+      "diagramPage": "106",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 96
+    }
+  },
+  {
+    "number": "843",
+    "title": "Checkmate in 2",
+    "order": 843,
+    "bookLines": [
+      "Ng3+ fxg3 Qe1#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3rkb2/ppp1q2p/6N1/7Q/4n3/8/PPn2PPP/RNBB1K1R b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Ng3+ fxg3 Qe1#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the f-pawn so the queen can reach e1. Book continuation: Ng3+ fxg3 Qe1#.",
+      "diagramPage": "106",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 96
+    }
+  },
+  {
+    "number": "844",
+    "title": "Turning the tables",
+    "order": 844,
+    "bookLines": [
+      "Rf2+ Bxf2 Qxf2+ Kh1 Qf1+",
+      "Rf2+ Kg1 Rf1+ Kg2 Qf3+ Kh2 Rh1#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5q2/2NQR1bk/7p/2p3p1/P7/4B1PP/1P5K/5r2 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rf2+ Bxf2 Qxf2+ Kh1 Qf1+",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Use the rook sacrifice to force a queen attack against the exposed king. Book continuation: Rf2+ Bxf2 Qxf2+ Kh1 Qf1+. Alternative continuations: Rf2+ Kg1 Rf1+ Kg2 Qf3+ Kh2 Rh1#.",
+      "diagramPage": "106",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 96
+    }
+  },
+  {
+    "number": "845",
+    "title": "This is worth a re-run",
+    "order": 845,
+    "bookLines": [
+      "Qd1+ Qg1 Qh5+ Rh2 Qf3+ Qg2 Qd1+"
+    ],
+    "analysisLines": [
+      "Qf1+ Rg1"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "7k/7p/8/p1p1P3/2P5/1P2pq2/P5RQ/7K b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Qd1+ Qg1 Qh5+ Rh2 Qf3+ Qg2 Qd1+",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Draw by perpetual check. Book continuation: Qd1+ Qg1 Qh5+ Rh2 Qf3+ Qg2 Qd1+. Book analysis of other tries (not practice answers): Qf1+ Rg1.",
+      "diagramPage": "106",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 96
+    }
+  },
+  {
+    "number": "846",
+    "title": "The correct check",
+    "order": 846,
+    "bookLines": [
+      "Qd3+ Kc1 Qc3+ Kd1 Qd3+"
+    ],
+    "analysisLines": [
+      "Qb1+ Ke2 Qc2+ Kf1 Qf5+ Kg1 Qg6+ Kf2 Qf5+ Qf4"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1Q6/5kpp/p1p2pq1/8/1P6/P3P2P/8/3KR3 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Qd3+ Kc1 Qc3+ Kd1 Qd3+",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Draw by perpetual check. Book continuation: Qd3+ Kc1 Qc3+ Kd1 Qd3+. Book analysis of other tries (not practice answers): Qb1+ Ke2 Qc2+ Kf1 Qf5+ Kg1 Qg6+ Kf2 Qf5+ Qf4.",
+      "diagramPage": "106",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 96
+    }
+  },
+  {
+    "number": "847",
+    "title": "Brilliant bishops",
+    "order": 847,
+    "bookLines": [
+      "Rxc3+ bxc3 Ba3+ Kc2 Bf5#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2rr2k1/1p5p/5p2/8/1b3Pb1/1PN3PP/pP6/N1K2R1R b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rxc3+ bxc3 Ba3+ Kc2 Bf5#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Sacrifice the rook to open both bishops' mating diagonals. Book continuation: Rxc3+ bxc3 Ba3+ Kc2 Bf5#.",
+      "diagramPage": "106",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 96
+    }
+  },
+  {
+    "number": "848",
+    "title": "Vacating a square draws",
+    "order": 848,
+    "bookLines": [
+      "Bxc3 bxc3 Rf6+ Kg2 Qf1+ Kh2 Rf2+ Rxf2 Qxf2+ Kh3 Qf1+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/2p2pk1/4rbp1/8/2N3QP/2P1P1P1/1P2RK2/3q4 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Bxc3 bxc3 Rf6+ Kg2 Qf1+ Kh2 Rf2+",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Draw: vacate f6 for the rook and force perpetual checks. Book continuation: Bxc3 bxc3 Rf6+ Kg2 Qf1+ Kh2 Rf2+ Rxf2 Qxf2+ Kh3 Qf1+. Practice ends on Black’s fourth move or the last preceding Black move; the full continuation is shown here.",
+      "diagramPage": "106",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 96
+    }
+  },
+  {
+    "number": "849",
+    "title": "Unexpected mating attack",
+    "order": 849,
+    "bookLines": [
+      "Qxf2+ Kxf2 Re2+ Kg1 Re1+ Kh2 R8e2+ Kh3 Rh1#",
+      "Qxf2+ Kh3 Qf1+ Kh2 Re2#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4r3/p3rk2/1pRQ1b1p/5R1p/8/5PP1/Pq3BK1/8 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qxf2+ Kxf2 Re2+ Kg1 Re1+ Kh2 R8e2+",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Sacrifice the queen to activate the rooks against the exposed king. Book continuation: Qxf2+ Kxf2 Re2+ Kg1 Re1+ Kh2 R8e2+ Kh3 Rh1#. Alternative continuations: Qxf2+ Kh3 Qf1+ Kh2 Re2#. The later check on e2 must use the rook from e8 (R8e2+), preserving the rook on e1 for Rh1#. Practice ends on Black’s fourth move or the last preceding Black move; the full continuation is shown here.",
+      "diagramPage": "106",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 96
+    }
+  },
+  {
+    "number": "850",
+    "title": "Perpetual check saves the day",
+    "order": 850,
+    "bookLines": [
+      "Nh3+ Kg2 Rf2+ Kg3 Rf3+ Kg2 Rf2+ Kh1 Rf1+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/P2Q1p2/6p1/7k/5np1/5r2/1PP5/6K1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Nh3+ Kg2 Rf2+ Kg3 Rf3+ Kg2 Rf2+",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Draw by perpetual check. Book continuation: Nh3+ Kg2 Rf2+ Kg3 Rf3+ Kg2 Rf2+ Kh1 Rf1+. Practice ends on Black’s fourth move or the last preceding Black move; the full continuation is shown here.",
+      "diagramPage": "106",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 96
+    }
+  },
+  {
+    "number": "851",
+    "title": "A double sacrifice draws",
+    "order": 851,
+    "bookLines": [
+      "Re1+ Kh2 Rh1+ Kxh1 Re1+ Kh2 Rh1+ Kxh1"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4r3/1R6/2p3R1/2P4p/7k/8/P3r1P1/6K1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Re1+ Kh2 Rh1+ Kxh1 Re1+ Kh2 Rh1+",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Draw: sacrifice both rooks with checks to force stalemate. Book continuation: Re1+ Kh2 Rh1+ Kxh1 Re1+ Kh2 Rh1+ Kxh1. Practice ends on Black’s fourth move or the last preceding Black move; the full continuation is shown here.",
+      "diagramPage": "106",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 96
+    }
+  },
+  {
+    "number": "852",
+    "title": "White's king is too active",
+    "order": 852,
+    "bookLines": [
+      "Ke6 Nc3 Bf8+ Kc6 Rb6+ Kxc7 Bd6+ Kc8 Rb8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/p1p1kpbp/6p1/2Kp4/3P4/P3P3/1r3PPP/RN6 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Ke6 Nc3 Bf8+ Kc6 Rb6+ Kxc7 Bd6+",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "The king protects d5 and supports a bishop and rook mating net. Book continuation: Ke6 Nc3 Bf8+ Kc6 Rb6+ Kxc7 Bd6+ Kc8 Rb8#. Practice ends on Black’s fourth move or the last preceding Black move; the full continuation is shown here.",
+      "diagramPage": "106",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 96
+    }
+  },
+  {
+    "number": "853",
+    "title": "A sudden attack",
+    "order": 853,
+    "bookLines": [
+      "Ng3+ hxg3 hxg3 Bd4 Qh6+ Kg1 Qc1#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/5ppk/2Q1p3/4Pn2/2p2q1p/2P5/P5PP/6BK b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Ng3+ hxg3 hxg3 Bd4 Qh6+ Kg1 Qc1#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Open the h-file and attack the king; moving the bishop allows the queen to invade c1. Book continuation: Ng3+ hxg3 hxg3 Bd4 Qh6+ Kg1 Qc1#.",
+      "diagramPage": "107",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 97
+    }
+  },
+  {
+    "number": "854",
+    "title": "Sublimely simple",
+    "order": 854,
+    "bookLines": [
+      "Qxg2+ Bxg2 Ng4#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/p5rk/2Q2n1b/4p1q1/4Pp2/5B1R/PR3BPK/3r4 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qxg2+ Bxg2 Ng4#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the bishop and mate with the knight. Book continuation: Qxg2+ Bxg2 Ng4#.",
+      "diagramPage": "107",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 97
+    }
+  },
+  {
+    "number": "855",
+    "title": "Kingside crisis",
+    "order": 855,
+    "bookLines": [
+      "Rxh2+ Kxh2 Qxg3+ Kh1 Qg1#",
+      "Rxh2+ Rxh2 Qxc6+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6kr/p1q2pr1/B1Q5/8/3P4/4p1P1/P1R4P/7K b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rxh2+ Kxh2 Qxg3+ Kh1 Qg1#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Decoy the king and force the queen mating net. Book continuation: Rxh2+ Kxh2 Qxg3+ Kh1 Qg1#. Alternative continuations: Rxh2+ Rxh2 Qxc6+.",
+      "diagramPage": "107",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 97
+    }
+  },
+  {
+    "number": "856",
+    "title": "Killer cross-pin",
+    "order": 856,
+    "bookLines": [
+      "Rb2+ Rd2 Qd1 Rxb2 Qxd8",
+      "Rb2+ Kf1 Qf3+ Kg1 Qg2#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3Q4/5p1k/1p4pp/pB5q/Pr6/6P1/6KP/3R4 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rb2+ Rd2 Qd1 Rxb2 Qxd8",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Exploit the cross-pin to win White's queen after the rook sacrifice. Book continuation: Rb2+ Rd2 Qd1 Rxb2 Qxd8. Alternative continuations: Rb2+ Kf1 Qf3+ Kg1 Qg2#.",
+      "diagramPage": "107",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 97
+    }
+  },
+  {
+    "number": "857",
+    "title": "Winning counter-attack",
+    "order": 857,
+    "bookLines": [
+      "Nf2+ Bxf2 Rb1+ Bg1 Rxg1+ Kxg1 Qe1#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1r3nk1/5pb1/p2p1Pp1/3P2P1/2p1q1B1/2Pn3Q/6RR/6BK b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Nf2+ Bxf2 Rb1+ Bg1 Rxg1+ Kxg1 Qe1#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect White's defenders with checking sacrifices before queen mate. Book continuation: Nf2+ Bxf2 Rb1+ Bg1 Rxg1+ Kxg1 Qe1#.",
+      "diagramPage": "107",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 97
+    }
+  },
+  {
+    "number": "858",
+    "title": "One small step",
+    "order": 858,
+    "bookLines": [
+      "Kh6 Qd4 Qf1#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/5pk1/3p4/P2P2pp/2Q5/2P2qPK/7P/8 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Kh6 Qd4 Qf1#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Protect h5 and preserve the queen mating threats; the king move prevents counterplay. Book continuation: Kh6 Qd4 Qf1#.",
+      "diagramPage": "107",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 97
+    }
+  },
+  {
+    "number": "859",
+    "title": "Majestic march",
+    "order": 859,
+    "bookLines": [
+      "Kf6 Bf5 gxf5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/6k1/q5p1/2pK3p/3bB3/5P2/P1Q5/8 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Kf6 Bf5 gxf5",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "The king supports an inevitable Qe6 mating threat and the bishop cannot prevent it. Book continuation: Kf6 Bf5 gxf5.",
+      "diagramPage": "107",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 97
+    }
+  },
+  {
+    "number": "860",
+    "title": "Out of the square",
+    "order": 860,
+    "bookLines": [
+      "Rxh5+ Rxh5 Rh6 Rxh6 Kxh6"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "7r/6k1/p5r1/R6R/5P2/6PK/8/8 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rxh5+ Rxh5 Rh6 Rxh6 Kxh6",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Exchange the rooks so the far-away white king cannot stop the passed pawn. Book continuation: Rxh5+ Rxh5 Rh6 Rxh6 Kxh6.",
+      "diagramPage": "107",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 97
+    }
+  },
+  {
+    "number": "861",
+    "title": "The king has advanced too far",
+    "order": 861,
+    "bookLines": [
+      "Bf5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5kr1/8/5pbK/1N2p3/8/2P4R/8/8 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Bf5",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Block the rook's access to h8 and prepare unavoidable rook mate. Book continuation: Bf5.",
+      "diagramPage": "107",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 97
+    }
+  },
+  {
+    "number": "862",
+    "title": "Mixed motifs mate",
+    "order": 862,
+    "bookLines": [
+      "Rg2+ Bxg2 Rd1+ Bf1 Rxf1#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3r2k1/4R2p/6p1/2Q5/2P1P3/1R3q2/P2r3P/5BK1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Rg2+ Bxg2 Rd1+ Bf1 Rxf1#",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the bishop, then invade with the rook to mate. Book continuation: Rg2+ Bxg2 Rd1+ Bf1 Rxf1#.",
+      "diagramPage": "107",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 97
+    }
+  },
+  {
+    "number": "863",
+    "title": "It's easy when you know how",
+    "order": 863,
+    "bookLines": [
+      "Qxg2+ Qxg2 Rxe2"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4r3/1p4pk/2b2pq1/7p/3B1P2/7P/4RQP1/7K b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qxg2+ Qxg2 Rxe2",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Deflect the queen; its pin lets Black capture the rook and remain an exchange ahead. Book continuation: Qxg2+ Qxg2 Rxe2.",
+      "diagramPage": "107",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 97
+    }
+  },
+  {
+    "number": "864",
+    "title": "Firepower on the kingside",
+    "order": 864,
+    "bookLines": [
+      "Qf3 gxf3 Rxg1"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5q2/6pk/2p3r1/2Pp2r1/4p2p/2Q1P2P/3R1PPK/6R1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "prompt": "Black to move. Find the best tactical continuation.",
+      "solutionText": "Qf3 gxf3 Rxg1",
+      "hint": "Look for checks, captures, and threats. Combine forks, pins, deflection, discovered attacks, and mating patterns. In difficult positions, consider perpetual check or stalemate.",
+      "explanation": "Sacrifice the queen to invade with the rook and threaten mate on g2. Book continuation: Qf3 gxf3 Rxg1.",
+      "diagramPage": "107",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 97
+    }
+  }
+]

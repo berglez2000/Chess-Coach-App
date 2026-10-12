@@ -2,6 +2,8 @@ import Link from "next/link";
 import { PinLesson } from "@/components/learning/pin-lesson";
 import { SkewerLesson } from "@/components/learning/skewer-lesson";
 import { DrawingTacticsLesson } from "@/components/learning/drawing-tactics-lesson";
+import { MixedMotifsWhiteLesson } from "@/components/learning/mixed-motifs-white-lesson";
+import { MixedMotifsBlackLesson } from "@/components/learning/mixed-motifs-black-lesson";
 import { PromotionLesson } from "@/components/learning/promotion-lesson";
 import { DecoySacrificeLesson } from "@/components/learning/decoy-sacrifice-lesson";
 import { DeflectionLesson } from "@/components/learning/deflection-lesson";
@@ -33,6 +35,8 @@ export default async function ChapterPage({ params }: { params: Promise<{ id: st
     {material.title === "1001 chess exercises for beginners" && chapter.title === "Decoy sacrifice" && <DecoySacrificeLesson />}
     {material.title === "1001 chess exercises for beginners" && chapter.title === "Promotion" && <PromotionLesson />}
     {material.title === "1001 chess exercises for beginners" && chapter.title === "Drawing tactics" && <DrawingTacticsLesson />}
+    {material.title === "1001 chess exercises for beginners" && chapter.title === "Mixed motifs: White" && <MixedMotifsWhiteLesson />}
+    {material.title === "1001 chess exercises for beginners" && chapter.title === "Mixed motifs: Black" && <MixedMotifsBlackLesson />}
     <p className="mt-3 text-sm">{playable.filter(e => e.published!.progress[0]?.completedAt).length} / {playable.length} current exercises completed</p>
     {next ? <Link className="mt-4 inline-block font-semibold underline" href={`/learning/exercises/${next.id}`}>{playable.every(e => e.published!.progress[0]?.completedAt) ? "Repeat chapter practice" : "Resume chapter"}</Link> : <p className="mt-4">No published exercises to practice yet.</p>}
     <ol className="mt-6 space-y-4">{chapter.exercises.map(exercise => <li key={exercise.id} className="rounded-xl border bg-white p-4">

@@ -1,0 +1,4439 @@
+[
+  {
+    "number": "493",
+    "title": "White has options",
+    "order": 493,
+    "bookLines": [
+      "Be2#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2q1r3/3p1Np1/B5p1/7k/8/4P1PP/7K/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Be2#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "The bishop closes the diagonal to the king: Be2 delivers mate. Book continuation: Be2#.",
+      "diagramPage": "75",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 65
+    }
+  },
+  {
+    "number": "494",
+    "title": "Surprisingly simple",
+    "order": 494,
+    "bookLines": [
+      "Qxh7+ Kxh7 Rh4#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3r2rk/2Rn2pp/5p2/2p2P2/p4pRQ/3qP2P/6PK/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qxh7+ Kxh7 Rh4#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Qxh7+ Kxh7 Rh4#.",
+      "diagramPage": "75",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 65
+    }
+  },
+  {
+    "number": "495",
+    "title": "Forced mate",
+    "order": 495,
+    "bookLines": [
+      "Qxg5+ Kf8 Qg7+ Ke8 Qg8+ Kd7 Bh3+",
+      "Qxg5+ Ng6 Qh6"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1b3k1/ppp2p2/3p1P2/2qPn1p1/4p3/2P3P1/PP2P1BP/R1Q4K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qxg5+ Kf8 Qg7+ Ke8 Qg8+ Kd7 Bh3+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Drive the king along the back rank, then bring the bishop into the attack. Book continuation: Qxg5+ Kf8 Qg7+ Ke8 Qg8+ Kd7 Bh3+. Alternative continuations: Qxg5+ Ng6 Qh6.",
+      "diagramPage": "75",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 65
+    }
+  },
+  {
+    "number": "496",
+    "title": "Double deflection",
+    "order": 496,
+    "bookLines": [
+      "Bf3+ Rxf3 Qe4+ Qxe4 Rc8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "k3q3/p2r3p/P7/8/1Q6/Kp2r3/7P/2RB4 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Bf3+ Rxf3 Qe4+ Qxe4 Rc8#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Deflect the rook and queen in succession to open the c-file for mate. Book continuation: Bf3+ Rxf3 Qe4+ Qxe4 Rc8#.",
+      "diagramPage": "75",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 65
+    }
+  },
+  {
+    "number": "497",
+    "title": "The defender must go",
+    "order": 497,
+    "bookLines": [
+      "Qxc8 Rxc8 Nd7+ Ke8 Nxb6"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1bn1k1r/4bppp/pq6/1ppBNQ2/5B2/8/PP3PPP/R2R2K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qxc8 Rxc8 Nd7+ Ke8 Nxb6",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Qxc8 Rxc8 Nd7+ Ke8 Nxb6.",
+      "diagramPage": "75",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 65
+    }
+  },
+  {
+    "number": "498",
+    "title": "How to defend 2 hanging pieces?",
+    "order": 498,
+    "bookLines": [
+      "Qxf6+ Kxf6 Ne4+ Kf5 Nxd2"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/4r1k1/p3npp1/4Q3/3P1P2/4P1P1/3q1N2/2R3K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qxf6+ Kxf6 Ne4+ Kf5 Nxd2",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Sacrifice the queen to draw the king onto a square where a knight fork recovers the material. Book continuation: Qxf6+ Kxf6 Ne4+ Kf5 Nxd2.",
+      "diagramPage": "75",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 65
+    }
+  },
+  {
+    "number": "499",
+    "title": "To c7 or c3?",
+    "order": 499,
+    "bookLines": [
+      "Be4+ Ke6 Bd5+ Kxd5 Nc3+",
+      "Be4+ Ke6 Bd5+ Qxd5 Nc7+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/8/2B2p2/1N3kp1/8/4K1BP/q7/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Be4+ Ke6 Bd5+ Kxd5 Nc3+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Be4+ Ke6 Bd5+ Kxd5 Nc3+. Alternative continuations: Be4+ Ke6 Bd5+ Qxd5 Nc7+.",
+      "diagramPage": "76",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 66
+    }
+  },
+  {
+    "number": "500",
+    "title": "Two Davids take on a Goliath",
+    "order": 500,
+    "bookLines": [
+      "Bd5 Qxd5 Ne7+ Kf7 Nxd5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6k1/6pp/4q3/5NP1/4B2P/6K1/8/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Bd5 Qxd5 Ne7+ Kf7 Nxd5",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Bd5 Qxd5 Ne7+ Kf7 Nxd5.",
+      "diagramPage": "76",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 66
+    }
+  },
+  {
+    "number": "501",
+    "title": "Black dominates, but White draws",
+    "order": 501,
+    "bookLines": [
+      "Nh6+ Kh8 Nf7+ Kg8 Nh6+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5bk1/6np/6p1/3r1N2/8/7P/5P2/7K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Nh6+ Kh8 Nf7+ Kg8 Nh6+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Draw by perpetual check. Book continuation: Nh6+ Kh8 Nf7+ Kg8 Nh6+.",
+      "diagramPage": "76",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 66
+    }
+  },
+  {
+    "number": "502",
+    "title": "The famous Legal's mate",
+    "order": 502,
+    "bookLines": [
+      "Nxe5 Bxd1 Bxf7+ Ke7 Nd5#",
+      "Nxe5 dxe5 Qxg4"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "rn1qkbnr/ppp2p1p/3p2p1/4p3/2B1P1b1/2N2N2/PPPP1PPP/R1BQK2R w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Nxe5 Bxd1 Bxf7+ Ke7 Nd5#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "The knight can leave the pin: taking the queen allows the Legal mating pattern. Book continuation: Nxe5 Bxd1 Bxf7+ Ke7 Nd5#. Alternative continuations: Nxe5 dxe5 Qxg4.",
+      "diagramPage": "76",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 66
+    }
+  },
+  {
+    "number": "503",
+    "title": "Many motifs",
+    "order": 503,
+    "bookLines": [
+      "Ne6+ fxe6 Rc7+ Kh6 Qxf6",
+      "Ne6+ Kh6 Qxf6 fxe6 Rc7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1r1r4/1b3pk1/5qp1/pP1p3p/3N3P/3pP1P1/PQR2PB1/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Ne6+ fxe6 Rc7+ Kh6 Qxf6",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Ne6+ fxe6 Rc7+ Kh6 Qxf6. Alternative continuations: Ne6+ Kh6 Qxf6 fxe6 Rc7.",
+      "diagramPage": "76",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 66
+    }
+  },
+  {
+    "number": "504",
+    "title": "Give me your knight or your queen",
+    "order": 504,
+    "bookLines": [
+      "Bf7+ Kxf7 e6+ Bxe6 Qxa5",
+      "Bf7+ Kf8 Bxg6"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "rnb1k2r/pp2b1pp/2p2pn1/q3P2Q/5p2/PB6/1BPP2PP/RN2K1NR w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Bf7+ Kxf7 e6+ Bxe6 Qxa5",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Bf7+ Kxf7 e6+ Bxe6 Qxa5. Alternative continuations: Bf7+ Kf8 Bxg6.",
+      "diagramPage": "76",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 66
+    }
+  },
+  {
+    "number": "505",
+    "title": "Knightmare",
+    "order": 505,
+    "bookLines": [
+      "Nbc5+ bxc5 Nxc5+ Kc6 Nxe4"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/1p1k4/1p6/3p4/4q1r1/1NKN4/8/3Q4 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Nbc5+ bxc5 Nxc5+ Kc6 Nxe4",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Nbc5+ bxc5 Nxc5+ Kc6 Nxe4.",
+      "diagramPage": "76",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 66
+    }
+  },
+  {
+    "number": "506",
+    "title": "A frequent tactical trick",
+    "order": 506,
+    "bookLines": [
+      "Rh8 Rxa7 Rh7+ Ke6 Rxa7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "R7/P4k2/8/8/8/8/7K/r7 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rh8 Rxa7 Rh7+ Ke6 Rxa7",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Move the rook behind the pawn, threatening promotion and a skewer. Book continuation: Rh8 Rxa7 Rh7+ Ke6 Rxa7.",
+      "diagramPage": "76",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 66
+    }
+  },
+  {
+    "number": "507",
+    "title": "Putting Black in a fix",
+    "order": 507,
+    "bookLines": [
+      "Bd6 Qe1 g3+ Qxg3+ Bxg3#",
+      "Bd6 g4 Be7+ Qf6 Bxf6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/2B5/8/6pp/7k/7P/5qPK/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Bd6 Qe1 g3+ Qxg3+ Bxg3#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "The bishop threatens e7 and mate on g3. Black cannot keep the g2 pawn pinned. Book continuation: Bd6 Qe1 g3+ Qxg3+ Bxg3#. Alternative continuations: Bd6 g4 Be7+ Qf6 Bxf6#.",
+      "diagramPage": "76",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 66
+    }
+  },
+  {
+    "number": "508",
+    "title": "A cunning combo",
+    "order": 508,
+    "bookLines": [
+      "Nh6+ Kh8 Qxe5 Qxe5 Nxf7+ Rxf7 Rd8+",
+      "Nh6+ Kh8 Qxe5 Qxe5 Nxf7+ Kg8 Nxe5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5rk1/ppq2ppp/2p5/4bN2/4P3/6Q1/PP3PPP/3R2K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Nh6+ Kh8 Qxe5 Qxe5 Nxf7+ Rxf7 Rd8+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Nh6+ Kh8 Qxe5 Qxe5 Nxf7+ Rxf7 Rd8+. Alternative continuations: Nh6+ Kh8 Qxe5 Qxe5 Nxf7+ Kg8 Nxe5.",
+      "diagramPage": "76",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 66
+    }
+  },
+  {
+    "number": "509",
+    "title": "It's either the king or the queen",
+    "order": 509,
+    "bookLines": [
+      "Bxh6 gxh6 Rxh6+ Kg7 Bb7 Kxh6 Bxa6",
+      "Bxh6 gxh6 Rxh6+ Kg7 Bb7 Qxb7 Qg6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5rbk/p5p1/qn3p1p/4r3/2pNB3/b1P4R/P1QB1PPP/5RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Bxh6 gxh6 Rxh6+ Kg7 Bb7 Kxh6 Bxa6",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Bxh6 gxh6 Rxh6+ Kg7 Bb7 Kxh6 Bxa6. Alternative continuations: Bxh6 gxh6 Rxh6+ Kg7 Bb7 Qxb7 Qg6#.",
+      "diagramPage": "76",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 66
+    }
+  },
+  {
+    "number": "510",
+    "title": "Good knight",
+    "order": 510,
+    "bookLines": [
+      "Rxe6 fxe6 Qxf8+ Kxf8 Nxe6+ Ke7 Nxc7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5rk1/1pq2ppp/p3n3/8/3N4/2P5/PP4PP/4RQ1K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rxe6 fxe6 Qxf8+ Kxf8 Nxe6+ Ke7 Nxc7",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Rxe6 fxe6 Qxf8+ Kxf8 Nxe6+ Ke7 Nxc7.",
+      "diagramPage": "76",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 66
+    }
+  },
+  {
+    "number": "511",
+    "title": "Unwelcome interference",
+    "order": 511,
+    "bookLines": [
+      "Bg7+ Qxg7 Rxg7",
+      "Bg7+ Nxg7 Qxh7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3rr2k/ppp2q1p/3p1b1B/3Pp2n/2P5/3Q3P/PPB2P2/2KR2R1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Bg7+ Qxg7 Rxg7",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Bg7+ Qxg7 Rxg7. Alternative continuations: Bg7+ Nxg7 Qxh7#.",
+      "diagramPage": "77",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 67
+    }
+  },
+  {
+    "number": "512",
+    "title": "Once more with feeling",
+    "order": 512,
+    "bookLines": [
+      "b5 Bxb5 Ncd6+ Nxd6 Nxd6+ Ke6 Nxb5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2N5/1n1p1k2/2b2p2/4pN2/1P2P3/5P1K/8/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "b5 Bxb5 Ncd6+ Nxd6 Nxd6+ Ke6 Nxb5",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: b5 Bxb5 Ncd6+ Nxd6 Nxd6+ Ke6 Nxb5.",
+      "diagramPage": "77",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 67
+    }
+  },
+  {
+    "number": "513",
+    "title": "Time to prepare",
+    "order": 513,
+    "bookLines": [
+      "Rxg7+ Kxg7 Qxd4+ Qxd4 Nxe6+ Kf6 Nxd4"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6k1/R5bp/4p1p1/8/3n1N2/2q4P/6P1/3Q3K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rxg7+ Kxg7 Qxd4+ Qxd4 Nxe6+ Kf6 Nxd4",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Rxg7+ Kxg7 Qxd4+ Qxd4 Nxe6+ Kf6 Nxd4.",
+      "diagramPage": "77",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 67
+    }
+  },
+  {
+    "number": "514",
+    "title": "Removing the defender",
+    "order": 514,
+    "bookLines": [
+      "Qxf6 Nxf6 d8=Q+ Ka7 Qxf6"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "k7/1q1P3p/5bp1/p2n4/8/5Q1B/PPP3PP/1K6 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qxf6 Nxf6 d8=Q+ Ka7 Qxf6",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Qxf6 Nxf6 d8=Q+ Ka7 Qxf6.",
+      "diagramPage": "77",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 67
+    }
+  },
+  {
+    "number": "515",
+    "title": "Anastasia's mate",
+    "order": 515,
+    "bookLines": [
+      "Ne7+ Kh8 Rxh7+ Kxh7 Rh4#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r4rk1/1b3ppp/8/3N4/3R4/P7/1PP4R/1K6 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Ne7+ Kh8 Rxh7+ Kxh7 Rh4#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Ne7+ Kh8 Rxh7+ Kxh7 Rh4#.",
+      "diagramPage": "77",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 67
+    }
+  },
+  {
+    "number": "516",
+    "title": "Two checks",
+    "order": 516,
+    "bookLines": [
+      "Rxc6+ Qxc6 Ne7+ Kc7 Nxc6 Kxc6"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2k5/r2n3p/1Rp1qpp1/2pN4/4P3/1P1P3P/2P2QP1/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rxc6+ Qxc6 Ne7+ Kc7 Nxc6",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Rxc6+ Qxc6 Ne7+ Kc7 Nxc6 Kxc6. Practice ends on White’s fourth move or the last preceding White move; the full book continuation is shown here.",
+      "diagramPage": "77",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 67
+    }
+  },
+  {
+    "number": "517",
+    "title": "The way ahead",
+    "order": 517,
+    "bookLines": [
+      "g4 fxg4 f5 gxf5 g6 hxg6 h7",
+      "g4 fxg4 f5 Ke5 fxg6"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/7p/6pP/5pP1/3kpP2/6P1/4K3/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "g4 fxg4 f5 gxf5 g6 hxg6 h7",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Sacrifice the pawns in succession to create an unstoppable passed pawn. Book continuation: g4 fxg4 f5 gxf5 g6 hxg6 h7. Alternative continuations: g4 fxg4 f5 Ke5 fxg6.",
+      "diagramPage": "77",
+      "answerPage": "133",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 67
+    }
+  },
+  {
+    "number": "518",
+    "title": "Two rooks for the price of one",
+    "order": 518,
+    "bookLines": [
+      "Re7 Qxe7 Qxd5+ Ne6 Qxa8+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r5k1/p4qnp/1p4pB/2pr4/3p2P1/7P/PPP3Q1/R3R1K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Re7 Qxe7 Qxd5+ Ne6 Qxa8+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Re7 Qxe7 Qxd5+ Ne6 Qxa8+.",
+      "diagramPage": "77",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 67
+    }
+  },
+  {
+    "number": "519",
+    "title": "A 2 pawn plus is enough to win",
+    "order": 519,
+    "bookLines": [
+      "Rxg7+ Kxg7 Nxe6+ Kf7 Nxc7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6R1/1br2kpp/p3pp2/1p6/1P1N4/P3PP2/3K2PP/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rxg7+ Kxg7 Nxe6+ Kf7 Nxc7",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Rxg7+ Kxg7 Nxe6+ Kf7 Nxc7.",
+      "diagramPage": "77",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 67
+    }
+  },
+  {
+    "number": "520",
+    "title": "Again and again and again and...",
+    "order": 520,
+    "bookLines": [
+      "Nh6+ Kh8 Nf7+ Kg8 Nh6+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5nk1/6pp/8/5N2/8/8/rq6/6RK w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Nh6+ Kh8 Nf7+ Kg8 Nh6+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Draw by perpetual check. Book continuation: Nh6+ Kh8 Nf7+ Kg8 Nh6+.",
+      "diagramPage": "77",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 67
+    }
+  },
+  {
+    "number": "521",
+    "title": "The old one-two",
+    "order": 521,
+    "bookLines": [
+      "Rf6+ Qxf6 e5+ Kxe5 Ng4+",
+      "Rf6+ Qxf6 e5+ Qxe5 Nf7+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/8/3k2qN/P7/1P2P3/8/2Kn4/5R2 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rf6+ Qxf6 e5+ Kxe5 Ng4+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Rf6+ Qxf6 e5+ Kxe5 Ng4+. Alternative continuations: Rf6+ Qxf6 e5+ Qxe5 Nf7+.",
+      "diagramPage": "77",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 67
+    }
+  },
+  {
+    "number": "522",
+    "title": "Deflection",
+    "order": 522,
+    "bookLines": [
+      "Qa4+ Qxa4 Nc7+ Kf8 Rxd8+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3rk2r/pp2ppbp/5p2/q2N4/3Q1P2/8/PPP3PP/2KR3R w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qa4+ Qxa4 Nc7+ Kf8 Rxd8+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Qa4+ Qxa4 Nc7+ Kf8 Rxd8+.",
+      "diagramPage": "77",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 67
+    }
+  },
+  {
+    "number": "523",
+    "title": "Precarious defence",
+    "order": 523,
+    "bookLines": [
+      "e6 Bxe6 Bxe6 Rxe6 Rxd7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r3r1k1/pp1n1ppp/2p5/4Pb2/2B2P2/B1P5/P5PP/R2R2K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "e6 Bxe6 Bxe6 Rxe6 Rxd7",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: e6 Bxe6 Bxe6 Rxe6 Rxd7.",
+      "diagramPage": "78",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 68
+    }
+  },
+  {
+    "number": "524",
+    "title": "Decoy, check, mate",
+    "order": 524,
+    "bookLines": [
+      "Qf8+ Kxf8 Bh6+ Kg8 Re8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/1p3pkp/2rQ1p2/3b1q2/5B2/P6P/1P2R1PK/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qf8+ Kxf8 Bh6+ Kg8 Re8#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Qf8+ Kxf8 Bh6+ Kg8 Re8#.",
+      "diagramPage": "78",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 68
+    }
+  },
+  {
+    "number": "525",
+    "title": "One of them will make it",
+    "order": 525,
+    "bookLines": [
+      "Nc7 Bb7 Ne8 Ng8 Nxd6+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "N7/P5P1/b2p1n2/8/4k3/8/7K/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Nc7 Bb7 Ne8 Ng8 Nxd6+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Use the two promotion threats and the knight fork to win material. Book continuation: Nc7 Bb7 Ne8 Ng8 Nxd6+.",
+      "diagramPage": "78",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 68
+    }
+  },
+  {
+    "number": "526",
+    "title": "Wham... bam... mate",
+    "order": 526,
+    "bookLines": [
+      "Rxg7+ Kxg7 Bh6+ Kxh6 Qg5#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5rk1/n1p1R1bp/p2p4/1qpP1QB1/7P/2P3P1/PP3P2/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rxg7+ Kxg7 Bh6+ Kxh6 Qg5#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Rxg7+ Kxg7 Bh6+ Kxh6 Qg5#.",
+      "diagramPage": "78",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 68
+    }
+  },
+  {
+    "number": "527",
+    "title": "Back rank weakness",
+    "order": 527,
+    "bookLines": [
+      "Qb7 Qc8 Rxd8+ Qxd8 Qxa7",
+      "Qb7 Qxb7 Rxd8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3r2k1/n1q2ppp/8/8/8/5Q1P/5PP1/3R1BK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qb7 Qc8 Rxd8+ Qxd8 Qxa7",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Qb7 Qc8 Rxd8+ Qxd8 Qxa7. Alternative continuations: Qb7 Qxb7 Rxd8#.",
+      "diagramPage": "78",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 68
+    }
+  },
+  {
+    "number": "528",
+    "title": "Black's passivity is punished",
+    "order": 528,
+    "bookLines": [
+      "Bc5 Rxd3 Bxe7+ Ke8 cxd3",
+      "Bc5 Bxc5 Rxd8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3r1kr1/1p2bppp/2p5/8/3B2P1/3R4/1PP2PP1/1K2R3 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Bc5 Rxd3 Bxe7+ Ke8 cxd3",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Bc5 Rxd3 Bxe7+ Ke8 cxd3. Alternative continuations: Bc5 Bxc5 Rxd8#.",
+      "diagramPage": "78",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 68
+    }
+  },
+  {
+    "number": "529",
+    "title": "Seizing the rank",
+    "order": 529,
+    "bookLines": [
+      "Rc5 Qa3 Rh5+ gxh5 Qf6#",
+      "Rc5 Rb5 Qe3+ Kg7 Qe5+ f6 Rxb5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/pp3p1p/1r2b1pk/q7/3Q4/1P3B1P/P4PPK/2R5 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rc5 Qa3 Rh5+ gxh5 Qf6#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Rc5 Qa3 Rh5+ gxh5 Qf6#. Alternative continuations: Rc5 Rb5 Qe3+ Kg7 Qe5+ f6 Rxb5.",
+      "diagramPage": "78",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 68
+    }
+  },
+  {
+    "number": "530",
+    "title": "b-file blues",
+    "order": 530,
+    "bookLines": [
+      "Rxc6 bxc6 Rb1+ Ka8 Qxc8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1kq1Q3/pp3prp/2np4/3N2r1/8/6P1/P4P1P/2R1R1K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rxc6 bxc6 Rb1+ Ka8 Qxc8#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Rxc6 bxc6 Rb1+ Ka8 Qxc8#.",
+      "diagramPage": "78",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 68
+    }
+  },
+  {
+    "number": "531",
+    "title": "Unexpected double attack",
+    "order": 531,
+    "bookLines": [
+      "Rc8+ Rxc8 Qxa7+ Kxa7 bxc8=N+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1k1r4/pP2q3/8/Q7/8/6bP/P5P1/2R4K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rc8+ Rxc8 Qxa7+ Kxa7 bxc8=N+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Sacrifice the rook and queen, then underpromote to a knight with check. Book continuation: Rc8+ Rxc8 Qxa7+ Kxa7 bxc8=N+.",
+      "diagramPage": "78",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 68
+    }
+  },
+  {
+    "number": "532",
+    "title": "Knight fork",
+    "order": 532,
+    "bookLines": [
+      "Rd8+ Kb7 Rb8+ Kxb8 Nc6+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "k7/2pR4/1p6/4q3/1NP5/1P3K2/8/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rd8+ Kb7 Rb8+ Kxb8 Nc6+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Rd8+ Kb7 Rb8+ Kxb8 Nc6+.",
+      "diagramPage": "78",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 68
+    }
+  },
+  {
+    "number": "533",
+    "title": "This is clever",
+    "order": 533,
+    "bookLines": [
+      "Nd4 Kxd4 b8=Q g1=Q Qxa7+",
+      "Nd4 g1=Q Ne2+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2K5/pP6/2N5/8/8/2k5/6p1/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Nd4 Kxd4 b8=Q g1=Q Qxa7+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "The knight sacrifice enables promotion with tempo despite Black’s own passed pawn. Book continuation: Nd4 Kxd4 b8=Q g1=Q Qxa7+. Alternative continuations: Nd4 g1=Q Ne2+.",
+      "diagramPage": "78",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 68
+    }
+  },
+  {
+    "number": "534",
+    "title": "Opening a file",
+    "order": 534,
+    "bookLines": [
+      "Bxe5 Qxe5 Qxe5 dxe5 Bxe6"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r4k1r/pp3ppp/1bppbq2/4n3/3pPB2/1B1P2Q1/PPPN2PP/R4RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Bxe5 Qxe5 Qxe5 dxe5 Bxe6",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Bxe5 Qxe5 Qxe5 dxe5 Bxe6.",
+      "diagramPage": "78",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 68
+    }
+  },
+  {
+    "number": "535",
+    "title": "H-bomb",
+    "order": 535,
+    "bookLines": [
+      "Ng4+ hxg4 Rh1+ Kg7 Qxg5",
+      "Ng4+ Kg7 Qxg5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2r5/1r6/4pNpk/3pP1qp/8/2P1QP2/5PK1/R7 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Ng4+ hxg4 Rh1+ Kg7 Qxg5",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Sacrifice the knight to open the h-file; the rook check wins the queen. Book continuation: Ng4+ hxg4 Rh1+ Kg7 Qxg5. Alternative continuations: Ng4+ Kg7 Qxg5.",
+      "diagramPage": "79",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 69
+    }
+  },
+  {
+    "number": "536",
+    "title": "One thing prevents it",
+    "order": 536,
+    "bookLines": [
+      "Qxf6 gxf6 Ne7+ Kg7 Nxd5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6k1/5pp1/1Q3p1p/3q1N2/8/6PP/5P1K/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qxf6 gxf6 Ne7+ Kg7 Nxd5",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Qxf6 gxf6 Ne7+ Kg7 Nxd5.",
+      "diagramPage": "79",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 69
+    }
+  },
+  {
+    "number": "537",
+    "title": "Gain some time and gain the queen",
+    "order": 537,
+    "bookLines": [
+      "Bh6+ Kxh6 Qd2+ Kg7 Nxd8"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1bq1b1r/pppp2kp/2N2np1/3Q4/8/8/PPP2PPP/RNB1K2R w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Bh6+ Kxh6 Qd2+ Kg7 Nxd8",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Bh6+ Kxh6 Qd2+ Kg7 Nxd8.",
+      "diagramPage": "79",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 69
+    }
+  },
+  {
+    "number": "538",
+    "title": "Which defender first?",
+    "order": 538,
+    "bookLines": [
+      "Rxg6+ hxg6 Bxc5+ Kxc5 Kxd3",
+      "Bxc5+ Kxc5 Rxg6 Rf3"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/7p/1p1k2p1/2n5/6R1/3rB1P1/1PK4P/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rxg6+ hxg6 Bxc5+ Kxc5 Kxd3",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Capture the pawn with check before removing the knight, then win the rook. Book continuation: Rxg6+ hxg6 Bxc5+ Kxc5 Kxd3. Alternative continuations: Bxc5+ Kxc5 Rxg6 Rf3.",
+      "diagramPage": "79",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 69
+    }
+  },
+  {
+    "number": "539",
+    "title": "Opening lines: diagonals",
+    "order": 539,
+    "bookLines": [
+      "Rxe5+ fxe5 Qd8+ Nxd8 Rxd8#",
+      "Rxe5+ Nxe5 Qd8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1b1kq1r/1pp3pp/1pn2p2/4p1B1/2B5/3Q4/P4PPP/3RR1K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rxe5+ fxe5 Qd8+ Nxd8 Rxd8#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Rxe5+ fxe5 Qd8+ Nxd8 Rxd8#. Alternative continuations: Rxe5+ Nxe5 Qd8#.",
+      "diagramPage": "79",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 69
+    }
+  },
+  {
+    "number": "540",
+    "title": "Decoy and double check",
+    "order": 540,
+    "bookLines": [
+      "Qf8+ Bxf8 Ng7+ Kd8 Re8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2r1k3/2prbp1p/4Np1Q/p7/2P5/qP5P/P5P1/2R1R2K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qf8+ Bxf8 Ng7+ Kd8 Re8#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Deflect the bishop, then deliver double check to force the king onto the mating square. Book continuation: Qf8+ Bxf8 Ng7+ Kd8 Re8#.",
+      "diagramPage": "79",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 69
+    }
+  },
+  {
+    "number": "541",
+    "title": "9 for the price of 5",
+    "order": 541,
+    "bookLines": [
+      "Qe8+ Qf8 Rh8+ Kxh8 Qxf8+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1b3k1/1pp3q1/pnnp4/6rQ/4P1P1/2PP4/P1P1B1K1/2R4R w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qe8+ Qf8 Rh8+ Kxh8 Qxf8+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Qe8+ Qf8 Rh8+ Kxh8 Qxf8+.",
+      "diagramPage": "79",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 69
+    }
+  },
+  {
+    "number": "542",
+    "title": "Deflection",
+    "order": 542,
+    "bookLines": [
+      "Re8+ Rxe8 Qg4+ Ng5 Qxf5",
+      "Re8+ Rxe8 Qg4+ Qxg4 Nf6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2r3kr/ppp2n1p/7B/5q1N/1pp5/2Pp4/PP2RPPP/R2Q2K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Re8+ Rxe8 Qg4+ Ng5 Qxf5",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Re8+ Rxe8 Qg4+ Ng5 Qxf5. Alternative continuations: Re8+ Rxe8 Qg4+ Qxg4 Nf6#.",
+      "diagramPage": "79",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 69
+    }
+  },
+  {
+    "number": "543",
+    "title": "Intermediate check",
+    "order": 543,
+    "bookLines": [
+      "Qg4+ Qxg4 Rxe8+ Kg7 fxg4"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4r1k1/pp1q1p1p/2p5/3p4/5Q2/1P3PP1/P1P3KP/4R3 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qg4+ Qxg4 Rxe8+ Kg7 fxg4",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Qg4+ Qxg4 Rxe8+ Kg7 fxg4.",
+      "diagramPage": "79",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 69
+    }
+  },
+  {
+    "number": "544",
+    "title": "Double threat",
+    "order": 544,
+    "bookLines": [
+      "Qc3 Rbh4 Qxc8+ Rxc8 Rxc8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "k1n4r/pp6/6p1/5p2/1r6/1P3Q2/P4P1P/2R2K2 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qc3 Rbh4 Qxc8+ Rxc8 Rxc8#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Qc3 Rbh4 Qxc8+ Rxc8 Rxc8#.",
+      "diagramPage": "79",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 69
+    }
+  },
+  {
+    "number": "545",
+    "title": "Easier than you would think",
+    "order": 545,
+    "bookLines": [
+      "Bg5 Bxf3 Qc1 Qxd4 Qc8+ Qd8 Qxd8#",
+      "Bg5 Bxf3 Qd2 Bb4"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "rn2kb1r/pp3ppp/2b1pq2/8/3P4/3B1N2/PP3PPP/R1BQK2R w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Bg5 Bxf3 Qc1 Qxd4 Qc8+ Qd8 Qxd8#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "The bishop move creates a decisive threat; after the capture, Qc1 renews the attack. Book continuation: Bg5 Bxf3 Qc1 Qxd4 Qc8+ Qd8 Qxd8#. Alternative continuations: Bg5 Bxf3 Qd2 Bb4.",
+      "diagramPage": "79",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 69
+    }
+  },
+  {
+    "number": "546",
+    "title": "A pin makes it possible",
+    "order": 546,
+    "bookLines": [
+      "Bxb7+ Kxb7 Nc5+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1nkr4/1ppq4/1p3pp1/1Q2p3/6P1/1N1P4/P3PP2/1K1R3B w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Bxb7+ Kxb7 Nc5+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "The pinned c7 pawn cannot take the bishop. The knight fork then wins the queen. Book continuation: Bxb7+ Kxb7 Nc5+.",
+      "diagramPage": "79",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 69
+    }
+  },
+  {
+    "number": "547",
+    "title": "Take away an escape square",
+    "order": 547,
+    "bookLines": [
+      "Qh8+ Rxh8 Nf6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1q3bk1/5p1r/7P/8/n5N1/2Q5/1B6/1K6 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qh8+ Rxh8 Nf6#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Qh8+ Rxh8 Nf6#.",
+      "diagramPage": "80",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 70
+    }
+  },
+  {
+    "number": "548",
+    "title": "Deflection",
+    "order": 548,
+    "bookLines": [
+      "Rd8+ Rxd8 Qc3+",
+      "Rd8+ Kg7 Rxc8",
+      "Rd8+ Qxd8 Qe5+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2r4k/1p1R1B1p/6p1/6q1/8/P2P2PP/5P1K/2b1Q3 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rd8+ Rxd8 Qc3+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Rd8+ Rxd8 Qc3+. Alternative continuations: Rd8+ Kg7 Rxc8; Rd8+ Qxd8 Qe5+.",
+      "diagramPage": "80",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 70
+    }
+  },
+  {
+    "number": "549",
+    "title": "Arabian mate in arrival",
+    "order": 549,
+    "bookLines": [
+      "Qh6+ gxh6 Rh7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r3r2k/p2b1Rp1/1pp2Np1/3q4/3n4/4Q3/PP4PP/3R2K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qh6+ gxh6 Rh7#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Qh6+ gxh6 Rh7#.",
+      "diagramPage": "80",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 70
+    }
+  },
+  {
+    "number": "550",
+    "title": "It's worth the sacrifice",
+    "order": 550,
+    "bookLines": [
+      "Qxe5+ dxe5 Re6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r2q4/3rk3/1pRp3p/1P1PpRpP/p3P1P1/PpQ5/1K6/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qxe5+ dxe5 Re6#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Qxe5+ dxe5 Re6#.",
+      "diagramPage": "80",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 70
+    }
+  },
+  {
+    "number": "551",
+    "title": "Quick mate",
+    "order": 551,
+    "bookLines": [
+      "Rxc6+ Qxc6 Qb4#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4r1r1/pQ5p/1qp2R2/2k1p3/P3P3/2PP4/2P3PP/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rxc6+ Qxc6 Qb4#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Rxc6+ Qxc6 Qb4#.",
+      "diagramPage": "80",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 70
+    }
+  },
+  {
+    "number": "552",
+    "title": "Winning back the exchange",
+    "order": 552,
+    "bookLines": [
+      "Bd5 cxd5 Rxe6"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6k1/2r3b1/R1p1r1pp/8/3P4/4P2P/3N1PB1/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Bd5 cxd5 Rxe6",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Bd5 cxd5 Rxe6.",
+      "diagramPage": "80",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 70
+    }
+  },
+  {
+    "number": "553",
+    "title": "Operation b7",
+    "order": 553,
+    "bookLines": [
+      "Rd7 Qxd7 Rxd7",
+      "Rd7 Nxd7 Qxb7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1kr3r1/pp2qp2/1n5p/4b1p1/6P1/1Q3BN1/PP1R2P1/1K1R4 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rd7 Qxd7 Rxd7",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Rd7 Qxd7 Rxd7. Alternative continuations: Rd7 Nxd7 Qxb7#.",
+      "diagramPage": "80",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 70
+    }
+  },
+  {
+    "number": "554",
+    "title": "Double attack",
+    "order": 554,
+    "bookLines": [
+      "Bd3 Qxd3 Rxc8+",
+      "Bd3 Rxc1 Bxg6 Rxe1+ Qxe1 fxg6 Bxf6"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2r3k1/pr3pp1/4pnqp/4B3/b1BP3Q/P4P2/6PP/2R1R1K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Bd3 Qxd3 Rxc8+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "The bishop simultaneously attacks the queen and the rook on c8. Book continuation: Bd3 Qxd3 Rxc8+. Alternative continuations: Bd3 Rxc1 Bxg6 Rxe1+ Qxe1 fxg6 Bxf6.",
+      "diagramPage": "80",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 70
+    }
+  },
+  {
+    "number": "555",
+    "title": "Winning attack",
+    "order": 555,
+    "bookLines": [
+      "Qxh6 gxh6 Bh7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r2q1rk1/2pbbpp1/p4B1p/1n1pP1NQ/2p5/2P5/P1B2PPP/R4RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qxh6 gxh6 Bh7#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Qxh6 gxh6 Bh7#.",
+      "diagramPage": "80",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 70
+    }
+  },
+  {
+    "number": "556",
+    "title": "Overloaded",
+    "order": 556,
+    "bookLines": [
+      "Rxh6+ Bxh6 Qxc3",
+      "Rxh6+ Kxh6 Qh4#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r7/2p1r1bk/3p2pp/PP3p2/2Q5/2q2PP1/R3PNK1/7R w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rxh6+ Bxh6 Qxc3",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Rxh6+ Bxh6 Qxc3. Alternative continuations: Rxh6+ Kxh6 Qh4#.",
+      "diagramPage": "80",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 70
+    }
+  },
+  {
+    "number": "557",
+    "title": "A spectacular mate",
+    "order": 557,
+    "bookLines": [
+      "Qxh7+ Kxh7 Rh5+ Kg8 Rh8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1b1r1k1/5p1p/p1n1qBp1/3R4/7Q/2p2N2/PPB2PPP/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qxh7+ Kxh7 Rh5+ Kg8 Rh8#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Qxh7+ Kxh7 Rh5+ Kg8 Rh8#.",
+      "diagramPage": "80",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 70
+    }
+  },
+  {
+    "number": "558",
+    "title": "Elegant execution",
+    "order": 558,
+    "bookLines": [
+      "Qf6+ Rg7 h6 Rg8 Rh1"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1r4rk/5b1q/7Q/3p3P/2pP4/P1P5/KP3P2/6R1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qf6+ Rg7 h6 Rg8 Rh1",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "The queen check forces the rook to g7; advancing the h-pawn makes Rh1 decisive. Book continuation: Qf6+ Rg7 h6 Rg8 Rh1.",
+      "diagramPage": "80",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 70
+    }
+  },
+  {
+    "number": "559",
+    "title": "Removing the defender",
+    "order": 559,
+    "bookLines": [
+      "Rxg5 fxg5 Qxh7+ Qxh7 Rxh7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r4r1k/6qp/p1b1BpPQ/1p2p1n1/4P3/2N5/PPP5/1K4RR w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rxg5 fxg5 Qxh7+ Qxh7 Rxh7#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Rxg5 fxg5 Qxh7+ Qxh7 Rxh7#.",
+      "diagramPage": "81",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 71
+    }
+  },
+  {
+    "number": "560",
+    "title": "First a double attack",
+    "order": 560,
+    "bookLines": [
+      "Qe5 Rxb5 Qxh8+ Kd7 Rd6+ Kxd6 Qxd8+",
+      "Qe5 Kf7 Rf6+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1r1qk2r/p3n3/2R1Q2p/1R1p2pP/2pPb3/2P5/4NPP1/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qe5 Rxb5 Qxh8+ Kd7 Rd6+ Kxd6 Qxd8+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Qe5 Rxb5 Qxh8+ Kd7 Rd6+ Kxd6 Qxd8+. Alternative continuations: Qe5 Kf7 Rf6+.",
+      "diagramPage": "81",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 71
+    }
+  },
+  {
+    "number": "561",
+    "title": "Strangely effective",
+    "order": 561,
+    "bookLines": [
+      "g4 Bxf3 Rc8+ Re8 Rxe8#",
+      "g4 h5 Qxh3"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6k1/5ppp/pB6/3br3/Pp6/5QPq/1P3P1P/2R3K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "g4 Bxf3 Rc8+ Re8 Rxe8#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: g4 Bxf3 Rc8+ Re8 Rxe8#. Alternative continuations: g4 h5 Qxh3.",
+      "diagramPage": "81",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 71
+    }
+  },
+  {
+    "number": "562",
+    "title": "A classic mate",
+    "order": 562,
+    "bookLines": [
+      "Qxh7+ Kxh7 Rh4#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r6k/p3Nppp/1p6/5Q2/4R3/4P3/1r3PqP/4KR2 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qxh7+ Kxh7 Rh4#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Qxh7+ Kxh7 Rh4#.",
+      "diagramPage": "81",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 71
+    }
+  },
+  {
+    "number": "563",
+    "title": "Black did not expect this",
+    "order": 563,
+    "bookLines": [
+      "Bb5 c6 Qc7#",
+      "Bb5 Rh8 Qe7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1bkr3/ppp2Q1p/3p4/2qNb3/2B5/3P4/PPP3PP/4R2K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Bb5 c6 Qc7#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "The bishop move cuts off escape squares and threatens queen mate. Book continuation: Bb5 c6 Qc7#. Alternative continuations: Bb5 Rh8 Qe7#.",
+      "diagramPage": "81",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 71
+    }
+  },
+  {
+    "number": "564",
+    "title": "The end is near",
+    "order": 564,
+    "bookLines": [
+      "Nh7+ Bxh7 Rf7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1r4b1/3R4/5kp1/2nBppN1/7P/4P3/5PP1/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Nh7+ Bxh7 Rf7#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Nh7+ Bxh7 Rf7#.",
+      "diagramPage": "81",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 71
+    }
+  },
+  {
+    "number": "565",
+    "title": "Knight flight",
+    "order": 565,
+    "bookLines": [
+      "Nf5+ Kg5 Nxd6 Qxe6+ dxe6",
+      "Nf5+ gxf5 Qxf6+ Kh5 Be2#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1rq5/7p/3bQppk/3Pp3/4P2N/6PK/7P/5B2 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Nf5+ Kg5 Nxd6 Qxe6+ dxe6",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Nf5+ Kg5 Nxd6 Qxe6+ dxe6. Alternative continuations: Nf5+ gxf5 Qxf6+ Kh5 Be2#.",
+      "diagramPage": "81",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 71
+    }
+  },
+  {
+    "number": "566",
+    "title": "Opening lines",
+    "order": 566,
+    "bookLines": [
+      "g6 fxg6 Rf8+ Bxf8 a8=Q",
+      "g6 Bxa7 g7",
+      "g6 Kxg6 Rg8+",
+      "g6 Rxa7 Rxa7 Bxa7 g7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "R7/P1r2p2/4p3/2b1PkPp/3p1B2/6P1/5P1K/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "g6 fxg6 Rf8+ Bxf8 a8=Q",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "The pawn advance threatens promotion and frees the rook for a decisive sacrifice. Book continuation: g6 fxg6 Rf8+ Bxf8 a8=Q. Alternative continuations: g6 Bxa7 g7; g6 Kxg6 Rg8+; g6 Rxa7 Rxa7 Bxa7 g7.",
+      "diagramPage": "81",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 71
+    }
+  },
+  {
+    "number": "567",
+    "title": "Mate in 3",
+    "order": 567,
+    "bookLines": [
+      "Qf6+ Qxf6 Re8+ Qf8 Rxf8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1n3q1k/r2r3p/p3Q3/1p6/8/2P3R1/P4PPP/4R1K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qf6+ Qxf6 Re8+ Qf8 Rxf8#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Qf6+ Qxf6 Re8+ Qf8 Rxf8#.",
+      "diagramPage": "81",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 71
+    }
+  },
+  {
+    "number": "568",
+    "title": "Deadly simple",
+    "order": 568,
+    "bookLines": [
+      "Qb7 Ke6 c7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/p1Q1qk2/1pP2pp1/6p1/6P1/7P/P4P2/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qb7 Ke6 c7",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Qb7 Ke6 c7.",
+      "diagramPage": "81",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 71
+    }
+  },
+  {
+    "number": "569",
+    "title": "Deflection",
+    "order": 569,
+    "bookLines": [
+      "Qb3+ Qxb3 Rg7+ Kh8 Rxh7+ Kg8 Rag7#",
+      "Qb3+ Kh8 Rxh7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5rk1/R1R4p/3p2p1/5p2/8/6QP/1qr3PK/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qb3+ Qxb3 Rg7+ Kh8 Rxh7+ Kg8 Rag7#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Qb3+ Qxb3 Rg7+ Kh8 Rxh7+ Kg8 Rag7#. Alternative continuations: Qb3+ Kh8 Rxh7#.",
+      "diagramPage": "81",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 71
+    }
+  },
+  {
+    "number": "570",
+    "title": "This is where I want you",
+    "order": 570,
+    "bookLines": [
+      "Rg8+ Kxg8 Ne7+ Kg7 Nxf5+ Rxf5 Qxb7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4R3/pp3pkn/6p1/2rN1qPp/7P/8/PPP5/2K4Q w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rg8+ Kxg8 Ne7+ Kg7 Nxf5+ Rxf5 Qxb7",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Rg8+ Kxg8 Ne7+ Kg7 Nxf5+ Rxf5 Qxb7.",
+      "diagramPage": "81",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 71
+    }
+  },
+  {
+    "number": "571",
+    "title": "3 motifs",
+    "order": 571,
+    "bookLines": [
+      "Rh7+ Kxh7 Bf5+ Kg7 Bxe4 Bxe4 Rxd8"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3r3k/4R3/4B2p/8/4r1P1/3b4/5P2/3R2K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rh7+ Kxh7 Bf5+ Kg7 Bxe4 Bxe4 Rxd8",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Rh7+ Kxh7 Bf5+ Kg7 Bxe4 Bxe4 Rxd8.",
+      "diagramPage": "82",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 72
+    }
+  },
+  {
+    "number": "572",
+    "title": "Knight targets",
+    "order": 572,
+    "bookLines": [
+      "Rxb4 Qxb4 Qxf6+ Kxf6 Nd5+ Ke5 Nxb4"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2b5/4q1kp/p4np1/P7/1n6/2N4P/5QP1/1R4BK w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rxb4 Qxb4 Qxf6+ Kxf6 Nd5+ Ke5 Nxb4",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Rxb4 Qxb4 Qxf6+ Kxf6 Nd5+ Ke5 Nxb4.",
+      "diagramPage": "82",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 72
+    }
+  },
+  {
+    "number": "573",
+    "title": "Black loses material",
+    "order": 573,
+    "bookLines": [
+      "Bxg7+ Kxg7 Qxd6 Qxd6 Nf5+ Kf6 Nxd6"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "7k/1b4b1/p2rq2p/6p1/8/4N1Q1/1BR2P1P/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Bxg7+ Kxg7 Qxd6 Qxd6 Nf5+ Kf6 Nxd6",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Bxg7+ Kxg7 Qxd6 Qxd6 Nf5+ Kf6 Nxd6.",
+      "diagramPage": "82",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 72
+    }
+  },
+  {
+    "number": "574",
+    "title": "The queen and knight strike",
+    "order": 574,
+    "bookLines": [
+      "Nh6+ Kh8 Qxd8 Qxd8 Nf7+ Kg8 Nxd8"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3r1bk1/3q2pp/8/3p1NQ1/P5PP/1P1R3K/8/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Nh6+ Kh8 Qxd8 Qxd8 Nf7+ Kg8 Nxd8",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Nh6+ Kh8 Qxd8 Qxd8 Nf7+ Kg8 Nxd8.",
+      "diagramPage": "82",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 72
+    }
+  },
+  {
+    "number": "575",
+    "title": "Rank interference",
+    "order": 575,
+    "bookLines": [
+      "Bf7+ Qxf7 Rxf7 Kxf7 Qxg7+ Ke6 Re3+",
+      "Bf7+ Bxf7 Qxg7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3rb1k1/1p1q2p1/p2r2B1/6Q1/3P4/5RR1/6PP/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Bf7+ Qxf7 Rxf7 Kxf7 Qxg7+ Ke6 Re3+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Interfere with the queen’s defense of g7 by placing the bishop on f7. Book continuation: Bf7+ Qxf7 Rxf7 Kxf7 Qxg7+ Ke6 Re3+. Alternative continuations: Bf7+ Bxf7 Qxg7#.",
+      "diagramPage": "82",
+      "answerPage": "134",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 72
+    }
+  },
+  {
+    "number": "576",
+    "title": "Removing the defender",
+    "order": 576,
+    "bookLines": [
+      "e5 dxe5 Bxc6 Bxc6 Nd5 Nxd5 Qxa5",
+      "e5 dxe5 Bxc6 Bxc6 Nd5 Qxd2 Nxe7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r2r2kb/pp1bpp1p/2np1npB/q1p5/4PP2/2NP2PP/PPPQN1B1/R4RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "e5 dxe5 Bxc6 Bxc6 Nd5 Nxd5 Qxa5",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: e5 dxe5 Bxc6 Bxc6 Nd5 Nxd5 Qxa5. Alternative continuations: e5 dxe5 Bxc6 Bxc6 Nd5 Qxd2 Nxe7#.",
+      "diagramPage": "82",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 72
+    }
+  },
+  {
+    "number": "577",
+    "title": "A difficult study",
+    "order": 577,
+    "bookLines": [
+      "Rf8 Qxf8 Nf6 gxf6 f4 fxe5 c3#",
+      "Rf8 Qxe5 c3#",
+      "Rf8 Qh3 c3+ Kxe5 f4#",
+      "Rf8 Qxf8 Nf6 gxf6 f4 Qc8 c3#",
+      "Rf8 Qxf8 Nf6 Qb8 c3+ Kxe5 Nd7+ Kd6 Nxb8 Kc7 Nxa6+ Kb6 Nxc5 Kxc5 Kc2 e5 Kb3"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4R3/6p1/p3p3/p1p1Pq2/2PkN3/3P4/2PK1P2/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rf8 Qxf8 Nf6 gxf6 f4 fxe5 c3#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "A rook sacrifice, a quiet pawn move, and a knight sacrifice force the mating net. Book continuation: Rf8 Qxf8 Nf6 gxf6 f4 fxe5 c3#. Alternative continuations: Rf8 Qxe5 c3#; Rf8 Qh3 c3+ Kxe5 f4#; Rf8 Qxf8 Nf6 gxf6 f4 Qc8 c3#; Rf8 Qxf8 Nf6 Qb8 c3+ Kxe5 Nd7+ Kd6 Nxb8 Kc7 Nxa6+ Kb6 Nxc5 Kxc5 Kc2 e5 Kb3.",
+      "diagramPage": "82",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 72
+    }
+  },
+  {
+    "number": "578",
+    "title": "Pawns victorious",
+    "order": 578,
+    "bookLines": [
+      "Rg8+ Kh7 Qg6+ fxg6 fxg6+ Kxg8 f7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r3rb1k/3b1pR1/p2p1P1p/q4P2/1p1B2Q1/1P6/1PP3PP/2K5 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rg8+ Kh7 Qg6+ fxg6 fxg6+ Kxg8 f7#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Rg8+ Kh7 Qg6+ fxg6 fxg6+ Kxg8 f7#.",
+      "diagramPage": "82",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 72
+    }
+  },
+  {
+    "number": "579",
+    "title": "Closing a file",
+    "order": 579,
+    "bookLines": [
+      "Bg5 g1=Q Bxf6+ Qg7 Bxg7+ Kg8 Bd4",
+      "Bg5 fxg5 Kg6"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "7k/p2R4/2p2p1P/5K2/1PP5/8/r2B2pb/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Bg5 g1=Q Bxf6+ Qg7 Bxg7+ Kg8 Bd4",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Bg5 g1=Q Bxf6+ Qg7 Bxg7+ Kg8 Bd4. Alternative continuations: Bg5 fxg5 Kg6.",
+      "diagramPage": "82",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 72
+    }
+  },
+  {
+    "number": "580",
+    "title": "The mechanics of smothered mate",
+    "order": 580,
+    "bookLines": [
+      "Nd7+ Kc8 Nb6+ Kb8 Qc8+ Rxc8 Nd7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "rk5r/ppp1bq1p/2n5/2N3B1/6Q1/8/PPP2PPP/R5K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Nd7+ Kc8 Nb6+ Kb8 Qc8+ Rxc8 Nd7#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Nd7+ Kc8 Nb6+ Kb8 Qc8+ Rxc8 Nd7#.",
+      "diagramPage": "82",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 72
+    }
+  },
+  {
+    "number": "581",
+    "title": "A study by Troitzky",
+    "order": 581,
+    "bookLines": [
+      "Ra8+ Kxg7 Kc6 Rb5 Kxb5 d3 Rd8 e4 Kc4 Kf6 Kd4 Kf5 Ke3"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6k1/R5P1/1K6/3rp3/3p4/8/8/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Ra8+ Kxg7 Kc6 Rb5 Kxb5 d3 Rd8",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "The rook sacrifice traps Black’s rook. The king then wins it and stops the pawns. Book continuation: Ra8+ Kxg7 Kc6 Rb5 Kxb5 d3 Rd8 e4 Kc4 Kf6 Kd4 Kf5 Ke3. Practice ends on White’s fourth move or the last preceding White move; the full book continuation is shown here.",
+      "diagramPage": "82",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 72
+    }
+  },
+  {
+    "number": "582",
+    "title": "Worth repeating",
+    "order": 582,
+    "bookLines": [
+      "Rxe6+ Kxe6 Nhg5+ hxg5 Nxg5+ Kf6 Nxh7+ Kg6 Nf8+ Kf7 Nd7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/4k1pq/4r2p/2p2p2/2P5/1P3N1N/6PP/4R1K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rxe6+ Kxe6 Nhg5+ hxg5 Nxg5+ Kf6 Nxh7+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Rxe6+ Kxe6 Nhg5+ hxg5 Nxg5+ Kf6 Nxh7+ Kg6 Nf8+ Kf7 Nd7. Practice ends on White’s fourth move or the last preceding White move; the full book continuation is shown here.",
+      "diagramPage": "82",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 72
+    }
+  },
+  {
+    "number": "583",
+    "title": "A mate in 6 from the 16th century",
+    "order": 583,
+    "bookLines": [
+      "Rh8+ Kxh8 Rh1+ Kg8 Rh8+ Kxh8 Qh1+ Rh5 Qxh5+ Kg8 Qh7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4qrk1/6p1/p5P1/1p3r2/1Bn5/P7/1P2P3/K1NQ2RR w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rh8+ Kxh8 Rh1+ Kg8 Rh8+ Kxh8 Qh1+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Repeated rook sacrifices open the h-file for the historic Damiano mating pattern. Book continuation: Rh8+ Kxh8 Rh1+ Kg8 Rh8+ Kxh8 Qh1+ Rh5 Qxh5+ Kg8 Qh7#. Practice ends on White’s fourth move or the last preceding White move; the full book continuation is shown here.",
+      "diagramPage": "83",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 73
+    }
+  },
+  {
+    "number": "584",
+    "title": "Concluding the attack",
+    "order": 584,
+    "bookLines": [
+      "Bxf5+ exf5 Re7+",
+      "Bxf5+ Kg7 Qg6+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/3b3k/4p2n/pp2Rp1Q/P3B1p1/1q4P1/5PK1/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Bxf5+ exf5 Re7+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Bxf5+ exf5 Re7+. Alternative continuations: Bxf5+ Kg7 Qg6+.",
+      "diagramPage": "83",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 73
+    }
+  },
+  {
+    "number": "585",
+    "title": "The king or the queen",
+    "order": 585,
+    "bookLines": [
+      "Qd2",
+      "Qe1"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "rnb2r1k/pp2p2p/2pp2p1/q2P1p2/8/1Pb2NP1/PB2PPBP/R2Q1RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qd2",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "The queen move establishes a cross-pin; Qe1 is also winning. Book continuation: Qd2. Alternative continuations: Qe1.",
+      "diagramPage": "83",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 73
+    }
+  },
+  {
+    "number": "586",
+    "title": "Perpetual check saves the day",
+    "order": 586,
+    "bookLines": [
+      "Qa8+ Kh7 Qe4+ Kh8 Qa8+ Kh7 Qe4+ g6 Qxg6+ Kh8 Qxh6+ Kg8 Qg6+ Kh8"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6k1/p5p1/qp2P2p/7P/8/6P1/r5QP/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Qa8+ Kh7 Qe4+ Kh8 Qa8+ Kh7 Qe4+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Draw by perpetual check. Book continuation: Qa8+ Kh7 Qe4+ Kh8 Qa8+ Kh7 Qe4+ g6 Qxg6+ Kh8 Qxh6+ Kg8 Qg6+ Kh8. Practice ends on White’s fourth move or the last preceding White move; the full book continuation is shown here.",
+      "diagramPage": "83",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 73
+    }
+  },
+  {
+    "number": "587",
+    "title": "A minor promotion",
+    "order": 587,
+    "bookLines": [
+      "Qxg7+ Kxg7 fxe8=N+ Kf8 Nxc7 Ke7 Rd1"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4rk2/1pq2Pb1/2p4Q/p7/P1n5/2P4P/2P5/R6K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qxg7+ Kxg7 fxe8=N+ Kf8 Nxc7 Ke7 Rd1",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "The queen sacrifice clears e8 for promotion. Underpromoting to a knight gives check and wins material. Book continuation: Qxg7+ Kxg7 fxe8=N+ Kf8 Nxc7 Ke7 Rd1.",
+      "diagramPage": "83",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 73
+    }
+  },
+  {
+    "number": "588",
+    "title": "Black's pieces are overloaded",
+    "order": 588,
+    "bookLines": [
+      "Bxc6 bxc6 Rxh7+ Qxh7 Qxf6+ Qg7 Qxd8+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3r3k/1pp1q2n/2np1p2/1B2pQ2/3PP3/2P2PB1/1P3K2/7R w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Bxc6 bxc6 Rxh7+ Qxh7 Qxf6+ Qg7 Qxd8+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Bxc6 bxc6 Rxh7+ Qxh7 Qxf6+ Qg7 Qxd8+.",
+      "diagramPage": "83",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 73
+    }
+  },
+  {
+    "number": "589",
+    "title": "Sacrifice, promotion and mate",
+    "order": 589,
+    "bookLines": [
+      "Qxh6+ gxh6 g7+ Kh7 gxf8=N+ Kh8 Rg8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5r1k/6p1/5pPp/2pBpP1P/p2nP3/q7/3Q4/6RK w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qxh6+ gxh6 g7+ Kh7 gxf8=N+ Kh8 Rg8#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Sacrifice the queen, advance the pawn with check, and underpromote to a knight to complete the mating net. Book continuation: Qxh6+ gxh6 g7+ Kh7 gxf8=N+ Kh8 Rg8#.",
+      "diagramPage": "83",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 73
+    }
+  },
+  {
+    "number": "590",
+    "title": "When there is no knight on f6...",
+    "order": 590,
+    "bookLines": [
+      "Bxh7+ Kxh7 Qh4+ Kg8 Ng5 Rfe8 Qh7+ Kf8 Qh8+ Ke7 Rxf7+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r4rk1/p1q2ppp/1p1b4/n2P4/Q7/3BPN2/P5P1/R4R1K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Bxh7+ Kxh7 Qh4+ Kg8 Ng5 Rfe8 Qh7+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Bxh7+ Kxh7 Qh4+ Kg8 Ng5 Rfe8 Qh7+ Kf8 Qh8+ Ke7 Rxf7+. Practice ends on White’s fourth move or the last preceding White move; the full book continuation is shown here.",
+      "diagramPage": "83",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 73
+    }
+  },
+  {
+    "number": "591",
+    "title": "Del Rio 1750!",
+    "order": 591,
+    "bookLines": [
+      "Qg8+ Kxg8 Ne7+ Kh8 Nf7+ Rxf7 Rxc8+ Rf8 Rxf8#",
+      "Qg8+ Rxg8 Nf7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2r2r1k/6pp/2NN4/5p2/2Q2nq1/8/6PP/2R4K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qg8+ Kxg8 Ne7+ Kh8 Nf7+ Rxf7 Rxc8+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Qg8+ Kxg8 Ne7+ Kh8 Nf7+ Rxf7 Rxc8+ Rf8 Rxf8#. Alternative continuations: Qg8+ Rxg8 Nf7#. Practice ends on White’s fourth move or the last preceding White move; the full book continuation is shown here.",
+      "diagramPage": "83",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 73
+    }
+  },
+  {
+    "number": "592",
+    "title": "Finishes with a fork",
+    "order": 592,
+    "bookLines": [
+      "Nd6+ Bxd6 Rxd7+ Be7 Rxe7+ Kxe7 Nc6+ Kd6 Nxb8"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1r6/RN1nbkpp/5p2/8/3Np3/8/4KPPP/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Nd6+ Bxd6 Rxd7+ Be7 Rxe7+ Kxe7 Nc6+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Nd6+ Bxd6 Rxd7+ Be7 Rxe7+ Kxe7 Nc6+ Kd6 Nxb8. Practice ends on White’s fourth move or the last preceding White move; the full book continuation is shown here.",
+      "diagramPage": "83",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 73
+    }
+  },
+  {
+    "number": "593",
+    "title": "Surrounded by friend and foe",
+    "order": 593,
+    "bookLines": [
+      "Qxf7+ Nxf7 Ng6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1bqrk2/pp2bppB/2pn3p/3pN2Q/3P1P2/2N5/PP4PP/R4RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qxf7+ Nxf7 Ng6#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Qxf7+ Nxf7 Ng6#.",
+      "diagramPage": "83",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 73
+    }
+  },
+  {
+    "number": "594",
+    "title": "Crafty bishop",
+    "order": 594,
+    "bookLines": [
+      "Bg3 Rxg3 b8=Q"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1B6/1P6/8/8/8/3k4/6r1/K7 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Bg3 Rxg3 b8=Q",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Interpose the bishop to force the rook away from the promotion square. Book continuation: Bg3 Rxg3 b8=Q.",
+      "diagramPage": "83",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 73
+    }
+  },
+  {
+    "number": "595",
+    "title": "Closing a line",
+    "order": 595,
+    "bookLines": [
+      "Nf6+ Qxf6 gxf6",
+      "Nf6+ gxf6 Qxf8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3R1rk1/6pp/3Q4/5qP1/4Nn2/7P/6P1/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Nf6+ Qxf6 gxf6",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Nf6+ Qxf6 gxf6. Alternative continuations: Nf6+ gxf6 Qxf8#.",
+      "diagramPage": "84",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 74
+    }
+  },
+  {
+    "number": "596",
+    "title": "Pointless pin",
+    "order": 596,
+    "bookLines": [
+      "Rg2 Qxf3 Qxf8#",
+      "Rg2 Qc8 Rh3",
+      "Rg2 Rg8 Qxh7+ Kxh7 Rh3#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "q4r1k/5p1p/p2pp2Q/1p2b3/8/2P2R2/P1P4P/6RK w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rg2 Qxf3 Qxf8#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Break the pin with a rook move that creates a mating threat. Book continuation: Rg2 Qxf3 Qxf8#. Alternative continuations: Rg2 Qc8 Rh3; Rg2 Rg8 Qxh7+ Kxh7 Rh3#.",
+      "diagramPage": "84",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 74
+    }
+  },
+  {
+    "number": "597",
+    "title": "Pin it to win it",
+    "order": 597,
+    "bookLines": [
+      "Rc4 Rxc4 Qxb2",
+      "Rc4 Rxd2 Rc8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6k1/p2p1ppp/8/P7/3R4/3P2P1/1qrQ1P1K/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rc4 Rxc4 Qxb2",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Rc4 Rxc4 Qxb2. Alternative continuations: Rc4 Rxd2 Rc8#.",
+      "diagramPage": "84",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 74
+    }
+  },
+  {
+    "number": "598",
+    "title": "Evident",
+    "order": 598,
+    "bookLines": [
+      "Rxb7 Rxb7 c6+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1R6/1brk2p1/4p2p/p1P1Pp2/P7/6P1/1P4P1/2R3K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rxb7 Rxb7 c6+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Rxb7 Rxb7 c6+.",
+      "diagramPage": "84",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 74
+    }
+  },
+  {
+    "number": "599",
+    "title": "Swift mate",
+    "order": 599,
+    "bookLines": [
+      "Qxf6+ gxf6 Bxh6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4rk2/p1p3p1/1nNp1n1p/8/8/1B5P/1Q1BqPP1/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qxf6+ gxf6 Bxh6#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Qxf6+ gxf6 Bxh6#.",
+      "diagramPage": "84",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 74
+    }
+  },
+  {
+    "number": "600",
+    "title": "Just a few moves to mate",
+    "order": 600,
+    "bookLines": [
+      "Qh6 Bxh6 Nxh6#",
+      "Qh6 Bxd4 Ne7+ Kh8 Qxf8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5rk1/5pbp/6p1/1q3N2/3B4/4Q1PP/1p3P1K/2n5 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qh6 Bxh6 Nxh6#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Qh6 Bxh6 Nxh6#. Alternative continuations: Qh6 Bxd4 Ne7+ Kh8 Qxf8#.",
+      "diagramPage": "84",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 74
+    }
+  },
+  {
+    "number": "601",
+    "title": "Mate in 2",
+    "order": 601,
+    "bookLines": [
+      "Re8+ Kxe8 Qe7#",
+      "Re8+ Bxe8 Qg7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3n1k2/2Q1R3/5Pb1/3q4/8/8/3p2P1/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Re8+ Kxe8 Qe7#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Re8+ Kxe8 Qe7#. Alternative continuations: Re8+ Bxe8 Qg7#.",
+      "diagramPage": "84",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 74
+    }
+  },
+  {
+    "number": "602",
+    "title": "Zugzwang",
+    "order": 602,
+    "bookLines": [
+      "a7 Bxa7 Kc8"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1b6/3K4/Pk6/8/8/R7/8/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "a7 Bxa7 Kc8",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Advance the pawn to force the bishop to a7, then win it by placing the king on c8. Book continuation: a7 Bxa7 Kc8.",
+      "diagramPage": "84",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 74
+    }
+  },
+  {
+    "number": "603",
+    "title": "Cutting off the king",
+    "order": 603,
+    "bookLines": [
+      "f4 axb3 Nd2#",
+      "f4 d4 Nd2#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3r4/3r4/1pb3p1/2pp1p2/p3k2p/PB2P3/1PP2PPP/4RNK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "f4 axb3 Nd2#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: f4 axb3 Nd2#. Alternative continuations: f4 d4 Nd2#.",
+      "diagramPage": "84",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 74
+    }
+  },
+  {
+    "number": "604",
+    "title": "A fork in hiding",
+    "order": 604,
+    "bookLines": [
+      "Qxf8+ Kxf8 Ng6+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5rk1/1n3pp1/7p/4N3/7q/Q6P/PP4P1/1K3R2 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qxf8+ Kxf8 Ng6+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Qxf8+ Kxf8 Ng6+.",
+      "diagramPage": "84",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 74
+    }
+  },
+  {
+    "number": "605",
+    "title": "Morphy mate",
+    "order": 605,
+    "bookLines": [
+      "Qxb8+ Nxb8 Rd8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1r2k3/3n1p2/4q1p1/6Bp/8/1Q6/PP4PP/1K1R4 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qxb8+ Nxb8 Rd8#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Qxb8+ Nxb8 Rd8#.",
+      "diagramPage": "84",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 74
+    }
+  },
+  {
+    "number": "606",
+    "title": "No defence",
+    "order": 606,
+    "bookLines": [
+      "Rxg5+ hxg5 Kxd2"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6k1/4p3/5p1p/R5b1/8/7P/2Nr1PP1/4K3 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rxg5+ hxg5 Kxd2",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Rxg5+ hxg5 Kxd2.",
+      "diagramPage": "84",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 74
+    }
+  },
+  {
+    "number": "607",
+    "title": "The long diagonal",
+    "order": 607,
+    "bookLines": [
+      "Rxf4 exf4 Bh8"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5rk1/ppp1qn1p/3pB1pr/3Pp3/2P1Pn2/PPB5/1Q4RP/5RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rxf4 exf4 Bh8",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Rxf4 exf4 Bh8.",
+      "diagramPage": "85",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 75
+    }
+  },
+  {
+    "number": "608",
+    "title": "A crucial defender goes",
+    "order": 608,
+    "bookLines": [
+      "Qxf6 Rxc8 Qxd4",
+      "Qxf6 Qxf6 Rxe8+ Rf8 Rxf8+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2R1r1k1/pp2pr1p/4QnpB/8/3q4/8/P4PPP/4R1K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qxf6 Rxc8 Qxd4",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Qxf6 Rxc8 Qxd4. Alternative continuations: Qxf6 Qxf6 Rxe8+ Rf8 Rxf8+.",
+      "diagramPage": "85",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 75
+    }
+  },
+  {
+    "number": "609",
+    "title": "White sees something simple",
+    "order": 609,
+    "bookLines": [
+      "Nxe5 Rxe5 f4"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4rk2/1pp3p1/p6p/4b1n1/6N1/2N4P/PPP2PP1/3R2K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Nxe5 Rxe5 f4",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Nxe5 Rxe5 f4.",
+      "diagramPage": "85",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 75
+    }
+  },
+  {
+    "number": "610",
+    "title": "Material gain",
+    "order": 610,
+    "bookLines": [
+      "Nc3 Qd6 Ne4"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r4rk1/ppp2ppp/2n5/2bqp3/8/P2PB3/1PP1NPPP/R2Q1RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Nc3 Qd6 Ne4",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Nc3 Qd6 Ne4.",
+      "diagramPage": "85",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 75
+    }
+  },
+  {
+    "number": "611",
+    "title": "Closing a diagonal",
+    "order": 611,
+    "bookLines": [
+      "Bd6 Bxd6 Qxd3",
+      "Bd6 R7xd6 Re8+ Qf8 Rxf8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "7k/3r2pp/1p6/p4q2/1bP1R3/3r2B1/4QPPP/R5K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Bd6 Bxd6 Qxd3",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Bd6 Bxd6 Qxd3. Alternative continuations: Bd6 R7xd6 Re8+ Qf8 Rxf8#.",
+      "diagramPage": "85",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 75
+    }
+  },
+  {
+    "number": "612",
+    "title": "A basic back rank mate",
+    "order": 612,
+    "bookLines": [
+      "Qc8+ Bxc8 Re8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6k1/3b1ppp/1p4r1/7q/7B/r5P1/P1Q2P1K/1R2R3 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qc8+ Bxc8 Re8#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Qc8+ Bxc8 Re8#.",
+      "diagramPage": "85",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 75
+    }
+  },
+  {
+    "number": "613",
+    "title": "One square less for the king",
+    "order": 613,
+    "bookLines": [
+      "Qg8+ Nxg8 Bf5#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2Q5/4r2k/2pbBn1p/1p6/3B3q/7P/p4PP1/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qg8+ Nxg8 Bf5#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Qg8+ Nxg8 Bf5#.",
+      "diagramPage": "85",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 75
+    }
+  },
+  {
+    "number": "614",
+    "title": "Get rid of the defender",
+    "order": 614,
+    "bookLines": [
+      "Rxg5 fxg5 gxh7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5k2/r5pp/5pP1/6n1/6R1/7P/4B1PK/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rxg5 fxg5 gxh7",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Remove the knight so the passed pawn can promote. Book continuation: Rxg5 fxg5 gxh7.",
+      "diagramPage": "85",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 75
+    }
+  },
+  {
+    "number": "615",
+    "title": "Out of the blue",
+    "order": 615,
+    "bookLines": [
+      "Ng6 Qxh2 Nde7#",
+      "Ng6 fxg6 Qxe5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1b2rk1/p4ppp/1p6/2pNq3/5N2/P7/1P4PQ/K1R5 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Ng6 Qxh2 Nde7#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "The knight move attacks the queen while threatening mate; the queen capture loses to Nde7#. Book continuation: Ng6 Qxh2 Nde7#. Alternative continuations: Ng6 fxg6 Qxe5.",
+      "diagramPage": "85",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 75
+    }
+  },
+  {
+    "number": "616",
+    "title": "The problem is eliminated",
+    "order": 616,
+    "bookLines": [
+      "Qxd4+ Rxd4 b6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6R1/kp2qp2/p4p2/PP6/3br1P1/2PQ4/1K6/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qxd4+ Rxd4 b6#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Qxd4+ Rxd4 b6#.",
+      "diagramPage": "85",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 75
+    }
+  },
+  {
+    "number": "617",
+    "title": "Mate is on the way",
+    "order": 617,
+    "bookLines": [
+      "Rd8+ Kf7 Rf8#",
+      "Rd8+ Kh7 Rh8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6k1/q5p1/1p4N1/2p2P2/8/8/1PP5/2KR4 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rd8+ Kf7 Rf8#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Rd8+ Kf7 Rf8#. Alternative continuations: Rd8+ Kh7 Rh8#.",
+      "diagramPage": "85",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 75
+    }
+  },
+  {
+    "number": "618",
+    "title": "Double on the diagonal",
+    "order": 618,
+    "bookLines": [
+      "Bd5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r5k1/2p2ppp/1pn5/p7/4n3/P1P2N1P/BP3PP1/5RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Bd5",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "The bishop attacks both knights along the diagonals. Book continuation: Bd5.",
+      "diagramPage": "85",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 75
+    }
+  },
+  {
+    "number": "619",
+    "title": "Fantastic fork",
+    "order": 619,
+    "bookLines": [
+      "b4+ Kd5 e4+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/8/pppn2pp/2k1pq2/P7/2PP1P1Q/1P2P3/7K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "b4+ Kd5 e4+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Advance with check, then fork the king and queen with the e-pawn. Book continuation: b4+ Kd5 e4+.",
+      "diagramPage": "86",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 76
+    }
+  },
+  {
+    "number": "620",
+    "title": "Discovery",
+    "order": 620,
+    "bookLines": [
+      "Re4"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4r1k1/5p1p/5qpB/1P1b4/P2R4/2Q4P/5PP1/7K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Re4",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "The rook move threatens both Rxe8# and Rxf6#. Book continuation: Re4.",
+      "diagramPage": "86",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 76
+    }
+  },
+  {
+    "number": "621",
+    "title": "Double threat",
+    "order": 621,
+    "bookLines": [
+      "Kc6"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2k5/8/3K4/1r6/8/8/8/4R3 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Kc6",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "The king move attacks the rook while threatening Re8#. Book continuation: Kc6.",
+      "diagramPage": "86",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 76
+    }
+  },
+  {
+    "number": "622",
+    "title": "One very effective move",
+    "order": 622,
+    "bookLines": [
+      "Bc4+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1b3rk1/2q3p1/p7/1pp3N1/7P/2PB2n1/1PQ3P1/4R1K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Bc4+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Clear the diagonal for the queen; Qh7# is the threat. Book continuation: Bc4+.",
+      "diagramPage": "86",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 76
+    }
+  },
+  {
+    "number": "623",
+    "title": "Looks drawish?",
+    "order": 623,
+    "bookLines": [
+      "Na3"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6k1/p3b3/5p2/2p1p3/2P1P3/5P2/P7/nN2B1K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Na3",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "The knight heads for c2 and c4 while the bishop attacks the stranded knight on a1. Book continuation: Na3.",
+      "diagramPage": "86",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 76
+    }
+  },
+  {
+    "number": "624",
+    "title": "White has two things in mind",
+    "order": 624,
+    "bookLines": [
+      "Nf5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r3rk2/2p1qp2/1p1n2p1/p6p/3N1P2/1P2P3/P5PP/Q2R1RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Nf5",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "The knight move attacks the queen and threatens mate on h8. Book continuation: Nf5.",
+      "diagramPage": "86",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 76
+    }
+  },
+  {
+    "number": "625",
+    "title": "A little nudge",
+    "order": 625,
+    "bookLines": [
+      "b5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2kr3r/ppp2pp1/1bnp2qp/3Np3/1PB1P1b1/2PP1N2/P3QPPP/R3K2R w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "b5",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Push the knight away: moving it allows a fork on e7. Book continuation: b5.",
+      "diagramPage": "86",
+      "answerPage": "135",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 76
+    }
+  },
+  {
+    "number": "626",
+    "title": "First look left, then look right",
+    "order": 626,
+    "bookLines": [
+      "Re5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3r2k1/1p3ppp/p7/2b2n2/8/1B3N1P/PP3PP1/4R1K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Re5",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "The rook attacks the bishop and knight at once. Book continuation: Re5.",
+      "diagramPage": "86",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 76
+    }
+  },
+  {
+    "number": "627",
+    "title": "Almost Arabian",
+    "order": 627,
+    "bookLines": [
+      "Rg8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5k2/4b2p/7N/8/p7/1pPqP3/1P3P2/2K3R1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rg8#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Rg8#.",
+      "diagramPage": "86",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 76
+    }
+  },
+  {
+    "number": "628",
+    "title": "A lot of interference",
+    "order": 628,
+    "bookLines": [
+      "Be5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4r2k/p2R1Qp1/1p5p/7P/q1p5/2b3B1/PP2rPP1/K2R4 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Be5",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "The bishop interferes with Black’s defenses of g7 and e8. Book continuation: Be5.",
+      "diagramPage": "86",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 76
+    }
+  },
+  {
+    "number": "629",
+    "title": "Deflection perfection",
+    "order": 629,
+    "bookLines": [
+      "Re8+ Kg7 Rxd8",
+      "Re8+ Rxe8 Qxd5+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3r2k1/p7/1p4p1/3q1p1p/5P1P/6PK/P3R3/3Q4 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Re8+ Kg7 Rxd8",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Re8+ Kg7 Rxd8. Alternative continuations: Re8+ Rxe8 Qxd5+.",
+      "diagramPage": "86",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 76
+    }
+  },
+  {
+    "number": "630",
+    "title": "One more time",
+    "order": 630,
+    "bookLines": [
+      "Rd8+ Rxd8 Qxb7",
+      "Rd8+ Bxd8 Qe8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "rr4k1/1q3ppp/1bQ1p3/8/5P2/P2R3P/1PN3P1/K3R3 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rd8+ Rxd8 Qxb7",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Rd8+ Rxd8 Qxb7. Alternative continuations: Rd8+ Bxd8 Qe8#.",
+      "diagramPage": "86",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 76
+    }
+  },
+  {
+    "number": "631",
+    "title": "Arabian mate",
+    "order": 631,
+    "bookLines": [
+      "Qxh6+ gxh6 Rh7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "rq3b1k/pbR3p1/1p2pN1p/7Q/7P/3B4/PPP2Pr1/2K4R w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qxh6+ gxh6 Rh7#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Qxh6+ gxh6 Rh7#.",
+      "diagramPage": "87",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 77
+    }
+  },
+  {
+    "number": "632",
+    "title": "Deflection",
+    "order": 632,
+    "bookLines": [
+      "Qb8+ Nxb8 Rf8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6k1/p2nr2p/4N1p1/2PpQ3/1p1P4/2q4P/5RP1/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qb8+ Nxb8 Rf8#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Qb8+ Nxb8 Rf8#.",
+      "diagramPage": "87",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 77
+    }
+  },
+  {
+    "number": "633",
+    "title": "This unexpected move wins",
+    "order": 633,
+    "bookLines": [
+      "Na5 bxa5 Rxb3",
+      "Na5 Kxa5 Ra8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1R6/2p2p2/kpN5/5p2/2P5/Pq2PPPK/8/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Na5 bxa5 Rxb3",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "The knight attacks the queen and threatens Ra8#. Book continuation: Na5 bxa5 Rxb3. Alternative continuations: Na5 Kxa5 Ra8#.",
+      "diagramPage": "87",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 77
+    }
+  },
+  {
+    "number": "634",
+    "title": "Pay 5, get 9",
+    "order": 634,
+    "bookLines": [
+      "Rxg7+ Kxg7 Bxh3"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r5k1/pp2rpp1/2n4p/4P3/2PpR3/P2P3q/6R1/Q4BK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rxg7+ Kxg7 Bxh3",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "The rook sacrifice vacates g2, letting the bishop capture the queen on h3. Book continuation: Rxg7+ Kxg7 Bxh3.",
+      "diagramPage": "87",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 77
+    }
+  },
+  {
+    "number": "635",
+    "title": "Double threat puts Black in a fix",
+    "order": 635,
+    "bookLines": [
+      "Qe4"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r4rk1/ppq2ppp/3p4/n2Qp3/7b/2P5/PPB2PPP/R1B2RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qe4",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "The queen threatens mate on h7 and attacks the bishop. Book continuation: Qe4.",
+      "diagramPage": "87",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 77
+    }
+  },
+  {
+    "number": "636",
+    "title": "Linear",
+    "order": 636,
+    "bookLines": [
+      "Re1"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2k5/pp2b1pp/2p5/8/4n3/1P5P/P4PP1/5RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Re1",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "The rook pins the knight to the bishop; one of the pieces is lost. Book continuation: Re1.",
+      "diagramPage": "87",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 77
+    }
+  },
+  {
+    "number": "637",
+    "title": "Surprising stalemate",
+    "order": 637,
+    "bookLines": [
+      "Qd1+ Qxd1"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3k4/1pp2pp1/1b4r1/pP2p3/P3P3/5qNb/2Q2P1P/4B1KR w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Qd1+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Draw by stalemate after Black captures the queen. Book continuation: Qd1+ Qxd1. Practice ends on White’s fourth move or the last preceding White move; the full book continuation is shown here.",
+      "diagramPage": "87",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 77
+    }
+  },
+  {
+    "number": "638",
+    "title": "Pins can be lethal",
+    "order": 638,
+    "bookLines": [
+      "Nb6+ Kb8 Nxd5",
+      "Nb6+ axb6 Qa8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2k4r/pppr2pp/8/3q4/N4n2/Q1R4P/PP3PP1/5RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Nb6+ Kb8 Nxd5",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Nb6+ Kb8 Nxd5. Alternative continuations: Nb6+ axb6 Qa8#.",
+      "diagramPage": "87",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 77
+    }
+  },
+  {
+    "number": "639",
+    "title": "A very odd move",
+    "order": 639,
+    "bookLines": [
+      "O-O-O"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/1p3kpp/p4p2/3N4/8/1P5P/Pr1n1PP1/R3K3 w Q - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "O-O-O",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Castling queenside brings the rook into play and wins a piece. White retains queenside castling rights in this position. Book continuation: O-O-O.",
+      "diagramPage": "87",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 77
+    }
+  },
+  {
+    "number": "640",
+    "title": "Surely White has lost",
+    "order": 640,
+    "bookLines": [
+      "Ba6 bxa6",
+      "Ba6 Kc7 Bxb7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2k5/pp6/8/3b4/8/8/4B3/1K6 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Ba6",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Draw: the wrong bishop cannot help the rook pawn promote. Book continuation: Ba6 bxa6. Alternative continuations: Ba6 Kc7 Bxb7. Practice ends on White’s fourth move or the last preceding White move; the full book continuation is shown here.",
+      "diagramPage": "87",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 77
+    }
+  },
+  {
+    "number": "641",
+    "title": "A nasty pawn",
+    "order": 641,
+    "bookLines": [
+      "h5 Nh4 h6"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6k1/pp4bp/2p3n1/8/3P3P/2P5/PPK5/6R1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "h5 Nh4 h6",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "The pawn advances with tempo against the knight and traps the bishop. Book continuation: h5 Nh4 h6.",
+      "diagramPage": "87",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 77
+    }
+  },
+  {
+    "number": "642",
+    "title": "Vacating a square",
+    "order": 642,
+    "bookLines": [
+      "Rxg7+ Kxg7 Qf7+ Kh8 Qh7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r2q2k1/1ppb1Rp1/6Bp/8/8/5Q2/P5PP/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rxg7+ Kxg7 Qf7+ Kh8 Qh7#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Rxg7+ Kxg7 Qf7+ Kh8 Qh7#.",
+      "diagramPage": "87",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 77
+    }
+  },
+  {
+    "number": "643",
+    "title": "Identity crisis: pin or deflection?",
+    "order": 643,
+    "bookLines": [
+      "Rg4 Qxg4 Qxf7+ Kh8 Qxh7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1r1r2k1/R4p1p/2p1p1q1/8/4R3/1P6/1KP2QPP/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rg4 Qxg4 Qxf7+ Kh8 Qxh7#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Rg4 Qxg4 Qxf7+ Kh8 Qxh7#.",
+      "diagramPage": "88",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 78
+    }
+  },
+  {
+    "number": "644",
+    "title": "One less escape square",
+    "order": 644,
+    "bookLines": [
+      "f7+ Bxf7 Qh7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r4rk1/1pq1n1p1/p2pbP2/5p1Q/8/2P4R/P1PB2PP/R6K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "f7+ Bxf7 Qh7#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: f7+ Bxf7 Qh7#.",
+      "diagramPage": "88",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 78
+    }
+  },
+  {
+    "number": "645",
+    "title": "Essential endgame knowledge",
+    "order": 645,
+    "bookLines": [
+      "g6 hxg6 f6 gxf6 h6",
+      "g6 fxg6 h6 gxh6 f6"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/5ppp/8/5PPP/1k6/8/1K6/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "g6 hxg6 f6 gxf6 h6",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "A pawn sacrifice forces a breakthrough. Preserve a passed pawn on the outside file. Book continuation: g6 hxg6 f6 gxf6 h6. Alternative continuations: g6 fxg6 h6 gxh6 f6.",
+      "diagramPage": "88",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 78
+    }
+  },
+  {
+    "number": "646",
+    "title": "Winning the exchange",
+    "order": 646,
+    "bookLines": [
+      "Nh6 Qxh3 Nxf7+ Kg8 gxh3",
+      "Nh6 gxh6 Qxe6",
+      "Nh6 Re7 Qxe6 Rxe6 Nf7+ Kg8 Nxd8"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3rn2k/ppb2rpp/2ppqp2/5N2/2P1P3/1P5Q/PB3PPP/3RR1K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Nh6 Qxh3 Nxf7+ Kg8 gxh3",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Nh6 Qxh3 Nxf7+ Kg8 gxh3. Alternative continuations: Nh6 gxh6 Qxe6; Nh6 Re7 Qxe6 Rxe6 Nf7+ Kg8 Nxd8.",
+      "diagramPage": "88",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 78
+    }
+  },
+  {
+    "number": "647",
+    "title": "Keep it simple",
+    "order": 647,
+    "bookLines": [
+      "Rxd7+ Kxd7 Ne5+ Ke6 Nxg6"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/p2nk3/1p4r1/8/8/5N2/6PP/3R3K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rxd7+ Kxd7 Ne5+ Ke6 Nxg6",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Rxd7+ Kxd7 Ne5+ Ke6 Nxg6.",
+      "diagramPage": "88",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 78
+    }
+  },
+  {
+    "number": "648",
+    "title": "Queen hunt",
+    "order": 648,
+    "bookLines": [
+      "Bxh7+ Nxh7 Ng6"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1b1rnk1/1p4pp/p1p2p2/3pN2n/3P1PPq/2NBPR1P/PPQ5/2R3K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Bxh7+ Nxh7 Ng6",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Remove the knight on h5 with check, then trap the queen with Ng6. Book continuation: Bxh7+ Nxh7 Ng6.",
+      "diagramPage": "88",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 78
+    }
+  },
+  {
+    "number": "649",
+    "title": "Another trapped queen",
+    "order": 649,
+    "bookLines": [
+      "Bxf7+ Rxf7 Nc4"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2br1rk1/1p2bpp1/p1p2n1p/q3Np2/PnBPP3/2N3B1/1P2Q1PP/R4RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Bxf7+ Rxf7 Nc4",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Sacrifice the bishop to clear c4 for a knight fork of the queen. Book continuation: Bxf7+ Rxf7 Nc4.",
+      "diagramPage": "88",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 78
+    }
+  },
+  {
+    "number": "650",
+    "title": "This is original",
+    "order": 650,
+    "bookLines": [
+      "Bf8 Rxf8 Ne7#",
+      "Bf8 Qxd5 Qg7#",
+      "Bf8 Qc1+ Kh2"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4r1k1/p4p1p/b4Qp1/2BN4/2qP4/6P1/5PP1/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Bf8 Rxf8 Ne7#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "The bishop interferes with the rook’s defense of e7, enabling knight mate. Book continuation: Bf8 Rxf8 Ne7#. Alternative continuations: Bf8 Qxd5 Qg7#; Bf8 Qc1+ Kh2.",
+      "diagramPage": "88",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 78
+    }
+  },
+  {
+    "number": "651",
+    "title": "Simple but crushing",
+    "order": 651,
+    "bookLines": [
+      "Bxb7 Bxb7 Ne6+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "rnbq1r2/ppp1p1kp/3p2p1/3B1pN1/2Pb4/6P1/PP2PP1P/RNQ2RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Bxb7 Bxb7 Ne6+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Bxb7 Bxb7 Ne6+.",
+      "diagramPage": "88",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 78
+    }
+  },
+  {
+    "number": "652",
+    "title": "A Boden's mate in the making",
+    "order": 652,
+    "bookLines": [
+      "Rc6+ bxc6 Bxa6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2krr3/1p1n2pn/p2R1bp1/2P2p2/NP3BP1/P6P/4B1K1/5R2 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rc6+ bxc6 Bxa6#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Rc6+ bxc6 Bxa6#.",
+      "diagramPage": "88",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 78
+    }
+  },
+  {
+    "number": "653",
+    "title": "Diagonal and rank",
+    "order": 653,
+    "bookLines": [
+      "d5 Ne5 Qa4+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r2qkb1r/ppp2ppp/2np4/8/3Pn3/2P2N2/PP2BPPP/RNBQK2R w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "d5 Ne5 Qa4+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "The pawn push drives the knight onto e5 so a queen check wins the knight on e4. Book continuation: d5 Ne5 Qa4+.",
+      "diagramPage": "88",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 78
+    }
+  },
+  {
+    "number": "654",
+    "title": "Closing a file",
+    "order": 654,
+    "bookLines": [
+      "Ne6 Rxd7 Qxe4+ f5 Qxf5#",
+      "Ne6 Qxe6 Nf8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "7b/2rNqp1k/p6p/1p6/4nN1P/P2QP3/1P4R1/1K6 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Ne6 Rxd7 Qxe4+ f5 Qxf5#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "The knight threatens mate on f8 and attacks the knight on e4. Book continuation: Ne6 Rxd7 Qxe4+ f5 Qxf5#. Alternative continuations: Ne6 Qxe6 Nf8#.",
+      "diagramPage": "88",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 78
+    }
+  },
+  {
+    "number": "655",
+    "title": "The rook is a bystander",
+    "order": 655,
+    "bookLines": [
+      "Bf5+ Kh8 Ne5 Rh7 Ng6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5K2/3B3k/8/8/6N1/8/8/7r w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Bf5+ Kh8 Ne5 Rh7 Ng6#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "The bishop and knight build a mating net; Black’s rook cannot help. Book continuation: Bf5+ Kh8 Ne5 Rh7 Ng6#.",
+      "diagramPage": "89",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 79
+    }
+  },
+  {
+    "number": "656",
+    "title": "Perpetual motion",
+    "order": 656,
+    "bookLines": [
+      "Qg5+ Kf8 Qd8+ Kg7 Qg5+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6k1/5p1p/8/8/8/8/q1r4P/2Q4K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find a tactic that saves the game by drawing.",
+      "solutionText": "Qg5+ Kf8 Qd8+ Kg7 Qg5+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Draw by perpetual check. Book continuation: Qg5+ Kf8 Qd8+ Kg7 Qg5+.",
+      "diagramPage": "89",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 79
+    }
+  },
+  {
+    "number": "657",
+    "title": "Where to attack?",
+    "order": 657,
+    "bookLines": [
+      "Qe7 Bxe7 dxe7+ Kc8 Rxa7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1k1r1bnr/pp1b1q1p/2pP1p2/2P5/5B2/R7/PPP1Q1PP/4R2K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qe7 Bxe7 dxe7+ Kc8 Rxa7",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Qe7 Bxe7 dxe7+ Kc8 Rxa7.",
+      "diagramPage": "89",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 79
+    }
+  },
+  {
+    "number": "658",
+    "title": "f7 is weak",
+    "order": 658,
+    "bookLines": [
+      "Re7 Nxe7 Qxf8+ Kxf8 Rd8#",
+      "Re7 Qxe7 fxe7 Nxe7 Rd8"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4Qbk1/5p2/5Pp1/ppqn1rPp/7P/P1P5/1P2R3/1K1R4 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Re7 Nxe7 Qxf8+ Kxf8 Rd8#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Re7 Nxe7 Qxf8+ Kxf8 Rd8#. Alternative continuations: Re7 Qxe7 fxe7 Nxe7 Rd8.",
+      "diagramPage": "89",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 79
+    }
+  },
+  {
+    "number": "659",
+    "title": "Vulnerable back rank",
+    "order": 659,
+    "bookLines": [
+      "Qe8+ Bf8 Qxf7+ Kh8 Qxh7#",
+      "Qe8+ Bf8 Qxf7+ Kh8 Qxf8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6k1/R4pbp/b5p1/q2P4/4Q3/6N1/1P3PPP/2r1B1K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qe8+ Bf8 Qxf7+ Kh8 Qxh7#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Qe8+ Bf8 Qxf7+ Kh8 Qxh7#. Alternative continuations: Qe8+ Bf8 Qxf7+ Kh8 Qxf8#.",
+      "diagramPage": "89",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 79
+    }
+  },
+  {
+    "number": "660",
+    "title": "Another loose piece drops off",
+    "order": 660,
+    "bookLines": [
+      "Nd5 Qxd2 Nxe7+ Kh8 Nxd2"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1br1nk1/1p2bpp1/p1pp1n1p/q3p3/P2PP3/2N1BN1P/BPPQ1PP1/R3R1K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Nd5 Qxd2 Nxe7+ Kh8 Nxd2",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Attack the queen first, then insert a checking knight capture before recapturing on d2. Book continuation: Nd5 Qxd2 Nxe7+ Kh8 Nxd2.",
+      "diagramPage": "89",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 79
+    }
+  },
+  {
+    "number": "661",
+    "title": "The back rank beckons",
+    "order": 661,
+    "bookLines": [
+      "Qa7 Rxa7 Rxd8+ Qxd8 Rxd8#",
+      "Qa7 Rxd5 Qxa8+ Qd8 Qxd8+ Rxd8 Rxd8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r2r2k1/2q2ppp/8/pp1RP3/8/1pP1Q3/1P3PPP/3R2K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qa7 Rxa7 Rxd8+ Qxd8 Rxd8#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Qa7 Rxa7 Rxd8+ Qxd8 Rxd8#. Alternative continuations: Qa7 Rxd5 Qxa8+ Qd8 Qxd8+ Rxd8 Rxd8#.",
+      "diagramPage": "89",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 79
+    }
+  },
+  {
+    "number": "662",
+    "title": "Closing a file",
+    "order": 662,
+    "bookLines": [
+      "Ne4 Qxe4 Qf8+ Rxf8 Rxf8#",
+      "Ne4 Rxe4 Qf8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4r2k/ppp2Qpp/8/8/3n4/2N5/1P4PP/4qR1K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Ne4 Qxe4 Qf8+ Rxf8 Rxf8#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Block the e-file with the knight. Taking it allows the queen and rook mating sequence. Book continuation: Ne4 Qxe4 Qf8+ Rxf8 Rxf8#. Alternative continuations: Ne4 Rxe4 Qf8#.",
+      "diagramPage": "89",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 79
+    }
+  },
+  {
+    "number": "663",
+    "title": "Smothered mate refresher",
+    "order": 663,
+    "bookLines": [
+      "Nh6+ Kh8 Qg8+ Rxg8 Nf7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4rrk1/pp3Npp/2pPQ3/8/8/7P/PP3bPK/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Nh6+ Kh8 Qg8+ Rxg8 Nf7#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Nh6+ Kh8 Qg8+ Rxg8 Nf7#.",
+      "diagramPage": "89",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 79
+    }
+  },
+  {
+    "number": "664",
+    "title": "Keep your eye on g6",
+    "order": 664,
+    "bookLines": [
+      "Bxf7 Rxf7 Ng6+ Kg8 Nxe5",
+      "Bxf7 Qxd4 Ng6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5r1k/3rbppp/p2p1n2/1p2q3/3QPN2/1B5R/PPP3PP/5R1K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Bxf7 Rxf7 Ng6+ Kg8 Nxe5",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Bxf7 Rxf7 Ng6+ Kg8 Nxe5. Alternative continuations: Bxf7 Qxd4 Ng6#.",
+      "diagramPage": "89",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 79
+    }
+  },
+  {
+    "number": "665",
+    "title": "Crashing through",
+    "order": 665,
+    "bookLines": [
+      "Qxh5 gxh5 Bh7#",
+      "Qxh5 f6 Qxg6+ Qg7 Nxe6"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5rk1/p3qp2/1b2n1p1/1p1p2Np/2b5/4P2P/1B3PP1/1BRQ2K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qxh5 gxh5 Bh7#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Qxh5 gxh5 Bh7#. Alternative continuations: Qxh5 f6 Qxg6+ Qg7 Nxe6.",
+      "diagramPage": "89",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 79
+    }
+  },
+  {
+    "number": "666",
+    "title": "Opening a diagonal",
+    "order": 666,
+    "bookLines": [
+      "Rxg5 fxg5 Be5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2r4k/p5qp/1p3p2/2p3bP/4QB2/P7/1PP5/1K4R1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rxg5 fxg5 Be5",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Rxg5 fxg5 Be5.",
+      "diagramPage": "89",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 79
+    }
+  },
+  {
+    "number": "667",
+    "title": "Removing an obstacle",
+    "order": 667,
+    "bookLines": [
+      "Qh7+ Nxh7 Bxh7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3q1rk1/1b1p1p2/r4n1Q/pp1pB1N1/8/8/P1B2bPP/7K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qh7+ Nxh7 Bxh7#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Qh7+ Nxh7 Bxh7#.",
+      "diagramPage": "90",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 80
+    }
+  },
+  {
+    "number": "668",
+    "title": "Double attack",
+    "order": 668,
+    "bookLines": [
+      "Qh5+ Kg8 Qxe8+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4r3/p2p2pk/1qp1pb2/8/8/1P2N3/P4PPP/2RQ2K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qh5+ Kg8 Qxe8+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "The queen check attacks the rook on e8 with tempo. Book continuation: Qh5+ Kg8 Qxe8+.",
+      "diagramPage": "90",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 80
+    }
+  },
+  {
+    "number": "669",
+    "title": "Losing material for a moment",
+    "order": 669,
+    "bookLines": [
+      "Nxc6 Rxd1+ Rxd1"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3rk2r/2p1qppp/2p3n1/p3P3/2PN3P/P5P1/1P2PP2/R2QK2R w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Nxc6 Rxd1+ Rxd1",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Capture the knight; after Black takes the rook with check, recapture to emerge an exchange ahead. Book continuation: Nxc6 Rxd1+ Rxd1.",
+      "diagramPage": "90",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 80
+    }
+  },
+  {
+    "number": "670",
+    "title": "Mating net",
+    "order": 670,
+    "bookLines": [
+      "Kc2 Rxc4 Re1#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2r5/5r1p/8/3p1p2/2P5/2PNk3/1K4PP/7R w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Kc2 Rxc4 Re1#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Kc2 Rxc4 Re1#.",
+      "diagramPage": "90",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 80
+    }
+  },
+  {
+    "number": "671",
+    "title": "Check and discovered attack",
+    "order": 671,
+    "bookLines": [
+      "Ne5+ Bxe5 Bxg4+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4r2r/1ppk1ppp/p2b4/7q/3P2b1/4BN2/PPP1BPPP/3QK2R w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Ne5+ Bxe5 Bxg4+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Move the knight with check to uncover the bishop’s attack on the bishop at g4. Book continuation: Ne5+ Bxe5 Bxg4+.",
+      "diagramPage": "90",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 80
+    }
+  },
+  {
+    "number": "672",
+    "title": "Unobstructed diagonal",
+    "order": 672,
+    "bookLines": [
+      "Be5+ Nxe5 Qg5#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3q4/4np1b/4pk2/8/1Pn2B1K/4QB2/8/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Be5+ Nxe5 Qg5#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Be5+ Nxe5 Qg5#.",
+      "diagramPage": "90",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 80
+    }
+  },
+  {
+    "number": "673",
+    "title": "Opportunities on a rank",
+    "order": 673,
+    "bookLines": [
+      "Bxd5 Bxd5 Qxf6+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/pp2r1kp/q1pRbpp1/2Pn4/r7/P3P1P1/1Q1N1PBP/1R4K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Bxd5 Bxd5 Qxf6+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Bxd5 Bxd5 Qxf6+.",
+      "diagramPage": "90",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 80
+    }
+  },
+  {
+    "number": "674",
+    "title": "Just a little bit nearer",
+    "order": 674,
+    "bookLines": [
+      "b4 Bxb4 Nc2"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/pp4pp/2p1kp2/b7/2nP4/3K3P/PP3PP1/2B1N3 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "b4 Bxb4 Nc2",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Decoy the bishop onto b4 so the knight can fork it and the knight on c4. Book continuation: b4 Bxb4 Nc2.",
+      "diagramPage": "90",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 80
+    }
+  },
+  {
+    "number": "675",
+    "title": "The right promotion",
+    "order": 675,
+    "bookLines": [
+      "h8=R Rd6 Kc7",
+      "h8=R Rd7 Rh6+ Rd6 Rxd6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1K6/7P/k7/1p1r4/1P6/8/8/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "h8=R Rd6 Kc7",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Underpromote to a rook to avoid stalemate and threaten Rh6. A queen promotion allows a stalemate defense. Troitzky study, 1924. Book continuation: h8=R Rd6 Kc7. Alternative continuations: h8=R Rd7 Rh6+ Rd6 Rxd6#.",
+      "diagramPage": "90",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 80
+    }
+  },
+  {
+    "number": "676",
+    "title": "Beautifully simple",
+    "order": 676,
+    "bookLines": [
+      "e7+ Qxe7 Qh8#",
+      "e7+ Rxe7 Qh8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4rk2/1pq2p2/r2nP3/p3p3/P6Q/3R4/1PP5/3R2K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "e7+ Qxe7 Qh8#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: e7+ Qxe7 Qh8#. Alternative continuations: e7+ Rxe7 Qh8#.",
+      "diagramPage": "90",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 80
+    }
+  },
+  {
+    "number": "677",
+    "title": "Bishop standoff",
+    "order": 677,
+    "bookLines": [
+      "Bd2 Bc5 Bxa5",
+      "Bd2 Bxd2 Re7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2r5/2P4R/p3kp1p/n3pNpP/1b2P1P1/4B3/5P2/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Bd2 Bc5 Bxa5",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "The bishop move creates a decisive threat; capturing it allows Re7#. Book continuation: Bd2 Bc5 Bxa5. Alternative continuations: Bd2 Bxd2 Re7#.",
+      "diagramPage": "90",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 80
+    }
+  },
+  {
+    "number": "678",
+    "title": "Exploiting the long diagonal",
+    "order": 678,
+    "bookLines": [
+      "Rxc6 bxc6 Qd4"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2r2bk1/ppqr1p1p/2n3p1/3B4/4Q3/6P1/PB3P1P/2R1R1K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rxc6 bxc6 Qd4",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Sacrifice the rook to open the long diagonal for the queen’s attack. Book continuation: Rxc6 bxc6 Qd4.",
+      "diagramPage": "90",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 80
+    }
+  },
+  {
+    "number": "679",
+    "title": "One step ahead",
+    "order": 679,
+    "bookLines": [
+      "Bf6 Kxf6 d8=Q+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/3P4/6k1/6B1/8/8/p5n1/3K4 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Bf6 Kxf6 d8=Q+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Deflect the king with the bishop, then promote with check before Black can promote. Book continuation: Bf6 Kxf6 d8=Q+.",
+      "diagramPage": "91",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 81
+    }
+  },
+  {
+    "number": "680",
+    "title": "Removing an escape square",
+    "order": 680,
+    "bookLines": [
+      "Bd7 Qxd7 Qh6+",
+      "Bd7 Qxd7 Qg7+ Ke8 Qg8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "rr3k2/pp3p2/2pq1P2/3p2Q1/2n5/2P3PB/P3P2P/1R4K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Bd7 Qxd7 Qh6+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Deflect the queen and remove an escape square for the king. Book continuation: Bd7 Qxd7 Qh6+. Alternative continuations: Bd7 Qxd7 Qg7+ Ke8 Qg8#.",
+      "diagramPage": "91",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 81
+    }
+  },
+  {
+    "number": "681",
+    "title": "Keeping the extra piece",
+    "order": 681,
+    "bookLines": [
+      "Ng4 fxg4 Bxc7",
+      "Ng4 gxf4 Nf6+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "rr2qnk1/p1b4p/4p3/2PpNpp1/P1p2B2/5PP1/2Q1P1BP/1R3RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Ng4 fxg4 Bxc7",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Return the extra piece to open an attack on the bishop; the other pawn capture allows Nf6+. Book continuation: Ng4 fxg4 Bxc7. Alternative continuations: Ng4 gxf4 Nf6+.",
+      "diagramPage": "91",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 81
+    }
+  },
+  {
+    "number": "682",
+    "title": "Fatal weakness on the back rank",
+    "order": 682,
+    "bookLines": [
+      "Qxa8 Rf8 Rd8",
+      "Qxa8 Rxa8 Rd8+ Rxd8 Rxd8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r3r1k1/p2R1ppp/1p4q1/8/8/5Q2/PP3PPP/3R2K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qxa8 Rf8 Rd8",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Find the forcing continuation by combining checks, captures, and tactical threats. Book continuation: Qxa8 Rf8 Rd8. Alternative continuations: Qxa8 Rxa8 Rd8+ Rxd8 Rxd8#.",
+      "diagramPage": "91",
+      "answerPage": "136",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 81
+    }
+  },
+  {
+    "number": "683",
+    "title": "Black's pieces lack coordination",
+    "order": 683,
+    "bookLines": [
+      "Qg6 Qxg6 Rh8+",
+      "Qg6 Rxh7 Qe8+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "k7/p4r1R/1np2q2/2Np2p1/3P4/1P1QP3/5P2/2K5 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qg6 Qxg6 Rh8+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "The queen sacrifice exploits the poor coordination of Black’s pieces and creates a mating attack. Book continuation: Qg6 Qxg6 Rh8+. Alternative continuations: Qg6 Rxh7 Qe8+.",
+      "diagramPage": "91",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 81
+    }
+  },
+  {
+    "number": "684",
+    "title": "Nothing could be simpler",
+    "order": 684,
+    "bookLines": [
+      "b4 Bc7 b5+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/1p6/k1r1p1pp/b4p2/P3pP2/2P5/1P2N1K1/3R4 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "b4 Bc7 b5+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "The pawn advance attacks the bishop; the next advance forks the king and rook. Book continuation: b4 Bc7 b5+.",
+      "diagramPage": "91",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 81
+    }
+  },
+  {
+    "number": "685",
+    "title": "LPDO",
+    "order": 685,
+    "bookLines": [
+      "Rxf6 gxf6 Qg4+ Kf8 Qxd7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1r4k1/3r1ppp/1qp2b2/p7/2Q5/P1N2R1P/1P3PP1/4R1K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rxf6 gxf6 Qg4+ Kf8 Qxd7",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Sacrifice the rook to open a queen check that picks up the undefended rook. Book continuation: Rxf6 gxf6 Qg4+ Kf8 Qxd7.",
+      "diagramPage": "91",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 81
+    }
+  },
+  {
+    "number": "686",
+    "title": "Decoy sacrifice and skewer",
+    "order": 686,
+    "bookLines": [
+      "Rxd7+ Kxd7 Ra7+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/3bk1q1/1p2p3/2p2p1p/1p6/1P5P/5PP1/R2R2K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Rxd7+ Kxd7 Ra7+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Decoy the king onto d7, then skewer the king and queen. Book continuation: Rxd7+ Kxd7 Ra7+.",
+      "diagramPage": "91",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 81
+    }
+  },
+  {
+    "number": "687",
+    "title": "Removing the defender",
+    "order": 687,
+    "bookLines": [
+      "Ne7+ Nxe7 Rd8#",
+      "Ne7+ Kf8 Nxc6"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6k1/p4ppp/bpn5/2p2N2/5b2/8/PB3PPP/3R2K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Ne7+ Nxe7 Rd8#",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Remove the defending knight with a knight sacrifice to enable back rank mate. Book continuation: Ne7+ Nxe7 Rd8#. Alternative continuations: Ne7+ Kf8 Nxc6.",
+      "diagramPage": "91",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 81
+    }
+  },
+  {
+    "number": "688",
+    "title": "What was that about loose pieces?",
+    "order": 688,
+    "bookLines": [
+      "Nc6 Qc8 Qxd5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r2q1k1r/2pn1pp1/p2p1b1p/1p1n4/3NN3/8/PP3PPP/R1BQR1K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Nc6 Qc8 Qxd5",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "The knight move exploits loose pieces and lets White capture the knight on d5. Book continuation: Nc6 Qc8 Qxd5.",
+      "diagramPage": "91",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 81
+    }
+  },
+  {
+    "number": "689",
+    "title": "Discovery",
+    "order": 689,
+    "bookLines": [
+      "Qa3+ Kg8 Bxh7+",
+      "Qa3+ Qe7 Bxc6 Qxa3 Rxe8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4bk1r/Q4ppp/2p1q3/8/4B3/8/P4PPP/4R1K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Qa3+ Kg8 Bxh7+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "The queen check uncovers the bishop attack on the queen. Book continuation: Qa3+ Kg8 Bxh7+. Alternative continuations: Qa3+ Qe7 Bxc6 Qxa3 Rxe8#.",
+      "diagramPage": "91",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 81
+    }
+  },
+  {
+    "number": "690",
+    "title": "Overload",
+    "order": 690,
+    "bookLines": [
+      "Nf6+ Rxf6 Qxe8+",
+      "Nf6+ Kh8 Qh7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1b1qrk1/1p4b1/p2p2Qp/P1pP1pp1/4N3/3BP1P1/1P4PP/R4RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "prompt": "White to move. Find the best tactical continuation.",
+      "solutionText": "Nf6+ Rxf6 Qxe8+",
+      "hint": "Look for checks, captures, and threats. Combine motifs such as forks, pins, deflection, interference, and promotion.",
+      "explanation": "Overload the rook with a checking knight sacrifice, then capture the queen with check. Book continuation: Nf6+ Rxf6 Qxe8+. Alternative continuations: Nf6+ Kh8 Qh7#.",
+      "diagramPage": "91",
+      "answerPage": "137",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 81
+    }
+  }
+]

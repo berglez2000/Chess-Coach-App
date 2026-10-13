@@ -21,8 +21,8 @@ Source: contents-page image supplied on 2026-10-09. The image contains chapter t
 | Drawing tactics | 71 | Obtain diagrams and answers; inspect required draw objective before publishing. |
 | Mixed motifs: White | 75 | Obtain diagrams and answers. |
 | Mixed motifs: Black | 93 | Obtain diagrams and answers. |
-| Mate in three | 109 | Obtain diagrams and answers; existing mate validator supports three moves. |
-| Mate in four | 117 | Obtain diagrams and answers; existing mate validator supports four moves within search limits. |
+| Mate in three | 109 | Imported and published as “Mate in 3”: exercises 865–945 (81 total); see `mate-in-three.md`. |
+| Mate in four | 117 | Imported and published as “Mate in 4”: exercises 946–978 (33 total); see `mate-in-four.md`. |
 | Curiosities | 121 | Obtain diagrams, instructions, and answers; inspect exercise rules individually. |
 
 These are printed page numbers from the image. PDF page indices must be checked against the actual PDF; do not assume a fixed offset.

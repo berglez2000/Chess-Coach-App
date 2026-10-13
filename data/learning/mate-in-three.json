@@ -1,0 +1,1893 @@
+[
+  {
+    "number": "865",
+    "title": "Smooth as silk",
+    "order": 865,
+    "bookLines": [
+      "Qc8+ Bb8 Qc6+ Bxc6 Bxc6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "k7/p7/3b4/q2b4/8/5B2/2Q3PP/7K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qc8+ Bb8 Qc6+ Bxc6 Bxc6#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qc8+ Bb8 Qc6+ Bxc6 Bxc6#.",
+      "diagramPage": "109",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 99
+    }
+  },
+  {
+    "number": "866",
+    "title": "Linear logic",
+    "order": 866,
+    "bookLines": [
+      "Qxh5+ Bxh5 f7+ e5 Bxe5#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1q2r1k/p4b2/1p2pP2/3p3p/1P1B1P2/2PB4/P3Q2P/6RK w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qxh5+ Bxh5 f7+ e5 Bxe5#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qxh5+ Bxh5 f7+ e5 Bxe5#.",
+      "diagramPage": "109",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 99
+    }
+  },
+  {
+    "number": "867",
+    "title": "A solid move...",
+    "order": 867,
+    "bookLines": [
+      "Bd2 Rxd4 b5+ cxb5 axb5#",
+      "Bd2 b5 axb5+ cxb5 cxb5#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1R6/p7/kpp1p3/6n1/PPPP1Brp/8/2K5/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Bd2 Rxd4 b5+ cxb5 axb5#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Bd2 Rxd4 b5+ cxb5 axb5# / Bd2 b5 axb5+ cxb5 cxb5#.",
+      "diagramPage": "109",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 99
+    }
+  },
+  {
+    "number": "868",
+    "title": "A pin on g7",
+    "order": 868,
+    "bookLines": [
+      "Rh8+ Kxh8 Qh6+ Kg8 Qxg7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4R3/1p1r1ppk/2q3b1/8/7P/2B1Q3/1P3P2/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Rh8+ Kxh8 Qh6+ Kg8 Qxg7#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Rh8+ Kxh8 Qh6+ Kg8 Qxg7#.",
+      "diagramPage": "109",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 99
+    }
+  },
+  {
+    "number": "869",
+    "title": "The power of a double check",
+    "order": 869,
+    "bookLines": [
+      "Qe8+ Kxe8 Bb5+ Kd8 Re8#",
+      "Qe8+ Kxe8 Bb5+ Kf8 Re8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "Q7/2rk1pp1/3b4/5q2/8/8/4BP2/4RK2 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qe8+ Kxe8 Bb5+ Kd8 Re8#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qe8+ Kxe8 Bb5+ Kd8 Re8# / Qe8+ Kxe8 Bb5+ Kf8 Re8#.",
+      "diagramPage": "109",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 99
+    }
+  },
+  {
+    "number": "870",
+    "title": "Like clockwork",
+    "order": 870,
+    "bookLines": [
+      "Qxg7+ Nxg7 Rh6+ Kg8 Ne7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "q4r2/p4ppk/2R1n3/5N2/8/2Q3P1/1P3P2/5K2 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qxg7+ Nxg7 Rh6+ Kg8 Ne7#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qxg7+ Nxg7 Rh6+ Kg8 Ne7#.",
+      "diagramPage": "109",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 99
+    }
+  },
+  {
+    "number": "871",
+    "title": "A problem from the 18th century!",
+    "order": 871,
+    "bookLines": [
+      "Ne6+ Qxe6 Qh6+ Kxh6 Bf8#",
+      "Ne6+ fxe6 Qf8#",
+      "Ne6+ Kg8 Qb8+ Qd8 Qxd8#",
+      "Ne6+ Qxe6 Qh6+ Kg8 Qf8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5N2/r3Bpkp/6p1/3q4/5Q1K/8/8/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Ne6+ Qxe6 Qh6+ Kxh6 Bf8#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Ne6+ Qxe6 Qh6+ Kxh6 Bf8# / Ne6+ fxe6 Qf8# / Ne6+ Kg8 Qb8+ Qd8 Qxd8# / Ne6+ Qxe6 Qh6+ Kg8 Qf8#.",
+      "diagramPage": "109",
+      "answerPage": "140",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 99
+    }
+  },
+  {
+    "number": "872",
+    "title": "The pawn delivers checkmate",
+    "order": 872,
+    "bookLines": [
+      "Qg7+ Rxg7 Nh6+ Kh8 fxg7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5nk1/R4N1p/5P1Q/8/2p1q3/8/KP6/6r1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qg7+ Rxg7 Nh6+ Kh8 fxg7#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qg7+ Rxg7 Nh6+ Kh8 fxg7#.",
+      "diagramPage": "109",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 99
+    }
+  },
+  {
+    "number": "873",
+    "title": "Another pawn triumphs",
+    "order": 873,
+    "bookLines": [
+      "Qf8+ Rxf8 Rxf8+ Kd7 e6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2qk3r/2p1nQp1/3p4/3BP3/8/P6P/6K1/5R2 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qf8+ Rxf8 Rxf8+ Kd7 e6#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qf8+ Rxf8 Rxf8+ Kd7 e6#.",
+      "diagramPage": "109",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 99
+    }
+  },
+  {
+    "number": "874",
+    "title": "Discovery",
+    "order": 874,
+    "bookLines": [
+      "Nb6+ cxb6 c7+ Nd5 Bxd5#",
+      "Nb6+ Kb8 Rd8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "k7/2p1r3/K1P2n2/3Nb3/3R4/5B2/8/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Nb6+ cxb6 c7+ Nd5 Bxd5#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Nb6+ cxb6 c7+ Nd5 Bxd5# / Nb6+ Kb8 Rd8#.",
+      "diagramPage": "110",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 100
+    }
+  },
+  {
+    "number": "875",
+    "title": "Not what you would imagine",
+    "order": 875,
+    "bookLines": [
+      "Ne4 f5 Rxg6+ Kf7 Qg7#",
+      "Ne4 Qxg3 Nf6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r3r1k1/1p1b1p2/p1n1p1qQ/8/8/2N3R1/8/7K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Ne4 f5 Rxg6+ Kf7 Qg7#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Ne4 f5 Rxg6+ Kf7 Qg7# / Ne4 Qxg3 Nf6#.",
+      "diagramPage": "110",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 100
+    }
+  },
+  {
+    "number": "876",
+    "title": "Boden's looms",
+    "order": 876,
+    "bookLines": [
+      "Qxc6+ bxc6 Bxa6+ Qb7 Nxe7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2kr3r/pp2bp1p/n1p1b2n/3N2p1/1qQ5/1N4B1/PPP2PPP/1K1R1B1R w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qxc6+ bxc6 Bxa6+ Qb7 Nxe7#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qxc6+ bxc6 Bxa6+ Qb7 Nxe7#.",
+      "diagramPage": "110",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 100
+    }
+  },
+  {
+    "number": "877",
+    "title": "The Immortal Game",
+    "order": 877,
+    "bookLines": [
+      "Nxg7+ Kd8 Qf6+ Nxf6 Be7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1b1k1nr/p2p1ppp/n2B4/1p1NPN1P/6P1/3P1Q2/P1P1K3/q5b1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Nxg7+ Kd8 Qf6+ Nxf6 Be7#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Nxg7+ Kd8 Qf6+ Nxf6 Be7#.",
+      "diagramPage": "110",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 100
+    }
+  },
+  {
+    "number": "878",
+    "title": "Another 18th century problem",
+    "order": 878,
+    "bookLines": [
+      "Qa6+ Nxa6 Bxb7+ Kb8 Nc6#",
+      "Qa6+ Kb8 Qxb7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "k7/1pp5/3b4/p7/1nQNB3/3P1P2/2Pr3q/1R3K2 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qa6+ Nxa6 Bxb7+ Kb8 Nc6#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qa6+ Nxa6 Bxb7+ Kb8 Nc6# / Qa6+ Kb8 Qxb7#.",
+      "diagramPage": "110",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 100
+    }
+  },
+  {
+    "number": "879",
+    "title": "Also by Stamma",
+    "order": 879,
+    "bookLines": [
+      "Rg5+ Kxg5 Nf7+ Kh5 g4#",
+      "Rg5+ Kh6 Nf7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3N4/7p/6p1/4Bn1k/6R1/7K/6P1/2r1q3 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Rg5+ Kxg5 Nf7+ Kh5 g4#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Rg5+ Kxg5 Nf7+ Kh5 g4# / Rg5+ Kh6 Nf7#.",
+      "diagramPage": "110",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 100
+    }
+  },
+  {
+    "number": "880",
+    "title": "9th century Arabian study",
+    "order": 880,
+    "bookLines": [
+      "Nh5+ Rxh5 Rxg6+ Kxg6 Re6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6K1/3r3r/5kn1/5p2/5P2/6N1/8/4R1R1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Nh5+ Rxh5 Rxg6+ Kxg6 Re6#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Nh5+ Rxh5 Rxg6+ Kxg6 Re6#.",
+      "diagramPage": "110",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 100
+    }
+  },
+  {
+    "number": "881",
+    "title": "Plagiarism?",
+    "order": 881,
+    "bookLines": [
+      "Ng4+ Rxg4 Rf5+ Kxf5 Rd5#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/5K1n/r2p4/4k1r1/4p3/6P1/5N2/3R1R2 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Ng4+ Rxg4 Rf5+ Kxf5 Rd5#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Ng4+ Rxg4 Rf5+ Kxf5 Rd5#.",
+      "diagramPage": "110",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 100
+    }
+  },
+  {
+    "number": "882",
+    "title": "A tight squeeze",
+    "order": 882,
+    "bookLines": [
+      "Nh6 Rf8 Rg8+ Rxg8 Nxf7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r6k/p4p1p/5P2/5N2/8/8/8/5KR1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Nh6 Rf8 Rg8+ Rxg8 Nxf7#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Nh6 Rf8 Rg8+ Rxg8 Nxf7#.",
+      "diagramPage": "110",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 100
+    }
+  },
+  {
+    "number": "883",
+    "title": "The tricky Novotny theme",
+    "order": 883,
+    "bookLines": [
+      "Qe6 Bxe6 Nf5+ Kg8 Ne7#",
+      "Qe6 Rxe6 Nhg6+ Kg8 Rh8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2b2r2/1pn3pk/r7/p3N3/2Q2p1N/7R/Pq4PP/5R1K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qe6 Bxe6 Nf5+ Kg8 Ne7#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qe6 Bxe6 Nf5+ Kg8 Ne7# / Qe6 Rxe6 Nhg6+ Kg8 Rh8#.",
+      "diagramPage": "110",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 100
+    }
+  },
+  {
+    "number": "884",
+    "title": "Opening a file",
+    "order": 884,
+    "bookLines": [
+      "Qg6+ Bxg6 Ng5+ hxg5 hxg6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "rn4nr/pppq2bk/7p/5b1P/4NBQ1/3B4/PPP3P1/R4K1R w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qg6+ Bxg6 Ng5+ hxg5 hxg6#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qg6+ Bxg6 Ng5+ hxg5 hxg6#.",
+      "diagramPage": "110",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 100
+    }
+  },
+  {
+    "number": "885",
+    "title": "Spectacular",
+    "order": 885,
+    "bookLines": [
+      "Qh6 Bxf6 Nxf6+ Kh8 Qxh7#",
+      "Qh6 Bxh6 Ne7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "rnq2rk1/pp3pbp/5Bp1/2pN4/3p4/8/3Q2b1/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qh6 Bxf6 Nxf6+ Kh8 Qxh7#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qh6 Bxf6 Nxf6+ Kh8 Qxh7# / Qh6 Bxh6 Ne7#.",
+      "diagramPage": "110",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 100
+    }
+  },
+  {
+    "number": "886",
+    "title": "The pawn condemns Black",
+    "order": 886,
+    "bookLines": [
+      "Kf5 Rg7 Rh8+ Rh7 Rxh7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6R1/r7/4KN1k/2p5/8/8/8/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Kf5 Rg7 Rh8+ Rh7 Rxh7#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Kf5 Rg7 Rh8+ Rh7 Rxh7#.",
+      "diagramPage": "111",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 101
+    }
+  },
+  {
+    "number": "887",
+    "title": "A reckless king",
+    "order": 887,
+    "bookLines": [
+      "Rxd5+ cxd5 Ng6+ hxg6 f4#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4r3/5r1p/R1p2p2/1p1bk3/2p2NPP/2P1K3/2P2P2/3R4 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Rxd5+ cxd5 Ng6+ hxg6 f4#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Rxd5+ cxd5 Ng6+ hxg6 f4#.",
+      "diagramPage": "111",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 101
+    }
+  },
+  {
+    "number": "888",
+    "title": "Opening a line",
+    "order": 888,
+    "bookLines": [
+      "Nh5+ gxh5 Qg5+ Kf8 Rd8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/1b3pkp/6p1/8/p4N2/Pq2Q1P1/2r4P/3R2K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Nh5+ gxh5 Qg5+ Kf8 Rd8#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Nh5+ gxh5 Qg5+ Kf8 Rd8#.",
+      "diagramPage": "111",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 101
+    }
+  },
+  {
+    "number": "889",
+    "title": "Remember how it's done?",
+    "order": 889,
+    "bookLines": [
+      "Qxh7+ Nxh7 Nxf7+ Nxf7 Ng6#",
+      "Nxf7+ Nxf7 Qxh7+ Nxh7 Ng6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1b2nrk/pp3ppp/1q2p3/2bpn1N1/5N2/2PQ4/PPB2PPP/R1B2RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qxh7+ Nxh7 Nxf7+ Nxf7 Ng6#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qxh7+ Nxh7 Nxf7+ Nxf7 Ng6# / Nxf7+ Nxf7 Qxh7+ Nxh7 Ng6#.",
+      "diagramPage": "111",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 101
+    }
+  },
+  {
+    "number": "890",
+    "title": "A study from the 30's",
+    "order": 890,
+    "bookLines": [
+      "g4+ fxg3 Ng2 g4 Nf4#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/8/7p/5Kpk/5p1b/8/6P1/4N3 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "g4+ fxg3 Ng2 g4 Nf4#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: g4+ fxg3 Ng2 g4 Nf4#.",
+      "diagramPage": "111",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 101
+    }
+  },
+  {
+    "number": "891",
+    "title": "A problem by Lolli",
+    "order": 891,
+    "bookLines": [
+      "Bb6+ Kxb6 c8=N+ Ka5 b4#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/kpP5/p7/Bb1q4/8/K7/1P6/2R5 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Bb6+ Kxb6 c8=N+ Ka5 b4#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Bb6+ Kxb6 c8=N+ Ka5 b4#.",
+      "diagramPage": "111",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 101
+    }
+  },
+  {
+    "number": "892",
+    "title": "Sitting duck",
+    "order": 892,
+    "bookLines": [
+      "Rc6+ Bxc6 Nc5+ Ka5 Bc7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r2rb3/pNR3pp/k4p2/8/P4B2/2p5/6PP/1R4K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Rc6+ Bxc6 Nc5+ Ka5 Bc7#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Rc6+ Bxc6 Nc5+ Ka5 Bc7#.",
+      "diagramPage": "111",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 101
+    }
+  },
+  {
+    "number": "893",
+    "title": "Decoy",
+    "order": 893,
+    "bookLines": [
+      "Qh8+ Kxh8 Bf6+ Kg8 Rd8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3B2k1/pb3p1p/1p4p1/8/8/P1Q2PqP/1P3rP1/3R2K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qh8+ Kxh8 Bf6+ Kg8 Rd8#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qh8+ Kxh8 Bf6+ Kg8 Rd8#.",
+      "diagramPage": "111",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 101
+    }
+  },
+  {
+    "number": "894",
+    "title": "A common motif",
+    "order": 894,
+    "bookLines": [
+      "Rg1+ Kh6 Rd2 Rad8 Rh2#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r4r2/pp1R3p/5pk1/2p2p2/2P2P2/1P6/P7/3R3K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Rg1+ Kh6 Rd2 Rad8 Rh2#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Rg1+ Kh6 Rd2 Rad8 Rh2#.",
+      "diagramPage": "111",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 101
+    }
+  },
+  {
+    "number": "895",
+    "title": "A surprising victory",
+    "order": 895,
+    "bookLines": [
+      "Bb6 Bf4 c7+ Bxc7 Ba7#",
+      "Bb6 Bxb6 Kxb6 e1=Q c7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1k6/1Pb5/K1P4p/B5p1/6P1/5p1P/4p3/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Bb6 Bf4 c7+ Bxc7 Ba7#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Bb6 Bf4 c7+ Bxc7 Ba7# / Bb6 Bxb6 Kxb6 e1=Q c7#.",
+      "diagramPage": "111",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 101
+    }
+  },
+  {
+    "number": "896",
+    "title": "Fast approaching queen",
+    "order": 896,
+    "bookLines": [
+      "Ra8+ Kxa8 Qa6+ Kb8 Qxb7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1k1rr3/1ppq1ppp/1b6/8/8/2P3P1/4QPBP/RR4K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Ra8+ Kxa8 Qa6+ Kb8 Qxb7#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Ra8+ Kxa8 Qa6+ Kb8 Qxb7#.",
+      "diagramPage": "111",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 101
+    }
+  },
+  {
+    "number": "897",
+    "title": "Epaulette mate",
+    "order": 897,
+    "bookLines": [
+      "Rf8+ Qxf8 Rxf8+ Rxf8 Qxg6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r3q1kr/ppp5/3p2pQ/8/2PP2b1/5R2/PPP3P1/5RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Rf8+ Qxf8 Rxf8+ Rxf8 Qxg6#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Rf8+ Qxf8 Rxf8+ Rxf8 Qxg6#.",
+      "diagramPage": "111",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 101
+    }
+  },
+  {
+    "number": "898",
+    "title": "Just a little calculation",
+    "order": 898,
+    "bookLines": [
+      "Rxb6+ Qxc6 Rxa2+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "k4r2/1R4pb/1pQp1n1p/3P4/5p1P/3P2P1/r1q1R2K/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Rxb6+ Qxc6 Rxa2+ Qa4 Rxa4#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "The printed answer stops after 2.Rxa2+. The legal forced continuation 2...Qa4 3.Rxa4# completes mate in three.",
+      "diagramPage": "112",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 102
+    }
+  },
+  {
+    "number": "899",
+    "title": "Step 1: opening a line of attack",
+    "order": 899,
+    "bookLines": [
+      "Rxf7+ Rxf7 Nf6+ Kh8 Rg8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/1pn1rp1k/p3r2p/3b1R2/3PN1R1/qP1BP3/P2K2PP/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Rxf7+ Rxf7 Nf6+ Kh8 Rg8#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Rxf7+ Rxf7 Nf6+ Kh8 Rg8#.",
+      "diagramPage": "112",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 102
+    }
+  },
+  {
+    "number": "900",
+    "title": "Decoy sacrifice",
+    "order": 900,
+    "bookLines": [
+      "Qxh6+ Kxh6 Rxh8+ Kg5 Rh5#",
+      "Qxh6+ gxh6 Rxh8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "R6n/1p2r1pk/p1p4p/3qBP2/6P1/4Q2P/PP5K/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qxh6+ Kxh6 Rxh8+ Kg5 Rh5#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qxh6+ Kxh6 Rxh8+ Kg5 Rh5# / Qxh6+ gxh6 Rxh8#.",
+      "diagramPage": "112",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 102
+    }
+  },
+  {
+    "number": "901",
+    "title": "The black knight is badly placed",
+    "order": 901,
+    "bookLines": [
+      "Rh8+ Kf7 Qxg7+ Kxg7 R1h7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r3r1k1/1pp1q1n1/3p2p1/3P1pP1/p2Q1P1R/8/PPP5/2K4R w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Rh8+ Kf7 Qxg7+ Kxg7 R1h7#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Rh8+ Kf7 Qxg7+ Kxg7 R1h7#.",
+      "diagramPage": "112",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 102
+    }
+  },
+  {
+    "number": "902",
+    "title": "A brilliant move",
+    "order": 902,
+    "bookLines": [
+      "Qc6 Bxc6 Rd8+ Qc8 Rxc8#",
+      "Qc6 bxa5 Rd8+ Qc8 Rxc8#",
+      "Qc6 Rg7 Rd8+ Qc8 Rxc8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "k7/pb6/1p1Q4/N4q2/5pr1/2p5/6PP/3R3K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qc6 Bxc6 Rd8+ Qc8 Rxc8#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qc6 Bxc6 Rd8+ Qc8 Rxc8# / Qc6 bxa5 Rd8+ Qc8 Rxc8# / Qc6 Rg7 Rd8+ Qc8 Rxc8#.",
+      "diagramPage": "112",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 102
+    }
+  },
+  {
+    "number": "903",
+    "title": "Sacrifice, check and mate",
+    "order": 903,
+    "bookLines": [
+      "Qxd8+ Kxd8 Bf6+ Ke8 Rc8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3rk3/p4brp/4P2b/3p1P2/q4n1Q/2B5/2R4P/2R4K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qxd8+ Kxd8 Bf6+ Ke8 Rc8#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qxd8+ Kxd8 Bf6+ Ke8 Rc8#.",
+      "diagramPage": "112",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 102
+    }
+  },
+  {
+    "number": "904",
+    "title": "Back rank attack",
+    "order": 904,
+    "bookLines": [
+      "Qxh8+ Kxh8 Bf6+ Kg8 Re8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1b3kr/ppp1Bp1p/1b6/n2P4/2p3q1/2Q2N2/P4PPP/R3R1K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qxh8+ Kxh8 Bf6+ Kg8 Re8#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qxh8+ Kxh8 Bf6+ Kg8 Re8#.",
+      "diagramPage": "112",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 102
+    }
+  },
+  {
+    "number": "905",
+    "title": "King hunt",
+    "order": 905,
+    "bookLines": [
+      "Bg7+ Kg8 Bd5+ Re6 Bxe6#",
+      "Bg7+ Bxg7 Rxe8+ Bf8 Rxf8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4r2k/3R3p/2n4B/4bp2/pP6/P6P/2N2qB1/4R2K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Bg7+ Kg8 Bd5+ Re6 Bxe6#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Bg7+ Kg8 Bd5+ Re6 Bxe6# / Bg7+ Bxg7 Rxe8+ Bf8 Rxf8#.",
+      "diagramPage": "112",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 102
+    }
+  },
+  {
+    "number": "906",
+    "title": "3 long moves",
+    "order": 906,
+    "bookLines": [
+      "Qa8+ Kh7 Qh8+ Nxh8 Rg7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6k1/5p2/p5np/4B3/3P4/1PP1q3/P3r1QP/6RK w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qa8+ Kh7 Qh8+ Nxh8 Rg7#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qa8+ Kh7 Qh8+ Nxh8 Rg7#.",
+      "diagramPage": "112",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 102
+    }
+  },
+  {
+    "number": "907",
+    "title": "Opening a rank",
+    "order": 907,
+    "bookLines": [
+      "Qxc5+ dxc5 Nc4+ Kb5 Rb6#",
+      "Qxc5+ Nb5 Nc4#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1r3r2/1b2p3/p2p2R1/k1pQ4/1p1n4/1P2N1Pq/2P2P2/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qxc5+ dxc5 Nc4+ Kb5 Rb6#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qxc5+ dxc5 Nc4+ Kb5 Rb6# / Qxc5+ Nb5 Nc4#.",
+      "diagramPage": "112",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 102
+    }
+  },
+  {
+    "number": "908",
+    "title": "Check, check, checkmate",
+    "order": 908,
+    "bookLines": [
+      "Bg7+ Rxg7 Qh6+ Rh7 Qxh7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1q4k/2p1r3/p2p1NQB/4b3/2Ppp3/1P6/P4PP1/5RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Bg7+ Rxg7 Qh6+ Rh7 Qxh7#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Bg7+ Rxg7 Qh6+ Rh7 Qxh7#.",
+      "diagramPage": "112",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 102
+    }
+  },
+  {
+    "number": "909",
+    "title": "The bishop delivers",
+    "order": 909,
+    "bookLines": [
+      "h4+ Kh5 Rf5+ gxf5 Bf7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4r3/5R2/6pp/6k1/8/1B4K1/2P1r2P/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "h4+ Kh5 Rf5+ gxf5 Bf7#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: h4+ Kh5 Rf5+ gxf5 Bf7#.",
+      "diagramPage": "112",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 102
+    }
+  },
+  {
+    "number": "910",
+    "title": "Mate in the endgame",
+    "order": 910,
+    "bookLines": [
+      "g4+ hxg3 e4+ Kf4 Rf6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/7r/R7/4pkp1/7p/4PP2/3K2P1/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "g4+ hxg3 e4+ Kf4 Rf6#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: g4+ hxg3 e4+ Kf4 Rf6#.",
+      "diagramPage": "113",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 103
+    }
+  },
+  {
+    "number": "911",
+    "title": "Forced mate",
+    "order": 911,
+    "bookLines": [
+      "Re5 b4 Kg2 b3 h3#",
+      "Re5 Kh3 Re4 Kxh2 Rh4#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/1rp1R3/p6p/1p6/6k1/6P1/5K1P/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Re5 b4 Kg2 b3 h3#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Re5 b4 Kg2 b3 h3# / Re5 Kh3 Re4 Kxh2 Rh4#.",
+      "diagramPage": "113",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 103
+    }
+  },
+  {
+    "number": "912",
+    "title": "At close quarters",
+    "order": 912,
+    "bookLines": [
+      "Rxf8+ Bxf8 Qf7+ Kh8 Qxf8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4Qnk1/1p3Rp1/2p2pBp/p1b5/2P2P2/P6P/1q6/5K2 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Rxf8+ Bxf8 Qf7+ Kh8 Qxf8#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Rxf8+ Bxf8 Qf7+ Kh8 Qxf8#.",
+      "diagramPage": "113",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 103
+    }
+  },
+  {
+    "number": "913",
+    "title": "The problem is the rook on h8",
+    "order": 913,
+    "bookLines": [
+      "Qf6+ Bxf6 gxf6+ Kf8 Rxh8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3r3r/p3bpk1/1pp3p1/2Pqp1P1/4N3/3P1Q1R/P4PK1/7R w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qf6+ Bxf6 gxf6+ Kf8 Rxh8#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qf6+ Bxf6 gxf6+ Kf8 Rxh8#.",
+      "diagramPage": "113",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 103
+    }
+  },
+  {
+    "number": "914",
+    "title": "Decoy sacrifice and mate",
+    "order": 914,
+    "bookLines": [
+      "Qxf8+ Kxf8 Bh6+ Kg8 Re8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1b2rk1/pp1p1p1p/2n3pQ/5qB1/8/2P5/P4PPP/4RRK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qxf8+ Kxf8 Bh6+ Kg8 Re8#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qxf8+ Kxf8 Bh6+ Kg8 Re8#.",
+      "diagramPage": "113",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 103
+    }
+  },
+  {
+    "number": "915",
+    "title": "The extra piece means nothing",
+    "order": 915,
+    "bookLines": [
+      "Rf4+ Kh5 g3 Rhf8 Rh4#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r6r/ppp3R1/3n1R1p/8/7k/7P/PPP3P1/2K5 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Rf4+ Kh5 g3 Rhf8 Rh4#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Rf4+ Kh5 g3 Rhf8 Rh4#.",
+      "diagramPage": "113",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 103
+    }
+  },
+  {
+    "number": "916",
+    "title": "Keep your eye on e7",
+    "order": 916,
+    "bookLines": [
+      "Qxh7+ Kxh7 Rh3+ Kg8 Nxe7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r3nr1k/1bp1b1pp/4Pp2/p1pq1N1Q/N2p1B2/6R1/PPP2PPP/R5K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qxh7+ Kxh7 Rh3+ Kg8 Nxe7#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qxh7+ Kxh7 Rh3+ Kg8 Nxe7#.",
+      "diagramPage": "113",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 103
+    }
+  },
+  {
+    "number": "917",
+    "title": "Removing the guard",
+    "order": 917,
+    "bookLines": [
+      "Rxe8+ Rxe8 Rg7+ Kf8 Nd7#",
+      "Rxe8+ Rxe8 Rg7+ Kh8 Nf7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2r1n1k1/3RR2p/p5pB/1p2N3/8/6PP/P1q2PK1/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Rxe8+ Rxe8 Rg7+ Kf8 Nd7#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Rxe8+ Rxe8 Rg7+ Kf8 Nd7# / Rxe8+ Rxe8 Rg7+ Kh8 Nf7#.",
+      "diagramPage": "113",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 103
+    }
+  },
+  {
+    "number": "918",
+    "title": "f7 is the critical square",
+    "order": 918,
+    "bookLines": [
+      "Qxh6+ gxh6 Rg8+ Rxg8 Nxf7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2r2r1k/p3ppp1/1p2p2p/2qbN2n/5Q1P/3B2R1/PPP2P2/2K3R1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qxh6+ gxh6 Rg8+ Rxg8 Nxf7#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qxh6+ gxh6 Rg8+ Rxg8 Nxf7#.",
+      "diagramPage": "113",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 103
+    }
+  },
+  {
+    "number": "919",
+    "title": "Check, sacrifice and mate",
+    "order": 919,
+    "bookLines": [
+      "Bg7+ Kf7 Qe6+ Nxe6 dxe6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "q1r1rkn1/pb2b2p/1p1p2p1/2nP1N2/2P5/1P1BQ3/PB3PPP/2R1R1K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Bg7+ Kf7 Qe6+ Nxe6 dxe6#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Bg7+ Kf7 Qe6+ Nxe6 dxe6#.",
+      "diagramPage": "113",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 103
+    }
+  },
+  {
+    "number": "920",
+    "title": "The h-file",
+    "order": 920,
+    "bookLines": [
+      "Qxg8+ Kxg8 Rh8+ Kxh8 Bf7#",
+      "Qxg8+ Ke7 Qe8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5kr1/pppr2p1/1q1p1p1R/2b2P1B/4P3/1Q6/PPP5/1K5R w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qxg8+ Kxg8 Rh8+ Kxh8 Bf7#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qxg8+ Kxg8 Rh8+ Kxh8 Bf7# / Qxg8+ Ke7 Qe8#.",
+      "diagramPage": "113",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 103
+    }
+  },
+  {
+    "number": "921",
+    "title": "Now the g-file",
+    "order": 921,
+    "bookLines": [
+      "Qxf6 gxf6 Rg1+ Kh8 Bxf6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5rk1/1q3ppp/pn3b2/1p3Q2/8/1P3P2/PBP4P/2KR4 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qxf6 gxf6 Rg1+ Kh8 Bxf6#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qxf6 gxf6 Rg1+ Kh8 Bxf6#.",
+      "diagramPage": "113",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 103
+    }
+  },
+  {
+    "number": "922",
+    "title": "2 checks then mate",
+    "order": 922,
+    "bookLines": [
+      "Qxf8+ Kxf8 Rd8+ Ke7 Re8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5rk1/5ppp/p1B5/2Q1Pb2/1r6/q7/1PP3PP/1K1R3R w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qxf8+ Kxf8 Rd8+ Ke7 Re8#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qxf8+ Kxf8 Rd8+ Ke7 Re8#.",
+      "diagramPage": "114",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 104
+    }
+  },
+  {
+    "number": "923",
+    "title": "A difficult problem",
+    "order": 923,
+    "bookLines": [
+      "Qg4+ Bxg4 Rxh6+ gxh6 Bf7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/6p1/4b1Rp/4q2k/7b/1B6/2PB2Q1/2K5 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qg4+ Bxg4 Rxh6+ gxh6 Bf7#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qg4+ Bxg4 Rxh6+ gxh6 Bf7#.",
+      "diagramPage": "114",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 104
+    }
+  },
+  {
+    "number": "924",
+    "title": "Weak light square complex",
+    "order": 924,
+    "bookLines": [
+      "Qa8+ Qa7 Rxb6+ Bxb6 Bc4#",
+      "Qa8+ Qa7 Rxb6+ Kxb6 Qc6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5Q2/2q4r/kp1p4/pRbBp1pP/P3P3/8/1PP5/1K6 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qa8+ Qa7 Rxb6+ Bxb6 Bc4#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qa8+ Qa7 Rxb6+ Bxb6 Bc4# / Qa8+ Qa7 Rxb6+ Kxb6 Qc6#.",
+      "diagramPage": "114",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 104
+    }
+  },
+  {
+    "number": "925",
+    "title": "Sacrifice, double check and mate",
+    "order": 925,
+    "bookLines": [
+      "Qg7+ Kxg7 Nf5+ Kg8 Nh6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5rk1/nq1n1p1p/4p1p1/1p2Q3/3N4/P1BP4/5PPP/5RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qg7+ Kxg7 Nf5+ Kg8 Nh6#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qg7+ Kxg7 Nf5+ Kg8 Nh6#.",
+      "diagramPage": "114",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 104
+    }
+  },
+  {
+    "number": "926",
+    "title": "The queen checkmates",
+    "order": 926,
+    "bookLines": [
+      "Qf8+ Kd7 Be6+ Kxe6 Qf5#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1bk2Br/ppp1b2p/2np4/6B1/4P3/3P1Q2/PqP3PP/RN3RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qf8+ Kd7 Be6+ Kxe6 Qf5#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qf8+ Kd7 Be6+ Kxe6 Qf5#.",
+      "diagramPage": "114",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 104
+    }
+  },
+  {
+    "number": "927",
+    "title": "Stuck in the middle",
+    "order": 927,
+    "bookLines": [
+      "Qe6+ fxe6 Bh5+ g6 Bxg6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r3kb1r/pbqn1pp1/1p5p/2p1p3/4n2B/1QP5/PP1NBPPP/R3K1NR w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qe6+ fxe6 Bh5+ g6 Bxg6#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qe6+ fxe6 Bh5+ g6 Bxg6#.",
+      "diagramPage": "114",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 104
+    }
+  },
+  {
+    "number": "928",
+    "title": "Daring knights",
+    "order": 928,
+    "bookLines": [
+      "Qxh7+ Nxh7 Bxh7+ Kh8 Ng6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1bnrrk1/pp4pp/2q1pn2/3p2N1/3P1N2/8/PPQ2PPP/1B1RR1K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qxh7+ Nxh7 Bxh7+ Kh8 Ng6#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qxh7+ Nxh7 Bxh7+ Kh8 Ng6#.",
+      "diagramPage": "114",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 104
+    }
+  },
+  {
+    "number": "929",
+    "title": "Cornered",
+    "order": 929,
+    "bookLines": [
+      "Rg8+ Kxg8 Rg1+ Kh8 Bf6#",
+      "Rg8+ Rxg8 Bf6+ Rg7 Rd8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r6k/pp2BpRp/8/8/4N3/8/qPP5/2KR4 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Rg8+ Kxg8 Rg1+ Kh8 Bf6#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Rg8+ Kxg8 Rg1+ Kh8 Bf6# / Rg8+ Rxg8 Bf6+ Rg7 Rd8#.",
+      "diagramPage": "114",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 104
+    }
+  },
+  {
+    "number": "930",
+    "title": "Smothered mate",
+    "order": 930,
+    "bookLines": [
+      "Na6+ Rxd8 Qb8+ Rxb8 Nc7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "kN1R1r2/pnQ5/8/8/q7/8/1p4PP/7K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Na6+ Rxd8 Qb8+ Rxb8 Nc7#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Na6+ Rxd8 Qb8+ Rxb8 Nc7#.",
+      "diagramPage": "114",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 104
+    }
+  },
+  {
+    "number": "931",
+    "title": "Sacrifice and waiting move",
+    "order": 931,
+    "bookLines": [
+      "Ra8+ Kxa8 Nd7 Re7 Ra4#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1k2r2r/1p4p1/1P5p/2N1p3/RR4n1/8/5PPP/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Ra8+ Kxa8 Nd7 Re7 Ra4#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Ra8+ Kxa8 Nd7 Re7 Ra4#.",
+      "diagramPage": "114",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 104
+    }
+  },
+  {
+    "number": "932",
+    "title": "Rank and file",
+    "order": 932,
+    "bookLines": [
+      "Qg8+ Rxg8 Nxg6+ hxg6 Rh4#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1q3r1k/p3N1pp/6b1/8/R1Q5/7P/5PP1/7K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qg8+ Rxg8 Nxg6+ hxg6 Rh4#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qg8+ Rxg8 Nxg6+ hxg6 Rh4#.",
+      "diagramPage": "114",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 104
+    }
+  },
+  {
+    "number": "933",
+    "title": "Back rank mate",
+    "order": 933,
+    "bookLines": [
+      "Nc7+ Kf8 Qd8+ Bxd8 Re8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1b1k2r/pp2bppp/8/3N2q1/2p5/8/PPP2PPP/R2QR1K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Nc7+ Kf8 Qd8+ Bxd8 Re8#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Nc7+ Kf8 Qd8+ Bxd8 Re8#.",
+      "diagramPage": "114",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 104
+    }
+  },
+  {
+    "number": "934",
+    "title": "Two raking bishops",
+    "order": 934,
+    "bookLines": [
+      "Qxd6+ Kxd6 Bf4+ Kd7 Be6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1bqr3/pp1kn1pp/2pp4/6B1/1P6/PBp5/2P2PPP/R2QR1K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qxd6+ Kxd6 Bf4+ Kd7 Be6#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qxd6+ Kxd6 Bf4+ Kd7 Be6#.",
+      "diagramPage": "115",
+      "answerPage": "141",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 105
+    }
+  },
+  {
+    "number": "935",
+    "title": "Deflection brings defeat",
+    "order": 935,
+    "bookLines": [
+      "Rc8+ Qxc8 Qxg7+ Rxg7 Rxg7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6kr/1q2r1p1/1p2N1Q1/5p2/1P1p4/6R1/7P/2R3K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Rc8+ Qxc8 Qxg7+ Rxg7 Rxg7#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Rc8+ Qxc8 Qxg7+ Rxg7 Rxg7#.",
+      "diagramPage": "115",
+      "answerPage": "142",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 105
+    }
+  },
+  {
+    "number": "936",
+    "title": "Deadly dark squares",
+    "order": 936,
+    "bookLines": [
+      "Qh6+ Rxh6 Bxh6+ Kh7 Bf8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "6rr/p2b1pk1/1pn1p1p1/2qpPP2/3N2P1/2P1Q3/P2B2K1/2R4R w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qh6+ Rxh6 Bxh6+ Kh7 Bf8#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qh6+ Rxh6 Bxh6+ Kh7 Bf8#.",
+      "diagramPage": "115",
+      "answerPage": "142",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 105
+    }
+  },
+  {
+    "number": "937",
+    "title": "Imprisoned king",
+    "order": 937,
+    "bookLines": [
+      "Qxd8+ Rxd8 gxf7+ Ke7 Bc5#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r2nkb1r/1p1b1p1p/pB2p1P1/P2pP3/1P4PQ/3q4/3N3P/5RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qxd8+ Rxd8 gxf7+ Ke7 Bc5#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qxd8+ Rxd8 gxf7+ Ke7 Bc5#.",
+      "diagramPage": "115",
+      "answerPage": "142",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 105
+    }
+  },
+  {
+    "number": "938",
+    "title": "Vacating a square",
+    "order": 938,
+    "bookLines": [
+      "Ne6 Rxf7 g5+ Qxg5+ Qxg5#",
+      "Ne6 Qxh4 Bg7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "rb3r2/1p2qB1p/p5pk/6Nb/1P3pPQ/P3P3/1B5P/R5K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Ne6 Rxf7 g5+ Qxg5+ Qxg5#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Ne6 Rxf7 g5+ Qxg5+ Qxg5# / Ne6 Qxh4 Bg7#.",
+      "diagramPage": "115",
+      "answerPage": "142",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 105
+    }
+  },
+  {
+    "number": "939",
+    "title": "Opening a diagonal",
+    "order": 939,
+    "bookLines": [
+      "Qxh6+ gxh6 Rxh6+ Rh7 Bxf6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2r4k/5rp1/pb3p1p/npqP1P2/2p1B1RQ/7R/PB4PP/7K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qxh6+ gxh6 Rxh6+ Rh7 Bxf6#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qxh6+ gxh6 Rxh6+ Rh7 Bxf6#.",
+      "diagramPage": "115",
+      "answerPage": "142",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 105
+    }
+  },
+  {
+    "number": "940",
+    "title": "Here two lines are opened",
+    "order": 940,
+    "bookLines": [
+      "Qxg7+ Kxg7 Rg4+ Kh8 Bf6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3r1r1k/1q2Bppp/p1bpp3/1p3P2/3Q1R2/2n4R/PPP1B1PP/7K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qxg7+ Kxg7 Rg4+ Kh8 Bf6#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qxg7+ Kxg7 Rg4+ Kh8 Bf6#.",
+      "diagramPage": "115",
+      "answerPage": "142",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 105
+    }
+  },
+  {
+    "number": "941",
+    "title": "Nifty",
+    "order": 941,
+    "bookLines": [
+      "Qg5 Rg8 Qxh6+ gxh6 Rxg8#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3r3k/1b2rpp1/p2qpN1p/1p6/4pP1Q/P5R1/1PP3PP/5R1K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qg5 Rg8 Qxh6+ gxh6 Rxg8#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qg5 Rg8 Qxh6+ gxh6 Rxg8#.",
+      "diagramPage": "115",
+      "answerPage": "142",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 105
+    }
+  },
+  {
+    "number": "942",
+    "title": "Check, check, mate",
+    "order": 942,
+    "bookLines": [
+      "Qxf7+ Nxf7 Bxf7+ Kd8 Ne6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r1b1kb1r/3pnppp/p1p4n/qp4N1/4P3/PQ6/B4PPP/2qR2K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qxf7+ Nxf7 Bxf7+ Kd8 Ne6#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qxf7+ Nxf7 Bxf7+ Kd8 Ne6#.",
+      "diagramPage": "115",
+      "answerPage": "142",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 105
+    }
+  },
+  {
+    "number": "943",
+    "title": "h-file",
+    "order": 943,
+    "bookLines": [
+      "Ne7+ Kh8 Qxh7+ Kxh7 Rh1#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3r1rk1/pp3ppp/3pn3/1qpN4/5PP1/P5PQ/1PP5/1K1R4 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Ne7+ Kh8 Qxh7+ Kxh7 Rh1#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuation: Ne7+ Kh8 Qxh7+ Kxh7 Rh1#. The tempting 1.Qxh7+? Kxh7 2.Rh1+ fails to 2...Kg6!.",
+      "diagramPage": "115",
+      "answerPage": "142",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 105
+    },
+    "analysisLines": [
+      "Qxh7+ Kxh7 Rh1+ Kg6"
+    ]
+  },
+  {
+    "number": "944",
+    "title": "Knight attack",
+    "order": 944,
+    "bookLines": [
+      "Nf6+ gxf6 Qf7+ Kh8 Qh7#",
+      "Nf6+ Kh8 Nf7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2r3k1/pp4p1/7p/1b2P1NQ/4N3/3P3P/2q2PPK/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Nf6+ gxf6 Qf7+ Kh8 Qh7#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Nf6+ gxf6 Qf7+ Kh8 Qh7# / Nf6+ Kh8 Nf7#.",
+      "diagramPage": "115",
+      "answerPage": "142",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 105
+    }
+  },
+  {
+    "number": "945",
+    "title": "Discoveries are dangerous",
+    "order": 945,
+    "bookLines": [
+      "Qh7+ Kxh7 Nf6+ Kh8 Ng6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r4r1k/pb2b1p1/1pp1p1Qp/3nN3/4NP1q/3B4/PPP3PP/1K1R3R w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 3,
+      "prompt": "White to move and mate in three.",
+      "solutionText": "Qh7+ Kxh7 Nf6+ Kh8 Ng6#",
+      "hint": "Look for forcing moves and coordinate your pieces to build a mating net.",
+      "explanation": "Book continuations: Qh7+ Kxh7 Nf6+ Kh8 Ng6#.",
+      "diagramPage": "115",
+      "answerPage": "142",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 105
+    }
+  }
+]

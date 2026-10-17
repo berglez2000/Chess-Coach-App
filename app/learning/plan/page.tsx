@@ -23,6 +23,6 @@ export default async function WeeklyPlanPage() {
       <h1 className={shared.heading}>Weekly learning plan</h1>
       <p className={shared.description}>Make time for better chess. Build a reusable study routine around your goals, schedule, and learning materials.</p>
     </header>
-    <WeeklyPlanEditor key={user.id} initial={state} profile={profile} settings={{ ...settings, available: { ANTHROPIC: planProviderAvailable("ANTHROPIC"), OPENAI: planProviderAvailable("OPENAI") } }} availableKeys={availableKeys} />
+    <WeeklyPlanEditor key={user.id} initial={state} profile={profile} settings={{ ...settings, available: { ANTHROPIC: planProviderAvailable("ANTHROPIC"), OPENAI: planProviderAvailable("OPENAI"), DEEPSEEK: planProviderAvailable("DEEPSEEK") } }} availableKeys={availableKeys} />
   </main>;
 }

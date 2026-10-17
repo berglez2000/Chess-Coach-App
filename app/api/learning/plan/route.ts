@@ -1,7 +1,7 @@
 import { ZodError } from "zod";
 import { requireApiUser } from "@/lib/auth/session";
 import { getDb } from "@/lib/db/client";
-import { getCoachingProvider } from "@/lib/coaching/settings";
+import { getCoachingSelection } from "@/lib/coaching/settings";
 import { createPlanClient, planProviderAvailable } from "@/lib/weekly-plan/ai-client";
 import { planActionSchema, PlanError } from "@/lib/weekly-plan/contract";
 import { getPlanState, mutateDraft } from "@/lib/weekly-plan/repository";
@@ -27,10 +27,10 @@ export async function POST(request: Request) {
     const action = planActionSchema.parse(JSON.parse(text));
     const db = getDb();
     if (action.action === "GENERATE") {
-      const provider = await getCoachingProvider(db, user.id);
+      const { provider, model } = await getCoachingSelection(db, user.id);
       const prior = await db.weeklyPlanGeneration.findUnique({ where: { userId_requestId: { userId: user.id, requestId: action.requestId } } });
       if (!prior && !planProviderAvailable(provider)) throw new PlanError("The selected provider has no API key. Configure it in the server environment or select an available provider in Settings.", 503);
-      await generatePlan(db, user.id, action, provider, createPlanClient(provider));
+      await generatePlan(db, user.id, action, provider, createPlanClient(provider, model), { model });
       return await responseState(user.id);
     }
     await mutateDraft(db, user.id, action);

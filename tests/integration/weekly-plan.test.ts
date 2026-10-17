@@ -50,6 +50,18 @@ it("generates, persists edits, explicitly accepts, and retains input/history on 
   expect(old.definition).toEqual(editedDefinition); expect((old.inputs as unknown as PlanInputs).profile.revision).toBe(1);
   expect((await db.weeklyPlanGeneration.findUniqueOrThrow({ where: { id: draft.id } })).generatedDefinition).toEqual(draft.definition);
 });
+it.each([
+  ["OPENAI", "gpt-5.4"],
+  ["DEEPSEEK", "deepseek-v4-pro"],
+] as const)("records the selected %s model when a plan generation fails", async (provider, model) => {
+  const user = await owner(); const request = action(0);
+  await generatePlan(db, user, request, provider, {
+    generate: async () => ({ status: "FAILED", message: "Fixture failure" }),
+  }, { model });
+  expect(await db.weeklyPlanGeneration.findUnique({
+    where: { userId_requestId: { userId: user, requestId: request.requestId } },
+  })).toMatchObject({ provider, requestedModel: model, status: "FAILED" });
+});
 it("failed and invalid generation keep accepted plan and prior proposal", async () => {
   const user = await owner(); let state = await generatePlan(db, user, action(0), "OPENAI", client);
   state = await mutateDraft(db, user, { action: "ACCEPT", expectedRevision: state.revision, draftId: state.draft!.id, draftRevision: 0 });
@@ -63,7 +75,7 @@ it("bounds timeout, ignores late responses, fences expired workers and replays w
   const user = await owner(); const request = action(0);
   let resolve!: (value: Awaited<ReturnType<typeof client.generate>>) => void;
   const generate = vi.fn(() => new Promise<Awaited<ReturnType<typeof client.generate>>>(r => { resolve = r; }));
-  const timedOut = await generatePlan(db, user, request, "OPENAI", { generate }, 10);
+  const timedOut = await generatePlan(db, user, request, "OPENAI", { generate }, { timeoutMs: 10 });
   expect(timedOut.generation?.status).toBe("FAILED"); expect(timedOut.generation?.error).toContain("timed out");
   resolve({ status: "OK", definition: genericPlan(await planInputs(db, user)), model: "late-model" });
   await generatePlan(db, user, request, "OPENAI", { generate }); expect(generate).toHaveBeenCalledTimes(1); expect((await getPlanState(db, user)).draft).toBeNull();

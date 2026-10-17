@@ -24,6 +24,7 @@ enum AnalysisStatus {
 enum CoachingProvider {
   ANTHROPIC
   OPENAI
+  DEEPSEEK
 }
 
 model AppSettings {
@@ -113,6 +114,7 @@ model UserSettings {
   userId           String @id
   user             User @relation(fields: [userId], references: [id], onDelete: Cascade)
   coachingProvider CoachingProvider @default(ANTHROPIC)
+  coachingModel    String?
 }
 
 model Game {

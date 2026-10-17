@@ -1,13 +1,24 @@
 import { createTestOwner } from "../support/test-owner";
 import { afterAll, beforeAll, expect, it, vi } from "vitest";
 vi.mock("server-only", () => ({}));
-import { getCoachingProvider, saveCoachingProvider } from "@/lib/coaching/settings";
+import { getCoachingProvider, saveCoachingProvider, getCoachingSelection, saveCoachingSelection } from "@/lib/coaching/settings";
+import { COACHING_MODELS, type CoachingProvider } from "@/lib/coaching/providers";
 import { assertTestDatabase, createTestDb } from "../support/database";
 const db = createTestDb();
 let ownerId: string;
 beforeAll(async () => {
   await assertTestDatabase(db);
   ownerId = await createTestOwner(db);
+});
+it("persists every model across database clients", async () => {
+  for (const provider of Object.keys(COACHING_MODELS) as CoachingProvider[]) {
+    for (const { id: model } of COACHING_MODELS[provider]) {
+      await saveCoachingSelection(db, { provider, model }, ownerId);
+      const reopened = createTestDb();
+      try { expect(await getCoachingSelection(reopened, ownerId)).toEqual({ provider, model }); }
+      finally { await reopened.$disconnect(); }
+    }
+  }
 });
 afterAll(async () => {
   await assertTestDatabase(db);

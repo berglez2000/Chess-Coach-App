@@ -1,8 +1,9 @@
 import "server-only";
 import Anthropic from "@anthropic-ai/sdk";
 import OpenAI from "openai";
-import { PROVIDERS, providerSchema, type CoachingProvider } from "@/lib/coaching/providers";
+import { PROVIDERS, resolveCoachingModel, type CoachingProvider } from "@/lib/coaching/providers";
 import { providerSchemaShape } from "@/lib/coaching/schema";
+import { createDeepSeekClient } from "@/lib/coaching/deepseek";
 import { buildPlanPrompt } from "./prompt";
 import { PlanError, validatePlan, type PlanInputs, type PlanDefinition } from "./contract";
 export const PLAN_TIMEOUT_MS = 60_000;
@@ -50,10 +51,11 @@ export class AnthropicPlanClient implements PlanClient {
   }
 }
 export function planProviderAvailable(provider: CoachingProvider): boolean { return Boolean(process.env[PROVIDERS[provider].key]?.trim()); }
-export function createPlanClient(provider: CoachingProvider): PlanClient {
-  providerSchema.parse(provider);
+export function createPlanClient(provider: CoachingProvider, model?: string): PlanClient {
+  const selectedModel = resolveCoachingModel(provider, model);
   const config = PROVIDERS[provider];
   if (!planProviderAvailable(provider)) return { generate: async () => ({ status: "FAILED", message: "The selected provider has no API key. Configure it in the server environment and retry." }) };
-  return provider === "OPENAI" ? new OpenAIPlanClient(new OpenAI({ apiKey: process.env[config.key], ...options }), config.model)
-    : new AnthropicPlanClient(new Anthropic({ apiKey: process.env[config.key], ...options }), config.model);
+  if (provider === "DEEPSEEK") return new OpenAIPlanClient(createDeepSeekClient(PLAN_TIMEOUT_MS), selectedModel);
+  return provider === "OPENAI" ? new OpenAIPlanClient(new OpenAI({ apiKey: process.env[config.key], ...options }), selectedModel)
+    : new AnthropicPlanClient(new Anthropic({ apiKey: process.env[config.key], ...options }), selectedModel);
 }

@@ -5,12 +5,11 @@ import { createCoachingClient } from "@/lib/coaching/ai-client";
 import { createCoachingRepository } from "@/lib/coaching/repository";
 import { coachGame } from "@/lib/coaching/orchestrate";
 
-import { getCoachingProvider } from "./settings";
-import { PROVIDERS } from "./providers";
+import { getCoachingSelection } from "./settings";
 
 export async function coachSavedGame(id: string, ownerId: string, expectedRevision?: number) {
   const db = getDb();
-  const provider = await getCoachingProvider(db, requireOwnerId(ownerId));
-  const options = { provider, model: PROVIDERS[provider].model, expectedRevision };
-  return coachGame(id, createCoachingRepository(db, options, ownerId), createCoachingClient(provider), provider);
+  const { provider, model } = await getCoachingSelection(db, requireOwnerId(ownerId));
+  const options = { provider, model, expectedRevision };
+  return coachGame(id, createCoachingRepository(db, options, ownerId), createCoachingClient(provider, model), provider);
 }

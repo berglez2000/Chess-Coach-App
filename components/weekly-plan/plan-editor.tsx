@@ -107,7 +107,7 @@ export function WeeklyPlanEditor({ initial, profile, settings, availableKeys: in
       {profile && <dl className={styles.overview}><div><dt>Weekly study time</dt><dd>{total}<span>minutes</span></dd></div><div><dt>Study days</dt><dd>{profile.answers.availability.length}<span>per week</span></dd></div><div><dt>Your focus</dt><dd className={styles.focus}>{profile.answers.goals.join(" · ") || "Explore and improve"}</dd></div></dl>}
       {profile ? <p>Your routine follows your saved goals and availability. <Link href="/learning/profile" className={shared.link}>Edit learning profile</Link></p>
         : <p>Save your <Link href="/learning/profile" className={shared.link}>learning profile</Link> before generating a plan.</p>}
-      <p className={styles.hint}>Generate with {PROVIDERS[settings.provider].label} · {PROVIDERS[settings.provider].model}. <Link href="/settings" className={shared.link}>Change provider</Link></p>
+      <p className={styles.hint}>Generate with {PROVIDERS[settings.provider].label} · {settings.model}. <Link href="/settings" className={shared.link}>Change model</Link></p>
       <p className={styles.hint}>Generation sends your saved profile answers and resource titles to this provider and may incur API charges. Each explicit request is limited to 60 seconds and 4,096 output tokens, with no automatic paid retries. Loading this page makes no AI calls.</p>
       {!settings.available[settings.provider] && <p className="mt-3">The selected provider needs a server API key. Choose a configured provider in Settings.</p>}
       {state.accepted && <p className={styles.hint}>Generating a new proposal keeps your accepted plan until you explicitly accept its replacement.</p>}

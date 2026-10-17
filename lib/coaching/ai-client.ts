@@ -3,9 +3,10 @@ import { providerSchemaShape } from "./schema";
 import Anthropic from "@anthropic-ai/sdk";
 import OpenAI from "openai";
 import { coachingResponseSchema, crossCheckCoachingResponse, type CoachingAnnotation } from "./contract";
-import { DEFAULT_PROVIDER, PROVIDERS, PROVIDER_MAX_RETRIES, PROVIDER_TIMEOUT_MS, providerSchema, type CoachingProvider } from "./providers";
+import { DEFAULT_PROVIDER, PROVIDERS, PROVIDER_MAX_RETRIES, PROVIDER_TIMEOUT_MS, resolveCoachingModel, type CoachingProvider } from "./providers";
 import type { CoachingPromptPayload } from "./prompt";
 import type { MoveQuality } from "@/types/analysis";
+import { createDeepSeekClient } from "./deepseek";
 
 export const COACHING_MODEL = PROVIDERS.ANTHROPIC.model;
 export type CoachingOutcome =
@@ -88,11 +89,12 @@ export class OpenAICoachingClient implements CoachingClient {
     }
   }
 }
-export function createCoachingClient(provider: CoachingProvider = DEFAULT_PROVIDER): CoachingClient {
-  providerSchema.parse(provider);
+export function createCoachingClient(provider: CoachingProvider = DEFAULT_PROVIDER, model?: string): CoachingClient {
+  const selectedModel = resolveCoachingModel(provider, model);
   const config = PROVIDERS[provider];
   if (!process.env[config.key]?.trim()) return { requestCoaching: async () => ({ status: "MISSING_KEY" }) };
+  if (provider === "DEEPSEEK") return new OpenAICoachingClient(createDeepSeekClient(), selectedModel);
   return provider === "ANTHROPIC"
-    ? new AnthropicCoachingClient(createAnthropicClient(), config.model)
-    : new OpenAICoachingClient(createOpenAIClient(), config.model);
+    ? new AnthropicCoachingClient(createAnthropicClient(), selectedModel)
+    : new OpenAICoachingClient(createOpenAIClient(), selectedModel);
 }

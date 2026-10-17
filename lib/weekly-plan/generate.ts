@@ -1,7 +1,7 @@
 import { requireOwnerId } from "@/lib/auth/owner";
 import type { PrismaClient } from "@/generated/prisma/client";
 import type { CoachingProvider } from "@/lib/coaching/providers";
-import { PROVIDERS } from "@/lib/coaching/providers";
+import { resolveCoachingModel } from "@/lib/coaching/providers";
 import { planInputs } from "./catalog";
 import { finishGeneration, generationInputs, getPlanState, startGeneration } from "./repository";
 import { PlanError, type PlanAction } from "./contract";
@@ -9,8 +9,10 @@ import type { PlanClient, PlanOutcome } from "@/lib/weekly-plan/ai-client";
 import { PLAN_TIMEOUT_MS } from "@/lib/weekly-plan/ai-client";
 
 /** Explicit request only; retries reuse the durable request ID without a second paid call. */
-export async function generatePlan(db: PrismaClient, userId: string, action: Extract<PlanAction, { action: "GENERATE" }>, provider: CoachingProvider, client: PlanClient, timeoutMs = PLAN_TIMEOUT_MS) {
+export async function generatePlan(db: PrismaClient, userId: string, action: Extract<PlanAction, { action: "GENERATE" }>, provider: CoachingProvider, client: PlanClient, options: { timeoutMs?: number; model?: string } = {}) {
   requireOwnerId(userId);
+  const model = resolveCoachingModel(provider, options.model);
+  const timeoutMs = options.timeoutMs ?? PLAN_TIMEOUT_MS;
   const existing = await db.weeklyPlanGeneration.findUnique({ where: { userId_requestId: { userId, requestId: action.requestId } } });
   // Replays still verify the original request payload, but do not rebuild inputs or call a provider.
   if (existing) {
@@ -18,7 +20,7 @@ export async function generatePlan(db: PrismaClient, userId: string, action: Ext
     return getPlanState(db, userId);
   }
   const inputs = await planInputs(db, userId);
-  const claimed = await startGeneration(db, userId, action, inputs, provider, PROVIDERS[provider].model);
+  const claimed = await startGeneration(db, userId, action, inputs, provider, model);
   if (!claimed.claimed) return getPlanState(db, userId);
   const controller = new AbortController();
   let timer: ReturnType<typeof setTimeout> | undefined;

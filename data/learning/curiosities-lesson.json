@@ -1,0 +1,13 @@
+[
+  {
+    "title": "Sam Loyd’s mate in two (1859)",
+    "fen": "2brrb2/8/p7/7Q/1p1kpPp1/1P1pN1P1/3K4/8 w - - 0 1",
+    "text": "White to move and mate in two. The quiet move Qa5 leaves a different mating finish for each defense: ...Bc5 Qa1#, ...Be7 Qe5#, ...Rd7 Nf5#, or ...Re7 Qxb4#. Look for the remaining replies as well.",
+    "demonstration": "Qa5 Bc5 Qa1#",
+    "bookLines": [
+      "Qa5 Be7 Qe5#",
+      "Qa5 Rd7 Nf5#",
+      "Qa5 Re7 Qxb4#"
+    ]
+  }
+]

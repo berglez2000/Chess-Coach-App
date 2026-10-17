@@ -1,0 +1,559 @@
+[
+  {
+    "number": "979",
+    "title": "Mate in 2",
+    "order": 979,
+    "bookLines": [
+      "Rd6 Nxd6 Be3#",
+      "Rd6 gxf4 Rc6#",
+      "Rd6 Rc8 Nxa6#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "7r/5bp1/p4p2/2k2np1/PNp2B2/2P5/1P4PP/3R2K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "MATE",
+      "mateIn": 2,
+      "prompt": "White to move and mate in two.",
+      "solutionText": "Rd6 Nxd6 Be3#",
+      "hint": "Look for forcing moves, quiet threats, and unexpected resources.",
+      "explanation": "Kopylov–Karlson, 1961 (colours reversed). The rook sacrifice leaves a different mate after each defense. The printed ...gxf6 is a typo: the diagram and mating line require ...gxf4. Book continuations: Rd6 Nxd6 Be3# / Rd6 gxf4 Rc6# / Rd6 Rc8 Nxa6#.",
+      "diagramPage": "122",
+      "answerPage": "142",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 112
+    }
+  },
+  {
+    "number": "980",
+    "title": "Chess can be cruel",
+    "order": 980,
+    "bookLines": [
+      "Bc3"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5rk1/p4p1p/4nQp1/8/6P1/3p1p1P/3B1P2/1q3BK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "mateIn": 1,
+      "prompt": "White to move. Find the best continuation.",
+      "solutionText": "Bc3",
+      "hint": "Look for forcing moves, quiet threats, and unexpected resources.",
+      "explanation": "Garcia–Ivkov, 1965. Black blundered with ...d4?? in a winning position. Bc3 threatens mate on h8, which cannot be prevented. Book continuations: Bc3.",
+      "diagramPage": "122",
+      "answerPage": "143",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 112
+    }
+  },
+  {
+    "number": "981",
+    "title": "Master or beginner? Black to move",
+    "order": 981,
+    "bookLines": [
+      "Qa5+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "rnbqkb1r/pp1ppppp/2p2n2/6B1/3P4/4P3/PPP2PPP/RN1QKBNR b KQkq - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "mateIn": 1,
+      "prompt": "Black to move. Find the best continuation.",
+      "solutionText": "Qa5+",
+      "hint": "Look for forcing moves, quiet threats, and unexpected resources.",
+      "explanation": "Djordjevic–Kovacevic, 1984. The check wins the bishop on g5. Book continuations: Qa5+.",
+      "diagramPage": "122",
+      "answerPage": "143",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 112
+    }
+  },
+  {
+    "number": "982",
+    "title": "No quick mate here!",
+    "order": 982,
+    "bookLines": [
+      "h8=N+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/7P/4KBk1/8/8/8/8/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "mateIn": 1,
+      "prompt": "White to move. Find the best continuation.",
+      "solutionText": "h8=N+",
+      "hint": "Look for forcing moves, quiet threats, and unexpected resources.",
+      "explanation": "Promote to a knight. Queen or rook promotion stalemates; bishop promotion leaves a theoretical draw. The book gives mate in fourteen with best play. Book continuations: h8=N+.",
+      "diagramPage": "122",
+      "answerPage": "143",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 112
+    }
+  },
+  {
+    "number": "983",
+    "title": "Seems a study!",
+    "order": 983,
+    "bookLines": [
+      "Kh2"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/p7/1pp4q/3n2p1/3B2Pk/2P2P2/P7/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "mateIn": 1,
+      "prompt": "White to move. Find the best continuation.",
+      "solutionText": "Kh2",
+      "hint": "Look for forcing moves, quiet threats, and unexpected resources.",
+      "explanation": "Schlechter–Meitner, 1899. The quiet king move threatens Bf2 mate, and Black cannot meet it. Book continuations: Kh2.",
+      "diagramPage": "122",
+      "answerPage": "143",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 112
+    }
+  },
+  {
+    "number": "984",
+    "title": "g8: off limits!",
+    "order": 984,
+    "bookLines": [
+      "Bh7 Rxh7 Bxe7+ Kg8 Bxd8 Rxd8 Qe8+ Rxe8 Rxe8#",
+      "Bh7 Bxc5 Qxc5+",
+      "Bh7 Bd6 Qe8+ Qxe8 Bxd6+ Qe7 Bxe7+ Ke8 Bf5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r2q1k1r/p3bpp1/2p4p/2Bp4/4B1PP/4Q3/PPP5/2K1R3 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "mateIn": 1,
+      "prompt": "White to move. Find the best continuation.",
+      "solutionText": "Bh7 Rxh7 Bxe7+ Kg8 Bxd8 Rxd8 Qe8+",
+      "hint": "Look for forcing moves, quiet threats, and unexpected resources.",
+      "explanation": "Hommeles–Skoblikov, 1992. Bh7 controls g8. After ...Rxh7 the e-file combination ends in mate. The printed move numbers in the sidelines are inconsistent; the moves are retained in order. Book continuations: Bh7 Rxh7 Bxe7+ Kg8 Bxd8 Rxd8 Qe8+ Rxe8 Rxe8# / Bh7 Bxc5 Qxc5+ / Bh7 Bd6 Qe8+ Qxe8 Bxd6+ Qe7 Bxe7+ Ke8 Bf5.",
+      "diagramPage": "122",
+      "answerPage": "143",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 112
+    }
+  },
+  {
+    "number": "985",
+    "title": "Black to move and win",
+    "order": 985,
+    "bookLines": [
+      "Bg1 Kxg1 Rxd3 Bxd3 Bxe4",
+      "Bg1 Qxd7 Qxh2#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "7k/1b1r2p1/p6p/1p2qN2/3bP3/3Q4/P5PP/1B1R3K b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "mateIn": 1,
+      "prompt": "Black to move. Find the best continuation.",
+      "solutionText": "Bg1 Kxg1 Rxd3 Bxd3 Bxe4",
+      "hint": "Look for forcing moves, quiet threats, and unexpected resources.",
+      "explanation": "Von Popiel–Marco, 1902. Black resigned because the bishop appeared pinned. Instead ...Bg1 threatens mate on h2 and wins. Book continuations: Bg1 Kxg1 Rxd3 Bxd3 Bxe4 / Bg1 Qxd7 Qxh2#.",
+      "diagramPage": "122",
+      "answerPage": "143",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 112
+    }
+  },
+  {
+    "number": "986",
+    "title": "That’s it! But how?",
+    "order": 986,
+    "bookLines": [
+      "Nd5+ Kd8 Qc7+ Ke8 Qe7#",
+      "Nd5+ Kb7 Qc7+ Ka6 Qb6#",
+      "Nd5+ Kb8 Qc7#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "q7/2k5/3pp3/4pp2/3n4/2N1P2p/P1QP1P1P/7K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "mateIn": 1,
+      "prompt": "White to move. Find the best continuation.",
+      "solutionText": "Nd5+ Kd8 Qc7+ Ke8 Qe7#",
+      "hint": "Look for forcing moves, quiet threats, and unexpected resources.",
+      "explanation": "A double check saves White from the simultaneous threats to queen and king. Book continuations: Nd5+ Kd8 Qc7+ Ke8 Qe7# / Nd5+ Kb7 Qc7+ Ka6 Qb6# / Nd5+ Kb8 Qc7#.",
+      "diagramPage": "122",
+      "answerPage": "143",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 112
+    }
+  },
+  {
+    "number": "987",
+    "title": "Enterprising king",
+    "order": 987,
+    "bookLines": [
+      "Re5 Bxe5 dxe5",
+      "Re5 Rdxe5+ dxe5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/2p3k1/3bR3/3r1r1p/1p1PKPp1/6P1/P7/2B4R w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "mateIn": 1,
+      "prompt": "White to move. Find the best continuation.",
+      "solutionText": "Re5 Bxe5 dxe5",
+      "hint": "Look for forcing moves, quiet threats, and unexpected resources.",
+      "explanation": "White wins a piece. If the bishop captures, dxe5 forks the rooks; after ...Rdxe5+ dxe5, the king attacks both remaining black pieces. Book continuations: Re5 Bxe5 dxe5 / Re5 Rdxe5+ dxe5.",
+      "diagramPage": "122",
+      "answerPage": "143",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 112
+    }
+  },
+  {
+    "number": "988",
+    "title": "Odd fork",
+    "order": 988,
+    "bookLines": [
+      "Nh7 Rxc8 Nxf6+ gxf6 Rxc8+",
+      "Nh7 Kxh7 Rxf8"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "R1R2rk1/6p1/5r1p/4p1N1/8/3n3P/5PP1/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "mateIn": 1,
+      "prompt": "White to move. Find the best continuation.",
+      "solutionText": "Nh7 Rxc8 Nxf6+ gxf6 Rxc8+",
+      "hint": "Look for forcing moves, quiet threats, and unexpected resources.",
+      "explanation": "Razuvaev–Mestrovic, 1981. The intermediate check on f6 wins after ...Rxc8. Book continuations: Nh7 Rxc8 Nxf6+ gxf6 Rxc8+ / Nh7 Kxh7 Rxf8.",
+      "diagramPage": "122",
+      "answerPage": "143",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 112
+    }
+  },
+  {
+    "number": "989",
+    "title": "Knight fight",
+    "order": 989,
+    "bookLines": [
+      "Nf3+ Nxf3+ Kg3 Ke3"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "8/8/8/8/5n2/8/3k1n1K/4n1N1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "mateIn": 1,
+      "prompt": "White to move. Find a way to draw.",
+      "solutionText": "Nf3+ Nxf3+ Kg3",
+      "hint": "Consider a forcing sacrifice and the mobility of every remaining piece.",
+      "explanation": "Kubbel study, 1937. Black has just underpromoted to a knight. White sacrifices with check, then attacks all three knights with Kg3. Black’s only chance is ...Ke3, leaving White stalemated. Book continuations: Nf3+ Nxf3+ Kg3 Ke3.",
+      "diagramPage": "122",
+      "answerPage": "143",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 112
+    }
+  },
+  {
+    "number": "990",
+    "title": "Black’s move became legend",
+    "order": 990,
+    "bookLines": [
+      "Qg3 Qxg3 Ne2+ Kh1 Nxg3+ fxg3 Rxf1#",
+      "Qg3 hxg3 Ne2#",
+      "Qg3 fxg3 Ne2+ Kh1 Rxf1#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5rk1/pp4pp/3p4/1R4Q1/3n4/1q5r/P1P2PPP/5RK1 b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "mateIn": 1,
+      "prompt": "Black to move. Find the best continuation.",
+      "solutionText": "Qg3 Qxg3 Ne2+ Kh1 Nxg3+ fxg3 Rxf1#",
+      "hint": "Look for forcing moves, quiet threats, and unexpected resources.",
+      "explanation": "Levitzky–Marshall, 1912. The queen sacrifice threatens decisive mating combinations; the book notes that less spectacular moves also win. Book continuations: Qg3 Qxg3 Ne2+ Kh1 Nxg3+ fxg3 Rxf1# / Qg3 hxg3 Ne2# / Qg3 fxg3 Ne2+ Kh1 Rxf1#.",
+      "diagramPage": "122",
+      "answerPage": "143",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 112
+    }
+  },
+  {
+    "number": "991",
+    "title": "White accepted a draw offer",
+    "order": 991,
+    "bookLines": [
+      "Rg7 Kxg7 Ne6+ Kf7 Nxd8+",
+      "Rg7 Qc8 Nf5+ Qxf5 gxf5 Kxg7 e4"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3q4/1R5p/p6k/8/1P1N1pP1/4P3/7P/6K1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "mateIn": 1,
+      "prompt": "White to move. Find the best continuation.",
+      "solutionText": "Rg7 Kxg7 Ne6+ Kf7 Nxd8+",
+      "hint": "Look for forcing moves, quiet threats, and unexpected resources.",
+      "explanation": "White accepted a draw, but Rg7 wins. It threatens Nf5 mate and uses a fork on e6 after ...Kxg7. Book continuations: Rg7 Kxg7 Ne6+ Kf7 Nxd8+ / Rg7 Qc8 Nf5+ Qxf5 gxf5 Kxg7 e4.",
+      "diagramPage": "123",
+      "answerPage": "143",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 113
+    }
+  },
+  {
+    "number": "992",
+    "title": "Who would have thought?",
+    "order": 992,
+    "bookLines": [
+      "Kg3 Rce8 Kf4 Bc8 Kg5"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2r2rk1/1bpR1p2/1pq1pQp1/p3P2p/P1PR3P/5N2/2P2PPK/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "mateIn": 1,
+      "prompt": "White to move. Find the best continuation.",
+      "solutionText": "Kg3 Rce8 Kf4 Bc8 Kg5",
+      "hint": "Look for forcing moves, quiet threats, and unexpected resources.",
+      "explanation": "Short–Timman, 1991. The king marches toward h6 to support mate on g7. Book continuations: Kg3 Rce8 Kf4 Bc8 Kg5.",
+      "diagramPage": "123",
+      "answerPage": "143",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 113
+    }
+  },
+  {
+    "number": "993",
+    "title": "Remind you of something?",
+    "order": 993,
+    "bookLines": [
+      "Kg5 Bd5 Kh6"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r4rk1/ppq2p1p/2p1bQ2/8/2nR1K2/1NP2B1P/P1P2PP1/4R3 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "mateIn": 1,
+      "prompt": "White to move. Find the best continuation.",
+      "solutionText": "Kg5 Bd5 Kh6",
+      "hint": "Look for forcing moves, quiet threats, and unexpected resources.",
+      "explanation": "Weenink–Gans, 1936. White’s king heads for h6, threatening mate on g7. Book continuations: Kg5 Bd5 Kh6.",
+      "diagramPage": "123",
+      "answerPage": "143",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 113
+    }
+  },
+  {
+    "number": "994",
+    "title": "This is nice",
+    "order": 994,
+    "bookLines": [
+      "Qa8 Rxa8 Nxe7+ Kh7 Nxc8",
+      "Qa8 Rb7 Qxb8 Rxb8 Nxe7+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "1nq3k1/r3b1p1/pp2prNp/2p5/4Q3/2P1P1B1/P4PPP/2R2RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "mateIn": 1,
+      "prompt": "White to move. Find the best continuation.",
+      "solutionText": "Qa8 Rxa8 Nxe7+ Kh7 Nxc8",
+      "hint": "Look for forcing moves, quiet threats, and unexpected resources.",
+      "explanation": "Panczyk–Schurade, 1978. The queen sacrifice sets up a knight fork and wins a piece. Book continuations: Qa8 Rxa8 Nxe7+ Kh7 Nxc8 / Qa8 Rb7 Qxb8 Rxb8 Nxe7+.",
+      "diagramPage": "123",
+      "answerPage": "143",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 113
+    }
+  },
+  {
+    "number": "995",
+    "title": "Here Black resigned!",
+    "order": 995,
+    "bookLines": [
+      "Qg4 hxg4 gxf6"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "r4rk1/pbp2ppp/1p3Q2/8/2P5/2BR3P/PP2qPP1/7K b - - 0 1",
+      "solver": "BLACK",
+      "objective": "SEQUENCE",
+      "mateIn": 1,
+      "prompt": "Black to move. Find the best continuation.",
+      "solutionText": "Qg4 hxg4 gxf6",
+      "hint": "Look for forcing moves, quiet threats, and unexpected resources.",
+      "explanation": "White sacrificed the queen on f6 and Black resigned. Instead ...Qg4 wins: after hxg4 gxf6, the g-file is closed and White is a rook down. Taking on f6 immediately permits mate. Book continuations (including the unsuccessful alternative): Qg4 hxg4 gxf6 / gxf6 Rg3+ Kh8 Bxf6#.",
+      "diagramPage": "123",
+      "answerPage": "143",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 113
+    },
+    "analysisLines": [
+      "gxf6 Rg3+ Kh8 Bxf6#"
+    ]
+  },
+  {
+    "number": "996",
+    "title": "Another premature resignation",
+    "order": 996,
+    "bookLines": [
+      "Ne3 Bxe3+ Kh1 exf1=Q+ Qxf1"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3r2k1/4Pp1p/Q7/8/2Nb4/8/PP2p1PP/5RK1 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "mateIn": 1,
+      "prompt": "White to move. Find the best continuation.",
+      "solutionText": "Ne3 Bxe3+ Kh1 exf1=Q+ Qxf1",
+      "hint": "Look for forcing moves, quiet threats, and unexpected resources.",
+      "explanation": "Jonasson–Angantysson. White resigned over the threats on f1 and e1, but Ne3 lets the queen protect f1. White emerges with a decisive advantage. Book continuations (including the unsuccessful alternative): Ne3 Bxe3+ Kh1 exf1=Q+ Qxf1 / Kh1 exf1=Q#.",
+      "diagramPage": "123",
+      "answerPage": "143",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 113
+    },
+    "analysisLines": [
+      "Kh1 exf1=Q#"
+    ]
+  },
+  {
+    "number": "997",
+    "title": "Also here White threw in the towel",
+    "order": 997,
+    "bookLines": [
+      "Re8+ Kd7 Re3 Qf4 Rxd4+ Qxd4 Rd3 Qxd3 Ne5+"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2k5/ppp2p1p/8/8/2Nb4/6qP/PP6/3RR2K w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "mateIn": 1,
+      "prompt": "White to move. Find the best continuation.",
+      "solutionText": "Re8+ Kd7 Re3 Qf4 Rxd4+ Qxd4 Rd3",
+      "hint": "Look for forcing moves, quiet threats, and unexpected resources.",
+      "explanation": "White resigned because of ...Qxh3+, but Re8+ followed by Re3 wins. The final knight fork wins the queen; the immediate Rxd4 fails. Book continuations (including the unsuccessful alternative): Re8+ Kd7 Re3 Qf4 Rxd4+ Qxd4 Rd3 Qxd3 Ne5+ / Rxd4 Qxe1+.",
+      "diagramPage": "123",
+      "answerPage": "143",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 113
+    },
+    "analysisLines": [
+      "Rxd4 Qxe1+"
+    ]
+  },
+  {
+    "number": "998",
+    "title": "White quit instead of winning",
+    "order": 998,
+    "bookLines": [
+      "g6"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "5k2/1p6/2p1BP2/p3P1P1/6p1/P5r1/3K4/4r3 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "mateIn": 1,
+      "prompt": "White to move. Find the best continuation.",
+      "solutionText": "g6",
+      "hint": "Look for forcing moves, quiet threats, and unexpected resources.",
+      "explanation": "Black has just captured on e1. Instead of resigning, White can play g6: the threatened check on g7 is fatal. Capturing the rook immediately allows ...Re3+ and ...Rxe5. Book continuations: g6.",
+      "diagramPage": "123",
+      "answerPage": "143",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 113
+    }
+  },
+  {
+    "number": "999",
+    "title": "White regretted resigning",
+    "order": 999,
+    "bookLines": [
+      "Rd6 Rxd6 g8=Q+ Kd7 Qxh7+ Kc6 Qe4+ Kb6 Qb4+ Kc6 Qxc5+ Kxc5 f7",
+      "Rd6 cxd6 f7",
+      "Rd6 Rxd6 g8=Q+ Rd8 Qxd8+ Kxd8 f7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "2kr4/ppp3Pp/4RP1B/2r5/5P2/1P6/P2p4/3K4 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "mateIn": 1,
+      "prompt": "White to move. Find the best continuation.",
+      "solutionText": "Rd6 Rxd6 g8=Q+ Kd7 Qxh7+ Kc6 Qe4+",
+      "hint": "Look for forcing moves, quiet threats, and unexpected resources.",
+      "explanation": "Torre–NN, simultaneous exhibition, 1924. Rd6 wins: after ...cxd6 the d2-pawn is blocked, while ...Rxd6 permits promotion with check and a queen combination. Book continuations (including the unsuccessful alternative): Rd6 Rxd6 g8=Q+ Kd7 Qxh7+ Kc6 Qe4+ Kb6 Qb4+ Kc6 Qxc5+ Kxc5 f7 / Rd6 cxd6 f7 / Rd6 Rxd6 g8=Q+ Rd8 Qxd8+ Kxd8 f7 / f7 Rc1+ Ke2 d1=Q+.",
+      "diagramPage": "123",
+      "answerPage": "143",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 113
+    },
+    "analysisLines": [
+      "f7 Rc1+ Ke2 d1=Q+"
+    ]
+  },
+  {
+    "number": "1000",
+    "title": "A clever king!",
+    "order": 1000,
+    "bookLines": [
+      "Ka7"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "3r4/1Pk3pp/K3b3/pBB1Pp2/8/2P5/PP4PP/7q w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "mateIn": 1,
+      "prompt": "White to move. Find the best continuation.",
+      "solutionText": "Ka7",
+      "hint": "Look for forcing moves, quiet threats, and unexpected resources.",
+      "explanation": "Steel–NN, 1886. The king move threatens Bb6 mate. Book continuations: Ka7.",
+      "diagramPage": "123",
+      "answerPage": "143",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 113
+    }
+  },
+  {
+    "number": "1001",
+    "title": "Megafork",
+    "order": 1001,
+    "bookLines": [
+      "e4 Rc5 exf5#",
+      "e4 Rg5 exd5#"
+    ],
+    "content": {
+      "type": "MOVE",
+      "fen": "4K3/4N3/3pkp2/3rpr2/8/8/4P3/8 w - - 0 1",
+      "solver": "WHITE",
+      "objective": "SEQUENCE",
+      "mateIn": 1,
+      "prompt": "White to move. Find the best continuation.",
+      "solutionText": "e4 Rc5 exf5#",
+      "hint": "Look for forcing moves, quiet threats, and unexpected resources.",
+      "explanation": "Kasparian study, 1935. The pawn forks both rooks and also threatens mate. Moving either rook allows a mating pawn capture. Book continuations: e4 Rc5 exf5# / e4 Rg5 exd5#.",
+      "diagramPage": "123",
+      "answerPage": "143",
+      "pdfId": "cmuqvkqsm0006qotqkecscsj9",
+      "pdfPage": 113
+    }
+  }
+]

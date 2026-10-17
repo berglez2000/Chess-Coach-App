@@ -13,7 +13,7 @@ export async function PUT(request: Request) {
   const user = await requireApiUser(request);
   if (user instanceof Response) return user;
   const input = coachingSelectionSchema.safeParse(await request.json().catch(() => null));
-  if (!input.success) return Response.json({ error: { message: "Choose a supported provider and model." } }, { status: 400 });
+  if (!input.success) return Response.json({ error: { message: "Choose a supported provider, model, and coaching style." } }, { status: 400 });
   try {
     await saveCoachingSelection(getDb(), input.data, user.id);
     return Response.json(await getCoachingSettings(getDb(), user.id));

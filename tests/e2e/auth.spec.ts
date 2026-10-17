@@ -29,8 +29,8 @@ test("email/password registration, private data, password change and logout", as
   const { gameId } = await imported.json();
   await page.goto("/settings");
   await page.getByLabel("Coaching provider").selectOption("OPENAI");
-  await page.getByRole("button", { name: "Save model" }).click();
-  await expect(page.getByRole("status")).toHaveText("Coaching model saved.");
+  await page.getByRole("button", { name: "Save settings" }).click();
+  await expect(page.getByRole("status")).toHaveText("Coaching settings saved.");
 
   const other = await browser.newContext();
   try {

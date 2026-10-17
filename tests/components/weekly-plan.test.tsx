@@ -3,7 +3,7 @@ import { afterEach, expect, it, vi } from "vitest";
 import { WeeklyPlanEditor } from "@/components/weekly-plan/plan-editor";
 import { EMPTY_PLAN_STATE, type PlanState } from "@/lib/weekly-plan/contract";
 import { planProfile, fixtureInputs, fixturePlan } from "../support/weekly-plan-fixtures";
-const settings = { provider: "OPENAI" as const, model: "gpt-5.4-mini", available: { OPENAI: true, ANTHROPIC: true, DEEPSEEK: false } };
+const settings = { provider: "OPENAI" as const, model: "gpt-5.4-mini", persona: "BALANCED" as const, available: { OPENAI: true, ANTHROPIC: true, DEEPSEEK: false } };
 const draft = { id: "draft-1", revision: 0, definition: fixturePlan, provider: "OPENAI" as const, model: "fixture-model", inputs: fixtureInputs, createdAt: "2026-10-04T10:00:00.000Z" };
 const preview: PlanState = { revision: 2, accepted: null, draft, generation: { id: draft.id, status: "READY", error: null, leaseUntil: "2026-10-04T10:02:00.000Z" } };
 const renderPlan = (state = EMPTY_PLAN_STATE) => render(<WeeklyPlanEditor initial={state} profile={planProfile} settings={settings} availableKeys={["chapter:chapter-1", "puzzles"]} />);

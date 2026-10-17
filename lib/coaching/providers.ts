@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { personaSchema, type CoachingPersona } from "./personas";
 
 export const providerSchema = z.enum(["ANTHROPIC", "OPENAI", "DEEPSEEK"]);
 export type CoachingProvider = z.infer<typeof providerSchema>;
@@ -14,6 +15,10 @@ export const COACHING_MODELS = {
     { id: "claude-opus-4-6", label: "Claude Opus 4.6" },
   ],
   OPENAI: [
+    { id: "gpt-6-astra", label: "GPT-6 Astra" },
+    { id: "gpt-6.1-sol", label: "GPT-6.1 Sol" },
+    { id: "gpt-6-sol", label: "GPT-6 Sol" },
+    { id: "gpt-6-luna", label: "GPT-6 Luna" },
     { id: "gpt-5.4-mini", label: "GPT-5.4 mini" },
     { id: "gpt-5.4-nano", label: "GPT-5.4 nano" },
     { id: "gpt-5.4", label: "GPT-5.4" },
@@ -33,15 +38,16 @@ export function resolveCoachingModel(provider: CoachingProvider, model?: string 
   return selected;
 }
 
-export const coachingSelectionSchema = z.object({ provider: providerSchema, model: z.string().optional() }).strict()
+export const coachingSelectionSchema = z.object({ provider: providerSchema, model: z.string().optional(), persona: personaSchema.optional() }).strict()
   .superRefine(({ provider, model }, ctx) => {
     if (model !== undefined && !COACHING_MODELS[provider].some(option => option.id === model)) {
       ctx.addIssue({ code: "custom", path: ["model"], message: "Choose a supported model for the selected provider." });
     }
-  }).transform(({ provider, model }) => ({ provider, model: resolveCoachingModel(provider, model) }));
+  }).transform(({ provider, model, persona }) => ({ provider, model: resolveCoachingModel(provider, model), ...(persona ? { persona } : {}) }));
 export interface CoachingSelection {
   provider: CoachingProvider;
   model: string;
+  persona: CoachingPersona;
 }
 export const DEFAULT_PROVIDER: CoachingProvider = "ANTHROPIC";
 export const COACHING_LEASE_MS = 300_000;

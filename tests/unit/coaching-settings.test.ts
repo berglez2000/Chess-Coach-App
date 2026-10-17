@@ -9,7 +9,7 @@ it("defaults to Anthropic and returns availability only, never credentials", asy
   findUnique.mockResolvedValue(null);
   vi.stubEnv("ANTHROPIC_API_KEY", "private-anthropic"); vi.stubEnv("OPENAI_API_KEY", ""); vi.stubEnv("DEEPSEEK_API_KEY", "");
   const response = await GET();
-  expect(await response.json()).toEqual({ provider: "ANTHROPIC", model: "claude-haiku-4-5", available: { ANTHROPIC: true, OPENAI: false, DEEPSEEK: false } });
+  expect(await response.json()).toEqual({ provider: "ANTHROPIC", model: "claude-haiku-4-5", persona: "BALANCED", available: { ANTHROPIC: true, OPENAI: false, DEEPSEEK: false } });
   expect(upsert).not.toHaveBeenCalled();
 });
 it.each(["ANTHROPIC", "OPENAI", "DEEPSEEK"] as const)("persists %s and reads it on subsequent requests", async provider => {

@@ -9,7 +9,7 @@ import { getCoachingSelection } from "./settings";
 
 export async function coachSavedGame(id: string, ownerId: string, expectedRevision?: number) {
   const db = getDb();
-  const { provider, model } = await getCoachingSelection(db, requireOwnerId(ownerId));
+  const { provider, model, persona } = await getCoachingSelection(db, requireOwnerId(ownerId));
   const options = { provider, model, expectedRevision };
-  return coachGame(id, createCoachingRepository(db, options, ownerId), createCoachingClient(provider, model), provider);
+  return coachGame(id, createCoachingRepository(db, options, ownerId), createCoachingClient(provider, model), provider, persona);
 }

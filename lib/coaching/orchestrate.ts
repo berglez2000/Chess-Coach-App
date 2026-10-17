@@ -6,6 +6,7 @@ import { selectMoments } from "@/lib/coaching/select-moments";
 import { buildCoachingPrompt } from "@/lib/coaching/prompt";
 import type { MoveAssessment } from "@/types/analysis";
 import type { ParsedGameMove } from "@/types/game";
+import type { CoachingPersona } from "@/lib/coaching/personas";
 
 export type CoachingOutcome =
   | { status: "COMPLETED"; annotatedMoments: number }
@@ -20,6 +21,7 @@ export async function coachGame(
   repository: CoachingRepository,
   client: CoachingClient,
   provider: CoachingProvider = DEFAULT_PROVIDER,
+  persona?: CoachingPersona,
 ): Promise<CoachingOutcome> {
   let claimed = false;
   try {
@@ -77,6 +79,8 @@ export async function coachGame(
           termination: null,
         },
       },
+      persona,
+      arc: loaded.moves.map(m => ({ ply: m.ply, san: m.san, evalAfter: m.facts?.after ?? null })),
       moments: selectedMoments,
       momentFacts,
     });

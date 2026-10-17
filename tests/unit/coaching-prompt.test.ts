@@ -330,4 +330,36 @@ describe("buildCoachingPrompt — safety", () => {
     const { systemPrompt } = buildCoachingPrompt(makeInput());
     expect(systemPrompt).toContain("supplied engine data");
   });
+
+  it("labels why each moment was selected", () => {
+    const { userMessage } = buildCoachingPrompt(makeInput());
+    expect(userMessage).toContain("Why selected: the user's own mistake [evaluation_loss]");
+  });
+
+  it("renders the full game arc with evaluations when supplied", () => {
+    const arc = moves.slice(0, 4).map((m, i) => ({ ply: m.ply, san: m.san, evalAfter: makeEval(10 * (i + 1)) }));
+    const { userMessage } = buildCoachingPrompt(makeInput({ arc }));
+    expect(userMessage).toContain("## Full game with evaluation trend");
+    expect(userMessage).toContain("1. e4 e5 {+0.20} 2. Nf3 Nc6 {+0.40}");
+  });
+
+  it("omits the game arc section when not supplied", () => {
+    const { userMessage } = buildCoachingPrompt(makeInput());
+    expect(userMessage).not.toContain("Full game with evaluation trend");
+  });
+
+  it("includes static board features before and after each moment", () => {
+    const { userMessage } = buildCoachingPrompt(makeInput());
+    expect(userMessage).toContain("Board before move (mover's view):");
+    expect(userMessage).toContain("Board after move (mover's view):");
+    expect(userMessage).toMatch(/Material: mover .* vs opponent/);
+    expect(userMessage).toContain("Mover's king:");
+  });
+
+  it("uses the balanced persona by default and the selected persona voice otherwise", () => {
+    expect(buildCoachingPrompt(makeInput()).systemPrompt).toContain("experienced club coach");
+    const { systemPrompt } = buildCoachingPrompt(makeInput({ persona: "SOCRATIC" }));
+    expect(systemPrompt).toContain("Socratic coach");
+    expect(systemPrompt).not.toContain("experienced club coach");
+  });
 });

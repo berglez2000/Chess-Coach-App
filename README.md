@@ -466,7 +466,7 @@ Open **Settings** in the header, choose **Anthropic (Claude)**, **OpenAI (GPT)**
 | Provider | Server-only key | Available models | Structured-output API |
 | --- | --- | --- | --- |
 | Anthropic (Claude) | `ANTHROPIC_API_KEY` | `claude-haiku-4-5` (default), `claude-sonnet-4-6`, `claude-opus-4-6` | Messages `output_config.format` |
-| OpenAI (GPT) | `OPENAI_API_KEY` | `gpt-5.4-mini` (default), `gpt-5.4-nano`, `gpt-5.4` | Responses `text.format`, strict JSON schema |
+| OpenAI (GPT) | `OPENAI_API_KEY` | `gpt-6-astra`, `gpt-6.1-sol`, `gpt-6-sol`, `gpt-6-luna`, `gpt-5.4-mini` (default), `gpt-5.4-nano`, `gpt-5.4` | Responses `text.format`, strict JSON schema |
 | DeepSeek | `DEEPSEEK_API_KEY` | `deepseek-flash` (default), `deepseek-v4-pro` | Responses `text.format`, JSON schema |
 
 The model allowlist lives in `lib/coaching/providers.ts`. Each user saves a provider and model for both coaching and weekly plans. Existing preferences keep the previous model through a nullable `UserSettings.coachingModel` migration; all models for a provider share its server API key. GPT uses low reasoning effort and an 8,192-token output budget; Claude uses 4,096 output tokens. These defaults are supported by the [GPT-5.4 mini model documentation](https://developers.openai.com/api/docs/models/gpt-5.4-mini), [OpenAI structured-output guide](https://developers.openai.com/api/docs/guides/structured-outputs), and [Claude structured-output guide](https://platform.claude.com/docs/en/build-with-claude/structured-outputs). OpenAI SDK 7.23.0 was added; the existing Anthropic SDK was retained. Live account access and output quality have not been verified without credentials.

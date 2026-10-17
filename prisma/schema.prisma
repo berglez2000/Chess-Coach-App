@@ -115,6 +115,7 @@ model UserSettings {
   user             User @relation(fields: [userId], references: [id], onDelete: Cascade)
   coachingProvider CoachingProvider @default(ANTHROPIC)
   coachingModel    String?
+  coachingPersona  String @default("BALANCED")
 }
 
 model Game {

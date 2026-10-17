@@ -15,7 +15,7 @@ it("persists every model across database clients", async () => {
     for (const { id: model } of COACHING_MODELS[provider]) {
       await saveCoachingSelection(db, { provider, model }, ownerId);
       const reopened = createTestDb();
-      try { expect(await getCoachingSelection(reopened, ownerId)).toEqual({ provider, model }); }
+      try { expect(await getCoachingSelection(reopened, ownerId)).toEqual({ provider, model, persona: "BALANCED" }); }
       finally { await reopened.$disconnect(); }
     }
   }

@@ -2,7 +2,7 @@ vi.mock("@/lib/auth/session", () => ({ requireUser: async () => ({ id: "test-use
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, expect, it, vi } from "vitest";
 import { CoachingSettingsForm } from "@/components/settings/coaching-settings-form";
-const settings = { provider: "ANTHROPIC" as const, model: "claude-haiku-4-5", available: { ANTHROPIC: false, OPENAI: true, DEEPSEEK: false } };
+const settings = { provider: "ANTHROPIC" as const, model: "claude-haiku-4-5", persona: "BALANCED" as const, available: { ANTHROPIC: false, OPENAI: true, DEEPSEEK: false } };
 afterEach(() => vi.unstubAllGlobals());
 it("shows saved default and key availability; changing selection alone sends nothing", async () => {
   const fetch = vi.fn(); vi.stubGlobal("fetch", fetch);
@@ -13,22 +13,22 @@ it("shows saved default and key availability; changing selection alone sends not
   expect(fetch).not.toHaveBeenCalled();
   let finish!: (r: Response) => void;
   fetch.mockImplementation(() => new Promise<Response>(resolve => { finish = resolve; }));
-  fireEvent.click(screen.getByRole("button", { name: "Save model" }));
+  fireEvent.click(screen.getByRole("button", { name: "Save settings" }));
   expect(screen.getByRole("button", { name: "Saving…" })).toBeDisabled();
   await act(async () => finish(Response.json({ ...settings, provider: "OPENAI", model: "gpt-5.4-mini" })));
   expect(screen.getByRole("status")).toHaveTextContent("saved");
   expect(screen.getByText(/Saved default/)).toHaveTextContent("OpenAI (GPT)");
-  expect(fetch).toHaveBeenCalledExactlyOnceWith("/api/settings", expect.objectContaining({ method: "PUT", body: '{"provider":"OPENAI","model":"gpt-5.4-mini"}' }));
+  expect(fetch).toHaveBeenCalledExactlyOnceWith("/api/settings", expect.objectContaining({ method: "PUT", body: '{"provider":"OPENAI","model":"gpt-5.4-mini","persona":"BALANCED"}' }));
 });
 it("retains the saved default after a failed update", async () => {
   vi.stubGlobal("fetch", vi.fn().mockResolvedValue(Response.json({ error: { message: "Could not save settings." } }, { status: 503 })));
   render(<CoachingSettingsForm settings={settings} />);
   fireEvent.change(screen.getByLabelText("Coaching provider"), { target: { value: "OPENAI" } });
-  fireEvent.click(screen.getByRole("button", { name: "Save model" }));
+  fireEvent.click(screen.getByRole("button", { name: "Save settings" }));
   expect(await screen.findByRole("status")).toHaveTextContent("Could not save");
   expect(screen.getByText(/Saved default/)).toHaveTextContent("Anthropic (Claude)");
 });
-it("offers three models per provider and saves a non-default model explicitly", async () => {
+it("offers models for the selected provider and saves a non-default model explicitly", async () => {
   const fetch = vi.fn().mockResolvedValue(Response.json({ ...settings, model: "claude-opus-4-6" }));
   vi.stubGlobal("fetch", fetch);
   render(<CoachingSettingsForm settings={settings} />);
@@ -36,13 +36,13 @@ it("offers three models per provider and saves a non-default model explicitly", 
   expect(model.querySelectorAll("option")).toHaveLength(3);
   fireEvent.change(model, { target: { value: "claude-opus-4-6" } });
   expect(fetch).not.toHaveBeenCalled();
-  fireEvent.click(screen.getByRole("button", { name: "Save model" }));
+  fireEvent.click(screen.getByRole("button", { name: "Save settings" }));
   expect(await screen.findByRole("status")).toHaveTextContent("saved");
-  expect(fetch).toHaveBeenCalledWith("/api/settings", expect.objectContaining({ body: JSON.stringify({ provider: "ANTHROPIC", model: "claude-opus-4-6" }) }));
+  expect(fetch).toHaveBeenCalledWith("/api/settings", expect.objectContaining({ body: JSON.stringify({ provider: "ANTHROPIC", model: "claude-opus-4-6", persona: "BALANCED" }) }));
   expect(screen.getByText(/Saved default/)).toHaveTextContent("Claude Opus 4.6");
   fireEvent.change(screen.getByLabelText("Coaching provider"), { target: { value: "OPENAI" } });
   expect(model).toHaveValue("gpt-5.4-mini");
-  expect(model.querySelectorAll("option")).toHaveLength(3);
+  expect(model.querySelectorAll("option")).toHaveLength(7);
   expect(screen.queryByRole("option", { name: "Claude Opus 4.6" })).not.toBeInTheDocument();
 });
 it("offers DeepSeek models and shows its separate key requirement", async () => {
@@ -56,8 +56,8 @@ it("offers DeepSeek models and shows its separate key requirement", async () => 
   expect(screen.getByText(/DEEPSEEK_API_KEY/)).toBeInTheDocument();
   fireEvent.change(model, { target: { value: "deepseek-v4-pro" } });
   expect(fetch).not.toHaveBeenCalled();
-  fireEvent.click(screen.getByRole("button", { name: "Save model" }));
+  fireEvent.click(screen.getByRole("button", { name: "Save settings" }));
   expect(await screen.findByRole("status")).toHaveTextContent("saved");
-  expect(fetch).toHaveBeenCalledWith("/api/settings", expect.objectContaining({ body: JSON.stringify({ provider: "DEEPSEEK", model: "deepseek-v4-pro" }) }));
+  expect(fetch).toHaveBeenCalledWith("/api/settings", expect.objectContaining({ body: JSON.stringify({ provider: "DEEPSEEK", model: "deepseek-v4-pro", persona: "BALANCED" }) }));
   expect(screen.getByText(/Saved default/)).toHaveTextContent("DeepSeek V4 Pro");
 });

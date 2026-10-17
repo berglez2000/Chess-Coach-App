@@ -13,7 +13,7 @@ export default async function SettingsPage() {
   return <SimplePage title="Settings" description="Choose how Chess Coach helps you learn from your games.">
     <section className={`${styles.card} ${styles.settingsCard}`} aria-labelledby="coaching-settings-heading">
       <h2 id="coaching-settings-heading" className={styles.cardTitle}>AI coaching</h2>
-      <p className={`${styles.hint} mt-2`}>Choose the provider and model for your coaching reviews and weekly plans.</p>
+      <p className={`${styles.hint} mt-2`}>Choose the provider, model, and coaching style for your reviews and weekly plans.</p>
       {settings ? <CoachingSettingsForm settings={settings} /> : <p role="alert" className={`${styles.error} mt-6`}>Could not load settings. Start local PostgreSQL, apply migrations, then <a href="/settings" className={styles.link}>try again</a>.</p>}
     </section>
   </SimplePage>;

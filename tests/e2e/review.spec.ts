@@ -45,8 +45,8 @@ for (const color of ["WHITE", "BLACK"] as const) {
     const provider = color === "WHITE" ? "ANTHROPIC" : "OPENAI";
     await page.goto("/settings");
     await page.getByLabel("Coaching provider").selectOption(provider);
-    await page.getByRole("button", { name: "Save model" }).click();
-    await expect(page.getByRole("status")).toHaveText("Coaching model saved.");
+    await page.getByRole("button", { name: "Save settings" }).click();
+    await expect(page.getByRole("status")).toHaveText("Coaching settings saved.");
     await page.reload();
     await expect(page.getByLabel("Coaching provider")).toHaveValue(provider);
     await page.goto("/games/new");
@@ -133,8 +133,8 @@ for (const color of ["WHITE", "BLACK"] as const) {
     const replacementProvider = provider === "ANTHROPIC" ? "OPENAI" : "ANTHROPIC";
     await page.goto("/settings");
     await page.getByLabel("Coaching provider").selectOption(replacementProvider);
-    await page.getByRole("button", { name: "Save model" }).click();
-    await expect(page.getByRole("status")).toHaveText("Coaching model saved.");
+    await page.getByRole("button", { name: "Save settings" }).click();
+    await expect(page.getByRole("status")).toHaveText("Coaching settings saved.");
     expect(database("read", id).coachingProvider).toBe(provider);
     const originalAnnotations = database("read", id).moves.map(m => m.coachingAnnotation);
     await page.goto(`/games/${id}`);
@@ -170,8 +170,8 @@ test("unavailable provider shows configuration guidance and preserves engine rev
   await page.goto("/settings");
   await expect(page.getByText(/OpenAI \(GPT\): Unavailable/)).toBeVisible();
   await page.getByLabel("Coaching provider").selectOption("OPENAI");
-  await page.getByRole("button", { name: "Save model" }).click();
-  await expect(page.getByRole("status")).toHaveText("Coaching model saved.");
+  await page.getByRole("button", { name: "Save settings" }).click();
+  await expect(page.getByRole("status")).toHaveText("Coaching settings saved.");
   await page.goto("/games/new");
   await page.getByLabel("Your color").selectOption("WHITE");
   await page.getByLabel("Game PGN").fill(fixture.replace('[White "Aljaz"]', `[White "E2E-${process.env.CHESS_E2E_RUN_ID}-MISSING"]`).replace('[Event "Local rapid"]', '[Event "Missing-key fixture"]'));

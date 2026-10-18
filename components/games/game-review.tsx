@@ -69,8 +69,32 @@ export function GameReview({ game, userColor, status, initialPly = 0 }: { game: 
     return () => document.removeEventListener("keydown", onKey);
   }, [select, selectedPly, exploration]);
   const { metadata } = game;
+  const details = game.details ?? {};
   const time = metadata.timeControl?.match(/^(\d+)(?:\+(\d+))?$/);
   const timeLabel = time ? `${Number(time[1]) / 60} min${time[2] ? ` + ${time[2]} sec` : ""}` : metadata.timeControl;
+  const openingName = metadata.openingName ?? details.openingName;
+  const userWon = metadata.result === (userColor === "WHITE" ? "1-0" : "0-1");
+  const outcome = metadata.result === "*" ? null : metadata.result === "1/2-1/2" ? "Draw" : userWon ? "You won" : "You lost";
+  const ratingGap = metadata.whiteRating !== undefined && metadata.blackRating !== undefined
+    ? (userColor === "WHITE" ? metadata.blackRating - metadata.whiteRating : metadata.whiteRating - metadata.blackRating) : null;
+  const duration = details.durationSeconds;
+  const durationLabel = duration === undefined ? null : duration >= 3600 ? `${Math.floor(duration / 3600)} h ${Math.floor(duration / 60) % 60} min` : `${Math.floor(duration / 60)} min ${duration % 60} s`;
+  // Seconds the mover used, from consecutive [%clk] samples; increment is added back.
+  const timeSpent = (ply: number) => {
+    const move = game.moves[ply - 1];
+    if (move?.clockSeconds === undefined) return undefined;
+    const previous = game.moves.slice(0, ply - 1).findLast(other => other.color === move.color);
+    const before = previous ? previous.clockSeconds : details.baseSeconds;
+    if (before === undefined) return undefined;
+    const spent = before - move.clockSeconds + (details.incrementSeconds ?? 0);
+    return spent >= 0 ? Math.round(spent * 10) / 10 : undefined;
+  };
+  const annotationCounts = (color: ChessColor) => {
+    const counts = new Map<string, number>();
+    for (const move of game.moves) if (move.color === color && move.pgnAnnotation) counts.set(move.pgnAnnotation, (counts.get(move.pgnAnnotation) ?? 0) + 1);
+    return ["!!", "!", "!?", "?!", "?", "??"].filter(symbol => counts.has(symbol)).map(symbol => `${symbol} ×${counts.get(symbol)}`).join(" · ");
+  };
+  const hasPgnAnnotations = game.moves.some(move => move.pgnAnnotation);
   const filteredMoves = filter === "all" ? game.moves : game.moves.filter(move => move.analysis?.quality === filter);
   const whiteBottom = (userColor === "WHITE") !== flipped;
   const clockAt = (color: ChessColor) => {
@@ -96,10 +120,15 @@ export function GameReview({ game, userColor, status, initialPly = 0 }: { game: 
       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#657467]">Game review</p>
       <h1 id="review-heading" className="mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">{metadata.whiteName ?? "White"} <span className="font-normal text-[#657467]">vs.</span> {metadata.blackName ?? "Black"}</h1>
       <dl className="mt-3 flex flex-wrap gap-x-6 gap-y-2 text-sm text-[#465c50]">
-        <div><dt className="inline font-semibold">Result: </dt><dd className="inline">{metadata.result}</dd></div>
+        <div><dt className="inline font-semibold">Result: </dt><dd className="inline">{metadata.result}{outcome ? ` · ${outcome}` : ""}</dd></div>
+        {metadata.termination && <div><dt className="inline font-semibold">Ending: </dt><dd className="inline">{metadata.termination}</dd></div>}
         {metadata.playedAt && <div><dt className="inline font-semibold">Date: </dt><dd className="inline">{metadata.playedAt.slice(0, 10)}</dd></div>}
-        {metadata.openingName && <div><dt className="inline font-semibold">Opening: </dt><dd className="inline">{metadata.openingName}{metadata.eco ? ` (${metadata.eco})` : ""}</dd></div>}
+        {(openingName || metadata.eco) && <div><dt className="inline font-semibold">Opening: </dt><dd className="inline">{details.openingUrl && openingName ? <a href={details.openingUrl} target="_blank" rel="noopener noreferrer" className="underline">{openingName}</a> : openingName}{metadata.eco ? `${openingName ? " " : ""}(${metadata.eco})` : ""}</dd></div>}
         {metadata.timeControl && <div><dt className="inline font-semibold">Time control: </dt><dd className="inline">{timeLabel}</dd></div>}
+        <div><dt className="inline font-semibold">Length: </dt><dd className="inline">{Math.ceil(total / 2)} moves{durationLabel ? ` · ${durationLabel}` : ""}</dd></div>
+        {ratingGap !== null && <div><dt className="inline font-semibold">Rating gap: </dt><dd className="inline">{ratingGap === 0 ? "Even" : `Opponent ${ratingGap > 0 ? "+" : "−"}${Math.abs(ratingGap)}`}</dd></div>}
+        {(metadata.event || details.sourceSite) && <div><dt className="inline font-semibold">Event: </dt><dd className="inline">{[metadata.event, details.sourceSite].filter(Boolean).join(" · ")}</dd></div>}
+        {details.gameUrl && <div><dt className="sr-only">Original game</dt><dd className="inline"><a href={details.gameUrl} target="_blank" rel="noopener noreferrer" className="font-semibold underline">View original game ↗</a></dd></div>}
       </dl>
       <p className={styles.status} data-complete={analyzed.length === total}>Saved analysis: {analyzed.length} of {total} moves{analyzed.length > 0 && analyzed.length < total ? " (partial)" : ""}.</p>
       {mixedRuns && <p className="mt-2 text-sm">These results include multiple analysis runs. A retry may still be incomplete.</p>}
@@ -126,6 +155,7 @@ export function GameReview({ game, userColor, status, initialPly = 0 }: { game: 
           <p className="mt-3 text-sm" aria-live="polite" aria-atomic="true">
             {selectedMove ? `Move ${selectedMove.moveNumber}${selectedMove.color === "WHITE" ? "." : "..."} ${selectedMove.san}` : "Initial position"}
             {` · Half-move ${selectedPly} of ${total}`}
+            {selectedMove && timeSpent(selectedPly) !== undefined && ` · ${timeSpent(selectedPly)} s spent`}
           </p>
           {selectedMove && !preview && <div className="mt-2" aria-live="polite" aria-atomic="true"><MoveQualityBadge quality={selectedMove.analysis?.quality ?? selectedMove.coaching?.classification} showLabel /></div>}
           <p className="mt-1 text-sm text-[#657467]">{fen.split(" ")[1] === "w" ? "White" : "Black"} to play · Use ← → to navigate</p>
@@ -158,6 +188,7 @@ export function GameReview({ game, userColor, status, initialPly = 0 }: { game: 
           {tab === "coaching" && <>
           {exploration ? <p className="rounded-2xl bg-white p-5 text-sm">Recorded evaluations and coaching are hidden during exploration. Select a game move to leave the variation, or return to review to restore your selected position.</p> : <div className="rounded-2xl border border-[#20382e]/15 bg-white p-5">
             <p className="text-xs font-semibold uppercase tracking-widest text-[#657467]">{selectedMove ? `What happened · ${selectedMove.moveNumber}${selectedMove.color === "WHITE" ? "." : "…"} ${selectedMove.san}` : "Your move-by-move guide"}</p>
+            {selectedMove && (selectedMove.pgnAnnotation || selectedMove.pgnComment) && <p className="mt-3 rounded-lg bg-[#f6f5f0] p-3 text-sm"><span className="font-semibold">From your PGN: </span>{selectedMove.pgnAnnotation && <span className="font-mono font-semibold">{selectedMove.san}{selectedMove.pgnAnnotation} </span>}{selectedMove.pgnComment}</p>}
             {selectedMove ? <CoachingPanel coaching={selectedMove.coaching} status={status} /> : <p className="mt-3 text-sm leading-relaxed">Select a move or review the key moments to see what happened, why it matters, and what to try next.</p>}
             {analysis?.bestMoveSan && <div className="mt-4 border-t border-[#20382e]/10 pt-4">
               <p className="text-sm font-semibold">{selectedMove && selectedMove.san !== analysis.bestMoveSan ? "Try instead" : "Engine suggestion"}: {analysis.bestMoveSan}</p>
@@ -178,6 +209,7 @@ export function GameReview({ game, userColor, status, initialPly = 0 }: { game: 
       {!exploration && <section className={styles.summary} aria-label="Game summary">
         <div className={styles.summaryHeading}><h3>Game summary</h3><span>Your move quality as {userColor === "WHITE" ? "White" : "Black"}</span></div>
         <div className={styles.qualities}>{(["normal", "inaccuracy", "mistake", "blunder", "unknown", "pending"] as const).map(quality => <div key={quality}><MoveQualityBadge quality={quality === "pending" ? undefined : quality} showLabel /><strong>{userMoves.filter(move => (move.analysis?.quality ?? "pending") === quality).length}</strong></div>)}</div>
+        {hasPgnAnnotations && <p className="mt-3 text-sm text-[#465c50]"><span className="font-semibold">PGN annotations: </span>{(["WHITE", "BLACK"] as const).map(color => `${color === "WHITE" ? metadata.whiteName ?? "White" : metadata.blackName ?? "Black"}: ${annotationCounts(color) || "none"}`).join(" — ")}</p>}
       </section>}
       {!exploration && <CoachingSummaryPanel coaching={game.coaching} moves={game.moves} status={status} onSelectPly={select} />}
     </section>

@@ -2,6 +2,7 @@ import type { CoachingProvider } from "@/lib/coaching/providers";
 import type { ReviewAnalysis } from "@/lib/analysis/review";
 import type { CoachingCategory, CoachingClassification } from "@/lib/coaching/contract";
 import type { ChessColor, ParsedGame, ParsedGameMove } from "./game";
+import type { PgnGameDetails } from "@/lib/pgn/review-metadata";
 
 export type AnalysisStatus = "PENDING" | "ENGINE_RUNNING" | "ENGINE_COMPLETED" | "AI_RUNNING" | "COMPLETED" | "FAILED";
 
@@ -24,8 +25,15 @@ export interface GameCoachingSummary {
 }
 
 export type ReviewGame = Pick<ParsedGame, "initialFen" | "metadata"> & {
-  moves: (ParsedGameMove & { positiveHighlight?: boolean; analysis?: ReviewAnalysis | null; coaching?: ReviewCoachingAnnotation | null })[];
+  moves: (ParsedGameMove & {
+    positiveHighlight?: boolean; analysis?: ReviewAnalysis | null; coaching?: ReviewCoachingAnnotation | null;
+    /** Move-assessment symbol (!, ?, ?!, …) supplied in the PGN. */
+    pgnAnnotation?: string;
+    /** Free-text comment supplied in the PGN, with clock commands removed. */
+    pgnComment?: string;
+  })[];
   coaching?: GameCoachingSummary | null;
+  details?: PgnGameDetails;
 };
 
 export interface GameSummary {

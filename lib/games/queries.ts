@@ -1,4 +1,4 @@
-import { pgnReviewMetadata } from "@/lib/pgn/review-metadata";
+import { pgnGameDetails, pgnReviewMetadata } from "@/lib/pgn/review-metadata";
 import { requireOwnerId } from "@/lib/auth/owner";
 import { positiveHighlightPlies } from "@/lib/coaching/review-highlights";
 import { toReviewAnalysis } from "@/lib/analysis/review";
@@ -56,9 +56,12 @@ export async function findGame(db: PrismaClient, id: string, ownerId: string): P
     game: {
       initialFen: stored.initialFen,
       coaching,
+      details: pgnGameDetails(display.headers),
       moves: stored.moves.map(({ engineAnalysis, coachingAnnotation, ...move }) => ({
         ...move,
         ...(display.clocks[move.ply] !== undefined ? { clockSeconds: display.clocks[move.ply] } : {}),
+        ...(display.annotations[move.ply] ? { pgnAnnotation: display.annotations[move.ply] } : {}),
+        ...(display.comments[move.ply] ? { pgnComment: display.comments[move.ply] } : {}),
         ...(positivePlies.has(move.ply) ? { positiveHighlight: true } : {}),
         analysis: toReviewAnalysis(engineAnalysis),
         coaching: toReviewCoachingAnnotation(coachingAnnotation),

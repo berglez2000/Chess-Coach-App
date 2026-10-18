@@ -6,6 +6,8 @@ export const boardTheme = {
   lastMoveTo: "rgba(246, 214, 74, 0.58)",
   lightNotation: "#654427",
   darkNotation: "#fff1d2",
+  moveHint: "radial-gradient(circle, rgba(0, 0, 0, 0.18) 22%, transparent 23%)",
+  captureHint: "radial-gradient(circle, transparent 78%, rgba(0, 0, 0, 0.18) 79%, rgba(0, 0, 0, 0.18) 92%, transparent 93%)",
 };
 
 export const customPieces = Object.fromEntries(

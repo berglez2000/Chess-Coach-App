@@ -1,0 +1,31 @@
+# systemd unit for Chess Coach. Installed to /etc/systemd/system/chess-coach.service.
+# Controls: systemctl start|stop|restart|status chess-coach ; logs: journalctl -u chess-coach -f
+[Unit]
+Description=Chess Coach (Next.js)
+After=network-online.target postgresql.service
+Wants=network-online.target
+Requires=postgresql.service
+
+[Service]
+Type=simple
+User=chess
+Group=chess
+WorkingDirectory=/opt/chess-coach/app
+EnvironmentFile=/etc/chess-coach/env
+Environment=NODE_ENV=production
+Environment=PORT=3000
+# next start binds 127.0.0.1 (see package.json); only Tailscale/Cloudflare on this box reach it.
+ExecStart=/usr/bin/npm start
+Restart=always
+RestartSec=3
+# Hardening: read-only system, private /tmp, no privilege escalation. App only writes to its own tree.
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=read-only
+ReadWritePaths=/opt/chess-coach/app
+# Slightly lower priority so a heavy Stockfish analysis does not starve SSH or Postgres inside this VM.
+Nice=5
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,562 @@
+{
+  "chapter": {
+    "title": "Skewers",
+    "order": 6
+  },
+  "exercises": [
+    {
+      "number": "1",
+      "title": "Exchange sacrifice on f6",
+      "order": 1,
+      "bookLines": [
+        "Rxf6 Kxf6 Bh4+ Ke5 Bxd8"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "3r4/5pk1/R4b2/1p5p/1P4p1/4P1B1/2r2PP1/R5K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a skewer to find the winning continuation.",
+        "solutionText": "Rxf6 Kxf6 Bh4+ Ke5 Bxd8",
+        "hint": "Your bishop would love to check on a diagonal that leads to the rook on d8. Which black piece has to step onto that diagonal?",
+        "explanation": "Rxf6 pulls the king to f6, onto the same diagonal as the rook on d8. Bh4+ skewers them: the king has to move and the bishop takes the rook, so White has won a bishop. Book continuation: Rxf6 Kxf6 Bh4+ Ke5 Bxd8.",
+        "diagramPage": "106",
+        "answerPage": "115",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "2",
+      "title": "Trade, then skewer",
+      "order": 2,
+      "bookLines": [
+        "Nxc7 Qxc7 Bf4"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "1rbq1rk1/1pb2ppp/p7/2nN4/4p3/6P1/PPP1QPBP/R1B2RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a skewer to find the winning continuation.",
+        "solutionText": "Nxc7 Qxc7 Bf4",
+        "hint": "Your dark-squared bishop has not moved yet. Which diagonal holds two black heavy pieces after a simple trade?",
+        "explanation": "After Nxc7 Qxc7 the black queen and the rook on b8 stand on one diagonal. Bf4 attacks the queen, and when it moves the bishop takes the rook. Book continuation: Nxc7 Qxc7 Bf4.",
+        "diagramPage": "107",
+        "answerPage": "115",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "3",
+      "title": "Skewer on the a-file",
+      "order": 3,
+      "bookLines": [
+        "Qxa7+ Qxa7 Ra1+ Kb4 Rxa7"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "5k2/R4q2/2p3p1/8/2PQ4/KP6/6P1/7r b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. Use a skewer to find the winning continuation.",
+        "solutionText": "Qxa7+ Qxa7 Ra1+ Kb4 Rxa7",
+        "hint": "The white king stands on the a-file and your rook can reach a1. What would you like to see behind the king?",
+        "explanation": "Qxa7+ forces the white queen to a7, behind its own king on the a-file. Ra1+ then skewers king and queen, and Black comes out a rook ahead. Book continuation: Qxa7+ Qxa7 Ra1+ Kb4 Rxa7.",
+        "diagramPage": "107",
+        "answerPage": "115",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "4",
+      "title": "Queen sacrifice on h8",
+      "order": 4,
+      "bookLines": [
+        "Qh8+ Nxh8 Rxh8+ Ke7 Rxc8"
+      ],
+      "analysisLines": [
+        "Qxg6 fxg6 Rh8+ Bg8"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "2q2k2/3r1ppQ/p5n1/3b4/1Pp5/2P4R/5PP1/5RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a skewer to find the winning continuation.",
+        "solutionText": "Qh8+ Nxh8 Rxh8+ Ke7 Rxc8",
+        "hint": "The black king and queen stand on the same rank. How can your rook get to that rank with check?",
+        "explanation": "Qh8+ forces Nxh8, and Rxh8+ skewers the king and the queen on the back rank: after Ke7 White takes on c8 and has won a knight. Not Qxg6 fxg6 Rh8+, because the bishop blocks on g8. Book continuation: Qh8+ Nxh8 Rxh8+ Ke7 Rxc8.",
+        "diagramPage": "107",
+        "answerPage": "115",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "5",
+      "title": "Too many pieces on the fourth rank",
+      "order": 5,
+      "bookLines": [
+        "Bxb4 Kxb4 Ra4+ Kc3 Rxg4"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r3b3/1kp1bpp1/4p3/8/1BK3R1/5NP1/1PP2P2/8 b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. Use a skewer to find the winning continuation.",
+        "solutionText": "Bxb4 Kxb4 Ra4+ Kc3 Rxg4",
+        "hint": "The white king, bishop and rook all stand on the fourth rank. Can you get your rook onto that rank with check?",
+        "explanation": "Bxb4 Kxb4 brings the white king to b4 and opens the a-file. Ra4+ then skewers the king and the rook on g4 along the fourth rank. Book continuation: Bxb4 Kxb4 Ra4+ Kc3 Rxg4.",
+        "diagramPage": "108",
+        "answerPage": "115",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "6",
+      "title": "Force the king onto the diagonal",
+      "order": 6,
+      "bookLines": [
+        "Qh5+ Kg3 Qh4+ Kf3 Qxe1"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "6k1/r7/Pp4pq/1P1P2p1/6K1/8/2R3P1/4Q3 b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. Use a skewer to find the winning continuation.",
+        "solutionText": "Qh5+ Kg3 Qh4+ Kf3 Qxe1",
+        "hint": "The white queen stands on the e1-h4 diagonal. Can you force the white king onto the same diagonal?",
+        "explanation": "Qh5+ drives the king to g3, onto the diagonal of its own queen. Qh4+ is then a skewer: the king must step aside and Black takes the queen on e1. Book continuation: Qh5+ Kg3 Qh4+ Kf3 Qxe1.",
+        "diagramPage": "108",
+        "answerPage": "115",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "7",
+      "title": "The stair method",
+      "order": 7,
+      "bookLines": [
+        "Ra7+ Kg6 Rb6+ Kh5 g4+ Kxg4 Rxh6"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "RR6/5k2/7q/6p1/2pPb3/4P1P1/5P2/6K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a skewer to find the winning continuation.",
+        "solutionText": "Ra7+ Kg6 Rb6+ Kh5 g4+ Kxg4 Rxh6",
+        "hint": "The black queen stands on the sixth rank. Use your two rooks to drive the king onto that rank as well.",
+        "explanation": "The rooks check on neighbouring ranks like a staircase: Ra7+ forces the king to the sixth rank and Rb6+ skewers king and queen. After Kh5 the best continuation is g4+, which pulls the king away from the queen before Rxh6. Book continuation: Ra7+ Kg6 Rb6+ Kh5 g4+ Kxg4 Rxh6.",
+        "diagramPage": "108",
+        "answerPage": "115",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "8",
+      "title": "Check and skewer",
+      "order": 8,
+      "bookLines": [
+        "Qd6+ Kf6 Qd8+ Kf5 Qxh4"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "4bn2/4kp2/1p2p2p/8/1P3B1q/5P2/1PPQ4/1K6 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a skewer to find the winning continuation.",
+        "solutionText": "Qd6+ Kf6 Qd8+ Kf5 Qxh4",
+        "hint": "The black queen on h4 is unprotected. Which diagonal leads to it, and how can the black king be forced onto that diagonal?",
+        "explanation": "Qd6+ forces the king to f6, onto the d8-h4 diagonal. Qd8+ then skewers the king and the queen on h4. Book continuation: Qd6+ Kf6 Qd8+ Kf5 Qxh4.",
+        "diagramPage": "109",
+        "answerPage": "115",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "9",
+      "title": "Doubled rooks eye b7",
+      "order": 9,
+      "bookLines": [
+        "Rb7+ Rxb7 Rxb7+ Ke6 Rxg7"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "8/r2k2b1/8/3p4/4nPp1/1R2P1P1/6K1/1R6 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a skewer to find the winning continuation.",
+        "solutionText": "Rb7+ Rxb7 Rxb7+ Ke6 Rxg7",
+        "hint": "Your rooks are doubled on the b-file, so both of them control b7. What stands on the seventh rank behind the black king?",
+        "explanation": "Rb7+ is supported by the second rook. After Rxb7 Rxb7+ the king has to leave the seventh rank and the rook takes the bishop on g7. Book continuation: Rb7+ Rxb7 Rxb7+ Ke6 Rxg7.",
+        "diagramPage": "109",
+        "answerPage": "115",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "10",
+      "title": "Trade into a skewer",
+      "order": 10,
+      "bookLines": [
+        "Rxf5+ Kxf5 Bc2+ Ke5 Bxh7"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "8/3n3r/1p3k2/1Pp2r2/2P5/1B6/1K2N3/5R2 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a skewer to find the winning continuation.",
+        "solutionText": "Rxf5+ Kxf5 Bc2+ Ke5 Bxh7",
+        "hint": "The rook on h7 is unprotected. Which diagonal leads to it, and which black piece can you pull onto that diagonal?",
+        "explanation": "Rxf5+ Kxf5 brings the king onto the b1-h7 diagonal. Bc2+ skewers the king and the rook on h7, so White wins a rook. Book continuation: Rxf5+ Kxf5 Bc2+ Ke5 Bxh7.",
+        "diagramPage": "109",
+        "answerPage": "115",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "11",
+      "title": "Two bishops on one rank",
+      "order": 11,
+      "bookLines": [
+        "Re2 Bc1 Re1"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "4r1k1/pp5p/2p3p1/5p2/5P2/2P3KP/P2B2P1/1B6 b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. Use a skewer to find the winning continuation.",
+        "solutionText": "Re2 Bc1 Re1",
+        "hint": "Attack one bishop so that it has to move. Where do both bishops end up standing?",
+        "explanation": "Re2 attacks the bishop on d2. After Bc1 both bishops stand on the first rank, and Re1 skewers them: one of the two is lost. Book continuation: Re2 Bc1 Re1.",
+        "diagramPage": "110",
+        "answerPage": "115",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "12",
+      "title": "Queen sacrifice on f8",
+      "order": 12,
+      "bookLines": [
+        "Qxf8+ Kxf8 Rh8+ Kf7 Rxd8"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "2bqkr2/4r3/2p1p1p1/1p6/1p2P3/1P3QP1/P3B3/R3K2R w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a skewer to find the winning continuation.",
+        "solutionText": "Qxf8+ Kxf8 Rh8+ Kf7 Rxd8",
+        "hint": "The black queen stands on the back rank next to its king. Your rook on h1 has an open file to that rank.",
+        "explanation": "Qxf8+ pulls the king to f8. Rh8+ then skewers the king and the queen on d8, and White has won a rook. Book continuation: Qxf8+ Kxf8 Rh8+ Kf7 Rxd8.",
+        "diagramPage": "110",
+        "answerPage": "115",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "13",
+      "title": "Unprotected rook on the king's rank",
+      "order": 13,
+      "bookLines": [
+        "Bxc4+ bxc4 Rb2+ Ke3 Rxh2"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "1r6/4bpk1/2p1b1p1/p7/2N2P2/1P3BP1/P3K2R/8 b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. Use a skewer to find the winning continuation.",
+        "solutionText": "Bxc4+ bxc4 Rb2+ Ke3 Rxh2",
+        "hint": "White's rook is unprotected and stands on the same rank as the king. How can your rook reach that rank with check?",
+        "explanation": "Bxc4+ bxc4 opens the b-file. Rb2+ then skewers the king and the unprotected rook on h2. Book continuation: Bxc4+ bxc4 Rb2+ Ke3 Rxh2.",
+        "diagramPage": "110",
+        "answerPage": "115",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "14",
+      "title": "Win the queen in the corner",
+      "order": 14,
+      "bookLines": [
+        "b4+ Ka4 Qxa6+ Kxb4 Qxa1"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "8/8/p2Q4/kp5p/6bP/1P4P1/5PK1/q7 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a skewer to find the winning continuation.",
+        "solutionText": "b4+ Ka4 Qxa6+ Kxb4 Qxa1",
+        "hint": "The black king and queen stand on the same file. Drive the king forward and find a check on that file.",
+        "explanation": "b4+ drives the king to a4, and Qxa6+ is a skewer along the a-file: once the king steps off the file, the queen takes on a1. Book continuation: b4+ Ka4 Qxa6+ Kxb4 Qxa1.",
+        "diagramPage": "111",
+        "answerPage": "115",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "15",
+      "title": "King and queen on the sixth rank",
+      "order": 15,
+      "bookLines": [
+        "Qxf8+ Rxf8 Rxh6+ Kd5 Rxa6"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r4bQ1/7p/q2k3p/2p5/3p4/PN1P4/K1P3P1/7R w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a skewer to find the winning continuation.",
+        "solutionText": "Qxf8+ Rxf8 Rxh6+ Kd5 Rxa6",
+        "hint": "The black king and queen both stand on the sixth rank. Which pawn stops your rook from checking on that rank?",
+        "explanation": "Qxf8+ removes the bishop that guards h6. After Rxf8 the rook takes on h6 with check and skewers the king and the queen on a6. Book continuation: Qxf8+ Rxf8 Rxh6+ Kd5 Rxa6.",
+        "diagramPage": "111",
+        "answerPage": "115",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "16",
+      "title": "A check followed by a skewer",
+      "order": 16,
+      "bookLines": [
+        "Qa3+ Kc4 Qa2+ Kc5 Qxf7"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "Q3n3/5q2/5b1p/1p4p1/1k1p2P1/5PB1/1P4K1/8 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a skewer to find the winning continuation.",
+        "solutionText": "Qa3+ Kc4 Qa2+ Kc5 Qxf7",
+        "hint": "The black queen on f7 is unprotected. Which diagonal leads to it, and how can you force the king onto it?",
+        "explanation": "Qa3+ drives the king to c4, onto the a2-g8 diagonal. Qa2+ then skewers the king and the queen on f7. Book continuation: Qa3+ Kc4 Qa2+ Kc5 Qxf7.",
+        "diagramPage": "111",
+        "answerPage": "115",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "17",
+      "title": "The b-pawn is the hero",
+      "order": 17,
+      "bookLines": [
+        "b5+ Kxc5 b6+ Kxb6 Rxd5"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "2K5/8/2k5/R1Pq4/1P5p/7P/8/8 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a skewer to find the winning continuation.",
+        "solutionText": "b5+ Kxc5 b6+ Kxb6 Rxd5",
+        "hint": "Your rook looks along the fifth rank toward the black queen, but your own pawn is in the way. How can the pawns clear the rank with checks?",
+        "explanation": "b5+ forces the king to take on c5, onto the fifth rank. b6+ is then a discovered check from the rook, and with the king and queen on the same rank the rook wins the queen on d5. Book continuation: b5+ Kxc5 b6+ Kxb6 Rxd5.",
+        "diagramPage": "112",
+        "answerPage": "115",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "18",
+      "title": "Decoy pawn sacrifice",
+      "order": 18,
+      "bookLines": [
+        "c5+ Kxc5 Be3+",
+        "c5+ Qxc5 Bf8+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r1b5/5p2/1q1k2pB/8/2P3P1/3P1P2/6K1/4R2R w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a skewer to find the winning continuation.",
+        "solutionText": "c5+ Kxc5 Be3+",
+        "hint": "The black king and queen stand next to each other. Attack them both with a pawn and look at what each capture allows your bishop.",
+        "explanation": "c5+ forks king and queen, and either capture walks into a skewer: after Kxc5 the bishop checks on e3 and wins the queen on b6, and after Qxc5 it checks on f8 and wins the queen on c5. Book continuation: c5+ Kxc5 Be3+ (or c5+ Qxc5 Bf8+).",
+        "diagramPage": "112",
+        "answerPage": "115",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "19",
+      "title": "The queen gets trapped",
+      "order": 19,
+      "bookLines": [
+        "Bd2 Qxc4 Rc1"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "rnb1k2r/pp1pppbp/5np1/6B1/PqNP4/8/1P2PPPP/R2QKBNR w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a skewer to find the winning continuation.",
+        "solutionText": "Bd2 Qxc4 Rc1",
+        "hint": "You are in check. Block it with a developing move and see how few squares the black queen has left.",
+        "explanation": "Bd2 blocks the check and attacks the queen. After Qxc4 the move Rc1 skewers the queen and the bishop on c8: Black can avoid checkmate on c8 only by giving up the queen. Book continuation: Bd2 Qxc4 Rc1.",
+        "diagramPage": "112",
+        "answerPage": "115",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "20",
+      "title": "Mate threat, then skewer",
+      "order": 20,
+      "bookLines": [
+        "Qc6 f3 Qb5"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r4rk1/pbq2pp1/1p2pn1p/n1p5/3P4/PBP1P1NP/1B3PP1/2RQ1RK1 b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. Use a skewer to find the winning continuation.",
+        "solutionText": "Qc6 f3 Qb5",
+        "hint": "White's two bishops stand on the same file. First gain a move with a mate threat so that your queen can get to that file.",
+        "explanation": "Qc6 threatens mate on g2. After f3 the queen switches to b5, where it skewers the two bishops on the b-file: the bishop on b3 is attacked twice, and if it moves the one on b2 falls. Book continuation: Qc6 f3 Qb5.",
+        "diagramPage": "113",
+        "answerPage": "115",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "21",
+      "title": "Black cannot hang on to the queen",
+      "order": 21,
+      "bookLines": [
+        "Bb3+ Kf6 Qh8+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "1Q6/7p/p3k1p1/p3qb2/8/P3P3/2B2P2/6K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a skewer to find the winning continuation.",
+        "solutionText": "Bb3+ Kf6 Qh8+",
+        "hint": "The black queen is protected only by its king. Start with a check that makes the king choose a square.",
+        "explanation": "Bb3+ forces the king to move, and after Kf6 the check Qh8+ skewers the king and the queen on e5 along the long diagonal. Book continuation: Bb3+ Kf6 Qh8+.",
+        "diagramPage": "113",
+        "answerPage": "116",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "22",
+      "title": "Two checks, then the skewer",
+      "order": 22,
+      "bookLines": [
+        "Ra8+ Kg7 Rxf7+ Kh6 Rh8+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "6k1/5p2/1p4p1/3Bp3/4P3/6bq/7P/R4R1K w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a skewer to find the winning continuation.",
+        "solutionText": "Ra8+ Kg7 Rxf7+ Kh6 Rh8+",
+        "hint": "Black threatens mate on h2, so you need checks. The black queen stands on the h-file; can you drive the king onto that file too?",
+        "explanation": "Ra8+ and Rxf7+ drive the king to h6, onto the same file as its queen. Rh8+ then skewers them and White wins the queen on h3. Book continuation: Ra8+ Kg7 Rxf7+ Kh6 Rh8+.",
+        "diagramPage": "113",
+        "answerPage": "116",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "23",
+      "title": "The bishop is trapped",
+      "order": 23,
+      "bookLines": [
+        "Rb3 Bb4 Rxb4 cxb4 Bxb4+ Ke6 Bxf8"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "5r2/p6p/1p1k2p1/2p2p2/5P2/b2P2P1/P1PB3P/1R5K w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a skewer to find the winning continuation.",
+        "solutionText": "Rb3 Bb4 Rxb4 cxb4 Bxb4+ Ke6 Bxf8",
+        "hint": "The bishop on a3 has very few squares. Attack it and check what happens on its only retreat.",
+        "explanation": "Rb3 attacks the bishop, which has only b4. Then Rxb4 cxb4 Bxb4+ is a skewer along the diagonal: the king moves and the bishop takes the rook on f8. Book continuation: Rb3 Bb4 Rxb4 cxb4 Bxb4+ Ke6 Bxf8.",
+        "diagramPage": "114",
+        "answerPage": "116",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "24",
+      "title": "A series of forced moves",
+      "order": 24,
+      "bookLines": [
+        "Qxf8+ Kxf8 Rc8+ Ke7 Re8+ Kf6 Rxe4"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "2Q2qk1/6pp/3p4/7B/pN1nr3/Pb5P/5PP1/2R3K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a skewer to find the winning continuation.",
+        "solutionText": "Qxf8+ Kxf8 Rc8+ Ke7 Re8+ Kf6 Rxe4",
+        "hint": "The rook on e4 is unprotected. Use the back rank to drive the king onto the e-file in front of it.",
+        "explanation": "After Qxf8+ Kxf8 the rook checks on c8 and drives the king to e7. Re8+, protected by the bishop on h5, is then a skewer along the e-file and White wins the rook on e4. Book continuation: Qxf8+ Kxf8 Rc8+ Ke7 Re8+ Kf6 Rxe4.",
+        "diagramPage": "114",
+        "answerPage": "116",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "25",
+      "title": "Win the rook on a3",
+      "order": 25,
+      "bookLines": [
+        "Rf8+ Rxf8 Rxf8+ Ka7 Ra8+ Kb6 Rxa3"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "1k4r1/2p5/3p2p1/2n4p/7P/rP4P1/2P2RBK/5R2 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a skewer to find the winning continuation.",
+        "solutionText": "Rf8+ Rxf8 Rxf8+ Ka7 Ra8+ Kb6 Rxa3",
+        "hint": "The rook on a3 is unprotected. Your bishop controls a8; how can a rook get there with check?",
+        "explanation": "The rooks trade on f8 with check and the king has to go to a7. Ra8+, protected by the bishop on g2, then skewers the king and the rook on a3. Book continuation: Rf8+ Rxf8 Rxf8+ Ka7 Ra8+ Kb6 Rxa3.",
+        "diagramPage": "114",
+        "answerPage": "116",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    }
+  ]
+}

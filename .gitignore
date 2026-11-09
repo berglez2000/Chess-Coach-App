@@ -30,3 +30,6 @@ public/pdfjs/
 
 # Private opening videos (back up with the database)
 .storage/
+
+# Source book page screenshots used only for local transcription
+Chess Tactics For Champions/

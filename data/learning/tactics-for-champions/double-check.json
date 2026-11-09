@@ -1,0 +1,582 @@
+{
+  "chapter": {
+    "title": "Double Check",
+    "order": 5
+  },
+  "exercises": [
+    {
+      "number": "1",
+      "title": "Bishop and rook on the f-file",
+      "order": 1,
+      "bookLines": [
+        "Bd6+ Ke8 Rf8#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r4knr/pp1b2pp/2p5/2b4q/3pPB2/3Q4/PPP3PP/RN3RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "MATE",
+        "mateIn": 2,
+        "prompt": "White to move. Use a double check to force checkmate in two moves.",
+        "solutionText": "Bd6+ Ke8 Rf8#",
+        "hint": "Your bishop stands in front of your rook on the f-file. Which bishop move gives check itself as well?",
+        "explanation": "Bd6+ is a double check from the bishop and the rook on f1, so the king must move. Its only square is e8, and Rf8 is checkmate, protected by the bishop. Book continuation: Bd6+ Ke8 Rf8#.",
+        "diagramPage": "92",
+        "answerPage": "101",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "2",
+      "title": "Knights and queen cooperate",
+      "order": 2,
+      "bookLines": [
+        "Nd6+ Kd8 Qe8#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r3kbnr/pb1n1Npp/1pq5/2pNp2Q/8/4B3/PPP2PPP/R4RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "MATE",
+        "mateIn": 2,
+        "prompt": "White to move. Use a double check to force checkmate in two moves.",
+        "solutionText": "Nd6+ Kd8 Qe8#",
+        "hint": "The knight on f7 blocks your queen's line to the king. Where can it jump with check?",
+        "explanation": "Nd6+ is a double check from the knight and the queen on h5. The king has to go to d8, and Qe8 is checkmate: the knights guard c7, c8 and e7. Book continuation: Nd6+ Kd8 Qe8#.",
+        "diagramPage": "93",
+        "answerPage": "101",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "3",
+      "title": "Two double checks in a row",
+      "order": 3,
+      "bookLines": [
+        "Rxb7+ Ka8 Rb8#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "1kr5/ppR3p1/8/2n5/6P1/3q2BP/P5B1/R5K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "MATE",
+        "mateIn": 2,
+        "prompt": "White to move. Use a double check to force checkmate in two moves.",
+        "solutionText": "Rxb7+ Ka8 Rb8#",
+        "hint": "Both of your bishops aim at the black king's corner, and the rook stands on one of their diagonals. Let it move with check.",
+        "explanation": "Rxb7+ is a double check from the rook and the bishop on g3. After Ka8 the rook moves again, Rb8, with a second double check from the rook and the bishop on g2, and it is checkmate. Book continuation: Rxb7+ Ka8 Rb8#.",
+        "diagramPage": "93",
+        "answerPage": "101",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "4",
+      "title": "The queen is attacked",
+      "order": 4,
+      "bookLines": [
+        "Nxd6+ Ke7 Nf5#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r2qkb1r/pp3pp1/1n1p1n1p/1N1Pp3/Q3P3/5P2/PP1B2PP/R3K1NR w - - 0 1",
+        "solver": "WHITE",
+        "objective": "MATE",
+        "mateIn": 2,
+        "prompt": "White to move. Use a double check to force checkmate in two moves.",
+        "solutionText": "Nxd6+ Ke7 Nf5#",
+        "hint": "Your queen is under attack, but it also looks at the black king through your knight. Neither checking piece can be taken in a double check.",
+        "explanation": "Nxd6+ is a double check from the knight and the queen on a4, so Black cannot take either piece. The king must go to e7, and Nf5 is checkmate. Book continuation: Nxd6+ Ke7 Nf5#.",
+        "diagramPage": "93",
+        "answerPage": "101",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "5",
+      "title": "Checkmate in the corner",
+      "order": 5,
+      "bookLines": [
+        "Ng6+ Kf7 Nxh8#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r2q1bnr/pp2k1pp/3p1p2/1Bp1N1B1/8/8/PPP2PPP/RN1bR1K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "MATE",
+        "mateIn": 2,
+        "prompt": "White to move. Use a double check to force checkmate in two moves.",
+        "solutionText": "Ng6+ Kf7 Nxh8#",
+        "hint": "The knight on e5 can uncover your rook on the e-file with check. After the king moves, look at the corner.",
+        "explanation": "Ng6+ is a double check from the knight and the rook on e1. The king has only f7, and then Nxh8 is checkmate: the knight gives check from the corner and guards g6. Book continuation: Ng6+ Kf7 Nxh8#.",
+        "diagramPage": "94",
+        "answerPage": "101",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "6",
+      "title": "Two equally good solutions",
+      "order": 6,
+      "bookLines": [
+        "Nh5+ Kh7 Qg7#",
+        "Ne8+ Kh7 Qg7#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r4r2/1p2qpk1/2p2Npp/2bp4/P2Q4/1P6/6PP/R4R1K w - - 0 1",
+        "solver": "WHITE",
+        "objective": "MATE",
+        "mateIn": 2,
+        "prompt": "White to move. Use a double check to force checkmate in two moves.",
+        "solutionText": "Nh5+ Kh7 Qg7#",
+        "hint": "Your queen and knight stand on the same diagonal as the black king. Move the knight with check to a square from which it supports the queen.",
+        "explanation": "Nh5+ is a double check from the knight and the queen on d4. Wherever the king goes, Qg7 is checkmate with the knight protecting the queen. Ne8+ works the same way. Book continuation: Nh5+ Kh7 Qg7# (or Ne8+ Kh7 Qg7#).",
+        "diagramPage": "94",
+        "answerPage": "101",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "7",
+      "title": "Ignore the hanging bishop",
+      "order": 7,
+      "bookLines": [
+        "Nd4+ Ke1 Nc2#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r4rk1/pp3ppp/2p5/8/4p1b1/2P1PnPP/PP1NKP2/R4B1R b - - 0 1",
+        "solver": "BLACK",
+        "objective": "MATE",
+        "mateIn": 2,
+        "prompt": "Black to move. Use a double check to force checkmate in two moves.",
+        "solutionText": "Nd4+ Ke1 Nc2#",
+        "hint": "Your bishop on g4 is attacked, but it also looks at the white king through your knight. Where can the knight go with check?",
+        "explanation": "Black can ignore the attack on the bishop. Nd4+ is a double check from the knight and the bishop on g4, the king must go back to e1, and Nc2 is checkmate. Book continuation: Nd4+ Ke1 Nc2#.",
+        "diagramPage": "94",
+        "answerPage": "101",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "8",
+      "title": "Trade, then double check",
+      "order": 8,
+      "bookLines": [
+        "Rxa7+ Kxa7 Nb5+ Kb7 Nxc3"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "k6r/r2b1p2/2p3p1/8/1pPN4/2q1B1P1/4QPKP/R7 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a double check to find the winning continuation.",
+        "solutionText": "Rxa7+ Kxa7 Nb5+ Kb7 Nxc3",
+        "hint": "Your bishop on e3 points at a7 through your knight. Which black piece would you like to see on that square?",
+        "explanation": "After the trade Rxa7+ Kxa7 the black king stands on the diagonal of the bishop on e3. Nb5+ is a double check, so Black has no time to save the queen, and White takes it on c3. Book continuation: Rxa7+ Kxa7 Nb5+ Kb7 Nxc3.",
+        "diagramPage": "95",
+        "answerPage": "101",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "9",
+      "title": "Force the king into the corner",
+      "order": 9,
+      "bookLines": [
+        "Rg1+ Kh8 Rc8#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "1r4k1/4Pp1p/br1n4/7p/8/2R2P2/1B5K/R7 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "MATE",
+        "mateIn": 2,
+        "prompt": "White to move. Use a double check to force checkmate in two moves.",
+        "solutionText": "Rg1+ Kh8 Rc8#",
+        "hint": "Your bishop on b2 aims at h8 through your rook. First make the black king go there.",
+        "explanation": "Rg1+ forces the king to h8, onto the long diagonal. Then Rc8 is a double check from the rook and the bishop on b2, so the rook cannot be taken and it is checkmate. Book continuation: Rg1+ Kh8 Rc8#.",
+        "diagramPage": "95",
+        "answerPage": "101",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "10",
+      "title": "Decoy before the double check",
+      "order": 10,
+      "bookLines": [
+        "Be4+ Qxe4 Nd6+ Kc6 Nxe4"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "7r/pk6/6Bp/1Np5/8/4P3/P3KPq1/1R6 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a double check to find the winning continuation.",
+        "solutionText": "Be4+ Qxe4 Nd6+ Kc6 Nxe4",
+        "hint": "A discovery is set up on the b-file, but no knight jump wins anything yet. Can you first lure the black queen to a square the knight can reach?",
+        "explanation": "There is no winning knight jump at once, so White lures the queen with Be4+. After Qxe4 the double check Nd6+ forces the king to move, and the knight takes the queen on e4. Book continuation: Be4+ Qxe4 Nd6+ Kc6 Nxe4.",
+        "diagramPage": "95",
+        "answerPage": "101",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "11",
+      "title": "Double check into a skewer",
+      "order": 11,
+      "bookLines": [
+        "Be6+ Kd8 Rc8+ Ke7 Rxh8"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "2k4q/pp6/6p1/5p2/2Bp1Bn1/P5P1/1P5P/2R4K w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a double check to find the winning continuation.",
+        "solutionText": "Be6+ Kd8 Rc8+ Ke7 Rxh8",
+        "hint": "Your bishop on c4 blocks the rook on the c-file. Which bishop move gives check and also supports the rook on c8?",
+        "explanation": "Be6+ is a double check from the bishop and the rook on c1. After Kd8 the rook checks on c8, protected by the bishop, and when the king steps aside the rook takes the queen on h8. Book continuation: Be6+ Kd8 Rc8+ Ke7 Rxh8.",
+        "diagramPage": "96",
+        "answerPage": "101",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "12",
+      "title": "Bishop sacrifice and promotion",
+      "order": 12,
+      "bookLines": [
+        "Bb7+ Kxb7 c8=Q#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "k4r1r/p1P1R2p/Bp1p2p1/5q2/8/1P3N1P/P4PPK/2R5 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "MATE",
+        "mateIn": 2,
+        "prompt": "White to move. Use a double check to force checkmate in two moves.",
+        "solutionText": "Bb7+ Kxb7 c8=Q#",
+        "hint": "Your pawn on c7 stands in front of your rook on the seventh rank. On which square would the black king be hit by both?",
+        "explanation": "Bb7+ forces the king to take on b7. Then c8=Q is a double check from the new queen and the rook on e7, and it is checkmate: the rook on c1 protects the queen. Book continuation: Bb7+ Kxb7 c8=Q#.",
+        "diagramPage": "96",
+        "answerPage": "101",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "13",
+      "title": "Open the a-file",
+      "order": 13,
+      "bookLines": [
+        "Qb6+ cxb6 axb6#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "1r1r4/kpp2p1p/6p1/P1bpq3/8/1QP2B1P/1R3PP1/R5K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a double check to find the winning continuation.",
+        "solutionText": "Qb6+ cxb6 axb6#",
+        "hint": "Your rook on a1 stands behind your own pawn. How can you make that pawn capture with check?",
+        "explanation": "Qb6+ offers the queen to open the a-file. After cxb6 the pawn recaptures, axb6, with a double check from the pawn and the rook on a1, and it is checkmate because the rook on b2 protects the pawn. Book continuation: Qb6+ cxb6 axb6#.",
+        "diagramPage": "96",
+        "answerPage": "101",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "14",
+      "title": "Stop the king's escape",
+      "order": 14,
+      "bookLines": [
+        "Be8+ Kxe8 Qf7#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r1bq4/pp1k1BQ1/4p3/3pP3/2p1n2r/P7/2P3P1/R4RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "MATE",
+        "mateIn": 2,
+        "prompt": "White to move. Use a double check to force checkmate in two moves.",
+        "solutionText": "Be8+ Kxe8 Qf7#",
+        "hint": "The black king wants to run to the queenside via c6. Your bishop stands between your queen and the king; where should it go?",
+        "explanation": "Be8+ is a double check from the bishop and the queen on g7, and it takes away c6. The king has to capture on e8, and Qf7 is checkmate, protected by the rook on f1. Book continuation: Be8+ Kxe8 Qf7#.",
+        "diagramPage": "97",
+        "answerPage": "101",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "15",
+      "title": "Queen sacrifice on f8",
+      "order": 15,
+      "bookLines": [
+        "Qf8+ Bxf8 Ng7#",
+        "Qf8+ Bxf8 Nc7#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "3rk3/pp1qbp1p/4Np1Q/5n2/8/8/PP3PPP/4R1K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "MATE",
+        "mateIn": 2,
+        "prompt": "White to move. Use a double check to force checkmate in two moves.",
+        "solutionText": "Qf8+ Bxf8 Ng7#",
+        "hint": "Your rook on e1 looks at the black king through two pieces. Can you force the black one to leave the e-file?",
+        "explanation": "Qf8+ can only be answered by Bxf8, which opens the e-file. Then the knight moves with a double check from the knight and the rook on e1, to g7 or to c7, and it is checkmate. Book continuation: Qf8+ Bxf8 Ng7# (or Qf8+ Bxf8 Nc7#).",
+        "diagramPage": "97",
+        "answerPage": "101",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "16",
+      "title": "Two pieces in danger",
+      "order": 16,
+      "bookLines": [
+        "Nd7+ Kc8 Rb8#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "1k1n3r/p1p1R1p1/1N1r4/5b1p/8/P1P3P1/5PKP/1R6 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "MATE",
+        "mateIn": 2,
+        "prompt": "White to move. Use a double check to force checkmate in two moves.",
+        "solutionText": "Nd7+ Kc8 Rb8#",
+        "hint": "Your knight and your rook on b1 are both attacked. In a double check neither of them can be taken.",
+        "explanation": "Nd7+ is a double check from the knight and the rook on b1, so Black cannot capture either piece. After Kc8 the rook mates on b8, protected by the knight, which is itself protected by the rook on e7. Book continuation: Nd7+ Kc8 Rb8#.",
+        "diagramPage": "97",
+        "answerPage": "101",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "17",
+      "title": "Only one double check works",
+      "order": 17,
+      "bookLines": [
+        "Bc6+ Ka6 Bb7+ Ka5 Ra6#",
+        "Bc6+ Kc8 Re8#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "1r6/pkr5/4R3/1B3b1p/2p2P2/3n2P1/1R4K1/8 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "MATE",
+        "mateIn": 3,
+        "prompt": "White to move. Use a double check to force checkmate in three moves.",
+        "solutionText": "Bc6+ Ka6 Bb7+ Ka5 Ra6#",
+        "hint": "The bishop can give a double check in two ways. Choose the square from which it can give another double check next move.",
+        "explanation": "Bc6+ is a double check from the bishop and the rook on b2. After Kc8 White mates with Re8. After Ka6 the bishop moves again, Bb7+, with a double check from the bishop and the rook on e6, and after Ka5 the rook mates on a6. Book continuation: Bc6+ Ka6 Bb7+ Ka5 Ra6# (or Bc6+ Kc8 Re8#).",
+        "diagramPage": "98",
+        "answerPage": "101",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "18",
+      "title": "Queen sacrifice on h6",
+      "order": 18,
+      "bookLines": [
+        "Qxh6+ gxh6 Re8#",
+        "Qxh6+ Kg8 Qh7+ Kf8 Qh8#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r2r3k/pp3pp1/2pn3p/4R3/3B2q1/P7/1PB2PPP/2Q3K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a double check to find the winning continuation.",
+        "solutionText": "Qxh6+ gxh6 Re8#",
+        "hint": "Your bishop on d4 looks at the black king through your rook and the g7-pawn. How can you remove that pawn?",
+        "explanation": "Qxh6+ tears the g-pawn away. After gxh6 the rook moves with a double check from the rook and the bishop on d4, Re8, and it is checkmate. Running away does not help: after Kg8 White mates with Qh7+ and Qh8. Book continuation: Qxh6+ gxh6 Re8# (or Qxh6+ Kg8 Qh7+ Kf8 Qh8#).",
+        "diagramPage": "98",
+        "answerPage": "101",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "19",
+      "title": "Two double checks end the game",
+      "order": 19,
+      "bookLines": [
+        "Rhf1+ Kg8 Nf6+ Kf8 Nd7#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r6r/5kp1/2bb3p/1ppN3P/2Q5/qP1P4/2P5/1K2R2R w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a double check to find the winning continuation.",
+        "solutionText": "Rhf1+ Kg8 Nf6+ Kf8 Nd7#",
+        "hint": "Your queen looks at g8 through your knight. Start with an obvious check that sends the king there.",
+        "explanation": "Rhf1+ forces the king to g8, onto the diagonal of the queen on c4. Nf6+ is then a double check from the knight and the queen, and after Kf8 the knight gives another double check together with the rook on f1: Nd7 is checkmate. Book continuation: Rhf1+ Kg8 Nf6+ Kf8 Nd7#.",
+        "diagramPage": "98",
+        "answerPage": "101",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "20",
+      "title": "Queen sacrifice on h1",
+      "order": 20,
+      "bookLines": [
+        "Qh1+ Kxh1 Bf3+ Kh2 Rh1#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "4R3/k7/pp6/3qR3/8/P5P1/5Q1K/2rb4 b - - 0 1",
+        "solver": "BLACK",
+        "objective": "MATE",
+        "mateIn": 3,
+        "prompt": "Black to move. Use a double check to force checkmate in three moves.",
+        "solutionText": "Qh1+ Kxh1 Bf3+ Kh2 Rh1#",
+        "hint": "Your rook on c1 looks along the first rank through your bishop. Can you bring the white king onto that rank?",
+        "explanation": "Qh1+ forces the king to take on h1, onto the first rank. Bf3+ is then a double check from the bishop and the rook on c1, the king must go back to h2, and Rh1 is checkmate, protected by the bishop. Book continuation: Qh1+ Kxh1 Bf3+ Kh2 Rh1#.",
+        "diagramPage": "99",
+        "answerPage": "102",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "21",
+      "title": "The same idea again",
+      "order": 21,
+      "bookLines": [
+        "Qf1+ Kxf1 Bd3+ Ke1 Rf1#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r4rk1/pp1n2pp/8/3Ppb2/8/2PqB3/PP1Q2PP/R3K1NR b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. Use a double check to find the winning continuation.",
+        "solutionText": "Qf1+ Kxf1 Bd3+ Ke1 Rf1#",
+        "hint": "Your rook on f8 looks down the f-file through your bishop. Can you bring the white king onto that file?",
+        "explanation": "Qf1+ forces the king to take on f1, onto the f-file. Bd3+ is then a double check from the bishop and the rook on f8, the king must return to e1, and Rf1 is checkmate, protected by the bishop. Book continuation: Qf1+ Kxf1 Bd3+ Ke1 Rf1#.",
+        "diagramPage": "99",
+        "answerPage": "102",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "22",
+      "title": "Rook sacrifice on f8",
+      "order": 22,
+      "bookLines": [
+        "Rf8+ Kxf8 Ng6#",
+        "Rf8+ Kh7 Bg8+ Kh8 Ng6#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r3r1k1/5Rp1/1pn4p/8/2B2N2/4n2P/P4BP1/6K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "MATE",
+        "mateIn": 3,
+        "prompt": "White to move. Use a double check to force checkmate in at most three moves.",
+        "solutionText": "Rf8+ Kxf8 Ng6#",
+        "hint": "Your bishop on c4 looks at the black king through your rook. Which rook move gives check itself as well?",
+        "explanation": "Rf8+ is a double check from the rook and the bishop on c4. If the king takes the rook, Ng6 is checkmate because the bishop guards f7 and g8. After Kh7 White plays Bg8+ Kh8 and again Ng6 mate. Book continuation: Rf8+ Kxf8 Ng6# (or Rf8+ Kh7 Bg8+ Kh8 Ng6#).",
+        "diagramPage": "99",
+        "answerPage": "102",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "23",
+      "title": "Decoy the queen to b4",
+      "order": 23,
+      "bookLines": [
+        "Bb4 Qxb4 Nd5+ Kd6 Nxb4"
+      ],
+      "analysisLines": [
+        "Bb4 Qxb4 Nc2+ Qxe1+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "8/4k1bp/2p3p1/2q5/8/pP2N2P/P2B2P1/4R1K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a double check to find the winning continuation.",
+        "solutionText": "Bb4 Qxb4 Nd5+ Kd6 Nxb4",
+        "hint": "The knight on e3 is ready to uncover the rook, but it cannot attack the black queen yet. Can you move the queen to a better square for you?",
+        "explanation": "Bb4 pins the queen, so Black has to take: Qxb4. Now the double check Nd5+ forces the king to move and the knight takes the queen on b4. Nc2+ would be only a single check, and Black answers it with Qxe1+. Book continuation: Bb4 Qxb4 Nd5+ Kd6 Nxb4.",
+        "diagramPage": "100",
+        "answerPage": "102",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "24",
+      "title": "Rook sacrifice on b8",
+      "order": 24,
+      "bookLines": [
+        "Rb8+ Kxb8 Na6+ Kc8 Rb8#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "k7/p2b4/3p4/1R6/1N1P4/5pPq/5P2/1R4K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "MATE",
+        "mateIn": 3,
+        "prompt": "White to move. Use a double check to force checkmate in three moves.",
+        "solutionText": "Rb8+ Kxb8 Na6+ Kc8 Rb8#",
+        "hint": "Black threatens mate on g2, so every move must be a check. Your second rook waits behind the knight on the b-file.",
+        "explanation": "Rb8+ forces the king to take on b8, onto the b-file. Na6+ is then a double check from the knight and the rook on b1, and wherever the king goes, the rook mates on b8, protected by the knight. Book continuation: Rb8+ Kxb8 Na6+ Kc8 Rb8#.",
+        "diagramPage": "100",
+        "answerPage": "102",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "25",
+      "title": "Three double checks",
+      "order": 25,
+      "bookLines": [
+        "Qxg2+ Kxg2 Rg3+ Kh2 Rg2+ Kh1 Rh2+ Kg1 Rh1#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "5Q2/1bbR1p1k/p6p/6q1/1PB5/5r1P/5PP1/5RK1 b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. Use a double check to find the winning continuation.",
+        "solutionText": "Qxg2+ Kxg2 Rg3+ Kh2 Rg2+ Kh1 Rh2+",
+        "hint": "Both of your bishops aim at the white king's corner. Open the long diagonal with a sacrifice, then let the rook do the work.",
+        "explanation": "After the queen sacrifice Qxg2+ Kxg2 three double checks follow. The rook moves to g3, g2 and h2, each time uncovering one of the bishops on b7 and c7, and finally mates on h1, protected by the bishop on b7. Book continuation: Qxg2+ Kxg2 Rg3+ Kh2 Rg2+ Kh1 Rh2+ Kg1 Rh1#.",
+        "diagramPage": "100",
+        "answerPage": "102",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,1130 @@
+{
+  "chapter": {
+    "title": "Forks and Double Attacks",
+    "order": 1
+  },
+  "exercises": [
+    {
+      "number": "1",
+      "title": "Check first, fork second",
+      "order": 1,
+      "bookLines": [
+        "Rf6+ Kg7 Rb6"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "8/1b6/p6k/4p1p1/4P1Pp/3P1R1P/1b4K1/8 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "Rf6+ Kg7 Rb6",
+        "hint": "Both black bishops stand on the same file. Can a check bring your rook to the right rank with tempo?",
+        "explanation": "The intermediate check drives the king to g7 and puts the rook on the sixth rank, from where Rb6 forks both bishops. Book continuation: Rf6+ Kg7 Rb6.",
+        "diagramPage": "6",
+        "answerPage": "24",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "2",
+      "title": "Chase the defender away",
+      "order": 2,
+      "bookLines": [
+        "d5 Ne5 Qa4+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r2qk2r/ppp2ppp/2np4/8/3Pn3/2P1B3/PP2NPPP/R2QK2R w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "d5 Ne5 Qa4+",
+        "hint": "The knight on e4 would be loose if a certain diagonal to the king were open. What is blocking it?",
+        "explanation": "The pawn chases the knight away from c6, opening the a4-e8 diagonal. Qa4+ then forks the king and the knight on e4. Book continuation: d5 Ne5 Qa4+.",
+        "diagramPage": "7",
+        "answerPage": "24",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "3",
+      "title": "The unprotected bishop",
+      "order": 3,
+      "bookLines": [
+        "Bxe6 fxe6 Qh5+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r2qk2r/ppp2ppp/2n1b3/2b5/2BpP3/8/PPPN1PPP/R1BQ1RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "Bxe6 fxe6 Qh5+",
+        "hint": "Look for the unprotected black piece. Which trade opens a line to the black king?",
+        "explanation": "The trade on e6 opens the e8-h5 diagonal, so Qh5+ forks the king and the unprotected bishop on c5. Book continuation: Bxe6 fxe6 Qh5+.",
+        "diagramPage": "7",
+        "answerPage": "24",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "4",
+      "title": "Do not grab the rook",
+      "order": 4,
+      "bookLines": [
+        "Qxc7+ Kxc7 Nd5+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "1k6/ppq4p/5r2/4Q3/8/4NP2/P5PP/7K w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "Qxc7+ Kxc7 Nd5+",
+        "hint": "Taking the hanging rook loses to a back-rank mate. Is there a trade that sets up a knight fork instead?",
+        "explanation": "Grabbing the rook on f6 would be a blunder because White's back rank is weak. The queen trade pulls the king to c7, where Nd5+ forks king and rook. Book continuation: Qxc7+ Kxc7 Nd5+.",
+        "diagramPage": "7",
+        "answerPage": "24",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "5",
+      "title": "A pretty queen sacrifice",
+      "order": 5,
+      "bookLines": [
+        "Qxe7 Rxe7 Nf6+",
+        "Qxe7 Qd4+ Qe3"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "8/p3br1k/1p4pp/2pq4/6N1/1P3P2/P3Q1PP/5RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "Qxe7 Rxe7 Nf6+",
+        "hint": "Your knight is one move away from a royal fork. Which black piece guards that square?",
+        "explanation": "The queen sacrifice removes the bishop that guards f6; after the rook recaptures, Nf6+ forks king and queen. If Black checks on d4 instead, White blocks with Qe3 and stays a piece up. Book continuation: Qxe7 Rxe7 Nf6+. Additional book variation: Qxe7 Qd4+ Qe3.",
+        "diagramPage": "8",
+        "answerPage": "24",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "6",
+      "title": "The d-pawn is the hero",
+      "order": 6,
+      "bookLines": [
+        "d4 Ng6 d5"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r2q1rk1/ppp2ppp/2npb3/4n3/4P3/2NP4/PPP1B1PP/R1BQ1RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "d4 Ng6 d5",
+        "hint": "Pawns can fork too. Which pawn can advance with gain of time?",
+        "explanation": "The d-pawn first attacks the knight on e5 and then advances again to fork the knight on c6 and the bishop on e6. Book continuation: d4 Ng6 d5.",
+        "diagramPage": "8",
+        "answerPage": "24",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "7",
+      "title": "Trade into a pawn fork",
+      "order": 7,
+      "bookLines": [
+        "Qd6+ Qxd6 exd6+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "7r/p1r1k3/1p5q/4Pp2/1P1Q2p1/6P1/3R1PK1/5R2 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "Qd6+ Qxd6 exd6+",
+        "hint": "Black threatens mate on the h-file, so you need forcing moves. What happens if the queens come off?",
+        "explanation": "The queen check forces the trade on d6, and the recapturing pawn gives check while attacking the rook on c7. Book continuation: Qd6+ Qxd6 exd6+.",
+        "diagramPage": "8",
+        "answerPage": "24",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "8",
+      "title": "Lure the queen off the seventh",
+      "order": 8,
+      "bookLines": [
+        "Rxd8 Qxd8 Qb7+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "3r4/4q1kp/rp2ppp1/2p5/2P5/1P2PQ1P/5PP1/3R1RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "Rxd8 Qxd8 Qb7+",
+        "hint": "The black queen guards a key square on the seventh rank. How can you force it to leave?",
+        "explanation": "Trading rooks forces the black queen off the seventh rank. Qb7+ then forks the king and the rook on a6. Book continuation: Rxd8 Qxd8 Qb7+.",
+        "diagramPage": "9",
+        "answerPage": "24",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "9",
+      "title": "Queen for a rook, then fork",
+      "order": 9,
+      "bookLines": [
+        "Qxf6 gxf6 Nf7+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r6k/pp3Qpp/2bqpr2/4Np2/2P5/8/PP3PPP/R4RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "Qxf6 gxf6 Nf7+",
+        "hint": "Your queen is attacked, but the knight has a forking square. What stands in its way?",
+        "explanation": "White takes the rook with the queen; after the recapture Nf7+ forks king and queen, leaving White a rook ahead. Book continuation: Qxf6 gxf6 Nf7+.",
+        "diagramPage": "9",
+        "answerPage": "24",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "10",
+      "title": "Decoy the king into a fork",
+      "order": 10,
+      "bookLines": [
+        "Qe8+ Kh7 Qe4+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "6k1/1q4p1/5p1p/2Pn3Q/3p4/6P1/2r2PNP/5RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "Qe8+ Kh7 Qe4+",
+        "hint": "The rook on c2 is unprotected. Where must the black king stand for a queen check to hit it as well?",
+        "explanation": "The first check forces the king to h7, onto the same diagonal as the rook on c2. Qe4+ then forks king and rook. Book continuation: Qe8+ Kh7 Qe4+.",
+        "diagramPage": "9",
+        "answerPage": "24",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "11",
+      "title": "Not the obvious queen move",
+      "order": 11,
+      "bookLines": [
+        "Bxg7+ Kxg7 Qd7+"
+      ],
+      "analysisLines": [
+        "Qd7 Rg8"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "2r4k/6pp/1bp5/3Q4/5q2/2B5/5PP1/5RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "Bxg7+ Kxg7 Qd7+",
+        "hint": "The obvious queen move allows a defence that covers everything. Can you draw the king out first?",
+        "explanation": "After the obvious Qd7 Black is okay with ...Rg8. The bishop sacrifice drags the king to g7, and then Qd7+ forks king and rook. Book continuation: Bxg7+ Kxg7 Qd7+.",
+        "diagramPage": "10",
+        "answerPage": "24",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "12",
+      "title": "Solve every problem at once",
+      "order": 12,
+      "bookLines": [
+        "Nf5+ gxf5 Qg5+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r7/ppq2pkp/2n3p1/8/3N3r/8/PP1Q1PPP/R4RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "Nf5+ gxf5 Qg5+",
+        "hint": "Your knight is attacked and Black threatens mate in one. Which forcing move deals with both?",
+        "explanation": "The knight check opens the g-file diagonal for the queen: after ...gxf5, Qg5+ forks the king and the rook on h4, winning the exchange and stopping the mate threat. Book continuation: Nf5+ gxf5 Qg5+.",
+        "diagramPage": "10",
+        "answerPage": "24",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "13",
+      "title": "Remove the guard of e6",
+      "order": 13,
+      "bookLines": [
+        "Qxf7+ Rxf7 Nxe6+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "3b1r2/5bk1/4p1p1/2qpP1Np/B4Q1P/8/5PP1/R5K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "Qxf7+ Rxf7 Nxe6+",
+        "hint": "The knight would love to capture with check and hit the queen. Which piece defends that pawn?",
+        "explanation": "The queen sacrifice removes the bishop that guards the e6 pawn. After the rook recaptures, Nxe6+ forks king and queen. Book continuation: Qxf7+ Rxf7 Nxe6+.",
+        "diagramPage": "10",
+        "answerPage": "24",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "14",
+      "title": "Queen sacrifice in the corner",
+      "order": 14,
+      "bookLines": [
+        "Qh8+ Kxh8 Nxf7+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "Q7/p4rkp/3q2p1/4p1N1/P1P5/6P1/7P/7K w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "Qh8+ Kxh8 Nxf7+",
+        "hint": "You could simply win the exchange back. Is there a way to pull the king onto a forking square first?",
+        "explanation": "Instead of just taking on f7, White sacrifices the queen in the corner. With the king on h8, Nxf7+ forks king and queen and wins a whole rook. Book continuation: Qh8+ Kxh8 Nxf7+.",
+        "diagramPage": "11",
+        "answerPage": "24",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "15",
+      "title": "Mate threat plus loose bishop",
+      "order": 15,
+      "bookLines": [
+        "Qd3 Rad8 Qh7+ Kf8 Qh8#",
+        "Qd3 g6 Qxd6"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r3r1k1/p3qpp1/3b3p/2p5/2P5/1P6/P1B1Q1PP/3R1R1K w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "Qd3 Rad8 Qh7+ Kf8 Qh8#",
+        "hint": "Line up two of your pieces against the king. Can the same move attack something else?",
+        "explanation": "Qd3 threatens mate along the b1-h7 diagonal and attacks the bishop on d6. If Black defends the bishop, the queen mates on h8; if Black stops the mate with ...g6, the bishop falls. Book continuation: Qd3 Rad8 Qh7+ Kf8 Qh8#. Additional book variation: Qd3 g6 Qxd6.",
+        "diagramPage": "11",
+        "answerPage": "24",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "16",
+      "title": "Trade first, fork later",
+      "order": 16,
+      "bookLines": [
+        "Bxd7 Qxd7 Qc4+"
+      ],
+      "analysisLines": [
+        "Qc4+ Be6"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r4rk1/pp1bq1pp/5p2/1Bb1p3/8/2P3BP/PP2QPP1/R4RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "Bxd7 Qxd7 Qc4+",
+        "hint": "The immediate queen check can be blocked. Which black piece does the blocking?",
+        "explanation": "The immediate Qc4+ is met by ...Be6. So White first trades that bishop off; then Qc4+ forks the king and the unprotected bishop on c5. Book continuation: Bxd7 Qxd7 Qc4+.",
+        "diagramPage": "11",
+        "answerPage": "24",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "17",
+      "title": "Remove the knight on the rim",
+      "order": 17,
+      "bookLines": [
+        "Bxa6 bxa6 Nxc7+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r3k2r/ppp3p1/n3Nb1p/4pP2/8/2P3P1/PP2B2P/R3K2R w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "Bxa6 bxa6 Nxc7+",
+        "hint": "Your knight has a forking square, but it is guarded. Can you eliminate the guard?",
+        "explanation": "The black knight on a6 protects c7. White trades it off and then Nxc7+ forks the king and the rook on a8. Book continuation: Bxa6 bxa6 Nxc7+.",
+        "diagramPage": "12",
+        "answerPage": "24",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "18",
+      "title": "Clear the d5 square",
+      "order": 18,
+      "bookLines": [
+        "e5 Ne8 Qd5+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r5k1/p5bp/1p3n2/6pq/4Pp2/2N2P2/P2QB1PP/5RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "e5 Ne8 Qd5+",
+        "hint": "A queen check would win the rook in the corner, but one black piece controls the square. How do you drive it away?",
+        "explanation": "The pawn attacks the knight that guards d5. Once it moves, Qd5+ forks the king and the rook on a8. Book continuation: e5 Ne8 Qd5+.",
+        "diagramPage": "12",
+        "answerPage": "24",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "19",
+      "title": "Rook decoy",
+      "order": 19,
+      "bookLines": [
+        "Rd8+ Qxd8 Nf7+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "7k/2p3pp/1p3q2/2n1N3/8/P5P1/1P3PBP/3R2K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "Rd8+ Qxd8 Nf7+",
+        "hint": "The knight is ready to fork if the black queen stands on the right square. Can you force it there?",
+        "explanation": "The rook sacrifice forces the queen to d8, where Nf7+ forks king and queen. Book continuation: Rd8+ Qxd8 Nf7+.",
+        "diagramPage": "12",
+        "answerPage": "25",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "20",
+      "title": "Exchange sacrifice on c6",
+      "order": 20,
+      "bookLines": [
+        "Rxc6 bxc6 Qxc6+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r3k2r/1p2bpp1/p1n1p2p/q7/3P4/3B1Q2/PP2NPPP/2R2RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "Rxc6 bxc6 Qxc6+",
+        "hint": "The rook on a8 has no defender. Which capture opens the long diagonal towards it?",
+        "explanation": "After the exchange sacrifice the queen recaptures on c6 with check and takes the unprotected rook on a8 next. White wins at least a piece. Book continuation: Rxc6 bxc6 Qxc6+.",
+        "diagramPage": "13",
+        "answerPage": "25",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "21",
+      "title": "The rook on b8",
+      "order": 21,
+      "bookLines": [
+        "Rxf6 gxf6 Qg3+"
+      ],
+      "analysisLines": [
+        "Qg3 Rb6"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "1r4k1/3q1pp1/5b1p/1p1P4/8/1B1Q3P/6P1/5R1K w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "Rxf6 gxf6 Qg3+",
+        "hint": "The black rook stands on an unprotected square. Can you open the black king before attacking it?",
+        "explanation": "The immediate Qg3 is answered by ...Rb6. The exchange sacrifice opens the g-file first, so Qg3+ comes with check and wins the rook on b8. Book continuation: Rxf6 gxf6 Qg3+.",
+        "diagramPage": "13",
+        "answerPage": "25",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "22",
+      "title": "Remove the guard of d5",
+      "order": 22,
+      "bookLines": [
+        "Bxf6 Qxf6 Qxd5+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r5k1/p5pp/1q3n2/1p1p4/1P6/P1B2Q1P/5PP1/5RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "Bxf6 Qxf6 Qxd5+",
+        "hint": "Which black piece defends the d5 pawn? What would a capture there attack?",
+        "explanation": "The bishop takes the knight that guards d5. After the recapture, Qxd5+ forks the king and the rook on a8. Book continuation: Bxf6 Qxf6 Qxd5+.",
+        "diagramPage": "13",
+        "answerPage": "25",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "23",
+      "title": "Two checks win the rook",
+      "order": 23,
+      "bookLines": [
+        "Qc4+ Kh8 Qh4+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "2br1bk1/6p1/1p6/2p1pp2/8/qN3P2/P1Q2BPP/5RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "Qc4+ Kh8 Qh4+",
+        "hint": "The rook on d8 is on an unsafe square. Where does the king have to go for a second check to hit it?",
+        "explanation": "The decoy check forces the king onto the h-file, and Qh4+ then forks the king and the rook on d8. Book continuation: Qc4+ Kh8 Qh4+.",
+        "diagramPage": "14",
+        "answerPage": "25",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "24",
+      "title": "The pin makes the fork",
+      "order": 24,
+      "bookLines": [
+        "Nb6+ Kb8 Nd7+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "k7/pp4p1/7p/3Nq3/2P2n2/1P6/5PPP/R4BK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "Nb6+ Kb8 Nd7+",
+        "hint": "One black pawn is pinned to its king. Which square does that hand to your knight?",
+        "explanation": "The a7 pawn is pinned by the rook, so the knight can check on b6. The king must go to b8, and Nd7+ forks king and queen. Book continuation: Nb6+ Kb8 Nd7+.",
+        "diagramPage": "14",
+        "answerPage": "25",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "25",
+      "title": "The queen swings across",
+      "order": 25,
+      "bookLines": [
+        "Qb8+ Kg7 Qb2+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "7k/5p1p/p5p1/3q4/P3p1P1/4P1QP/4RPK1/2r5 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "Qb8+ Kg7 Qb2+",
+        "hint": "Black's rook is unprotected deep in your camp. Can your queen reach it with a check on the way?",
+        "explanation": "The queen swings to the other side of the board: Qb8+ forces the king to g7 and Qb2+ forks the king and the rook on c1. Book continuation: Qb8+ Kg7 Qb2+.",
+        "diagramPage": "14",
+        "answerPage": "25",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "26",
+      "title": "Do not settle for less",
+      "order": 26,
+      "bookLines": [
+        "Rd8+ Kxd8 Ne6+"
+      ],
+      "analysisLines": [
+        "Ne6 Qg8 Rd8+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "2k5/1p5p/p4n2/3Rp1q1/2PN4/1P5P/4BPP1/6K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "Rd8+ Kxd8 Ne6+",
+        "hint": "A quiet knight move gives some advantage, but there is more. Can you force the king onto a forking square?",
+        "explanation": "After 1. Ne6 Qg8 2. Rd8+ White would only have some advantage. The rook sacrifice forces the king to d8, where Ne6+ forks king and queen. Book continuation: Rd8+ Kxd8 Ne6+.",
+        "diagramPage": "15",
+        "answerPage": "25",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "27",
+      "title": "A famous opening trap",
+      "order": 27,
+      "bookLines": [
+        "Bxf6 Bxf6 Qe4 g6 Qxa8",
+        "Bxf6 Bxf6 Qe4 Rb8 Qxh7#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r1bq1rk1/p1p1bppp/1p2pn2/6B1/3P4/3B1N2/PPP1QPPP/R3K2R w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "Bxf6 Bxf6 Qe4 g6 Qxa8",
+        "hint": "A harmless-looking trade removes the defender of h7. What can the queen then attack at the same time?",
+        "explanation": "After the trade on f6, Qe4 threatens mate on h7 and the rook on a8. Black cannot meet both: stopping the mate loses the rook, saving the rook allows mate. Book continuation: Bxf6 Bxf6 Qe4 g6 Qxa8. Additional book variation: Bxf6 Bxf6 Qe4 Rb8 Qxh7#.",
+        "diagramPage": "15",
+        "answerPage": "25",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "28",
+      "title": "Force the trade",
+      "order": 28,
+      "bookLines": [
+        "Qb6+ Qxb6 cxb6+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "8/k1r2ppp/q3n3/Q1P1p3/3pP3/P5P1/6BP/1R4K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "Qb6+ Qxb6 cxb6+",
+        "hint": "Material is balanced. Which queen trade lets a pawn recapture with a fork?",
+        "explanation": "The queen check forces a trade on b6, and the pawn recaptures with check while attacking the rook on c7. Book continuation: Qb6+ Qxb6 cxb6+.",
+        "diagramPage": "15",
+        "answerPage": "25",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "29",
+      "title": "A tricky queen move",
+      "order": 29,
+      "bookLines": [
+        "Qc3 Qd1 Qc5+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "8/1b3pkp/pN1p2p1/3Pq3/Q3P3/8/6PP/6K1 b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. Find the fork or double attack that wins material.",
+        "solutionText": "Qc3 Qd1 Qc5+",
+        "hint": "Combine a mate threat on the back rank with an eye on the white knight.",
+        "explanation": "Qc3 threatens mate on e1. After White covers the back rank with Qd1, the check on c5 forks the king and the knight on b6. Book continuation: Qc3 Qd1 Qc5+.",
+        "diagramPage": "16",
+        "answerPage": "25",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "30",
+      "title": "Temporary queen sacrifice",
+      "order": 30,
+      "bookLines": [
+        "Ng6 Qxf5 Nxe7+",
+        "Ng6 Rd7 Ne7+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "5nk1/4rppp/p7/2pqNQ2/8/P3P2P/5PP1/4R1K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "Ng6 Qxf5 Nxe7+",
+        "hint": "Your queen and Black's queen face each other with a knight in between. Where can the knight go with a threat of its own?",
+        "explanation": "The knight uncovers an attack on the black queen and hits the rook. If Black takes the queen, Nxe7+ regains it with interest; if the rook steps aside, Ne7+ forks king and queen. Book continuation: Ng6 Qxf5 Nxe7+. Additional book variation: Ng6 Rd7 Ne7+.",
+        "diagramPage": "16",
+        "answerPage": "25",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "31",
+      "title": "Knight sacrifice opens the h-file",
+      "order": 31,
+      "bookLines": [
+        "Nxg6+ hxg6 Qh4+ Kg8 Rxe7"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "7k/ppp1rRbp/4q1p1/3pN3/3P4/2P3QP/PP4P1/6K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "Nxg6+ hxg6 Qh4+ Kg8 Rxe7",
+        "hint": "The black rook on e7 is attacked once and defended once. Can your queen join the attack with check?",
+        "explanation": "The knight sacrifice opens the h-file. Qh4+ gains a tempo and attacks e7 a second time, so Rxe7 wins back more material. Book continuation: Nxg6+ hxg6 Qh4+ Kg8 Rxe7.",
+        "diagramPage": "16",
+        "answerPage": "25",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "32",
+      "title": "Disconnect king and rook",
+      "order": 32,
+      "bookLines": [
+        "Qg5+ Kh8 Qh6"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r1b2rk1/2q2p1p/p1p1pQ2/1p6/8/P2B3P/1P3PP1/R4RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "Qg5+ Kh8 Qh6",
+        "hint": "Drive the king into the corner first. Then find one quiet move with two mating threats.",
+        "explanation": "After Qg5+ the king must go to h8, leaving the rook on f8 unprotected. Qh6 then threatens mate on both f8 and h7, and Black cannot stop both. Book continuation: Qg5+ Kh8 Qh6.",
+        "diagramPage": "17",
+        "answerPage": "25",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "33",
+      "title": "Two unprotected pieces",
+      "order": 33,
+      "bookLines": [
+        "Qd8+ Nf8 Qa5"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "6k1/1p3ppn/7p/7b/1r6/1P1Q2PP/2P2PK1/8 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "Qd8+ Nf8 Qa5",
+        "hint": "Two black pieces are loose on the same rank or diagonal of a future queen square. Start with a check.",
+        "explanation": "The intermediate check brings the queen to the eighth rank with tempo. From there Qa5 forks the rook on b4 and the bishop on h5. Book continuation: Qd8+ Nf8 Qa5.",
+        "diagramPage": "17",
+        "answerPage": "25",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "34",
+      "title": "The doomed pawn",
+      "order": 34,
+      "bookLines": [
+        "f8=Q+ Kxf8 Bxd6+"
+      ],
+      "analysisLines": [
+        "Bxd6 Ra2+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "8/1r3Pk1/3p2pp/8/p4B2/r4NP1/6KP/3R4 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "f8=Q+ Kxf8 Bxd6+",
+        "hint": "The f7 pawn seems to be falling anyway. Can it be used to pull the king onto a bad square?",
+        "explanation": "After 1. Bxd6 Ra2+ Black would simply take the f7 pawn. Promoting drags the king to f8, and Bxd6+ then forks the king and the rook on a3. Book continuation: f8=Q+ Kxf8 Bxd6+.",
+        "diagramPage": "17",
+        "answerPage": "25-26",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "35",
+      "title": "Promote to decoy",
+      "order": 35,
+      "bookLines": [
+        "g8=Q+ Kxg8 Nf6+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "8/pp3kPR/2n5/8/4Npq1/P1N3P1/1P4K1/8 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "g8=Q+ Kxg8 Nf6+",
+        "hint": "As in the previous exercise, a pawn can be given up to move the enemy king. Where does your knight fork?",
+        "explanation": "The promotion forces the king to g8, and Nf6+ forks king and queen while protecting the rook. Book continuation: g8=Q+ Kxg8 Nf6+.",
+        "diagramPage": "18",
+        "answerPage": "26",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "36",
+      "title": "Queen for two rooks and a knight",
+      "order": 36,
+      "bookLines": [
+        "Qxc3 Rxc3 Nxd1 Qd2 Nxc3"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "2r2rk1/4pp1p/3p2p1/3P4/3qPP2/2N1n2P/5QP1/2RR3K b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. Find the fork or double attack that wins material.",
+        "solutionText": "Qxc3 Rxc3 Nxd1 Qd2 Nxc3",
+        "hint": "Your knight attacks more than one white piece. What if the queen gives itself up first?",
+        "explanation": "Black sacrifices the queen on c3. After the rook recaptures, the knight takes on d1 with a fork of queen and rook, and Black ends up with two rooks and a knight for the queen. Book continuation: Qxc3 Rxc3 Nxd1 Qd2 Nxc3.",
+        "diagramPage": "18",
+        "answerPage": "26",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "37",
+      "title": "Trade, decoy, fork",
+      "order": 37,
+      "bookLines": [
+        "Bxg7 Qxg7 Qxe5 Qxe5 Nf7+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "3k3r/2q3bp/p2Np1pB/3pn3/1p4PP/6Q1/PPP5/1K1R4 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "Bxg7 Qxg7 Qxe5 Qxe5 Nf7+",
+        "hint": "The knight on d6 dreams of a three-way fork. Which black pieces must be lured away or onto the right squares?",
+        "explanation": "White trades bishops to pull the queen off the seventh rank, then sacrifices the queen on e5. After ...Qxe5, Nf7+ forks king, queen, and rook and wins a piece. Book continuation: Bxg7 Qxg7 Qxe5 Qxe5 Nf7+.",
+        "diagramPage": "18",
+        "answerPage": "26",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "38",
+      "title": "Force the king to g8 or h7",
+      "order": 38,
+      "bookLines": [
+        "Rb8+ Kg7 Rg8+ Kxg8 Nf6+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "7k/p4p2/6p1/3q4/6N1/2P4P/5PP1/1R4K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "Rb8+ Kg7 Rg8+ Kxg8 Nf6+",
+        "hint": "On two squares the black king can be forked together with the queen. Can the rook force it onto one of them?",
+        "explanation": "After Rb8+ Kg7 the key move is Rg8+. Whether the king takes on g8 or goes to h7, Nf6+ forks king and queen. Book continuation: Rb8+ Kg7 Rg8+ Kxg8 Nf6+.",
+        "diagramPage": "19",
+        "answerPage": "26",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "39",
+      "title": "Bishop sacrifice for a fork",
+      "order": 39,
+      "bookLines": [
+        "Nc3+ Ka1 Bb2+ Kxb2 Nd1+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "1k1r4/p1p5/7p/6p1/4n3/b2BQ2P/2P3P1/1K6 b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. Find the fork or double attack that wins material.",
+        "solutionText": "Nc3+ Ka1 Bb2+ Kxb2 Nd1+",
+        "hint": "Start with a simple check. Which piece can you then give up to pull the king onto a forking square?",
+        "explanation": "After the knight check the king goes to the corner. The bishop sacrifice on b2 drags it back out, and Nd1+ forks king and queen. Book continuation: Nc3+ Ka1 Bb2+ Kxb2 Nd1+.",
+        "diagramPage": "19",
+        "answerPage": "26",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "40",
+      "title": "Double sacrifice",
+      "order": 40,
+      "bookLines": [
+        "Qxf4 Qxf4 Rg1+ Kxg1 Nxe2+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "8/1p4k1/p6p/2Pp2r1/1P1n1R1q/3P4/4B2P/5Q1K b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. Find the fork or double attack that wins material.",
+        "solutionText": "Qxf4 Qxf4 Rg1+ Kxg1 Nxe2+",
+        "hint": "Your knight attacks the bishop on e2. On which squares would the white king and queen have to stand for that capture to be a fork?",
+        "explanation": "Black gives up the queen and then the rook to place the white queen on f4 and the king on g1. Nxe2+ then forks them, and Black comes out a piece ahead. Book continuation: Qxf4 Qxf4 Rg1+ Kxg1 Nxe2+.",
+        "diagramPage": "19",
+        "answerPage": "26",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "41",
+      "title": "Decoy, queen sac, fork",
+      "order": 41,
+      "bookLines": [
+        "Qh4+ Kg7 Qxd8 Qxd8 Ne6+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "3r4/8/p2q1Qpk/5p2/5N2/4P3/P4P1P/6K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "Qh4+ Kg7 Qxd8 Qxd8 Ne6+",
+        "hint": "First improve the black king's position for you. Then look at what the knight could fork.",
+        "explanation": "The check forces the king to g7. White then takes the rook with the queen; after ...Qxd8, Ne6+ forks king and queen and White keeps an extra knight. Book continuation: Qh4+ Kg7 Qxd8 Qxd8 Ne6+.",
+        "diagramPage": "20",
+        "answerPage": "26",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "42",
+      "title": "Make the fork work",
+      "order": 42,
+      "bookLines": [
+        "Qd4 Qxd4 cxd4 Nc6 Nc7+"
+      ],
+      "analysisLines": [
+        "Nc7+ Qxc7"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r1b1k2r/pp3ppp/4p3/1Nqpn3/8/2P1P3/PP2BPPP/R2Q1RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "Qd4 Qxd4 cxd4 Nc6 Nc7+",
+        "hint": "The knight fork on c7 is obvious, but the black queen stops it. How can you get rid of that queen with gain of time?",
+        "explanation": "The immediate Nc7+ fails to ...Qxc7. Qd4 forces the queens off; the recapturing pawn attacks the knight on e5, and after it moves Nc7+ forks king and rook. Book continuation: Qd4 Qxd4 cxd4 Nc6 Nc7+.",
+        "diagramPage": "20",
+        "answerPage": "26",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "43",
+      "title": "The knight is the hero again",
+      "order": 43,
+      "bookLines": [
+        "Nf6+ Kg7 Qxf8+ Kxf8 Nxh7+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "5rk1/5p1p/3Q2p1/pp1N2q1/7n/1P5P/P4PP1/5RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "Nf6+ Kg7 Qxf8+ Kxf8 Nxh7+",
+        "hint": "Black threatens mate on g2, so every move must be forcing. Start with a knight check.",
+        "explanation": "After Nf6+ the king must go to g7. The queen sacrifice on f8 pulls it back, and Nxh7+ forks king and queen, leaving White a rook ahead. Book continuation: Nf6+ Kg7 Qxf8+ Kxf8 Nxh7+.",
+        "diagramPage": "20",
+        "answerPage": "26",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "44",
+      "title": "Fork on the long diagonal",
+      "order": 44,
+      "bookLines": [
+        "Rxa7 Rxa7 Rxd4 exd4 Bxd4+ Rg7 h6"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r6k/r7/8/1p2pp1P/3n4/R3BP2/6PK/3R4 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "Rxa7 Rxa7 Rxd4 exd4 Bxd4+ Rg7 h6",
+        "hint": "After a trade of rooks, one black rook and the king share a diagonal. What stands between your bishop and that diagonal?",
+        "explanation": "White trades one pair of rooks and sacrifices the exchange on d4, so that Bxd4+ forks the king and the rook on a7. Black can block with ...Rg7, but h6 wins the pinned rook. Book continuation: Rxa7 Rxa7 Rxd4 exd4 Bxd4+ Rg7 h6.",
+        "diagramPage": "21",
+        "answerPage": "26",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "45",
+      "title": "Pawns can fork too",
+      "order": 45,
+      "bookLines": [
+        "g6+ Kg8 Bc4+ Kh8 g7+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "1r3r2/7k/5p1p/5NPP/1p3b2/1P6/2R1BP2/6K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "g6+ Kg8 Bc4+ Kh8 g7+",
+        "hint": "Push the king around with checks. Which pawn can end up attacking two pieces at once?",
+        "explanation": "The pawn check and the bishop check drive the king into the corner, and g7+ then forks the king and the rook on f8. Book continuation: g6+ Kg8 Bc4+ Kh8 g7+.",
+        "diagramPage": "21",
+        "answerPage": "26",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "46",
+      "title": "Underpromotion fork",
+      "order": 46,
+      "bookLines": [
+        "Rc8+ Rxc8 Qxa7+ Kxa7 bxc8=N+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "1k1r4/pP2q3/8/Q5pP/5bP1/5P1K/P1R5/8 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "Rc8+ Rxc8 Qxa7+ Kxa7 bxc8=N+",
+        "hint": "A new queen is not always the strongest piece. Which promotion would give check and attack the queen?",
+        "explanation": "White sacrifices the rook and then the queen to bring the king to a7 and a black piece to c8. The pawn captures and promotes to a knight with check, forking king and queen. Book continuation: Rc8+ Rxc8 Qxa7+ Kxa7 bxc8=N+.",
+        "diagramPage": "21",
+        "answerPage": "26",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "47",
+      "title": "Knight promotion again",
+      "order": 47,
+      "bookLines": [
+        "Qe8+ Kf6 Qxe6+ Kxe6 d8=N+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "7Q/pq1P1kp1/4n3/6p1/1P2p1P1/P4P2/6K1/8 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "Qe8+ Kf6 Qxe6+ Kxe6 d8=N+",
+        "hint": "As in the previous exercise, think about which piece the pawn should become and where the black king must stand.",
+        "explanation": "The check drives the king to f6, the queen sacrifice pulls it to e6, and d8=N+ forks the king and the queen on b7. Book continuation: Qe8+ Kf6 Qxe6+ Kxe6 d8=N+.",
+        "diagramPage": "22",
+        "answerPage": "26",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "48",
+      "title": "Pawn decoys",
+      "order": 48,
+      "bookLines": [
+        "d5+ Kxd5 c4+ Kxc4 Nd2+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "8/6p1/2n1k2p/1np5/p2P4/2P2rB1/1P5P/K4N1R w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Find the fork or double attack that wins material.",
+        "solutionText": "d5+ Kxd5 c4+ Kxc4 Nd2+",
+        "hint": "The rook on f3 can be forked by your knight if the black king comes closer. What can you offer it?",
+        "explanation": "Two pawn sacrifices with check drag the king to c4, where Nd2+ forks the king and the rook on f3. Book continuation: d5+ Kxd5 c4+ Kxc4 Nd2+.",
+        "diagramPage": "22",
+        "answerPage": "26",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "49",
+      "title": "A cute way to win a piece",
+      "order": 49,
+      "bookLines": [
+        "Bxc3 bxc3 Nd5 Qxc4 Nxe3+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r4rk1/pp2ppbp/6p1/8/Qnq1P3/2N1BPP1/PP4KP/R4R2 b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. Find the fork or double attack that wins material.",
+        "solutionText": "Bxc3 bxc3 Nd5 Qxc4 Nxe3+",
+        "hint": "Your queen is attacked by the white queen, yet you need not move it. What can the knight do once the defender of d5 is gone?",
+        "explanation": "Black removes the knight on c3 and then plays ...Nd5, uncovering the queens against each other. After Qxc4, Nxe3+ is a fork with check, and Black recaptures the queen a piece ahead. Book continuation: Bxc3 bxc3 Nd5 Qxc4 Nxe3+.",
+        "diagramPage": "22",
+        "answerPage": "26",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "50",
+      "title": "Two simple checks",
+      "order": 50,
+      "bookLines": [
+        "Re1+ Kg2 R8e2+ Kf3 Re3+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "4r1k1/4r3/2p5/2Bp3p/3P1p1P/1Q6/8/7K b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. Find the fork or double attack that wins material.",
+        "solutionText": "Re1+ Kg2 R8e2+ Kf3 Re3+",
+        "hint": "Check with both rooks in turn. On which rank do the white king and queen end up together?",
+        "explanation": "The two rook checks force the king to f3, onto the same rank as the queen. Re3+ then forks king and queen. Book continuation: Re1+ Kg2 R8e2+ Kf3 Re3+.",
+        "diagramPage": "23",
+        "answerPage": "26",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    }
+  ]
+}

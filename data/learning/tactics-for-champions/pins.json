@@ -1,0 +1,1129 @@
+{
+  "chapter": {
+    "title": "Pins",
+    "order": 2
+  },
+  "exercises": [
+    {
+      "number": "1",
+      "title": "A fork thanks to a pin",
+      "order": 1,
+      "bookLines": [
+        "Rh5+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "1r6/5pbk/p5p1/3R4/8/2P3Pq/P1B1Q2P/6K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Rh5+",
+        "hint": "The g6 pawn is pinned by your bishop on c2. Which square does that leave unguarded?",
+        "explanation": "The g6 pawn is pinned to the king by the bishop on c2, so it cannot capture on h5. The rook check forks king and queen. Book continuation: Rh5+.",
+        "diagramPage": "30",
+        "answerPage": "48",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "2",
+      "title": "Two pinned knights",
+      "order": 2,
+      "bookLines": [
+        "Nd5",
+        "Nd5 Ke8 Nxc7+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r1bk3r/pppn1pbp/5np1/4p1B1/2P1P3/2N5/PP3PPP/2KR1BNR w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Nd5",
+        "hint": "Both black knights are pinned. Which piece can add pressure to one of them?",
+        "explanation": "Nd5 attacks the knight on f6, which is pinned by the bishop on g5, while the knight on d7 is pinned on the d-file. If the king walks out of both pins with Ke8, it walks into the fork Nxc7+. Book continuation: Nd5 (or Nd5 Ke8 Nxc7+).",
+        "diagramPage": "31",
+        "answerPage": "48",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "3",
+      "title": "Two loose pieces",
+      "order": 3,
+      "bookLines": [
+        "Qb4"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "4r1k1/1q1b1ppp/2p2n2/p2p2Q1/5P2/1PN1PB2/2P3PP/4R2K b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Qb4",
+        "hint": "White's rook and knight are both unprotected. Can your queen line them up?",
+        "explanation": "Qb4 attacks the unprotected knight on c3 and pins it to the unprotected rook on e1, so Black wins a piece. Book continuation: Qb4.",
+        "diagramPage": "31",
+        "answerPage": "48",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "4",
+      "title": "Ignore the fork",
+      "order": 4,
+      "bookLines": [
+        "Qg3"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "5r1k/1pq3pp/p1b1N3/2b2p2/2P5/1Q1P3P/P2B1PP1/1R4K1 b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Qg3",
+        "hint": "White's knight forks three of your pieces, but one white pawn near the king cannot capture. Where does that let your queen go?",
+        "explanation": "White has just played Nf4-e6, forking queen, rook, and bishop. The f2 pawn is pinned by the bishop on c5, so the queen on g3 cannot be captured and Black starts a mating attack against g2. Book continuation: Qg3.",
+        "diagramPage": "31",
+        "answerPage": "48",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "5",
+      "title": "A simple relative pin",
+      "order": 5,
+      "bookLines": [
+        "Qf8"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "Q7/6pk/3r3p/pP3p2/3R4/q6P/5PPK/8 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Qf8",
+        "hint": "Black's rook and queen stand on the same diagonal. Can you use that line and attack the rook a second time?",
+        "explanation": "Qf8 pins the rook on d6 to the queen on a3 and attacks it a second time. The rook cannot move without losing the queen. Book continuation: Qf8.",
+        "diagramPage": "32",
+        "answerPage": "48",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "6",
+      "title": "Two open diagonals",
+      "order": 6,
+      "bookLines": [
+        "Bd4+ Nxd4 Rxc7"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "5r1k/ppq1n2p/2n3p1/5p2/8/P3B3/QP3NPP/2R3K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Bd4+ Nxd4 Rxc7",
+        "hint": "The knight on c6 shields the black queen on the c-file. How can you use the fact that it cannot really move?",
+        "explanation": "The diagonals a1-h8 and a2-g8 are open and the knight on c6 is pinned to the queen. After Bd4+ the queen on a2 covers g8, and Nxd4 loses the queen to Rxc7. Book continuation: Bd4+ Nxd4 Rxc7.",
+        "diagramPage": "32",
+        "answerPage": "48",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "7",
+      "title": "The cross-pin",
+      "order": 7,
+      "bookLines": [
+        "Qd8"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "8/R2r2kp/6p1/4ppQ1/8/2P4P/1P4PK/3q4 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Qd8",
+        "hint": "The rook on d7 is already pinned along the seventh rank. Can you pin it a second time?",
+        "explanation": "Qd8 pins the rook on d7 along the d-file to the queen on d1, while it is already pinned along the seventh rank to the king. The doubly pinned rook cannot be saved. Book continuation: Qd8.",
+        "diagramPage": "32",
+        "answerPage": "48",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "8",
+      "title": "Another cross-pin",
+      "order": 8,
+      "bookLines": [
+        "Qh6 Kf2 Rae8"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r4rk1/p4ppp/q7/1pb2b2/8/4B1P1/PP1QP1BP/R3R1K1 b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Qh6 Kf2 Rae8",
+        "hint": "The bishop on e3 is pinned to the king. Is there a second line along which it can be pinned and attacked?",
+        "explanation": "Qh6 attacks the bishop on e3, which is pinned to the king by the bishop on c5 and now also to the queen on d2. After Kf2, Rae8 brings one more attacker and decides the game. Book continuation: Qh6 Kf2 Rae8.",
+        "diagramPage": "33",
+        "answerPage": "48",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "9",
+      "title": "Cut the line",
+      "order": 9,
+      "bookLines": [
+        "Ng5"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "8/ppk1b1Q1/2p3n1/3p4/3PN3/P7/1PP5/1KB3q1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Ng5",
+        "hint": "Black's queen protects the knight on g6 along the g-file, and the bishop on e7 is pinned. Which move uses both facts?",
+        "explanation": "Ng5 cuts the connection between the black queen and the knight on g6. The bishop on e7 is pinned to the king by the queen on g7 and cannot take the knight, so White wins a piece. Book continuation: Ng5.",
+        "diagramPage": "33",
+        "answerPage": "48",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "10",
+      "title": "Mate on the long diagonal",
+      "order": 10,
+      "bookLines": [
+        "Rxh6+ Kg8 Rd8#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "7k/p4pp1/2R4p/8/P6n/4P2q/1B3P2/3R2K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "MATE",
+        "mateIn": 2,
+        "prompt": "White to move. Use a pin to force checkmate in two moves.",
+        "solutionText": "Rxh6+ Kg8 Rd8#",
+        "hint": "The g7 pawn is pinned by your bishop on b2. What can it no longer protect?",
+        "explanation": "The g7 pawn is pinned to the king by the bishop on b2, so it cannot capture on h6. After Kg8 the rook on d1 mates on the back rank. Book continuation: Rxh6+ Kg8 Rd8#.",
+        "diagramPage": "33",
+        "answerPage": "48",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "11",
+      "title": "Decoy check first",
+      "order": 11,
+      "bookLines": [
+        "Bb3+ Kh7 Bc2"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "3r1bk1/p7/1p5p/6pn/B2B4/2Pr2P1/P4PK1/R3R3 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Bb3+ Kh7 Bc2",
+        "hint": "There is no pin yet. Can a check force the black king onto the same diagonal as the rook on d3?",
+        "explanation": "Bb3+ forces the king to h7, onto the same diagonal as the rook on d3. Bc2 then pins the rook and wins it for the bishop. Book continuation: Bb3+ Kh7 Bc2.",
+        "diagramPage": "34",
+        "answerPage": "48",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "12",
+      "title": "Line up king and queen",
+      "order": 12,
+      "bookLines": [
+        "Re4+ Kf8 Rf4",
+        "Re4+ Kf8 Rf1"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "4k3/p7/1p3q2/7p/2PR4/6P1/4P1K1/3R4 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Re4+ Kf8 Rf4",
+        "hint": "A check can drive the black king onto the same file as its queen. What follows?",
+        "explanation": "Re4+ forces the king to the f-file, where the queen already stands. A rook then pins the queen to the king: Rf4 and Rf1 both win it. Book continuation: Re4+ Kf8 Rf4 (or Re4+ Kf8 Rf1).",
+        "diagramPage": "34",
+        "answerPage": "48",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "13",
+      "title": "The pinned bishop cannot capture",
+      "order": 13,
+      "bookLines": [
+        "Qxf6+ Ke8 Qxe7#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "5kr1/4b2p/4pp2/1p1q4/pB6/1PQ4P/2P2PP1/1K5R w - - 0 1",
+        "solver": "WHITE",
+        "objective": "MATE",
+        "mateIn": 2,
+        "prompt": "White to move. Use a pin to force checkmate in two moves.",
+        "solutionText": "Qxf6+ Ke8 Qxe7#",
+        "hint": "The bishop on e7 is pinned by your bishop on b4. Which pawn does it only seem to protect?",
+        "explanation": "The bishop on e7 is pinned to the king, so it cannot take on f6. After Ke8 the queen captures the pinned bishop with mate, protected by the bishop on b4. Book continuation: Qxf6+ Ke8 Qxe7#.",
+        "diagramPage": "34",
+        "answerPage": "48",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "14",
+      "title": "Force the king to the fifth rank",
+      "order": 14,
+      "bookLines": [
+        "Rb4+ Kh5 Rb5"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "8/8/8/6q1/P6k/8/7K/1R6 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Rb4+ Kh5 Rb5",
+        "hint": "First drive the king next to its queen with a check. Then look at the rank they share.",
+        "explanation": "Rb4+ forces the king to h5, onto the same rank as the queen. Rb5 then pins the queen to the king and wins it. Book continuation: Rb4+ Kh5 Rb5.",
+        "diagramPage": "35",
+        "answerPage": "48",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "15",
+      "title": "Back rank and pin combined",
+      "order": 15,
+      "bookLines": [
+        "Rd8+ Re8 Rxe8+ Rxe8 Qxf4"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "6k1/pp3ppp/2pR4/4r3/2P2q2/1P2rP1P/P5P1/2Q2RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Rd8+ Re8 Rxe8+ Rxe8 Qxf4",
+        "hint": "Black's back rank is weak, and the rook on e3 is the only piece standing between the two queens. How can you force it away?",
+        "explanation": "After Rd8+ Black has no choice but to block with Re8. White takes, and when the rook from e3 recaptures, the line from c1 to f4 opens and the black queen is lost. Book continuation: Rd8+ Re8 Rxe8+ Rxe8 Qxf4.",
+        "diagramPage": "35",
+        "answerPage": "48",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "16",
+      "title": "Create a pin on f7",
+      "order": 16,
+      "bookLines": [
+        "Qh7+ Kf8 Nxe6+ fxe6 Qxc7"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "6k1/pbq2p2/1p2pp2/2p3N1/7Q/2P4P/PP3PP1/6K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Qh7+ Kf8 Nxe6+ fxe6 Qxc7",
+        "hint": "After a queen check the f7 pawn becomes the only piece between your queen and Black's queen. How can you lure it away?",
+        "explanation": "Qh7+ Kf8 puts the f7 pawn in a pin along the seventh rank, because it shields the queen on c7. Nxe6+ forks king and queen, and after fxe6 the queen on c7 falls. Book continuation: Qh7+ Kf8 Nxe6+ fxe6 Qxc7.",
+        "diagramPage": "35",
+        "answerPage": "48",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "17",
+      "title": "Check to create the pin",
+      "order": 17,
+      "bookLines": [
+        "Rc8+ Ka7 Re8"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "k7/1p3ppp/p7/8/1P6/P2qr1PP/5QPK/2R5 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Rc8+ Ka7 Re8",
+        "hint": "A check can force the black king onto the same diagonal as the rook on e3 and your queen. Then add an attacker.",
+        "explanation": "Rc8+ forces the king to a7, onto the a7-g1 diagonal. The rook on e3 is now pinned by the queen on f2, and Re8 attacks it a second time and wins it. Book continuation: Rc8+ Ka7 Re8.",
+        "diagramPage": "36",
+        "answerPage": "48",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "18",
+      "title": "Temporary exchange sacrifice",
+      "order": 18,
+      "bookLines": [
+        "Rxf6 Rxf6 g5"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "8/6kp/p1r2bp1/1p6/1P2p1P1/4P2P/PB4K1/5R2 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Rxf6 Rxf6 g5",
+        "hint": "The bishop on f6 is pinned by your bishop on b2. What happens if a black rook stands there instead?",
+        "explanation": "White gives the exchange on f6. The rook that recaptures is pinned to the king by the bishop on b2, and the pawn move g5 wins it. Book continuation: Rxf6 Rxf6 g5.",
+        "diagramPage": "36",
+        "answerPage": "49",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "19",
+      "title": "The pinned a-pawn",
+      "order": 19,
+      "bookLines": [
+        "Bf4+ Ka8 Nb6#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "1kb4r/pp5p/6p1/2pN4/3nP3/1P4P1/3B2KP/R7 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "MATE",
+        "mateIn": 2,
+        "prompt": "White to move. Use a pin to force checkmate in two moves.",
+        "solutionText": "Bf4+ Ka8 Nb6#",
+        "hint": "Your rook on a1 looks down the a-file. Where would you like the black king to stand?",
+        "explanation": "Bf4+ forces the king to a8, where the a7 pawn is pinned by the rook on a1. The knight then mates on b6 because the pawn cannot capture it. Book continuation: Bf4+ Ka8 Nb6#.",
+        "diagramPage": "36",
+        "answerPage": "49",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "20",
+      "title": "No escape from the pin",
+      "order": 20,
+      "bookLines": [
+        "Rd1 f5 Ba2",
+        "Rd1 Kf7 Ba2 Ke6 e4"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "3r4/p5kp/1p3pp1/3np3/8/P3P2P/1P3PPK/1B2R3 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Rd1 f5 Ba2",
+        "hint": "The knight on d5 stands in front of its rook. Pin it first, then bring more attackers.",
+        "explanation": "Rd1 pins the knight on d5 to the rook on d8, and Black cannot get out of the pin in time: after f5 comes Ba2, and after Kf7 Ba2 Ke6 the pawn move e4 wins the knight. Book continuation: Rd1 f5 Ba2 (or Rd1 Kf7 Ba2 Ke6 e4).",
+        "diagramPage": "37",
+        "answerPage": "49",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "21",
+      "title": "Intermediate move",
+      "order": 21,
+      "bookLines": [
+        "g4 Be6 g5"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "3r1r2/ppp2pkp/5np1/3p1b2/8/1P1P1N1P/PBP2PP1/R3R1K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "g4 Be6 g5",
+        "hint": "The knight on f6 is pinned by your bishop on b2. A pawn would like to attack it, but something has to happen first.",
+        "explanation": "The knight on f6 is pinned to the king by the bishop on b2. g4 attacks the bishop on f5 first, and after it retreats g5 wins the pinned knight. Book continuation: g4 Be6 g5.",
+        "diagramPage": "37",
+        "answerPage": "49",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "22",
+      "title": "Chase the knight away",
+      "order": 22,
+      "bookLines": [
+        "g4 Nd6 g5"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "8/5k1p/1p3bp1/p4n2/8/P1PK4/1P4PP/5R2 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "g4 Nd6 g5",
+        "hint": "The f-file holds a black knight, a bishop, and the king. What happens when the knight has to move?",
+        "explanation": "g4 chases the knight away, which leaves the bishop on f6 pinned to the king by the rook on f1. g5 then wins the pinned bishop. Book continuation: g4 Nd6 g5.",
+        "diagramPage": "37",
+        "answerPage": "49",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "23",
+      "title": "Trade queens, then pin",
+      "order": 23,
+      "bookLines": [
+        "Qxa6 bxa6 Be5"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "2k4r/pppr1p2/q4n1p/3p2p1/Q2P4/2P3B1/PP3PPP/R3R1K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Qxa6 bxa6 Be5",
+        "hint": "After a queen trade, one of your pieces can line up a black knight with the rook behind it.",
+        "explanation": "After Qxa6 bxa6 the bishop goes to e5 and pins the knight on f6 to the rook on h8. Book continuation: Qxa6 bxa6 Be5.",
+        "diagramPage": "38",
+        "answerPage": "49",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "24",
+      "title": "The same pattern again",
+      "order": 24,
+      "bookLines": [
+        "Qh7+ Kf8 Ne6+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "3r2k1/ppq2p2/5b1Q/3p2N1/6n1/P7/1PP3P1/1K1R4 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Qh7+ Kf8 Ne6+",
+        "hint": "Compare with exercise 16. Which pawn is the only piece between your queen and Black's queen after a check?",
+        "explanation": "As in exercise 16, Qh7+ Kf8 leaves the f7 pawn pinned along the seventh rank in front of the queen on c7. Ne6+ forks king and queen, and the pawn cannot capture without losing the queen. Book continuation: Qh7+ Kf8 Ne6+.",
+        "diagramPage": "38",
+        "answerPage": "49",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "25",
+      "title": "The pinned g-pawn",
+      "order": 25,
+      "bookLines": [
+        "Nxf5+ Kh5 Be2#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "br6/7p/3R2pk/p1n2p2/4pP2/6N1/P4P1P/5BK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "MATE",
+        "mateIn": 2,
+        "prompt": "White to move. Use a pin to force checkmate in two moves.",
+        "solutionText": "Nxf5+ Kh5 Be2#",
+        "hint": "The g6 pawn is pinned by your rook on d6. Which square does it no longer guard?",
+        "explanation": "The g6 pawn is pinned to the king by the rook on d6, so the knight can take on f5 with check. The king must go to h5, where Be2 is mate. Book continuation: Nxf5+ Kh5 Be2#.",
+        "diagramPage": "38",
+        "answerPage": "49",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "26",
+      "title": "Trade to create the pin",
+      "order": 26,
+      "bookLines": [
+        "Qxe5+ Rxe5 Bd4"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "4r2k/1b5p/p5p1/1p1pq3/1P1Qn3/P6P/4BBP1/5RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Qxe5+ Rxe5 Bd4",
+        "hint": "A queen trade pulls a black rook onto the long diagonal in front of its king. Which piece is ready to use that?",
+        "explanation": "After Qxe5+ Rxe5 the rook stands on the a1-h8 diagonal in front of its king. Bd4 pins it and wins the exchange. Book continuation: Qxe5+ Rxe5 Bd4.",
+        "diagramPage": "39",
+        "answerPage": "49",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "27",
+      "title": "Remove the guard first",
+      "order": 27,
+      "bookLines": [
+        "Rxb2 Bxb2 Bc4"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r4rk1/6bp/2p1q1p1/p4p2/7Q/4P1N1/Pn2BPPP/1R3RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Rxb2 Bxb2 Bc4",
+        "hint": "Your bishop would like to pin the black queen to the king, but a knight guards the key square. Can you remove it?",
+        "explanation": "The idea is Be2-c4, pinning the queen to the king, but the knight on b2 guards c4. White removes it with Rxb2, and after Bxb2 the pin Bc4 wins the queen. Book continuation: Rxb2 Bxb2 Bc4.",
+        "diagramPage": "39",
+        "answerPage": "49",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "28",
+      "title": "Pile up on the pinned piece",
+      "order": 28,
+      "bookLines": [
+        "Rde1 Rb7 Bc5 Bxc5 Rxe8"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "4r3/4bppk/p1p4p/1r6/8/3P1PP1/P3RBKP/3R4 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Rde1 Rb7 Bc5 Bxc5 Rxe8",
+        "hint": "The bishop on e7 is pinned to the rook on e8. Attack it as many times as you can.",
+        "explanation": "The bishop on e7 is pinned on the e-file. Rde1 attacks it again, Rb7 defends, and Bc5 adds a third attacker; after Bxc5 the rook on e8 falls. Book continuation: Rde1 Rb7 Bc5 Bxc5 Rxe8.",
+        "diagramPage": "39",
+        "answerPage": "49",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "29",
+      "title": "A beautiful queen sacrifice",
+      "order": 29,
+      "bookLines": [
+        "Qxh3+ Nxh3 Rxh3#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "1k3b1r/ppp3p1/8/6Nq/QPP5/P2pBb1P/4nPB1/4RR1K b - - 0 1",
+        "solver": "BLACK",
+        "objective": "MATE",
+        "mateIn": 2,
+        "prompt": "Black to move. Use a pin to force checkmate in two moves.",
+        "solutionText": "Qxh3+ Nxh3 Rxh3#",
+        "hint": "White's bishop on g2 is pinned by your bishop on f3. Which square is it only pretending to guard?",
+        "explanation": "The bishop on g2 is pinned to the king by the bishop on f3, so it cannot capture on h3. After the queen sacrifice the rook mates on h3. Book continuation: Qxh3+ Nxh3 Rxh3#.",
+        "diagramPage": "40",
+        "answerPage": "49",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "30",
+      "title": "The e-pawn must leave",
+      "order": 30,
+      "bookLines": [
+        "Nd6+ exd6 Bxd8"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r1bqkbnr/pp1nppp1/2p4p/6B1/3pN3/3P1N2/PPP1PPPP/R2QKB1R w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Nd6+ exd6 Bxd8",
+        "hint": "The e7 pawn is the only thing between your bishop and the black queen. How can you force it to move?",
+        "explanation": "The e7 pawn shields the queen from the bishop on g5. Nd6+ is a check that only the pawn can answer, and after exd6 the bishop takes the queen. Book continuation: Nd6+ exd6 Bxd8.",
+        "diagramPage": "40",
+        "answerPage": "49",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "31",
+      "title": "A cute combination",
+      "order": 31,
+      "bookLines": [
+        "Rxc8 Qxc8 Ne7+ Rxe7 Qxc8+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "2b1q1k1/3r2pp/p4p2/1p1p1N2/3P4/P3P2Q/5PPP/2R3K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Rxc8 Qxc8 Ne7+ Rxe7 Qxc8+",
+        "hint": "Your queen on h3 looks through the rook on d7 at the back rank. Which black piece would you like to see at the end of that diagonal?",
+        "explanation": "Rxc8 lures the queen to c8, where the rook on d7 is pinned in front of it by the queen on h3. Ne7+ then forces the rook to capture, and Qxc8+ wins the queen. Book continuation: Rxc8 Qxc8 Ne7+ Rxe7 Qxc8+.",
+        "diagramPage": "40",
+        "answerPage": "49",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "32",
+      "title": "Open the h-file",
+      "order": 32,
+      "bookLines": [
+        "Ng6+ hxg6 Qh4+ Nh5 Qxe7"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "2r2r1k/pb2q1pp/1p3n2/1P4Q1/4pN2/1B2P3/5PPP/3R1RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Ng6+ hxg6 Qh4+ Nh5 Qxe7",
+        "hint": "The knight on f6 is pinned to the queen on e7. Can you force it to move with a check?",
+        "explanation": "The knight on f6 is pinned to the queen on e7 by the queen on g5. Ng6+ opens the h-file, and after Qh4+ the knight has to block, leaving the queen on e7 unprotected. Book continuation: Ng6+ hxg6 Qh4+ Nh5 Qxe7.",
+        "diagramPage": "41",
+        "answerPage": "49",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "33",
+      "title": "The right move order",
+      "order": 33,
+      "bookLines": [
+        "Rh8+ Kg7 Qxe5+ Rxe5 Rxc8"
+      ],
+      "analysisLines": [
+        "Qxe5 Qc1#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "2q1r1k1/5p1R/p5p1/1p2r3/3Qp3/1P5R/P4PPP/6K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Rh8+ Kg7 Qxe5+ Rxe5 Rxc8",
+        "hint": "The rook on e5 is pinned on the long diagonal. Start with a check, and watch your own back rank.",
+        "explanation": "Rh8+ Kg7 comes first; then Qxe5+ Rxe5 Rxc8 wins a rook. The other move order, starting with Qxe5, does not work because Black mates with Qc1#. Book continuation: Rh8+ Kg7 Qxe5+ Rxe5 Rxc8.",
+        "diagramPage": "41",
+        "answerPage": "49",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "34",
+      "title": "Take first, pin second",
+      "order": 34,
+      "bookLines": [
+        "Rxb5 Rxb5 Qxa4"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "1r4k1/1r1q1pp1/4p2p/1b6/p2P3P/Q3P1P1/1R3P2/1R3BK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Rxb5 Rxb5 Qxa4",
+        "hint": "A black rook will soon stand on b5, on the same diagonal as the queen on d7. How can you use that?",
+        "explanation": "After Rxb5 Rxb5, Qxa4 pins the rook on b5 to the queen on d7. The rook is attacked three times and White wins a bishop. Book continuation: Rxb5 Rxb5 Qxa4.",
+        "diagramPage": "41",
+        "answerPage": "49",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "35",
+      "title": "The pinned queen",
+      "order": 35,
+      "bookLines": [
+        "Re7 Qxh3 Rxc7#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "2kr4/p1pq2bp/Np4p1/8/8/6PQ/PPP1RP1P/6K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Re7 Qxh3 Rxc7#",
+        "hint": "Black's queen is pinned to the king by your queen. Which piece can attack it again?",
+        "explanation": "The queen on d7 is pinned by the queen on h3. Re7 attacks it again, and if Black takes on h3 the rook mates on c7, protected by the knight on a6. Book continuation: Re7 Qxh3 Rxc7#.",
+        "diagramPage": "42",
+        "answerPage": "49",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "36",
+      "title": "A pretty queen sacrifice",
+      "order": 36,
+      "bookLines": [
+        "Qxc8+ Bxc8 Rd8#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "2r1k2r/1Q2bppp/pB2b3/8/1p3PP1/8/qPP4P/2KRR3 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "MATE",
+        "mateIn": 2,
+        "prompt": "White to move. Use a pin to force checkmate in two moves.",
+        "solutionText": "Qxc8+ Bxc8 Rd8#",
+        "hint": "Your rook on e1 looks at the black king through two bishops. What happens when one of them leaves the e-file?",
+        "explanation": "After Qxc8+ Bxc8 the bishop on e7 is pinned to the king by the rook on e1, so it cannot capture on d8 and Rd8 is mate. Book continuation: Qxc8+ Bxc8 Rd8#.",
+        "diagramPage": "42",
+        "answerPage": "49",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "37",
+      "title": "The pinned queen cannot help",
+      "order": 37,
+      "bookLines": [
+        "Rxh3+ Kxh3 Qh5#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "6k1/5pp1/7r/p7/P7/1B4PP/1P2q1QK/6B1 b - - 0 1",
+        "solver": "BLACK",
+        "objective": "MATE",
+        "mateIn": 2,
+        "prompt": "Black to move. Use a pin to force checkmate in two moves.",
+        "solutionText": "Rxh3+ Kxh3 Qh5#",
+        "hint": "White's queen on g2 is pinned along the second rank. Which square near the king does it only seem to guard?",
+        "explanation": "The queen on g2 is pinned to the king by the queen on e2, so it cannot capture on h3. After Kxh3 the queen mates on h5. Book continuation: Rxh3+ Kxh3 Qh5#.",
+        "diagramPage": "42",
+        "answerPage": "49",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "38",
+      "title": "Queen sacrifice on a6",
+      "order": 38,
+      "bookLines": [
+        "Qxa6 bxa6 Rb8#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "2kr4/1p1q4/pRn3rp/3pB1p1/Q2P4/P4P2/6PP/2R3K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Qxa6 bxa6 Rb8#",
+        "hint": "The knight on c6 is pinned on the c-file. Which square does that leave to your rook?",
+        "explanation": "The knight on c6 is pinned to the king by the rook on c1. After Qxa6 bxa6 the rook mates on b8: the knight cannot capture and the bishop on e5 guards b8 and c7. Book continuation: Qxa6 bxa6 Rb8#.",
+        "diagramPage": "43",
+        "answerPage": "49",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "39",
+      "title": "The queen is taboo",
+      "order": 39,
+      "bookLines": [
+        "Rxd8 Qxa4 Bh6"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "3r1bk1/p3pp1p/2q3p1/8/Q7/2P1B3/PP3PPP/3R2K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Rxd8 Qxa4 Bh6",
+        "hint": "Taking the black queen allows a back-rank mate. Is there a capture that turns the back-rank problem against Black instead?",
+        "explanation": "Qxc6 loses to a back-rank mate. Instead White gives up the queen with Rxd8: after Qxa4 the bishop on f8 is pinned on the back rank, and Bh6 attacks it again and threatens Rxf8 mate. Book continuation: Rxd8 Qxa4 Bh6.",
+        "diagramPage": "43",
+        "answerPage": "50",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "40",
+      "title": "Which rook?",
+      "order": 40,
+      "bookLines": [
+        "Rdxd7+ Rxd7 Qb5",
+        "Rdxd7+ Rxd7 Qb5 Re7 Qxe8"
+      ],
+      "analysisLines": [
+        "Rcxd7+ Rxd7 Qb5 Re7"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "3rq3/ppRr2k1/3Rp1p1/4Pp1p/P1Q2P2/7P/1P4P1/6K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Rdxd7+ Rxd7 Qb5",
+        "hint": "Trade on d7 so that the recapturing rook can be pinned twice. It matters which rook you take with.",
+        "explanation": "After Rdxd7+ Rxd7, Qb5 creates a cross-pin: the rook on d7 is pinned to the king along the seventh rank and to the queen on e8 along the diagonal, and Re7 loses the queen to Qxe8. Taking with the c-rook instead lets Black escape with Re7. Book continuation: Rdxd7+ Rxd7 Qb5 (or Rdxd7+ Rxd7 Qb5 Re7 Qxe8).",
+        "diagramPage": "43",
+        "answerPage": "50",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "41",
+      "title": "A parade of pins",
+      "order": 41,
+      "bookLines": [
+        "Re1 Qxe1 Nxf3+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "7k/6p1/8/p3n3/P4p2/4rBqP/5RP1/5QK1 b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Re1 Qxe1 Nxf3+",
+        "hint": "The g2 pawn is pinned, so the bishop on f3 has fewer defenders than it seems. Can you lure the white queen to a worse square first?",
+        "explanation": "Re1 is a decoy. After Qxe1 the knight takes on f3 with check: the g2 pawn is pinned to the king and the rook on f2 is pinned to the queen on e1, so White loses the queen. Book continuation: Re1 Qxe1 Nxf3+.",
+        "diagramPage": "44",
+        "answerPage": "50",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "42",
+      "title": "Strike on f7",
+      "order": 42,
+      "bookLines": [
+        "Bxf7+ Rxf7 Qc4"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r1b2rk1/p1qnbppp/1p3n2/2p1p1N1/2B1P3/2P5/PP2QPPP/RNBR2K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Bxf7+ Rxf7 Qc4",
+        "hint": "f7 is the weakest point in Black's camp. After a capture there, which piece recaptures, and could it be pinned?",
+        "explanation": "Bxf7+ Rxf7 Qc4 pins the rook on f7 to the king. It is attacked by queen and knight, so White wins material. Book continuation: Bxf7+ Rxf7 Qc4.",
+        "diagramPage": "44",
+        "answerPage": "50",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "43",
+      "title": "Ignore the attack on your queen",
+      "order": 43,
+      "bookLines": [
+        "Rxh3+ Bxh3 Qxh3+ Kg1 Qxg2#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "7k/pb4p1/4q2p/8/1p1Q1PB1/2r4P/P5P1/R6K b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Rxh3+ Bxh3 Qxh3+ Kg1 Qxg2#",
+        "hint": "Your queen is attacked, but the g2 pawn is pinned by your bishop on b7. Which square does that pawn fail to protect?",
+        "explanation": "The g2 pawn is pinned to the king by the bishop on b7, so Black can ignore the attack on the queen and take on h3 with check. If the bishop recaptures, Qxh3+ and Qxg2 mate follow. Book continuation: Rxh3+ Bxh3 Qxh3+ Kg1 Qxg2#.",
+        "diagramPage": "44",
+        "answerPage": "50",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "44",
+      "title": "Better than winning a pawn",
+      "order": 44,
+      "bookLines": [
+        "Rf8+ Nxf8 Nf6+"
+      ],
+      "analysisLines": [
+        "Nxh6+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "6k1/1p2r1pn/p3p2p/4p3/P2rq1NP/1P4Q1/2P2RP1/5R1K w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Rf8+ Nxf8 Nf6+",
+        "hint": "The g7 pawn is pinned by your queen. A knight fork becomes possible once the black knight stops guarding one square.",
+        "explanation": "Nxh6+ only wins a pawn. Rf8+ deflects the knight from h7, and then Nf6+ forks king and queen: the g7 pawn is pinned by the queen on g3 and cannot capture. Book continuation: Rf8+ Nxf8 Nf6+.",
+        "diagramPage": "45",
+        "answerPage": "50",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "45",
+      "title": "Pin and counter-pin",
+      "order": 45,
+      "bookLines": [
+        "Bc5 Bb6 Qf4+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "5k2/6p1/p2q3p/b7/P1QB4/5P2/6P1/6K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Bc5 Bb6 Qf4+",
+        "hint": "Pinning the queen is natural, but Black can pin your bishop in return. Prepare an answer to that.",
+        "explanation": "Bc5 pins the queen to the king. Black has the counter-pin Bb6, but Qf4+ decides the game: the pinned queen cannot capture, and after the king moves White wins the queen. Book continuation: Bc5 Bb6 Qf4+.",
+        "diagramPage": "45",
+        "answerPage": "50",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "46",
+      "title": "Clear the f-file",
+      "order": 46,
+      "bookLines": [
+        "Bxe5 Qxe5 Qxe5 dxe5 Bxe6"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r4k1r/1p3ppp/pbppbq2/4n3/3pPB2/1B1P2QP/PPPN2P1/R4RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Bxe5 Qxe5 Qxe5 dxe5 Bxe6",
+        "hint": "Your rook on f1 looks toward f7 and the king behind it. Which exchanges would open that file?",
+        "explanation": "After Bxe5 Qxe5 Qxe5 dxe5 the f-file is open and the f7 pawn is pinned to the king by the rook on f1, so Bxe6 wins a piece. Book continuation: Bxe5 Qxe5 Qxe5 dxe5 Bxe6.",
+        "diagramPage": "45",
+        "answerPage": "50",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "47",
+      "title": "A very common pinning trick",
+      "order": 47,
+      "bookLines": [
+        "Rc8+ Bf8 Bh6"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "6k1/5p1p/4rP2/1p1p4/1b5P/1P2B1P1/6K1/2R5 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Rc8+ Bf8 Bh6",
+        "hint": "A back-rank check forces a black piece to block. How can you attack that pinned blocker again?",
+        "explanation": "Rc8+ forces Bf8, and the bishop is pinned to the king. Bh6 attacks it a second time and threatens mate on f8. Book continuation: Rc8+ Bf8 Bh6.",
+        "diagramPage": "46",
+        "answerPage": "50",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "48",
+      "title": "More ammunition",
+      "order": 48,
+      "bookLines": [
+        "Re8 f4 Ree1 Rf2 Bf8 Rd8 Kg7"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "5rk1/2p2pbp/1p4p1/pP1R4/P7/8/R4PPP/2r2BK1 b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Re8 f4 Ree1 Rf2 Bf8 Rd8 Kg7",
+        "hint": "White's bishop on f1 is pinned on the back rank. Which of your pieces can join the attack on it?",
+        "explanation": "The bishop on f1 is pinned by the rook on c1. Re8 and Ree1 attack it a second time; White protects it just in time with Rf2, but Bf8 threatens Bc5. White tries the pin Rd8, and after the simple Kg7 White cannot avoid losing material. Book continuation: Re8 f4 Ree1 Rf2 Bf8 Rd8 Kg7.",
+        "diagramPage": "46",
+        "answerPage": "50",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "49",
+      "title": "A mating net",
+      "order": 49,
+      "bookLines": [
+        "Bg6 Qxa3 Rxe8#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "4bk1r/4q1p1/5p2/1p6/4B3/Q7/P4PP1/4R1K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "Bg6 Qxa3 Rxe8#",
+        "hint": "The black queen is pinned by your queen, yet it also has to protect the bishop on e8. Which move asks too much of it?",
+        "explanation": "Bg6 attacks the bishop on e8, which the pinned queen has to protect. If Black takes on a3, Rxe8 is mate. Book continuation: Bg6 Qxa3 Rxe8#.",
+        "diagramPage": "46",
+        "answerPage": "50",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "50",
+      "title": "Turning the tables",
+      "order": 50,
+      "bookLines": [
+        "b6+ Kxb6 Rh6 Rxh6 Qxe7",
+        "b6+ Kb8 Rh8+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "8/kp2q3/p3r3/1Pp5/7R/P3Q1P1/4K3/8 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pin, or create one, to find the winning continuation.",
+        "solutionText": "b6+ Kxb6 Rh6 Rxh6 Qxe7",
+        "hint": "Your queen is pinned, but the rook that pins it could be pinned itself. Where would the black king have to stand?",
+        "explanation": "White's queen is pinned, but b6+ lures the king to b6, onto the same rank as the rook on e6. Rh6 creates a cross-pin, and after Rxh6 the queen on e7 falls. If the king goes to b8 instead, Rh8+ exploits the back rank. Book continuation: b6+ Kxb6 Rh6 Rxh6 Qxe7 (or b6+ Kb8 Rh8+).",
+        "diagramPage": "47",
+        "answerPage": "50",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,570 @@
+{
+  "chapter": {
+    "title": "Decoys",
+    "order": 8
+  },
+  "exercises": [
+    {
+      "number": "1",
+      "title": "Bishop sacrifice into a fork",
+      "order": 1,
+      "bookLines": [
+        "Bxg7+ Kxg7 Nh5+ Kh8 Nxf4"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r2r3k/pppbn1pp/2np4/2P5/5q2/1BB3N1/PPQ2PP1/R4R1K w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a decoy to find the winning continuation.",
+        "solutionText": "Bxg7+ Kxg7 Nh5+ Kh8 Nxf4",
+        "hint": "The black queen on f4 is unprotected. On which square would the black king have to stand for a knight fork?",
+        "explanation": "Bxg7+ drags the king to g7. Then Nh5+ forks the king and the queen on f4, and White wins the queen for a bishop. Book continuation: Bxg7+ Kxg7 Nh5+ Kh8 Nxf4.",
+        "diagramPage": "134",
+        "answerPage": "143",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "2",
+      "title": "Solve every problem at once",
+      "order": 2,
+      "bookLines": [
+        "Qxg8+ Kxg8 Nf6+ Kg7 Nxe4"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "1Q4rk/7p/6p1/3N4/3pq3/6Pb/1P3P2/3R2K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a decoy to find the winning continuation.",
+        "solutionText": "Qxg8+ Kxg8 Nf6+ Kg7 Nxe4",
+        "hint": "Your queen is attacked and Black threatens mate on g2. Your knight has a fork in mind; which square must the black king stand on?",
+        "explanation": "Qxg8+ removes the attacked queen with check and drags the king to g8. Nf6+ then forks the king and the queen on e4, so the mate threat is gone and White has won a rook. Book continuation: Qxg8+ Kxg8 Nf6+ Kg7 Nxe4.",
+        "diagramPage": "135",
+        "answerPage": "143",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "3",
+      "title": "Force the queen into a fork",
+      "order": 3,
+      "bookLines": [
+        "Ba5+ Qxa5 Nb7+ Kc7 Nxa5"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "3k4/3p4/3N1K2/7q/8/2B3P1/3P4/8 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a decoy to find the winning continuation.",
+        "solutionText": "Ba5+ Qxa5 Nb7+ Kc7 Nxa5",
+        "hint": "Black is ahead in material, but your knight is close to the king. Where would the black queen have to stand for a fork?",
+        "explanation": "Ba5+ forces the queen to capture on a5. Then Nb7+ forks the king and the queen, and White wins the queen. Book continuation: Ba5+ Qxa5 Nb7+ Kc7 Nxa5.",
+        "diagramPage": "135",
+        "answerPage": "143",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "4",
+      "title": "King onto the queen's file",
+      "order": 4,
+      "bookLines": [
+        "Qg3+ Kf5 Qf3+ Ke5 Qxf8"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "5q2/8/8/4Q2p/P1p3k1/1p6/1P5K/8 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a decoy to find the winning continuation.",
+        "solutionText": "Qg3+ Kf5 Qf3+ Ke5 Qxf8",
+        "hint": "The black queen stands on the f-file. Can a simple check push the black king onto the same file?",
+        "explanation": "Qg3+ pushes the king to f5, onto the same file as its queen. Qf3+ is then a skewer: the king must step aside and White takes the queen on f8. Book continuation: Qg3+ Kf5 Qf3+ Ke5 Qxf8.",
+        "diagramPage": "135",
+        "answerPage": "143",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "5",
+      "title": "An unfortunate square for the queen",
+      "order": 5,
+      "bookLines": [
+        "Nxd5 Qxd5 Bxh7+ Kxh7 Qxd5"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r1bq1rk1/ppp2ppp/8/3n4/8/2NB3P/PPP2PP1/R2Q1RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a decoy to find the winning continuation.",
+        "solutionText": "Nxd5 Qxd5 Bxh7+ Kxh7 Qxd5",
+        "hint": "Your bishop stands between the two queens' file. First get the black queen onto that file.",
+        "explanation": "After the knight trade Nxd5 Qxd5 the black queen stands on the d-file opposite the white queen. Bxh7+ is a discovered attack: the bishop leaves with check and the queen on d5 falls. Book continuation: Nxd5 Qxd5 Bxh7+ Kxh7 Qxd5.",
+        "diagramPage": "136",
+        "answerPage": "143",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "6",
+      "title": "Invite the queen to g4",
+      "order": 6,
+      "bookLines": [
+        "Bg4 Qxg4 Nh6+ Kg7 Nxg4"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r5k1/p4p1p/1p4p1/5N2/8/1P4Pq/P3BP1P/R5K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a decoy to find the winning continuation.",
+        "solutionText": "Bg4 Qxg4 Nh6+ Kg7 Nxg4",
+        "hint": "Your knight is attacked and the black queen is close to your king. But how many squares does that queen have?",
+        "explanation": "Bg4 attacks the queen, which has almost no squares, and so invites Qxg4. Then Nh6+ forks the king and the queen. Book continuation: Bg4 Qxg4 Nh6+ Kg7 Nxg4.",
+        "diagramPage": "136",
+        "answerPage": "143",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "7",
+      "title": "Rook sacrifice for a fork",
+      "order": 7,
+      "bookLines": [
+        "Rxe5+ Qxe5 Nc4+ Kb4 Nxe5"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "8/6p1/8/k3p2q/8/6P1/1P1NR2P/6K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a decoy to find the winning continuation.",
+        "solutionText": "Rxe5+ Qxe5 Nc4+ Kb4 Nxe5",
+        "hint": "Your rook is attacked by the queen. The king on a5 and one central square are a knight fork apart.",
+        "explanation": "Rxe5+ forces the queen to take on e5. Nc4+ then forks the king and the queen, and White wins the queen. Book continuation: Rxe5+ Qxe5 Nc4+ Kb4 Nxe5.",
+        "diagramPage": "136",
+        "answerPage": "143",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "8",
+      "title": "Which pawn first?",
+      "order": 8,
+      "bookLines": [
+        "f8=Q+ Kxf8 b8=Q+ Kf7 Qxh2"
+      ],
+      "analysisLines": [
+        "b8=Q h1=Q+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "8/1P3Pk1/6p1/8/8/p2P4/7p/4K3 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a decoy to find the winning continuation.",
+        "solutionText": "f8=Q+ Kxf8 b8=Q+ Kf7 Qxh2",
+        "hint": "If you promote the wrong pawn, Black promotes too, and with check. Which of your pawns can queen with check?",
+        "explanation": "If White promotes the b-pawn at once, Black answers h1=Q with check. So White first gives up the f-pawn: f8=Q+ Kxf8 drags the king to the back rank, and now b8=Q comes with check and the new queen takes the pawn on h2. Book continuation: f8=Q+ Kxf8 b8=Q+ Kf7 Qxh2.",
+        "diagramPage": "137",
+        "answerPage": "143",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "9",
+      "title": "Bishop sacrifice on f7",
+      "order": 9,
+      "bookLines": [
+        "Bf7+ Kxf7 Qe6#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "2Q2qk1/p5pp/1p3n2/5P1B/2Prp3/P1N5/1P4KP/8 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a decoy to find the winning continuation.",
+        "solutionText": "Bf7+ Kxf7 Qe6#",
+        "hint": "The black queen is pinned on the back rank. Where would the black king have to stand for your queen to give mate?",
+        "explanation": "Bf7+ cannot be taken by the pinned queen. After Kxf7 the queen mates on e6, protected by the pawn on f5. Book continuation: Bf7+ Kxf7 Qe6#.",
+        "diagramPage": "137",
+        "answerPage": "143",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "10",
+      "title": "Queen sacrifice on d6",
+      "order": 10,
+      "bookLines": [
+        "Qxd6+ Kxd6 Ba3#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "3r3r/1p1bk1pp/p2bppq1/8/4P3/1P3N1P/PB3PP1/2RQ1BK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a decoy to find the winning continuation.",
+        "solutionText": "Qxd6+ Kxd6 Ba3#",
+        "hint": "The bishop on d6 is protected only by the king. What happens to a king that walks out to d6?",
+        "explanation": "Qxd6+ wins a piece, because the queen cannot be taken: after Kxd6 the bishop mates from a3, with the rook covering the c-file and the knight and pawn covering d5 and e5. Book continuation: Qxd6+ Kxd6 Ba3#.",
+        "diagramPage": "137",
+        "answerPage": "143",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "11",
+      "title": "Force the king into a pin",
+      "order": 11,
+      "bookLines": [
+        "Rd8+ Kxd8 Qxc6"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "4k2r/4nppp/1pq1p3/p1p1P1B1/Q7/8/PP1R1PPP/6K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a decoy to find the winning continuation.",
+        "solutionText": "Rd8+ Kxd8 Qxc6",
+        "hint": "The queens face each other and the black queen is protected by the knight. What would happen to that knight if the king stood on d8?",
+        "explanation": "Rd8+ forces Kxd8, and now the knight on e7 is pinned by the bishop on g5. It can no longer recapture, so White takes the queen on c6 for free. Book continuation: Rd8+ Kxd8 Qxc6.",
+        "diagramPage": "138",
+        "answerPage": "143",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "12",
+      "title": "Block the escape square",
+      "order": 12,
+      "bookLines": [
+        "Rd4+ exd4 e4#"
+      ],
+      "analysisLines": [
+        "e4+ Kd4"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "8/8/2pp4/2rkpK2/2n4R/4P3/1P6/4B3 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "MATE",
+        "mateIn": 2,
+        "prompt": "White to move. Use a decoy to force checkmate in two moves.",
+        "solutionText": "Rd4+ exd4 e4#",
+        "hint": "A pawn check would almost be mate, but the king has one escape square. Can you make Black block it?",
+        "explanation": "After the direct e4+ the king escapes to d4. So White first gives up the rook there: Rd4+ exd4 puts a black pawn on the escape square, and e4 is checkmate. Book continuation: Rd4+ exd4 e4#.",
+        "diagramPage": "138",
+        "answerPage": "143",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "13",
+      "title": "Rook sacrifice in the corner",
+      "order": 13,
+      "bookLines": [
+        "Ra8+ Kxa8 Qa7#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "1k5r/1b2b1pp/1Qp1np2/1N2p3/4q3/2P3PP/1P3P2/R5K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "MATE",
+        "mateIn": 2,
+        "prompt": "White to move. Use a decoy to force checkmate in two moves.",
+        "solutionText": "Ra8+ Kxa8 Qa7#",
+        "hint": "Your queen and knight are ready to mate on a7, but the king guards that square from b8. Can you make it step into the corner?",
+        "explanation": "Ra8+ must be taken by the king, because the bishop on b7 is pinned by the queen. After Kxa8 the queen mates on a7, protected by the knight. Book continuation: Ra8+ Kxa8 Qa7#.",
+        "diagramPage": "138",
+        "answerPage": "143",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "14",
+      "title": "Bishop sacrifice, then a discovery",
+      "order": 14,
+      "bookLines": [
+        "Bc4+ Qxc4 Nf6+ Kg7 Qxc4"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "3r2k1/1b5p/1b4p1/pB6/P3N1Q1/1qp4P/5PP1/5RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a decoy to find the winning continuation.",
+        "solutionText": "Bc4+ Qxc4 Nf6+ Kg7 Qxc4",
+        "hint": "Your queen looks along the fourth rank through your knight. Can you bring the black queen onto that rank?",
+        "explanation": "Bc4+ forces Qxc4, and the black queen now stands on the same rank as the white queen. Nf6+ uncovers the attack with check, and White takes the queen on c4. Book continuation: Bc4+ Qxc4 Nf6+ Kg7 Qxc4.",
+        "diagramPage": "139",
+        "answerPage": "143",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "15",
+      "title": "A familiar idea",
+      "order": 15,
+      "bookLines": [
+        "Rc7+ Bxc7 d7#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "1rkn4/1b5R/1b1PP3/1p3p2/8/8/5P2/6K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "MATE",
+        "mateIn": 2,
+        "prompt": "White to move. Use a decoy to force checkmate in two moves.",
+        "solutionText": "Rc7+ Bxc7 d7#",
+        "hint": "A pawn check on d7 would be mate if the king could not step to c7. How can you make Black block that square?",
+        "explanation": "Rc7+ forces Bxc7, which blocks the king's only escape square. Then d7 is checkmate, the pawn being protected by its neighbour on e6. Book continuation: Rc7+ Bxc7 d7#.",
+        "diagramPage": "139",
+        "answerPage": "143",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "16",
+      "title": "The king gets into a pin",
+      "order": 16,
+      "bookLines": [
+        "Ra1+ Kxa1 Nxb3+ Kb2 Nxa5"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "6k1/5p1n/p4qp1/Q2P4/3n4/1BR2PN1/K3P3/7r b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. Use a decoy to find the winning continuation.",
+        "solutionText": "Ra1+ Kxa1 Nxb3+ Kb2 Nxa5",
+        "hint": "Your queen looks down the long diagonal toward a1. What would be pinned if the white king stood in that corner?",
+        "explanation": "Ra1+ drags the king to a1, where the rook on c3 becomes pinned by the queen on f6. Then Nxb3+ cannot be answered by Rxb3, and the knight goes on to take the queen on a5. Book continuation: Ra1+ Kxa1 Nxb3+ Kb2 Nxa5.",
+        "diagramPage": "139",
+        "answerPage": "143",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "17",
+      "title": "Queen sacrifice on h5",
+      "order": 17,
+      "bookLines": [
+        "Qh5+ Kxh5 Bf7#",
+        "Qh5+ Kg7 Qf7#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "7r/7n/3p2kp/4bpp1/1P6/1B4PP/6K1/r2Q4 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "MATE",
+        "mateIn": 2,
+        "prompt": "White to move. Use a decoy to force checkmate in two moves.",
+        "solutionText": "Qh5+ Kxh5 Bf7#",
+        "hint": "The black king has stepped out in front of its pawns. Your bishop controls f7; where can the queen give check?",
+        "explanation": "Qh5+ leads to mate in two. If the king takes the queen, Bf7 is checkmate because the pawns on g3 and h3 cover g4 and h4. If it retreats to g7, the queen mates on f7. Book continuation: Qh5+ Kxh5 Bf7# (or Qh5+ Kg7 Qf7#).",
+        "diagramPage": "140",
+        "answerPage": "143",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "18",
+      "title": "Queen trade into a fork",
+      "order": 18,
+      "bookLines": [
+        "Qxb6+ Kxb6 Bd4+ Ka5 Bxe3"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "8/1kr4p/pq3Bp1/5p2/P7/4rPP1/1Q4KP/3R4 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a decoy to find the winning continuation.",
+        "solutionText": "Qxb6+ Kxb6 Bd4+ Ka5 Bxe3",
+        "hint": "The rook on e3 is unprotected. Which square would the black king have to stand on for a bishop check to hit it as well?",
+        "explanation": "The queen trade Qxb6+ Kxb6 brings the king to b6. Bd4+ then forks the king and the rook on e3, and White wins a rook. Book continuation: Qxb6+ Kxb6 Bd4+ Ka5 Bxe3.",
+        "diagramPage": "140",
+        "answerPage": "144",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "19",
+      "title": "Pawn sacrifice on d6",
+      "order": 19,
+      "bookLines": [
+        "d6+ Kxd6 Qc5#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "1r5R/1q1pkp2/4pn2/Q2P4/3P4/1P3P2/1K4P1/8 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "MATE",
+        "mateIn": 2,
+        "prompt": "White to move. Use a decoy to force checkmate in two moves.",
+        "solutionText": "d6+ Kxd6 Qc5#",
+        "hint": "Your rook controls the back rank, so the king cannot go back. Can you force it forward?",
+        "explanation": "d6+ forces Kxd6, because the rook on h8 covers the whole back rank. Then Qc5 is checkmate, protected by the pawn on d4. Book continuation: d6+ Kxd6 Qc5#.",
+        "diagramPage": "140",
+        "answerPage": "144",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "20",
+      "title": "Push the king into a pin",
+      "order": 20,
+      "bookLines": [
+        "Rh8+ Kxh8 Qxh6+ Kg8 Qxg7#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "2R5/6pk/1r1p3p/5P2/6b1/6q1/P2Q2P1/B6K w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a decoy to find the winning continuation.",
+        "solutionText": "Rh8+ Kxh8 Qxh6+ Kg8 Qxg7#",
+        "hint": "Your bishop on a1 looks at g7. What would happen to the g7-pawn if the black king stood on h8?",
+        "explanation": "Rh8+ drags the king to h8, where the g7-pawn is pinned by the bishop on a1. So Qxh6+ cannot be taken, and after Kg8 the queen mates on g7. Book continuation: Rh8+ Kxh8 Qxh6+ Kg8 Qxg7#.",
+        "diagramPage": "141",
+        "answerPage": "144",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "21",
+      "title": "Rook sacrifice and a quiet move",
+      "order": 21,
+      "bookLines": [
+        "Rh8+ Kxh8 Bxf7 Nd5 Rh1#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "1r1r2k1/5pp1/1n4p1/6P1/1pBp3R/1P6/5PK1/2R5 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a decoy to find the winning continuation.",
+        "solutionText": "Rh8+ Kxh8 Bxf7 Nd5 Rh1#",
+        "hint": "You have two rooks for the h-file. Give one of them to bring the king there, and then take away its way back.",
+        "explanation": "Rh8+ Kxh8 brings the king onto the h-file. The quiet move Bxf7 then takes away g8 and g6, and Black is helpless against the mate on the h-file: for example Nd5 Rh1 mate. Book continuation: Rh8+ Kxh8 Bxf7 Nd5 Rh1#.",
+        "diagramPage": "141",
+        "answerPage": "144",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "22",
+      "title": "Force the bishop to g8",
+      "order": 22,
+      "bookLines": [
+        "Qf8+ Bg8 Qf6+ Bxf6 Bxf6#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "7k/7p/p3b3/2Qpb2q/P7/1P6/1B1N3P/7K w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a decoy to find the winning continuation.",
+        "solutionText": "Qf8+ Bg8 Qf6+ Bxf6 Bxf6#",
+        "hint": "Your bishop on b2 would give mate on the long diagonal if the black king had no flight square. Which square is that?",
+        "explanation": "Qf8+ forces the bishop to g8, where it takes away the king's only flight square. Then Qf6+ forces Bxf6, and Bxf6 is checkmate on the long diagonal. Book continuation: Qf8+ Bg8 Qf6+ Bxf6 Bxf6#.",
+        "diagramPage": "141",
+        "answerPage": "144",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "23",
+      "title": "A killer double check",
+      "order": 23,
+      "bookLines": [
+        "Qh1+ Kxh1 Rh4+ Kg1 Rh1#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "6k1/1b3p2/pB3Q2/P7/4r3/6P1/1R2NP1K/2q5 b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. Use a decoy to find the winning continuation.",
+        "solutionText": "Qh1+ Kxh1 Rh4+ Kg1 Rh1#",
+        "hint": "Your bishop on b7 aims at h1 through your own rook. Can you bring the white king onto that diagonal?",
+        "explanation": "Qh1+ drags the king to h1, onto the long diagonal. Rh4+ is then a double check from the rook and the bishop on b7, and after Kg1 the rook mates on h1, protected by the bishop. Book continuation: Qh1+ Kxh1 Rh4+ Kg1 Rh1#.",
+        "diagramPage": "142",
+        "answerPage": "144",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "24",
+      "title": "The same idea for White",
+      "order": 24,
+      "bookLines": [
+        "Qxg8+ Kxg8 Bd5+ Kh8 Rg8#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "5brk/7p/5p2/4pP2/2Q5/p2P4/5qBP/6RK w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a decoy to find the winning continuation.",
+        "solutionText": "Qxg8+ Kxg8 Bd5+ Kh8 Rg8#",
+        "hint": "Your rook on g1 looks up the g-file through your own bishop. Can you bring the black king onto that file?",
+        "explanation": "Qxg8+ drags the king to g8, onto the g-file. Bd5+ is then a double check from the bishop and the rook on g1, and after Kh8 the rook mates on g8, protected by the bishop. Book continuation: Qxg8+ Kxg8 Bd5+ Kh8 Rg8#.",
+        "diagramPage": "142",
+        "answerPage": "144",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "25",
+      "title": "Keep giving checks",
+      "order": 25,
+      "bookLines": [
+        "Rh8+ Kxh8 Qh5+ Kg8 Qh7+ Kf8 Qh8#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "2r3k1/1p2b1p1/4p1P1/3p4/5P2/qPp4R/P1P5/1K1Q4 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a decoy to find the winning continuation.",
+        "solutionText": "Rh8+ Kxh8 Qh5+ Kg8 Qh7+ Kf8 Qh8#",
+        "hint": "Black is about to mate on b2, so every move must be a check. Your queen needs the h-file, and your rook is standing on it.",
+        "explanation": "Black threatens mate on b2, so White must keep giving checks. Rh8+ Kxh8 clears the h-file with gain of time, and the queen comes in: Qh5+ Kg8 Qh7+ Kf8 Qh8 mate, with the pawn on g6 guarding f7. Book continuation: Rh8+ Kxh8 Qh5+ Kg8 Qh7+ Kf8 Qh8#.",
+        "diagramPage": "142",
+        "answerPage": "144",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    }
+  ]
+}

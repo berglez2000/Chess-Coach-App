@@ -1,0 +1,562 @@
+{
+  "chapter": {
+    "title": "Trapping Pieces",
+    "order": 7
+  },
+  "exercises": [
+    {
+      "number": "1",
+      "title": "A pawn traps the bishop",
+      "order": 1,
+      "bookLines": [
+        "c5"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "rnbqk2r/ppp1nppp/3b4/3p4/2PP4/5N2/PP3PPP/RNBQKB1R w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Trap an enemy piece and win material.",
+        "solutionText": "c5",
+        "hint": "Look at the bishop on d6. How many safe squares does it have if it is attacked?",
+        "explanation": "c5 attacks the bishop on d6, and it has no safe square: its own pieces and the white pawns take away every retreat, so White wins a piece for a pawn at most. Book continuation: c5.",
+        "diagramPage": "120",
+        "answerPage": "129",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "2",
+      "title": "Again a pawn traps the bishop",
+      "order": 2,
+      "bookLines": [
+        "f6"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r4r1k/1pp2pbp/p1n3p1/5P2/2P5/1P2B1P1/P1N3KP/3R1R2 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Trap an enemy piece and win material.",
+        "solutionText": "f6",
+        "hint": "The bishop on g7 is hemmed in by its own king and pawns. Which pawn can attack it?",
+        "explanation": "f6 attacks the bishop on g7. It can only go to h6, where your bishop takes it, or capture on f6, where the rook recaptures. Book continuation: f6.",
+        "diagramPage": "121",
+        "answerPage": "129",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "3",
+      "title": "The queen is surrounded",
+      "order": 3,
+      "bookLines": [
+        "Rd2"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r4rk1/5ppp/n2Qp3/p2pP1B1/P2P4/5P2/4q1PP/2RR2K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Trap an enemy piece and win material.",
+        "solutionText": "Rd2",
+        "hint": "The black queen has gone deep into your position. Count its escape squares before you attack it.",
+        "explanation": "Rd2 attacks the queen, and every square it could go to is covered by a white piece or pawn. The queen is lost. Book continuation: Rd2.",
+        "diagramPage": "121",
+        "answerPage": "129",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "4",
+      "title": "Trap the rook in the corner",
+      "order": 4,
+      "bookLines": [
+        "Kg7"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "6nr/7p/2k2K2/1p1p4/3P4/2P5/P7/3R4 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Trap an enemy piece and win material.",
+        "solutionText": "Kg7",
+        "hint": "You are in check from the knight. Which king move gets out of check and attacks two pieces at once?",
+        "explanation": "Kg7 gets out of check and attacks both the knight and the rook. The rook in the corner cannot move at all, so when the knight is saved the king takes the rook. Book continuation: Kg7.",
+        "diagramPage": "121",
+        "answerPage": "129",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "5",
+      "title": "Discovered attack on the queen",
+      "order": 5,
+      "bookLines": [
+        "Rcc1 Ba6"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r4rk1/pb1q1pbp/2Rpp1p1/1B1P2B1/4P3/Pp5P/1P1KQPP1/3R4 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Trap an enemy piece and win material.",
+        "solutionText": "Rcc1",
+        "hint": "Your rook on c6 stands between your bishop and the black queen. How many squares does the queen have if the rook steps away?",
+        "explanation": "Rcc1 uncovers the bishop on b5 against the queen, which has no safe square. Black's best is the cross-pin Ba6, but after the exchanges the bishop is still lost. Book continuation: Rcc1 Ba6.",
+        "diagramPage": "122",
+        "answerPage": "129",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "6",
+      "title": "The second rook joins in",
+      "order": 6,
+      "bookLines": [
+        "R8a2 Nxa2 Rxe1#",
+        "R8a2 Qxa2 Qxc3 Qf2 Rxc1"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r7/6kp/2bp2p1/2p1p3/2Pq4/1PR2P2/1Q4PP/r1N1R2K b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. Trap an enemy piece and win material.",
+        "solutionText": "R8a2 Nxa2 Rxe1#",
+        "hint": "White's queen, rook and knight all protect each other in a tight knot. Which of them cannot move without something falling?",
+        "explanation": "R8a2 attacks the queen, and White cannot avoid losing material. If the knight takes, Rxe1 is checkmate on the back rank. If the queen takes, Black plays Qxc3 and wins the knight on c1 as well. Book continuation: R8a2 Nxa2 Rxe1# (or R8a2 Qxa2 Qxc3 Qf2 Rxc1).",
+        "diagramPage": "122",
+        "answerPage": "129",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "7",
+      "title": "The queen has no hiding place",
+      "order": 7,
+      "bookLines": [
+        "Nd5"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r3kb1r/ppp1pppp/2n2nb1/q7/3PP3/2N2N2/PP1B1PPP/R2QKB1R w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Trap an enemy piece and win material.",
+        "solutionText": "Nd5",
+        "hint": "Your bishop on d2 looks at the black queen through your own knight. Where should the knight go so that the queen has no square left?",
+        "explanation": "Nd5 uncovers the bishop on d2 against the queen and takes away b6 and b4. Every other square is covered too, so the queen is lost. Book continuation: Nd5.",
+        "diagramPage": "122",
+        "answerPage": "129",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "8",
+      "title": "Too deep in enemy territory",
+      "order": 8,
+      "bookLines": [
+        "Bb5"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "1r3rk1/4nppp/3Rp3/2p5/B3P3/P1N5/1n3PPP/2K4R w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Trap an enemy piece and win material.",
+        "solutionText": "Bb5",
+        "hint": "The knight on b2 attacks your bishop. Move the bishop so that the knight has no way back.",
+        "explanation": "The knight on b2 is too deep in White's camp. After Bb5 the bishop covers c4 and d3, the knight on c3 covers a4 and d1, and the king is ready to collect the knight. Book continuation: Bb5.",
+        "diagramPage": "123",
+        "answerPage": "129",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "9",
+      "title": "The queen cannot move",
+      "order": 9,
+      "bookLines": [
+        "Bg5 hxg5 hxg5"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r1b1r1k1/2p1bpp1/p2p1qnp/np1Pp3/4P2P/2P1BNP1/PP1N1PB1/R2QK2R w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Trap an enemy piece and win material.",
+        "solutionText": "Bg5 hxg5 hxg5",
+        "hint": "The black queen has no free square at all. All you need is to attack it, even at the cost of a piece.",
+        "explanation": "The queen on f6 has no safe move, so White only has to attack it: Bg5. After hxg5 hxg5 the pawn attacks the queen again and it is lost. Book continuation: Bg5 hxg5 hxg5.",
+        "diagramPage": "123",
+        "answerPage": "129",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "10",
+      "title": "A simple discovery",
+      "order": 10,
+      "bookLines": [
+        "Nf6+ Kh8 Bxb7"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "rn3rk1/pp3pnp/4p1p1/8/2P1N3/1P4P1/P4PBP/R4RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Trap an enemy piece and win material.",
+        "solutionText": "Nf6+ Kh8 Bxb7",
+        "hint": "Your bishop on g2 looks at b7 through your knight. Move the knight with check.",
+        "explanation": "Nf6+ uncovers the bishop on g2 with check. After Kh8 White plays Bxb7, and the rook on a8 is trapped in the corner. Book continuation: Nf6+ Kh8 Bxb7.",
+        "diagramPage": "123",
+        "answerPage": "129",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "11",
+      "title": "The power of the bishop pair",
+      "order": 11,
+      "bookLines": [
+        "Ba6 Rc6 Bb7",
+        "Ba6 Ra8 Bb7"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "2rr2k1/p3bpp1/1p2pn1p/2p5/8/2P1PPB1/PP2B1PP/R4RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Trap an enemy piece and win material.",
+        "solutionText": "Ba6 Rc6 Bb7",
+        "hint": "Your dark-squared bishop already controls b8 and c7. What can the other bishop do to the rook on c8?",
+        "explanation": "Ba6 attacks the rook on c8, and the bishop on g3 takes away b8 and c7. After Rc6 or Ra8 the bishop follows with Bb7 and the rook has no safe square. Book continuation: Ba6 Rc6 Bb7 (or Ba6 Ra8 Bb7).",
+        "diagramPage": "124",
+        "answerPage": "129",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "12",
+      "title": "A rook among too many pieces",
+      "order": 12,
+      "bookLines": [
+        "Kf8 Re6 Kf7"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "3r2k1/1bp1R1p1/n6p/ppp1Pp2/8/P1P2NP1/1P3K1P/4B3 b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. Trap an enemy piece and win material.",
+        "solutionText": "Kf8 Re6 Kf7",
+        "hint": "The white rook has entered your position alone. Which of your pieces can attack it twice in a row?",
+        "explanation": "Kf8 attacks the rook, which has only e6. Then Kf7 attacks it again, and now every square on the sixth rank and the e-file is covered. Book continuation: Kf8 Re6 Kf7.",
+        "diagramPage": "124",
+        "answerPage": "129",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "13",
+      "title": "Trade knights first",
+      "order": 13,
+      "bookLines": [
+        "Nxd4 Qxd4 Bf3"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r1bq1rk1/p4pp1/4p2p/4P3/3n4/P4N1P/2Q1BPP1/1R2R1K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Trap an enemy piece and win material.",
+        "solutionText": "Nxd4 Qxd4 Bf3",
+        "hint": "The rook on a8 has only one square to go to, and your rook controls it. Which piece can attack the corner?",
+        "explanation": "After the trade Nxd4 Qxd4 the long diagonal is free for the bishop. Bf3 attacks the rook on a8, which cannot escape because b8 is covered by the rook on b1. Book continuation: Nxd4 Qxd4 Bf3.",
+        "diagramPage": "124",
+        "answerPage": "129",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "14",
+      "title": "The queen came out too early",
+      "order": 14,
+      "bookLines": [
+        "Be2 Qg6 Nh4"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r1b1kb1r/pppp1ppp/2n2n2/5N1q/4P3/2N5/PPP2PPP/R1BQKB1R w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Trap an enemy piece and win material.",
+        "solutionText": "Be2 Qg6 Nh4",
+        "hint": "Black has brought the queen out too early. Develop a piece with an attack on it and see where it can still go.",
+        "explanation": "Be2 attacks the queen with a developing move. After Qg6 the knight jumps to h4 and the queen is trapped: every square it can reach is covered. Book continuation: Be2 Qg6 Nh4.",
+        "diagramPage": "125",
+        "answerPage": "129",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "15",
+      "title": "Trap the bishop on f3",
+      "order": 15,
+      "bookLines": [
+        "Bxf5 exf5 e4"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r1b2rk1/1pq1bppp/p1n2n2/4pN2/P3P3/4BB2/1PP1N1PP/R2Q1RK1 b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. Trap an enemy piece and win material.",
+        "solutionText": "Bxf5 exf5 e4",
+        "hint": "The bishop on f3 is surrounded by its own pieces. What keeps your e-pawn from attacking it?",
+        "explanation": "Bxf5 exf5 removes the pawn that blocked the e-pawn. Then e4 attacks the bishop on f3, and it has no safe square. Book continuation: Bxf5 exf5 e4.",
+        "diagramPage": "125",
+        "answerPage": "129",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "16",
+      "title": "A knight on the rim is dim",
+      "order": 16,
+      "bookLines": [
+        "Qb4 Qxb4 cxb4"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r2r2k1/pp1bqp1p/4p1p1/nP6/4Q3/2P2N1P/P3BPP1/R2R2K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Trap an enemy piece and win material.",
+        "solutionText": "Qb4 Qxb4 cxb4",
+        "hint": "The knight on a5 has no safe square. Attack it in a way that Black cannot simply defend.",
+        "explanation": "Qb4 attacks the knight and offers a queen trade that Black cannot avoid. After Qxb4 cxb4 the pawn attacks the knight, which has no retreat. Book continuation: Qb4 Qxb4 cxb4.",
+        "diagramPage": "125",
+        "answerPage": "129",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "17",
+      "title": "Mate threat, then trap the queen",
+      "order": 17,
+      "bookLines": [
+        "Qg5 Qf3 Bg4 e4 Bxf3 Bxg5 hxg5",
+        "Qg5 Qf3 Bg4 h4 Qg6"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r4rk1/pp2qpp1/2pb3p/3p4/8/2P1P2b/PP3PNP/R1BQ1RK1 b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. Trap an enemy piece and win material.",
+        "solutionText": "Qg5 Qf3 Bg4 e4 Bxf3 Bxg5 hxg5",
+        "hint": "Threaten checkmate on g2 and look at the square where the white queen has to defend.",
+        "explanation": "Qg5 threatens mate on g2 and forces Qf3. Then Bg4 traps the queen. After h4 Qg6 Black is winning, and White's best, e4 Bxf3 Bxg5 hxg5, still leaves Black a bishop ahead. Book continuation: Qg5 Qf3 Bg4 e4 Bxf3 Bxg5 hxg5 (or Qg5 Qf3 Bg4 h4 Qg6).",
+        "diagramPage": "126",
+        "answerPage": "129",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "18",
+      "title": "Intermediate check, then the trap",
+      "order": 18,
+      "bookLines": [
+        "Nd5+ Ke5 Nf4"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "8/8/5k1p/8/1N4p1/5pPq/5P2/3R2K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Trap an enemy piece and win material.",
+        "solutionText": "Nd5+ Ke5 Nf4",
+        "hint": "Black threatens mate on g2. Your knight can stop it, but only if it gets to the right square with gain of time.",
+        "explanation": "Nd5+ is an intermediate check that brings the knight closer. After Ke5 the knight goes to f4, where it stops the mate on g2 and traps the queen on h3 at the same time. Book continuation: Nd5+ Ke5 Nf4.",
+        "diagramPage": "126",
+        "answerPage": "129",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "19",
+      "title": "The bishop has no escape",
+      "order": 19,
+      "bookLines": [
+        "c3 Ba5 b4 Bb6 a5"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r4rk1/ppp2pp1/3p3p/8/Pb1P4/5NP1/1PP2PKP/R4R2 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Trap an enemy piece and win material.",
+        "solutionText": "c3 Ba5 b4 Bb6 a5",
+        "hint": "The bishop on b4 is far from home and its own pawns block the way back. Chase it with your pawns.",
+        "explanation": "c3 Ba5 b4 Bb6 a5: the pawns chase the bishop, and on b6 it is shut in by its own pawns on a7, c7 and d6. It is lost. Book continuation: c3 Ba5 b4 Bb6 a5.",
+        "diagramPage": "126",
+        "answerPage": "129",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "20",
+      "title": "The knight cannot get away",
+      "order": 20,
+      "bookLines": [
+        "e5 Nh5 g4"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "4rrk1/pbpp1ppp/1p2pn2/8/2P1P3/2NPB2P/PP3PP1/R4RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Trap an enemy piece and win material.",
+        "solutionText": "e5 Nh5 g4",
+        "hint": "The knight on f6 has very few squares. Attack it and see where it must go.",
+        "explanation": "e5 attacks the knight, which has only h5. Then g4 attacks it again, and on the edge of the board it has no square left. Book continuation: e5 Nh5 g4.",
+        "diagramPage": "127",
+        "answerPage": "129",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "21",
+      "title": "The bishop pair traps a rook",
+      "order": 21,
+      "bookLines": [
+        "Bd4 Rf8 Bg7"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "4k2r/1p5p/p1p3p1/2B2p2/2B2P2/1P4P1/P5KP/8 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Trap an enemy piece and win material.",
+        "solutionText": "Bd4 Rf8 Bg7",
+        "hint": "The rook on h8 has only one free square. Attack it, and then attack it again.",
+        "explanation": "Bd4 attacks the rook, which can only go to f8. Bg7 attacks it again, and the light-squared bishop covers f7 and g8, so the rook is trapped. Book continuation: Bd4 Rf8 Bg7.",
+        "diagramPage": "127",
+        "answerPage": "129",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "22",
+      "title": "Trap the rook in an unusual way",
+      "order": 22,
+      "bookLines": [
+        "Nd6 exd6 cxd6"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "3R4/ppr1ppkp/2p3p1/2P5/2N5/1Pb3P1/P3PPKP/8 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Trap an enemy piece and win material.",
+        "solutionText": "Nd6 exd6 cxd6",
+        "hint": "The rook on c7 is boxed in by its own pawns. Your knight has a jump that Black cannot ignore.",
+        "explanation": "Nd6 threatens the fork Ne8+, so Black takes. After exd6 cxd6 the pawn attacks the rook on c7, and every square it could go to is covered by the pawn or the rook on d8. Book continuation: Nd6 exd6 cxd6.",
+        "diagramPage": "127",
+        "answerPage": "129",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "23",
+      "title": "Take away the last retreats",
+      "order": 23,
+      "bookLines": [
+        "Na4 b5 a3 Qxa4 b3"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "rnb2rk1/1p2ppb1/2pp1npp/p2P4/1qP5/2N3P1/PP1NPPBP/R1BQR1K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Trap an enemy piece and win material.",
+        "solutionText": "Na4 b5 a3 Qxa4 b3",
+        "hint": "The black queen can still retreat to b6 or c5. One quiet move covers both squares.",
+        "explanation": "Na4 takes away b6 and c5, the queen's last retreats, and a3 is threatened. Black has no way to rescue the queen: for example b5 a3 Qxa4 b3 and it is lost. Book continuation: Na4 b5 a3 Qxa4 b3.",
+        "diagramPage": "128",
+        "answerPage": "129",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "24",
+      "title": "The knights trap the queen",
+      "order": 24,
+      "bookLines": [
+        "Nb3 Qa4 Nc3 Qb4 a3",
+        "Nb3 Qxa2 Nc3"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "3rrbk1/1b1n1pp1/p2p3p/qp1Np3/3NP3/3B2Q1/PPP2PPP/2KR3R w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Trap an enemy piece and win material.",
+        "solutionText": "Nb3 Qa4 Nc3 Qb4 a3",
+        "hint": "The black queen is far from its own pieces. Attack it with one knight and keep the other ready for the next attack.",
+        "explanation": "Nb3 attacks the queen. After Qa4 Nc3 Qb4 a3 it has no square left, and after Qxa2 Nc3 it is trapped in the corner of White's position. Book continuation: Nb3 Qa4 Nc3 Qb4 a3 (or Nb3 Qxa2 Nc3).",
+        "diagramPage": "128",
+        "answerPage": "130",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "25",
+      "title": "Simplify, then trap the knight",
+      "order": 25,
+      "bookLines": [
+        "Qh8+ Kxh8 Nxf7+ Kg7 Nxe5"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "3Q4/5pk1/1p2p1p1/1p1pq1N1/3n2P1/3K3P/P4P2/8 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Trap an enemy piece and win material.",
+        "solutionText": "Qh8+ Kxh8 Nxf7+ Kg7 Nxe5",
+        "hint": "A queen sacrifice sets up a knight fork that trades the queens. Then look at the black knight on d4.",
+        "explanation": "Qh8+ Kxh8 Nxf7+ forks king and queen. After Kg7 Nxe5 the queens are off, and the black knight on d4 is attacked by the king and has no way out. Book continuation: Qh8+ Kxh8 Nxf7+ Kg7 Nxe5.",
+        "diagramPage": "128",
+        "answerPage": "130",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    }
+  ]
+}

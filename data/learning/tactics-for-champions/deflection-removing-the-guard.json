@@ -1,0 +1,1132 @@
+{
+  "chapter": {
+    "title": "Deflection/Removing the Guard",
+    "order": 3
+  },
+  "exercises": [
+    {
+      "number": "1",
+      "title": "Deflect the queen from f6",
+      "order": 1,
+      "bookLines": [
+        "Qg3 Qxg3 Bf6#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r1bk2r1/pppp1pBp/8/b2P4/2B4q/1Q6/PP3PP1/4R1K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Qg3 Qxg3 Bf6#",
+        "hint": "Your bishop wants to give mate, but the black queen controls the key square. Can you offer it something it cannot refuse?",
+        "explanation": "White wants to mate with Bg7-f6, but the queen on h4 guards f6. Qg3 deflects it: if Black takes the queen, Bf6 is mate. Book continuation: Qg3 Qxg3 Bf6#.",
+        "diagramPage": "54",
+        "answerPage": "72",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "2",
+      "title": "The guard on e8",
+      "order": 2,
+      "bookLines": [
+        "Rxe8+ Rxe8 Qxg7#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r3n2k/1p4pp/2p5/1q5N/8/P6P/1Q3PP1/4R1K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "MATE",
+        "mateIn": 2,
+        "prompt": "White to move. Deflect or remove the guard to force checkmate in two moves.",
+        "solutionText": "Rxe8+ Rxe8 Qxg7#",
+        "hint": "The weak spot is g7. Which black piece is its only defender?",
+        "explanation": "The knight on e8 is the only guard of g7. White removes it with Rxe8+, and after Rxe8 the queen mates on g7 with the help of the knight on h5. Book continuation: Rxe8+ Rxe8 Qxg7#.",
+        "diagramPage": "55",
+        "answerPage": "72",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "3",
+      "title": "Black mates first",
+      "order": 3,
+      "bookLines": [
+        "Rg1+ Qxg1 Qb2#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "6k1/5p2/6p1/1p4N1/n2QPP2/qP5R/P1P3r1/1K6 b - - 0 1",
+        "solver": "BLACK",
+        "objective": "MATE",
+        "mateIn": 2,
+        "prompt": "Black to move. Deflect or remove the guard to force checkmate in two moves.",
+        "solutionText": "Rg1+ Qxg1 Qb2#",
+        "hint": "White threatens mate on h8, so act with checks. Which white piece guards b2?",
+        "explanation": "White threatens checkmate on h8, but Black is first: Rg1+ deflects the queen from the defense of b2, and Qb2 is mate, supported by the knight on a4. Book continuation: Rg1+ Qxg1 Qb2#.",
+        "diagramPage": "55",
+        "answerPage": "72",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "4",
+      "title": "The queen holds h7",
+      "order": 4,
+      "bookLines": [
+        "Ra8 Qxa8 Qxh7#",
+        "Ra8 Rb8 Rxb8 Qxb8 Qxh7#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "6qk/1r4pp/2p5/1b4N1/4Q3/7P/5PP1/R5K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Ra8 Qxa8 Qxh7#",
+        "hint": "You have a strong attack on h7, but one black piece holds it. How can you drag that piece away?",
+        "explanation": "The queen on g8 is the only defender of h7. Ra8 deflects it: Qxa8 allows Qxh7 mate, and after Rb8 Rxb8 Qxb8 the same mate follows. Book continuation: Ra8 Qxa8 Qxh7# (or Ra8 Rb8 Rxb8 Qxb8 Qxh7#).",
+        "diagramPage": "55",
+        "answerPage": "72",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "5",
+      "title": "A simple check",
+      "order": 5,
+      "bookLines": [
+        "Rf4+ Ke8 Qxg7"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "2r2k2/p1n3qp/3p2p1/2p5/4R3/1BQ2P2/P5PP/6K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Rf4+ Ke8 Qxg7",
+        "hint": "The black king is the only protector of its queen. Can a check make it leave?",
+        "explanation": "Rf4+ forces the king to give up the protection of the queen, and after Ke8 White takes on g7. Book continuation: Rf4+ Ke8 Qxg7.",
+        "diagramPage": "56",
+        "answerPage": "72",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "6",
+      "title": "Remove the guard",
+      "order": 6,
+      "bookLines": [
+        "Bxc6+ bxc6 Rxa7"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "3qk2r/rp2bppp/2n1p3/8/4B3/2P3P1/1P1N1P1P/R2Q1RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Bxc6+ bxc6 Rxa7",
+        "hint": "The rook on a7 has exactly one protector. Can you trade it off with check?",
+        "explanation": "The rook on a7 is protected only by the knight on c6. Bxc6+ removes that guard with check, and Rxa7 wins the rook. Book continuation: Bxc6+ bxc6 Rxa7.",
+        "diagramPage": "56",
+        "answerPage": "72",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "7",
+      "title": "Bishop in the way",
+      "order": 7,
+      "bookLines": [
+        "Qxd8+ Rxd8 Rh4#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r2b3k/6p1/1n4p1/2q1p3/4pR2/1B4P1/3Q1PK1/2N5 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "MATE",
+        "mateIn": 2,
+        "prompt": "White to move. Deflect or remove the guard to force checkmate in two moves.",
+        "solutionText": "Qxd8+ Rxd8 Rh4#",
+        "hint": "You would mate on the h-file if a black bishop did not cover one square. Can you get rid of it at any price?",
+        "explanation": "The bishop on d8 guards h4. White removes it with the queen sacrifice Qxd8+, and after Rxd8 the rook mates on h4 because the bishop on b3 covers g8. Book continuation: Qxd8+ Rxd8 Rh4#.",
+        "diagramPage": "56",
+        "answerPage": "72",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "8",
+      "title": "A rook for the queen",
+      "order": 8,
+      "bookLines": [
+        "Rg8+ Kxg8 Qxe7"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "2r2k2/p3qp2/1p3p1p/4n3/PQ6/1PB4P/1KP5/6R1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Rg8+ Kxg8 Qxe7",
+        "hint": "The black king protects its queen. Which check forces it to let go?",
+        "explanation": "Rg8+ deflects the king from the queen: after Kxg8 White plays Qxe7. Book continuation: Rg8+ Kxg8 Qxe7.",
+        "diagramPage": "57",
+        "answerPage": "72",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "9",
+      "title": "The key square e5",
+      "order": 9,
+      "bookLines": [
+        "Ra8 Qxa8 Be5#",
+        "Ra8 Bc8 Rxc8 Qxc8 Be5#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "4q2k/7p/6p1/2p2b2/1pB5/R4PB1/1P4K1/8 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Ra8 Qxa8 Be5#",
+        "hint": "Your dark-squared bishop has a deadly check on the long diagonal, but the black queen covers the square. Where can you deflect it?",
+        "explanation": "The key square is e5. Ra8 deflects the queen: Qxa8 allows Be5 mate, and after Bc8 Rxc8 Qxc8 the bishop mates on e5 all the same. Book continuation: Ra8 Qxa8 Be5# (or Ra8 Bc8 Rxc8 Qxc8 Be5#).",
+        "diagramPage": "57",
+        "answerPage": "72",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "10",
+      "title": "Only one protector",
+      "order": 10,
+      "bookLines": [
+        "Nxf6+ Bxf6 Qxd7"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "2r2rk1/1p1q1pbp/p4np1/8/4N3/P4B1P/1P1Q1PP1/R4RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Nxf6+ Bxf6 Qxd7",
+        "hint": "The black queen is protected only by the knight. Is there a trade that comes with check?",
+        "explanation": "The queen on d7 is protected only by the knight on f6. Nxf6+ removes it with check, and after Bxf6 White simply takes the queen. Book continuation: Nxf6+ Bxf6 Qxd7.",
+        "diagramPage": "57",
+        "answerPage": "72",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "11",
+      "title": "Deflect the king from f8",
+      "order": 11,
+      "bookLines": [
+        "Bh7+ Kxh7 Rxf8",
+        "Bh7+ Kf7 Qf3+ Ke7 Qxf8#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "R4rk1/2pq2p1/1p2p2p/8/8/1bPBP2P/1P2Q1P1/6K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Bh7+ Kxh7 Rxf8",
+        "hint": "The rook on f8 is protected only by the king. Which sacrifice pulls the king away?",
+        "explanation": "Bh7+ deflects the king from the rook on f8: after Kxh7 Rxf8 White has won the exchange. Even worse is Kf7, when Qf3+ Ke7 Qxf8 is mate. Book continuation: Bh7+ Kxh7 Rxf8 (or Bh7+ Kf7 Qf3+ Ke7 Qxf8#).",
+        "diagramPage": "58",
+        "answerPage": "72",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "12",
+      "title": "Push the king away",
+      "order": 12,
+      "bookLines": [
+        "Nf6+ Kh8 Qxh6#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r7/1b3pnk/1p2n2q/7P/4N3/6P1/1B1Q1P2/2R3K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Nf6+ Kh8 Qxh6#",
+        "hint": "The black queen is protected only by its king. Can a check drive the king off?",
+        "explanation": "Nf6+ pushes the king away from the queen. After Kh8, Qxh6 is mate because the knight on f6 covers g8. Book continuation: Nf6+ Kh8 Qxh6#.",
+        "diagramPage": "58",
+        "answerPage": "72",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "13",
+      "title": "First remove the c-pawn",
+      "order": 13,
+      "bookLines": [
+        "Nxc7+ Bxc7 Bb5#"
+      ],
+      "analysisLines": [
+        "Bb5+ c6"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "4kr2/1pp3p1/3bP2p/3N2B1/1P6/6n1/1K2B1P1/8 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "MATE",
+        "mateIn": 2,
+        "prompt": "White to move. Deflect or remove the guard to force checkmate in two moves.",
+        "solutionText": "Nxc7+ Bxc7 Bb5#",
+        "hint": "A bishop check on b5 would be blocked by a pawn. Can you get rid of that pawn first?",
+        "explanation": "The immediate Bb5+ would be blocked by c6. Nxc7+ removes that pawn, and after Bxc7 the bishop mates on b5. Book continuation: Nxc7+ Bxc7 Bb5#.",
+        "diagramPage": "58",
+        "answerPage": "72",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "14",
+      "title": "The family fork",
+      "order": 14,
+      "bookLines": [
+        "Bxd5 Nxd5 Ne6+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r4r2/ppq1n1kp/2p2pp1/3b4/3N4/4PB2/PP2QPPP/R4RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Bxd5 Nxd5 Ne6+",
+        "hint": "A knight fork on e6 would hit king, queen, and rook. What is guarding that square?",
+        "explanation": "The bishop on d5 guards e6. After Bxd5 Nxd5 the knight lands on e6 with a family fork of king, queen, and rook. Book continuation: Bxd5 Nxd5 Ne6+.",
+        "diagramPage": "59",
+        "answerPage": "72",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "15",
+      "title": "The overworked rook",
+      "order": 15,
+      "bookLines": [
+        "Qxf5 Rxf5 Rxc8+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "2r2rk1/1p2b1pp/p7/Q4q2/4p3/6P1/PP3PBP/2R2RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Qxf5 Rxf5 Rxc8+",
+        "hint": "The rook on f8 protects both the queen and the other rook. Can it do both jobs?",
+        "explanation": "The rook on f8 is overworked: it guards the queen on f5 and the rook on c8. After Qxf5 Rxf5 White takes on c8 with check and wins a rook. Book continuation: Qxf5 Rxf5 Rxc8+.",
+        "diagramPage": "59",
+        "answerPage": "72",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "16",
+      "title": "Knight check first",
+      "order": 16,
+      "bookLines": [
+        "Nd6+ Kb8 Qxd8+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "2kr4/ppnb2p1/2p4p/8/3NN2Q/P2q4/1P3PPP/R5K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Nd6+ Kb8 Qxd8+",
+        "hint": "A knight check drives the king into the corner. Which black piece then loses its protector?",
+        "explanation": "Nd6+ forces Kb8, because the queen on d3 is blocked by the knight on d4. The king no longer protects the rook, so Qxd8+ wins it with check, and after Bc8 the queen mates on c8: a forced checkmate in three. Book continuation: Nd6+ Kb8 Qxd8+.",
+        "diagramPage": "59",
+        "answerPage": "72",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "17",
+      "title": "Sacrifice a rook, win the queen",
+      "order": 17,
+      "bookLines": [
+        "Ra8+ Kxa8 Qxa6+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "7R/k1ppr1p1/qp3n2/8/8/2PQ1NP1/1P3PK1/8 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Ra8+ Kxa8 Qxa6+",
+        "hint": "The black king protects the queen on a6. Which sacrifice forces the king onto another square?",
+        "explanation": "Ra8+ deflects the king from the queen. After Kxa8 White takes on a6 with check. Book continuation: Ra8+ Kxa8 Qxa6+.",
+        "diagramPage": "60",
+        "answerPage": "72",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "18",
+      "title": "The king gives up its guard",
+      "order": 18,
+      "bookLines": [
+        "Bxg7+ Kxg7 Qxe7"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "4rk2/4qppp/1p4b1/p7/2P1Q3/2B4P/1P2RPP1/6K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Bxg7+ Kxg7 Qxe7",
+        "hint": "The black queen seems sufficiently protected. Which check forces one of its protectors to leave?",
+        "explanation": "After Bxg7+ the king has to give up the protection of the queen: Kxg7 Qxe7 gives White a significant material advantage, since the rook on e2 backs up the queen. Book continuation: Bxg7+ Kxg7 Qxe7.",
+        "diagramPage": "60",
+        "answerPage": "72",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "19",
+      "title": "Smothered mate on the horizon",
+      "order": 19,
+      "bookLines": [
+        "Qxd6 Nxd6 Nc7#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "kr6/pb5p/1p1q2p1/3N1n2/4p3/Q6P/PP1B1PP1/5RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Qxd6 Nxd6 Nc7#",
+        "hint": "The black king is boxed in by its own pieces. Which piece keeps your knight out?",
+        "explanation": "The queen on d6 guards c7. After the queen trade Qxd6 Nxd6 the knight gives smothered mate on c7. Book continuation: Qxd6 Nxd6 Nc7#.",
+        "diagramPage": "60",
+        "answerPage": "72",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "20",
+      "title": "The weak point f7",
+      "order": 20,
+      "bookLines": [
+        "Qxc4 bxc4 Rxf7#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "4rk2/R4ppB/7p/1p2N1q1/nPbP1p2/2PQ1P2/6PP/6K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Qxc4 bxc4 Rxf7#",
+        "hint": "f7 is protected by a single black piece. What would you give up to remove it?",
+        "explanation": "The bishop on c4 is the only guard of f7. White removes it with Qxc4, and after bxc4 the rook mates on f7, supported by the knight while the bishop covers g8. Book continuation: Qxc4 bxc4 Rxf7#.",
+        "diagramPage": "61",
+        "answerPage": "73",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "21",
+      "title": "An awkward king",
+      "order": 21,
+      "bookLines": [
+        "Qxe3+ Qxe3 Nf7#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r7/4q1np/3N2pk/2p5/1p4P1/3QpP2/1KP4P/2R5 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Qxe3+ Qxe3 Nf7#",
+        "hint": "The black king on h6 is short of squares. Which black piece keeps your knight from the mating square?",
+        "explanation": "The queen on e7 guards f7. Qxe3+ deflects it, and after Qxe3 the knight mates on f7. Book continuation: Qxe3+ Qxe3 Nf7#.",
+        "diagramPage": "61",
+        "answerPage": "73",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "22",
+      "title": "The e-pawn is the hero",
+      "order": 22,
+      "bookLines": [
+        "Qxf5+ gxf5 e6#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r1n4r/pppk1Bb1/2qp2p1/4PbB1/8/2P2Q2/PP4P1/R4RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "MATE",
+        "mateIn": 2,
+        "prompt": "White to move. Deflect or remove the guard to force checkmate in two moves.",
+        "solutionText": "Qxf5+ gxf5 e6#",
+        "hint": "A pawn check would be mate if one black piece did not control the square. Remove it, whatever it costs.",
+        "explanation": "The bishop on f5 guards e6. After the queen sacrifice Qxf5+ gxf5 the pawn goes to e6 with checkmate. Book continuation: Qxf5+ gxf5 e6#.",
+        "diagramPage": "61",
+        "answerPage": "73",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "23",
+      "title": "Give a rook, get the queen",
+      "order": 23,
+      "bookLines": [
+        "Rf8+ Kxf8 Qxe6",
+        "Rf8+ Ke7 Re8+ Kxe8 Qxe6+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "7R/r4kp1/1p2qb2/2p5/2Q2Bn1/1PN3P1/2P5/2K5 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Rf8+ Kxf8 Qxe6",
+        "hint": "The king protects the queen on e6. Can a rook check pull it away?",
+        "explanation": "Rf8+ deflects the king from the queen: Kxf8 Qxe6. If the king steps to e7 instead, Re8+ repeats the idea, and after Kxe8 the queen falls with check. Book continuation: Rf8+ Kxf8 Qxe6 (or Rf8+ Ke7 Re8+ Kxe8 Qxe6+).",
+        "diagramPage": "62",
+        "answerPage": "73",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "24",
+      "title": "A tight king position",
+      "order": 24,
+      "bookLines": [
+        "Qg4+ Qxg4 Nxf6#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "4r1kr/ppp2n1p/5p1B/2b2q1N/8/2P5/PP3PPP/R2Q2K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Qg4+ Qxg4 Nxf6#",
+        "hint": "Your knight is ready to mate on f6. Which black piece prevents it, and where can you deflect it?",
+        "explanation": "The black king is boxed in, and Nxf6 would be mate if the queen on f5 did not guard f6. Qg4+ deflects the queen, and after Qxg4 the knight mates. Book continuation: Qg4+ Qxg4 Nxf6#.",
+        "diagramPage": "62",
+        "answerPage": "73",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "25",
+      "title": "Neglected king safety",
+      "order": 25,
+      "bookLines": [
+        "Qa5 Qxa5 Nc2#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r4knr/pp2ppbp/1q1p2p1/2pP4/Q2nP1b1/2P5/PP1N1PPP/R1B1KBNR b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Qa5 Qxa5 Nc2#",
+        "hint": "Your knight has a mating square next to the white king. Which white piece guards it?",
+        "explanation": "The queen on a4 guards c2. Qa5 offers a queen trade that White cannot accept: after Qxa5 the knight mates on c2. Book continuation: Qa5 Qxa5 Nc2#.",
+        "diagramPage": "62",
+        "answerPage": "73",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "26",
+      "title": "Guarding from a distance",
+      "order": 26,
+      "bookLines": [
+        "Rxc2 Qxc2 Qh1#",
+        "Rxc2 Qb7 Rxc8 Qxc8 Qh1#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "2R5/6pk/2Q4p/p3pp2/7P/1P1P2PK/r1P2P2/3q4 b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Rxc2 Qxc2 Qh1#",
+        "hint": "Qh1 would be mate if the white queen did not guard that square from far away. Can you attack that queen?",
+        "explanation": "The queen on c6 guards h1 along the long diagonal. Rxc2 attacks it: after Qxc2 Black mates on h1, and after Qb7 Rxc8 Qxc8 the mate on h1 comes anyway. Book continuation: Rxc2 Qxc2 Qh1# (or Rxc2 Qb7 Rxc8 Qxc8 Qh1#).",
+        "diagramPage": "63",
+        "answerPage": "73",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "27",
+      "title": "A famous opening trap",
+      "order": 27,
+      "bookLines": [
+        "Qxh5+ Rxh5 Bg6#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "rnbqkbn1/ppppp3/7r/6pp/3P1p2/3BP1B1/PPP2PPP/RN1QK1NR w - - 0 1",
+        "solver": "WHITE",
+        "objective": "MATE",
+        "mateIn": 2,
+        "prompt": "White to move. Deflect or remove the guard to force checkmate in two moves.",
+        "solutionText": "Qxh5+ Rxh5 Bg6#",
+        "hint": "The black king has no flight square. Which piece guards the diagonal leading to it?",
+        "explanation": "This is a famous opening trap in the Dutch Defense. The rook on h6 guards g6; after Qxh5+ Rxh5 the bishop mates on g6. Book continuation: Qxh5+ Rxh5 Bg6#.",
+        "diagramPage": "63",
+        "answerPage": "73",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "28",
+      "title": "Queen and rook both attacked",
+      "order": 28,
+      "bookLines": [
+        "Qxh7 Rxh7 Rf8#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "rn1qk2r/p2b3p/1p2p1p1/4P2Q/4P3/B3n3/P1P3PP/R4RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Qxh7 Rxh7 Rf8#",
+        "hint": "Your queen and rook are both under attack, but there is a mate on the back rank. Which black piece guards the mating square?",
+        "explanation": "The rook on h8 guards f8. Qxh7 deflects it, and after Rxh7 the rook mates on f8, protected by the bishop on a3. Book continuation: Qxh7 Rxh7 Rf8#.",
+        "diagramPage": "63",
+        "answerPage": "73",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "29",
+      "title": "Unpin with a sacrifice",
+      "order": 29,
+      "bookLines": [
+        "Rd8+ Rxd8 Bxe5"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r1r3k1/pp3ppp/8/4qn2/4p3/2B1P3/PPQ2PPP/R2R2K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Rd8+ Rxd8 Bxe5",
+        "hint": "Your bishop cannot take the queen because it is pinned on the c-file. Can you deflect the pinning rook?",
+        "explanation": "Black relies on the pin on the c-file to avoid losing the queen. Rd8+ forces the rook on c8 to capture, which unpins the bishop, and Bxe5 wins the queen. Book continuation: Rd8+ Rxd8 Bxe5.",
+        "diagramPage": "64",
+        "answerPage": "73",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "30",
+      "title": "In check, but winning",
+      "order": 30,
+      "bookLines": [
+        "Qxd5 cxd5 Rxf7"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "7k/p4rbp/2p3p1/3q4/8/P2Q2NP/KP4P1/5R2 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Qxd5 cxd5 Rxf7",
+        "hint": "You are in check. Notice that the black queen is also the only protector of the rook on f7.",
+        "explanation": "White answers the check with Qxd5. After cxd5 the rook on f7 has lost its guard, and Rxf7 wins it. Book continuation: Qxd5 cxd5 Rxf7.",
+        "diagramPage": "64",
+        "answerPage": "73",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "31",
+      "title": "Two guards at once",
+      "order": 31,
+      "bookLines": [
+        "Qxc5+ Qxc5 R3b7#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "1R6/k3qp2/p3p1b1/2n5/2P5/1R2Q1Pp/PK6/7r w - - 0 1",
+        "solver": "WHITE",
+        "objective": "MATE",
+        "mateIn": 2,
+        "prompt": "White to move. Deflect or remove the guard to force checkmate in two moves.",
+        "solutionText": "Qxc5+ Qxc5 R3b7#",
+        "hint": "Rb3-b7 would be mate, but two black pieces guard b7. Can one move remove both?",
+        "explanation": "The knight on c5 and the queen on e7 both guard b7. Qxc5+ takes one guard and deflects the other: after Qxc5 the rook mates on b7. Book continuation: Qxc5+ Qxc5 R3b7#.",
+        "diagramPage": "64",
+        "answerPage": "73",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "32",
+      "title": "The knight in the way",
+      "order": 32,
+      "bookLines": [
+        "Qxe4+ Nxe4 Bxf7#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r2qk2r/1ppn1ppp/p4n2/2B5/2B1p3/8/PPP1Q1PP/R4RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Qxe4+ Nxe4 Bxf7#",
+        "hint": "The knight on f6 blocks your rook's path to f7. How can you force it to move?",
+        "explanation": "The knight on f6 is in White's way. Qxe4+ forces it to capture, which opens the f-file, and Bxf7 is mate. Book continuation: Qxe4+ Nxe4 Bxf7#.",
+        "diagramPage": "65",
+        "answerPage": "73",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "33",
+      "title": "A doubly attacked square",
+      "order": 33,
+      "bookLines": [
+        "Re8 Qxe8 Qh4#",
+        "Re8 Rxe8 Qg7#",
+        "Re8 Qg5 Qh8+ Rxh8 Rxh8#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "3q2r1/p6k/1p4p1/3p1b2/3Q4/1P6/PB4PP/4R2K w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Re8 Qxe8 Qh4#",
+        "hint": "Put a piece where two black pieces can take it. Each capture abandons a different duty.",
+        "explanation": "Re8 can be taken twice, but Qxe8 allows Qh4 mate and Rxe8 allows Qg7 mate. Ignoring the rook does not help either: after Qg5 comes Qh8+ Rxh8 Rxh8 mate. Book continuation: Re8 Qxe8 Qh4# (or Re8 Rxe8 Qg7#) (or Re8 Qg5 Qh8+ Rxh8 Rxh8#).",
+        "diagramPage": "65",
+        "answerPage": "73",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "34",
+      "title": "Open the b-file",
+      "order": 34,
+      "bookLines": [
+        "Rxa5+ bxa5 Qb7#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "1b6/k5p1/1p3n2/p6R/8/1R3QP1/2qr1P2/6K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "MATE",
+        "mateIn": 2,
+        "prompt": "White to move. Deflect or remove the guard to force checkmate in two moves.",
+        "solutionText": "Rxa5+ bxa5 Qb7#",
+        "hint": "Your queen has a mating square next to the black king. Which pawn stands in the way of the rook that must support it?",
+        "explanation": "Rxa5+ forces bxa5, which opens the b-file. Qb7 is then mate, protected by the rook on b3. Book continuation: Rxa5+ bxa5 Qb7#.",
+        "diagramPage": "65",
+        "answerPage": "73",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "35",
+      "title": "Deflect the knight from f6",
+      "order": 35,
+      "bookLines": [
+        "Nd5 Qd6 Nxf6+ Qxf6 Qh7#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r4rk1/pp2qpp1/2n2n1p/6N1/8/P1N5/1PQ2PPP/R4RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Nd5 Qd6 Nxf6+ Qxf6 Qh7#",
+        "hint": "Your knight on g5 is attacked, but Qh7 would be mate without the knight on f6. How can you challenge that knight?",
+        "explanation": "Black's last move h7-h6 attacked the knight on g5. White needs to deflect the knight from f6: Nd5 attacks it together with the queen, and after Qd6 Nxf6+ Qxf6 the queen mates on h7. Book continuation: Nd5 Qd6 Nxf6+ Qxf6 Qh7#.",
+        "diagramPage": "66",
+        "answerPage": "73",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "36",
+      "title": "The overworked king",
+      "order": 36,
+      "bookLines": [
+        "Ra7+ Bc7 Rxc7+ Kxc7 Qxe7+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "8/3kqp2/1p1b2b1/3P4/8/6P1/1P3PK1/R3Q3 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Ra7+ Bc7 Rxc7+ Kxc7 Qxe7+",
+        "hint": "Start with the natural rook check. After Black blocks, the king has two pieces to protect.",
+        "explanation": "Ra7+ is a natural skewer, and Black blocks with Bc7. Now the king is overworked: Rxc7+ Kxc7 Qxe7+ wins the queen. Book continuation: Ra7+ Bc7 Rxc7+ Kxc7 Qxe7+.",
+        "diagramPage": "66",
+        "answerPage": "73",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "37",
+      "title": "Two captures, two mates",
+      "order": 37,
+      "bookLines": [
+        "Re1+ Qxe1 Qxg2#",
+        "Re1+ Nxe1 Qh1#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "b3r1k1/p4ppp/1pq5/8/2N5/1P1P2P1/P1P2QNP/3B2K1 b - - 0 1",
+        "solver": "BLACK",
+        "objective": "MATE",
+        "mateIn": 2,
+        "prompt": "Black to move. Deflect or remove the guard to force checkmate in two moves.",
+        "solutionText": "Re1+ Qxe1 Qxg2#",
+        "hint": "As in exercise 33, offer a piece on a square where two white pieces can take it.",
+        "explanation": "Re1+ can be taken twice, but Qxe1 allows Qxg2 mate and Nxe1 allows Qh1 mate. Book continuation: Re1+ Qxe1 Qxg2# (or Re1+ Nxe1 Qh1#).",
+        "diagramPage": "66",
+        "answerPage": "74",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "38",
+      "title": "Chase the king off the sixth rank",
+      "order": 38,
+      "bookLines": [
+        "Bf8+ Kg6 Bf7+ Kxf7 Qxh5+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "8/8/1bb2p1k/1p4pq/1B2P3/1B6/4QPP1/6K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Bf8+ Kg6 Bf7+ Kxf7 Qxh5+",
+        "hint": "The king protects the queen on h5. Two bishop checks can drive it away.",
+        "explanation": "Black's king protects the queen. Bf8+ Kg6 and then Bf7+ chase it away from the sixth rank: after Kxf7 White takes on h5 with check. Book continuation: Bf8+ Kg6 Bf7+ Kxf7 Qxh5+.",
+        "diagramPage": "67",
+        "answerPage": "74",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "39",
+      "title": "The second skewer",
+      "order": 39,
+      "bookLines": [
+        "Qa1+ Kb7 Bc6+ Kxc6 Qxa8+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "q3B3/2p4p/kp4p1/5b2/7P/1P4P1/1KP5/4Q3 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Qa1+ Kb7 Bc6+ Kxc6 Qxa8+",
+        "hint": "A queen check lines up king and queen, but Black can step aside safely. Prepare a second skewer with a sacrifice.",
+        "explanation": "After Qa1+ Kb7 Black has escaped the first skewer, but the second one is decisive: Bc6+ Kxc6 Qxa8+ wins the queen. Book continuation: Qa1+ Kb7 Bc6+ Kxc6 Qxa8+.",
+        "diagramPage": "67",
+        "answerPage": "74",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "40",
+      "title": "The key square c7",
+      "order": 40,
+      "bookLines": [
+        "Qa4+ Qxa4 Nc7+ Kf8 Rxd8+ Qe8 Rxe8#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "3rk2r/pp2ppbp/5p2/q2N4/3Q1P2/8/PPP3PP/2KR3R w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Qa4+ Qxa4 Nc7+ Kf8 Rxd8+ Qe8 Rxe8#",
+        "hint": "Your knight has a strong check on c7. Which black piece guards that square?",
+        "explanation": "The queen on a5 guards c7. Qa4+ deflects it, and after Qxa4 Nc7+ Kf8 the rook takes on d8 with check; Qe8 Rxe8 is mate. Book continuation: Qa4+ Qxa4 Nc7+ Kf8 Rxd8+ Qe8 Rxe8#.",
+        "diagramPage": "67",
+        "answerPage": "74",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "41",
+      "title": "Back-rank problem",
+      "order": 41,
+      "bookLines": [
+        "Qxh6 Rxh6 Rb8+ Nxb8 Rxb8#",
+        "Qxh6 Rc8 Qxc6+ Rxc6 Rb8#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "k6r/p4r2/2n4p/1R1p4/2pPp1P1/q1P1Q1B1/2P5/1R4K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Qxh6 Rxh6 Rb8+ Nxb8 Rxb8#",
+        "hint": "Black's king is stuck on the back rank, and b8 is guarded by a knight and a rook. Can you deflect one of them?",
+        "explanation": "White needs to deflect the knight or the rook on h8 away from b8. After Qxh6 Rxh6 the rooks mate with Rb8+ Nxb8 Rxb8. If Black plays Rc8, then Qxc6+ Rxc6 Rb8 is mate. Book continuation: Qxh6 Rxh6 Rb8+ Nxb8 Rxb8# (or Qxh6 Rc8 Qxc6+ Rxc6 Rb8#).",
+        "diagramPage": "68",
+        "answerPage": "74",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "42",
+      "title": "Rooks lined up on the h-file",
+      "order": 42,
+      "bookLines": [
+        "Qxe5 Rxe5 Rh8+ Kg7 R1h7#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "2r1r1k1/5p2/q2p2p1/3Qb1P1/1p2P3/1P6/1PP1N2R/1K5R w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Qxe5 Rxe5 Rh8+ Kg7 R1h7#",
+        "hint": "Both rooks are ready on the h-file. Which black piece covers h8?",
+        "explanation": "Only the bishop on e5 is in the way of the rooks. White removes it with Qxe5, and after Rxe5 the rooks mate: Rh8+ Kg7 R1h7. Book continuation: Qxe5 Rxe5 Rh8+ Kg7 R1h7#.",
+        "diagramPage": "68",
+        "answerPage": "74",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "43",
+      "title": "The overworked queen",
+      "order": 43,
+      "bookLines": [
+        "Qc4+ Kb8 Rxd7 Qxd7 Qxg8+",
+        "Qc4+ Qc7 Qxg8+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "2kq2r1/1p1bbQ2/p7/4p3/4p3/1P2B3/1PP1N2P/1K1R4 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Qc4+ Kb8 Rxd7 Qxd7 Qxg8+",
+        "hint": "After a simple check the black queen has to protect two pieces at once.",
+        "explanation": "After Qc4+ Kb8 the queen on d8 has to guard both the bishop on d7 and the rook on g8. Rxd7 Qxd7 Qxg8+ wins a piece. If Black blocks with Qc7, White takes on g8 with check. Book continuation: Qc4+ Kb8 Rxd7 Qxd7 Qxg8+ (or Qc4+ Qc7 Qxg8+).",
+        "diagramPage": "68",
+        "answerPage": "74",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "44",
+      "title": "Deflect the guard of f7",
+      "order": 44,
+      "bookLines": [
+        "Rh1 Qxh1 Qf7+ Kh6 Re6#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r6r/7k/1p3Q2/p1b3pq/2P1R3/5P2/4K1P1/R7 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Rh1 Qxh1 Qf7+ Kh6 Re6#",
+        "hint": "The black king is out in the open, but the queen guards a crucial square. Can you deflect it with a sacrifice?",
+        "explanation": "The queen on h5 guards f7. Rh1 deflects it: after Qxh1 Qf7+ Kh6 the rook mates on e6. Book continuation: Rh1 Qxh1 Qf7+ Kh6 Re6#.",
+        "diagramPage": "69",
+        "answerPage": "74",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "45",
+      "title": "Make h5 available",
+      "order": 45,
+      "bookLines": [
+        "Qxf4 exf4 Rh5"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r5k1/2q2pp1/2p5/6r1/P2QpN2/4PbP1/1P3P2/R1R3K1 b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Qxf4 exf4 Rh5",
+        "hint": "Your bishop on f3 is very powerful, and a rook on h1 would be mate. Which white piece guards the rook's route?",
+        "explanation": "Black wants to get a rook to h1, but the knight on f4 guards h5. Qxf4 removes it, and after exf4 Rh5 the mate on h1 follows. Book continuation: Qxf4 exf4 Rh5.",
+        "diagramPage": "69",
+        "answerPage": "74",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "46",
+      "title": "Remove the knight on b6",
+      "order": 46,
+      "bookLines": [
+        "Nd7+ Nxd7 Qxd5",
+        "Nd7+ Kc8 Nxb6+ axb6 Qxd5"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "1k4r1/ppp4p/1n1b1p2/2Nq4/8/1QP4P/P3BPP1/4R2K w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Nd7+ Nxd7 Qxd5",
+        "hint": "Black threatens mate on g2 and offers a queen trade. The black queen has just one protector. Can you deflect it with check?",
+        "explanation": "The knight on b6 is the guard of the queen on d5. Nd7+ deflects it: Nxd7 Qxd5 wins the queen, and after Kc8 Nxb6+ axb6 Qxd5 the result is the same. Book continuation: Nd7+ Nxd7 Qxd5 (or Nd7+ Kc8 Nxb6+ axb6 Qxd5).",
+        "diagramPage": "69",
+        "answerPage": "74",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "47",
+      "title": "Lure the queen away",
+      "order": 47,
+      "bookLines": [
+        "Qc6 Qxc6 Rxd1+ Kg2 bxc6",
+        "Qc6 Qe2 Rxd1+ Qxd1 Qxb5"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "5rk1/1pq2pp1/4p2p/1R6/7P/P4QP1/1P3P2/2rR2K1 b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Qc6 Qxc6 Rxd1+ Kg2 bxc6",
+        "hint": "The white queen protects the rook on d1. Can you attack the queen and another piece at once?",
+        "explanation": "The queen on f3 protects the rook on d1. Qc6 attacks the queen and the rook on b5: after Qxc6 Rxd1+ Kg2 bxc6, or Qe2 Rxd1+ Qxd1 Qxb5, Black wins a rook. Book continuation: Qc6 Qxc6 Rxd1+ Kg2 bxc6 (or Qc6 Qe2 Rxd1+ Qxd1 Qxb5).",
+        "diagramPage": "70",
+        "answerPage": "74",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "48",
+      "title": "Unpin the pawn",
+      "order": 48,
+      "bookLines": [
+        "c4 Qa5 b4 Qxb4 exf6"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r4rk1/p1p2ppp/1p2pn2/3qP1Q1/3P4/2P2P1P/PP3BP1/4RRK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "c4 Qa5 b4 Qxb4 exf6",
+        "hint": "The knight on f6 is attacked, but the e5 pawn is pinned to your queen. Two pawn moves can chase the pinning piece off the rank.",
+        "explanation": "The knight on f6 is indirectly protected because the e5 pawn is pinned by the queen on d5. c4 and b4 drive the queen off the fifth rank, and exf6 wins the knight. Book continuation: c4 Qa5 b4 Qxb4 exf6.",
+        "diagramPage": "70",
+        "answerPage": "74",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "49",
+      "title": "Clear f6 for the knight",
+      "order": 49,
+      "bookLines": [
+        "Qxd4 Nxd4 Nf6+ Kf8 Bh6#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r2qk2r/pppbnp1p/2np2p1/3N2B1/2BbP3/8/PPP2PPP/R2QK2R w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Qxd4 Nxd4 Nf6+ Kf8 Bh6#",
+        "hint": "Your knight wants to go to f6 with check. Which black piece controls that square?",
+        "explanation": "The bishop on d4 guards f6. After Qxd4 Nxd4 the knight checks on f6, and Kf8 Bh6 is mate. Book continuation: Qxd4 Nxd4 Nf6+ Kf8 Bh6#.",
+        "diagramPage": "70",
+        "answerPage": "74",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "50",
+      "title": "Trap the queen",
+      "order": 50,
+      "bookLines": [
+        "Rxf6 gxf6 Bd5"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "1rb2rk1/p4ppp/1p1R1n2/8/1P6/PqN3P1/5PBP/R1Q3K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Deflect or remove the guard to find the winning continuation.",
+        "solutionText": "Rxf6 gxf6 Bd5",
+        "hint": "The black queen is short of squares. Your bishop could attack it, but a knight guards that square.",
+        "explanation": "The queen on b3 is surrounded by enemy pieces. White wants to attack it with Bd5, but the knight on f6 guards that square. After Rxf6 gxf6 Bd5 the queen is trapped. Book continuation: Rxf6 gxf6 Bd5.",
+        "diagramPage": "71",
+        "answerPage": "74",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    }
+  ]
+}

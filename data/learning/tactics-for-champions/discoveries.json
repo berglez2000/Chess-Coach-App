@@ -1,0 +1,578 @@
+{
+  "chapter": {
+    "title": "Discoveries",
+    "order": 4
+  },
+  "exercises": [
+    {
+      "number": "1",
+      "title": "Trade into the discovery",
+      "order": 1,
+      "bookLines": [
+        "Rxb8+ Kxb8 e6+ Kc8 exf7"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "1rk5/3p1r2/2p5/4P3/2n5/6B1/4R3/1R4K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a discovery to find the winning continuation.",
+        "solutionText": "Rxb8+ Kxb8 e6+ Kc8 exf7",
+        "hint": "Your bishop and e-pawn are lined up on one diagonal. Which square does the black king have to stand on for that to matter?",
+        "explanation": "The rook trade drags the black king to b8, onto the diagonal of the bishop on g3. Then e6+ uncovers a check from the bishop while the pawn attacks the rook on f7, which falls next move. Book continuation: Rxb8+ Kxb8 e6+ Kc8 exf7.",
+        "diagramPage": "78",
+        "answerPage": "87",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "2",
+      "title": "Action on the c-file",
+      "order": 2,
+      "bookLines": [
+        "Nb5 Rxb5 Rxc6"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "6k1/5pp1/1prq1b1p/r2p4/3P4/n1NNPQ1P/2R2PP1/2R3K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a discovery to find the winning continuation.",
+        "solutionText": "Nb5 Rxb5 Rxc6",
+        "hint": "Your doubled rooks look at c6, but one of your own pieces stands in the way. Can it leave with a threat?",
+        "explanation": "The knight on c3 blocks the doubled rooks. Nb5 attacks the queen, the only defender of c6, and opens the c-file at the same time. After Rxb5 White takes the rook on c6. Book continuation: Nb5 Rxb5 Rxc6.",
+        "diagramPage": "78",
+        "answerPage": "87",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "3",
+      "title": "The right discovered check",
+      "order": 3,
+      "bookLines": [
+        "Bg6+ Kg8 Qh7#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r2q1r1k/pp1b2pB/2n1pp2/3p3Q/3P4/1P5P/PB3PP1/R4RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "MATE",
+        "mateIn": 2,
+        "prompt": "White to move. Use a discovery to force checkmate in two moves.",
+        "solutionText": "Bg6+ Kg8 Qh7#",
+        "hint": "The bishop has many moves that uncover a check. Which one also takes away the king's way out?",
+        "explanation": "Any bishop move gives a discovered check from the queen, but only Bg6+ also guards f7. After Kg8 the queen mates on h7 because the king cannot escape to f7. Book continuation: Bg6+ Kg8 Qh7#.",
+        "diagramPage": "79",
+        "answerPage": "87",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "4",
+      "title": "Unprotected bishop on b7",
+      "order": 4,
+      "bookLines": [
+        "Ng5 Qxg5 Bxb7"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "rn1q1rk1/pbpp1pp1/1p2p2p/8/2PP4/3Q1NP1/PP2PPBP/R3R1K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a discovery to find the winning continuation.",
+        "solutionText": "Ng5 Qxg5 Bxb7",
+        "hint": "The bishop on b7 is unprotected and your own knight blocks the long diagonal. Where can the knight go so that Black has no time to save the bishop?",
+        "explanation": "Ng5 threatens mate on h7 and uncovers the bishop on g2 against b7. Black has to deal with the knight, and after Qxg5 Bxb7 the rook on a8 is trapped in the corner. Book continuation: Ng5 Qxg5 Bxb7.",
+        "diagramPage": "79",
+        "answerPage": "87",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "5",
+      "title": "Bishop and rook on the h-file",
+      "order": 5,
+      "bookLines": [
+        "Bh6+ Kh7 Bf8#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "2r3r1/p4pk1/1p3pn1/7R/q7/P4P2/1PPBQ1P1/2K5 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "MATE",
+        "mateIn": 2,
+        "prompt": "White to move. Use a discovery to force checkmate in two moves.",
+        "solutionText": "Bh6+ Kh7 Bf8#",
+        "hint": "First bring the bishop in front of your rook with check. What can it do from there next move?",
+        "explanation": "Bh6+ forces the king onto the h-file in front of the rook. Then Bf8 uncovers a check from the rook and takes away g7, so it is checkmate. Book continuation: Bh6+ Kh7 Bf8#.",
+        "diagramPage": "79",
+        "answerPage": "87",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "6",
+      "title": "Clear the a2-g8 diagonal",
+      "order": 6,
+      "bookLines": [
+        "Rxd8 Rxd8 Ne5+"
+      ],
+      "analysisLines": [
+        "Ne5"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "3r1rk1/p5pp/1p3bq1/2pR4/2N5/1Q5P/PP3PP1/5RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a discovery to find the winning continuation.",
+        "solutionText": "Rxd8 Rxd8 Ne5+",
+        "hint": "Your queen looks toward g8, but two of your own pieces stand on that diagonal. Get one of them out of the way first.",
+        "explanation": "After the rook trade on d8 only the knight stands between the queen on b3 and the black king. Ne5+ then uncovers a check and attacks the queen on g6. The immediate Ne5 also wins some material, but less. Book continuation: Rxd8 Rxd8 Ne5+.",
+        "diagramPage": "80",
+        "answerPage": "87",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "7",
+      "title": "Only one rook move works",
+      "order": 7,
+      "bookLines": [
+        "Rb4 Qd7 Qxd7 Nxd7 Rxb2"
+      ],
+      "analysisLines": [
+        "Re2 Qd7 Qxd7 Rb1+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "8/1q3pkp/1p3np1/8/4R3/P5P1/1r3PBP/3Q2K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a discovery to find the winning continuation.",
+        "solutionText": "Rb4 Qd7 Qxd7 Nxd7 Rxb2",
+        "hint": "A rook move uncovers the bishop against the black queen. Two squares attack the rook on b2 as well; check what Black's queen trade does to each of them.",
+        "explanation": "Rb4 uncovers the bishop against the queen on b7 and attacks the rook on b2. After Qd7 Qxd7 Nxd7 Rxb2 White has won a rook. Re2 looks the same but fails: after Qd7 Qxd7 Black has the intermediate check Rb1+. Book continuation: Rb4 Qd7 Qxd7 Nxd7 Rxb2.",
+        "diagramPage": "80",
+        "answerPage": "87",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "8",
+      "title": "Check first, then the knight jumps",
+      "order": 8,
+      "bookLines": [
+        "Rh4+ Kg8 Nf6+ gxf6 Rxa4"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "7k/2b2pp1/2p5/8/q3NR2/2P5/1P3PPP/6K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a discovery to find the winning continuation.",
+        "solutionText": "Rh4+ Kg8 Nf6+ gxf6 Rxa4",
+        "hint": "If your knight could leave the fourth rank with check, the black queen would fall. Where must the black king stand for that?",
+        "explanation": "Rh4+ forces the king to g8. Then Nf6+ is a knight check that uncovers the rook against the queen on a4, and after gxf6 White takes the queen. Book continuation: Rh4+ Kg8 Nf6+ gxf6 Rxa4.",
+        "diagramPage": "80",
+        "answerPage": "87",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "9",
+      "title": "Force the king to the f-file",
+      "order": 9,
+      "bookLines": [
+        "Rhg8+ Kf1 Bd6+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "5r1r/7k/2p5/8/1Q3b2/2N1p2P/P3P3/6KR b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. Use a discovery to find the winning continuation.",
+        "solutionText": "Rhg8+ Kf1 Bd6+",
+        "hint": "Your rook on f8 stands behind your bishop. Which file does the white king have to step onto?",
+        "explanation": "Rhg8+ drives the white king to f1, onto the file of the rook on f8. Bd6+ then uncovers a check from that rook while the bishop attacks the queen on b4. Book continuation: Rhg8+ Kf1 Bd6+.",
+        "diagramPage": "81",
+        "answerPage": "87",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "10",
+      "title": "The pawn in the way",
+      "order": 10,
+      "bookLines": [
+        "c5 dxc5 Rg5+",
+        "c5 dxc5 Rd6+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "2r2rk1/pp4pp/1b1p2q1/3R4/2P5/1B5P/PP2QPPK/5R2 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a discovery to find the winning continuation.",
+        "solutionText": "c5 dxc5 Rg5+",
+        "hint": "Your bishop on b3 aims at the black king, but two of your own pieces block the diagonal. Start with the one that can move forward.",
+        "explanation": "If the c4-pawn were not there, any rook move would uncover a check from the bishop on b3. So White gets rid of the pawn with c5, and after dxc5 the rook leaves the diagonal with a discovered check that wins the queen. Book continuation: c5 dxc5 Rg5+ (or c5 dxc5 Rd6+).",
+        "diagramPage": "81",
+        "answerPage": "87",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "11",
+      "title": "The king is the star",
+      "order": 11,
+      "bookLines": [
+        "Kg5+ Kg7 Kf5#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r4r1k/1b3p2/7K/3n4/3P2R1/1P4P1/1B6/7R w - - 0 1",
+        "solver": "WHITE",
+        "objective": "MATE",
+        "mateIn": 2,
+        "prompt": "White to move. Use a discovery to force checkmate in two moves.",
+        "solutionText": "Kg5+ Kg7 Kf5#",
+        "hint": "Your own king blocks one of your rooks. What happens each time it steps aside?",
+        "explanation": "The white king gives two discovered checks in a row. Kg5+ opens the h-file, and after Kg7 the move Kf5 opens the g-file and takes away f6 and g6, so it is checkmate. Book continuation: Kg5+ Kg7 Kf5#.",
+        "diagramPage": "81",
+        "answerPage": "87",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "12",
+      "title": "Open the h-file",
+      "order": 12,
+      "bookLines": [
+        "Qg5 hxg5 hxg5#",
+        "Qg5 Kh8 Rxh6+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r4r2/5q1k/1p4Rp/4pP2/2P4P/1Pbp1PQ1/P5P1/1K5R w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a discovery to find the winning continuation.",
+        "solutionText": "Qg5 hxg5 hxg5#",
+        "hint": "Your rook on h1 stands behind your own pawn. How can you make that pawn capture something?",
+        "explanation": "Qg5 threatens mate on h6. If Black takes the queen, hxg5 opens the h-file with a discovered checkmate from the rook on h1. After Kh8 White takes on h6 with check and keeps a winning attack. Book continuation: Qg5 hxg5 hxg5# (or Qg5 Kh8 Rxh6+).",
+        "diagramPage": "82",
+        "answerPage": "87",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "13",
+      "title": "Knight sacrifice on g6",
+      "order": 13,
+      "bookLines": [
+        "Ng6+ hxg6 hxg3#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "4rr1k/pp2q1pp/2pb1p2/4N3/2B5/4PPn1/PP1Q1P1P/R3K2R w - - 0 1",
+        "solver": "WHITE",
+        "objective": "MATE",
+        "mateIn": 2,
+        "prompt": "White to move. Use a discovery to force checkmate in two moves.",
+        "solutionText": "Ng6+ hxg6 hxg3#",
+        "hint": "The black king has no free square. Can you force the h-file open?",
+        "explanation": "Ng6+ can only be answered by hxg6. Then hxg3 takes the knight and uncovers the rook on h1: checkmate, because the bishop on c4 guards g8. Book continuation: Ng6+ hxg6 hxg3#.",
+        "diagramPage": "82",
+        "answerPage": "87",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "14",
+      "title": "King to the hot diagonal",
+      "order": 14,
+      "bookLines": [
+        "Rh8+ Kxh8 Ne6+"
+      ],
+      "analysisLines": [
+        "Ne6 Qc6+ f3 fxe6",
+        "Ne6 fxe6 Qh8+ Kf7 Rh7+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "5bk1/2q2p2/3r2p1/pp6/3N4/P5P1/1Q3PK1/7R w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a discovery to find the winning continuation.",
+        "solutionText": "Rh8+ Kxh8 Ne6+",
+        "hint": "Opening the long diagonal at once allows Black an intermediate check. Can you first put the black king on that diagonal?",
+        "explanation": "Rh8+ forces the king onto the a1-h8 diagonal. After Kxh8 the knight jumps to e6 with a discovered check from the queen and wins the queen on c7. The direct Ne6 fails to the intermediate check Qc6+ followed by fxe6. Book continuation: Rh8+ Kxh8 Ne6+.",
+        "diagramPage": "82",
+        "answerPage": "87",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "15",
+      "title": "An important pattern",
+      "order": 15,
+      "bookLines": [
+        "Qg4 g6 Nh6+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r4rk1/pp1q1ppp/2n5/4pN2/8/4P3/PP2QPPP/R4RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a discovery to find the winning continuation.",
+        "solutionText": "Qg4 g6 Nh6+",
+        "hint": "Threaten mate on g7 so that your queen and knight end up on the same line as the black queen.",
+        "explanation": "Qg4 threatens mate on g7 and puts the queen behind the knight, on the line to d7. After g6 the knight leaves with check, Nh6+, and the black queen is lost. Book continuation: Qg4 g6 Nh6+.",
+        "diagramPage": "83",
+        "answerPage": "88",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "16",
+      "title": "Open the long diagonal",
+      "order": 16,
+      "bookLines": [
+        "Nd5 exd5 Qh8#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r3rk2/pp1bqp2/2p1pNpp/8/8/P1Q1P3/1P3PPP/1BR3K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a discovery to find the winning continuation.",
+        "solutionText": "Nd5 exd5 Qh8#",
+        "hint": "Your queen and knight stand on the long diagonal. Find a knight move that also attacks something valuable.",
+        "explanation": "Nd5 opens the a1-h8 diagonal with a mate threat on h8 and attacks the queen on e7 at the same time. If Black takes the knight, Qh8 is checkmate. Book continuation: Nd5 exd5 Qh8#.",
+        "diagramPage": "83",
+        "answerPage": "88",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "17",
+      "title": "Exchange sacrifice on e6",
+      "order": 17,
+      "bookLines": [
+        "Rxe6+ Bxe6 Bb5+ axb5 Qxd4",
+        "Rxe6+ fxe6 Bg6+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "2r1k2r/1p1b1pp1/p3n2p/8/3q4/2NB1P2/PP4PP/R2QR2K w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a discovery to find the winning continuation.",
+        "solutionText": "Rxe6+ Bxe6 Bb5+ axb5 Qxd4",
+        "hint": "Your queen looks at the black queen through your own bishop. Open a line to the black king so that the bishop can leave with check.",
+        "explanation": "After Rxe6+ either recapture opens a diagonal to the king on e8. The bishop on d3 then moves away with check (Bb5+ or Bg6+) and uncovers the queen on d1, which takes the queen on d4. Book continuation: Rxe6+ Bxe6 Bb5+ axb5 Qxd4 (or Rxe6+ fxe6 Bg6+).",
+        "diagramPage": "83",
+        "answerPage": "88",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "18",
+      "title": "A cute checkmate idea",
+      "order": 18,
+      "bookLines": [
+        "Nf6+ Kxf6 Nh5+ Kf7 Qh7#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r4r2/3q4/2p3kp/2Pn2p1/3pN3/6N1/6PP/1Q2R1K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a discovery to find the winning continuation.",
+        "solutionText": "Nf6+ Kxf6 Nh5+ Kf7 Qh7#",
+        "hint": "The knight on e4 blocks your queen's diagonal to the king. Which jump is strongest, even if the knight can be taken there?",
+        "explanation": "Nf6+ uncovers a check from the queen on b1 and attacks the black queen. If the king takes the knight, Nh5+ drives it to f7 and Qh7 is checkmate, because the rook on e1 guards the e-file. Book continuation: Nf6+ Kxf6 Nh5+ Kf7 Qh7#.",
+        "diagramPage": "84",
+        "answerPage": "88",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "19",
+      "title": "Simplify with a queen sacrifice",
+      "order": 19,
+      "bookLines": [
+        "Qxg7+ Rxg7 Rxg7+ Kh8 Rg3+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "8/R4rpk/2p4p/4Q3/5p2/2B1Pq1P/1P5K/8 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a discovery to find the winning continuation.",
+        "solutionText": "Qxg7+ Rxg7 Rxg7+ Kh8 Rg3+",
+        "hint": "Taking the rook on f7 allows perpetual check. Look at g7 instead: which of your pieces would stand behind a rook there?",
+        "explanation": "Capturing the rook on f7 lets Black give perpetual check starting with Qf2+. Instead Qxg7+ Rxg7 Rxg7+ puts the rook in front of the bishop on c3, and after Kh8 the discovered check Rg3+ wins the black queen. Book continuation: Qxg7+ Rxg7 Rxg7+ Kh8 Rg3+.",
+        "diagramPage": "84",
+        "answerPage": "88",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "20",
+      "title": "King into the discovery",
+      "order": 20,
+      "bookLines": [
+        "Ng3+ Kh2 Ne4+ g3 Rf2+ Kh1 Nxg3#",
+        "Ng3+ Kh2 Ne4+ Kh1 Nf2#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "5rk1/2b3pp/4p3/2p5/2P5/1P5P/1Q2B1P1/5nNK b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. Use a discovery to find the winning continuation.",
+        "solutionText": "Ng3+ Kh2 Ne4+ g3 Rf2+ Kh1 Nxg3#",
+        "hint": "Your bishop on c7 aims at h2. Use the knight to bring the white king there.",
+        "explanation": "Ng3+ forces the king to h2, onto the diagonal of the bishop on c7. The knight then uncovers a check with Ne4+: after g3 Black mates with Rf2+ and Nxg3, and after Kh1 with Nf2. Book continuation: Ng3+ Kh2 Ne4+ g3 Rf2+ Kh1 Nxg3# (or Ng3+ Kh2 Ne4+ Kh1 Nf2#).",
+        "diagramPage": "84",
+        "answerPage": "88",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "21",
+      "title": "Black's pieces are far away",
+      "order": 21,
+      "bookLines": [
+        "Qh6 gxh6 Rxf5+ Kg8 Rg3+",
+        "Qh6 Kg8 Rxf5"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "rr5k/6pp/1p2p3/4Rp2/b1q5/4Q2R/1B3PPP/6K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a discovery to find the winning continuation.",
+        "solutionText": "Qh6 gxh6 Rxf5+ Kg8 Rg3+",
+        "hint": "All of Black's pieces are on the queenside. Your bishop on b2 points at the king; which pawn would you like to see leave its place?",
+        "explanation": "Qh6 attacks h7 and g7, and the queen cannot be taken safely: after gxh6 the long diagonal is open and Rxf5+ is a discovered check from the bishop on b2, followed by Rg3+ and White wins. If Black plays Kg8, White continues with Rxf5. Book continuation: Qh6 gxh6 Rxf5+ Kg8 Rg3+ (or Qh6 Kg8 Rxf5).",
+        "diagramPage": "85",
+        "answerPage": "88",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "22",
+      "title": "Sacrifice on f7",
+      "order": 22,
+      "bookLines": [
+        "Nxf7 Kxf7 Bh5+ Ke7 Rf7+ Ke8 Rxg7#",
+        "Nxf7 Kxf7 Bh5+ Kg8 Bf7#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r2qkb1r/pb1n1ppp/1p2p3/3pN3/3P4/2P2BQ1/PP4PP/RN3R1K w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a discovery to find the winning continuation.",
+        "solutionText": "Nxf7 Kxf7 Bh5+ Ke7 Rf7+ Ke8 Rxg7#",
+        "hint": "Black is behind in development and your rook looks down the f-file. Can you pull the king onto that file?",
+        "explanation": "Nxf7 wins material if Black does not take. After Kxf7 the bishop leaves the f-file with a double check, Bh5+, and the king is hunted down: Ke7 Rf7+ Ke8 Rxg7 mate, or Kg8 Bf7 mate. Book continuation: Nxf7 Kxf7 Bh5+ Ke7 Rf7+ Ke8 Rxg7# (or Nxf7 Kxf7 Bh5+ Kg8 Bf7#).",
+        "diagramPage": "85",
+        "answerPage": "88",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "23",
+      "title": "Two sacrifices",
+      "order": 23,
+      "bookLines": [
+        "Rxg7 Kxg7 Qxd7 Qxd7 e6+ Kf8 exd7"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "4r2k/3rn1bp/4q3/3pPp2/Q1pB1P2/2P3R1/6BP/3R3K w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a discovery to find the winning continuation.",
+        "solutionText": "Rxg7 Kxg7 Qxd7 Qxd7 e6+ Kf8 exd7",
+        "hint": "Your bishop on d4 and the e5-pawn are lined up on the long diagonal. Which black pieces do you need on g7 and d7?",
+        "explanation": "Rxg7 brings the black king onto the long diagonal, and Qxd7 brings the black queen to d7. Then e6+ uncovers a check from the bishop on d4 while the pawn attacks the queen, so White wins the queen back and comes out a piece ahead. Book continuation: Rxg7 Kxg7 Qxd7 Qxd7 e6+ Kf8 exd7.",
+        "diagramPage": "85",
+        "answerPage": "88",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "24",
+      "title": "The mill",
+      "order": 24,
+      "bookLines": [
+        "Rg7+ Kf8 Rxd7+ Kg8 Rg7+ Kf8 Rb7+ Kg8 Rxb8+ Nf8 Rxf8#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "1r4kr/3p1R1p/p2Np1nB/4p3/P5P1/2P4P/3K4/8 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a discovery to find the winning continuation.",
+        "solutionText": "Rg7+ Kf8 Rxd7+ Kg8 Rg7+ Kf8 Rb7+",
+        "hint": "The rook can check on g7 again and again, and every time it leaves that square the bishop gives check. What can the rook collect on the way?",
+        "explanation": "This is the mill: repeated discovered checks. The rook checks on g7, takes on d7 with a discovered check from the bishop, returns to g7 and then goes to b7 with another discovered check. After that it takes the rook on b8 and mates on f8. Book continuation: Rg7+ Kf8 Rxd7+ Kg8 Rg7+ Kf8 Rb7+ Kg8 Rxb8+ Nf8 Rxf8#.",
+        "diagramPage": "86",
+        "answerPage": "88",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "25",
+      "title": "The mill on the seventh rank",
+      "order": 25,
+      "bookLines": [
+        "Rxb7+ Ka8 Rxe7+ Kb8 Rb7+ Ka8 Rxf7+ Kb8 Rb7+ Ka8 Rxg7+ Kb8 Rb7+ Ka8 Rb4+ Ka7 Rxh4"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "1kn4r/1p1Rnbbp/p3pp2/8/7q/2P2B2/PP5P/4R1K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a discovery to find the winning continuation.",
+        "solutionText": "Rxb7+ Ka8 Rxe7+ Kb8 Rb7+ Ka8 Rxf7+",
+        "hint": "Your bishop on f3 aims at b7. Once the rook stands there, every move it makes uncovers a check.",
+        "explanation": "White uses the mill to pick up Black's pieces one by one: after Rxb7+ Ka8 every rook move along the seventh rank is a discovered check from the bishop on f3, and Rb7+ always brings the king back to a8. At the end the rook leaves from the other side with Rb4+ and wins the queen on h4. Book continuation: Rxb7+ Ka8 Rxe7+ Kb8 Rb7+ Ka8 Rxf7+ Kb8 Rb7+ Ka8 Rxg7+ Kb8 Rb7+ Ka8 Rb4+ Ka7 Rxh4.",
+        "diagramPage": "86",
+        "answerPage": "88",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    }
+  ]
+}

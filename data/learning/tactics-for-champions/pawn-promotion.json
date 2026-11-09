@@ -1,0 +1,580 @@
+{
+  "chapter": {
+    "title": "Pawn Promotion",
+    "order": 10
+  },
+  "exercises": [
+    {
+      "number": "1",
+      "title": "Clear the corner",
+      "order": 1,
+      "bookLines": [
+        "Qg7+ Kxg7 h8=Q#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "3r1n1k/5p1P/p5pQ/8/2q5/P6R/5PP1/6K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "MATE",
+        "mateIn": 2,
+        "prompt": "White to move. Use a pawn promotion to force checkmate in two moves.",
+        "solutionText": "Qg7+ Kxg7 h8=Q#",
+        "hint": "Your h-pawn is one step from promotion, but the black king sits on the promotion square. How can you make it leave?",
+        "explanation": "Qg7+ forces the king to leave the corner. Then h8=Q is checkmate: the new queen is protected by the rook on h3. Book continuation: Qg7+ Kxg7 h8=Q#.",
+        "diagramPage": "166",
+        "answerPage": "175",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "2",
+      "title": "Remove the guard of a8",
+      "order": 2,
+      "bookLines": [
+        "Rxc6 Kxc6 a8=Q+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "4n3/P2k4/2b2p1p/5Pp1/6P1/6KP/8/2R5 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pawn promotion, or the threat of one, to find the winning continuation.",
+        "solutionText": "Rxc6 Kxc6 a8=Q+",
+        "hint": "Your a-pawn needs one more step. Which black piece is the only one that controls the promotion square?",
+        "explanation": "The bishop on c6 is the only guard of a8. Rxc6 removes it, and after Kxc6 the pawn promotes with check. Book continuation: Rxc6 Kxc6 a8=Q+.",
+        "diagramPage": "167",
+        "answerPage": "175",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "3",
+      "title": "A discovery helps the e-pawn",
+      "order": 3,
+      "bookLines": [
+        "Qxd6 Qxd6 e7+ Kh7 e8=Q"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "2b3k1/pp2q1p1/2prP2p/5p2/1Q1p1P2/P7/BP4PP/5RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pawn promotion, or the threat of one, to find the winning continuation.",
+        "solutionText": "Qxd6 Qxd6 e7+ Kh7 e8=Q",
+        "hint": "Your bishop on a2 looks at the black king through your own e-pawn. What happens when that pawn moves?",
+        "explanation": "Qxd6 drags the queen away from e7. Then e7+ uncovers a check from the bishop on a2, so Black has no time to stop the pawn, and it promotes on e8. Book continuation: Qxd6 Qxd6 e7+ Kh7 e8=Q.",
+        "diagramPage": "167",
+        "answerPage": "175",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "4",
+      "title": "Decoy, discovery, promotion",
+      "order": 4,
+      "bookLines": [
+        "Qd1+ Rxd1 e2+ Kh1 exd1=Q#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "6k1/1Q3pp1/p6p/3P3q/N2b4/1P2p1P1/P5PP/2R3K1 b - - 0 1",
+        "solver": "BLACK",
+        "objective": "MATE",
+        "mateIn": 3,
+        "prompt": "Black to move. Use a pawn promotion to force checkmate in three moves.",
+        "solutionText": "Qd1+ Rxd1 e2+ Kh1 exd1=Q#",
+        "hint": "Your bishop looks at the white king through your own e-pawn. Where would you like the white rook to stand when that pawn advances?",
+        "explanation": "Qd1+ forces the rook to d1. Then e2+ uncovers a check from the bishop on d4 and attacks the rook, and after Kh1 the pawn takes on d1 and promotes with checkmate. Book continuation: Qd1+ Rxd1 e2+ Kh1 exd1=Q#.",
+        "diagramPage": "167",
+        "answerPage": "175",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "5",
+      "title": "Rook sacrifice on a7",
+      "order": 5,
+      "bookLines": [
+        "Rxa7 Rxa7 c7"
+      ],
+      "analysisLines": [
+        "c7 Nc6"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "rn2kb1r/pp3p1p/2P1p1p1/8/4b3/1P2PN2/1P2BPPP/R4RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pawn promotion, or the threat of one, to find the winning continuation.",
+        "solutionText": "Rxa7 Rxa7 c7",
+        "hint": "The simple pawn push is answered by a knight move. Can you first drag one of the defenders of the back rank away?",
+        "explanation": "The simple c7 gains nothing after Nc6. Instead Rxa7 deflects the rook from a8: after Rxa7 c7 the pawn threatens to promote on c8 and to capture the knight on b8 with promotion, and Black cannot stop both. Book continuation: Rxa7 Rxa7 c7.",
+        "diagramPage": "168",
+        "answerPage": "175",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "6",
+      "title": "Queen sacrifice on h7",
+      "order": 6,
+      "bookLines": [
+        "Qxh7 Rxh7 gxh7 Ke7 h8=Q"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r3k1nr/1b1p2pp/p5P1/1p6/4P2Q/1NqP4/P5PP/R4R1K w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pawn promotion, or the threat of one, to find the winning continuation.",
+        "solutionText": "Qxh7 Rxh7 gxh7 Ke7 h8=Q",
+        "hint": "Your g-pawn is already on the sixth rank. What would it attack if it captured something on h7?",
+        "explanation": "Qxh7 gives up the queen for a moment. After Rxh7 gxh7 the pawn threatens both to promote on h8 and to capture the knight on g8, so White gets a new queen and comes out with a serious material gain. Book continuation: Qxh7 Rxh7 gxh7 Ke7 h8=Q.",
+        "diagramPage": "168",
+        "answerPage": "175",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "7",
+      "title": "Only bad choices",
+      "order": 7,
+      "bookLines": [
+        "e7 Qxc3 exd8=Q+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "3r2k1/1p3pp1/2p1P2p/8/p7/P1Q5/1PPq1PPP/5RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pawn promotion, or the threat of one, to find the winning continuation.",
+        "solutionText": "e7 Qxc3 exd8=Q+",
+        "hint": "Your queen is attacked, but so is the black queen. Look at what your e-pawn can attack before you trade.",
+        "explanation": "After e7 Black has only bad choices. If Qxc3, White first takes the rook with check, exd8=Q+, and then recaptures the queen. And the rook cannot keep protecting both the queen on d2 and the promotion square e8. Book continuation: e7 Qxc3 exd8=Q+.",
+        "diagramPage": "168",
+        "answerPage": "175",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "8",
+      "title": "A typical breakthrough",
+      "order": 8,
+      "bookLines": [
+        "Qxc6 dxc6 d7"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "6k1/3p1pp1/2rP3p/8/2Q5/3P3P/4rPP1/6K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pawn promotion, or the threat of one, to find the winning continuation.",
+        "solutionText": "Qxc6 dxc6 d7",
+        "hint": "Your d-pawn is blocked by a single black pawn. How can you make that pawn leave the d-file?",
+        "explanation": "Qxc6 forces dxc6, and the black pawn has left the d-file. Then d7 follows, and nothing can stop the pawn from promoting. Book continuation: Qxc6 dxc6 d7.",
+        "diagramPage": "169",
+        "answerPage": "175",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "9",
+      "title": "Pin and remove the guard",
+      "order": 9,
+      "bookLines": [
+        "Rxf6 Rxf6 e8=Q"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "8/4P2p/1k2rp2/n1p5/2Pp4/3P1RP1/5BK1/8 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pawn promotion, or the threat of one, to find the winning continuation.",
+        "solutionText": "Rxf6 Rxf6 e8=Q",
+        "hint": "The rook on e6 stops your pawn, and it stands on the same rank as its king. What can you capture with that in mind?",
+        "explanation": "Rxf6 attacks the rook on e6, which is pinned along the sixth rank against its king. It has to take, Rxf6, but then it no longer guards e8 and the pawn promotes. Book continuation: Rxf6 Rxf6 e8=Q.",
+        "diagramPage": "169",
+        "answerPage": "175",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "10",
+      "title": "Clog up the first rank",
+      "order": 10,
+      "bookLines": [
+        "Rc1 Kxc1 h2"
+      ],
+      "analysisLines": [
+        "h2 Ra1"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "8/3npk2/1p3pp1/8/P1r5/4B1Pp/R2KPP2/8 b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. Use a pawn promotion, or the threat of one, to find the winning continuation.",
+        "solutionText": "Rc1 Kxc1 h2",
+        "hint": "After the immediate pawn push White's rook gets back to the first rank in time. Can you take that route away?",
+        "explanation": "After the immediate h2 White defends with Ra1. So Black first gives up the rook with Rc1: after Kxc1 the white king blocks the first rank, and h2 can no longer be stopped. Book continuation: Rc1 Kxc1 h2.",
+        "diagramPage": "169",
+        "answerPage": "175",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "11",
+      "title": "Queen sacrifice on f7",
+      "order": 11,
+      "bookLines": [
+        "Qxf7 Qxf7 c7"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "k7/p4r2/1pP2qp1/8/7p/1QR1P3/6PP/6K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pawn promotion, or the threat of one, to find the winning continuation.",
+        "solutionText": "Qxf7 Qxf7 c7",
+        "hint": "Black threatens mate on f1, but it is your move. Your c-pawn is far advanced; which black piece would you like to drag away from the long diagonal?",
+        "explanation": "Black threatens checkmate with Qf1, but White is first: Qxf7 Qxf7 c7. The pawn is supported by the rook on c3 and promotes on c8 with check. Book continuation: Qxf7 Qxf7 c7.",
+        "diagramPage": "170",
+        "answerPage": "175",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "12",
+      "title": "Deflect the rook from d8",
+      "order": 12,
+      "bookLines": [
+        "Ra8 Rxa8 d8=Q+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "3r1n1r/1R1P2kp/2p2pp1/1p6/4P3/6PB/1P3K1P/R7 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pawn promotion, or the threat of one, to find the winning continuation.",
+        "solutionText": "Ra8 Rxa8 d8=Q+",
+        "hint": "If the rook were not on d8, your pawn would promote with a discovered check. Which of your pieces can challenge that rook?",
+        "explanation": "The rook on d8 blocks the pawn. Ra8 deflects it: after Rxa8 the pawn promotes on d8 with a discovered check from the rook on b7. Book continuation: Ra8 Rxa8 d8=Q+.",
+        "diagramPage": "170",
+        "answerPage": "175",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "13",
+      "title": "Rook sacrifice on c1",
+      "order": 13,
+      "bookLines": [
+        "Rc1+ Rxc1 Rxc1+ Kxc1 bxa2"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "2r3k1/6pp/5p2/2r5/p7/1p5P/PP3RP1/1K3R2 b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. Use a pawn promotion, or the threat of one, to find the winning continuation.",
+        "solutionText": "Rc1+ Rxc1 Rxc1+ Kxc1 bxa2",
+        "hint": "Your b-pawn is ready to capture on a2, but the white king guards the corner. Can you pull the king away?",
+        "explanation": "The rooks are exchanged on c1 with checks, and the white king is dragged to c1. Then bxa2 follows and the pawn promotes on a1, because the king can no longer get back to the corner. Book continuation: Rc1+ Rxc1 Rxc1+ Kxc1 bxa2.",
+        "diagramPage": "170",
+        "answerPage": "175",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "14",
+      "title": "Give up the rook",
+      "order": 14,
+      "bookLines": [
+        "Rd8+ Kxd8 cxb7"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "2k2bnr/1pp3pp/p1P1qp2/8/3R4/4B2P/PP2QPP1/6K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pawn promotion, or the threat of one, to find the winning continuation.",
+        "solutionText": "Rd8+ Kxd8 cxb7",
+        "hint": "Your c-pawn could capture on b7 with a threat to promote. What stops it from doing that with full effect right now?",
+        "explanation": "Rd8+ gives up the rook to drag the king away from c8. After Kxd8 cxb7 the king no longer guards b8, and the pawn is about to promote. Book continuation: Rd8+ Kxd8 cxb7.",
+        "diagramPage": "171",
+        "answerPage": "175",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "15",
+      "title": "Intermediate check, then breakthrough",
+      "order": 15,
+      "bookLines": [
+        "Qg8+ Kb7 Qxe6 dxe6 d7"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "2k5/p2p4/1ppPr2p/1q6/6Q1/P4P2/1PP5/1K1R4 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pawn promotion, or the threat of one, to find the winning continuation.",
+        "solutionText": "Qg8+ Kb7 Qxe6 dxe6 d7",
+        "hint": "Your d-pawn is blocked by a black pawn on d7. First improve the position of your queen with a check.",
+        "explanation": "Qg8+ is an intermediate check that drives the king to b7. Then the breakthrough Qxe6 dxe6 d7 follows: the black pawn has left the d-file, and the white pawn promotes with the help of the rook on d1. Book continuation: Qg8+ Kb7 Qxe6 dxe6 d7.",
+        "diagramPage": "171",
+        "answerPage": "175",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "16",
+      "title": "The king is too far away",
+      "order": 16,
+      "bookLines": [
+        "Qxf2+ Qxf2 Rxf2+ Kxf2 b3 axb3 a3 Ne4 a2"
+      ],
+      "analysisLines": [
+        "Qxf2+ Qxf2 Rxf2+ Kxf2 b3 axb3 axb3 Ne4 b2 Nc3"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "5rk1/5q1p/6p1/6N1/pp5P/3P2P1/P3QBK1/8 b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. Use a pawn promotion, or the threat of one, to find the winning continuation.",
+        "solutionText": "Qxf2+ Qxf2 Rxf2+ Kxf2 b3 axb3 a3",
+        "hint": "All of White's pieces are on the kingside, and you have two pawns on the queenside. Simplify first.",
+        "explanation": "After the exchanges on f2 the white king is too far from the queenside. Then b3 axb3 a3 creates a passed pawn that neither the king nor the knight can catch. But not axb3, because the knight gets back in time with Ne4 and Nc3. Book continuation: Qxf2+ Qxf2 Rxf2+ Kxf2 b3 axb3 a3 Ne4 a2.",
+        "diagramPage": "171",
+        "answerPage": "175",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "17",
+      "title": "Lure the king out of g8",
+      "order": 17,
+      "bookLines": [
+        "Bxh7+ Rxh7 Rxh7 Kxh7 g8=Q+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "6k1/6Pp/3r3r/2n1p3/1pP2p2/1P3P2/2B3R1/1K5R w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pawn promotion, or the threat of one, to find the winning continuation.",
+        "solutionText": "Bxh7+ Rxh7 Rxh7 Kxh7 g8=Q+",
+        "hint": "Your g-pawn is one step from promotion, but the black king sits on g8. Which exchanges would pull it away?",
+        "explanation": "The goal is to lure the king away from g8. After Bxh7+ Rxh7 Rxh7 Kxh7 the promotion square is free, and g8=Q comes with check, protected by the rook on g2. Book continuation: Bxh7+ Rxh7 Rxh7 Kxh7 g8=Q+.",
+        "diagramPage": "172",
+        "answerPage": "176",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "18",
+      "title": "Checkmate in four",
+      "order": 18,
+      "bookLines": [
+        "Qxa8+ Kxa8 b7+ Kb8 Re8+ Ka7 Ra8#",
+        "Qxa8+ Kxa8 b7+ Ka7 b8=Q+ Ka6 Qb7#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r3Q3/1kp3p1/1Pr2p2/p7/2P5/3n1P1p/P3R1Bq/1R3K2 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pawn promotion, or the threat of one, to find the winning continuation.",
+        "solutionText": "Qxa8+ Kxa8 b7+ Kb8 Re8+ Ka7 Ra8#",
+        "hint": "Your own king is in danger, so use checks only. Your b-pawn is supported by the rook behind it; where would you like the black king?",
+        "explanation": "Qxa8+ drags the king into the corner, and b7+ follows with check. After Kb8 White mates with Re8+ and Ra8, and after Ka7 the pawn promotes, b8=Q+, and Qb7 is checkmate. Book continuation: Qxa8+ Kxa8 b7+ Kb8 Re8+ Ka7 Ra8# (or Qxa8+ Kxa8 b7+ Ka7 b8=Q+ Ka6 Qb7#).",
+        "diagramPage": "172",
+        "answerPage": "176",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "19",
+      "title": "A petite combination",
+      "order": 19,
+      "bookLines": [
+        "Rxf1+ Rxf1 e3 Kg2 e2"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "6k1/p5p1/2p2r2/2P5/P3p3/2b3P1/7P/3R1B1K b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. Use a pawn promotion, or the threat of one, to find the winning continuation.",
+        "solutionText": "Rxf1+ Rxf1 e3 Kg2 e2",
+        "hint": "Endgames with opposite-colored bishops are often drawn, so get rid of one bishop. Which square does your own bishop control on the first rank?",
+        "explanation": "Rxf1+ Rxf1 removes White's bishop. Then the e-pawn runs: e3 Kg2 e2, and it cannot be stopped because the bishop on c3 controls the promotion square e1. Book continuation: Rxf1+ Rxf1 e3 Kg2 e2.",
+        "diagramPage": "172",
+        "answerPage": "176",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "20",
+      "title": "Deflect the rook from the c-file",
+      "order": 20,
+      "bookLines": [
+        "Rb7 Rxb7 c2"
+      ],
+      "analysisLines": [
+        "c2 Kd6"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "8/2RBnk1p/6p1/2Kp4/3P1PPP/1rp5/8/8 b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. Use a pawn promotion, or the threat of one, to find the winning continuation.",
+        "solutionText": "Rb7 Rxb7 c2",
+        "hint": "If you push the pawn at once, the white king steps aside and the rook stops the pawn from behind. Can you move that rook off the file?",
+        "explanation": "After c2 White stops the pawn with Kd6, which opens the c-file for the rook. So Black first deflects the rook with Rb7: after Rxb7 c2 nothing controls the c-file any more and the pawn promotes. Book continuation: Rb7 Rxb7 c2.",
+        "diagramPage": "173",
+        "answerPage": "176",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "21",
+      "title": "Knight sacrifice on e7",
+      "order": 21,
+      "bookLines": [
+        "Ne7+ Nxe7 exd6 Kf8 d7"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "6k1/5p2/2Np3p/3PPnp1/8/6PP/6K1/8 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pawn promotion, or the threat of one, to find the winning continuation.",
+        "solutionText": "Ne7+ Nxe7 exd6 Kf8 d7",
+        "hint": "You would like to create a passed pawn with a capture on d6. On which square would the black knight be in the way of its own king?",
+        "explanation": "Ne7+ forces Nxe7. Then exd6 attacks the knight and creates two connected passed pawns, and after Kf8 d7 one of them will promote. Book continuation: Ne7+ Nxe7 exd6 Kf8 d7.",
+        "diagramPage": "173",
+        "answerPage": "176",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "22",
+      "title": "In check, yet winning",
+      "order": 22,
+      "bookLines": [
+        "Qd3 Rxd3+ exd3",
+        "Qd3 Qxd3+ exd3 Ra1 Bxg4"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "3Q4/7p/8/p4b2/2P1p1P1/R6k/2qp1P2/6K1 b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. Use a pawn promotion, or the threat of one, to find the winning continuation.",
+        "solutionText": "Qd3 Rxd3+ exd3",
+        "hint": "You are in check, and your d-pawn is one step from promotion. Which way of blocking the check also shuts the d-file?",
+        "explanation": "Black blocks the check with Qd3. Whichever piece takes the queen, the e-pawn recaptures on d3, the d-file is closed, and the pawn on d2 is protected and ready to promote: Rxd3+ exd3, or Qxd3+ exd3 Ra1 Bxg4. Book continuation: Qd3 Rxd3+ exd3 (or Qd3 Qxd3+ exd3 Ra1 Bxg4).",
+        "diagramPage": "173",
+        "answerPage": "176",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "23",
+      "title": "An amazing pawn move",
+      "order": 23,
+      "bookLines": [
+        "c4 Rb4 a5 Nxc4 c2",
+        "c4 Re6 cxb2 Re1 c3 Rb1 c2",
+        "c4 Nxc4 c2",
+        "c4 Rb4 a5 Rxc4 cxb2"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "8/p5pk/1R3p2/2p4p/8/2p4P/PN4P1/6K1 b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. Use a pawn promotion, or the threat of one, to find the winning continuation.",
+        "solutionText": "c4 Rb4 a5 Nxc4 c2",
+        "hint": "Taking the knight lets the rook get back in time. Is there a quiet pawn move that takes away the squares White's pieces need?",
+        "explanation": "The quiet move c4 is the only way to win. After Rb4 a5 the rook is chased away: Nxc4 c2 or Rxc4 cxb2, and a pawn promotes. If Re6, then cxb2 Re1 c3 Rb1 c2, and after Nxc4 c2 the knight blocks its own rook. Book continuation: c4 Rb4 a5 Nxc4 c2 (or c4 Re6 cxb2 Re1 c3 Rb1 c2) (or c4 Nxc4 c2) (or c4 Rb4 a5 Rxc4 cxb2).",
+        "diagramPage": "174",
+        "answerPage": "176",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "24",
+      "title": "The right move order",
+      "order": 24,
+      "bookLines": [
+        "Rd8+ Rxd8 bxc7 Rc8 Rd1 Rxc7 Rd8#"
+      ],
+      "analysisLines": [
+        "bxc7 cxd4"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "2r3k1/2r2ppp/1P6/2p5/1pPR4/7P/5PP1/1K5R w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pawn promotion, or the threat of one, to find the winning continuation.",
+        "solutionText": "Rd8+ Rxd8 bxc7 Rc8 Rd1 Rxc7 Rd8#",
+        "hint": "If you take the rook on c7 at once, your own rook is captured and the pawn is lost. Can you use that rook first?",
+        "explanation": "After bxc7 cxd4 the pawn on c7 is lost. The right order is Rd8+ Rxd8 bxc7 Rc8, and then Rd1 brings the second rook to the d-file. If Black takes the pawn with Rxc7, Rd8 is checkmate on the back rank. Book continuation: Rd8+ Rxd8 bxc7 Rc8 Rd1 Rxc7 Rd8#.",
+        "diagramPage": "174",
+        "answerPage": "176",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "25",
+      "title": "Queen and rook sacrifices",
+      "order": 25,
+      "bookLines": [
+        "Qxd8 Rxd8 Rxd7+ Rxd7 f8=Q"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "3r1r2/1k1n1Pp1/ppp1p2p/2q5/2P4Q/1P5P/1P2B1P1/3R1R1K w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Use a pawn promotion, or the threat of one, to find the winning continuation.",
+        "solutionText": "Qxd8 Rxd8 Rxd7+ Rxd7 f8=Q",
+        "hint": "Your f-pawn is one step from promotion and the rook on f8 blocks it. Which captures would pull that rook away for good?",
+        "explanation": "Qxd8 forces the rook away from f8, and after Rxd8 the second sacrifice Rxd7+ Rxd7 drags it off the back rank. Then f8=Q, and White comes out a piece ahead. Book continuation: Qxd8 Rxd8 Rxd7+ Rxd7 f8=Q.",
+        "diagramPage": "174",
+        "answerPage": "176",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    }
+  ]
+}

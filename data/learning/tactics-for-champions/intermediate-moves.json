@@ -1,0 +1,596 @@
+{
+  "chapter": {
+    "title": "Intermediate Moves",
+    "order": 9
+  },
+  "exercises": [
+    {
+      "number": "1",
+      "title": "Unpin with a check",
+      "order": 1,
+      "bookLines": [
+        "Qf1+ Qf5 Qxf5+ gxf5 Bxa5",
+        "Qf1+ Kg8 Bxa5"
+      ],
+      "analysisLines": [
+        "Bxe5 dxe5 Qxe5 Nc6",
+        "Qf1+ Qf5 Bxa5 Bd4+ Kh2 Qxf1"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "5k2/1p1q2p1/p2p2p1/n2Nb2p/8/1PB4P/P5P1/Q5K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. White would like to capture the knight on a5, but the bishop on c3 is pinned. How should White solve this problem?",
+        "solutionText": "Qf1+ Qf5 Qxf5+ gxf5 Bxa5",
+        "hint": "The bishop is pinned because your queen stands behind it. Can the queen leave that diagonal with gain of time?",
+        "explanation": "Qf1+ takes the queen out of the pin with check. After Qf5 White must not hurry: Bxa5 would lose the queen to Bd4+, so first Qxf5+ gxf5 and only then Bxa5. The direct Bxe5 dxe5 Qxe5 Nc6 just leaves Black a pawn up. Book continuation: Qf1+ Qf5 Qxf5+ gxf5 Bxa5 (or Qf1+ Kg8 Bxa5).",
+        "diagramPage": "148",
+        "answerPage": "161",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "2",
+      "title": "Win a piece along the way",
+      "order": 2,
+      "bookLines": [
+        "Nd5 Qxb3 Nxe7+ Kh8 axb3"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "3r1rk1/p3bpp1/1q1p3p/8/4P3/1QN2P2/P5PP/3R1R1K w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Black is offering to trade queens. How can White win a piece along the way?",
+        "solutionText": "Nd5 Qxb3 Nxe7+ Kh8 axb3",
+        "hint": "The bishop on e7 is protected by nothing. Can you attack it and the queen with one move?",
+        "explanation": "Nd5 attacks the queen and the bishop on e7. After Qxb3 White does not recapture at once: the intermediate check Nxe7+ wins the bishop first, and then axb3 takes the queen. Book continuation: Nd5 Qxb3 Nxe7+ Kh8 axb3.",
+        "diagramPage": "149",
+        "answerPage": "161",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "3",
+      "title": "Capture first, check next",
+      "order": 3,
+      "bookLines": [
+        "Rxd6 Rxc3 Rd8+ Kg7 bxc3"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "6k1/2p2p1p/3n4/r5p1/2r5/2R2B1P/1P3PP1/3R2K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. How can White gain a material advantage?",
+        "solutionText": "Rxd6 Rxc3 Rd8+ Kg7 bxc3",
+        "hint": "Two rooks attack each other on the c-file. What can your other rook take, and how does it get out of danger?",
+        "explanation": "Rxd6 wins the knight. If Black takes on c3, the rook on d6 escapes with the intermediate check Rd8+ and then bxc3 recaptures, so White stays a piece ahead. Book continuation: Rxd6 Rxc3 Rd8+ Kg7 bxc3.",
+        "diagramPage": "149",
+        "answerPage": "161",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "4",
+      "title": "Win the exchange",
+      "order": 4,
+      "bookLines": [
+        "Ng4 Qxg3 Nxf6+ gxf6 hxg3",
+        "Ng4 Rc6 Nf6+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "4r1k1/2q2pp1/pp3r2/2pbN2p/3p4/P2P1PQ1/1PP3PP/1K1R3R w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. White can win the exchange. Can you see how?",
+        "solutionText": "Ng4 Qxg3 Nxf6+ gxf6 hxg3",
+        "hint": "The queens look at each other through your knight. Where can the knight go with an attack of its own?",
+        "explanation": "Ng4 attacks the rook on f6 and uncovers the queen on g3 against the queen on c7. After Qxg3 the intermediate check Nxf6+ wins the rook before hxg3. Protecting the queen with Rc6 does not help because of Nf6+, when the g-pawn is pinned. Book continuation: Ng4 Qxg3 Nxf6+ gxf6 hxg3 (or Ng4 Rc6 Nf6+).",
+        "diagramPage": "150",
+        "answerPage": "161",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "5",
+      "title": "Chase the queen first",
+      "order": 5,
+      "bookLines": [
+        "Bc3 Qb6 Bxf6 gxf6 Qxh7#",
+        "Bc3 Qb6 Bxf6 g6 Qh6"
+      ],
+      "analysisLines": [
+        "Bxf6 Qxe1#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "3r1rk1/p4ppp/b2p1n2/qNp5/2P4Q/P7/1BB2PPP/4R1K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Both bishops point toward the black king, but the immediate Bxf6 has a problem. How can White fix it?",
+        "solutionText": "Bc3 Qb6 Bxf6 gxf6 Qxh7#",
+        "hint": "Bxf6 at once runs into a mate on your back rank. Which black piece gives that mate, and can you push it away with gain of time?",
+        "explanation": "The immediate Bxf6 allows Qxe1 mate. So White first plays Bc3, attacking the queen and covering e1. After Qb6 the capture Bxf6 works: gxf6 allows Qxh7 mate, and after g6 White plays Qh6 with mate on g7 to follow. Book continuation: Bc3 Qb6 Bxf6 gxf6 Qxh7# (or Bc3 Qb6 Bxf6 g6 Qh6).",
+        "diagramPage": "150",
+        "answerPage": "161",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "6",
+      "title": "The unprotected queen",
+      "order": 6,
+      "bookLines": [
+        "Rxb5 Qxa3 Rb7+ Rf7 Rxf7+ Kxf7 bxa3"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r4r2/4q1kp/2p1ppp1/pbR5/3P4/Q3PN1P/1P3PP1/4R1K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. The black queen stands on an unprotected square. How can White take advantage of that?",
+        "solutionText": "Rxb5 Qxa3 Rb7+ Rf7 Rxf7+ Kxf7 bxa3",
+        "hint": "Your rook defends your queen, and the black queen is protected by nothing. What can the rook take?",
+        "explanation": "Rxb5 wins the bishop, because cxb5 loses the queen on e7. After Qxa3 White inserts the check Rb7+, trades rooks on f7, and only then recaptures the queen with bxa3. Book continuation: Rxb5 Qxa3 Rb7+ Rf7 Rxf7+ Kxf7 bxa3.",
+        "diagramPage": "151",
+        "answerPage": "161",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "7",
+      "title": "Pin the queen",
+      "order": 7,
+      "bookLines": [
+        "Qb3 Qxb3 Nxe7+ Kh8 cxb3"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r5k1/ppp1n1p1/4q1Np/8/1P5P/3QPRP1/2P3K1/8 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Black is offering to trade knights, but White can gain a serious material advantage. What is the right move?",
+        "solutionText": "Qb3 Qxb3 Nxe7+ Kh8 cxb3",
+        "hint": "The black queen and king stand on the same diagonal. What happens to the knight on e7 if the queen has to leave e6?",
+        "explanation": "Qb3 pins the queen against the king. After Qxb3 White takes the knight with check, Nxe7+, and then recaptures the queen with cxb3, coming out a knight ahead. Book continuation: Qb3 Qxb3 Nxe7+ Kh8 cxb3.",
+        "diagramPage": "151",
+        "answerPage": "161",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "8",
+      "title": "Offer a queen trade",
+      "order": 8,
+      "bookLines": [
+        "Qd4 Qxd4 Rxb8+ Kg7 exd4",
+        "Qd4 f6 Qxe5 fxe5 Rxb8+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "1r4k1/1R3p1p/p3p1p1/4q3/2P5/4P1PP/3Q1P2/6K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. How can White gain a serious material advantage?",
+        "solutionText": "Qd4 Qxd4 Rxb8+ Kg7 exd4",
+        "hint": "The black queen has to protect the rook on b8. Can you force it to give up that job?",
+        "explanation": "Qd4 offers a trade that Black cannot accept safely. After Qxd4 White first takes the rook with check, Rxb8+, and then the queen with exd4. Protecting the queen with f6 loses the rook in the same way after Qxe5. Book continuation: Qd4 Qxd4 Rxb8+ Kg7 exd4 (or Qd4 f6 Qxe5 fxe5 Rxb8+).",
+        "diagramPage": "152",
+        "answerPage": "161",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "9",
+      "title": "Check, then the in-between move",
+      "order": 9,
+      "bookLines": [
+        "Qf4+ Qxf4 Rxe8+ Kc7 gxf4"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "1k2r3/pp3qpp/8/8/2n5/6P1/PP1Q2BP/4R1K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Black has just attacked the white queen, yet White has a winning combination. What is the right continuation?",
+        "solutionText": "Qf4+ Qxf4 Rxe8+ Kc7 gxf4",
+        "hint": "Your queen is attacked, but the rook on e8 is protected only by the black queen. Can you pull that queen away with check?",
+        "explanation": "Qf4+ forces the black queen to take on f4. Now the rook on e8 has lost its protection: Rxe8+ is an intermediate check, and then gxf4 recaptures the queen. Book continuation: Qf4+ Qxf4 Rxe8+ Kc7 gxf4.",
+        "diagramPage": "152",
+        "answerPage": "161",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "10",
+      "title": "Win the knight back",
+      "order": 10,
+      "bookLines": [
+        "Qc3 Qxc3 Rxh5+ Kg7 Nxc3",
+        "Qc3 f6 Qxe5 fxe5 Rxh5+"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "2n2r1k/p4p2/P3p3/1N2q2n/4P1p1/1Q6/1PP2PP1/2K4R w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Black has an extra knight. How can White win it back?",
+        "solutionText": "Qc3 Qxc3 Rxh5+ Kg7 Nxc3",
+        "hint": "The black queen and king stand on the same long diagonal, and the knight on h5 is pinned on the h-file.",
+        "explanation": "Qc3 pins the queen against the king. After Qxc3 White takes the knight with check, Rxh5+, and then recaptures the queen with Nxc3. After f6 the same idea works: Qxe5 fxe5 Rxh5+. Book continuation: Qc3 Qxc3 Rxh5+ Kg7 Nxc3 (or Qc3 f6 Qxe5 fxe5 Rxh5+).",
+        "diagramPage": "153",
+        "answerPage": "161",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "11",
+      "title": "Improve the rook with check",
+      "order": 11,
+      "bookLines": [
+        "Re1+ Kc2 Bxc3"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "4R3/2p3pk/1p5p/p3b3/8/P1N1rP1P/1P4P1/1K6 b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. The bishop is pinned, and after Bxc3 Black would lose the rook on e3. How can Black improve the position of the rook first?",
+        "solutionText": "Re1+ Kc2 Bxc3",
+        "hint": "The rook on e3 would be lost after Bxc3 because the bishop no longer protects it. Where can the rook go with check so that the bishop protects it afterwards?",
+        "explanation": "Re1+ moves the rook with check to a square that the bishop will protect from c3. After Kc2 Bxc3 the white rook can only trade on e1, and Black has won a piece. Book continuation: Re1+ Kc2 Bxc3.",
+        "diagramPage": "153",
+        "answerPage": "161",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "12",
+      "title": "Unprotected queen, unprotected knight",
+      "order": 12,
+      "bookLines": [
+        "Ne4 Qxe1 Nxf6+ Kh8 Rfxe1",
+        "Ne4 Nxe4 Qxa5"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "3r1rk1/5p1p/2p2npP/q1Pp4/3P4/8/3N1PP1/1R2QRK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Again the black queen stands on an unprotected square. What should White play?",
+        "solutionText": "Ne4 Qxe1 Nxf6+ Kh8 Rfxe1",
+        "hint": "The queens look at each other through your knight. Which knight move attacks something that is not protected?",
+        "explanation": "Ne4 uncovers the queen on e1 against the queen on a5 and attacks the unprotected knight on f6. After Qxe1 the intermediate check Nxf6+ wins the knight before Rfxe1, and after Nxe4 White simply takes the queen. Book continuation: Ne4 Qxe1 Nxf6+ Kh8 Rfxe1 (or Ne4 Nxe4 Qxa5).",
+        "diagramPage": "154",
+        "answerPage": "161",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "13",
+      "title": "The right way to make luft",
+      "order": 13,
+      "bookLines": [
+        "f3 Ne3 Rxb7 Rc1+ Kf2 Nd1+ Ke2"
+      ],
+      "analysisLines": [
+        "Rxb7 Rc1+",
+        "h3 Be4 Re1 Nf6"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "2r3k1/1b3pp1/7p/B7/5Nn1/8/5PPP/1R4K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. White has a back-rank problem. What should White do to fix it?",
+        "solutionText": "f3 Ne3 Rxb7 Rc1+ Kf2 Nd1+ Ke2",
+        "hint": "You want to take the bishop on b7, but first the king needs a flight square. Choose the pawn move that leaves Black no intermediate move.",
+        "explanation": "Rxb7 at once is forbidden because of Rc1+. The move f3 makes room for the king and attacks the knight, and after Ne3 Rxb7 Black has only a couple of checks: Rc1+ Kf2 Nd1+ Ke2. The other pawn move, h3, is weaker: Black has the intermediate move Be4, and after Re1 Nf6 everything is protected. Book continuation: f3 Ne3 Rxb7 Rc1+ Kf2 Nd1+ Ke2.",
+        "diagramPage": "154",
+        "answerPage": "161",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "14",
+      "title": "The better knight move",
+      "order": 14,
+      "bookLines": [
+        "Nd7 Qxg3 Nxf6+ gxf6 hxg3",
+        "Nd7 Rc6 Qxc7 Rxc7 Nxb8",
+        "Nd7 Qxd7 Qxb8+"
+      ],
+      "analysisLines": [
+        "Ng4 Rc6"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "1r4k1/1bq2pp1/p4r2/1pp1N2p/3p4/3P1PQ1/PPP3PP/1K1R3R w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. How can White win material?",
+        "solutionText": "Nd7 Qxg3 Nxf6+ gxf6 hxg3",
+        "hint": "The queens look at each other through your knight. Two knight moves attack the rook on f6; which one attacks a second rook as well?",
+        "explanation": "Nd7 uncovers the queen on g3 and attacks both rooks. After Qxg3 Nxf6+ gxf6 hxg3 White has won the exchange; after Rc6 Qxc7 Rxc7 Nxb8 or Qxd7 Qxb8+ White wins a rook. Ng4 is not as good, because Black can answer Rc6. Book continuation: Nd7 Qxg3 Nxf6+ gxf6 hxg3 (or Nd7 Rc6 Qxc7 Rxc7 Nxb8) (or Nd7 Qxd7 Qxb8+).",
+        "diagramPage": "155",
+        "answerPage": "161",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "15",
+      "title": "Use the pin",
+      "order": 15,
+      "bookLines": [
+        "Rd1 Qxb3 Rxd8+ Kf7 axb3"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "3r2k1/p5pp/5pn1/2pq4/8/1QP2PB1/P5PP/5RK1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. The black queen is pinned. How can White use the pin to gain material?",
+        "solutionText": "Rd1 Qxb3 Rxd8+ Kf7 axb3",
+        "hint": "The pinned queen is protected by the rook on d8. Which of your pieces can attack the queen once more?",
+        "explanation": "Rd1 attacks the pinned queen. After Qxb3 White takes the rook with check, Rxd8+, and only then recaptures the queen with axb3. Book continuation: Rd1 Qxb3 Rxd8+ Kf7 axb3.",
+        "diagramPage": "155",
+        "answerPage": "161",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "16",
+      "title": "A similar idea",
+      "order": 16,
+      "bookLines": [
+        "Qc4 Qxc4 Rxa8+ Kh7 bxc4"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r5k1/R4pp1/3p2p1/3q4/5P2/1P3P1P/2Q3PK/8 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. How can White take advantage of the unfortunate position of the black pieces?",
+        "solutionText": "Qc4 Qxc4 Rxa8+ Kh7 bxc4",
+        "hint": "The black queen is the only protector of the rook on a8. How can you force it to leave?",
+        "explanation": "Qc4 offers a queen trade. After Qxc4 the rook on a8 has lost its protection: Rxa8+ is an intermediate check, and then bxc4 recaptures the queen. Book continuation: Qc4 Qxc4 Rxa8+ Kh7 bxc4.",
+        "diagramPage": "156",
+        "answerPage": "161",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "17",
+      "title": "Only one rook move works",
+      "order": 17,
+      "bookLines": [
+        "Rc8 Qxe3 Rxd8+ Kh7 fxe3"
+      ],
+      "analysisLines": [
+        "Rd5 Qb8"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "3r2k1/5pp1/1q2p2p/ppR1P3/8/1P2Q2P/P4PP1/6K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. White seems to have two ways to reach the same goal, but only one of them works. Which one?",
+        "solutionText": "Rc8 Qxe3 Rxd8+ Kh7 fxe3",
+        "hint": "A rook move uncovers your queen against the black queen. Which square also ties down the rook on d8?",
+        "explanation": "Rc8 uncovers the queen on e3 against the queen on b6 and pins the rook on d8. After Qxe3 White takes the rook with check, Rxd8+, and then recaptures with fxe3. The other try, Rd5, fails to Qb8, when everything is protected. Book continuation: Rc8 Qxe3 Rxd8+ Kh7 fxe3.",
+        "diagramPage": "156",
+        "answerPage": "161",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "18",
+      "title": "Better than recapturing",
+      "order": 18,
+      "bookLines": [
+        "Rxf5 Kg7 Kxe1",
+        "Rxf5 Rxf5 Bxf5+ Kg7 Kxe1",
+        "Rxf5 Rfe8 Re5+ Kg7 Rxe1"
+      ],
+      "analysisLines": [
+        "Kxe1 Re8+",
+        "Bxf5+ Rxf5 Rxf5 Re7"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "5r2/p6k/2p4p/Pp1p1b2/1P3R2/2PB3P/3K1P2/4r3 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Black has just captured a rook on e1. The obvious reply is Kxe1. Does White have a better option?",
+        "solutionText": "Rxf5 Kg7 Kxe1",
+        "hint": "The rook on e1 will not run away. Your bishop looks at the black king through the bishop on f5; which piece should capture there?",
+        "explanation": "Rxf5 wins a piece and threatens a discovered check, so Black has no time to save the rook on e1: after Kg7 or Rxf5 Bxf5+ White takes it next move, and after Rfe8 the discovered check Re5+ wins it as well. The obvious Kxe1 allows Re8+, and Bxf5+ Rxf5 Rxf5 Re7 does not do much for White either. Book continuation: Rxf5 Kg7 Kxe1 (or Rxf5 Rxf5 Bxf5+ Kg7 Kxe1) (or Rxf5 Rfe8 Re5+ Kg7 Rxe1).",
+        "diagramPage": "157",
+        "answerPage": "162",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "19",
+      "title": "Take the knight",
+      "order": 19,
+      "bookLines": [
+        "Rxd7 Qxc1 Rd8+ Re8 Rxe8+ Bxe8 Nxc1"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "6k1/pp1nrpp1/2b5/4p1qp/4P3/P4P2/1P1RN1PP/2Q2B1K w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. How can White win a piece?",
+        "solutionText": "Rxd7 Qxc1 Rd8+ Re8 Rxe8+ Bxe8 Nxc1",
+        "hint": "Your rook is pinned against the queen. What can it capture, and how does it get away after the queens come off?",
+        "explanation": "Rxd7 takes the knight and uncovers the queen on c1 against the queen on g5. After Qxc1 White does not recapture at once: the intermediate check Rd8+ saves the rook, and after Re8 Rxe8+ Bxe8 Nxc1 White is a piece ahead. Book continuation: Rxd7 Qxc1 Rd8+ Re8 Rxe8+ Bxe8 Nxc1.",
+        "diagramPage": "157",
+        "answerPage": "162",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "20",
+      "title": "Something even better",
+      "order": 20,
+      "bookLines": [
+        "e3+ Kxe3 Rxb3+ Ke2 exd6"
+      ],
+      "analysisLines": [
+        "Rxb3 Be5+ Kf7 fxe4 Bxe4 d6"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "8/4p1k1/1p1B2bp/1P1P2p1/4p1P1/1B3P1P/3R1K2/1r6 b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. White has just captured a knight with Bxd6. Black can choose which bishop to capture, or look for something even better.",
+        "solutionText": "e3+ Kxe3 Rxb3+ Ke2 exd6",
+        "hint": "If you take one bishop, the other one escapes with check. Is there a move that changes that?",
+        "explanation": "After Rxb3 White saves the other bishop with Be5+ and has no problems. Instead e3+ forks the king and the rook, so White has to take: Kxe3. Now Rxb3 comes with check, and after Ke2 Black takes the second bishop with exd6. Book continuation: e3+ Kxe3 Rxb3+ Ke2 exd6.",
+        "diagramPage": "158",
+        "answerPage": "162",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "21",
+      "title": "Why axb4 was a mistake",
+      "order": 21,
+      "bookLines": [
+        "Bxc5 Qxc5 axb4 Qxc4 Rxa8"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "r1b2rk1/1p2qpbp/2p2np1/2n1p3/1pP1P3/P1N1BNP1/2Q2PBP/R3R1K1 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. Black has just played axb4. Show why this was a mistake.",
+        "solutionText": "Bxc5 Qxc5 axb4 Qxc4 Rxa8",
+        "hint": "The a-file has just been opened in front of your rook. Which black piece now protects the rook on a8, and can you pull the queen onto an attacked square first?",
+        "explanation": "Bxc5 Qxc5 brings the queen to c5. Then axb4 attacks the queen and uncovers the rook on a1 against the rook on a8: after Qxc4 White takes on a8 and has won a rook. (The book's diagram shows the position before Black's move axb4.) Book continuation: Bxc5 Qxc5 axb4 Qxc4 Rxa8.",
+        "diagramPage": "158",
+        "answerPage": "162",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "22",
+      "title": "A brilliant intermediate move",
+      "order": 22,
+      "bookLines": [
+        "Bc6+ Kxc6 Rh6+ Kd7 Rxf7",
+        "Bc6+ Nxc6 Rxf7+ Ke6 Rxc8",
+        "Bc6+ Rxc6 Rxf7"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "2r4R/p2knrR1/1p6/2p1p1p1/2P1B3/1P1P1P2/P5K1/8 w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. All four rooks are hanging. How can White come out of this mess ahead?",
+        "solutionText": "Bc6+ Kxc6 Rh6+ Kd7 Rxf7",
+        "hint": "All four rooks are attacked. Before capturing anything, look for a check that disturbs the black defenders.",
+        "explanation": "Bc6+ comes first. If the king takes, Rh6+ saves the attacked rook with check and then Rxf7 wins the exchange. If the knight takes, Rxf7+ comes with check and Rxc8 follows. If the rook takes, it no longer attacks the rook on h8 and White simply plays Rxf7. Book continuation: Bc6+ Kxc6 Rh6+ Kd7 Rxf7 (or Bc6+ Nxc6 Rxf7+ Ke6 Rxc8) (or Bc6+ Rxc6 Rxf7).",
+        "diagramPage": "159",
+        "answerPage": "162",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "23",
+      "title": "Better than recapturing the queen",
+      "order": 23,
+      "bookLines": [
+        "Nxe1 Qxf7 Nf3#",
+        "Nxe1 Kf1 Nf3+ Ke2 Nd4+ Kd3 Nxf5"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "8/1R3pbk/2p3pp/4pQ2/1P6/3n3P/3B1PP1/r3N1K1 b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. White has just captured the black queen. Does Black have anything better than recapturing with gxf5?",
+        "solutionText": "Nxe1 Qxf7 Nf3#",
+        "hint": "The white queen will still be attacked next move. Your rook pins the knight on e1 against the king; what can you do with that?",
+        "explanation": "Nxe1 wins a piece and threatens a discovered checkmate. If White saves the queen with Qxf7, Nf3 is mate by double check. If the king runs, Kf1 Nf3+ Ke2 Nd4+ Kd3 Nxf5 wins the queen anyway. Book continuation: Nxe1 Qxf7 Nf3# (or Nxe1 Kf1 Nf3+ Ke2 Nd4+ Kd3 Nxf5).",
+        "diagramPage": "159",
+        "answerPage": "162",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "24",
+      "title": "Go for the king",
+      "order": 24,
+      "bookLines": [
+        "Qg5 Qg6 Qxh5+ Kg8 Bxg6 fxg6 Qxg6+ Kh8 Qg7#"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "4rr2/5p1k/2b2P2/pp5p/4q3/P6P/1PBQ2P1/7K w - - 0 1",
+        "solver": "WHITE",
+        "objective": "SEQUENCE",
+        "prompt": "White to move. White can capture the black queen, but Black would still be ahead in material. How can White win the game quickly?",
+        "solutionText": "Qg5 Qg6 Qxh5+ Kg8 Bxg6 fxg6 Qxg6+",
+        "hint": "The black queen is pinned and cannot run away. What does your queen threaten if it comes closer to the king instead?",
+        "explanation": "The pinned queen will not run away, so White goes for the king: Qg5 threatens mate on g7. After Qg6 Qxh5+ Kg8 White takes the queen under better conditions, Bxg6 fxg6 Qxg6+ Kh8, and Qg7 is checkmate. Book continuation: Qg5 Qg6 Qxh5+ Kg8 Bxg6 fxg6 Qxg6+ Kh8 Qg7#.",
+        "diagramPage": "160",
+        "answerPage": "162",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    },
+    {
+      "number": "25",
+      "title": "No need to move the queen",
+      "order": 25,
+      "bookLines": [
+        "fxg2 Nxc7 Nf4 Qb3 Ngxh3+ Qxh3+ Bxh3",
+        "fxg2 Kxg2 Qd7"
+      ],
+      "content": {
+        "type": "MOVE",
+        "fen": "R1b5/p1q2r1k/3p2n1/1NpPp1n1/Q1P1P3/5p1P/P4PBN/6K1 b - - 0 1",
+        "solver": "BLACK",
+        "objective": "SEQUENCE",
+        "prompt": "Black to move. White has just played Nc3-b5, attacking the queen. How should Black react?",
+        "solutionText": "fxg2 Nxc7 Nf4 Qb3 Ngxh3+ Qxh3+ Bxh3",
+        "hint": "Your queen is attacked, but look at the white king first. What do your pawn on f3 and your two knights threaten?",
+        "explanation": "There is no need to move the queen. After fxg2 Nxc7 Nf4 Black threatens mate on h3, and Qb3 Ngxh3+ Qxh3+ Bxh3 leaves White helpless against Ne2 mate. If White takes the pawn with Kxg2, the queen simply moves away with Qd7 and Black has won a piece. Book continuation: fxg2 Nxc7 Nf4 Qb3 Ngxh3+ Qxh3+ Bxh3 (or fxg2 Kxg2 Qd7).",
+        "diagramPage": "160",
+        "answerPage": "162",
+        "pdfId": "",
+        "pdfPage": null
+      }
+    }
+  ]
+}

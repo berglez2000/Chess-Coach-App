@@ -18,7 +18,7 @@ export default async function GamesPage() {
   return <main id="main-content" className={shared.page}>
     <header className={styles.header}>
       <div>
-        <p className={shared.eyebrow}>Your chess journey</p>
+
         <h1 className={shared.heading}>Your games</h1>
         <p className={shared.description}>Every game has a lesson. Revisit your moves and find your next improvement.</p>
       </div>

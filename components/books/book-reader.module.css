@@ -1,4 +1,4 @@
-.reader { display: flex; flex-direction: column; height: 100dvh; min-height: 0; min-width: 0; overflow: hidden; background: oklch(30% .012 200); font-size: 15px; line-height: 1.5; position: relative; }
+.reader { display: flex; flex-direction: column; height: 100dvh; min-height: 0; min-width: 0; overflow: hidden; background: var(--bg); font-size: 15px; line-height: 1.5; position: relative; }
 .topbar { min-height: 52px; background: var(--surface); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; padding: 0 var(--sp-5); gap: var(--sp-4); flex-shrink: 0; }
 .back { display: flex; align-items: center; gap: var(--sp-2); font-size: 13px; font-weight: 500; color: var(--fg-3); flex-shrink: 0; cursor: pointer; }
 .back:hover { color: var(--fg); }
@@ -10,7 +10,7 @@
 .button { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 6px 10px; font-size: 13px; font-weight: 500; color: var(--fg-2); background: transparent; border: 1px solid transparent; border-radius: var(--r-sm); cursor: pointer; white-space: nowrap; }
 .button:hover { background: var(--surface-2); color: var(--fg); border-color: var(--border-light); }
 .iconButton { width: 32px; height: 32px; padding: 0; flex-shrink: 0; }
-.button.active { background: var(--status-success-bg); color: var(--status-success); border-color: oklch(82% .06 155); }
+.button.active { background: var(--status-success-bg); color: var(--status-success); border-color: var(--status-success); }
 .pageForm { display: flex; align-items: center; gap: var(--sp-2); font-size: 13px; color: var(--fg-2); }
 .pageForm label { display: flex; align-items: center; gap: var(--sp-2); }
 .pageInput { width: 48px; text-align: center; border: 1px solid var(--border); border-radius: var(--r-sm); padding: 4px 6px; font-size: 13px; font-family: var(--font-mono); color: var(--fg); background: var(--surface); appearance: textfield; }
@@ -27,7 +27,7 @@
 .markingOverlay { position: absolute; inset: 0; cursor: crosshair; }
 .mark { position: absolute; width: 44px; height: 44px; display: grid; place-items: center; transform: translate(-50%, -50%); border-radius: 50%; color: var(--status-success); background: transparent; opacity: .85; filter: drop-shadow(0 2px 4px rgba(0,0,0,.2)); cursor: pointer; }
 .mark:hover { background: var(--status-success-bg); opacity: 1; }
-.hint { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 8px; width: max-content; max-width: calc(100% - 24px); background: var(--fg); color: white; font-size: 13px; padding: 8px 16px; border-radius: 999px; box-shadow: 0 4px 16px rgba(0,0,0,.2); pointer-events: none; }
+.hint { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 8px; width: max-content; max-width: calc(100% - 24px); background: var(--fg); color: var(--bg); font-size: 13px; padding: 8px 16px; border-radius: 999px; box-shadow: 0 4px 16px rgba(0,0,0,.2); pointer-events: none; }
 .hint svg { flex-shrink: 0; color: var(--status-success); }
 .alert { background: var(--status-error-bg); color: var(--fg); font-size: 13px; padding: 12px 20px; overflow-wrap: anywhere; flex-shrink: 0; }
 .alert button { margin-left: 8px; text-decoration: underline; }

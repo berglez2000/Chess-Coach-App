@@ -1,12 +1,12 @@
 .layout { display: grid; grid-template-columns: minmax(0,760px) minmax(280px,1fr); gap: 24px; align-items: start; }
 .stack { display: grid; gap: 16px; min-width: 0; }
-.card, .panel { min-width: 0; padding: 20px; border: 1px solid var(--border-light); border-radius: 16px; background: var(--surface); box-shadow: var(--shadow-card); }
+.card, .panel { min-width: 0; padding: 20px; border: 1px solid var(--border-light); border-radius: 16px; background: var(--surface);  }
 .panel { display: grid; gap: 14px; margin-top: 16px; }
 .panel h2 { font-size: 18px; font-weight: 650; }
 .actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
 .muted { font-size: 13px; color: var(--fg-3); line-height: 1.7; }
 .button, .primary { border: 1px solid var(--border); border-radius: 8px; padding: 9px 14px; font-size: 13px; font-weight: 600; cursor: pointer; }
-.primary { background: var(--green); color: white; border-color: var(--green); }
+.primary { background: var(--green); color: var(--on-green); border-color: var(--green); }
 .button:hover { background: var(--green-subtle); }
 .primary:hover { background: var(--green-hover); }
 .button:disabled { opacity: .5; cursor: default; }

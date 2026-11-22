@@ -1,5 +1,5 @@
 .editor { display: grid; gap: 24px; margin-top: 32px; }
-.setup, .plan { min-width: 0; padding: 24px; background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--r-xl); box-shadow: var(--shadow-card); }
+.setup, .plan { min-width: 0; padding: 24px; background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--r-xl);  }
 .cardHeading { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
 .cardHeading h2 { font-size: 17px; font-weight: 600; letter-spacing: -.01em; }
 .cardHeading p { margin-top: 4px; font-size: 13px; color: var(--fg-3); }

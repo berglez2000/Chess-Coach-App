@@ -11,7 +11,7 @@ type Chapter = (typeof ENDGAME_CHAPTERS)[number];
 export function EndgameLibrary({ progress = {} }: { progress?: Record<string, EndgameProgress> } = {}) {
   return <>
     <header className={books.pageHeader}>
-      <nav className={books.breadcrumb} aria-label="Breadcrumb"><Link href="/">Home</Link><span aria-hidden="true">/</span><span aria-current="page">Endgames</span></nav>
+      <nav className={books.breadcrumb} aria-label="Breadcrumb"><Link href="/">Dashboard</Link><span aria-hidden="true">/</span><span aria-current="page">Endgames</span></nav>
       <h1 className={books.pageTitle}>Your endgame library</h1>
       <p className={books.pageSubtitle}>Explore endgames by chapter. Choose a position and practice it against Stockfish at your own pace.</p>
     </header>

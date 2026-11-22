@@ -6,70 +6,93 @@
 @font-face { font-family: "Inter"; font-style: normal; font-weight: 700; font-display: swap; src: url("/fonts/inter-700.ttf") format("truetype"); }
 
 :root {
-      /* --- Core palette (OKLch) --- */
-      --bg:           oklch(97.5% 0.006 120);   /* warm neutral page */
-      --surface:      oklch(100% 0 0);           /* white cards */
-      --surface-2:    oklch(96% 0.007 120);      /* inset / secondary surface */
-      --fg:           oklch(22% 0.025 155);      /* forest ink — from #20382e */
-      --fg-2:         oklch(38% 0.020 148);      /* secondary text — #465c50 */
-      --fg-3:         oklch(48% 0.016 148);      /* muted text — #657467 */
-      --border:       oklch(88% 0.010 148);      /* #20382e at ~15% */
-      --border-light: oklch(92% 0.006 148);      /* hairline */
+  /* --- Core palette (dark, neutral) --- */
+  --bg:           oklch(15.5% 0.004 260);   /* page */
+  --surface:      oklch(19% 0.004 260);     /* cards */
+  --surface-2:    oklch(23% 0.005 260);     /* inset / hover */
+  --surface-3:    oklch(27% 0.005 260);     /* raised controls */
+  --fg:           oklch(94% 0.004 90);      /* primary text */
+  --fg-2:         oklch(76% 0.006 90);      /* secondary text */
+  --fg-3:         oklch(60% 0.008 90);      /* muted text */
+  --border:       oklch(31% 0.005 260);
+  --border-light: oklch(25.5% 0.005 260);   /* hairline */
 
-      /* --- Brand / actions --- */
-      --green:        oklch(22% 0.025 155);      /* primary = #20382e */
-      --green-hover:  oklch(28% 0.025 155);      /* #345443 hover */
-      --green-subtle: oklch(94% 0.015 145);      /* #e4eddf tint */
+  /* --- Brand / actions (mint accent) --- */
+  --green:        oklch(82% 0.12 158);
+  --green-hover:  oklch(87% 0.11 158);
+  --green-subtle: oklch(82% 0.12 158 / 0.12);
+  --on-green:     oklch(16% 0.03 158);      /* text on accent */
 
-      /* --- Chess-specific move quality --- */
-      --quality-good:       oklch(56% 0.14 155); /* emerald */
-      --quality-good-bg:    oklch(96% 0.04 155);
-      --quality-inaccuracy: oklch(68% 0.16 85);  /* amber */
-      --quality-inaccuracy-bg: oklch(97% 0.06 85);
-      --quality-mistake:    oklch(68% 0.18 48);  /* orange */
-      --quality-mistake-bg: oklch(96% 0.06 48);
-      --quality-blunder:    oklch(54% 0.22 25);  /* red */
-      --quality-blunder-bg: oklch(97% 0.06 25);
-      --quality-unknown:    oklch(55% 0.008 240);
-      --quality-unknown-bg: oklch(96% 0.003 240);
+  /* --- Chess-specific move quality --- */
+  --quality-good:          oklch(78% 0.14 158);
+  --quality-good-bg:       oklch(78% 0.14 158 / 0.14);
+  --quality-inaccuracy:    oklch(84% 0.15 90);
+  --quality-inaccuracy-bg: oklch(84% 0.15 90 / 0.14);
+  --quality-mistake:       oklch(78% 0.16 55);
+  --quality-mistake-bg:    oklch(78% 0.16 55 / 0.14);
+  --quality-blunder:       oklch(70% 0.19 25);
+  --quality-blunder-bg:    oklch(70% 0.19 25 / 0.16);
+  --quality-unknown:       oklch(62% 0.01 260);
+  --quality-unknown-bg:    oklch(62% 0.01 260 / 0.14);
 
-      /* --- Board palette (walnut + maple) --- */
-      --board-dark:   #b58863;   /* walnut */
-      --board-light:  #f0d9b5;   /* maple */
-      --board-last-from: rgba(246, 214, 74, 0.38);
-      --board-last-to:   rgba(246, 214, 74, 0.56);
+  /* --- Board palette (walnut + maple) --- */
+  --board-dark:   #b58863;
+  --board-light:  #f0d9b5;
+  --board-last-from: rgba(246, 214, 74, 0.38);
+  --board-last-to:   rgba(246, 214, 74, 0.56);
 
-      /* --- Status --- */
-      --status-error:   oklch(55% 0.22 25);
-      --status-error-bg: oklch(98% 0.04 25);
-      --status-success: oklch(52% 0.15 155);
-      --status-success-bg: oklch(96% 0.04 155);
-      --status-warn:    oklch(62% 0.17 75);
-      --status-warn-bg: oklch(97% 0.05 75);
-      --status-info:    oklch(52% 0.13 240);
-      --status-info-bg: oklch(96% 0.04 240);
+  /* --- Status --- */
+  --status-error:      oklch(72% 0.18 25);
+  --status-error-bg:   oklch(72% 0.18 25 / 0.14);
+  --status-success:    oklch(78% 0.14 158);
+  --status-success-bg: oklch(78% 0.14 158 / 0.14);
+  --status-warn:       oklch(82% 0.15 80);
+  --status-warn-bg:    oklch(82% 0.15 80 / 0.14);
+  --status-info:       oklch(78% 0.10 240);
+  --status-info-bg:    oklch(78% 0.10 240 / 0.14);
 
-      /* --- Spacing scale (4px base) --- */
-      --sp-1: 4px;   --sp-2: 8px;   --sp-3: 12px;  --sp-4: 16px;
-      --sp-5: 20px;  --sp-6: 24px;  --sp-8: 32px;  --sp-10: 40px;
-      --sp-12: 48px; --sp-16: 64px; --sp-20: 80px;
+  /* --- Spacing scale (4px base) --- */
+  --sp-1: 4px;   --sp-2: 8px;   --sp-3: 12px;  --sp-4: 16px;
+  --sp-5: 20px;  --sp-6: 24px;  --sp-8: 32px;  --sp-10: 40px;
+  --sp-12: 48px; --sp-16: 64px; --sp-20: 80px;
 
-      /* --- Radius --- */
-      --r-sm: 6px;
-      --r-md: 10px;
-      --r-lg: 16px;
-      --r-xl: 20px;
+  /* --- Radius --- */
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 14px;
+  --r-xl: 16px;
 
-      /* --- Shadows --- */
-      --shadow-card: 0 1px 3px rgba(32,56,46,0.06), 0 1px 2px rgba(32,56,46,0.04);
-      --shadow-elevated: 0 4px 16px rgba(32,56,46,0.08), 0 1px 4px rgba(32,56,46,0.04);
+  /* --- Shadows (flat theme: borders carry hierarchy) --- */
+  --shadow-card: none;
+  --shadow-elevated: 0 12px 40px rgba(0, 0, 0, 0.45);
 
-      /* --- Type --- */
-      --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-      --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', Menlo, monospace;
-    }
+  /* --- Type --- */
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', Menlo, monospace;
+}
 
-
-:root { color-scheme: light; background: var(--bg); color: var(--fg); font-family: var(--font); }
+:root { color-scheme: dark; background: var(--bg); color: var(--fg); font-family: var(--font); -webkit-font-smoothing: antialiased; }
 body { margin: 0; }
-::selection { background: var(--green-subtle); }
+::selection { background: oklch(82% 0.12 158 / 0.3); }
+
+/* Tailwind v4 defaults `border` to currentColor; use the theme hairline instead. */
+@layer base {
+  *, ::before, ::after { border-color: var(--border); }
+  button, input, select, textarea { font: inherit; color: inherit; }
+  input, select, textarea { background: var(--surface); accent-color: var(--green); }
+  input::placeholder, textarea::placeholder { color: var(--fg-3); }
+  select option { background: var(--surface-2); color: var(--fg); }
+  :focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+  a { color: inherit; }
+  hr { border-color: var(--border-light); }
+  code { font-family: var(--font-mono); }
+}
+
+/* Subtle scrollbars */
+* { scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 999px; border: 2px solid var(--bg); }
+::-webkit-scrollbar-track { background: transparent; }
+
+/* Native details marker spacing */
+summary { cursor: pointer; }

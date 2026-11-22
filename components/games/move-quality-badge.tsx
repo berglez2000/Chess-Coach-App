@@ -1,12 +1,12 @@
 import type { MoveQuality } from "@/types/analysis";
 
 const badges = {
-  normal: { symbol: "✓", label: "Okay", color: "bg-emerald-100 text-emerald-800" },
-  inaccuracy: { symbol: "?!", label: "Inaccuracy", color: "bg-yellow-100 text-yellow-800" },
-  mistake: { symbol: "?", label: "Mistake", color: "bg-orange-100 text-orange-800" },
-  blunder: { symbol: "??", label: "Blunder", color: "bg-red-100 text-red-800" },
-  unknown: { symbol: "—", label: "Unclassified", color: "bg-slate-100 text-slate-600" },
-  pending: { symbol: "·", label: "Not analyzed", color: "bg-slate-100 text-slate-600" },
+  normal: { symbol: "✓", label: "Okay", color: "bg-[var(--quality-good-bg)] text-[var(--quality-good)]" },
+  inaccuracy: { symbol: "?!", label: "Inaccuracy", color: "bg-[var(--quality-inaccuracy-bg)] text-[var(--quality-inaccuracy)]" },
+  mistake: { symbol: "?", label: "Mistake", color: "bg-[var(--quality-mistake-bg)] text-[var(--quality-mistake)]" },
+  blunder: { symbol: "??", label: "Blunder", color: "bg-[var(--quality-blunder-bg)] text-[var(--quality-blunder)]" },
+  unknown: { symbol: "—", label: "Unclassified", color: "bg-[var(--quality-unknown-bg)] text-[var(--quality-unknown)]" },
+  pending: { symbol: "·", label: "Not analyzed", color: "bg-[var(--quality-unknown-bg)] text-[var(--quality-unknown)]" },
 };
 
 export function MoveQualityBadge({ quality, showLabel = false }: { quality?: MoveQuality | null; showLabel?: boolean }) {

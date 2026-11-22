@@ -1,10 +1,10 @@
 import type { ReviewCoachingAnnotation, AnalysisStatus } from "@/types/saved-game";
 
 const CLASSIFICATION_COLORS: Record<string, string> = {
-  normal: "bg-[#20382e]/10 text-[#20382e]",
-  inaccuracy: "bg-yellow-100 text-yellow-800",
-  mistake: "bg-orange-100 text-orange-800",
-  blunder: "bg-red-100 text-red-800",
+  normal: "bg-[var(--green-subtle)] text-[var(--fg)]",
+  inaccuracy: "bg-[var(--quality-inaccuracy-bg)] text-[var(--quality-inaccuracy)]",
+  mistake: "bg-[var(--quality-mistake-bg)] text-[var(--quality-mistake)]",
+  blunder: "bg-[var(--quality-blunder-bg)] text-[var(--quality-blunder)]",
 };
 
 function formatCategory(category: string): string {
@@ -35,21 +35,21 @@ export function CoachingPanel({ coaching, status }: {
       {coaching ? (
         <div className="mt-4 space-y-4">
           <div className="flex flex-wrap items-center gap-2">
-            <span className={`inline-block rounded-full px-2.5 py-0.5 text-sm font-medium ${CLASSIFICATION_COLORS[coaching.classification] ?? "bg-gray-100 text-gray-800"}`}>
+            <span className={`inline-block rounded-full px-2.5 py-0.5 text-sm font-medium ${CLASSIFICATION_COLORS[coaching.classification] ?? "bg-[var(--quality-unknown-bg)] text-[var(--quality-unknown)]"}`}>
               {capitalize(coaching.classification)}
             </span>
-            <span className="text-sm text-[#465c50]">{formatCategory(coaching.category)}</span>
+            <span className="text-sm text-[var(--fg-2)]">{formatCategory(coaching.category)}</span>
           </div>
           {coaching.headline && <p className="font-semibold">{coaching.headline}</p>}
           <div>
-            <p className="text-sm font-semibold text-[#465c50]">Why this matters</p>
+            <p className="text-sm font-semibold text-[var(--fg-2)]">Why this matters</p>
             <p className="mt-1 text-sm">{coaching.explanation}</p>
           </div>
           <div>
-            <p className="text-sm font-semibold text-[#465c50]">Lesson</p>
+            <p className="text-sm font-semibold text-[var(--fg-2)]">Lesson</p>
             <p className="mt-1 text-sm">{coaching.lesson}</p>
           </div>
-          <p className="mt-2 text-xs text-[#465c50]">
+          <p className="mt-2 text-xs text-[var(--fg-2)]">
             Note: explanations refer to the position before the played move. The board shows the position after.
           </p>
 

@@ -26,7 +26,7 @@ fi
 echo "== At commit $(git rev-parse --short HEAD): $(git log -1 --pretty=%s)"
 
 echo "== Installing dependencies (includes devDependencies, needed for prisma generate and build)"
-npm ci --no-audit --no-fund
+npm ci --include=dev --no-audit --no-fund
 
 echo "== Building"
 # Builds into .next while the old server keeps running; a failed build aborts before restart.

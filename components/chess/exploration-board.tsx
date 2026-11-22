@@ -6,7 +6,7 @@ import { explorationFen, explorationPosition, exploreMove, type Exploration } fr
 import { PositionAnalysisPanel } from "@/components/analysis/position-panel";
 import { ReplayBoard } from "./replay-board";
 
-const buttonClass = "rounded-lg border border-[#20382e]/30 px-3 py-2 text-sm font-medium hover:bg-white disabled:opacity-40";
+const buttonClass = "rounded-lg border border-[var(--border)] px-3 py-2 text-sm font-medium hover:bg-[var(--surface-2)] disabled:opacity-40";
 
 export function ExplorationBoard({ startFen, userColor, flipped, onExit }: {
   startFen: string; userColor: ChessColor; flipped: boolean; onExit: () => void;
@@ -35,7 +35,7 @@ export function ExplorationBoard({ startFen, userColor, flipped, onExit }: {
     setMoveText("");
   }
   return <div className="min-w-0">
-    <p className="mb-3 rounded-lg bg-[#e4eddf] p-3 text-sm"><strong>Exploring a variation</strong> · Play both sides. Moves are temporary; saved analysis is hidden. Live analysis is available below when enabled.</p>
+    <p className="mb-3 rounded-lg bg-[var(--green-subtle)] p-3 text-sm"><strong>Exploring a variation</strong> · Play both sides. Moves are temporary; saved analysis is hidden. Live analysis is available below when enabled.</p>
     <ReplayBoard fen={explorationFen(variation)} userColor={userColor} flipped={flipped}
       lastMove={variation.moves.at(-1)} selectedSquare={selected} onMove={move}
       onSquareClick={square => {
@@ -57,7 +57,7 @@ export function ExplorationBoard({ startFen, userColor, flipped, onExit }: {
       <label className="text-sm">Move coordinates<input className="ml-2 w-28 rounded border p-2" value={moveText} onChange={e => setMoveText(e.target.value)} placeholder="e2e4" /></label>
       <button className={buttonClass} disabled={!!terminal}>Play move</button>
     </form>
-    {error && <p role="alert" className="mt-2 text-sm text-red-800">{error}</p>}
+    {error && <p role="alert" className="mt-2 text-sm text-[var(--status-error)]">{error}</p>}
     <p className="mt-3 text-sm" aria-label="Explored moves">Variation: {chess.history().join(" · ") || "No moves yet"}</p>
     <div className="mt-3 flex flex-wrap gap-2">
       <button type="button" className={buttonClass} disabled={!variation.moves.length} onClick={() => changeMoves(variation.moves.slice(0, -1))}>Undo</button>

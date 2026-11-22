@@ -19,10 +19,10 @@ export function EvaluationBar({ evaluation, whiteBottom }: {
 
   return <div role="img" aria-label={`Stockfish evaluation: ${formatEvaluation(evaluation)}`}
     title={formatEvaluation(evaluation)}
-    className="relative w-10 shrink-0 overflow-hidden rounded border border-[#20382e]/30 bg-[#292724]">
-    <div data-testid="evaluation-white" className="absolute inset-x-0 bg-[#faf7ed] transition-[height] duration-300 ease-in-out motion-reduce:transition-none"
+    className="relative w-10 shrink-0 overflow-hidden rounded border border-[var(--border)] bg-[#26262a]">
+    <div data-testid="evaluation-white" className="absolute inset-x-0 bg-[#ece6d8] transition-[height] duration-300 ease-in-out motion-reduce:transition-none"
       style={{ height: `${whitePercentage(evaluation)}%`, ...(whiteBottom ? { bottom: 0 } : { top: 0 }) }} />
-    <span className="absolute inset-x-0 top-1/2 -translate-y-1/2 bg-[#f6f5f0] py-1 text-center text-[10px] font-bold tabular-nums text-[#20382e]">
+    <span className="absolute inset-x-0 top-1/2 -translate-y-1/2 bg-[var(--surface-3)] py-1 text-center text-[10px] font-bold tabular-nums text-[var(--fg)]">
       {bound}{label}
     </span>
   </div>;

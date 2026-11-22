@@ -7,7 +7,7 @@
 #   2. Creates an unprivileged system user "chess" that will own and run the app.
 #   3. Creates the PostgreSQL role and database with a random password.
 #   4. Writes /etc/chess-coach/env with generated secrets (readable only by root and chess).
-#   5. Installs the systemd service and enables the firewall (SSH + Tailscale only).
+#   5. Installs the systemd service and enables the firewall (SSH only).
 # Safe to re-run: every step checks whether it has already been done.
 set -euo pipefail
 
@@ -73,7 +73,7 @@ else
   echo "$ENV_FILE exists, left untouched."
 fi
 
-echo "== 5/5 systemd service, sudo rule, Tailscale, firewall"
+echo "== 5/5 systemd service, sudo rule, firewall"
 install -m 644 "$SCRIPT_DIR/chess-coach.service" /etc/systemd/system/chess-coach.service
 systemctl daemon-reload
 systemctl enable chess-coach >/dev/null
@@ -83,11 +83,14 @@ $APP_USER ALL=(root) NOPASSWD: /usr/bin/systemctl restart chess-coach, /usr/bin/
 SUDO
 chmod 440 /etc/sudoers.d/chess-coach
 visudo -cf /etc/sudoers.d/chess-coach >/dev/null
-# Tailscale gives a stable HTTPS URL (Funnel) without opening router ports or owning a domain.
-if ! command -v tailscale >/dev/null; then curl -fsSL https://tailscale.com/install.sh | sh; fi
-# Firewall: only SSH from the LAN and anything arriving over Tailscale. App port 3000 stays loopback-only.
-ufw allow OpenSSH >/dev/null
-ufw allow in on tailscale0 >/dev/null 2>&1 || true
+# Optional: Tailscale gives a stable HTTPS URL (Funnel) without opening router ports or owning a domain.
+# Skipped by default; the home VM is reached over a WireGuard VPN instead. Enable with INSTALL_TAILSCALE=1.
+if [[ "${INSTALL_TAILSCALE:-0}" == "1" ]] && ! command -v tailscale >/dev/null; then curl -fsSL https://tailscale.com/install.sh | sh; fi
+# Firewall: only SSH. App port 3000 stays loopback-only; open it per VPN interface when the VPN exists (see README).
+# SSH may listen on a non-default port (for example 2222 behind a router forward); read it from sshd.
+SSH_PORTS="$(sshd -T 2>/dev/null | awk '$1=="port"{print $2}')"
+for p in ${SSH_PORTS:-22}; do ufw allow "$p/tcp" >/dev/null; done
+if [[ "${INSTALL_TAILSCALE:-0}" == "1" ]]; then ufw allow in on tailscale0 >/dev/null 2>&1 || true; fi
 ufw --force enable >/dev/null
 # Nightly database backup at 03:30, kept 14 days.
 install -m 755 "$SCRIPT_DIR/backup.sh" /usr/local/bin/chess-coach-backup
@@ -99,8 +102,7 @@ Server prepared. Next steps:
  1. Add this read-only deploy key to GitHub (repo -> Settings -> Deploy keys):
       $(cat "$APP_HOME/.ssh/id_ed25519.pub")
  2. Edit secrets:   sudo nano $ENV_FILE
- 3. Join Tailscale:  sudo tailscale up   (open the printed URL, log in once)
  4. First deploy:   sudo -iu $APP_USER git clone $REPO_URL $APP_DIR && sudo -iu $APP_USER $APP_DIR/deploy/02-deploy.sh
- 5. Expose it:      sudo tailscale funnel --bg 3000   (then put the printed https URL into BETTER_AUTH_URL and restart)
+ 5. Expose it:      see README "Access over WireGuard" (bind to the VPN interface, set BETTER_AUTH_URL, restart)
  6. Logs:           journalctl -u chess-coach -f
 MSG

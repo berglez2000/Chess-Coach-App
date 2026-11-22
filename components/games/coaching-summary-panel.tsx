@@ -3,12 +3,12 @@ import type { GameCoachingSummary, ReviewGame, AnalysisStatus } from "@/types/sa
 
 function ClassificationDot({ classification }: { classification: string }) {
   const colors: Record<string, string> = {
-    blunder: "bg-red-500",
-    mistake: "bg-orange-400",
-    inaccuracy: "bg-yellow-400",
-    normal: "bg-[#20382e]/30",
+    blunder: "bg-[var(--quality-blunder)]",
+    mistake: "bg-[var(--quality-mistake)]",
+    inaccuracy: "bg-[var(--quality-inaccuracy)]",
+    normal: "bg-[var(--green)]/30",
   };
-  return <span className={`inline-block h-2.5 w-2.5 rounded-full ${colors[classification] ?? "bg-gray-300"}`} aria-hidden="true" />;
+  return <span className={`inline-block h-2.5 w-2.5 rounded-full ${colors[classification] ?? "bg-[var(--quality-unknown)]"}`} aria-hidden="true" />;
 }
 
 export function CoachingSummaryPanel({ coaching, moves, status, onSelectPly }: {
@@ -23,7 +23,7 @@ export function CoachingSummaryPanel({ coaching, moves, status, onSelectPly }: {
   if (!coaching) {
     if (status === "COMPLETED") {
       return (
-        <section aria-labelledby="coaching-summary-heading" className="mt-8 rounded-2xl border border-[#20382e]/20 bg-white p-5">
+        <section aria-labelledby="coaching-summary-heading" className="mt-8 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5">
           <h3 id="coaching-summary-heading" className="text-lg font-semibold">Coaching summary</h3>
           <p className="mt-4 text-sm">Coaching summary unavailable. Saved moves and engine results remain available below.</p>
         </section>
@@ -31,7 +31,7 @@ export function CoachingSummaryPanel({ coaching, moves, status, onSelectPly }: {
     }
     if (status === "FAILED") {
       return (
-        <section aria-labelledby="coaching-summary-heading" className="mt-8 rounded-2xl border border-[#20382e]/20 bg-white p-5">
+        <section aria-labelledby="coaching-summary-heading" className="mt-8 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5">
           <h3 id="coaching-summary-heading" className="text-lg font-semibold">Coaching summary</h3>
           <p className="mt-4 text-sm">Coaching could not be generated. Use the retry button above.</p>
         </section>
@@ -41,19 +41,19 @@ export function CoachingSummaryPanel({ coaching, moves, status, onSelectPly }: {
   }
 
   return (
-    <section aria-labelledby="coaching-summary-heading" className="mt-8 rounded-2xl border border-[#20382e]/20 bg-white p-5">
+    <section aria-labelledby="coaching-summary-heading" className="mt-8 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5">
       <h3 id="coaching-summary-heading" className="text-lg font-semibold">Coaching summary</h3>
       <div className="mt-4 grid gap-5 text-sm leading-relaxed md:grid-cols-3">
         <div><h4 className="mb-2 font-semibold">Your main takeaway</h4><p>{coaching.summary}</p></div>
         {coaching.strengths[0] && <div><h4 className="mb-2 font-semibold">A strength to keep</h4><p>{coaching.strengths[0]}</p></div>}
         {coaching.improvements[0] && <div><h4 className="mb-2 font-semibold">Next time you play</h4><p>{coaching.improvements[0]}</p></div>}
       </div>
-      <details className="mt-6 border-t border-[#20382e]/15 pt-4"><summary className="cursor-pointer text-sm font-semibold">Read full review</summary>
+      <details className="mt-6 border-t border-[var(--border)] pt-4"><summary className="cursor-pointer text-sm font-semibold">Read full review</summary>
       <p className="mt-2 text-sm">Coached by {PROVIDERS[coaching.provider].label} · {coaching.model}</p>
 
       {coaching.strengths.length > 0 && (
         <div className="mt-4">
-          <p className="font-semibold text-sm text-[#20382e]">Strengths</p>
+          <p className="font-semibold text-sm text-[var(--fg)]">Strengths</p>
           <ul className="mt-2 space-y-1 list-disc list-inside text-sm">
             {coaching.strengths.map((s, i) => <li key={i}>{s}</li>)}
           </ul>
@@ -62,7 +62,7 @@ export function CoachingSummaryPanel({ coaching, moves, status, onSelectPly }: {
 
       {coaching.improvements.length > 0 && (
         <div className="mt-4">
-          <p className="font-semibold text-sm text-[#20382e]">To improve</p>
+          <p className="font-semibold text-sm text-[var(--fg)]">To improve</p>
           <ul className="mt-2 space-y-1 list-disc list-inside text-sm">
             {coaching.improvements.map((s, i) => <li key={i}>{s}</li>)}
           </ul>
@@ -76,7 +76,7 @@ export function CoachingSummaryPanel({ coaching, moves, status, onSelectPly }: {
             {positiveMoves.map(move => (
               <div key={move.ply}>
                 <button type="button" onClick={() => onSelectPly(move.ply)}
-                  className="rounded-lg border border-[#20382e]/30 px-3 py-1.5 text-sm font-medium hover:bg-[#20382e]/5 focus-visible:outline-2 focus-visible:outline-offset-2">
+                  className="rounded-lg border border-[var(--border)] px-3 py-1.5 text-sm font-medium hover:bg-[var(--green)]/5 focus-visible:outline-2 focus-visible:outline-offset-2">
                   {move.moveNumber}{move.color === "WHITE" ? "." : "…"} {move.san} · Positive highlight
                 </button>
                 {move.coaching ? <>
@@ -92,14 +92,14 @@ export function CoachingSummaryPanel({ coaching, moves, status, onSelectPly }: {
 
       {annotatedMoves.length > 0 && (
         <div className="mt-5">
-          <p className="font-semibold text-sm text-[#20382e]">Annotated moments</p>
+          <p className="font-semibold text-sm text-[var(--fg)]">Annotated moments</p>
           <nav aria-label="Annotated moments" className="mt-2 flex flex-wrap gap-2">
             {annotatedMoves.map(move => (
               <button
                 key={move.ply}
                 type="button"
                 onClick={() => onSelectPly(move.ply)}
-                className="flex items-center gap-1.5 rounded-lg border border-[#20382e]/30 px-3 py-1.5 text-sm font-medium hover:bg-[#20382e]/5 focus-visible:outline-2 focus-visible:outline-offset-2"
+                className="flex items-center gap-1.5 rounded-lg border border-[var(--border)] px-3 py-1.5 text-sm font-medium hover:bg-[var(--green)]/5 focus-visible:outline-2 focus-visible:outline-offset-2"
                 aria-label={`Go to move ${move.moveNumber}${move.color === "WHITE" ? "." : "…"} ${move.san} — ${move.coaching!.classification}`}
               >
                 <ClassificationDot classification={move.coaching!.classification} />

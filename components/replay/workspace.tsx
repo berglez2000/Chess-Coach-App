@@ -38,14 +38,14 @@ export function ReplayWorkspace({ initialSession }: { initialSession: ReplayDto 
   const comparison = session.comparison;
   return <>
     <h1 className="text-3xl font-semibold">Beat your past self</h1>
-    <p className="mt-3 text-[#465c50]">{session.completed ? "Session complete" : `Challenge ${session.index + 1} of ${session.total} · Find the validated sequence.`}</p>
-    {session.completed ? <section className="mt-6 space-y-3 rounded-2xl border border-[#20382e]/15 bg-white p-6">
+    <p className="mt-3 text-[var(--fg-2)]">{session.completed ? "Session complete" : `Challenge ${session.index + 1} of ${session.total} · Find the validated sequence.`}</p>
+    {session.completed ? <section className="mt-6 space-y-3 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6">
       <h2 className="text-xl font-semibold">{session.results.firstTry} of {session.total} solved first try without hints</h2>
       <p>{session.results.retried} solved after retry · {session.results.assisted} assisted solves · {session.results.revealed} revealed · {session.results.skipped} skipped</p>
-      <p className="text-sm text-[#465c50]">These results describe this practice session. Earlier puzzle completions are preserved.</p>
+      <p className="text-sm text-[var(--fg-2)]">These results describe this practice session. Earlier puzzle completions are preserved.</p>
       <StartReplay gameId={session.restartGameId ?? undefined} /><Link className="block underline" href="/replay">Practice library and recent sessions</Link>
     </section> : puzzle && <PuzzleSolver key={`${session.id}-${puzzle.id}`} initialPuzzle={puzzle} nextId={null} sessionPractice={{ endpoint: `/api/replay/${session.id}`, onResponse, onBusy: setSolverBusy, locked: pending || uncertain,
-      comparison: comparison && <section aria-label="Your comparison" className="space-y-3 rounded-xl border border-[#20382e]/15 p-4">
+      comparison: comparison && <section aria-label="Your comparison" className="space-y-3 rounded-xl border border-[var(--border)] p-4">
         <h2 className="font-semibold">Your comparison</h2>
         <p>Your original move: <strong>{comparison.original.san}</strong></p>
         <p>Your first attempt: <strong>{comparison.firstAttempt?.san ?? "Revealed before playing a legal move"}</strong></p>
@@ -56,8 +56,8 @@ export function ReplayWorkspace({ initialSession }: { initialSession: ReplayDto 
         {inspectOriginal && <ReplayBoard fen={comparison.original.fen} userColor={puzzle.playerColor} lastMove={comparison.original.uci} positionLabel="Your original move" />}
         <Link className="block text-sm underline" href={`/games/${comparison.gameId}?ply=${comparison.sourcePly}`}>Open source review</Link>
       </section>,
-      navigation: <><button className="rounded-lg bg-[#20382e] px-4 py-3 font-semibold text-white disabled:opacity-50" disabled={pending || uncertain || solverBusy} onClick={() => advance(puzzle.progress.state === "SOLVING" ? "SKIP" : "NEXT")}>{puzzle.progress.state === "SOLVING" ? "Skip challenge" : session.index + 1 === session.total ? "Finish session" : "Next challenge →"}</button><Link className="underline" href="/replay">Save and return to practice library</Link></> }} />}
-    {error && <p role="alert" className="mt-4 text-red-800">{error}</p>}
+      navigation: <><button className="rounded-lg bg-[var(--green)] px-4 py-3 font-semibold text-[var(--on-green)] disabled:opacity-50" disabled={pending || uncertain || solverBusy} onClick={() => advance(puzzle.progress.state === "SOLVING" ? "SKIP" : "NEXT")}>{puzzle.progress.state === "SOLVING" ? "Skip challenge" : session.index + 1 === session.total ? "Finish session" : "Next challenge →"}</button><Link className="underline" href="/replay">Save and return to practice library</Link></> }} />}
+    {error && <p role="alert" className="mt-4 text-[var(--status-error)]">{error}</p>}
     {uncertain && <div className="mt-3 flex gap-4"><button disabled={pending} onClick={() => void transmit()}>Refresh saved progress</button>{retry && <button disabled={pending} onClick={() => void transmit(retry!)}>Retry saving action</button>}</div>}
   </>;
 }

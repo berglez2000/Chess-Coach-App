@@ -1,8 +1,28 @@
 import "server-only";
 import type { PrismaClient } from "@/generated/prisma/client";
-import { matchingPositions, positionKey, validateContent, OpeningError, type OpeningContent } from "./content";
+import { matchingPositions, position, positionKey, validateContent, OpeningError, type OpeningContent } from "./content";
 export type OpeningDto = OpeningContent & { id: string; revision: number; videos: { id: string; name: string; size: number }[] };
 export type RelatedGame = { id: string; whiteName: string | null; blackName: string | null; result: string };
+export type OpeningSummary = { id: string; name: string; description: string; color: OpeningContent["color"]; count: number; videos: number; plies: number; preview: { fen: string; moves: string; line: string | null } };
+const PREVIEW_PLIES = 8;
+/** Position and numbered SAN after the first few moves of the first variation; falls back to the starting position. */
+function preview(startFen: string, lines: OpeningContent["lines"]) {
+  const line = lines[0];
+  try {
+    const chess = position(startFen);
+    const parts: string[] = [];
+    (line?.moves.slice(0, PREVIEW_PLIES) ?? []).forEach((uci, index) => {
+      const number = chess.moveNumber();
+      const white = chess.turn() === "w";
+      const san = chess.move(uci).san;
+      parts.push(white ? `${number}. ${san}` : index === 0 ? `${number}… ${san}` : san);
+    });
+    const more = line && line.moves.length > PREVIEW_PLIES;
+    return { fen: chess.fen(), moves: parts.join(" ") + (more ? " …" : ""), line: line?.name ?? null };
+  } catch {
+    return { fen: startFen, moves: "", line: line?.name ?? null };
+  }
+}
 export function openingRepository(db: PrismaClient, ownerId: string) {
   async function get(id: string): Promise<OpeningDto> {
     const row = await db.opening.findFirst({ where: { id, ownerId }, include: { videos: { orderBy: { createdAt: "asc" }, select: { id: true, name: true, size: true } } } });
@@ -11,9 +31,12 @@ export function openingRepository(db: PrismaClient, ownerId: string) {
   }
   return {
     get,
-    async list() {
-      const rows = await db.opening.findMany({ where: { ownerId }, orderBy: [{ updatedAt: "desc" }, { id: "asc" }], select: { id: true, name: true, description: true, color: true, lines: true, _count: { select: { videos: true } } } });
-      return rows.map(row => ({ id: row.id, name: row.name, description: row.description, color: row.color, count: (row.lines as unknown[]).length, videos: row._count.videos }));
+    async list(): Promise<OpeningSummary[]> {
+      const rows = await db.opening.findMany({ where: { ownerId }, orderBy: [{ updatedAt: "desc" }, { id: "asc" }], select: { id: true, name: true, description: true, color: true, startFen: true, lines: true, _count: { select: { videos: true } } } });
+      return rows.map(row => {
+        const lines = row.lines as OpeningContent["lines"];
+        return { id: row.id, name: row.name, description: row.description, color: row.color, count: lines.length, videos: row._count.videos, plies: lines.reduce((sum, line) => sum + line.moves.length, 0), preview: preview(row.startFen, lines) };
+      });
     },
     async create(input: unknown) {
       const content = validateContent(input);

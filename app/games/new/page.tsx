@@ -14,7 +14,7 @@ export default async function NewGamePage() {
     <main id="main-content" className={shared.page}>
       <nav className={shared.breadcrumb} aria-label="Breadcrumb"><Link href="/games">Your games</Link><span aria-hidden="true">/</span><span>Import game</span></nav>
       <header>
-        <p className={shared.eyebrow}>Learn from your own moves</p>
+
         <h1 className={shared.heading}>Import a game</h1>
         <p className={shared.description}>Bring a game you’ve played and turn it into your next lesson.</p>
       </header>

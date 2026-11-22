@@ -5,11 +5,14 @@ import { AccountMenu } from "@/components/auth/account-menu";
 import { Icon, type IconName } from "./icon";
 import styles from "./app-shell.module.css";
 const groups: { label: string; items: { href: string; label: string; icon: IconName }[] }[] = [
-  { label: "Play", items: [{ href: "/", label: "Dashboard", icon: "home" }, { href: "/games", label: "My games", icon: "games" }, { href: "/games/new", label: "Import game", icon: "import" }, { href: "/play", label: "Play an engine", icon: "games" }, { href: "/puzzles", label: "Puzzles", icon: "puzzles" }] },
-  { label: "Study", items: [{ href: "/analysis", label: "Analysis", icon: "games" }, { href: "/openings", label: "Openings", icon: "games" }, { href: "/endgames", label: "Endgames", icon: "learning" }, { href: "/learning", label: "Learning", icon: "books" }, { href: "/learning/materials", label: "Study materials", icon: "learning" }, { href: "/learning/plan", label: "Weekly plan", icon: "plan" }] },
+  { label: "Play", items: [{ href: "/", label: "Dashboard", icon: "home" }, { href: "/games", label: "My games", icon: "games" }, { href: "/games/new", label: "Import game", icon: "import" }, { href: "/play", label: "Play an engine", icon: "play" }, { href: "/puzzles", label: "Puzzles", icon: "puzzles" }] },
+  { label: "Study", items: [{ href: "/analysis", label: "Analysis", icon: "analysis" }, { href: "/openings", label: "Openings", icon: "openings" }, { href: "/endgames", label: "Endgames", icon: "endgames" }, { href: "/learning", label: "Books", icon: "books" }, { href: "/learning/materials", label: "Study materials", icon: "learning" }, { href: "/learning/plan", label: "Weekly plan", icon: "plan" }] },
   { label: "Account", items: [{ href: "/profile", label: "Profile", icon: "profile" }, { href: "/settings", label: "Settings", icon: "settings" }] },
 ];
-function Brand() { return <Link href="/" className={styles.brand}><span className={styles.mark} aria-hidden="true"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><path d="M9 3v3M7.5 4.5h3M5 14h8l1 2H4l1-2zM5 14c0-4.5 1-6.5 4-8 3 1.5 4 3.5 4 8"/></svg></span><span>Chess <span className={styles.light}>Coach</span></span></Link>; }
+export function BrandMark({ size = 28 }: { size?: number }) {
+  return <span className={styles.mark} style={{ width: size, height: size }} aria-hidden="true"><svg width={size * 0.57} height={size * 0.57} viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><path d="M9 3v3M7.5 4.5h3M5 14h8l1 2H4l1-2zM5 14c0-4.5 1-6.5 4-8 3 1.5 4 3.5 4 8"/></svg></span>;
+}
+function Brand() { return <Link href="/" className={styles.brand}><BrandMark /><span>Chess <span className={styles.light}>Coach</span></span></Link>; }
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const booksPage = pathname === "/learning";

@@ -25,10 +25,10 @@ export function MoveList({ moves, selectedPly, onSelect }: {
     rows.set(move.moveNumber, row);
   }
   return (
-    <div className="max-h-64 overflow-y-auto rounded-lg border border-[#20382e]/20">
+    <div className="max-h-64 overflow-y-auto rounded-lg border border-[var(--border)]">
       <table className="w-full text-left text-sm">
         <caption className="sr-only">Game moves</caption>
-        <thead className="sticky top-0 bg-[#eeeee5]">
+        <thead className="sticky top-0 bg-[var(--surface-2)]">
           <tr><th scope="col" className="p-3">Move</th><th scope="col" className="p-3">White</th><th scope="col" className="p-3">Black</th></tr>
         </thead>
         <tbody>
@@ -41,7 +41,7 @@ export function MoveList({ moves, selectedPly, onSelect }: {
                   {move ? <button type="button" ref={selectedPly === move.ply ? selectedRef : undefined} onClick={() => onSelect(move.ply)}
                     aria-label={`${number}. ${side === "white" ? "White" : "Black"} ${move.san}${move.pgnAnnotation ?? ""}${(move.analysis?.quality ?? move.coaching?.classification) ? ` — ${move.analysis?.quality ?? move.coaching?.classification}` : ""}${move.positiveHighlight ? " — Positive highlight" : ""}`}
                     aria-current={selectedPly === move.ply ? "step" : undefined}
-                    className={`flex w-full items-center gap-1.5 rounded px-3 py-2 text-left font-medium focus-visible:outline-2 focus-visible:outline-offset-1 ${selectedPly === move.ply ? "bg-[#20382e] text-white" : "hover:bg-[#20382e]/10"}`}>
+                    className={`flex w-full items-center gap-1.5 rounded px-3 py-2 text-left font-medium focus-visible:outline-2 focus-visible:outline-offset-1 ${selectedPly === move.ply ? "bg-[var(--green)] text-[var(--on-green)]" : "hover:bg-[var(--green-subtle)]"}`}>
                     {move.san}{move.pgnAnnotation && <span className="font-mono" title="Annotation from the PGN">{move.pgnAnnotation}</span>}
                     <MoveQualityBadge quality={move.analysis?.quality ?? move.coaching?.classification} />
                     {move.positiveHighlight && <span className="rounded border border-current px-1 text-xs">Positive highlight</span>}

@@ -19,7 +19,7 @@ export default async function WeeklyPlanPage() {
   return <main id="main-content" className={shared.page}>
     <nav className={shared.breadcrumb} aria-label="Breadcrumb"><Link href="/learning">Return to learning</Link><span aria-hidden="true">/</span><span>Weekly plan</span></nav>
     <header>
-      <p className={shared.eyebrow}>A little progress, every week</p>
+
       <h1 className={shared.heading}>Weekly learning plan</h1>
       <p className={shared.description}>Make time for better chess. Build a reusable study routine around your goals, schedule, and learning materials.</p>
     </header>

@@ -29,7 +29,7 @@ const examples = [
 ];
 
 export function DoubleAttackLesson() {
-  return <details className="mt-6 rounded-xl border bg-white p-4" open>
+  return <details className="mt-6 rounded-xl border bg-[var(--surface)] p-4" open>
     <summary className="cursor-pointer text-lg font-semibold">Study: Double attack</summary>
     <p className="mt-4">Winning material makes checkmate easier. A double attack creates two threats at once, often against undefended pieces. If the opponent can meet only one threat, you gain material on the next move.</p>
     <p className="mt-3">Look for loose pieces and vulnerable kings. Knights are especially effective because their attacks can be difficult to anticipate. Always check whether the opponent can defend both targets or create a stronger threat.</p>
@@ -40,6 +40,6 @@ export function DoubleAttackLesson() {
         <p className="mt-3 text-sm">{example.text}</p>
       </section>)}
     </div>
-    <p className="mt-5 text-sm text-gray-600">Adapted from 1001 chess exercises for beginners, Double attack, printed pages 29–30. Exercises 217–252: White to move. Book solutions: pages 127–128.</p>
+    <p className="mt-5 text-sm text-[var(--fg-3)]">Adapted from 1001 chess exercises for beginners, Double attack, printed pages 29–30. Exercises 217–252: White to move. Book solutions: pages 127–128.</p>
   </details>;
 }

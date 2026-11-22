@@ -1,8 +1,8 @@
 "use client";
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-export const buttonClass = "rounded-lg border border-[#20382e]/30 px-4 py-2 text-sm font-medium hover:bg-white disabled:opacity-40";
-export const inputClass = "mt-1 block w-full rounded-lg border border-[#20382e]/30 bg-white p-2";
+export const buttonClass = "rounded-lg border border-[var(--border)] px-4 py-2 text-sm font-medium hover:bg-[var(--surface-2)] disabled:opacity-40";
+export const inputClass = "mt-1 block w-full rounded-lg border border-[var(--border)] bg-[var(--surface)] p-2";
 export function ContentForm({ kind, initial, label }: { kind: "material" | "chapter" | "sample"; initial?: Record<string, string | number | boolean>; label: string }) {
   const router = useRouter(); const lock = useRef(false); const [pending, setPending] = useState(false); const [error, setError] = useState("");
   return <form className="mt-4 space-y-3" onSubmit={async event => {
@@ -23,6 +23,6 @@ export function ContentForm({ kind, initial, label }: { kind: "material" | "chap
       {initial?.id && <label className="block text-sm"><input name="archived" type="checkbox" disabled={pending} defaultChecked={!!initial?.archived} /> Archive (preserves exercise history)</label>}
     </>}
     <button className={buttonClass} disabled={pending}>{pending ? "Saving…" : label}</button>
-    {error && <p role="alert" className="text-sm text-red-800">{error}</p>}
+    {error && <p role="alert" className="text-sm text-[var(--status-error)]">{error}</p>}
   </form>;
 }

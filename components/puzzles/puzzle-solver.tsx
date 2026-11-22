@@ -11,7 +11,7 @@ import type { PuzzleAction, SolverPuzzle } from "@/types/puzzle";
 
 import styles from "@/components/learning/practice.module.css";
 
-const buttonClass = "rounded-lg border border-[#20382e]/30 px-4 py-2 text-sm font-medium hover:bg-white disabled:opacity-40";
+const buttonClass = "rounded-lg border border-[var(--border)] px-4 py-2 text-sm font-medium hover:bg-[var(--surface-2)] disabled:opacity-40";
 const feedback: Record<string, string> = {
   UNSUPPORTED: "That move is legal, but is outside this exercise’s validated solution set. Try the authored sequence.",
   ILLEGAL: "Illegal move. The position has not changed; try again.",
@@ -120,7 +120,7 @@ export function PuzzleSolver({ initialPuzzle, nextId, learningNavigation, sessio
       {learningNavigation ? <><div className={styles.controls}><button type="button" onClick={() => setFlipped(value => !value)} aria-label="Flip board">⇄ Flip board</button><button type="button" onClick={toggleMuted} aria-pressed={muted} aria-label="Mute sounds">Sound: {muted ? "off" : "on"}</button><span>{placementPiece ? "Place the missing piece" : `${puzzle.playerColor === "WHITE" ? "White" : "Black"} to move`}</span></div><div className={styles.strip}><span className={styles.colorDot} style={{ background: puzzle.playerColor === "WHITE" ? "white" : "var(--fg)" }}/><strong>{puzzle.playerColor === "WHITE" ? "White" : "Black"}</strong><small>You{solving ? placementPiece ? " — place a piece" : " — to move" : ""}</small></div></> : <><button type="button" className={`${buttonClass} mt-3`} onClick={toggleMuted} aria-pressed={muted} aria-label="Mute sounds">Sound: {muted ? "off" : "on"}</button><p className="mt-3 text-sm">{puzzle.playerColor === "WHITE" ? "White" : "Black"} to play · {puzzle.maxPlayerMoves === 1 ? "Find one strong move." : `Find the tactical sequence · up to ${puzzle.maxPlayerMoves} of your moves.`}</p></>}
       {puzzle.history.length > 0 && <p aria-label="Played sequence" className="mt-2 text-sm">Played: {puzzle.history.map(move => move.san).join(" → ")}</p>}
       {solving && <details className={learningNavigation ? styles.entry : "mt-3"} open={learningNavigation ? undefined : true}><summary>{placementPiece ? "Place by square" : "Move entry and promotion"}</summary>
-        <p className="mt-2 text-sm text-[#465c50]">{placementPiece ? "Click an empty square to add the specified piece, or enter its square below." : "Drag a piece, select its square and destination, or enter move coordinates. When a pawn reaches the last rank, choose its promotion piece."}</p>
+        <p className="mt-2 text-sm text-[var(--fg-2)]">{placementPiece ? "Click an empty square to add the specified piece, or enter its square below." : "Drag a piece, select its square and destination, or enter move coordinates. When a pawn reaches the last rank, choose its promotion piece."}</p>
         <form className="mt-3 flex flex-wrap items-end gap-2" onSubmit={event => {
           event.preventDefault();
           const input = moveText.trim().toLowerCase();
@@ -137,7 +137,7 @@ export function PuzzleSolver({ initialPuzzle, nextId, learningNavigation, sessio
         </form>
       </details>}
     </div>
-    <div className={learningNavigation ? styles.right : "space-y-4 rounded-2xl border border-[#20382e]/15 bg-white p-5"}>
+    <div className={learningNavigation ? styles.right : "space-y-4 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5"}>
       <div className={learningNavigation ? `${styles.card} space-y-4` : "space-y-4"}>
       {learningNavigation && <><p className={styles.eyebrow}>{learningNavigation.chapterTitle} · Exercise {learningNavigation.number}</p><h1>{learningNavigation.title}</h1></>}
       <h2 className={learningNavigation ? styles.objective : "text-lg font-semibold"}>{puzzle.learning?.objective ?? "Find the better move"}</h2>
@@ -157,8 +157,8 @@ export function PuzzleSolver({ initialPuzzle, nextId, learningNavigation, sessio
         <button type="button" disabled={locked || !solving} className={buttonClass} onClick={() => act("REVEAL")}>Reveal solution</button>
         <button type="button" disabled={locked || (!!sessionPractice && !solving)} className={buttonClass} onClick={() => act("RETRY")}>Retry puzzle</button>
       </div>
-      <p className="text-xs text-[#657467]">{sessionPractice ? "Retrying preserves mistakes and assistance. Start another session for a fresh attempt." : "Hints and reveals are saved. Retrying keeps that assistance and your first completion history."}</p>
-      {error && <p role="alert" className="text-sm text-red-800">{error}</p>}
+      <p className="text-xs text-[var(--fg-3)]">{sessionPractice ? "Retrying preserves mistakes and assistance. Start another session for a fresh attempt." : "Hints and reveals are saved. Retrying keeps that assistance and your first completion history."}</p>
+      {error && <p role="alert" className="text-sm text-[var(--status-error)]">{error}</p>}
       {uncertain && <div className="flex flex-wrap gap-2">
         <button type="button" disabled={pending} className={buttonClass} onClick={() => void transmit()}>Refresh saved progress</button>
         {retryRequest && <button type="button" disabled={pending} className={buttonClass} onClick={() => void transmit(retryRequest!)}>Retry saving action</button>}

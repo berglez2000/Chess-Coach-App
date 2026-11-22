@@ -83,7 +83,7 @@ export function ExerciseEditor({ chapterId, initial, books }: { chapterId: strin
       {initial && <label className="block text-sm"><input type="checkbox" name="archived" defaultChecked={initial.archived} onChange={() => setDirty(true)} /> Archive exercise (preserves history)</label>}
       <p className="text-sm">Status: {dirty ? "Unsaved changes" : status}. Changing the answer creates a new published revision; previous completion stays in history.</p>
       <div className="flex flex-wrap gap-2"><button className={buttonClass}>Save draft</button><button type="button" className={buttonClass} disabled={dirty || !savedId || !initial?.id} onClick={() => void action("validate")}>Validate</button><button type="button" className={buttonClass} disabled={dirty || !savedId || !initial?.id || status !== "VALIDATED"} onClick={() => void action("publish")}>Publish</button></div>
-      {message && <p role="status" aria-label="Exercise authoring status" className="text-sm">{message}</p>}{error && <p role="alert" className="text-sm text-red-800">{error}</p>}
+      {message && <p role="status" aria-label="Exercise authoring status" className="text-sm">{message}</p>}{error && <p role="alert" className="text-sm text-[var(--status-error)]">{error}</p>}
     </fieldset>
   </form>;
 }

@@ -3,7 +3,7 @@
 Target: one Ubuntu Server 24.04 VM on Proxmox (4 vCPU, 6 GB RAM, 30 GB disk), reached only over SSH. No Docker on the server; every piece is installed directly so you can see how it fits together.
 
 ```
- Browser ──HTTPS──> Tailscale Funnel ──> 127.0.0.1:3000  Next.js (systemd: chess-coach)
+ Browser ──WireGuard VPN──> VM-IP:3000  Next.js (systemd: chess-coach)
                                                 │
                                                 ├── spawns /usr/games/stockfish
                                                 └── 127.0.0.1:5432  PostgreSQL (systemd: postgresql)
@@ -16,7 +16,7 @@ Target: one Ubuntu Server 24.04 VM on Proxmox (4 vCPU, 6 GB RAM, 30 GB disk), re
 | Stockfish | engine, spawned per analysis | `/usr/games/stockfish` |
 | systemd unit | keeps app alive, restarts on crash, boots with VM | `/etc/systemd/system/chess-coach.service` |
 | env file | secrets and config | `/etc/chess-coach/env` |
-| Tailscale Funnel | public HTTPS URL, no router ports, no domain needed | `tailscale funnel` |
+| WireGuard (on router, run by the Proxmox owner) | private access from your devices, no public ports | router |
 | cron + `backup.sh` | nightly `pg_dump` | `/opt/chess-coach/backups` |
 
 ## 0. What you need from the Proxmox owner
@@ -38,7 +38,7 @@ scp -r deploy you@VM-IP:~/
 sudo bash ~/deploy/01-server-setup.sh
 ```
 
-It installs packages, creates the `chess` system user, creates the database with a random password, writes `/etc/chess-coach/env`, installs the service, the sudo rule, Tailscale, the firewall and the backup cron job. Re-running is safe. At the end it prints a deploy key and next steps.
+It installs packages, creates the `chess` system user, creates the database with a random password, writes `/etc/chess-coach/env`, installs the service, the sudo rule, the firewall and the backup cron job. Re-running is safe. At the end it prints a deploy key and next steps.
 
 Why a separate user: if the app is ever compromised, the attacker owns `/opt/chess-coach`, not the VM. Root never runs application code.
 
@@ -54,13 +54,9 @@ sudo nano /etc/chess-coach/env
 
 Set the API keys you have. Leave `BETTER_AUTH_URL` for step 6. Everything else is already filled. The file is mode `640 root:chess`: root edits it, the app reads it, nobody else sees it.
 
-## 4. Join Tailscale
+## 4. VPN
 
-```bash
-sudo tailscale up
-```
-
-Open the printed link, log in (free personal plan). Install Tailscale on your Mac and phone too; from then on `http://VM-NAME:3000` is not reachable (app binds loopback) but SSH over Tailscale works from anywhere, so the LAN IP stops mattering.
+Ask the router owner to add your Mac and phone to the WireGuard VPN. Until then everything below runs over SSH only.
 
 ## 5. First deploy
 
@@ -77,7 +73,25 @@ journalctl -u chess-coach -f        # live logs, Ctrl+C to leave
 curl -I http://127.0.0.1:3000       # should answer 200 or 307
 ```
 
-## 6. Expose it with Tailscale Funnel
+## 6. Access over WireGuard (current plan)
+
+The VM sits behind a WireGuard VPN run on the home router; no port other than SSH is forwarded. The app binds `127.0.0.1` by default, so once the VPN exists it must listen on the VM's LAN/VPN address as well:
+
+```bash
+# override the bind address without touching package.json
+sudo systemctl edit chess-coach      # add under [Service]:
+#   ExecStart=
+#   ExecStart=/usr/bin/npx next start --hostname 0.0.0.0
+sudo ufw allow in on wg0 to any port 3000 proto tcp   # or from the LAN subnet: sudo ufw allow from 192.168.55.0/24 to any port 3000
+sudo sed -i -e 's#^BETTER_AUTH_URL=.*#BETTER_AUTH_URL=http://192.168.55.60:3000#' -e 's#^BETTER_AUTH_ALLOW_HTTP=.*#BETTER_AUTH_ALLOW_HTTP=true#' /etc/chess-coach/env
+sudo systemctl restart chess-coach
+```
+
+`BETTER_AUTH_URL` must be exactly what the browser shows (plain `http` is fine inside the VPN). Replace the interface name and address with what the router owner gives you.
+
+## 6b. Alternative: Tailscale Funnel (not installed by default)
+
+Run the setup script with `INSTALL_TAILSCALE=1` to install it.
 
 Funnel publishes one port of your VM on a stable `https://VM-NAME.tailNNNN.ts.net` address, with a real certificate, through Tailscale's relays. Nothing on the home router changes and the VM's IP is never exposed.
 
@@ -131,12 +145,18 @@ sudo -iu chess bash -c 'cd /opt/chess-coach/app && set -a && source /etc/chess-c
 | Restart | `sudo systemctl restart chess-coach` |
 | Database shell | `sudo -u postgres psql chess_coach` |
 | Disk / RAM / CPU | `df -h /`, `free -h`, `htop` |
-| Who is connected via Tailscale | `tailscale status` |
-| Public URL | `tailscale funnel status` |
+| VPN peers (if WireGuard runs on the VM) | `sudo wg show` |
+
+## Gotchas met on the first deploy
+
+- `npm ci` must run with `--include=dev`: the deploy script exports `NODE_ENV=production` first, and npm then silently skips devDependencies (Tailwind, Prisma CLI, TypeScript), so `next build` fails with `Cannot find module '@tailwindcss/postcss'`.
+- After a failed build, Turbopack can keep a stale cache in `.next` that repeats the old error even once the module is installed. `rm -rf /opt/chess-coach/app/.next` and build again.
+- If SSH listens on a non-default port, `ufw allow OpenSSH` only opens 22. The setup script now reads the real port from `sshd -T`. A router forward (for example external 2222 to internal 22) is fine as is.
+- A placeholder API key (`your-...`) in the env file makes the provider look configured. Leave unused keys empty.
 
 ## Known limits
 
 - Stockfish from Ubuntu apt is version 16; development used 19. Fine for coaching. For the newest binary, download from stockfishchess.org and point `STOCKFISH_PATH` at it.
 - PostgreSQL from Ubuntu apt is version 16; development used 18. Prisma migrations run on both.
 - Maia opponent is off (`MAIA_PATH` empty) until an x86_64 Linux binary is placed on the VM.
-- Rate limiting counts requests by client IP. Behind Funnel the app sees the forwarded IP header from Tailscale; treat limits as best effort.
+- Rate limiting counts requests by client IP. Inside the VPN all requests come from a few addresses; treat limits as best effort.

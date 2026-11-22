@@ -79,7 +79,7 @@ function AccountBooks() {
   return <>
     <header className={styles.pageHeader}>
       <nav className={styles.breadcrumb} aria-label="Breadcrumb">
-        <Link href="/">Home</Link><span className={styles.breadcrumbSeparator} aria-hidden="true">/</span><span aria-current="page">Learning</span>
+        <Link href="/">Dashboard</Link><span className={styles.breadcrumbSeparator} aria-hidden="true">/</span><span aria-current="page">Learning</span>
       </nav>
       <h1 className={styles.pageTitle}>Your library</h1>
       <p className={styles.pageSubtitle}>Upload chess books as PDFs to read and annotate with checkmarks. Reading position and marks are saved privately to your account.</p>

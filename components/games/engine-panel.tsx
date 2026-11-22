@@ -11,7 +11,7 @@ export function formatEvaluation(evaluation: NormalizedEvaluation | null | undef
 
 export function EnginePanel({ analysis, initial = false }: { analysis: ReviewAnalysis | null | undefined; initial?: boolean }) {
   const current = initial ? analysis?.before : analysis?.after;
-  return <section aria-labelledby="engine-panel-heading" className="mt-6 rounded-lg border border-[#20382e]/20 bg-white p-5">
+  return <section aria-labelledby="engine-panel-heading" className="mt-6 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-5">
     <h3 id="engine-panel-heading" className="text-lg font-semibold">Engine analysis</h3>
     <p className="mt-2 text-sm">Scores are from White’s perspective. Positive pawn scores favor White.</p>
     <dl className="mt-4 space-y-2">
@@ -26,7 +26,7 @@ export function EnginePanel({ analysis, initial = false }: { analysis: ReviewAna
       {!initial && <p className="mt-3 text-sm">Assessment note: {analysis.reason.replaceAll("_", " ")}.</p>}
       <p className="mt-4"><strong>Engine choice {initial ? "from the initial position" : "before the played move"}:</strong> {analysis.bestMoveSan ?? "Not available"}</p>
       <p className="mt-2"><strong>Suggested line {initial ? "from the initial position" : "before the played move"}:</strong> {analysis.pvSan.length ? analysis.pvSan.slice(0, 8).join(" ") + (analysis.pvSan.length > 8 ? " …" : "") : "Not available"}</p>
-      <p className="mt-3 text-sm text-[#465c50]">Finite-depth engine estimate; classifications are heuristic. Saved {analysis.analyzedAt.slice(0, 10)}.</p>
+      <p className="mt-3 text-sm text-[var(--fg-2)]">Finite-depth engine estimate; classifications are heuristic. Saved {analysis.analyzedAt.slice(0, 10)}.</p>
     </> : <p className="mt-4">No saved engine analysis for this position. Use the analysis controls above to analyze or retry the game.</p>}
   </section>;
 }

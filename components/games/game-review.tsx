@@ -54,7 +54,7 @@ export function GameReview({ game, userColor, status, initialPly = 0 }: { game: 
     setPreview(false);
     setSelectedPly(next);
   }, [total, selectedPly, preview, play, game.moves, game.metadata.result]);
-  const buttonClass = "rounded-lg border border-[#20382e]/30 px-3 py-2 text-sm font-medium hover:bg-white disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2";
+  const buttonClass = "rounded-lg border border-[var(--border)] px-3 py-2 text-sm font-medium hover:bg-[var(--surface-2)] disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2";
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -117,9 +117,9 @@ export function GameReview({ game, userColor, status, initialPly = 0 }: { game: 
   return (
     <section className={styles.review} aria-labelledby="review-heading">
       <header className={styles.header}>
-      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#657467]">Game review</p>
-      <h1 id="review-heading" className="mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">{metadata.whiteName ?? "White"} <span className="font-normal text-[#657467]">vs.</span> {metadata.blackName ?? "Black"}</h1>
-      <dl className="mt-3 flex flex-wrap gap-x-6 gap-y-2 text-sm text-[#465c50]">
+      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--fg-3)]">Game review</p>
+      <h1 id="review-heading" className="mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">{metadata.whiteName ?? "White"} <span className="font-normal text-[var(--fg-3)]">vs.</span> {metadata.blackName ?? "Black"}</h1>
+      <dl className="mt-3 flex flex-wrap gap-x-6 gap-y-2 text-sm text-[var(--fg-2)]">
         <div><dt className="inline font-semibold">Result: </dt><dd className="inline">{metadata.result}{outcome ? ` · ${outcome}` : ""}</dd></div>
         {metadata.termination && <div><dt className="inline font-semibold">Ending: </dt><dd className="inline">{metadata.termination}</dd></div>}
         {metadata.playedAt && <div><dt className="inline font-semibold">Date: </dt><dd className="inline">{metadata.playedAt.slice(0, 10)}</dd></div>}
@@ -136,10 +136,10 @@ export function GameReview({ game, userColor, status, initialPly = 0 }: { game: 
       <div className={styles.layout}>
         <div className={styles.boardPanel}>
       {critical.length > 0 && <div className={styles.keyMoment}>
-        <button type="button" className="rounded-xl bg-[#20382e] px-5 py-3 text-sm font-semibold text-white hover:bg-[#345443]" onClick={() => { setFilter("all"); select(nextCritical.ply); }}>
+        <button type="button" className="rounded-xl bg-[var(--green)] px-5 py-3 text-sm font-semibold text-[var(--on-green)] hover:bg-[var(--green-hover)]" onClick={() => { setFilter("all"); select(nextCritical.ply); }}>
           {selectedPly === 0 ? "Review key moments" : "Next key moment"} →
         </button>
-        <span className="text-sm text-[#657467]">{critical.length} moments to learn from · Both players</span>
+        <span className="text-sm text-[var(--fg-3)]">{critical.length} moments to learn from · Both players</span>
       </div>}
 
           {exploration ? <ExplorationBoard key={exploration} startFen={exploration} userColor={userColor} flipped={flipped} onExit={() => setExploration(null)} /> : <>
@@ -151,17 +151,17 @@ export function GameReview({ game, userColor, status, initialPly = 0 }: { game: 
               moveQuality={preview ? undefined : selectedMove?.analysis?.quality ?? selectedMove?.coaching?.classification} />
           </div>
           {player(whiteBottom ? "WHITE" : "BLACK")}
-          {preview && <p role="status" className="mt-3 rounded-lg bg-[#e4eddf] p-3 text-sm">Suggested move: {analysis?.bestMoveSan} · Preview from before the played move</p>}
+          {preview && <p role="status" className="mt-3 rounded-lg bg-[var(--green-subtle)] p-3 text-sm">Suggested move: {analysis?.bestMoveSan} · Preview from before the played move</p>}
           <p className="mt-3 text-sm" aria-live="polite" aria-atomic="true">
             {selectedMove ? `Move ${selectedMove.moveNumber}${selectedMove.color === "WHITE" ? "." : "..."} ${selectedMove.san}` : "Initial position"}
             {` · Half-move ${selectedPly} of ${total}`}
             {selectedMove && timeSpent(selectedPly) !== undefined && ` · ${timeSpent(selectedPly)} s spent`}
           </p>
           {selectedMove && !preview && <div className="mt-2" aria-live="polite" aria-atomic="true"><MoveQualityBadge quality={selectedMove.analysis?.quality ?? selectedMove.coaching?.classification} showLabel /></div>}
-          <p className="mt-1 text-sm text-[#657467]">{fen.split(" ")[1] === "w" ? "White" : "Black"} to play · Use ← → to navigate</p>
+          <p className="mt-1 text-sm text-[var(--fg-3)]">{fen.split(" ")[1] === "w" ? "White" : "Black"} to play · Use ← → to navigate</p>
           <button type="button" className={`${buttonClass} mt-3`} onClick={() => { setPreview(false); setExploration(selectedMove?.fenAfter ?? game.initialFen); }}>Explore position</button>
           </>}
-          <p className="mt-2 text-xs text-[#657467]">Right-drag to draw an arrow · Shift + right-drag for blue · Repeat to remove · Left-click the board to clear</p>
+          <p className="mt-2 text-xs text-[var(--fg-3)]">Right-drag to draw an arrow · Shift + right-drag for blue · Repeat to remove · Left-click the board to clear</p>
           <nav aria-label="Move navigation" className="mt-3 flex flex-wrap gap-2">
             <button type="button" className={buttonClass} onClick={() => select(0)} disabled={!exploration && selectedPly === 0}>Start</button>
             <button type="button" className={buttonClass} onClick={() => select(selectedPly - 1)} disabled={!exploration && selectedPly === 0}>Previous</button>
@@ -186,22 +186,22 @@ export function GameReview({ game, userColor, status, initialPly = 0 }: { game: 
           {tab === "engine" && !exploration && <><EnginePanel initial={selectedPly === 0} analysis={analysis} /><PositionAnalysisPanel position={preview ? { startFen: fen, moves: [] } : { startFen: game.initialFen, moves: game.moves.slice(0, selectedPly).map(move => move.uci) }} whiteBottom={whiteBottom} /></>}
           {tab === "engine" && exploration && <p className="p-5 text-sm">Return to review to see saved engine analysis.</p>}
           {tab === "coaching" && <>
-          {exploration ? <p className="rounded-2xl bg-white p-5 text-sm">Recorded evaluations and coaching are hidden during exploration. Select a game move to leave the variation, or return to review to restore your selected position.</p> : <div className="rounded-2xl border border-[#20382e]/15 bg-white p-5">
-            <p className="text-xs font-semibold uppercase tracking-widest text-[#657467]">{selectedMove ? `What happened · ${selectedMove.moveNumber}${selectedMove.color === "WHITE" ? "." : "…"} ${selectedMove.san}` : "Your move-by-move guide"}</p>
-            {selectedMove && (selectedMove.pgnAnnotation || selectedMove.pgnComment) && <p className="mt-3 rounded-lg bg-[#f6f5f0] p-3 text-sm"><span className="font-semibold">From your PGN: </span>{selectedMove.pgnAnnotation && <span className="font-mono font-semibold">{selectedMove.san}{selectedMove.pgnAnnotation} </span>}{selectedMove.pgnComment}</p>}
+          {exploration ? <p className="rounded-2xl bg-[var(--surface)] p-5 text-sm">Recorded evaluations and coaching are hidden during exploration. Select a game move to leave the variation, or return to review to restore your selected position.</p> : <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5">
+            <p className="text-xs font-semibold uppercase tracking-widest text-[var(--fg-3)]">{selectedMove ? `What happened · ${selectedMove.moveNumber}${selectedMove.color === "WHITE" ? "." : "…"} ${selectedMove.san}` : "Your move-by-move guide"}</p>
+            {selectedMove && (selectedMove.pgnAnnotation || selectedMove.pgnComment) && <p className="mt-3 rounded-lg bg-[var(--surface-2)] p-3 text-sm"><span className="font-semibold">From your PGN: </span>{selectedMove.pgnAnnotation && <span className="font-mono font-semibold">{selectedMove.san}{selectedMove.pgnAnnotation} </span>}{selectedMove.pgnComment}</p>}
             {selectedMove ? <CoachingPanel coaching={selectedMove.coaching} status={status} /> : <p className="mt-3 text-sm leading-relaxed">Select a move or review the key moments to see what happened, why it matters, and what to try next.</p>}
-            {analysis?.bestMoveSan && <div className="mt-4 border-t border-[#20382e]/10 pt-4">
+            {analysis?.bestMoveSan && <div className="mt-4 border-t border-[var(--border)] pt-4">
               <p className="text-sm font-semibold">{selectedMove && selectedMove.san !== analysis.bestMoveSan ? "Try instead" : "Engine suggestion"}: {analysis.bestMoveSan}</p>
               {previewFen && <button type="button" className={`${buttonClass} mt-2 mr-2`} onClick={() => { setPreview(false); setExploration(selectedMove?.fenBefore ?? game.initialFen); }}>Try the better move</button>}
               {previewFen && <button type="button" className={`${buttonClass} mt-2`} aria-pressed={preview} onClick={() => { if ((preview ? selectedMove?.fenAfter ?? game.initialFen : previewFen) !== fen) play(preview ? "" : analysis.bestMoveSan ?? ""); setPreview(value => !value); }}>{preview ? "Return to game" : "Show on board"}</button>}
             </div>}
 
-            <details className="mt-4 border-t border-[#20382e]/10 pt-4"><summary className="cursor-pointer text-sm font-medium">Engine details</summary><EnginePanel initial={selectedPly === 0} analysis={analysis} /></details>
+            <details className="mt-4 border-t border-[var(--border)] pt-4"><summary className="cursor-pointer text-sm font-medium">Engine details</summary><EnginePanel initial={selectedPly === 0} analysis={analysis} /></details>
           </div>}
           </>}
           <div className={styles.moves}>
-            <div className="mb-3 flex flex-wrap items-center justify-between gap-2"><h3 className="font-semibold">{exploration ? "Recorded game moves" : "Moves"}</h3><label className="text-sm"><span className="sr-only">Filter moves</span><select className="rounded-lg border border-[#20382e]/20 bg-[#f6f5f0] p-2" value={filter} onChange={event => setFilter(event.target.value)}><option value="all">All moves</option><option value="inaccuracy">Inaccuracies</option><option value="mistake">Mistakes</option><option value="blunder">Blunders</option></select></label></div>
-            {filteredMoves.length > 0 ? <MoveList moves={filteredMoves} selectedPly={selectedPly} onSelect={select} /> : <p className="py-6 text-center text-sm text-[#657467]">No moves match this filter.</p>}
+            <div className="mb-3 flex flex-wrap items-center justify-between gap-2"><h3 className="font-semibold">{exploration ? "Recorded game moves" : "Moves"}</h3><label className="text-sm"><span className="sr-only">Filter moves</span><select className="rounded-lg border border-[var(--border)] bg-[var(--surface-2)] p-2" value={filter} onChange={event => setFilter(event.target.value)}><option value="all">All moves</option><option value="inaccuracy">Inaccuracies</option><option value="mistake">Mistakes</option><option value="blunder">Blunders</option></select></label></div>
+            {filteredMoves.length > 0 ? <MoveList moves={filteredMoves} selectedPly={selectedPly} onSelect={select} /> : <p className="py-6 text-center text-sm text-[var(--fg-3)]">No moves match this filter.</p>}
           </div>
           </div>
         </div>
@@ -209,7 +209,7 @@ export function GameReview({ game, userColor, status, initialPly = 0 }: { game: 
       {!exploration && <section className={styles.summary} aria-label="Game summary">
         <div className={styles.summaryHeading}><h3>Game summary</h3><span>Your move quality as {userColor === "WHITE" ? "White" : "Black"}</span></div>
         <div className={styles.qualities}>{(["normal", "inaccuracy", "mistake", "blunder", "unknown", "pending"] as const).map(quality => <div key={quality}><MoveQualityBadge quality={quality === "pending" ? undefined : quality} showLabel /><strong>{userMoves.filter(move => (move.analysis?.quality ?? "pending") === quality).length}</strong></div>)}</div>
-        {hasPgnAnnotations && <p className="mt-3 text-sm text-[#465c50]"><span className="font-semibold">PGN annotations: </span>{(["WHITE", "BLACK"] as const).map(color => `${color === "WHITE" ? metadata.whiteName ?? "White" : metadata.blackName ?? "Black"}: ${annotationCounts(color) || "none"}`).join(" — ")}</p>}
+        {hasPgnAnnotations && <p className="mt-3 text-sm text-[var(--fg-2)]"><span className="font-semibold">PGN annotations: </span>{(["WHITE", "BLACK"] as const).map(color => `${color === "WHITE" ? metadata.whiteName ?? "White" : metadata.blackName ?? "Black"}: ${annotationCounts(color) || "none"}`).join(" — ")}</p>}
       </section>}
       {!exploration && <CoachingSummaryPanel coaching={game.coaching} moves={game.moves} status={status} onSelectPly={select} />}
     </section>

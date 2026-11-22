@@ -7,7 +7,7 @@ import styles from "@/components/learning/learning.module.css";
 import { LearningProgress } from "@/components/learning/progress";
 import { Icon, type IconName } from "@/components/ui/icon";
 const quickLinks: { href: string; title: string; description: string; icon: IconName }[] = [
-  { href: "/learning/history", title: "Exercise history", description: "See your past answers and revisions", icon: "games" },
+  { href: "/learning/history", title: "Exercise history", description: "See your past answers and revisions", icon: "history" },
   { href: "/learning/profile", title: "Learning profile", description: "Goals, weaknesses, and study habits", icon: "profile" },
   { href: "/learning/plan", title: "Weekly plan", description: "Your AI-generated study schedule", icon: "plan" },
 ];

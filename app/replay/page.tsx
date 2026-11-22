@@ -15,8 +15,8 @@ export default async function ReplayPage({ searchParams }: { searchParams: Promi
   const active = library.sessions.find(session => !session.completed);
   return <main id="main-content" className="mx-auto max-w-[1100px] px-4 py-8 sm:px-8">
     <h1 className="text-3xl font-semibold">Beat your past self</h1>
-    <p className="mt-3 text-[#465c50]">Find improvements in positions from your own games. Your original move appears after you solve or reveal the validated sequence.</p>
-    <section className="mt-6 rounded-2xl border border-[#20382e]/15 bg-white p-5"><h2 className="text-lg font-semibold">A fresh attempt</h2><p className="mt-2">Up to five challenges · {library.count} eligible puzzles{gameId ? " from this game" : ""}.</p>
+    <p className="mt-3 text-[var(--fg-2)]">Find improvements in positions from your own games. Your original move appears after you solve or reveal the validated sequence.</p>
+    <section className="mt-6 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5"><h2 className="text-lg font-semibold">A fresh attempt</h2><p className="mt-2">Up to five challenges · {library.count} eligible puzzles{gameId ? " from this game" : ""}.</p>
       <p className="mt-2 text-sm">These challenges use validated winning tactics from mistakes and blunders. Every session saves its own attempts.</p>
       {active ? <Link className="mt-4 inline-block font-semibold underline" href={`/replay/${active.id}`}>Resume current session →</Link> : <StartReplay gameId={gameId} disabled={!library.count} />}
       {!library.count && <p className="mt-3">No eligible puzzles yet. Open a saved game, complete engine analysis, and choose Generate puzzles. Games without a validated winning tactic may have no challenges.</p>}

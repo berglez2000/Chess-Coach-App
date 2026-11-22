@@ -10,8 +10,8 @@
 .keyMoment span { font-size: 12px; }
 .player { display: flex; align-items: center; gap: 9px; padding: 12px 0; min-width: 0; font-size: 13px; }
 .player strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.avatar { display: grid; place-items: center; flex-shrink: 0; width: 28px; height: 28px; background: white; border: 1px solid var(--border); border-radius: 6px; font-weight: 700; }
-.blackAvatar { background: var(--green); color: white; }
+.avatar { display: grid; place-items: center; flex-shrink: 0; width: 28px; height: 28px; background: var(--surface-3); border: 1px solid var(--border); border-radius: 6px; font-weight: 700; }
+.blackAvatar { background: var(--fg); color: var(--bg); }
 .rating { color: var(--fg-3); }
 .clock { margin-left: auto; padding: 5px 12px; border: 1px solid var(--border); background: var(--surface); border-radius: 6px; font-family: var(--font-mono), monospace; font-size: 16px; font-weight: 600; }
 .sidePanel { min-width: 0; background: var(--surface); border-left: 1px solid var(--border-light); }

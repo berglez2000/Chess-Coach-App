@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import type { EndgameProgress, EndgameSnapshot } from "@/lib/endgames/progress";
+import { randomUuid } from "@/lib/uuid";
 export function useEndgameProgress(positionId: string | undefined, initial: EndgameProgress | undefined, snapshot: EndgameSnapshot | null) {
   const [progress, setProgress] = useState(initial);
   const [saved, setSaved] = useState(JSON.stringify(initial?.snapshot ?? null));
@@ -14,7 +15,7 @@ export function useEndgameProgress(positionId: string | undefined, initial: Endg
   useEffect(() => {
     if (!enabled || !snapshot || saved === value) return;
     let active = true;
-    const input = pending.current ?? { requestId: crypto.randomUUID(), expectedRevision: revision.current, snapshot };
+    const input = pending.current ?? { requestId: randomUuid(), expectedRevision: revision.current, snapshot };
     pending.current = input;
     async function save() {
       try {

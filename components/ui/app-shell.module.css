@@ -16,7 +16,7 @@
 .footer > button { margin-left: 38px; color: var(--fg-3); font-size: 12px; text-decoration: none; cursor: pointer; }
 .footer > button:hover { color: var(--fg); }
 .content { margin-left: 232px; min-width: 0; }
-.mobileHeader, .mobileNav { display: none; }
+.mobileHeader, .mobileNav, .menuButton, .backdrop { display: none; }
 .sidebar a:focus-visible, .mobileNav a:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
 @media (max-width: 767px) { .sidebar { display: none; } .content { margin-left: 0; padding-bottom: 80px; } .mobileHeader { position: sticky; top: 0; z-index: 30; display: flex; align-items: center; justify-content: space-between; background: var(--bg); border-bottom: 1px solid var(--border-light); padding: 12px 16px; } .mobileHeader .brand { padding: 0; border: 0; } .mobileNav { position: fixed; bottom: 0; left: 0; right: 0; display: flex; justify-content: space-around; background: var(--bg); border-top: 1px solid var(--border-light); padding: 8px 8px calc(8px + env(safe-area-inset-bottom)); z-index: 30; } .mobileNav a { display: flex; align-items: center; flex-direction: column; gap: 4px; padding: 6px 10px; border-radius: var(--r-sm); color: var(--fg-3); text-decoration: none; font-size: 10px; } .mobileNav .active { color: var(--green); background: transparent; } }
 
@@ -41,4 +41,19 @@
   .booksSidebar .footer > a > span:last-child { display: none; }
   .booksSidebar .footer > button { margin-left: 0; font-size: 10px; }
   .booksContent { margin-left: 56px; }
+}
+
+/* Tablet: the sidebar becomes a drawer opened from a menu button, so content spans the full width.
+   The book reader keeps the fixed sidebar because it sizes itself to the full viewport height. */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .drawer:not(:has(~ .content [data-book-reader])) { transform: translateX(-100%); visibility: hidden; transition: transform .2s ease, visibility .2s; }
+  .drawer.open:not(:has(~ .content [data-book-reader])) { transform: none; visibility: visible; z-index: 50; box-shadow: var(--shadow-elevated); }
+  .backdrop { display: block; position: fixed; inset: 0; z-index: 45; background: rgba(0, 0, 0, .5); }
+  .drawerContent:not(:has([data-book-reader])) { margin-left: 0; }
+  .drawerHeader { position: sticky; top: 0; z-index: 30; display: flex; align-items: center; gap: 12px; background: var(--bg); border-bottom: 1px solid var(--border-light); padding: 10px 20px; }
+  .drawerHeader .brand { padding: 0; }
+  .drawerHeader .mobileAccount { display: none; }
+  .menuButton { display: grid; place-items: center; width: 40px; height: 40px; margin-left: -8px; border-radius: var(--r-sm); color: var(--fg-2); cursor: pointer; }
+  .menuButton:hover { background: var(--surface-2); color: var(--fg); }
+  .menuButton:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
 }

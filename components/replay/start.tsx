@@ -1,6 +1,7 @@
 "use client";
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { randomUuid } from "@/lib/uuid";
 export function StartReplay({ gameId, disabled = false }: { gameId?: string; disabled?: boolean }) {
   const router = useRouter();
   const [pending, setPending] = useState(false);
@@ -10,7 +11,7 @@ export function StartReplay({ gameId, disabled = false }: { gameId?: string; dis
   async function start() {
     if (submitted.current) return;
     submitted.current = true; setPending(true); setError("");
-    requestId.current ??= crypto.randomUUID();
+    requestId.current ??= randomUuid();
     try {
       const response = await fetch("/api/replay", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ requestId: requestId.current, gameId }) });
       const body = await response.json();

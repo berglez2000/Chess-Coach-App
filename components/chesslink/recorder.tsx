@@ -8,11 +8,12 @@ import { squaresToPlacement } from "@/lib/chesslink/protocol";
 import { isIncompleteMove, matchPosition, readDraft, reconstructMoves, recordingChess, recordingPgn, type RecordingDraft } from "@/lib/chesslink/recording";
 import shared from "@/components/ui/simple-page.module.css";
 import styles from "./recorder.module.css";
+import { randomUuid } from "@/lib/uuid";
 
 function newDraft(player: string): RecordingDraft {
   const now = new Date();
   const date = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
-  return { version: 1, id: crypto.randomUUID(), moves: [], color: "WHITE", rotated: false, player: player.slice(0, 100), date, result: "*", finished: false };
+  return { version: 1, id: randomUuid(), moves: [], color: "WHITE", rotated: false, player: player.slice(0, 100), date, result: "*", finished: false };
 }
 
 function download(text: string, name: string, type: string) {

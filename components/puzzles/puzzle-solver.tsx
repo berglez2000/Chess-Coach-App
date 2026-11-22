@@ -10,6 +10,7 @@ import { useMoveSound } from "@/components/chess/use-move-sound";
 import type { PuzzleAction, SolverPuzzle } from "@/types/puzzle";
 
 import styles from "@/components/learning/practice.module.css";
+import { randomUuid } from "@/lib/uuid";
 
 const buttonClass = "rounded-lg border border-[var(--border)] px-4 py-2 text-sm font-medium hover:bg-[var(--surface-2)] disabled:opacity-40";
 const feedback: Record<string, string> = {
@@ -84,7 +85,7 @@ export function PuzzleSolver({ initialPuzzle, nextId, learningNavigation, sessio
         play(played.san, position.isGameOver());
       } catch { /* Illegal moves leave the position unchanged and stay silent. */ }
     }
-    const base = { requestId: crypto.randomUUID(), expectedRevision: puzzle.progress.revision };
+    const base = { requestId: randomUuid(), expectedRevision: puzzle.progress.revision };
     void transmit(action === "MOVE" ? { ...base, action, move: move! } : { ...base, action });
   }
   function move(from: string, to: string) {

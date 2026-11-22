@@ -5,6 +5,7 @@ import { PuzzleSolver } from "@/components/puzzles/puzzle-solver";
 import { ReplayBoard } from "@/components/chess/replay-board";
 import { StartReplay } from "./start";
 import type { ReplayAction, ReplayDto } from "@/lib/replay/contract";
+import { randomUuid } from "@/lib/uuid";
 
 export function ReplayWorkspace({ initialSession }: { initialSession: ReplayDto }) {
   const [session, setSession] = useState(initialSession);
@@ -32,7 +33,7 @@ export function ReplayWorkspace({ initialSession }: { initialSession: ReplayDto 
     finally { submitted.current = false; setPending(false); }
   }
   function advance(action: "NEXT" | "SKIP") {
-    void transmit({ action, expectedRevision: session.revision, requestId: crypto.randomUUID() });
+    void transmit({ action, expectedRevision: session.revision, requestId: randomUuid() });
   }
   const puzzle = session.puzzle;
   const comparison = session.comparison;

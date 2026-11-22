@@ -7,6 +7,7 @@ import { GENERIC_INSTRUCTIONS, PLAN_ACTIVITIES, PlanError, validatePlan, type Pl
 import { Icon, type IconName } from "@/components/ui/icon";
 import shared from "@/components/ui/simple-page.module.css";
 import styles from "./weekly-plan.module.css";
+import { randomUuid } from "@/lib/uuid";
 const buttonClass = shared.primary;
 const inputClass = shared.input;
 const activityIcons: Record<PlanDefinition["sessions"][number]["activity"], IconName> = {
@@ -98,7 +99,7 @@ export function WeeklyPlanEditor({ initial, profile, settings, availableKeys: in
     finally { lock.current = false; setPending(false); }
   }
   function generate() {
-    return act({ action: "GENERATE", expectedRevision: state.revision, requestId: crypto.randomUUID() });
+    return act({ action: "GENERATE", expectedRevision: state.revision, requestId: randomUuid() });
   }
   const total = profile?.answers.availability.reduce((n, day) => n + day.minutes, 0) ?? 0;
   return <div className={styles.editor}>

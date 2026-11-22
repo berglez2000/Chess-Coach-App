@@ -1,4 +1,4 @@
-export type IconName = "home" | "games" | "import" | "puzzles" | "books" | "learning" | "plan" | "profile" | "settings" | "upload" | "check" | "play" | "analysis" | "openings" | "endgames" | "history" | "arrow";
+export type IconName = "home" | "games" | "import" | "puzzles" | "books" | "learning" | "plan" | "profile" | "settings" | "upload" | "check" | "play" | "analysis" | "openings" | "endgames" | "history" | "arrow" | "menu";
 const paths: Record<IconName, React.ReactNode> = {
   upload: <><path d="M15 11v4a1 1 0 01-1 1H4a1 1 0 01-1-1v-4M9 12V2M5 6l4-4 4 4"/></>,
   check: <path d="M3 9l4 4 8-8"/>,
@@ -17,6 +17,7 @@ const paths: Record<IconName, React.ReactNode> = {
   endgames: <><path d="M9 2v2.5M7.6 3.2h2.8"/><path d="M6.2 15h5.6M5 15c0-3.5.9-5.3 3-6.6 2.1 1.3 3 3.1 3 6.6"/><path d="M4.5 15h9l.8 1.5H3.7z"/></>,
   history: <><path d="M2.5 9a6.5 6.5 0 106.5-6.5c-2.3 0-4.3 1.2-5.5 3"/><path d="M3 2.5V6h3.5M9 5.5V9l2.5 1.5"/></>,
   arrow: <path d="M3 9h12M10 4l5 5-5 5"/>,
+  menu: <path d="M2.5 4.5h13M2.5 9h13M2.5 13.5h13"/>,
 };
 export function Icon({ name, size = 18 }: { name: IconName; size?: number }) {
   return <svg width={size} height={size} viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{paths[name]}</svg>;

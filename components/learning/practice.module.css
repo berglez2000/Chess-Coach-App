@@ -27,5 +27,8 @@
 .navigation a:hover { text-decoration: underline; }
 .entry { margin-top: 16px; padding: 12px; border: 1px solid var(--border-light); border-radius: 10px; font-size: 12px; }
 .entry summary { cursor: pointer; color: var(--fg-3); }
-@media(max-width:1000px) { .solver { gap: 24px; padding: 24px; grid-template-columns: minmax(0,1fr) minmax(0,1fr); } }
-@media(max-width:767px) { .solver { grid-template-columns: 1fr; padding: 20px; } .topbar { padding: 16px 20px; flex-wrap: wrap; } .boardPanel { max-width: 560px; width: 100%; margin: auto; } }
+/* Tablet and below: one column, board first at full width; capped so the whole board stays on screen. */
+@media(max-width:1199px) { .solver { grid-template-columns: 1fr; gap: 24px; padding: 24px; } .boardPanel { width: 100%; max-width: max(320px, calc(100dvh - 230px)); margin: auto; } .right { width: 100%; max-width: 720px; margin: auto; } }
+/* Tablet landscape: board beside a narrower panel, since height limits the board there. */
+@media(min-width:1000px) and (max-width:1199px) and (orientation:landscape) { .solver { grid-template-columns: minmax(0,1fr) 340px; } .right { max-width: none; } }
+@media(max-width:767px) { .solver { padding: 20px; } .topbar { padding: 16px 20px; flex-wrap: wrap; } .boardPanel { max-width: 560px; } }

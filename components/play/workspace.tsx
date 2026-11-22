@@ -13,6 +13,7 @@ import { useEndgameProgress } from "@/components/endgames/use-progress";
 import type { EndgameProgress } from "@/lib/endgames/progress";
 import { MillenniumBoard, type PhysicalStatus } from "./millennium-board";
 import styles from "@/components/analysis/analysis.module.css";
+import { randomUuid } from "@/lib/uuid";
 export function PlayWorkspace({ endgame, initialProgress }: { endgame?: EndgamePosition; initialProgress?: EndgameProgress } = {}) {
   const restored = initialProgress?.snapshot;
   const hydrated = useHydrated();
@@ -72,7 +73,7 @@ export function PlayWorkspace({ endgame, initialProgress }: { endgame?: EndgameP
   function start() {
     try {
       const startFen = validatePosition(fenInput).fen(); request.current?.abort();
-      setGame({ startFen, color, difficulty, opponent, moves: [], id: Date.now(), ...(initialProgress ? { sessionId: crypto.randomUUID() } : {}) });
+      setGame({ startFen, color, difficulty, opponent, moves: [], id: Date.now(), ...(initialProgress ? { sessionId: randomUuid() } : {}) });
       setHintShown(false); setHintUsed(false); setAnalysisUsed(false); setResigned(false); setPaused(false); setThinking(false); setAnalysis(false); setPromotion(null); setSelected(null); setCoordinates(""); setError("");
     } catch (cause) { setError(cause instanceof Error ? cause.message : "Invalid starting position."); }
   }

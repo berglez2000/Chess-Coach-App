@@ -13,6 +13,7 @@ import styles from "@/components/learning/practice.module.css";
 import { randomUuid } from "@/lib/uuid";
 
 const buttonClass = "rounded-lg border border-[var(--border)] px-4 py-2 text-sm font-medium hover:bg-[var(--surface-2)] disabled:opacity-40";
+const MOVE_SETTLE_MS = 350;
 const feedback: Record<string, string> = {
   UNSUPPORTED: "That move is legal, but is outside this exercise’s validated solution set. Try the authored sequence.",
   ILLEGAL: "Illegal move. The position has not changed; try again.",
@@ -37,11 +38,14 @@ export function PuzzleSolver({ initialPuzzle, nextId, learningNavigation, sessio
   const [flipped, setFlipped] = useState(false);
   const [promotionMove, setPromotionMove] = useState<{ from: string; to: string; color: "w" | "b" } | null>(null);
   const submitted = useRef(false);
+  // A legal move is shown at once; the saved result then confirms it, plays the reply or takes it back.
+  const [optimistic, setOptimistic] = useState<{ fen: string; uci: string } | null>(null);
+  const movedAt = useRef(0);
   const [retryRequest, setRetryRequest] = useState<PuzzleAction | null>(null);
   const placementPiece = puzzle.learning?.type === "MISSING_PIECE" ? puzzle.learning.placementPiece : undefined;
   const solving = puzzle.progress.state === "SOLVING";
   const locked = pending || uncertain || !!promotionMove || !!sessionPractice?.locked;
-  const displayedFen = puzzle.progress.state === "REVEALED" ? puzzle.solutionLine?.at(-1)?.fen ?? puzzle.currentFen : puzzle.currentFen;
+  const displayedFen = optimistic?.fen ?? (puzzle.progress.state === "REVEALED" ? puzzle.solutionLine?.at(-1)?.fen ?? puzzle.currentFen : puzzle.currentFen);
   const board = new Chess(displayedFen);
 
   async function transmit(action?: PuzzleAction) {
@@ -54,6 +58,9 @@ export function PuzzleSolver({ initialPuzzle, nextId, learningNavigation, sessio
         method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(action),
       } : { cache: "no-store" });
       const body = await response.json();
+      // Let the player's own move finish landing before the reply or the take-back animates.
+      const settle = movedAt.current ? MOVE_SETTLE_MS - (Date.now() - movedAt.current) : 0;
+      if (settle > 0) await new Promise(resolve => setTimeout(resolve, settle));
       sessionPractice?.onResponse(body);
       if (body.puzzle) {
         const saved: SolverPuzzle = body.puzzle;
@@ -72,10 +79,11 @@ export function PuzzleSolver({ initialPuzzle, nextId, learningNavigation, sessio
     } catch {
       setError("Connection lost. Refresh saved progress or retry saving the same action.");
       setUncertain(true);
-    } finally { submitted.current = false; setPending(false); sessionPractice?.onBusy?.(false); }
+    } finally { movedAt.current = 0; setOptimistic(null); submitted.current = false; setPending(false); sessionPractice?.onBusy?.(false); }
   }
   function act(action: "MOVE" | "HINT" | "REVEAL" | "RETRY", move?: string, promotionConfirmed = false) {
-    if (pending || uncertain || (promotionMove && !promotionConfirmed) || submitted.current) return;
+    if (pending || uncertain || (promotionMove && !promotionConfirmed) || submitted.current) return false;
+    let shown = false;
     if (action === "MOVE" && !placementPiece) {
       // Start playback before awaiting fetch so browser gesture restrictions
       // do not silence moves. Legal attempts sound even when not the solution.
@@ -83,10 +91,12 @@ export function PuzzleSolver({ initialPuzzle, nextId, learningNavigation, sessio
       try {
         const played = position.move({ from: move!.slice(0, 2), to: move!.slice(2, 4), promotion: move!.slice(4) || "q" });
         play(played.san, position.isGameOver());
+        setOptimistic({ fen: position.fen(), uci: move! }); movedAt.current = Date.now(); shown = true;
       } catch { /* Illegal moves leave the position unchanged and stay silent. */ }
     }
     const base = { requestId: randomUuid(), expectedRevision: puzzle.progress.revision };
     void transmit(action === "MOVE" ? { ...base, action, move: move! } : { ...base, action });
+    return shown;
   }
   function move(from: string, to: string) {
     if (!solving || locked) return false;
@@ -96,9 +106,8 @@ export function PuzzleSolver({ initialPuzzle, nextId, learningNavigation, sessio
       setPromotionMove({ from, to, color: piece.color });
       return false;
     }
-    act("MOVE", from + to);
-    // Wait for the authoritative saved result before changing the board.
-    return false;
+    // True keeps a dragged piece on its square while the saved result is awaited.
+    return act("MOVE", from + to);
   }
   return <>
     {promotionMove && <PromotionPicker color={promotionMove.color} onCancel={() => { setPromotionMove(null); setSelected(null); }} onChoose={piece => {
@@ -110,7 +119,7 @@ export function PuzzleSolver({ initialPuzzle, nextId, learningNavigation, sessio
     <div className={learningNavigation ? styles.boardPanel : "min-w-0"}>
       {learningNavigation && <div className={styles.strip}><span className={styles.colorDot} style={{ background: puzzle.playerColor === "WHITE" ? "var(--fg)" : "white" }}/><strong>{puzzle.playerColor === "WHITE" ? "Black" : "White"}</strong><small>Opponent</small></div>}
       <ReplayBoard positionLabel="Puzzle" flipped={flipped} fen={displayedFen} userColor={puzzle.playerColor}
-        lastMove={placementPiece ? undefined : puzzle.progress.state === "REVEALED" ? puzzle.solutionLine?.at(-1)?.uci : puzzle.history.at(-1)?.uci} selectedSquare={selected}
+        lastMove={optimistic ? optimistic.uci : placementPiece ? undefined : puzzle.progress.state === "REVEALED" ? puzzle.solutionLine?.at(-1)?.uci : puzzle.history.at(-1)?.uci} selectedSquare={selected}
         onMove={solving && !locked && !placementPiece ? move : undefined}
         onSquareClick={solving && !locked ? square => {
           if (placementPiece) { act("MOVE", `${placementPiece}@${square}`); return; }

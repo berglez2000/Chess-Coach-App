@@ -148,6 +148,23 @@ describe("Keyboard navigation", () => {
     fireEvent.keyDown(input, { key: "ArrowRight" });
     expect(screen.getByText(/Half-move 0 of/)).toBeVisible();
   });
+
+  it("scrolls the move list, not the page, to the selected move", () => {
+    render(<GameReview game={parsePgn(pgn)} userColor="WHITE" status="ENGINE_COMPLETED" />);
+    const rect = (top: number, bottom: number) => () => ({ top, bottom }) as DOMRect;
+    const list = screen.getByRole("table", { name: "Game moves" }).parentElement!;
+    list.getBoundingClientRect = rect(100, 300);
+    const below = screen.getByRole("button", { name: "1. White e4" });
+    below.getBoundingClientRect = rect(340, 380);
+    below.scrollIntoView = () => { throw new Error("scrollIntoView also scrolls the page"); };
+    fireEvent.keyDown(document, { key: "ArrowRight" });
+    expect(list.scrollTop).toBe(80);
+    below.getBoundingClientRect = rect(60, 100);
+    screen.getByRole("button", { name: "1. Black e5" }).getBoundingClientRect = rect(150, 190);
+    fireEvent.keyDown(document, { key: "ArrowRight" });
+    fireEvent.keyDown(document, { key: "ArrowLeft" });
+    expect(list.scrollTop).toBe(40);
+  });
 });
 
 it("shows supplied player ratings and clocks, follows replay and hides missing clock samples", () => {

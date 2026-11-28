@@ -9,9 +9,6 @@ beforeAll(() => {
   vi.spyOn(HTMLElement.prototype, "getBoundingClientRect").mockImplementation(() => ({
     width: 64, height: 64, top: 0, left: 0, right: 64, bottom: 64, x: 0, y: 0, toJSON: () => ({}),
   }));
-  if (!HTMLElement.prototype.scrollIntoView) {
-    HTMLElement.prototype.scrollIntoView = () => {};
-  }
 });
 
 afterEach(() => {

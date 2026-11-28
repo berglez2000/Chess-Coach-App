@@ -69,10 +69,10 @@ export function ReplayBoard({ fen, userColor, flipped = false, lastMove, moveQua
       }} />
       {destination && moveQuality && <div
         data-move-quality-square={destination}
-        className="pointer-events-none absolute z-10 flex items-start justify-end p-0.5"
-        style={{ width: "12.5%", height: "12.5%", left: `${(whiteBottom ? file : 7 - file) * 12.5}%`, top: `${(whiteBottom ? 7 - rank : rank) * 12.5}%` }}
+        className="pointer-events-none absolute z-10 flex items-start justify-end p-1"
+        style={{ containerType: "inline-size", width: "12.5%", height: "12.5%", left: `${(whiteBottom ? file : 7 - file) * 12.5}%`, top: `${(whiteBottom ? 7 - rank : rank) * 12.5}%` }}
       >
-        <MoveQualityBadge quality={moveQuality} />
+        <MoveQualityBadge quality={moveQuality} variant="board" />
       </div>}
     </div>
   );

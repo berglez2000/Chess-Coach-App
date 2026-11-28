@@ -89,12 +89,13 @@ export class OpenAICoachingClient implements CoachingClient {
     }
   }
 }
-export function createCoachingClient(provider: CoachingProvider = DEFAULT_PROVIDER, model?: string): CoachingClient {
+export function createCoachingClient(provider: CoachingProvider = DEFAULT_PROVIDER, model?: string, personalKey?: string | null): CoachingClient {
   const selectedModel = resolveCoachingModel(provider, model);
-  const config = PROVIDERS[provider];
-  if (!process.env[config.key]?.trim()) return { requestCoaching: async () => ({ status: "MISSING_KEY" }) };
-  if (provider === "DEEPSEEK") return new OpenAICoachingClient(createDeepSeekClient(), selectedModel);
+  // A user's own key overrides the server's; the server key is the shared fallback.
+  const apiKey = personalKey || process.env[PROVIDERS[provider].key]?.trim();
+  if (!apiKey) return { requestCoaching: async () => ({ status: "MISSING_KEY" }) };
+  if (provider === "DEEPSEEK") return new OpenAICoachingClient(createDeepSeekClient(PROVIDER_TIMEOUT_MS, apiKey), selectedModel);
   return provider === "ANTHROPIC"
-    ? new AnthropicCoachingClient(createAnthropicClient(), selectedModel)
-    : new OpenAICoachingClient(createOpenAIClient(), selectedModel);
+    ? new AnthropicCoachingClient(createAnthropicClient(apiKey), selectedModel)
+    : new OpenAICoachingClient(createOpenAIClient(apiKey), selectedModel);
 }

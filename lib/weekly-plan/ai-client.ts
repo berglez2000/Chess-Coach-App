@@ -50,12 +50,14 @@ export class AnthropicPlanClient implements PlanClient {
     } catch (error) { return failure(error, signal); }
   }
 }
+/** Whether the shared server key is set; a user's own key is checked separately by callers. */
 export function planProviderAvailable(provider: CoachingProvider): boolean { return Boolean(process.env[PROVIDERS[provider].key]?.trim()); }
-export function createPlanClient(provider: CoachingProvider, model?: string): PlanClient {
+export function createPlanClient(provider: CoachingProvider, model?: string, personalKey?: string | null): PlanClient {
   const selectedModel = resolveCoachingModel(provider, model);
-  const config = PROVIDERS[provider];
-  if (!planProviderAvailable(provider)) return { generate: async () => ({ status: "FAILED", message: "The selected provider has no API key. Configure it in the server environment and retry." }) };
-  if (provider === "DEEPSEEK") return new OpenAIPlanClient(createDeepSeekClient(PLAN_TIMEOUT_MS), selectedModel);
-  return provider === "OPENAI" ? new OpenAIPlanClient(new OpenAI({ apiKey: process.env[config.key], ...options }), selectedModel)
-    : new AnthropicPlanClient(new Anthropic({ apiKey: process.env[config.key], ...options }), selectedModel);
+  // A user's own key overrides the server's; the server key is the shared fallback.
+  const apiKey = personalKey || process.env[PROVIDERS[provider].key]?.trim();
+  if (!apiKey) return { generate: async () => ({ status: "FAILED", message: "The selected provider has no API key. Add your key in Settings and retry." }) };
+  if (provider === "DEEPSEEK") return new OpenAIPlanClient(createDeepSeekClient(PLAN_TIMEOUT_MS, apiKey), selectedModel);
+  return provider === "OPENAI" ? new OpenAIPlanClient(new OpenAI({ apiKey, ...options }), selectedModel)
+    : new AnthropicPlanClient(new Anthropic({ apiKey, ...options }), selectedModel);
 }

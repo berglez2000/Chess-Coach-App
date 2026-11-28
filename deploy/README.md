@@ -52,7 +52,7 @@ The script printed an `ssh-ed25519 ...` public key. In GitHub: repository → Se
 sudo nano /etc/chess-coach/env
 ```
 
-Set the API keys you have. Leave `BETTER_AUTH_URL` for step 6. Everything else is already filled. The file is mode `640 root:chess`: root edits it, the app reads it, nobody else sees it.
+Set the API keys you have; they are shared by every user who has not added their own. Each signed-in user can also add personal keys in the app under **Settings → API keys**, which needs no SSH or restart; those are stored in PostgreSQL, encrypted with `API_KEY_ENCRYPTION_SECRET` from this file. Leave `BETTER_AUTH_URL` for step 6. Everything else is already filled. The file is mode `640 root:chess`: root edits it, the app reads it, nobody else sees it.
 
 ## 4. VPN
 
@@ -120,9 +120,16 @@ sudo -iu chess /opt/chess-coach/app/deploy/02-deploy.sh
 
 If the build fails, the old version keeps running. If the new version crashes on start, the script prints the last 40 log lines.
 
+An env file written before personal API keys existed has no `API_KEY_ENCRYPTION_SECRET`, and Settings then says personal keys are turned off. Add the secret once and restart:
+
+```bash
+sudo grep -q '^API_KEY_ENCRYPTION_SECRET=' /etc/chess-coach/env || echo "API_KEY_ENCRYPTION_SECRET=$(openssl rand -hex 32)" | sudo tee -a /etc/chess-coach/env >/dev/null
+sudo systemctl restart chess-coach
+```
+
 ## 8. Backups and recovery
 
-Nightly at 03:30 `backup.sh` writes `/opt/chess-coach/backups/db-DATE.sql.gz` (and opening videos), keeps 14 days. Run it manually with `sudo -iu chess chess-coach-backup`. Copy backups off the VM occasionally, for example `scp` to your Mac or let the Proxmox owner include the VM in their backup job.
+Nightly at 03:30 `backup.sh` writes `/opt/chess-coach/backups/db-DATE.sql.gz` (and opening videos), keeps 14 days. Run it manually with `sudo -iu chess chess-coach-backup`. Copy backups off the VM occasionally, for example `scp` to your Mac or let the Proxmox owner include the VM in their backup job. The dump holds users' personal API keys only in encrypted form; keep a copy of `API_KEY_ENCRYPTION_SECRET` from `/etc/chess-coach/env` somewhere else, or restored keys cannot be read and users must enter them again.
 
 Restore into an empty database:
 
@@ -153,6 +160,7 @@ sudo -iu chess bash -c 'cd /opt/chess-coach/app && set -a && source /etc/chess-c
 - After a failed build, Turbopack can keep a stale cache in `.next` that repeats the old error even once the module is installed. `rm -rf /opt/chess-coach/app/.next` and build again.
 - If SSH listens on a non-default port, `ufw allow OpenSSH` only opens 22. The setup script now reads the real port from `sshd -T`. A router forward (for example external 2222 to internal 22) is fine as is.
 - A placeholder API key (`your-...`) in the env file makes the provider look configured. Leave unused keys empty.
+- Over plain HTTP inside the VPN, a personal API key travels unencrypted on that link once, when it is saved in Settings.
 
 ## Known limits
 

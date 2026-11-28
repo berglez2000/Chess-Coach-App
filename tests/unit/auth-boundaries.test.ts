@@ -10,6 +10,8 @@ import { GET as detail } from "@/app/api/games/[id]/route";
 import { POST as analyze } from "@/app/api/games/[id]/analyze/route";
 import { POST as coach } from "@/app/api/games/[id]/coaching/route";
 import { GET as settings, PUT as updateSettings } from "@/app/api/settings/route";
+import { PUT as saveKey, DELETE as removeKey } from "@/app/api/settings/keys/[provider]/route";
+const keyParams = { params: Promise.resolve({ provider: "OPENAI" }) };
 const params = { params: Promise.resolve({ id: "someone-elses-game" }) };
 const request = (method = "POST", origin = "http://localhost:3000") => new Request("http://localhost:3000/api/games", { method, headers: { origin }, body: method === "GET" ? undefined : "{}" });
 beforeEach(() => {
@@ -19,8 +21,8 @@ beforeEach(() => {
   mocks.session.mockResolvedValue(null);
 });
 it("rejects anonymous or expired sessions on every data endpoint before accessing data", async () => {
-  const responses = await Promise.all([games(), create(request()), detail(request("GET"), params), analyze(request(), params), coach(request(), params), settings(), updateSettings(request("PUT"))]);
-  expect(responses.map(r => r.status)).toEqual([401, 401, 401, 401, 401, 401, 401]);
+  const responses = await Promise.all([games(), create(request()), detail(request("GET"), params), analyze(request(), params), coach(request(), params), settings(), updateSettings(request("PUT")), saveKey(request("PUT"), keyParams), removeKey(request("DELETE"), keyParams)]);
+  expect(responses.map(r => r.status)).toEqual([401, 401, 401, 401, 401, 401, 401, 401, 401]);
   for (const fn of [mocks.find, mocks.list, mocks.create, mocks.coach, mocks.analyze]) expect(fn).not.toHaveBeenCalled();
 });
 it("blocks cross-origin writes even with a valid session", async () => {

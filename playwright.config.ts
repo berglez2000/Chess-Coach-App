@@ -26,6 +26,7 @@ export default defineConfig({
       BETTER_AUTH_URL: "http://127.0.0.1:3100",
       BETTER_AUTH_SECRET: "isolated-browser-test-secret-not-for-normal-use",
       ANTHROPIC_API_KEY: "", OPENAI_API_KEY: "",
+      API_KEY_ENCRYPTION_SECRET: "isolated-browser-test-key-secret-not-for-normal-use",
       STOCKFISH_PATH: "/e2e-fixture-not-an-executable",
       STOCKFISH_DEPTH: "12", STOCKFISH_MOVETIME_MS: "", STOCKFISH_TIMEOUT_MS: "30000",
     },

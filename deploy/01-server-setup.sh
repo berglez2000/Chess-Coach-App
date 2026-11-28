@@ -66,6 +66,7 @@ install -d -m 750 -o root -g "$APP_USER" "$ENV_DIR"
 if [[ ! -f "$ENV_FILE" ]]; then
   sed -e "s#__DB_PASSWORD__#$DB_PASSWORD#" \
       -e "s#__AUTH_SECRET__#$(openssl rand -hex 32)#" \
+      -e "s#__KEY_SECRET__#$(openssl rand -hex 32)#" \
       "$SCRIPT_DIR/env.production.example" > "$ENV_FILE"
   chown root:"$APP_USER" "$ENV_FILE"; chmod 640 "$ENV_FILE"
   echo "Wrote $ENV_FILE. Edit it to add API keys and the public BETTER_AUTH_URL."

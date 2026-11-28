@@ -2,7 +2,8 @@ import { requireOwnerId } from "@/lib/auth/owner";
 import "server-only";
 import type { PrismaClient } from "@/generated/prisma/client";
 import { DEFAULT_PERSONA, personaSchema } from "./personas";
-import { DEFAULT_PROVIDER, coachingSelectionSchema, providerSchema, resolveCoachingModel, type CoachingProvider, type CoachingSelection, type CoachingSettings } from "./providers";
+import { DEFAULT_PROVIDER, PROVIDERS, coachingSelectionSchema, providerSchema, resolveCoachingModel, type CoachingProvider, type CoachingSelection, type CoachingSettings } from "./providers";
+import { listPersonalApiKeys } from "./api-keys";
 
 export async function getCoachingProvider(db: PrismaClient, ownerId: string): Promise<CoachingProvider> {
   return (await getCoachingSelection(db, ownerId)).provider;
@@ -24,9 +25,8 @@ export async function saveCoachingSelection(db: PrismaClient, input: unknown, ow
   return getCoachingSelection(db, ownerId);
 }
 export async function getCoachingSettings(db: PrismaClient, ownerId: string): Promise<CoachingSettings> {
-  return { ...await getCoachingSelection(db, ownerId), available: {
-    ANTHROPIC: Boolean(process.env.ANTHROPIC_API_KEY?.trim()),
-    OPENAI: Boolean(process.env.OPENAI_API_KEY?.trim()),
-    DEEPSEEK: Boolean(process.env.DEEPSEEK_API_KEY?.trim()),
-  } };
+  const [selection, personalKeys] = await Promise.all([getCoachingSelection(db, ownerId), listPersonalApiKeys(db, ownerId)]);
+  // A user's own key overrides the server's; the server key is the shared fallback.
+  const available = (provider: CoachingProvider) => Boolean(personalKeys?.[provider]?.readable || process.env[PROVIDERS[provider].key]?.trim());
+  return { ...selection, available: { ANTHROPIC: available("ANTHROPIC"), OPENAI: available("OPENAI"), DEEPSEEK: available("DEEPSEEK") }, personalKeys };
 }

@@ -2,13 +2,12 @@ vi.mock("@/lib/auth/session", () => ({ requireUser: async () => ({ id: "test-use
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, expect, it, vi } from "vitest";
 import { CoachingSettingsForm } from "@/components/settings/coaching-settings-form";
-const settings = { provider: "ANTHROPIC" as const, model: "claude-haiku-4-5", persona: "BALANCED" as const, available: { ANTHROPIC: false, OPENAI: true, DEEPSEEK: false } };
+const settings = { provider: "ANTHROPIC" as const, model: "claude-haiku-4-5", persona: "BALANCED" as const, available: { ANTHROPIC: false, OPENAI: true, DEEPSEEK: false }, personalKeys: null };
 afterEach(() => vi.unstubAllGlobals());
-it("shows saved default and key availability; changing selection alone sends nothing", async () => {
+it("shows saved default; changing selection alone sends nothing", async () => {
   const fetch = vi.fn(); vi.stubGlobal("fetch", fetch);
   render(<CoachingSettingsForm settings={settings} />);
   expect(screen.getByText(/Saved default/)).toHaveTextContent("Anthropic (Claude)");
-  expect(screen.getAllByText(/Unavailable/)[0]).toHaveTextContent("ANTHROPIC_API_KEY");
   fireEvent.change(screen.getByLabelText("Coaching provider"), { target: { value: "OPENAI" } });
   expect(fetch).not.toHaveBeenCalled();
   let finish!: (r: Response) => void;
@@ -45,7 +44,7 @@ it("offers models for the selected provider and saves a non-default model explic
   expect(model.querySelectorAll("option")).toHaveLength(7);
   expect(screen.queryByRole("option", { name: "Claude Opus 4.6" })).not.toBeInTheDocument();
 });
-it("offers DeepSeek models and shows its separate key requirement", async () => {
+it("offers DeepSeek models", async () => {
   const fetch = vi.fn().mockResolvedValue(Response.json({ ...settings, provider: "DEEPSEEK", model: "deepseek-v4-pro" }));
   vi.stubGlobal("fetch", fetch);
   render(<CoachingSettingsForm settings={settings} />);
@@ -53,7 +52,6 @@ it("offers DeepSeek models and shows its separate key requirement", async () => 
   const model = screen.getByLabelText("AI model");
   expect(model).toHaveValue("deepseek-flash");
   expect(model.querySelectorAll("option")).toHaveLength(2);
-  expect(screen.getByText(/DEEPSEEK_API_KEY/)).toBeInTheDocument();
   fireEvent.change(model, { target: { value: "deepseek-v4-pro" } });
   expect(fetch).not.toHaveBeenCalled();
   fireEvent.click(screen.getByRole("button", { name: "Save settings" }));

@@ -44,6 +44,7 @@ model User {
   accounts      Account[]
   games         Game[]
   settings      UserSettings?
+  apiKeys       UserApiKey[]
   puzzleProgress PuzzleProgress[]
   replaySessions ReplaySession[]
   books Book[]
@@ -116,6 +117,18 @@ model UserSettings {
   coachingProvider CoachingProvider @default(ANTHROPIC)
   coachingModel    String?
   coachingPersona  String @default("BALANCED")
+}
+
+// A user's own provider key, AES-256-GCM encrypted with API_KEY_ENCRYPTION_SECRET; never stored in plain text.
+model UserApiKey {
+  userId     String
+  user       User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  provider   CoachingProvider
+  ciphertext String
+  lastFour   String
+  updatedAt  DateTime @updatedAt
+
+  @@id([userId, provider])
 }
 
 model Game {

@@ -2,6 +2,7 @@ import { expect, it, vi } from "vitest";
 const mocks = vi.hoisted(() => ({ getProvider: vi.fn(), createRepository: vi.fn(() => ({})), createClient: vi.fn(() => ({})), coach: vi.fn() }));
 vi.mock("@/lib/db/client", () => ({ getDb: () => ({}) }));
 vi.mock("@/lib/coaching/settings", () => ({ getCoachingSelection: mocks.getProvider }));
+vi.mock("@/lib/coaching/api-keys", () => ({ getPersonalApiKey: async (_db: unknown, ownerId: string, provider: string) => `${ownerId}-${provider}-key` }));
 vi.mock("@/lib/coaching/repository", () => ({ createCoachingRepository: mocks.createRepository }));
 vi.mock("@/lib/coaching/ai-client", () => ({ createCoachingClient: mocks.createClient }));
 vi.mock("@/lib/coaching/orchestrate", () => ({ coachGame: mocks.coach }));
@@ -17,6 +18,6 @@ it("captures one provider/model before the run and ignores settings changes duri
   finish({ status: "COMPLETED" });
   await pending;
   expect(mocks.getProvider).toHaveBeenCalledOnce();
-  expect(mocks.createClient).toHaveBeenCalledWith("ANTHROPIC", "claude-sonnet-4-6");
+  expect(mocks.createClient).toHaveBeenCalledWith("ANTHROPIC", "claude-sonnet-4-6", "test-user-ANTHROPIC-key");
   expect(mocks.createRepository).toHaveBeenCalledWith({}, { provider: "ANTHROPIC", model: "claude-sonnet-4-6", expectedRevision: 3 }, "test-user");
 });

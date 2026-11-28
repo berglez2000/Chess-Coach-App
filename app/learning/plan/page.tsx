@@ -3,6 +3,7 @@ import { requireUser } from "@/lib/auth/session";
 import { getDb } from "@/lib/db/client";
 import { getProfile } from "@/lib/learning-profile/repository";
 import { getCoachingSettings } from "@/lib/coaching/settings";
+import type { CoachingProvider } from "@/lib/coaching/providers";
 import { getPlanState } from "@/lib/weekly-plan/repository";
 import { currentResourceKeys } from "@/lib/weekly-plan/catalog";
 import { planProviderAvailable } from "@/lib/weekly-plan/ai-client";
@@ -16,6 +17,8 @@ export default async function WeeklyPlanPage() {
   const inputs = [state.draft?.inputs, state.accepted?.inputs].filter(input => input !== undefined);
   const keys = await Promise.all(inputs.map(input => currentResourceKeys(db, user.id, input)));
   const availableKeys = [...new Set(keys.flatMap(set => [...set]))];
+  // The user's own key or the shared server key. planProviderAvailable stays in the check because the E2E adapter replaces it.
+  const available = (provider: CoachingProvider) => settings.available[provider] || planProviderAvailable(provider);
   return <main id="main-content" className={shared.page}>
     <nav className={shared.breadcrumb} aria-label="Breadcrumb"><Link href="/learning">Return to learning</Link><span aria-hidden="true">/</span><span>Weekly plan</span></nav>
     <header>
@@ -23,6 +26,6 @@ export default async function WeeklyPlanPage() {
       <h1 className={shared.heading}>Weekly learning plan</h1>
       <p className={shared.description}>Make time for better chess. Build a reusable study routine around your goals, schedule, and learning materials.</p>
     </header>
-    <WeeklyPlanEditor key={user.id} initial={state} profile={profile} settings={{ ...settings, available: { ANTHROPIC: planProviderAvailable("ANTHROPIC"), OPENAI: planProviderAvailable("OPENAI"), DEEPSEEK: planProviderAvailable("DEEPSEEK") } }} availableKeys={availableKeys} />
+    <WeeklyPlanEditor key={user.id} initial={state} profile={profile} settings={{ ...settings, available: { ANTHROPIC: available("ANTHROPIC"), OPENAI: available("OPENAI"), DEEPSEEK: available("DEEPSEEK") } }} availableKeys={availableKeys} />
   </main>;
 }

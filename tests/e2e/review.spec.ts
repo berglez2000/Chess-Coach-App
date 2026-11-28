@@ -168,7 +168,7 @@ for (const color of ["WHITE", "BLACK"] as const) {
 
 test("unavailable provider shows configuration guidance and preserves engine review", async ({ page }) => {
   await page.goto("/settings");
-  await expect(page.getByText(/OpenAI \(GPT\): Unavailable/)).toBeVisible();
+  await expect(page.getByRole("listitem").filter({ hasText: "OpenAI (GPT)" })).toContainText("Unavailable");
   await page.getByLabel("Coaching provider").selectOption("OPENAI");
   await page.getByRole("button", { name: "Save settings" }).click();
   await expect(page.getByRole("status")).toHaveText("Coaching settings saved.");

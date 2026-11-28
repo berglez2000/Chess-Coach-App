@@ -41,10 +41,7 @@ export function CoachingSettingsForm({ settings }: { settings: CoachingSettings 
       {Object.entries(COACHING_PERSONAS).map(([value, config]) => <option key={value} value={value}>{config.label}</option>)}
     </select>
     <p id="coaching-persona-description" className={styles.hint}>{COACHING_PERSONAS[persona].description}</p>
-    <ul className={styles.providers}>
-      {Object.entries(PROVIDERS).map(([value, config]) => <li key={value} className={styles.provider}><strong>{config.label}</strong> {saved.available[value as CoachingProvider] ? "Key configured" : `Unavailable — set ${config.key} in .env.local and restart the app.`}</li>)}
-    </ul>
-    <p className={`${styles.hint} mb-5`}>Your selected model is used for new coaching reviews and weekly plans; the coaching style shapes the voice of game reviews. Models from the same provider share its API key. To update an existing review, use Regenerate coaching on that review.</p>
+    <p className={`${styles.hint} mt-4 mb-5`}>Your selected model is used for new coaching reviews and weekly plans; the coaching style shapes the voice of game reviews. Models from the same provider share its API key. To update an existing review, use Regenerate coaching on that review.</p>
     <button disabled={pending} className={styles.primary}>{pending ? "Saving…" : "Save settings"}</button>
     {message && <p role="status" className={`${styles.notice} mt-4`}>{message}</p>}
   </form>;

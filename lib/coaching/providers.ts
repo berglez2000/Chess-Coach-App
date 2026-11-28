@@ -54,6 +54,10 @@ export const COACHING_LEASE_MS = 300_000;
 export const PROVIDER_TIMEOUT_MS = 120_000;
 export const COACHING_DEADLINE_MS = 150_000;
 export const PROVIDER_MAX_RETRIES = 0;
+export type PersonalKeys = Partial<Record<CoachingProvider, { lastFour: string; readable: boolean }>>;
 export interface CoachingSettings extends CoachingSelection {
+  /** True when the user's own key or the shared server key can be used. */
   available: Record<CoachingProvider, boolean>;
+  /** The signed-in user's own keys; null when the server has no API_KEY_ENCRYPTION_SECRET to store them with. */
+  personalKeys: PersonalKeys | null;
 }

@@ -130,7 +130,7 @@ export async function coachGame(
 
 function coachingFailureMessage(code: string, provider: CoachingProvider): string {
   switch (code) {
-    case "MISSING_KEY": return `No AI API key configured for ${PROVIDERS[provider].label}. Engine review is available. Configure ${PROVIDERS[provider].key} to enable coaching.`;
+    case "MISSING_KEY": return `No AI API key configured for ${PROVIDERS[provider].label}. Engine review is available. Add your key in Settings, or configure ${PROVIDERS[provider].key} on the server, to enable coaching.`;
     case "RATE_LIMIT": return "AI rate limit reached. Engine review is available. Retry in a moment.";
     case "TIMEOUT": return "AI request timed out. Engine review is available. Please retry.";
     case "REFUSAL": return "AI declined to coach this game. Engine review is available.";

@@ -43,7 +43,12 @@
 .providers { display: grid; gap: 12px; margin: 20px 0; padding: 0; list-style: none; }
 .provider { padding: 14px; background: var(--surface-2); border: 1px solid var(--border-light); border-radius: var(--r-md); font-size: 13px; line-height: 1.6; }
 .provider strong { display: block; margin-bottom: 4px; }
+.keyForm { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 10px; }
+.keyForm .input { flex: 1 1 220px; width: auto; margin-top: 0; background: var(--surface); }
+.secondary { display: inline-flex; align-items: center; justify-content: center; padding: 10px 16px; border: 1px solid var(--border); border-radius: var(--r-md); background: var(--surface); color: var(--fg); font-size: 14px; font-weight: 500; cursor: pointer; transition: background .15s; }
+.secondary:hover { background: var(--surface-2); }
+.secondary:disabled { opacity: .4; cursor: not-allowed; }
 .saved { display: inline-flex; flex-wrap: wrap; gap: 4px; padding: 5px 10px; border-radius: 6px; background: var(--green-subtle); color: var(--green); font-size: 12px; margin-bottom: 20px; }
-.page a:focus-visible, .publicPage a:focus-visible, .primary:focus-visible, .input:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+.page a:focus-visible, .publicPage a:focus-visible, .primary:focus-visible, .secondary:focus-visible, .input:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
 @media (max-width: 767px) { .page { padding: 20px 16px 32px; } .grid { grid-template-columns: minmax(0, 1fr); gap: 16px; } .card { padding: 20px; } .publicPage { padding-top: 32px; } .publicPage .card { padding: 24px; } }
 @media (max-width: 767px) { .wide { padding-left: 12px; padding-right: 12px; } }

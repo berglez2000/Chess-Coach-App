@@ -493,6 +493,14 @@ Choose **Explore position** on a review to play legal moves for both sides from 
 
 Variations are temporary and disappear when you leave exploration or reload. They never change the saved PGN or analysis. Recorded evaluations and coaching are hidden during exploration; this version has no live engine evaluation or automatic opponent replies. Checkmate and draws stop further play until you undo or reset.
 
+## Play a review position on against the engine
+
+Choose **Play on against the engine** on a review to finish the game from the selected recorded position against Stockfish. You keep the colour you had in the game; if it is the opponent's move in that position, the engine moves first. To replay one of your own moves differently, select the move before it. **Take back** undoes your last move together with the engine's reply, **Start again** returns to the starting position, and **Engine strength** uses the same presets as **Play an engine** (default: Strong). Practice games are temporary, are not saved, and never change the saved PGN or analysis. The button is unavailable where the game has already ended.
+
+## Review notes
+
+A saved review offers **+ Add a note on this game** under the game details and **+ Add a note on** the selected move in the Coaching panel. Notes are optional, private to the game's owner, limited to 4,000 characters, and saved with the game; `Ctrl`/`Cmd` + `Enter` saves and `Esc` cancels. Moves with a note carry a ✎ marker in the move list. Saving an empty note, or **Delete note**, removes it.
+
 On both review and exploration boards, hold the right mouse button and drag between squares to draw an orange arrow. Hold Shift for blue arrows. Repeat the same arrow to remove it, or left-click the board to clear all arrows. Arrows clear when the displayed position changes and are never saved with the game. Knight moves use bent arrows.
 
 

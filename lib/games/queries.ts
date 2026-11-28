@@ -28,12 +28,12 @@ export async function getDashboard(db: PrismaClient, ownerId: string): Promise<{
 export async function findGame(db: PrismaClient, id: string, ownerId: string): Promise<SavedGame | null> {
   const stored = await db.game.findUnique({ where: { id, ownerId: requireOwnerId(ownerId) }, select: {
     ...summarySelect, analysisError: true, analysisLeaseUntil: true, initialFen: true, event: true, site: true, round: true,
-    eco: true, timeControl: true, termination: true, pgn: true,
+    eco: true, timeControl: true, termination: true, pgn: true, note: true,
     coachingProvider: true, coachingRevision: true, coachingSummary: true, coachingStrengths: true, coachingImprovements: true, coachingModel: true,
     moves: { orderBy: { ply: "asc" }, select: {
       engineAnalysis: { select: { assessment: true, bestMoveSan: true, pvSan: true, runId: true, analyzedAt: true } },
       coachingAnnotation: { select: { classification: true, headline: true, explanation: true, lesson: true, category: true, model: true, provider: true } },
-      ply: true, moveNumber: true, color: true, san: true, uci: true, fenBefore: true, fenAfter: true,
+      ply: true, moveNumber: true, color: true, san: true, uci: true, fenBefore: true, fenAfter: true, note: true,
     } },
   } });
   if (!stored) return null;
@@ -56,9 +56,11 @@ export async function findGame(db: PrismaClient, id: string, ownerId: string): P
     game: {
       initialFen: stored.initialFen,
       coaching,
+      ...(stored.note ? { note: stored.note } : {}),
       details: pgnGameDetails(display.headers),
-      moves: stored.moves.map(({ engineAnalysis, coachingAnnotation, ...move }) => ({
+      moves: stored.moves.map(({ engineAnalysis, coachingAnnotation, note, ...move }) => ({
         ...move,
+        ...(note ? { note } : {}),
         ...(display.clocks[move.ply] !== undefined ? { clockSeconds: display.clocks[move.ply] } : {}),
         ...(display.annotations[move.ply] ? { pgnAnnotation: display.annotations[move.ply] } : {}),
         ...(display.comments[move.ply] ? { pgnComment: display.comments[move.ply] } : {}),

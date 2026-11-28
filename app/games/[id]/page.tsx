@@ -24,7 +24,7 @@ export default async function SavedGamePage({ params, searchParams }: { params: 
   return <main id="main-content" className="mx-auto max-w-[1200px] px-4 py-8 sm:px-8">
     <nav aria-label="Breadcrumb" className="mb-5 flex flex-wrap items-center gap-2 text-xs text-[var(--fg-3)]"><Link href="/" className="hover:underline">Dashboard</Link><span aria-hidden="true">/</span><Link href="/games" className="hover:underline">Your games</Link><span aria-hidden="true">/</span><span className="text-[var(--fg-2)]">Game review</span></nav>
     <AnalysisControls coachingRevision={saved.coachingRevision} autoStart={autoStart} gameId={saved.id} status={saved.status} error={saved.analysisError} leaseUntil={saved.analysisLeaseUntil} />
-    <GameReview key={`${saved.id}:${initialPly}`} initialPly={initialPly} game={saved.game} userColor={saved.userColor} status={saved.status} />
+    <GameReview key={`${saved.id}:${initialPly}`} initialPly={initialPly} gameId={saved.id} game={saved.game} userColor={saved.userColor} status={saved.status} />
     {puzzles.rows.length > 0 && <section aria-label="Personal puzzles" className="mt-6 rounded-2xl border border-[var(--border-light)] bg-[var(--surface)] p-5">
       <div className="flex flex-wrap items-center justify-between gap-3"><h2 className="font-semibold">Practice your key moments</h2><Link href={`/puzzles?game=${id}`} className="text-sm font-semibold underline">Practice all puzzles →</Link></div>
       <div className="mt-4 grid gap-3 sm:grid-cols-3">{puzzles.rows.map(puzzle => {

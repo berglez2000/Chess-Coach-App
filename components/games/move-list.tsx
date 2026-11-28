@@ -8,8 +8,10 @@ import { MoveQualityBadge } from "./move-quality-badge";
 
 type ReviewMove = ParsedGameMove & { coaching?: ReviewCoachingAnnotation | null; positiveHighlight?: boolean; analysis?: ReviewAnalysis | null; pgnAnnotation?: string };
 
-export function MoveList({ moves, selectedPly, onSelect }: {
+export function MoveList({ moves, notes = {}, selectedPly, onSelect }: {
   moves: ReviewMove[];
+  /** The owner's own notes by ply; noted moves get a marker. */
+  notes?: Record<number, string>;
   selectedPly: number;
   onSelect: (ply: number) => void;
 }) {
@@ -46,12 +48,13 @@ export function MoveList({ moves, selectedPly, onSelect }: {
                 const move = row[side];
                 return <td key={side} className="p-1">
                   {move ? <button type="button" ref={selectedPly === move.ply ? selectedRef : undefined} onClick={() => onSelect(move.ply)}
-                    aria-label={`${number}. ${side === "white" ? "White" : "Black"} ${move.san}${move.pgnAnnotation ?? ""}${(move.analysis?.quality ?? move.coaching?.classification) ? ` — ${move.analysis?.quality ?? move.coaching?.classification}` : ""}${move.positiveHighlight ? " — Positive highlight" : ""}`}
+                    aria-label={`${number}. ${side === "white" ? "White" : "Black"} ${move.san}${move.pgnAnnotation ?? ""}${(move.analysis?.quality ?? move.coaching?.classification) ? ` — ${move.analysis?.quality ?? move.coaching?.classification}` : ""}${move.positiveHighlight ? " — Positive highlight" : ""}${notes[move.ply] ? " — Has your note" : ""}`}
                     aria-current={selectedPly === move.ply ? "step" : undefined}
                     className={`flex w-full items-center gap-1.5 rounded px-3 py-2 text-left font-medium focus-visible:outline-2 focus-visible:outline-offset-1 ${selectedPly === move.ply ? "bg-[var(--green)] text-[var(--on-green)]" : "hover:bg-[var(--green-subtle)]"}`}>
                     {move.san}{move.pgnAnnotation && <span className="font-mono" title="Annotation from the PGN">{move.pgnAnnotation}</span>}
                     <MoveQualityBadge quality={move.analysis?.quality ?? move.coaching?.classification} variant={selectedPly === move.ply ? "contrast" : "tint"} />
                     {move.positiveHighlight && <span className="rounded border border-current px-1 text-xs">Positive highlight</span>}
+                    {notes[move.ply] && <span aria-hidden="true" title="Has your note">✎</span>}
                   </button> : <span className="px-3" aria-label="No move">—</span>}
                 </td>;
               })}

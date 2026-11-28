@@ -31,8 +31,12 @@ export type ReviewGame = Pick<ParsedGame, "initialFen" | "metadata"> & {
     pgnAnnotation?: string;
     /** Free-text comment supplied in the PGN, with clock commands removed. */
     pgnComment?: string;
+    /** The owner's own note on this move. */
+    note?: string;
   })[];
   coaching?: GameCoachingSummary | null;
+  /** The owner's own note on the whole game. */
+  note?: string;
   details?: PgnGameDetails;
 };
 

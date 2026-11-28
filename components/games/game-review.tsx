@@ -2,11 +2,12 @@
 
 import styles from "./game-review.module.css";
 import { Chess } from "chess.js";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import type { ChessColor } from "@/types/game";
 import type { AnalysisStatus, ReviewGame } from "@/types/saved-game";
 import { PositionAnalysisPanel } from "@/components/analysis/position-panel";
 import { ExplorationBoard } from "@/components/chess/exploration-board";
+import { PracticeBoard } from "@/components/chess/practice-board";
 import { ReplayBoard } from "@/components/chess/replay-board";
 import { useMoveSound } from "@/components/chess/use-move-sound";
 import { EvaluationBar } from "@/components/chess/evaluation-bar";
@@ -15,12 +16,18 @@ import { MoveList } from "./move-list";
 import { MoveQualityBadge } from "./move-quality-badge";
 import { CoachingPanel } from "./coaching-panel";
 import { CoachingSummaryPanel } from "./coaching-summary-panel";
+import { NoteEditor } from "./note-editor";
 
-/** Mount a fresh review for each imported game. Selected ply owns all replay state. */
-export function GameReview({ game, userColor, status, initialPly = 0 }: { game: ReviewGame; userColor: ChessColor; status: AnalysisStatus; initialPly?: number }) {
+/** Mount a fresh review for each imported game. Selected ply owns all replay state. Notes can be written only for a saved game (`gameId`). */
+export function GameReview({ game, gameId, userColor, status, initialPly = 0 }: { game: ReviewGame; gameId?: string; userColor: ChessColor; status: AnalysisStatus; initialPly?: number }) {
   const { play, muted, toggleMuted } = useMoveSound();
   const [selectedPly, setSelectedPly] = useState(() => Math.max(0, Math.min(game.moves.length, Number.isInteger(initialPly) ? initialPly : 0)));
   const [exploration, setExploration] = useState<string | null>(null);
+  // Starting FEN of a practice game against the engine. Like exploration, it leaves the recorded game.
+  const [practice, setPractice] = useState<string | null>(null);
+  const away = exploration ?? practice;
+  const [gameNote, setGameNote] = useState(game.note ?? "");
+  const [moveNotes, setMoveNotes] = useState<Record<number, string>>(() => Object.fromEntries(game.moves.flatMap(move => move.note ? [[move.ply, move.note]] : [])));
   const [preview, setPreview] = useState(false);
   const [tab, setTab] = useState("coaching");
   const [filter, setFilter] = useState("all");
@@ -38,6 +45,7 @@ export function GameReview({ game, userColor, status, initialPly = 0 }: { game: 
     } catch { /* A stale saved suggestion must not interrupt replay. */ }
   }
   const fen = preview && previewFen ? previewFen : selectedMove?.fenAfter ?? game.initialFen;
+  const positionEnded = useMemo(() => { try { return new Chess(selectedMove?.fenAfter ?? game.initialFen).isGameOver(); } catch { return true; } }, [selectedMove, game.initialFen]);
   const total = game.moves.length;
   const analyzed = game.moves.filter(move => move.analysis);
   const critical = analyzed.filter(move => move.analysis?.quality === "mistake" || move.analysis?.quality === "blunder" || move.analysis?.quality === "inaccuracy");
@@ -51,6 +59,7 @@ export function GameReview({ game, userColor, status, initialPly = 0 }: { game: 
         next > selectedPly && next === total && game.metadata.result !== "*");
     }
     setExploration(null);
+    setPractice(null);
     setPreview(false);
     setSelectedPly(next);
   }, [total, selectedPly, preview, play, game.moves, game.metadata.result]);
@@ -58,7 +67,7 @@ export function GameReview({ game, userColor, status, initialPly = 0 }: { game: 
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (exploration) return;
+      if (away) return;
       if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
       const target = e.target as HTMLElement;
       if (target.tagName === "INPUT" || target.tagName === "TEXTAREA" || target.tagName === "SELECT" || target.isContentEditable) return;
@@ -67,7 +76,7 @@ export function GameReview({ game, userColor, status, initialPly = 0 }: { game: 
     };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
-  }, [select, selectedPly, exploration]);
+  }, [select, selectedPly, away]);
   const { metadata } = game;
   const details = game.details ?? {};
   const time = metadata.timeControl?.match(/^(\d+)(?:\+(\d+))?$/);
@@ -132,6 +141,7 @@ export function GameReview({ game, userColor, status, initialPly = 0 }: { game: 
       </dl>
       <p className={styles.status} data-complete={analyzed.length === total}>Saved analysis: {analyzed.length} of {total} moves{analyzed.length > 0 && analyzed.length < total ? " (partial)" : ""}.</p>
       {mixedRuns && <p className="mt-2 text-sm">These results include multiple analysis runs. A retry may still be incomplete.</p>}
+      {gameId && <div className="mt-4"><NoteEditor gameId={gameId} ply={null} subject="this game" note={gameNote} onSaved={setGameNote} /></div>}
       </header>
       <div className={styles.layout}>
         <div className={styles.boardPanel}>
@@ -142,7 +152,8 @@ export function GameReview({ game, userColor, status, initialPly = 0 }: { game: 
         <span className="text-sm text-[var(--fg-3)]">{critical.length} moments to learn from · Both players</span>
       </div>}
 
-          {exploration ? <ExplorationBoard key={exploration} startFen={exploration} userColor={userColor} flipped={flipped} onExit={() => setExploration(null)} /> : <>
+          {practice ? <PracticeBoard key={practice} startFen={practice} userColor={userColor} flipped={flipped} onSound={play} onExit={() => setPractice(null)} />
+          : exploration ? <ExplorationBoard key={exploration} startFen={exploration} userColor={userColor} flipped={flipped} onExit={() => setExploration(null)} /> : <>
           {player(whiteBottom ? "BLACK" : "WHITE")}
           <div className="flex items-stretch gap-2 sm:gap-3">
             <EvaluationBar evaluation={preview ? null : selectedPly === 0 ? game.moves[0]?.analysis?.before : selectedMove?.analysis?.after}
@@ -159,14 +170,17 @@ export function GameReview({ game, userColor, status, initialPly = 0 }: { game: 
           </p>
           {selectedMove && !preview && <div className="mt-2" aria-live="polite" aria-atomic="true"><MoveQualityBadge quality={selectedMove.analysis?.quality ?? selectedMove.coaching?.classification} showLabel /></div>}
           <p className="mt-1 text-sm text-[var(--fg-3)]">{fen.split(" ")[1] === "w" ? "White" : "Black"} to play · Use ← → to navigate</p>
-          <button type="button" className={`${buttonClass} mt-3`} onClick={() => { setPreview(false); setExploration(selectedMove?.fenAfter ?? game.initialFen); }}>Explore position</button>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <button type="button" className={buttonClass} onClick={() => { setPreview(false); setExploration(selectedMove?.fenAfter ?? game.initialFen); }}>Explore position</button>
+            <button type="button" className={buttonClass} disabled={positionEnded} title={positionEnded ? "The game is over in this position" : undefined} onClick={() => { setPreview(false); setPractice(selectedMove?.fenAfter ?? game.initialFen); }}>Play on against the engine</button>
+          </div>
           </>}
           <p className="mt-2 text-xs text-[var(--fg-3)]">Right-drag to draw an arrow · Shift + right-drag for blue · Repeat to remove · Left-click the board to clear</p>
           <nav aria-label="Move navigation" className="mt-3 flex flex-wrap gap-2">
-            <button type="button" className={buttonClass} onClick={() => select(0)} disabled={!exploration && selectedPly === 0}>Start</button>
-            <button type="button" className={buttonClass} onClick={() => select(selectedPly - 1)} disabled={!exploration && selectedPly === 0}>Previous</button>
-            <button type="button" className={buttonClass} onClick={() => select(selectedPly + 1)} disabled={!exploration && selectedPly === total}>Next</button>
-            <button type="button" className={buttonClass} onClick={() => select(total)} disabled={!exploration && selectedPly === total}>End</button>
+            <button type="button" className={buttonClass} onClick={() => select(0)} disabled={!away && selectedPly === 0}>Start</button>
+            <button type="button" className={buttonClass} onClick={() => select(selectedPly - 1)} disabled={!away && selectedPly === 0}>Previous</button>
+            <button type="button" className={buttonClass} onClick={() => select(selectedPly + 1)} disabled={!away && selectedPly === total}>Next</button>
+            <button type="button" className={buttonClass} onClick={() => select(total)} disabled={!away && selectedPly === total}>End</button>
             <button type="button" className={buttonClass} onClick={() => setFlipped(f => !f)} aria-pressed={flipped}>Flip board</button>
             <button type="button" className={buttonClass} onClick={toggleMuted} aria-pressed={muted} aria-label="Mute sounds">Sound: {muted ? "off" : "on"}</button>
           </nav>
@@ -183,13 +197,16 @@ export function GameReview({ game, userColor, status, initialPly = 0 }: { game: 
             }}>{name[0].toUpperCase() + name.slice(1)}</button>)}
           </div>
           <div id="review-tab-panel" role="tabpanel" aria-labelledby={`review-tab-${tab}`} className={styles.panelContent}>
-          {tab === "engine" && !exploration && <><EnginePanel initial={selectedPly === 0} analysis={analysis} /><PositionAnalysisPanel position={preview ? { startFen: fen, moves: [] } : { startFen: game.initialFen, moves: game.moves.slice(0, selectedPly).map(move => move.uci) }} whiteBottom={whiteBottom} /></>}
-          {tab === "engine" && exploration && <p className="p-5 text-sm">Return to review to see saved engine analysis.</p>}
+          {tab === "engine" && !away && <><EnginePanel initial={selectedPly === 0} analysis={analysis} /><PositionAnalysisPanel position={preview ? { startFen: fen, moves: [] } : { startFen: game.initialFen, moves: game.moves.slice(0, selectedPly).map(move => move.uci) }} whiteBottom={whiteBottom} /></>}
+          {tab === "engine" && away && <p className="p-5 text-sm">Return to review to see saved engine analysis.</p>}
           {tab === "coaching" && <>
-          {exploration ? <p className="rounded-2xl bg-[var(--surface)] p-5 text-sm">Recorded evaluations and coaching are hidden during exploration. Select a game move to leave the variation, or return to review to restore your selected position.</p> : <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5">
+          {away ? <p className="rounded-2xl bg-[var(--surface)] p-5 text-sm">{practice ? "Recorded evaluations and coaching are hidden while you play against the engine. Select a game move to leave the practice game, or return to review to restore your selected position." : "Recorded evaluations and coaching are hidden during exploration. Select a game move to leave the variation, or return to review to restore your selected position."}</p> : <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5">
             <p className="text-xs font-semibold uppercase tracking-widest text-[var(--fg-3)]">{selectedMove ? `What happened · ${selectedMove.moveNumber}${selectedMove.color === "WHITE" ? "." : "…"} ${selectedMove.san}` : "Your move-by-move guide"}</p>
             {selectedMove && (selectedMove.pgnAnnotation || selectedMove.pgnComment) && <p className="mt-3 rounded-lg bg-[var(--surface-2)] p-3 text-sm"><span className="font-semibold">From your PGN: </span>{selectedMove.pgnAnnotation && <span className="font-mono font-semibold">{selectedMove.san}{selectedMove.pgnAnnotation} </span>}{selectedMove.pgnComment}</p>}
             {selectedMove ? <CoachingPanel coaching={selectedMove.coaching} status={status} /> : <p className="mt-3 text-sm leading-relaxed">Select a move or review the key moments to see what happened, why it matters, and what to try next.</p>}
+            {gameId && selectedMove && <div className="mt-4 border-t border-[var(--border)] pt-4">
+              <NoteEditor key={selectedMove.ply} gameId={gameId} ply={selectedMove.ply} subject={`${selectedMove.moveNumber}${selectedMove.color === "WHITE" ? "." : "…"} ${selectedMove.san}`} note={moveNotes[selectedMove.ply] ?? ""} onSaved={note => setMoveNotes(notes => ({ ...notes, [selectedMove.ply]: note }))} />
+            </div>}
             {analysis?.bestMoveSan && <div className="mt-4 border-t border-[var(--border)] pt-4">
               <p className="text-sm font-semibold">{selectedMove && selectedMove.san !== analysis.bestMoveSan ? "Try instead" : "Engine suggestion"}: {analysis.bestMoveSan}</p>
               {previewFen && <button type="button" className={`${buttonClass} mt-2 mr-2`} onClick={() => { setPreview(false); setExploration(selectedMove?.fenBefore ?? game.initialFen); }}>Try the better move</button>}
@@ -200,18 +217,18 @@ export function GameReview({ game, userColor, status, initialPly = 0 }: { game: 
           </div>}
           </>}
           <div className={styles.moves}>
-            <div className="mb-3 flex flex-wrap items-center justify-between gap-2"><h3 className="font-semibold">{exploration ? "Recorded game moves" : "Moves"}</h3><label className="text-sm"><span className="sr-only">Filter moves</span><select className="rounded-lg border border-[var(--border)] bg-[var(--surface-2)] p-2" value={filter} onChange={event => setFilter(event.target.value)}><option value="all">All moves</option><option value="inaccuracy">Inaccuracies</option><option value="mistake">Mistakes</option><option value="blunder">Blunders</option></select></label></div>
-            {filteredMoves.length > 0 ? <MoveList moves={filteredMoves} selectedPly={selectedPly} onSelect={select} /> : <p className="py-6 text-center text-sm text-[var(--fg-3)]">No moves match this filter.</p>}
+            <div className="mb-3 flex flex-wrap items-center justify-between gap-2"><h3 className="font-semibold">{away ? "Recorded game moves" : "Moves"}</h3><label className="text-sm"><span className="sr-only">Filter moves</span><select className="rounded-lg border border-[var(--border)] bg-[var(--surface-2)] p-2" value={filter} onChange={event => setFilter(event.target.value)}><option value="all">All moves</option><option value="inaccuracy">Inaccuracies</option><option value="mistake">Mistakes</option><option value="blunder">Blunders</option></select></label></div>
+            {filteredMoves.length > 0 ? <MoveList moves={filteredMoves} notes={moveNotes} selectedPly={selectedPly} onSelect={select} /> : <p className="py-6 text-center text-sm text-[var(--fg-3)]">No moves match this filter.</p>}
           </div>
           </div>
         </div>
       </div>
-      {!exploration && <section className={styles.summary} aria-label="Game summary">
+      {!away && <section className={styles.summary} aria-label="Game summary">
         <div className={styles.summaryHeading}><h3>Game summary</h3><span>Your move quality as {userColor === "WHITE" ? "White" : "Black"}</span></div>
         <div className={styles.qualities}>{(["normal", "inaccuracy", "mistake", "blunder", "unknown", "pending"] as const).map(quality => <div key={quality}><MoveQualityBadge quality={quality === "pending" ? undefined : quality} showLabel /><strong>{userMoves.filter(move => (move.analysis?.quality ?? "pending") === quality).length}</strong></div>)}</div>
         {hasPgnAnnotations && <p className="mt-3 text-sm text-[var(--fg-2)]"><span className="font-semibold">PGN annotations: </span>{(["WHITE", "BLACK"] as const).map(color => `${color === "WHITE" ? metadata.whiteName ?? "White" : metadata.blackName ?? "Black"}: ${annotationCounts(color) || "none"}`).join(" — ")}</p>}
       </section>}
-      {!exploration && <CoachingSummaryPanel coaching={game.coaching} moves={game.moves} status={status} onSelectPly={select} />}
+      {!away && <CoachingSummaryPanel coaching={game.coaching} moves={game.moves} status={status} onSelectPly={select} />}
     </section>
   );
 }

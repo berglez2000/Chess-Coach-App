@@ -27,7 +27,7 @@ it.each(["WHITE", "BLACK"] as const)("persists a complete %s import and allows i
   if ("error" in result) throw new Error("Import failed");
   const game = await db.game.findUniqueOrThrow({ where: { id: result.gameId }, include: { moves: { orderBy: { ply: "asc" } } } });
   expect(game).toMatchObject({ pgn, userColor, analysisStatus: "PENDING", initialFen: parsePgn(pgn).initialFen });
-  expect(game.moves).toEqual(parsePgn(pgn).moves.map(move => ({ ...move, id: expect.any(String), gameId: game.id })));
+  expect(game.moves).toEqual(parsePgn(pgn).moves.map(move => ({ ...move, note: null, id: expect.any(String), gameId: game.id })));
   expect(await importGame({ userColor, pgn }, repository)).toMatchObject({ status: "PENDING" });
   expect(await db.game.count({ where: { pgn } })).toBe(2);
 });

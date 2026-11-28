@@ -40,7 +40,7 @@ describe("Game and GameMove persistence", () => {
     });
     expect(stored.createdAt).toBeInstanceOf(Date);
     expect(stored.updatedAt).toBeInstanceOf(Date);
-    expect(stored.moves).toEqual(parsed.moves.map((move) => ({ ...move, id: expect.any(String), gameId: created.id })));
+    expect(stored.moves).toEqual(parsed.moves.map((move) => ({ ...move, note: null, id: expect.any(String), gameId: created.id })));
   });
 
   it("rejects duplicate plies within a game but permits them in another game", async () => {

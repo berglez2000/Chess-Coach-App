@@ -162,6 +162,8 @@ model Game {
   coachingRunProvider  CoachingProvider?
   coachingRunModel     String?
   coachingModel        String?
+  // The owner's own remark on the whole game, written during review.
+  note           String?        @db.Text
   createdAt      DateTime       @default(now())
   updatedAt      DateTime       @updatedAt
   moves          GameMove[]
@@ -259,6 +261,8 @@ model GameMove {
   uci        String
   fenBefore  String
   fenAfter   String
+  // The owner's own remark on this move, written during review.
+  note       String?    @db.Text
 
   engineAnalysis MoveEngineAnalysis?
   coachingAnnotation MoveCoachingAnnotation?

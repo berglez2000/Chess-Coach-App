@@ -1,0 +1,2 @@
+ALTER TABLE "Game" ADD COLUMN "note" TEXT;
+ALTER TABLE "GameMove" ADD COLUMN "note" TEXT;
